@@ -440,11 +440,11 @@
 
         {{!-- Seis Olhos — aparece se o item Seis Olhos estiver na ficha --}}
         {{#if seisOlhos}}
-        <div class="jj-seis-olhos-box">
-            <div class="jj-seis-olhos-header">
+        <filigree-box class="jj-seis-olhos-box">
+            <h3 class="jj-seis-olhos-header">
                 <i class="fas fa-eye" inert></i>
                 <span>Seis Olhos</span>
-            </div>
+            </h3>
             <div class="jj-seis-olhos-options">
                 <label class="jj-seis-olhos-option {{#if (eq seisOlhosMode 'sealed')}}active{{/if}}">
                     <input type="radio" name="flags.jujutsu-system.seisOlhosMode" value="sealed"
@@ -468,7 +468,7 @@
                 <i class="fas fa-skull" inert></i> 2d8 dano psíquico no início do turno
             </div>
             {{/if}}
-        </div>
+        </filigree-box>
         {{/if}}
 
     </div>

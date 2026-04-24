@@ -2197,46 +2197,49 @@
 }
 
 /* ════════════════════════════════════════
-   SEIS OLHOS — Caixa da sidebar
+   SEIS OLHOS — Layout com filigree-box
    ════════════════════════════════════════ */
 
-.jj-seis-olhos-box {
-  background: #0c0c1e;
-  border: 1px solid #2a1a50;
-  border-top: 2px solid #6030b0;
-  border-radius: 0 0 4px 4px;
-  overflow: hidden;
+filigree-box.jj-seis-olhos-box {
+  --filigree-background-color: #0f0f1c;
+  --filigree-border-color: #302860;
+  --filigree-drop-shadow: drop-shadow(0 0 4px rgba(40, 30, 80, 0.4));
+  display: block;
   margin-top: 2px;
 }
 
 .jj-seis-olhos-header {
-  padding: 6px 10px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  border-bottom: 1px solid #1a1432;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #4075a0;
+  padding: 0.75rem 1rem 0.375rem;
+  border: none;
+  margin: 0;
+  font-size: var(--font-size-13);
 }
 
-.jj-seis-olhos-header i { color: #5030a0; }
+.jj-seis-olhos-header i {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+.jj-seis-olhos-header span {
+  color: #bbae99;
+  font-size: var(--font-size-13);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
 
 .jj-seis-olhos-options {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: #12121e;
-  padding: 6px 8px;
-  gap: 6px;
+  padding: 4px 8px 8px;
+  gap: 5px;
 }
 
-.jj-seis-olhos-option {
-  cursor: pointer;
-}
-
+.jj-seis-olhos-option { cursor: pointer; }
 .jj-seis-olhos-option input { display: none; }
 
 .jj-seis-olhos-btn {
@@ -2244,44 +2247,47 @@
   flex-direction: column;
   align-items: center;
   gap: 3px;
-  padding: 7px 4px;
-  background: #130e1c;
-  border: 1px solid #2a1847;
-  border-radius: 4px;
+  padding: 8px 4px;
+  background: #0e0e1c;
+  border: 1px solid #221a3a;
+  border-radius: 3px;
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #1c5888;
-  transition: all 150ms;
+  color: #40385a;
+  transition: all 140ms;
 }
 
-.jj-seis-olhos-btn i { font-size: 14px; color: #1e3843; }
+.jj-seis-olhos-btn i {
+  font-size: 14px;
+  color: #30285a;
+}
 
 .jj-seis-olhos-option:hover .jj-seis-olhos-btn {
   border-color: #3a2a60;
-  color: #1d66ae;
+  color: #7060a0;
 }
-.jj-seis-olhos-option:hover .jj-seis-olhos-btn i { color: #507ca0; }
+.jj-seis-olhos-option:hover .jj-seis-olhos-btn i { color: #6050a0; }
 
 .jj-seis-olhos-option.active .jj-seis-olhos-btn,
 .jj-seis-olhos-option input:checked ~ .jj-seis-olhos-btn {
   background: #130e28;
-  border-color: #1e5da5;
-  color: #3c98c0;
-  box-shadow: 0 0 8px rgba(50, 107, 200, 0.25);
+  border-color: #4a2890;
+  color: #9070d0;
 }
 .jj-seis-olhos-option.active .jj-seis-olhos-btn i,
-.jj-seis-olhos-option input:checked ~ .jj-seis-olhos-btn i { color: #60abe0; }
+.jj-seis-olhos-option input:checked ~ .jj-seis-olhos-btn i {
+  color: #7050b0;
+}
 
 .jj-seis-olhos-warning {
-  padding: 5px 10px;
+  padding: 4px 8px 8px;
   font-size: 9px;
-  color: #c06060;
-  border-top: 1px solid #2a1232;
-  background: #210c0c;
+  color: #906060;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
 }
-.jj-seis-olhos-warning i { color: #803030; }
+
+.jj-seis-olhos-warning i { color: #703030; }
