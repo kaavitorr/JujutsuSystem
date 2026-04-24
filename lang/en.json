@@ -3597,7 +3597,7 @@
 "DND5E.SpellCastConsume": "Consumir Slot de Técnica?",
 "DND5E.SpellCastNoSlots": "Você não possui slots de {level} disponíveis para usar {name}",
 "DND5E.SpellCastNoSlotsLeft": "Você não possui slots disponíveis para usar {name}!",
-"DND5E.SpellCastTime": "Tempo de Conjuração",
+"DND5E.SpellCastTime": "Requisito",
 "DND5E.SpellCastUpcast": "Conjurar no Grau",
 "DND5E.SpellcasterLevel": "Nível de Conjurador",
 "DND5E.SpellCastingHeader": "Conjuração",

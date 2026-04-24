@@ -476,7 +476,7 @@
   --jj-purple:        #7a5cff;
   --jj-primary:       #7a5cff;
   --jj-purple-soft:   #a090ff;
-  --jj-primary-soft:  #a090ff;
+  --jj-primary-soft:  #bbae99;
 
   /* VERMELHO */
   --jj-red:              #ff5a5a;
@@ -1651,6 +1651,34 @@
   --dnd5e-shadow-45:        rgba(60, 0, 160, 0.25);
   --fieldset-legend-color:  var(--jj-primary-soft);
   --color-fieldset-border:  var(--jj-border);
+
+  /* Texto */
+  --color-text-primary:     var(--jj-text-main);
+  --color-text-secondary:   var(--jj-text-soft);
+  --color-text-tertiary:    var(--jj-text-fade);
+  --color-text-emphatic:    #ffffff;
+  --color-text-title:       var(--jj-primary-soft);
+
+  /* Atributos e skills */
+  --dnd5e-ability-color:    var(--jj-primary-soft);
+  --dnd5e-ability-mod-color: var(--jj-text-main);
+  --dnd5e-heading-3-color:  var(--jj-text-soft);
+  --item-control-color:         var(--jj-text-fade);
+  --item-control-interactive-color: var(--jj-text-soft);
+  --item-control-active-color:  var(--jj-primary-soft);
+
+  /* Separadores e bordas */
+  --dnd5e-border-separator-faint:  1px solid rgba(255,255,255,0.05);
+  --dnd5e-border-separator-heavy:  1px solid var(--jj-border);
+  --dnd5e-border-dark:             1px solid var(--jj-border);
+  --dnd5e-border-heading-3:        1px solid var(--jj-border-soft);
+
+  /* Fundos */
+  --dnd5e-background-card:    var(--jj-bg-card);
+  --dnd5e-background-alt-1:   var(--jj-bg-soft);
+  --dnd5e-background-alt-2:   var(--jj-bg-card);
+  --dnd5e-background-5:       rgba(120,90,255,0.05);
+  --dnd5e-highlight-10:       rgba(120,90,255,0.05);
 }
 
 .dnd5e2.sheet.actor.character .window-content,
@@ -1678,8 +1706,8 @@
   --dnd5e-border-gold:      1px solid #2e2a50;
   --dnd5e-card-header-1:    #1a1035;
   --dnd5e-card-header-2:    #120d28;
-  --dnd5e-color-gold:       #9d9884;
-  --dnd5e-shadow-45:        rgba(60, 0, 160, 0.25);
+  --dnd5e-color-gold:       #aaa495;
+  --dnd5e-shadow-45:        rgba(141, 160, 0, 0.25);
   --fieldset-legend-color:  #9070d0;
   --color-fieldset-border:  #2e2a50;
 }
@@ -1751,4 +1779,14 @@
 .dnd5e2.sheet.actor.character .items-section {
   background: var(--jj-bg-soft);
   border: 1px solid var(--jj-border-soft);
+}
+
+/* ════════════════════════════════════════
+   SPELLBOOK — Esconder pips de spell slots
+   ════════════════════════════════════════ */
+.tab[data-tab="spells"] .spell-pips,
+.tab[data-tab="spells"] .pips,
+.tab[data-tab="spells"] [class*="pip"],
+.tab[data-tab="spells"] .spell-slots .pip {
+  display: none !important;
 }
