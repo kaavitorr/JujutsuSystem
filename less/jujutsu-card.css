@@ -1,0 +1,1754 @@
+/* ══════════════════════════════════════════════════════
+   JUJUTSU LEGACY — CHAT CARD (Layout B — Split Panel)
+   ══════════════════════════════════════════════════════ */
+
+/* ── CARD BASE ──────────────────────────────────────── */
+.jujutsu-card {
+  font-family: var(--dnd5e-font-roboto, sans-serif);
+  background: var(--jj-bg-main);
+  border: 1px solid #1c1c2c;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ── TOP BAR ────────────────────────────────────────── */
+.jj-top-bar {
+  background: #13132a;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #1c1c30;
+}
+
+.jj-top-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #2a2a50;
+  background: #1a1a3a;
+  object-fit: cover;
+  flex: none;
+}
+
+.jj-top-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #d0c8ff;
+  font-family: var(--dnd5e-font-roboto-slab, serif);
+}
+
+.jj-top-sub {
+  font-size: 10px;
+  color: #9090b0;
+  margin-left: auto;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+/* ── DESCRIÇÃO ──────────────────────────────────────── */
+.jj-description {
+  padding: 8px 14px;
+  font-size: 11px;
+  color: #b0a8d0;
+  line-height: 1.5;
+  border-bottom: 1px solid #141420;
+}
+
+.jj-description p { margin: 0; }
+
+/* nova classe dicarded */
+.jj-die.discarded {
+  opacity: 0.3;
+  text-decoration: line-through;
+  text-decoration-color: #4a4860;
+}
+
+.jj-die.active {
+  border-color: #5040a0;
+  color: #c0a0ff;
+  background: #1a1430;
+}
+/* ── BOTÕES DE ROLAR (estado inicial) ───────────────── */
+.jj-roll-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: #141420;
+}
+
+.jj-btn {
+  padding: 10px;
+  border: none;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 120ms ease;
+}
+
+.jj-attack-btn {
+  background: #110d22;
+  color: #8060d0;
+}
+.jj-attack-btn:hover { background: #16102e; color: #a080f0; }
+
+.jj-damage-btn {
+  background: #140c08;
+  color: #c06040;
+}
+.jj-damage-btn:hover { background: #1c100a; color: #e07850; }
+
+/* ── PAINÉIS DE RESULTADO ───────────────────────────── */
+.jj-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 0;
+}
+
+.jj-panel {
+  padding: 12px 14px;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.jj-panel.visible { display: flex; }
+.jj-panel + .jj-panel { border-left: 1px solid #1a1a28; }
+
+.jj-panel-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #8080a8;
+  margin-bottom: 4px;
+}
+
+/* ── NÚMEROS DE RESULTADO ───────────────────────────── */
+.jj-panel-val {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  font-family: var(--font-primary, serif);
+  color: #b090ff;
+  transition: all 200ms ease;
+}
+
+.jj-panel-val.dmg { color: #ff8850; }
+
+.jj-panel-breakdown {
+  font-size: 10px;
+  color: #8080a0;
+  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  align-items: center;
+}
+
+.jj-die-pip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  border: 1px solid #2a2a40;
+  background: #141420;
+  font-size: 10px;
+  font-weight: 700;
+  color: #8080a0;
+}
+
+.jj-die-pip.max { border-color: #306030; color: #50a050; background: #0a120a; }
+.jj-die-pip.min { border-color: #603030; color: #a05050; background: #120a0a; }
+
+.jj-mod-pip {
+  font-size: 10px;
+  color: #9090b0;
+  padding: 0 1px;
+}
+
+/* ── CRITICAL — Natural 20 (Fulgor Negro) ───────────── */
+.jj-panel-val.nat20 {
+  color: #000;
+  -webkit-text-stroke: 2px #cc1111;
+  text-shadow:
+    0 0 12px rgba(200, 20, 20, 0.9),
+    0 0 12px rgba(200, 20, 20, 0.5);
+  font-size: 48px;
+  animation: kokusen-flash 0.6s ease-out;
+}
+
+@keyframes kokusen-flash {
+  0%   { transform: scale(0.5); opacity: 0; -webkit-text-stroke-color: #ff0000; text-shadow: 0 0 40px rgba(255,0,0,1), 0 0 80px rgba(200,0,0,0.8); }
+  40%  { transform: scale(1.3); opacity: 1; -webkit-text-stroke-color: #ff2222; }
+  70%  { transform: scale(0.95); }
+  100% { transform: scale(1); -webkit-text-stroke-color: #cc1111; }
+}
+
+/* ── FUMBLE — Natural 1 ─────────────────────────────── */
+.jj-panel-val.nat1 {
+  color: #3a3850;
+  opacity: 0.45;
+  text-decoration: line-through;
+  text-decoration-color: #4a4860;
+  animation: fumble-fade 0.4s ease-out;
+}
+
+@keyframes fumble-fade {
+  0%   { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0.45; transform: scale(1); }
+}
+
+/* ── FOOTER — MODIFICADORES E APLICAR ──────────────── */
+.jj-footer {
+  border-top: 1px solid #1a1a28;
+  padding: 8px 12px;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.jj-footer.visible { display: flex; }
+
+.jj-mods {
+  display: flex;
+  gap: 3px;
+}
+
+.jj-mod-check {
+  padding: 3px 7px;
+  border: 1px solid #1e1e2e;
+  border-radius: 3px;
+  font-size: 11px;
+  color: #40405a;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  transition: all 120ms;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.jj-mod-check input { display: none; }
+
+.jj-mod-check:hover { border-color: #3a3a5a; color: #8080a0; }
+
+.jj-mod-check:has(input:checked) {
+  border-color: #e07040;
+  background: #200e04;
+  color: #ff9060;
+}
+
+/* Fulgor Negro */
+.jj-kokusen { border-color: #111; color: #1a1a1a; background: #050505; }
+.jj-kokusen:hover { border-color: #222; color: #555; }
+.jj-kokusen:has(input:checked) {
+  border-color: #991111;
+  background: #0a0000;
+  color: #ff2020;
+  text-shadow: 0 0 6px rgba(255,0,0,0.6);
+}
+.jj-kokusen i { font-size: 9px; }
+
+.jj-footer-total {
+  font-size: 11px;
+  color: #50506a;
+  margin-left: 4px;
+}
+
+.jj-footer-total strong {
+  color: #ff8850;
+  font-size: 14px;
+}
+
+.jj-apply-btn {
+  margin-left: auto;
+  padding: 5px 12px;
+  border: 1px solid #601a1a;
+  background: #140606;
+  color: #d05040;
+  font-size: 10px;
+  border-radius: 3px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 120ms;
+}
+
+.jj-apply-btn:hover { border-color: #a02020; color: #ff6050; }
+.jj-apply-btn:disabled { opacity: 0.4; cursor: default; }
+
+/* ── PA BADGE ───────────────────────────────────────── */
+.jj-pa-badge {
+  font-size: 9px;
+  padding: 2px 5px;
+  border: 1px solid #30206a;
+  border-radius: 2px;
+  color: #7050c0;
+  background: #0e0820;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+/* ── VANTAGEM / DESVANTAGEM ─────────────────────────── */
+.jj-adv-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--jj-bg-main);
+  border-bottom: 1px solid #141420;
+}
+
+.jj-adv-btn {
+  padding: 6px;
+  border: none;
+  background: #0c0c14;
+  color: #30304a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all 120ms ease;
+}
+
+.jj-adv-btn:hover { background: #111120; color: #60607a; }
+
+/* Vantagem ativa */
+.jj-adv-btn[data-adv="advantage"].active {
+  background: #0a120a;
+  color: #50a050;
+  border-bottom: 2px solid #306030;
+}
+
+/* Desvantagem ativa */
+.jj-adv-btn[data-adv="disadvantage"].active {
+  background: #120a0a;
+  color: #a05050;
+  border-bottom: 2px solid #603030;
+}
+
+/* Crítico */
+.jj-crit-check:has(input:checked) {
+  border-color: #c08020;
+  background: #1a1000;
+  color: #ffb030;
+  text-shadow: 0 0 6px rgba(255, 180, 40, 0.4);
+}
+/* ── SEÇÃO DE CONDIÇÕES (Aba Effects) ───────────────── */
+.jj-conditions-section {
+  margin-top: 12px;
+  padding: 0 4px;
+}
+
+.jj-cond-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  margin-bottom: 8px;
+  background: var(--dnd5e-color-maroon, #44000f);
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #e0c0c0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.jj-cond-custom-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 3px;
+  color: #c0a0a0;
+  font-size: 10px;
+  padding: 2px 6px;
+  cursor: pointer;
+  transition: all 120ms;
+}
+
+.jj-cond-custom-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.jj-cond-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.jj-cond-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border: 1px solid #1e1e2e;
+  border-radius: 4px;
+  background: var(--jj-bg-main);
+  cursor: pointer;
+  transition: all 120ms;
+  user-select: none;
+}
+
+.jj-cond-item i {
+  font-size: 11px;
+  color: #404058;
+  flex: none;
+  width: 14px;
+  text-align: center;
+  transition: color 120ms;
+}
+
+.jj-cond-item span {
+  font-size: 11px;
+  color: #505068;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 120ms;
+}
+
+.jj-cond-item:hover {
+  border-color: #3a3a5a;
+  background: #141420;
+}
+
+.jj-cond-item:hover i   { color: #8080b0; }
+.jj-cond-item:hover span { color: #9090c0; }
+
+.jj-cond-item.active {
+  border-color: #6a1a1a;
+  background: #1a0808;
+}
+
+.jj-cond-item.active i   { color: #e05050; }
+.jj-cond-item.active span { color: #c08080; font-weight: 600; }
+
+.jj-cond-item.active:hover {
+  border-color: #a02020;
+  background: #220a0a;
+}
+
+.dnd5e2 .effects-element .items-header {
+  background: var(--dnd5e-color-maroon, #44000f) !important;
+}
+
+/* ════════════════════════════════════════
+   Jujutsu UI — Manipulation / Trainings
+   ════════════════════════════════════════ */
+
+/* VARIÁVEIS BASE */
+:root {
+  /* FUNDOS */
+  --jj-black:       #12121a;
+  --jj-deep:        #12121a;
+  --jj-bg-main:     #12121a;
+  --jj-bg-soft:     #1a1a26;
+  --jj-bg-card:     #202030;
+
+  /* BORDAS */
+  --jj-border:      #2c2c44;
+  --jj-border-soft: #24243a;
+
+  /* TEXTO */
+  --jj-text-main:   #e6e6f0;
+  --jj-text-soft:   #a0a0c0;
+  --jj-text-dim:    #707090;
+  --jj-text-fade:   #707090;
+
+  /* ROXO (tema principal) */
+  --jj-purple:        #7a5cff;
+  --jj-primary:       #7a5cff;
+  --jj-purple-soft:   #a090ff;
+  --jj-primary-soft:  #a090ff;
+
+  /* VERMELHO */
+  --jj-red:              #ff5a5a;
+  --jj-accent-red:       #ff5a5a;
+  --jj-red-soft:         #ff8a8a;
+  --jj-accent-red-soft:  #ff8a8a;
+
+  /* GLOWS */
+  --jj-glow:        0 0 12px rgba(120, 90, 255, 0.35);
+  --jj-glow-purple: 0 0 12px rgba(122, 92, 255, 0.5);
+  --jj-glow-red:    0 0 12px rgba(255, 90, 90, 0.5);
+}
+
+/* FUNDO DA ABA */
+.tab[data-tab="manipulation"],
+.tab[data-tab="trainings"] {
+  background: transparent;
+}
+
+/* ════════════════════════════════════════
+   ABILITY GRID
+   ════════════════════════════════════════ */
+.ability-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  padding: 8px;
+  position: relative;
+}
+
+/* ════════════════════════════════════════
+   CARD BASE
+   ════════════════════════════════════════ */
+.ability-card {
+  position: relative;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--jj-bg-card);
+  border: 1px solid var(--jj-border);
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow:
+    0 2px 10px rgba(0,0,0,0.25),
+    0 0 0 1px rgba(120, 90, 255, 0.08);
+  transition: all 180ms ease;
+}
+
+/* TEXTO */
+.ability-card h4 { font-size: 13px; color: var(--jj-text-main); }
+.ability-card p { font-size: 11px; color: var(--jj-text-fade); }
+
+/* ════════════════════════════════════════
+   ESTADOS
+   ════════════════════════════════════════ */
+.ability-card.locked {
+  opacity: 0.45;
+  filter: grayscale(0.5);
+}
+
+.ability-card.unlocked {
+  border-color: rgba(120, 80, 255, 0.4);
+  box-shadow: 0 0 10px rgba(120,60,255,0.2);
+}
+
+/* ════════════════════════════════════════
+   ENERGIA BASE (SUAVE)
+   ════════════════════════════════════════ */
+.ability-card.unlocked::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle at 30% 40%, rgba(120,60,255,0.18), transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(255,60,60,0.15), transparent 60%);
+
+  filter: blur(25px);
+  opacity: 0.5;
+
+  animation: jj-energy-idle 10s ease-in-out infinite;
+}
+
+@keyframes jj-energy-idle {
+  0%   { transform: translate(-5%, -5%) scale(1); }
+  50%  { transform: translate(5%, 5%) scale(1.1); }
+  100% { transform: translate(-5%, -5%) scale(1); }
+}
+
+/* ════════════════════════════════════════
+   HOVER — FOCO
+   ════════════════════════════════════════ */
+.ability-card.unlocked:hover {
+  z-index: 10;
+
+  transform: scale(1.06);
+
+  box-shadow:
+    0 0 25px rgba(120,60,255,0.5),
+    0 0 60px rgba(120,60,255,0.25);
+
+  filter: brightness(1.1);
+}
+
+/* AURA EXPANDINDO */
+.ability-card.unlocked:hover::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  pointer-events: none;
+
+  background: radial-gradient(circle,
+    rgba(120,60,255,0.2) 0%,
+    rgba(120,60,255,0.08) 40%,
+    transparent 70%
+  );
+
+  animation: jj-aura 1.8s ease-out;
+}
+
+@keyframes jj-aura {
+  0%   { transform: scale(0.6); opacity: 0.8; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+/* ════════════════════════════════════════
+   DIMINUIR OUTROS CARDS (SUAVE)
+   ════════════════════════════════════════ */
+.ability-grid:has(.ability-card.unlocked:hover)
+.ability-card:not(:hover) {
+  opacity: 0.75;
+  transform: scale(0.97);
+  filter: brightness(0.85);
+}
+
+/* ════════════════════════════════════════
+   BACKGROUND DO "DOMÍNIO" (SUAVE)
+   ════════════════════════════════════════ */
+.tab[data-tab="manipulation"]:has(.ability-card.unlocked:hover)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle at center,
+      transparent 40%,
+      rgba(0,0,0,0.25) 75%,
+      rgba(0,0,0,0.4) 100%
+    );
+
+  opacity: 1;
+  transition: opacity 200ms ease;
+}
+
+/* ════════════════════════════════════════
+   TREINAMENTOS — HEADER (MAESTRIA)
+   ════════════════════════════════════════ */
+.mastery-header {
+  padding: 12px;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(120,60,255,0.1), transparent 60%),
+    var(--jj-bg-soft);
+  border: 1px solid var(--jj-border-soft);
+  border-radius: 10px;
+}
+
+.mastery-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Badge nível */
+.mastery-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 10px;
+  border-radius: 8px;
+
+  background: linear-gradient(145deg, #120a2a, #0a0618);
+  border: 1px solid rgba(120,60,255,0.3);
+
+  box-shadow: 0 0 15px rgba(120,60,255,0.25);
+}
+
+.mastery-badge .level {
+  font-size: 22px;
+  font-weight: 700;
+  color: #c0a0ff;
+}
+
+.mastery-badge .label {
+  font-size: 10px;
+  color: #6a5a9a;
+  text-transform: uppercase;
+}
+
+/* Info */
+.mastery-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11px;
+  color: #707090;
+}
+
+/* Barras */
+.mastery-bars {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.mastery-bars .bar {
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  color: #606080;
+}
+
+.mastery-bars input {
+  background: #0c0c18;
+  border: 1px solid var(--jj-border-soft);
+  border-radius: 4px;
+  color: #c0a0ff;
+  padding: 3px;
+  font-size: 13px;
+}
+
+.mastery-bars .bar-lost label {
+  color: #a04040;
+}
+
+.mastery-bars .bar-lost input {
+  color: #ff6060;
+  border-color: #3a1a1a;
+  background: #140808;
+}
+
+/* ════════════════════════════════════════
+   TABELA
+   ════════════════════════════════════════ */
+.mastery-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.mastery-table th {
+  background: #140a20;
+  color: #a080ff;
+  padding: 6px;
+}
+
+.mastery-table td {
+  padding: 5px;
+  border-bottom: 1px solid var(--jj-border-soft);
+  color: #707090;
+}
+
+.mastery-table tr:hover {
+  background: rgba(120,60,255,0.08);
+}
+
+/* ════════════════════════════════════════
+   TRAINING LIST
+   ════════════════════════════════════════ */
+.training-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+/* ════════════════════════════════════════
+   CARD BASE
+   ════════════════════════════════════════ */
+.training-card { 
+  position: relative;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--jj-bg-card);
+  border: 1px solid var(--jj-border);
+  box-shadow:
+    0 2px 10px rgba(0,0,0,0.25),
+    0 0 0 1px rgba(120, 90, 255, 0.08);
+  transition: all 180ms ease;
+  overflow: hidden;
+}
+
+/* HEADER */
+.training-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.training-name {
+  font-size: 13px;
+  color: var(--jj-text-main);
+  font-weight: 600;
+}
+
+/* ESTRELAS */
+.training-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  font-size: 12px;
+  color: #303050;
+  transition: all 120ms;
+}
+
+.star.filled {
+  color: #c0a0ff;
+  text-shadow: 0 0 6px rgba(120,60,255,0.6);
+}
+
+/* META */
+.jujutsu-meta {
+  font-size: 10px;
+  color: #606080;
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* EFEITO */
+.training-effect {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #707090;
+}
+
+/* ════════════════════════════════════════
+   ESTADOS POR RANK
+   ════════════════════════════════════════ */
+
+/* Rank 1 */
+.training-card.rank-1 {
+  border-color: rgba(120,60,255,0.3);
+}
+
+/* Rank 2 */
+.training-card.rank-2 {
+  border-color: rgba(160,100,255,0.5);
+  box-shadow: 0 0 12px rgba(120,60,255,0.2);
+}
+
+/* Rank 3 (PERFEIÇÃO) */
+.training-card.rank-3 {
+  border-color: rgba(255, 180, 40, 0.7) !important;
+  background: linear-gradient(145deg, #120a00, #0a0600) !important;
+
+  box-shadow:
+    0 0 16px rgba(255, 160, 30, 0.45),
+    0 0 36px rgba(255, 100, 0, 0.2),
+    inset 0 0 20px rgba(255, 140, 0, 0.05);
+
+  animation: jj-perfection-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes jj-perfection-glow {
+  0%   { box-shadow: 0 0 12px rgba(255,160,30,0.4), 0 0 12px rgba(255,80,0,0.15); }
+  50%  { box-shadow: 0 0 22px rgba(255,200,50,0.7), 0 0 50px rgba(255,120,0,0.35), inset 0 0 16px rgba(255,140,0,0.08); }
+  100% { box-shadow: 0 0 12px rgba(255,160,30,0.4), 0 0 12px rgba(255,80,0,0.15); }
+}
+
+/* Nome e texto em evidência no rank 3 */
+.training-card.rank-3 .training-name {
+  color: #ffd060;
+  text-shadow: 0 0 8px rgba(255, 180, 0, 0.6);
+}
+
+.training-card.rank-3 .training-effect {
+  color: #e0c080;
+  -webkit-line-clamp: unset; /* mostrar texto completo */
+  opacity: 1;
+}
+
+.training-card.rank-3 .jujutsu-meta {
+  color: #a08040;
+  opacity: 1;
+}
+
+.training-card.rank-3 .training-stars .star.filled {
+  color: #ffd060;
+  text-shadow: 0 0 6px rgba(255, 200, 0, 0.8);
+}
+
+/* Nunca aplicar locked no rank 3 */
+.training-card.rank-3.locked {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* ════════════════════════════════════════
+   LOCKED
+   ════════════════════════════════════════ */
+.training-card.locked {
+  opacity: 0.5;
+  filter: grayscale(0.6);
+}
+
+/* ════════════════════════════════════════
+   HOVER
+   ════════════════════════════════════════ */
+.training-card:hover {
+  transform: translateY(-3px) scale(1.02);
+
+  box-shadow:
+    0 0 20px rgba(120,60,255,0.4);
+}
+
+/* ════════════════════════════════════════
+   ENERGIA SUAVE
+   ════════════════════════════════════════ */
+.training-card::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+
+  background:
+    radial-gradient(circle at 30% 40%, rgba(120,60,255,0.15), transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(255,60,60,0.12), transparent 60%);
+
+  filter: blur(25px);
+  opacity: 0.4;
+
+  animation: jj-training-energy 12s ease-in-out infinite;
+}
+
+@keyframes jj-training-energy {
+  0%   { transform: translate(-5%, -5%); }
+  50%  { transform: translate(5%, 5%); }
+  100% { transform: translate(-5%, -5%); }
+}
+
+/* ════════════════════════════════════════
+   AÇÕES
+   ════════════════════════════════════════ */
+.jujutsu-actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 4px;
+}
+
+.btn-train {
+  flex: 1;
+}
+
+.btn-instant {
+  font-size: 10px;
+  border: 1px solid #2a2a40;
+  background: #0c0c18;
+  color: #8080a0;
+}
+
+.btn-instant:hover {
+  border-color: #c08020;
+  color: #ffb030;
+}
+
+/* PERFEIÇÃO */
+.max-rank {
+  font-size: 11px;
+  color: #ff8080;
+  text-shadow: 0 0 8px rgba(255,60,60,0.6);
+}
+
+/* ════════════════════════════════════════
+   ESTRELA EVOLUINDO
+   ════════════════════════════════════════ */
+.star.gain {
+  animation: jj-star-gain 0.6s ease-out;
+}
+
+@keyframes jj-star-gain {
+  0% {
+    transform: scale(0.3) rotate(-20deg);
+    opacity: 0;
+    text-shadow: 0 0 0 rgba(120,60,255,0);
+  }
+
+  50% {
+    transform: scale(1.4) rotate(10deg);
+    opacity: 1;
+    text-shadow:
+      0 0 12px rgba(120,60,255,0.9),
+      0 0 25px rgba(255,60,60,0.6);
+  }
+
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 6px rgba(120,60,255,0.5);
+  }
+}
+
+/* ════════════════════════════════════════
+   PULSE DE EVOLUÇÃO
+   ════════════════════════════════════════ */
+.training-card.level-up {
+  animation: jj-level-up 0.5s ease-out;
+}
+
+@keyframes jj-level-up {
+  0% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow:
+      0 0 12px rgba(120,60,255,0.8),
+      0 0 60px rgba(255,60,60,0.4);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ════════════════════════════════════════
+   PERFEIÇÃO (RANK 3)
+   ════════════════════════════════════════ */
+.training-card.perfected::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  pointer-events: none;
+
+  background: radial-gradient(circle,
+    rgba(255,80,80,0.25) 0%,
+    rgba(255,0,0,0.15) 40%,
+    transparent 70%
+  );
+
+  animation: jj-perfect 2s ease-out;
+}
+
+@keyframes jj-perfect {
+  0%   { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+
+.training-card {
+  position: relative;
+  padding: 12px;
+  border-radius: 10px;
+
+  background: linear-gradient(145deg, var(--jj-bg-soft), var(--jj-bg-main));
+  border: 1px solid var(--jj-border-soft);
+
+  display: flex;
+  flex-direction: column; /* 🔥 ESSENCIAL */
+
+  min-height: 180px; /* 🔥 força altura mínima igual */
+
+  transition: all 180ms ease;
+  overflow: hidden;
+}
+
+.training-header {
+  flex: 0 0 auto;
+}
+
+.jujutsu-meta {
+  flex: 0 0 auto;
+}
+
+.training-effect {
+  flex: 1; /* 🔥 ocupa espaço disponível */
+  overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* limita linhas */
+  -webkit-box-orient: vertical;
+}
+
+.jujutsu-actions {
+  margin-top: auto; /* 🔥 empurra pra baixo */
+  display: flex;
+  gap: 4px;
+}
+
+.training-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+
+  align-items: stretch; /* 🔥 força mesma altura */
+}
+
+.training-effect {
+  min-height: 42px; /* evita cards diferentes */
+}
+
+.training-card:not(.locked):hover {
+  border-color: rgba(120,60,255,0.6);
+  box-shadow: 0 0 15px rgba(120,60,255,0.25);
+}
+
+.training-name {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.training-effect {
+  font-size: 12px;
+  color: #9090c0;
+}
+
+.jujutsu-meta {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+.training-card:not(.locked) {
+  border-color: rgba(120,60,255,0.4);
+}
+
+.training-card.locked {
+  opacity: 0.5;
+  filter: grayscale(0.6);
+}
+
+.jujutsu-actions {
+  margin-top: auto;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.training-progress {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+
+  margin-top: 6px;
+}
+
+.training-progress span {
+  height: 6px;
+  border-radius: 3px;
+  background: #141420;
+  border: 1px solid #1f1f30;
+
+  transition: all 200ms ease;
+}
+
+/* RANK 1 */
+.training-progress[data-rank="1"] span:nth-child(1) {
+  background: linear-gradient(90deg, #6a3cff, #9a7dff);
+  box-shadow: 0 0 8px rgba(120,60,255,0.6);
+}
+
+/* RANK 2 */
+.training-progress[data-rank="2"] span:nth-child(1),
+.training-progress[data-rank="2"] span:nth-child(2) {
+  background: linear-gradient(90deg, #6a3cff, #9a7dff);
+  box-shadow: 0 0 8px rgba(120,60,255,0.6);
+}
+
+/* RANK 3 */
+.training-progress[data-rank="3"] span {
+  background: linear-gradient(90deg, #ff4a4a, #ff8080);
+  box-shadow: 0 0 10px rgba(255,60,60,0.7);
+}
+
+.training-progress span {
+  position: relative;
+  overflow: hidden;
+}
+
+.training-progress span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.25),
+    transparent
+  );
+
+  opacity: 0;
+}
+
+.training-progress[data-rank] span:nth-child(-n+3)::after {
+  animation: jj-progress-shine 2s linear infinite;
+}
+
+/* ════════════════════════════════════════
+   EVOLUÇÃO NA PRÁTICA — Treinamento Intenso
+   ════════════════════════════════════════ */
+
+.evolution-section {
+  margin-top: 12px;
+  padding: 14px 14px 10px;
+  background:
+    radial-gradient(circle at 10% 50%, rgba(255, 160, 60, 0.06), transparent 50%),
+    linear-gradient(145deg, #0c0c18, #09090f);
+  border: 1px solid rgba(255, 160, 60, 0.18);
+  border-radius: 10px;
+}
+
+/* ── HEADER ─────────────────────────────── */
+.evolution-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.evolution-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.evolution-icon {
+  font-size: 18px;
+  color: #ffa060;
+  line-height: 1;
+}
+
+.evolution-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ffa060;
+}
+
+.evolution-subtitle {
+  font-size: 10px;
+  color: #6a5a40;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  background: rgba(255, 160, 60, 0.08);
+  border: 1px solid rgba(255, 160, 60, 0.15);
+  border-radius: 20px;
+}
+
+/* Botão Treinar */
+.btn-intensive-training {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #1a1000, #0e0a00);
+  border: 1px solid rgba(255, 160, 60, 0.4);
+  border-radius: 6px;
+  color: #ffa060;
+  cursor: pointer;
+  transition: all 160ms ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn-intensive-training:hover {
+  background: linear-gradient(135deg, #241800, #18100);
+  border-color: rgba(255, 160, 60, 0.7);
+  color: #ffbe80;
+  box-shadow: 0 0 12px rgba(255, 140, 40, 0.25);
+}
+
+/* ── CONTADORES ─────────────────────────── */
+.evolution-counters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.evo-counter-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--jj-bg-soft);
+  border: 1px solid #1a1a28;
+  border-radius: 8px;
+  transition: all 160ms ease;
+  overflow: hidden;
+}
+
+.evo-counter-card.has-training {
+  border-color: rgba(255, 160, 60, 0.3);
+  background: linear-gradient(145deg, #0f0c08, #09090f);
+}
+
+.evo-counter-card.has-training::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 160, 60, 0.6), transparent);
+}
+
+/* Ícone */
+.evo-counter-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(255, 160, 60, 0.08);
+  border: 1px solid rgba(255, 160, 60, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 12px;
+  color: #ffa060;
+}
+
+/* Info */
+.evo-counter-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+
+.evo-counter-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #c0b090;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.evo-counter-desc {
+  font-size: 9px;
+  color: #50504a;
+  white-space: nowrap;
+}
+
+/* Badge de valor */
+.evo-counter-badge {
+  flex-shrink: 0;
+}
+
+.evo-counter-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #6a6060;
+  font-family: var(--dnd5e-font-roboto-slab, serif);
+}
+
+.evo-counter-card.has-training .evo-counter-value {
+  color: #ffa060;
+}
+
+/* Botão desfazer */
+.evo-undo-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: rgba(255, 100, 60, 0.08);
+  border: 1px solid rgba(255, 100, 60, 0.2);
+  color: rgba(255, 100, 60, 0.5);
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 120ms ease;
+  padding: 0;
+}
+
+.evo-counter-card:hover .evo-undo-btn {
+  opacity: 1;
+}
+
+.evo-undo-btn:hover {
+  background: rgba(255, 80, 40, 0.2);
+  border-color: rgba(255, 80, 40, 0.5);
+  color: #ff7050;
+}
+
+/* ── NOTA RODAPÉ ────────────────────────── */
+.evolution-note {
+  margin: 0;
+  font-size: 11px;
+  color: #5a5040;
+  line-height: 1.4;
+  padding: 6px 10px;
+  background: rgba(255, 160, 60, 0.04);
+  border-left: 2px solid rgba(255, 160, 60, 0.2);
+  border-radius: 0 4px 4px 0;
+}
+
+.evolution-note strong { color: #a08060; }
+.evolution-note em { color: #8a7050; }
+
+/* ── RESPONSIVO (tela estreita) ─────────── */
+@media (max-width: 620px) {
+  .evolution-counters {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ════════════════════════════════════════
+   MOEDA YEN — Inventário
+   ════════════════════════════════════════ */
+
+.jj-yen-label {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+}
+
+.jj-yen-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--jj-gold, #c8a84b);
+  position: absolute;
+  inset: -2px auto auto -2px;
+  filter: drop-shadow(0 0 1px black);
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* ── Yen input — tamanho maior ── */
+.dnd5e2 section.currency input.jj-yen-input {
+  max-width: 160px !important;
+  width: 160px !important;
+  font-size: 13px !important;
+}
+
+/* ── Esconder peso/encumbrance da linha de currency ── */
+.dnd5e2 .inventory-element .encumbrance {
+  display: none !important;
+}
+
+/* ════════════════════════════════════════
+   CURSED ENERGY BAR — Glow animado
+   ════════════════════════════════════════ */
+
+@keyframes jj-energy-flow {
+  0%   { box-shadow: 0 0 6px rgba(139, 106, 173, 0.5), 0 0 12px rgba(106, 60, 255, 0.3); }
+  50%  { box-shadow: 0 0 14px rgba(139, 106, 173, 0.9), 0 0 28px rgba(106, 60, 255, 0.6), 0 0 6px rgba(180, 140, 220, 0.4) inset; }
+  100% { box-shadow: 0 0 6px rgba(139, 106, 173, 0.5), 0 0 12px rgba(106, 60, 255, 0.3); }
+}
+
+.dnd5e2.sheet.actor.character .cursed-energy-bar {
+  animation: jj-energy-flow 2.8s ease-in-out infinite !important;
+}
+
+/* ════════════════════════════════════════
+   CARDS EXTRAS — Dano, Cura, Salv, Teste
+   ════════════════════════════════════════ */
+
+.jj-extra-card .jj-panel-full {
+  width: 100%;
+}
+
+.jj-extra-card .jj-panels {
+  grid-template-columns: 1fr;
+}
+
+.jj-extra-btn {
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: all 150ms ease;
+}
+
+.jj-extra-btn:hover {
+  filter: brightness(1.2);
+  border-color: rgba(255,255,255,0.25);
+}
+
+/* Cor de cura — verde */
+.jj-heal-val {
+  color: #60c080 !important;
+}
+
+/* ════════════════════════════════════════
+   FUNDO DAS ABAS — transparente, herda do window-content
+   ════════════════════════════════════════ */
+
+.tab[data-tab="effects"],
+.tab[data-tab="features"],
+.tab[data-tab="spells"] {
+  background: transparent;
+}
+
+/* ════════════════════════════════════════
+   FEATURES — Cores dos headers de seção
+   ════════════════════════════════════════ */
+
+/* Header das seções (Estilo de Combate, Habilidades Básicas, etc.) */
+.tab[data-tab="features"] .items-section > header,
+.tab[data-tab="features"] .items-section > .items-header {
+  background: linear-gradient(90deg, #1c1c30, #161628);
+  border-bottom: 1px solid var(--jj-border);
+}
+
+.tab[data-tab="features"] .items-section > header h3,
+.tab[data-tab="features"] .items-section > .items-header h3 {
+  color: var(--jj-primary-soft);
+  text-shadow: 0 0 8px rgba(120, 80, 255, 0.3);
+}
+
+/* Fundo das seções */
+.tab[data-tab="features"] .items-section {
+  background: rgba(10, 10, 20, 0.6);
+  border-color: var(--jj-border-soft);
+}
+
+/* Linhas dos itens */
+.tab[data-tab="features"] .item:hover {
+  background: rgba(80, 60, 180, 0.08);
+}
+
+/* Mesmas cores para Effects e Spells */
+.tab[data-tab="effects"] .items-section > header,
+.tab[data-tab="effects"] .items-section > .items-header,
+.tab[data-tab="spells"] .items-section > header,
+.tab[data-tab="spells"] .items-section > .items-header {
+  background: linear-gradient(90deg, #1c1c30, #161628);
+  border-bottom: 1px solid var(--jj-border);
+}
+
+.tab[data-tab="effects"] .items-section > header h3,
+.tab[data-tab="effects"] .items-section > .items-header h3,
+.tab[data-tab="spells"] .items-section > header h3,
+.tab[data-tab="spells"] .items-section > .items-header h3 {
+  color: var(--jj-primary-soft);
+  text-shadow: 0 0 8px rgba(120, 80, 255, 0.3);
+}
+
+.tab[data-tab="effects"] .items-section,
+.tab[data-tab="spells"] .items-section {
+  background: rgba(10, 10, 20, 0.6);
+  border-color: var(--jj-border-soft);
+}
+
+/* ════════════════════════════════════════
+   EFFECTS — Cores dos headers de seção
+   ════════════════════════════════════════ */
+
+.tab[data-tab="effects"] .items-section > header,
+.tab[data-tab="effects"] .items-section > .items-header {
+  background: linear-gradient(90deg, #1c1c30, #161628);
+  border-bottom: 1px solid var(--jj-border);
+}
+
+.tab[data-tab="effects"] .items-section > header *,
+.tab[data-tab="effects"] .items-section > .items-header * {
+  color: var(--jj-primary-soft);
+}
+
+.tab[data-tab="effects"] .items-section {
+  background: rgba(10, 10, 20, 0.6);
+  border-color: var(--jj-border-soft);
+}
+
+/* ════════════════════════════════════════
+   INVENTORY — Cores dos headers de seção
+   ════════════════════════════════════════ */
+
+.tab[data-tab="inventory"] .items-section > header,
+.tab[data-tab="inventory"] .items-section > .items-header {
+  background: linear-gradient(90deg, #1c1c30, #161628);
+  border-bottom: 1px solid var(--jj-border);
+}
+
+.tab[data-tab="inventory"] .items-section > header *,
+.tab[data-tab="inventory"] .items-section > .items-header * {
+  color: var(--jj-primary-soft);
+}
+
+.tab[data-tab="inventory"] .items-section {
+  background: rgba(10, 10, 20, 0.6);
+  border-color: var(--jj-border-soft);
+}
+
+.tab[data-tab="inventory"] {
+  background: transparent;
+}
+
+/* ════════════════════════════════════════
+   FEATURES — Pill de Classe (Restringido)
+   ════════════════════════════════════════ */
+
+.tab[data-tab="features"] .classes.pills-lg .class,
+.tab[data-tab="features"] .pill-lg {
+  background: linear-gradient(135deg, #0e0e22 0%, #130d20 100%) !important;
+  border: 1px solid #3a2a6a !important;
+  border-radius: 8px !important;
+  box-shadow:
+    0 0 12px rgba(100, 60, 200, 0.2),
+    inset 0 1px 0 rgba(120, 80, 255, 0.1) !important;
+  height: auto !important;
+  padding: 10px 14px !important;
+  gap: 10px !important;
+}
+
+.tab[data-tab="features"] .classes.pills-lg .class:hover,
+.tab[data-tab="features"] .pill-lg:hover {
+  border-color: #6040b0 !important;
+  box-shadow:
+    0 0 20px rgba(100, 60, 200, 0.35),
+    inset 0 1px 0 rgba(120, 80, 255, 0.15) !important;
+}
+
+/* Nome da classe */
+.tab[data-tab="features"] .classes.pills-lg .class .name-stacked .title,
+.tab[data-tab="features"] .pill-lg .name-stacked .title {
+  color: #c0a8ff !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+}
+
+/* Subtítulo (subclasse) */
+.tab[data-tab="features"] .classes.pills-lg .class .name-stacked .subtitle,
+.tab[data-tab="features"] .pill-lg .name-stacked .subtitle {
+  color: #7060a0 !important;
+  font-size: 10px !important;
+}
+
+/* Nível */
+.tab[data-tab="features"] .classes.pills-lg .class .level,
+.tab[data-tab="features"] .pill-lg .level {
+  background: rgba(80, 50, 160, 0.3) !important;
+  border: 1px solid #4a3080 !important;
+  border-radius: 6px !important;
+  color: #c0a8ff !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  min-width: 32px !important;
+  text-align: center !important;
+  padding: 2px 6px !important;
+  text-shadow: 0 0 8px rgba(160, 100, 255, 0.5) !important;
+}
+
+/* ════════════════════════════════════════
+   FUNDO GLOBAL DA FICHA
+   ════════════════════════════════════════ */
+
+.dnd5e2.sheet.actor.character {
+  --dnd5e-sheet-background: var(--jj-bg-main);
+  --dnd5e-background-card:  var(--jj-bg-card);
+  --dnd5e-border-gold:      1px solid var(--jj-border);
+  --dnd5e-card-header-1:    #1c1c30;
+  --dnd5e-card-header-2:    #161628;
+  --dnd5e-color-gold:       var(--jj-primary-soft);
+  --dnd5e-shadow-45:        rgba(60, 0, 160, 0.25);
+  --fieldset-legend-color:  var(--jj-primary-soft);
+  --color-fieldset-border:  var(--jj-border);
+}
+
+.dnd5e2.sheet.actor.character .window-content,
+.dnd5e2.sheet.actor.character .sheet-body {
+  background:
+    radial-gradient(ellipse at 10% 0%,   rgba(120, 90, 255, 0.08), transparent 50%),
+    radial-gradient(ellipse at 90% 100%, rgba(255, 90, 90, 0.07),  transparent 50%),
+    radial-gradient(ellipse at 80% 10%,  rgba(80,  50, 180, 0.05), transparent 40%),
+    radial-gradient(ellipse at 20% 90%,  rgba(180, 50,  50, 0.04), transparent 40%),
+    var(--jj-bg-main) !important;
+  background-attachment: local !important;
+}
+
+.dnd5e2.sheet.actor.character .sheet-sidebar {
+  background: rgba(18, 18, 28, 0.8) !important;
+}
+
+/* ════════════════════════════════════════
+   CAIXAS DA FICHA — Perícias, Salvaguardas, Traços
+   ════════════════════════════════════════ */
+
+/* Sobrescrever variáveis de cor das cards */
+.dnd5e2.sheet.actor.character {
+  --dnd5e-background-card:  #0e0e1e;
+  --dnd5e-border-gold:      1px solid #2e2a50;
+  --dnd5e-card-header-1:    #1a1035;
+  --dnd5e-card-header-2:    #120d28;
+  --dnd5e-color-gold:       #9d9884;
+  --dnd5e-shadow-45:        rgba(60, 0, 160, 0.25);
+  --fieldset-legend-color:  #9070d0;
+  --color-fieldset-border:  #2e2a50;
+}
+
+/* Card base */
+.dnd5e2.sheet.actor.character .card {
+  background: var(--jj-bg-card);
+  border: 1px solid var(--jj-border);
+  border-radius: 8px;
+  box-shadow:
+    0 2px 10px rgba(0,0,0,0.25),
+    0 0 0 1px rgba(120, 90, 255, 0.08);
+}
+
+/* Header das cards (PERÍCIAS, SALVAGUARDAS) */
+.dnd5e2.sheet.actor.character .card .header {
+  background: linear-gradient(90deg, #1c1c30, #161628);
+  border-bottom: 1px solid var(--jj-border);
+  border-radius: 7px 7px 0 0;
+}
+
+.dnd5e2.sheet.actor.character .card .header h3,
+.dnd5e2.sheet.actor.character .card .header h4 {
+  color: var(--jj-primary-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+}
+
+/* Fieldset cards */
+.dnd5e2.sheet.actor.character fieldset.card {
+  background: var(--jj-bg-card);
+  border: 1px solid var(--jj-border);
+  border-radius: 8px;
+  box-shadow:
+    0 2px 10px rgba(0,0,0,0.25),
+    0 0 0 1px rgba(120, 90, 255, 0.08);
+}
+
+.dnd5e2.sheet.actor.character fieldset.card legend {
+  color: var(--jj-primary-soft);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--jj-bg-card);
+  padding: 0 6px;
+}
+
+/* Linhas de skill hover */
+.dnd5e2.sheet.actor.character .card .skill:hover,
+.dnd5e2.sheet.actor.character .card .saving-throw:hover,
+.dnd5e2.sheet.actor.character .card li:hover {
+  background: rgba(120, 90, 255, 0.08);
+  border-radius: 4px;
+}
+
+/* Separação e hover nas listas */
+.dnd5e2.sheet.actor.character .card .item,
+.dnd5e2.sheet.actor.character .card .skill,
+.dnd5e2.sheet.actor.character .card li {
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.dnd5e2.sheet.actor.character .card .item:hover {
+  background: rgba(120, 90, 255, 0.08);
+}
+
+/* Contraste local das seções */
+.dnd5e2.sheet.actor.character .items-section {
+  background: var(--jj-bg-soft);
+  border: 1px solid var(--jj-border-soft);
+}

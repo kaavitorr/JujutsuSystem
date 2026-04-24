@@ -1,0 +1,45 @@
+<div class="cursed-energy-config dnd5e2">
+    <fieldset>
+        <legend class="roboto-condensed-upper">PA Maxima</legend>
+        <div class="form-group">
+            <label>Bonus Total</label>
+            <div class="form-fields">
+                <input type="text" name="system.energy.bonuses.overall"
+                       value="{{ source.bonuses.overall }}" placeholder="0">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Bonus por Nivel</label>
+            <div class="form-fields">
+                <span>+</span>
+                <input type="text" name="system.energy.bonuses.level"
+                       value="{{ source.bonuses.level }}" placeholder="0">
+                <span>&times; {{ levels }}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Bonus Temporario</label>
+            <div class="form-fields">
+                <input type="number" name="system.energy.bonuses.temp"
+                       value="{{ source.bonuses.temp }}" placeholder="0">
+            </div>
+        </div>
+    </fieldset>
+    <fieldset style="margin-top: 12px;">
+        <legend class="roboto-condensed-upper">PA Atual</legend>
+        <div class="form-group">
+            <label>PA Total</label>
+            <div class="form-fields">
+                <input type="number" name="system.energy.total"
+                       value="{{ source.total }}" min="0">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>PA Gerada</label>
+            <div class="form-fields">
+                <input type="number" name="system.energy.generated"
+                       value="{{ source.generated }}" min="0">
+            </div>
+        </div>
+    </fieldset>
+</div>
