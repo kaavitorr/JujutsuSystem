@@ -531,6 +531,24 @@ export default class NPCActorSheet extends BaseActorSheet {
         this.render();
       }));
     }
+
+    // ── Explosão Defensiva NPC ─────────────────────────────
+    this.element.querySelector("[data-action='jj-npc-expdef']")
+      ?.addEventListener("click", () => _npcExplosaoDefensiva(this.actor));
+
+    // ── Atualizar porcentagens das barras de energia ───────
+    const energy = this.actor.system.energy;
+    const barTotal = this.element.querySelector(".npc-energy-bar-total");
+    if ( barTotal && energy.max ) {
+      barTotal.style.setProperty("--bar-percentage", `${Math.round((energy.total / energy.max) * 100)}%`);
+    }
+    const barGen = this.element.querySelector(".npc-energy-bar-gen");
+    if ( barGen && energy.genMax ) {
+      barGen.style.setProperty("--bar-percentage", `${Math.round((energy.generated / energy.genMax) * 100)}%`);
+    }
+
+    // ── Atualizar energia máxima baseado no treinamento intenso ────────────
+    _npcSyncIntensiveTraining(this.actor);
   }
 
   /* -------------------------------------------- */
@@ -618,4 +636,148 @@ export default class NPCActorSheet extends BaseActorSheet {
     }
     return super._onDragStart(event);
   }
+}
+
+/* ============================================================
+ * SISTEMA DE ENERGIA — NPC
+ * ============================================================ */
+
+// Geração de PA no início do turno — dialog 2x / 3x / 4x do ND
+Hooks.on("updateCombat", async (combat, changed) => {
+  // Só dispara quando muda o turno
+  if ( !("turn" in changed) && !("round" in changed) ) return;
+  if ( !game.user.isGM ) return;
+
+  const combatant = combat.combatant;
+  if ( !combatant ) return;
+
+  const token = canvas.tokens?.get(combatant.tokenId);
+  if ( !token ) return;
+  const actor = token.actor;
+  if ( !actor || actor.type !== "npc" ) return;
+  if ( !actor.system.energy?.max ) return;
+
+  const nd = actor.system.details?.cr ?? 1;
+
+  const multiplicador = await foundry.applications.api.DialogV2.wait({
+    window: { title: `⚡ Geração de Energia — ${actor.name}` },
+    content: `
+      <p style="margin:0 0 10px;">Quantas vezes o ND (<strong>${nd}</strong>) deseja gerar?</p>`,
+    buttons: [
+      { label: `2× (${nd * 2} PA)`,  action: "2", default: true },
+      { label: `3× (${nd * 3} PA)`,  action: "3" },
+      { label: `4× (${nd * 4} PA)`,  action: "4" },
+      { label: "Pular",              action: "skip" }
+    ],
+    rejectClose: false,
+    close: () => "skip"
+  });
+
+  if ( !multiplicador || multiplicador === "skip" ) return;
+
+  const alvo        = nd * Number(multiplicador);
+  const geradaAtual = actor.system.energy.generated ?? 0;
+  const totalAtual  = actor.system.energy.total ?? 0;
+
+  // Só gera se o alvo for MAIOR que o atual
+  if ( alvo <= geradaAtual ) {
+    ui.notifications.info(`${actor.name} já tem ${geradaAtual} PA Gerada — alvo ${alvo} não é maior.`);
+    return;
+  }
+
+  // Quanto precisa gerar para chegar no alvo
+  const necessario   = alvo - geradaAtual;
+  const transferencia = Math.min(necessario, totalAtual);
+
+  if ( transferencia === 0 ) {
+    ui.notifications.warn(`${actor.name} não tem PA Total suficiente para gerar!`);
+    return;
+  }
+
+  const novoTotal   = totalAtual - transferencia;
+  const geradaFinal = geradaAtual + transferencia;
+
+  await actor.update({
+    "system.energy.total":     novoTotal,
+    "system.energy.generated": geradaFinal
+  }, { isEnergySystem: true });
+
+  // Re-renderizar o sheet do NPC se estiver aberto
+  const sheet = actor.sheet;
+  if ( sheet?.rendered ) sheet.render();
+});
+
+// Explosão Defensiva do NPC — mesmo comportamento do jogador
+async function _npcExplosaoDefensiva(actor) {
+  const flagData     = actor.getFlag("jujutsu-system", "explosaoDefensivaPendente") ?? null;
+  const pendente     = flagData?.reducao ?? 0;
+  const pendenteCusto = flagData?.paCusto ?? 0;
+
+  if ( pendente > 0 ) {
+    const cancel = await foundry.applications.api.DialogV2.confirm({
+      window: { title: "🛡️ Explosão Defensiva Ativa" },
+      content: `<p>Redução de <strong>${pendente}</strong> pendente (custo: <strong>${pendenteCusto} PA</strong>).</p><p>Deseja cancelar e recuperar a PA?</p>`,
+      yes: { label: "Cancelar e Devolver PA" },
+      no:  { label: "Manter" }
+    });
+    if ( !cancel ) return;
+    await actor.unsetFlag("jujutsu-system", "explosaoDefensivaPendente");
+    const paAtual = actor.system?.energy?.generated ?? 0;
+    await actor.update({ "system.energy.generated": paAtual + pendenteCusto });
+    ui.notifications.info("Explosão Defensiva cancelada. PA devolvida.");
+    return;
+  }
+
+  const paDisp = actor.system?.energy?.generated ?? 0;
+  if ( paDisp === 0 ) {
+    ui.notifications.warn(`${actor.name} não tem PA Gerada disponível!`);
+    return;
+  }
+
+  const paGasto = await foundry.applications.api.DialogV2.wait({
+    window: { title: "🛡️ Explosão Defensiva" },
+    content: `
+      <div style="padding:8px 0">
+        <p style="margin:0 0 8px">Gastar PA para reduzir o próximo dano?</p>
+        <p style="margin:0 0 4px; font-size:12px; color:#aaa;">
+          PA Gerada disponível: <strong>${paDisp}</strong>
+        </p>
+        <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
+          <label style="flex:0 0 auto">Dados d4:</label>
+          <input type="number" id="jj-npc-expdef-input"
+                 value="0" min="0" max="${paDisp}"
+                 style="width:60px; text-align:center;">
+          <span style="font-size:12px; color:#aaa;">1 PA por dado</span>
+        </div>
+      </div>`,
+    buttons: [
+      {
+        label: "Rolar", action: "ok", default: true,
+        callback: (event, button, dialog) => {
+          const input = dialog.element?.querySelector("#jj-npc-expdef-input");
+          return Math.max(0, Math.min(Number(input?.value ?? 0), paDisp));
+        }
+      },
+      { label: "Cancelar", action: "cancel", callback: () => null }
+    ],
+    rejectClose: false,
+    close: () => null
+  });
+
+  if ( !paGasto ) return;
+
+  const roll = await new Roll(`${paGasto}d4`).evaluate();
+  if ( game.dice3d ) game.dice3d.showForRoll(roll, game.user, true);
+
+  await actor.setFlag("jujutsu-system", "explosaoDefensivaPendente", { reducao: roll.total, paCusto: paGasto });
+  await actor.update({ "system.energy.generated": Math.max(0, paDisp - paGasto) });
+
+  await roll.toMessage({
+    speaker: ChatMessage.getSpeaker({ actor }),
+    flavor: `🛡️ <strong>${actor.name}</strong> usa Explosão Defensiva — reduz <strong>${roll.total}</strong> do próximo dano!`
+  });
+}
+
+async function _npcSyncIntensiveTraining(actor) {
+  // Reservado para uso futuro
 }

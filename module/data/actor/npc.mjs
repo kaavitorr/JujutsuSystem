@@ -127,6 +127,18 @@ export default class NPCData extends CreatureTemplate {
         }, { label: "DND5E.LAIR.Action.Label" })
       }, { label: "DND5E.Resources" }),
       source: new SourceField(),
+      // ── ENERGIA AMALDIÇOADA (NPC) ──────────────────────────────────────────
+      energy: new SchemaField({
+        max:       new NumberField({ required: true, nullable: false, integer: true, min: 0, initial: 0 }),
+        total:     new NumberField({ required: true, nullable: false, integer: true, min: 0, initial: 0 }),
+        generated: new NumberField({ required: true, nullable: false, integer: true, min: 0, initial: 0 }),
+        genPerTurn: new NumberField({ required: true, nullable: false, integer: true, min: 0, initial: 3 }),
+        genMax:    new NumberField({ required: true, nullable: false, integer: true, min: 0, initial: 20 }),
+        intensiveTraining: new SchemaField({
+          maxEnergy:      new NumberField({ required: true, nullable: false, integer: true, min: 0, initial: 0 }),
+          generatedEnergy: new NumberField({ required: true, nullable: false, integer: true, min: 0, initial: 0 })
+        })
+      }),
       traits: new SchemaField({
         ...TraitsFields.common,
         ...TraitsFields.creature,

@@ -327,11 +327,55 @@
         </div>
 
         {{!-- Legendary Actions & Resistances, Lair Actions, & Classes --}}
-        <div class="bottom">
+        <div class="bottom" style="display:flex; flex-direction:row; align-items:center; gap:16px; flex-wrap:wrap;">
 
             {{#if hasClasses}}
             {{> "dnd5e.actor-classes" }}
             {{/if}}
+
+            {{!-- ENERGIA AMALDIÇOADA — ao lado da Classe --}}
+            <div style="display:flex; flex-direction:column; gap:3px; min-width:200px;">
+              <div style="display:flex; justify-content:space-between; font-size:9px; text-transform:uppercase; letter-spacing:0.08em; color:#707090;">
+                <span>Energia Amaldiçoada</span>
+                <span>PA Gerado</span>
+              </div>
+              <div style="display:flex; gap:4px;">
+                {{#with system.energy}}
+                {{!-- Energia Total — editável --}}
+                <div class="meter npc-energy-bar-total"
+                     data-current="{{total}}" data-max="{{max}}"
+                     style="flex:2; --bar-percentage:100%; background: linear-gradient(to right, #6a3cff 0%, #3a1a8a 100%);">
+                  <div class="label" style="display:flex; align-items:center; justify-content:center; gap:2px;">
+                    <input type="text" name="system.energy.total" data-dtype="Number"
+                           placeholder="0" value="{{total}}" inputmode="numeric" pattern="^[+=\-]?\d*"
+                           class="always-interactive"
+                           style="background:transparent;border:none;color:#fff;width:32px;text-align:center;font-weight:bold;">
+                    <span style="color:#ffffff88;">&sol;</span>
+                    <input type="text" name="system.energy.max" data-dtype="Number"
+                           placeholder="0" value="{{max}}" inputmode="numeric" pattern="^[+=\-]?\d*"
+                           class="always-interactive"
+                           style="background:transparent;border:none;color:#ffffff88;width:32px;text-align:center;">
+                  </div>
+                </div>
+                {{!-- PA Gerado --}}
+                <div class="meter npc-energy-bar-gen"
+                     data-current="{{generated}}" data-max="{{genMax}}"
+                     style="flex:1; min-width:70px; background:#2a6aaa; --bar-percentage:100%;">
+                  <div class="label" style="display:flex; align-items:center; justify-content:center; gap:2px;">
+                    <input type="text" name="system.energy.generated" data-dtype="Number"
+                           placeholder="0" value="{{generated}}" inputmode="numeric"
+                           class="always-interactive"
+                           style="background:transparent;border:none;color:#fff;text-align:center;width:26px;font-weight:bold;">
+                    <span style="color:#ffffff88;">&sol;</span>
+                    <input type="text" name="system.energy.genMax" data-dtype="Number"
+                           placeholder="0" value="{{genMax}}" inputmode="numeric"
+                           class="always-interactive"
+                           style="background:transparent;border:none;color:#ffffff88;text-align:center;width:26px;">
+                  </div>
+                </div>
+                {{/with}}
+              </div>
+            </div>
 
             {{#if (or hasLegendaries editable)}}
             <div class="legendary">

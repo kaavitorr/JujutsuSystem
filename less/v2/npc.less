@@ -687,3 +687,140 @@
 
   form:is(.interactable, .editable) .biography .editor-edit { display: block; }
 }
+
+/* ================================================
+   SISTEMA DE ENERGIA — NPC
+   ================================================ */
+
+.dnd5e2.sheet.actor.npc {
+
+  /* Grupo das barras de energia */
+  .npc-energy-group {
+    margin-top: 6px;
+    padding: 6px 8px;
+    background: rgba(10, 10, 20, 0.5);
+    border: 1px solid #2c2c44;
+    border-radius: 6px;
+  }
+
+  /* Row de labels */
+  .npc-energy-label-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .npc-energy-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #707090;
+  }
+
+  .npc-energy-label-right {
+    margin-left: auto;
+  }
+
+  /* Barras lado a lado */
+  .npc-energy-bars {
+    display: flex;
+    gap: 4px;
+    align-items: stretch;
+  }
+
+  /* Input de energia */
+  .npc-energy-input {
+    background: transparent;
+    border: none;
+    color: inherit;
+    text-align: center;
+    width: 32px;
+    font-size: 12px;
+    padding: 0;
+  }
+
+  /* Row de geração por turno */
+  .npc-gen-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+    font-size: 10px;
+    color: #707090;
+  }
+
+  /* Caixa de treinamento intenso */
+  .npc-training-box {
+    margin-top: 8px;
+    padding: 8px 10px;
+    background: rgba(120, 90, 255, 0.06);
+    border: 1px solid #2c2c44;
+    border-radius: 6px;
+  }
+
+  .npc-training-title {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #a090ff;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .npc-training-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .npc-training-label {
+    font-size: 10px;
+    color: #a0a0c0;
+    flex: 1;
+  }
+
+  .npc-training-result {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid #2c2c44;
+    font-size: 10px;
+    color: #707090;
+
+    strong {
+      color: #a090ff;
+    }
+  }
+}
+
+  /* Treinamento no sidebar */
+  .npc-training-box {
+    margin-top: 8px;
+    padding: 8px 10px;
+    background: rgba(120, 90, 255, 0.06);
+    border: 1px solid #2c2c44;
+    border-radius: 6px;
+  }
+
+  .npc-training-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .npc-training-label {
+    font-size: 10px;
+    color: #a0a0c0;
+    flex: 1;
+  }
+
+  /* Forçar .bottom em row para Classe + Energia ficarem lado a lado */
+  .sheet-header .stats > .bottom {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 16px !important;
+    flex-wrap: wrap !important;
+  }

@@ -3387,7 +3387,7 @@ async _preUpdate(changed, options, user) {
 
     // Avisar no chat quando PA Gerada for alterada manualmente
     const novaGerada = foundry.utils.getProperty(changed, "system.energy.generated");
-    if ( Number.isFinite(novaGerada) && !options.isEnergySystem ) {
+    if ( Number.isFinite(novaGerada) && !options.isEnergySystem && this.type === "character" ) {
       const antiga = this.system.energy.generated;
       if ( novaGerada !== antiga ) {
         const delta = novaGerada - antiga;
