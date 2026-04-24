@@ -1934,3 +1934,354 @@
     inset 0 0 14px rgba(120,150,255,0.3),
     0 0 14px rgba(120,150,255,0.4);
 }
+
+/* ════════════════════════════════════════
+   SALVAGUARDAS — Variante B (via filigree-box variables)
+   ════════════════════════════════════════ */
+
+.dnd5e2.sheet.actor.character .sheet-body .saves filigree-box,
+.dnd5e2.sheet.actor.character .sheet-body .saves {
+  --filigree-background-color: #0f0f1c;
+  --filigree-border-color: #302860;
+  --filigree-drop-shadow: drop-shadow(0 0 4px rgba(40, 30, 80, 0.4));
+}
+
+/* Header */
+.dnd5e2.sheet.actor.character .sheet-body .saves .header {
+  background: transparent !important;
+  border-bottom: 1px solid #1a1832;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .saves .header h3,
+.dnd5e2.sheet.actor.character .sheet-body .saves .header h4 {
+  color: #504878 !important;
+  letter-spacing: 0.16em;
+}
+
+/* Linha decorativa após o título */
+.dnd5e2.sheet.actor.character .sheet-body .saves .header::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #1e1c38;
+}
+
+/* Grid 2 colunas */
+.dnd5e2.sheet.actor.character .sheet-body .saves > ul,
+.dnd5e2.sheet.actor.character .sheet-body .saves ul {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  padding: 4px 8px 8px !important;
+  list-style: none;
+  margin: 0;
+}
+
+/* Linhas */
+.dnd5e2.sheet.actor.character .sheet-body .saves ul > li {
+  border-bottom: none !important;
+  padding: 4px 6px;
+  border-radius: 3px;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .saves ul > li:hover {
+  background: rgba(60, 35, 100, 0.10);
+}
+
+/* Proficiency pip */
+.dnd5e2.sheet.actor.character .sheet-body .saves {
+  --proficiency-cycle-enabled-color: #5a3a90;
+  --proficiency-cycle-disabled-color: #2e2850;
+}
+
+/* ════════════════════════════════════════
+   PERÍCIAS — Variante B (via filigree-box variables)
+   ════════════════════════════════════════ */
+
+.dnd5e2.sheet.actor.character .sheet-body .skills filigree-box,
+.dnd5e2.sheet.actor.character .sheet-body .skills {
+  --filigree-background-color: #0f0f1c;
+  --filigree-border-color: #302860;
+  --filigree-drop-shadow: drop-shadow(0 0 4px rgba(40, 30, 80, 0.4));
+}
+
+/* Header */
+.dnd5e2.sheet.actor.character .sheet-body .skills .header {
+  background: transparent !important;
+  border-bottom: 1px solid #1a1832;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .skills .header h3,
+.dnd5e2.sheet.actor.character .sheet-body .skills .header h4 {
+  color: #504878 !important;
+  letter-spacing: 0.16em;
+}
+
+/* Linha decorativa após o título */
+.dnd5e2.sheet.actor.character .sheet-body .skills .header::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #1e1c38;
+}
+
+/* Linhas de skill */
+.dnd5e2.sheet.actor.character .sheet-body .skills ul > li {
+  border-bottom: 1px solid rgba(255,255,255,0.03) !important;
+  padding: 3px 6px;
+  border-radius: 3px;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .skills ul > li:last-child {
+  border-bottom: none !important;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .skills ul > li:hover {
+  background: rgba(60, 35, 100, 0.10);
+}
+
+/* Pip de proficiência */
+.dnd5e2.sheet.actor.character .sheet-body .skills {
+  --proficiency-cycle-enabled-color: #5a3a90;
+  --proficiency-cycle-disabled-color: #2e2850;
+}
+
+/* ════════════════════════════════════════
+   FERRAMENTAS — Variante B (via filigree-box variables)
+   ════════════════════════════════════════ */
+
+.dnd5e2.sheet.actor.character .sheet-body .tools filigree-box,
+.dnd5e2.sheet.actor.character .sheet-body .tools {
+  --filigree-background-color: #0f0f1c;
+  --filigree-border-color: #302860;
+  --filigree-drop-shadow: drop-shadow(0 0 4px rgba(40, 30, 80, 0.4));
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .tools .header {
+  background: transparent !important;
+  border-bottom: 1px solid #1a1832;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .tools .header h3,
+.dnd5e2.sheet.actor.character .sheet-body .tools .header h4 {
+  color: #504878 !important;
+  letter-spacing: 0.16em;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .tools .header::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #1e1c38;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .tools ul > li {
+  border-bottom: 1px solid rgba(255,255,255,0.03) !important;
+  padding: 3px 6px;
+  border-radius: 3px;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .tools ul > li:last-child {
+  border-bottom: none !important;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .tools ul > li:hover {
+  background: rgba(60, 35, 100, 0.10);
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .tools {
+  --proficiency-cycle-enabled-color: #5a3a90;
+  --proficiency-cycle-disabled-color: #2e2850;
+}
+
+/* ════════════════════════════════════════
+   EFFECTS — Corrigir headers vermelhos
+   ════════════════════════════════════════ */
+
+.dnd5e2 .effects-element .items-header,
+.tab[data-tab="effects"] .effects-element .items-header,
+.tab[data-tab="effects"] .items-section > header,
+.tab[data-tab="effects"] .items-section > .items-header {
+  background: linear-gradient(90deg, #1c1c30, #161628) !important;
+  border-bottom: 1px solid var(--jj-border) !important;
+}
+
+.dnd5e2 .effects-element .items-header *,
+.tab[data-tab="effects"] .effects-element .items-header *,
+.tab[data-tab="effects"] .items-section > header *,
+.tab[data-tab="effects"] .items-section > .items-header * {
+  color: var(--jj-primary-soft) !important;
+  font-family: var(--dnd5e-font-roboto-condensed, sans-serif) !important;
+  text-shadow: none !important;
+}
+
+/* Seção de condições — mesmo padrão */
+.tab[data-tab="effects"] .jj-cond-header {
+  background: linear-gradient(90deg, #1c1c30, #161628) !important;
+  color: var(--jj-primary-soft) !important;
+}
+
+/* ════════════════════════════════════════
+   EFFECTS — Padronizar fonte de todos os headers
+   ════════════════════════════════════════ */
+
+.dnd5e2 .effects-element .items-header,
+.dnd5e2 .effects-element .items-header h3,
+.dnd5e2 .effects-element .items-header h4,
+.dnd5e2 .effects-element .items-header span,
+.dnd5e2 .effects-element .items-header label,
+.tab[data-tab="effects"] .items-section > header,
+.tab[data-tab="effects"] .items-section > header h3,
+.tab[data-tab="effects"] .items-section > header h4,
+.tab[data-tab="effects"] .items-section > .items-header,
+.tab[data-tab="effects"] .items-section > .items-header h3,
+.tab[data-tab="effects"] .items-section > .items-header h4,
+.tab[data-tab="effects"] .jj-cond-header,
+.tab[data-tab="effects"] .jj-cond-header * {
+  font-family: var(--dnd5e-font-roboto-condensed, 'Roboto Condensed', sans-serif) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--jj-primary-soft) !important;
+  text-shadow: none !important;
+}
+
+/* ════════════════════════════════════════
+   PERÍCIAS — Proficiency pips mais vibrantes
+   ════════════════════════════════════════ */
+
+.dnd5e2.sheet.actor.character .sheet-body .skills proficiency-cycle,
+.dnd5e2.sheet.actor.character .sheet-body .tools proficiency-cycle,
+.dnd5e2.sheet.actor.character .sheet-body .saves proficiency-cycle {
+  --proficiency-cycle-enabled-color: #ff1c03;
+  --proficiency-cycle-disabled-color: #3d6cc4;
+}
+
+/* ════════════════════════════════════════
+   TREINAMENTO — rank-max (perfeição para qualquer maxRank)
+   ════════════════════════════════════════ */
+
+.training-card.rank-max {
+  border-color: rgba(255, 180, 40, 0.7) !important;
+  background: linear-gradient(145deg, #120a00, #0a0600) !important;
+  box-shadow:
+    0 0 16px rgba(255, 160, 30, 0.45),
+    0 0 36px rgba(255, 100, 0, 0.2),
+    inset 0 0 20px rgba(255, 140, 0, 0.05);
+  animation: jj-perfection-glow 2.5s ease-in-out infinite;
+}
+
+.training-card.rank-max .training-name {
+  color: #ffd060;
+  text-shadow: 0 0 8px rgba(255, 180, 0, 0.6);
+}
+
+.training-card.rank-max .training-effect {
+  color: #e0c080;
+  opacity: 1;
+}
+
+.training-card.rank-max .jujutsu-meta {
+  color: #a08040;
+  opacity: 1;
+}
+
+.training-card.rank-max .training-stars .star.filled {
+  color: #ffd060;
+  text-shadow: 0 0 6px rgba(255, 200, 0, 0.8);
+}
+
+.training-card.rank-max.locked {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* ════════════════════════════════════════
+   SEIS OLHOS — Caixa da sidebar
+   ════════════════════════════════════════ */
+
+.jj-seis-olhos-box {
+  background: #0c0c1e;
+  border: 1px solid #2a1a50;
+  border-top: 2px solid #6030b0;
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+.jj-seis-olhos-header {
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid #1a1432;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6040a0;
+}
+
+.jj-seis-olhos-header i { color: #5030a0; }
+
+.jj-seis-olhos-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: #12121e;
+  padding: 6px 8px;
+  gap: 6px;
+}
+
+.jj-seis-olhos-option {
+  cursor: pointer;
+}
+
+.jj-seis-olhos-option input { display: none; }
+
+.jj-seis-olhos-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 7px 4px;
+  background: #0e0e1c;
+  border: 1px solid #221a3a;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #40385a;
+  transition: all 150ms;
+}
+
+.jj-seis-olhos-btn i { font-size: 14px; color: #30285a; }
+
+.jj-seis-olhos-option:hover .jj-seis-olhos-btn {
+  border-color: #3a2a60;
+  color: #7060a0;
+}
+.jj-seis-olhos-option:hover .jj-seis-olhos-btn i { color: #6050a0; }
+
+.jj-seis-olhos-option.active .jj-seis-olhos-btn,
+.jj-seis-olhos-option input:checked ~ .jj-seis-olhos-btn {
+  background: #130e28;
+  border-color: #6030c0;
+  color: #b090ff;
+  box-shadow: 0 0 8px rgba(100, 50, 200, 0.25);
+}
+.jj-seis-olhos-option.active .jj-seis-olhos-btn i,
+.jj-seis-olhos-option input:checked ~ .jj-seis-olhos-btn i { color: #9060e0; }
+
+.jj-seis-olhos-warning {
+  padding: 5px 10px;
+  font-size: 9px;
+  color: #c06060;
+  border-top: 1px solid #2a1232;
+  background: #120808;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.jj-seis-olhos-warning i { color: #803030; }

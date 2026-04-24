@@ -649,14 +649,20 @@ export function prepareTrainings(actor) {
     const nextPtCost = def.ptCost[nextRankIdx] ?? def.ptCost[def.ptCost.length - 1];
     const nextPaCost = def.paCost[nextRankIdx] ?? def.paCost[def.paCost.length - 1];
 
+    // Calcular rank máximo baseado nos efeitos definidos
+    const maxRank = def.perfectionEffect !== null ? 3
+      : def.evolutionEffect !== null ? 2
+      : 1;
+
     // Verificar se pode treinar
-    const canTrain = rank < (def.evolutionEffect !== null ? 3 : 1) &&
+    const canTrain = rank < maxRank &&
       trainingPoints >= nextPtCost &&
       energyTotal >= nextPaCost;
 
     result[def.category][id] = {
       ...def,
       rank,
+      maxRank,
       currentDC,
       nextPtCost,
       nextPaCost,
@@ -671,3 +677,4 @@ export function prepareTrainings(actor) {
 
   return result;
 }
+

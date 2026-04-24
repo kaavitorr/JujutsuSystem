@@ -86,15 +86,19 @@
 
     <div class="training-list">
       {{#each group}}
-      <div class="training-card rank-{{this.rank}} {{#unless this.canTrain}}locked{{/unless}}" data-training-id="{{@key}}">
+      <div class="training-card rank-{{this.rank}} {{#if (gte this.rank this.maxRank)}}rank-max{{/if}} {{#unless this.canTrain}}locked{{/unless}}" data-training-id="{{@key}}">
 
         {{!-- Header --}}
         <div class="training-header">
           <span class="training-name">{{this.label}}</span>
           <div class="training-stars">
             <span class="star {{#if (gte this.rank 1)}}filled{{/if}}">★</span>
+            {{#if this.evolutionEffect}}
             <span class="star {{#if (gte this.rank 2)}}filled{{/if}}">★</span>
+            {{/if}}
+            {{#if this.perfectionEffect}}
             <span class="star {{#if (gte this.rank 3)}}filled{{/if}}">★</span>
+            {{/if}}
           </div>
         </div>
 
@@ -107,14 +111,14 @@
         {{!-- Efeito atual --}}
         <div class="training-effect">
           {{#if (eq this.rank 0)}}{{this.baseEffect}}
-          {{else if (eq this.rank 1)}}★ {{this.evolutionEffect}}
+          {{else if (eq this.rank 1)}}★ {{#if this.evolutionEffect}}{{this.evolutionEffect}}{{else}}{{this.baseEffect}}{{/if}}
           {{else if (eq this.rank 2)}}★★ {{this.perfectionEffect}}
-          {{else}}★★★ Perfeição atingida!{{/if}}
+          {{else}}★★★ {{this.perfectionEffect}}{{/if}}
         </div>
 
         {{!-- Ações --}}
         <div class="jujutsu-actions">
-          {{#if (lt this.rank 3)}}
+          {{#if (lt this.rank this.maxRank)}}
             {{#if this.canTrain}}
               <button class="jujutsu-btn primary btn-train"
                 data-action="trainAbility"
@@ -135,10 +139,10 @@
         </div>
 
         <div class="training-progress" data-rank="{{this.rank}}">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+          <span></span>
+          {{#if this.evolutionEffect}}<span></span>{{/if}}
+          {{#if this.perfectionEffect}}<span></span>{{/if}}
+        </div>
 
       </div>
       {{/each}}
