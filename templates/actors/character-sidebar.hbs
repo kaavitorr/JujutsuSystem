@@ -169,7 +169,7 @@
             
 {{!-- Cursed Energy --}}
 <div class="meter-group">
-  <div class="label roboto-condensed-upper" style="display: flex; justify-content: space-between;">
+  <div class="label roboto-condensed-upper">
     <span>Energia Amaldiçoada</span>
     {{#if editable}}
     <button type="button" class="config-button unbutton" data-action="showConfiguration"
@@ -178,13 +178,12 @@
       <i class="fas fa-cog" inert></i>
     </button>
     {{/if}}
-    <span>PA Gerado</span>
   </div>
   <div style="display: flex; gap: 4px;">
     {{#with system.energy}}
-    <div class="meter sectioned hit-points cursed-energy-bar" style="flex: 2;">
-      <div class="progress hit-points" role="meter" aria-valuemin="0" aria-valuenow="{{ total }}"
-           aria-valuemax="{{ max }}" style="--bar-percentage: {{ @root.energyPct }}%">
+    <div class="meter sectioned hit-points cursed-energy-bar" style="flex: 1;">
+  <div class="progress hit-points" role="meter" aria-valuemin="0" aria-valuenow="{{ total }}"
+     aria-valuemax="{{ max }}" style="--bar-percentage: {{ @root.energyPct }}%">
         <div class="label">
           <span class="value">{{ total }}</span>
           <span class="separator">&sol;</span>
@@ -194,13 +193,11 @@
                placeholder="0" value="{{ total }}" hidden>
       </div>
     </div>
-    <div class="meter sectioned hit-points" style="flex: 1; --dnd5e-color-hp-1: #2a6aaa; --dnd5e-color-hp-2: #4a90d9; --dnd5e-color-hp-3: #3a80c9;">
-      <div class="progress hit-points" role="meter" style="--bar-percentage: 100%">
-        <div class="label">
-          <input type="text" name="system.energy.generated" data-dtype="Number"
-                 placeholder="0" value="{{ generated }}"
-                 style="background:transparent; border:none; color:inherit; text-align:center; width:100%;">
-        </div>
+    <div class="meter" style="flex: 1; background: #4a90d9;" role="meter">
+      <div class="label" style="text-align:center;">
+        <input type="text" name="system.energy.generated" data-dtype="Number"
+               placeholder="0" value="{{ generated }}"
+               style="background:transparent; border:none; color:inherit; text-align:center; width:100%;">
       </div>
     </div>
     {{/with}}
@@ -209,36 +206,36 @@
 
             {{!-- Dice Row --}}
             <div class="meter-group">
-                <div class="label roboto-condensed-upper" style="display:flex; justify-content:space-between;">
-                    <span>{{ localize "DND5E.HitDice" }}</span>
-                    {{#if editable}}
-                    <button type="button" class="config-button unbutton" data-action="showConfiguration"
-                            data-config="hitDice" data-tooltip="DND5E.HitDiceConfig"
-                            aria-label="Dado de Vida Config">
-                        <i class="fas fa-cog" inert></i>
-                    </button>
-                    {{/if}}
-                    <span>Dados de Energia</span>
-                    {{#if editable}}
-                    <button type="button" class="config-button unbutton" data-action="showConfiguration"
-                            data-config="cursedEnergyDice" data-tooltip="JUJUTSU.EnergyDice.Config"
-                            aria-label="Configurar Dados de Energia">
-                        <i class="fas fa-cog" inert></i>
-                    </button>
-                    {{/if}}
+                <div style="display:flex; gap:4px; margin-bottom:2px;">
+                    <div class="label roboto-condensed-upper" style="flex:1; display:flex; justify-content:space-between;">
+                        <span>{{ localize "DND5E.HitDice" }}</span>
+                        {{#if editable}}
+                        <button type="button" class="config-button unbutton" data-action="showConfiguration"
+                                data-config="hitDice" data-tooltip="DND5E.HitDiceConfig"
+                                aria-label="Hit Dice Config">
+                            <i class="fas fa-cog" inert></i>
+                        </button>
+                        {{/if}}
+                    </div>
+                    <div class="label roboto-condensed-upper" style="flex:1; display:flex; justify-content:space-between;">
+                        <span>Dados de Energia </span>
+                        {{#if editable}}
+                        <button type="button" class="config-button unbutton" data-action="showConfiguration"
+                                data-config="cursedEnergyDice" data-tooltip="JUJUTSU.EnergyDice.Config"
+                                aria-label="Configurar Dados de Energia">
+                            <i class="fas fa-cog" inert></i>
+                        </button>
+                        {{/if}}
+                    </div>
                 </div>
                 <div style="display:flex; gap:4px;">
                     {{#with system.attributes.hd}}
-<div class="meter sectioned hit-points hit-dice-bar" style="flex:1;" role="meter" aria-valuemin="0" aria-valuenow="{{ value }}" aria-valuemax="{{ max }}">
-  <div class="progress hit-points hit-dice-bar" role="meter" style="--bar-percentage: {{ pct }}%">
-    <div class="label"><span class="value">{{ value }}</span><span class="separator">&sol;</span><span class="max">{{ max }}</span></div>
-  </div>
+<div class="meter hit-dice progress hit-dice-bar" style="flex:1; --bar-percentage: {{ pct }}%;" role="meter" aria-valuemin="0" aria-valuenow="{{ value }}" aria-valuemax="{{ max }}">
+  <div class="label"><span class="value">{{ value }}</span><span class="separator">&sol;</span><span class="max">{{ max }}</span></div>
 </div>
 {{/with}}
-                    <div class="meter sectioned hit-points energy-dice-bar" style="flex:1; --dnd5e-color-hp-1: #5a3a7a; --dnd5e-color-hp-2: #8b6aad; --dnd5e-color-hp-3: #7a5a9a;" role="meter" aria-valuemin="0" aria-valuenow="{{ system.energyDice.value }}" aria-valuemax="{{ system.energyDice.max }}">
-                      <div class="progress hit-points energy-dice-bar" role="meter" style="--bar-percentage: {{ energyDicePct }}%; --dnd5e-color-hp-1: #5a3a7a; --dnd5e-color-hp-2: #8b6aad; --dnd5e-color-hp-3: #7a5a9a;">
-                        <div class="label"><span class="value">{{ system.energyDice.value }}</span><span class="separator">&sol;</span><span class="max">{{ system.energyDice.max }}</span></div>
-                      </div>
+                    <div class="meter hit-dice progress energy-dice-bar" style="flex:1; --bar-percentage: {{ energyDicePct }}%; --dnd5e-color-hp-1: #5a3a7a; --dnd5e-color-hp-2: #8b6aad; --dnd5e-color-hp-3: #7a5a9a;" role="meter" aria-valuemin="0" aria-valuenow="{{ system.energyDice.value }}" aria-valuemax="{{ system.energyDice.max }}">
+                        <div class="label"><span class="value">{{ system.energyDice.value }}</span><span class="separator">&sol;</span><span class="max">{{ system.energyDice.max }}</span> <span>({{ system.energyDice.denomination }})</span></div>
                     </div>
                 </div>
             </div>
@@ -438,6 +435,39 @@
                 <i class="fas fa-shield-halved" inert></i>
                 <span>Explosão Defensiva</span>
             </button>
+        </div>
+        {{/if}}
+
+        {{!-- Seis Olhos — aparece se o item Seis Olhos estiver na ficha --}}
+        {{#if seisOlhos}}
+        <div class="jj-seis-olhos-box">
+            <div class="jj-seis-olhos-header">
+                <i class="fas fa-eye" inert></i>
+                <span>Seis Olhos</span>
+            </div>
+            <div class="jj-seis-olhos-options">
+                <label class="jj-seis-olhos-option {{#if (eq seisOlhosMode 'sealed')}}active{{/if}}">
+                    <input type="radio" name="flags.jujutsu-system.seisOlhosMode" value="sealed"
+                           {{#if (eq seisOlhosMode 'sealed')}}checked{{/if}}>
+                    <div class="jj-seis-olhos-btn">
+                        <i class="fas fa-eye-slash" inert></i>
+                        <span>Selado</span>
+                    </div>
+                </label>
+                <label class="jj-seis-olhos-option {{#if (eq seisOlhosMode 'full')}}active{{/if}}">
+                    <input type="radio" name="flags.jujutsu-system.seisOlhosMode" value="full"
+                           {{#if (eq seisOlhosMode 'full')}}checked{{/if}}>
+                    <div class="jj-seis-olhos-btn">
+                        <i class="fas fa-eye" inert></i>
+                        <span>Poder Completo</span>
+                    </div>
+                </label>
+            </div>
+            {{#if (eq seisOlhosMode 'full')}}
+            <div class="jj-seis-olhos-warning">
+                <i class="fas fa-skull" inert></i> 2d8 dano psíquico no início do turno
+            </div>
+            {{/if}}
         </div>
         {{/if}}
 

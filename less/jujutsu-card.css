@@ -2219,7 +2219,7 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #6040a0;
+  color: #4075a0;
 }
 
 .jj-seis-olhos-header i { color: #5030a0; }
@@ -2245,41 +2245,41 @@
   align-items: center;
   gap: 3px;
   padding: 7px 4px;
-  background: #0e0e1c;
-  border: 1px solid #221a3a;
+  background: #130e1c;
+  border: 1px solid #2a1847;
   border-radius: 4px;
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #40385a;
+  color: #1c5888;
   transition: all 150ms;
 }
 
-.jj-seis-olhos-btn i { font-size: 14px; color: #30285a; }
+.jj-seis-olhos-btn i { font-size: 14px; color: #1e3843; }
 
 .jj-seis-olhos-option:hover .jj-seis-olhos-btn {
   border-color: #3a2a60;
-  color: #7060a0;
+  color: #1d66ae;
 }
-.jj-seis-olhos-option:hover .jj-seis-olhos-btn i { color: #6050a0; }
+.jj-seis-olhos-option:hover .jj-seis-olhos-btn i { color: #507ca0; }
 
 .jj-seis-olhos-option.active .jj-seis-olhos-btn,
 .jj-seis-olhos-option input:checked ~ .jj-seis-olhos-btn {
   background: #130e28;
-  border-color: #6030c0;
-  color: #b090ff;
-  box-shadow: 0 0 8px rgba(100, 50, 200, 0.25);
+  border-color: #1e5da5;
+  color: #3c98c0;
+  box-shadow: 0 0 8px rgba(50, 107, 200, 0.25);
 }
 .jj-seis-olhos-option.active .jj-seis-olhos-btn i,
-.jj-seis-olhos-option input:checked ~ .jj-seis-olhos-btn i { color: #9060e0; }
+.jj-seis-olhos-option input:checked ~ .jj-seis-olhos-btn i { color: #60abe0; }
 
 .jj-seis-olhos-warning {
   padding: 5px 10px;
   font-size: 9px;
   color: #c06060;
   border-top: 1px solid #2a1232;
-  background: #120808;
+  background: #210c0c;
   display: flex;
   align-items: center;
   gap: 5px;
