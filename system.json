@@ -1,0 +1,312 @@
+{
+  "id": "jujutsu-system",
+  "title": "Jujutsu Legacy RPG 1.0",
+  "description": "A system for playing the fifth edition of the world's most popular role-playing game in the Foundry Virtual Tabletop environment.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "14.360",
+    "verified": "14"
+  },
+  "url": "https://github.com/kaavitorr/JujutsuSystem",
+  "manifest": "https://raw.githubusercontent.com/kaavitorr/JujutsuSystem/main/system.json",
+  "download": "https://github.com/kaavitorr/JujutsuSystem/releases/download/v1.0.0/jujutsu-system.zip",
+  "authors": [
+    {
+      "name": "Noroi",
+      "url": "https://discord.gg/hld20",
+      "flags": {}
+    }
+  ],
+  "esmodules": [
+    "dnd5e.mjs"
+  ],
+  "styles": [
+    "dnd5e.css",
+    "less/jujutsu-card.css"
+  ],
+  "documentTypes": {
+    "ActiveEffect": {
+      "enchantment": {}
+    },
+    "Actor": {
+      "character": {
+        "htmlFields": [
+          "details.biography.value",
+          "details.biography.public",
+          "bastion.description"
+        ]
+      },
+      "encounter": {
+        "htmlFields": [
+          "description.full",
+          "description.summary"
+        ]
+      },
+      "group": {
+        "htmlFields": [
+          "description.full",
+          "description.summary"
+        ]
+      },
+      "npc": {
+        "htmlFields": [
+          "details.biography.value",
+          "details.biography.public"
+        ]
+      },
+      "vehicle": {
+        "htmlFields": [
+          "details.biography.value",
+          "details.biography.public"
+        ]
+      }
+    },
+    "ChatMessage": {
+      "bastionAttack": {},
+      "bastionTurn": {},
+      "request": {},
+      "rest": {},
+      "turn": {},
+      "usage": {}
+    },
+    "Item": {
+      "weapon": {
+        "filePathFields": {
+          "activities.*.img": [
+            "IMAGE"
+          ]
+        },
+        "htmlFields": [
+          "description.value",
+          "description.chat",
+          "unidentified.description"
+        ]
+      },
+      "equipment": {
+        "filePathFields": {
+          "activities.*.img": [
+            "IMAGE"
+          ]
+        },
+        "htmlFields": [
+          "description.value",
+          "description.chat",
+          "unidentified.description"
+        ]
+      },
+      "consumable": {
+        "filePathFields": {
+          "activities.*.img": [
+            "IMAGE"
+          ]
+        },
+        "htmlFields": [
+          "description.value",
+          "description.chat",
+          "unidentified.description"
+        ]
+      },
+      "tool": {
+        "filePathFields": {
+          "activities.*.img": [
+            "IMAGE"
+          ]
+        },
+        "htmlFields": [
+          "description.value",
+          "description.chat",
+          "unidentified.description"
+        ]
+      },
+      "loot": {
+        "htmlFields": [
+          "description.value",
+          "description.chat",
+          "unidentified.description"
+        ]
+      },
+      "race": {
+        "filePathFields": {
+          "advancement.*.icon": [
+            "IMAGE"
+          ]
+        },
+        "htmlFields": [
+          "advancement.*.hint",
+          "description.value",
+          "description.chat"
+        ]
+      },
+      "background": {
+        "filePathFields": {
+          "advancement.*.icon": [
+            "IMAGE"
+          ]
+        },
+        "htmlFields": [
+          "advancement.*.hint",
+          "description.value",
+          "description.chat"
+        ]
+      },
+      "class": {
+        "filePathFields": {
+          "advancement.*.icon": [
+            "IMAGE"
+          ]
+        },
+        "htmlFields": [
+          "advancement.*.hint",
+          "description.value",
+          "description.chat"
+        ]
+      },
+      "subclass": {
+        "filePathFields": {
+          "advancement.*.icon": [
+            "IMAGE"
+          ]
+        },
+        "htmlFields": [
+          "advancement.*.hint",
+          "description.value",
+          "description.chat"
+        ]
+      },
+      "spell": {
+        "filePathFields": {
+          "activities.*.img": [
+            "IMAGE"
+          ]
+        },
+        "htmlFields": [
+          "description.value",
+          "description.chat"
+        ]
+      },
+      "feat": {
+        "filePathFields": {
+          "activities.*.img": [
+            "IMAGE"
+          ],
+          "advancement.*.icon": [
+            "IMAGE"
+          ]
+        },
+        "htmlFields": [
+          "advancement.*.hint",
+          "description.value",
+          "description.chat"
+        ]
+      },
+      "container": {
+        "htmlFields": [
+          "description.value",
+          "description.chat",
+          "unidentified.description"
+        ]
+      },
+      "backpack": {
+        "htmlFields": [
+          "description.value",
+          "description.chat",
+          "unidentified.description"
+        ]
+      },
+      "facility": {
+        "filePathFields": {
+          "activities.*.img": [
+            "IMAGE"
+          ]
+        },
+        "htmlFields": [
+          "description.value",
+          "description.chat"
+        ]
+      }
+    },
+    "JournalEntryPage": {
+      "class": {
+        "htmlFields": [
+          "details.value",
+          "details.additionalHitPoints",
+          "description.additionalTraits",
+          "description.additionalEquipment",
+          "description.subclass"
+        ]
+      },
+      "map": {},
+      "rule": {
+        "htmlFields": [
+          "tooltip"
+        ]
+      },
+      "spells": {},
+      "subclass": {
+        "htmlFields": [
+          "details.value"
+        ]
+      }
+    },
+    "RegionBehavior": {
+      "dnd5e.difficultTerrain": {},
+      "dnd5e.rotateArea": {}
+    }
+  },
+  "packs": [],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "flags": {}
+    }
+  ],
+  "media": [
+    {
+      "type": "cover",
+      "loop": false,
+      "flags": {}
+    },
+    {
+      "type": "setup",
+      "url": "systems/jujutsu-system/ui/official/dnd5e-repo.jpg",
+      "thumbnail": "systems/jujutsu-system/ui/official/dnd5e-thumbnail.jpg"
+    }
+  ],
+  "socket": true,
+  "grid": {
+    "distance": 5,
+    "units": "ft"
+  },
+  "primaryTokenAttribute": "attributes.hp",
+  "background": "systems/jujutsu-system/ui/official/dnd5e-background.webp",
+  "flags": {
+    "compendiumArtMappings": {
+      "jujutsu-system": {
+        "mapping": "systems/jujutsu-system/json/fa-token-mapping.json",
+        "credit": "<em>Token artwork by <a href=\"https://www.forgotten-adventures.net/\" target=\"_blank\" rel=\"noopener\">Forgotten Adventures</a>.</em>"
+      }
+    },
+    "jujutsu-system": {
+      "sourceBooks": {
+        "SRD 5.1": "SOURCE.BOOK.SRD51",
+        "SRD 5.2": "SOURCE.BOOK.SRD52"
+      }
+    },
+    "needsMigrationVersion": "5.3.0",
+    "compatibleMigrationVersion": "0.8",
+    "hotReload": {
+      "extensions": [
+        "css",
+        "hbs",
+        "json"
+      ],
+      "paths": [
+        "dnd5e.css",
+        "templates",
+        "lang"
+      ]
+    }
+  }
+}

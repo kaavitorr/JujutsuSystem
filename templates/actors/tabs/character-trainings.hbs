@@ -1,0 +1,151 @@
+<section class="tab {{ tab.cssClass }} jujutsu-section" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
+
+  {{!-- ══════════════════════════ MAESTRIA ══════════════════════════ --}}
+  <div class="mastery-header jujutsu-card">
+
+    <div class="mastery-top">
+      <div class="mastery-badge">
+        <span class="level">{{actor.system.masteryLevel}}º</span>
+        <span class="label">Maestria</span>
+      </div>
+
+      <div class="mastery-info">
+        <span>Feiticeiro {{actor.system.masterySorcerer}} Grau</span>
+        {{#if actor.system.masteryDie}}
+          <span>Dado de Energia: {{actor.system.masteryDie}}</span>
+        {{/if}}
+        <span>PT Investidos: {{actor.system.masteryPoints}}</span>
+      </div>
+    </div>
+
+    <div class="mastery-bars">
+      <div class="bar">
+        <label>Pontos de Treinamento</label>
+        <input type="number"
+          name="system.curseResources.trainingPoints"
+          value="{{actor.system.curseResources.trainingPoints}}" />
+      </div>
+      <div class="bar">
+        <label>PT Investidos</label>
+        <input type="number"
+          value="{{actor.system.masteryPoints}}"
+          readonly />
+      </div>
+      <div class="bar bar-lost">
+        <label>PT Perdidos</label>
+        <input type="number"
+          name="system.curseResources.lostTrainingPoints"
+          value="{{actor.system.curseResources.lostTrainingPoints}}" />
+      </div>
+    </div>
+
+  </div>
+
+  {{!-- ═══════════════════════ TABELA ══════════════════════════════ --}}
+  <details class="mastery-table-details">
+    <summary>Tabela de Nível de Maestria</summary>
+    <table class="mastery-table">
+      <thead>
+        <tr>
+          <th>Nível</th>
+          <th>Feiticeiro</th>
+          <th>PT</th>
+          <th>Dado</th>
+          <th>Evolução</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1º</td><td>4º Grau</td><td>1</td><td>d6</td><td>Feitiço Básico</td></tr>
+        <tr><td>2º</td><td>3º Grau</td><td>10</td><td>—</td><td>—</td></tr>
+        <tr><td>3º</td><td>3º Grau</td><td>20</td><td>d8</td><td>Feitiço Estendido</td></tr>
+        <tr><td>4º</td><td>2º Grau</td><td>35</td><td>—</td><td>—</td></tr>
+        <tr><td>5º</td><td>2º Grau</td><td>60</td><td>d10</td><td>Feitiço Máximo</td></tr>
+        <tr><td>6º</td><td>1º Grau</td><td>75</td><td>—</td><td>—</td></tr>
+        <tr><td>7º</td><td>1º Grau</td><td>100</td><td>d12</td><td>Expansão de Domínio</td></tr>
+        <tr><td>9º</td><td>Grau Especial</td><td>115</td><td>—</td><td>—</td></tr>
+        <tr><td>10º</td><td>Grau Especial</td><td>150</td><td>—</td><td>Expansão sem Barreiras</td></tr>
+      </tbody>
+    </table>
+  </details>
+
+  {{!-- ═══════════════════════ TREINAMENTOS ════════════════════════ --}}
+  {{#each trainings as |group groupKey|}}
+  <div class="training-section">
+
+    <h3 class="section-header jujutsu-title">
+      {{#if (eq groupKey "general")}}
+        <span>◆</span> Treinamentos Gerais
+      {{/if}}
+      {{#if (eq groupKey "domain")}}
+        <span>◈</span> Domínio e Anti-Domínio
+      {{/if}}
+      {{#if (eq groupKey "immaculate")}}
+        <span>◇</span> Treinamentos de Imaculado
+      {{/if}}
+    </h3>
+
+    <div class="training-list">
+      {{#each group}}
+      <div class="training-card rank-{{this.rank}} {{#unless this.canTrain}}locked{{/unless}}" data-training-id="{{@key}}">
+
+        {{!-- Header --}}
+        <div class="training-header">
+          <span class="training-name">{{this.label}}</span>
+          <div class="training-stars">
+            <span class="star {{#if (gte this.rank 1)}}filled{{/if}}">★</span>
+            <span class="star {{#if (gte this.rank 2)}}filled{{/if}}">★</span>
+            <span class="star {{#if (gte this.rank 3)}}filled{{/if}}">★</span>
+          </div>
+        </div>
+
+        {{!-- Meta --}}
+        <div class="jujutsu-meta">
+          <span>PT: {{this.nextPtCost}} · PA: {{this.nextPaCost}}</span>
+          <span>CD: {{this.currentDC}}</span>
+        </div>
+
+        {{!-- Efeito atual --}}
+        <div class="training-effect">
+          {{#if (eq this.rank 0)}}{{this.baseEffect}}
+          {{else if (eq this.rank 1)}}★ {{this.evolutionEffect}}
+          {{else if (eq this.rank 2)}}★★ {{this.perfectionEffect}}
+          {{else}}★★★ Perfeição atingida!{{/if}}
+        </div>
+
+        {{!-- Ações --}}
+        <div class="jujutsu-actions">
+          {{#if (lt this.rank 3)}}
+            {{#if this.canTrain}}
+              <button class="jujutsu-btn primary btn-train"
+                data-action="trainAbility"
+                data-training="{{@key}}">
+                Treinar
+              </button>
+              <button class="jujutsu-btn btn-instant"
+                data-action="instantAdvance"
+                data-training="{{@key}}">
+                Instantâneo
+              </button>
+            {{else}}
+              <span class="cant-train">🔒 {{this.lockReason}}</span>
+            {{/if}}
+          {{else}}
+            <span class="max-rank">✦ Perfeição</span>
+          {{/if}}
+        </div>
+
+        <div class="training-progress" data-rank="{{this.rank}}">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+      </div>
+      {{/each}}
+    </div>
+  </div>
+  {{/each}}
+
+</section>
+
+

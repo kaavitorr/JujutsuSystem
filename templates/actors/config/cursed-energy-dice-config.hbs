@@ -1,0 +1,38 @@
+<div class="cursed-energy-dice-config">
+    <fieldset>
+        <div class="form-group">
+            <label>Dados de Energia({{ energyDice.denomination }})</label>
+            <div class="form-fields">
+                <button type="button" class="unbutton control-button middle" data-action="decrease"
+                        aria-label="Decrease">
+                    <i class="fa-solid fa-minus" inert></i>
+                </button>
+                <input type="number" name="system.energyDice.value" value="{{ energyDice.value }}"
+                       min="0" max="{{ energyDice.max }}" step="1">
+                <span class="separator">/</span>
+                <span class="max">{{ energyDice.max }}</span>
+                <button type="button" class="unbutton control-button middle" data-action="increase"
+                        aria-label="Increase">
+                    <i class="fa-solid fa-plus" inert></i>
+                </button>
+                <button type="button" class="dice-button" data-action="roll"
+                        data-denomination="{{ energyDice.denomination }}"
+                        data-tooltip aria-label="Roll">
+                    <i class="fa-solid fa-dice-d20" inert></i>
+                </button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Denominação</label>
+            <div class="form-fields">
+                <select name="system.energyDice.denomination">
+                    <option value="d4" {{#if (eq energyDice.denomination "d4")}}selected{{/if}}>d4</option>
+                    <option value="d6" {{#if (eq energyDice.denomination "d6")}}selected{{/if}}>d6</option>
+                    <option value="d8" {{#if (eq energyDice.denomination "d8")}}selected{{/if}}>d8</option>
+                    <option value="d10" {{#if (eq energyDice.denomination "d10")}}selected{{/if}}>d10</option>
+                    <option value="d12" {{#if (eq energyDice.denomination "d12")}}selected{{/if}}>d12</option>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+</div>
