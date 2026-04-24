@@ -9,7 +9,7 @@
   },
   "url": "https://github.com/kaavitorr/JujutsuSystem",
   "manifest": "https://raw.githubusercontent.com/kaavitorr/JujutsuSystem/master/system.json",
-  "download": "https://github.com/kaavitorr/JujutsuSystem/releases/download/v1.0.1/jujutsu-system.zip",
+  "download": "https://github.com/kaavitorr/JujutsuSystem/releases/download/v1.0.2/jujutsu-system.zip",
   "authors": [
     {
       "name": "Noroi",
@@ -21,8 +21,12 @@
     "dnd5e.mjs"
   ],
   "styles": [
-    "dnd5e.css",
-    "less/jujutsu-card.css"
+    {
+      "src": "dnd5e.css"
+    },
+    {
+      "src": "less/jujutsu-card.css"
+    }
   ],
   "documentTypes": {
     "ActiveEffect": {
@@ -253,7 +257,6 @@
       "dnd5e.rotateArea": {}
     }
   },
-  "packs": [],
   "languages": [
     {
       "lang": "en",
@@ -271,7 +274,9 @@
     {
       "type": "setup",
       "url": "systems/jujutsu-system/ui/official/dnd5e-repo.jpg",
-      "thumbnail": "systems/jujutsu-system/ui/official/dnd5e-thumbnail.jpg"
+      "thumbnail": "systems/jujutsu-system/ui/official/dnd5e-thumbnail.jpg",
+      "loop": false,
+      "flags": {}
     }
   ],
   "socket": true,
