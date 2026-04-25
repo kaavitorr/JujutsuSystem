@@ -52,10 +52,14 @@ static DEFAULT_OPTIONS = {
     }
 
     const denomination = energyDice.denomination;
-    const roll = await new Roll(denomination).evaluate();
+    const conMod = actor.system.abilities?.con?.mod ?? 0;
+    const conPart = conMod >= 0 ? ` + ${conMod}` : ` - ${Math.abs(conMod)}`;
+    const formula = `${denomination}${conPart}`;
+    const roll = await new Roll(formula).evaluate();
     const current = actor.system.energy.total;
     const max = actor.system.energy.max;
-    const newTotal = Math.min(current + roll.total, max);
+    const recovered = Math.min(Math.max(0, roll.total), max - current);
+    const newTotal = current + recovered;
 
     await actor.update({
       "system.energy.total": newTotal,
@@ -64,7 +68,7 @@ static DEFAULT_OPTIONS = {
 
     roll.toMessage({
       speaker: ChatMessage.getSpeaker({ actor }),
-      flavor: `Cursed Energy Dice (${denomination}) — Recuperou ${roll.total} PA`
+      flavor: `Cursed Energy Dice (${denomination} + mod. CON) — Recuperou ${recovered} PA`
     });
     this.render();
   }

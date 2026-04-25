@@ -613,6 +613,8 @@
   }
 },
 "DND5E.Armor": "Armadura",
+"DND5E.ArmorClass": "Classe de Resistência",
+"DND5E.ArmorClassFormula": "Tipo de Defesa",
 "DND5E.ArmorClassEquipment": "Armadura Equipada",
 "DND5E.ArmorClassFlat": "Fixo",
 "DND5E.ArmorClassUnarmored": "Sem Armadura",

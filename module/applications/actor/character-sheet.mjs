@@ -1027,6 +1027,26 @@ new foundry.applications.ux.ContextMenu.implementation(
   }
 
 
+    // Colapso de seções das abas Features, Spells e Inventory
+    setTimeout(() => {
+      for ( const tabName of ["features", "spells", "inventory"] ) {
+        const tab = this.element.querySelector(`[data-tab="${tabName}"]`);
+        if ( !tab ) continue;
+        tab.querySelectorAll('.items-header').forEach(header => {
+          header.style.cursor = 'pointer';
+          header.addEventListener('click', (event) => {
+            if ( event.target.closest('.item-controls') ) return;
+            const itemList = header.nextElementSibling;
+            if ( !itemList || !itemList.classList.contains('item-list') ) return;
+            const isCollapsed = header.classList.toggle('collapsed');
+            itemList.style.display = isCollapsed ? 'none' : '';
+            const indicator = header.querySelector('.accordion-indicator');
+            if ( indicator ) indicator.style.transform = isCollapsed ? 'rotate(-90deg)' : '';
+          });
+        });
+      }
+    }, 100);
+
     // Injetar seção de condições Jujutsu na aba Effects
     _injectJJConditions(this.element, this.actor);
 
@@ -1561,9 +1581,66 @@ new foundry.applications.ux.ContextMenu.implementation(
   if ( action === "undoIntensiveTraining" ) {
     return this._onUndoIntensiveTraining(target.dataset.field);
   }
+  if ( action === "toggleSection" ) {
+  return this._onToggleSection(target.dataset.section);
+}
 
   return super._onClickAction(event, target);
 }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Colapsa ou expande uma seção da aba Features, persistindo o estado no localStorage.
+   */
+  _onToggleSection(sectionId) {
+    const storageKey = `jujutsu-system.features.collapsed.${this.actor.id}`;
+    let collapsed;
+    try { collapsed = JSON.parse(localStorage.getItem(storageKey) ?? "[]"); }
+    catch { collapsed = []; }
+
+    // O wrapper .section-accordion é pai de header e content
+    const wrapper = this.element.querySelector(`.section-accordion[data-section-id="${sectionId}"]`);
+    if ( !wrapper ) return;
+
+    const isCollapsed = wrapper.classList.toggle("collapsed");
+    const accordionContent = wrapper.querySelector(".accordion-content");
+
+    if ( accordionContent ) {
+      if ( isCollapsed ) {
+        accordionContent.style.height = accordionContent.scrollHeight + "px";
+        requestAnimationFrame(() => { accordionContent.style.height = "0px"; });
+      } else {
+        accordionContent.style.height = accordionContent.scrollHeight + "px";
+        accordionContent.addEventListener("transitionend", () => { accordionContent.style.height = ""; }, { once: true });
+      }
+    }
+
+    const idx = collapsed.indexOf(sectionId);
+    if ( isCollapsed && idx === -1 ) collapsed.push(sectionId);
+    else if ( !isCollapsed && idx !== -1 ) collapsed.splice(idx, 1);
+    localStorage.setItem(storageKey, JSON.stringify(collapsed));
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Restaura o estado colapsado das seções da aba Features ao renderizar a ficha.
+   */
+  _restoreCollapsedSections() {
+    const storageKey = `jujutsu-system.features.collapsed.${this.actor.id}`;
+    let collapsed;
+    try { collapsed = JSON.parse(localStorage.getItem(storageKey) ?? "[]"); }
+    catch { collapsed = []; }
+
+    for ( const sectionId of collapsed ) {
+      const wrapper = this.element.querySelector(`.section-accordion[data-section-id="${sectionId}"]`);
+      if ( !wrapper ) continue;
+      wrapper.classList.add("collapsed");
+      const accordionContent = wrapper.querySelector(".accordion-content");
+      if ( accordionContent ) accordionContent.style.height = "0px";
+    }
+  }
 
   /* -------------------------------------------- */
 

@@ -70,6 +70,68 @@ Hooks.once("init", function() {
 
   // Record Configuration Values
   CONFIG.DND5E = DND5E;
+
+  // ── Jujutsu Legacy: remover cálculos de CR não utilizados ─────────────────
+  for ( const key of ["natural", "default", "mage", "draconic", "unarmoredMonk", "unarmoredBarb", "unarmoredBard"] ) {
+    delete CONFIG.DND5E.armorClasses[key];
+  }
+
+  // ── Jujutsu Legacy: remover cálculos de CR não utilizados
+  for ( const key of ["natural", "default", "mage", "draconic", "unarmoredMonk", "unarmoredBarb", "unarmoredBard"] ) {
+    delete CONFIG.DND5E.armorClasses[key];
+  }
+
+  // ── Jujutsu Legacy: Cálculos de CR customizados ─────────────────────────
+  // "Corpo de Lutador" — 10 + mod principal + mod CON (cap = nível)
+  // "Defesa Ofensiva"  — 10 + mod AGI + mod principal (sem cap)
+  Object.assign(CONFIG.DND5E.armorClasses, {
+
+    // ── CORPO DE LUTADOR ─────────────────────────────────────────────────
+    corpoLutadorStr: {
+      label: "Corpo de Lutador (Força)",
+      formula: "10 + @abilities.str.mod + min(@abilities.con.mod, @details.level)"
+    },
+    corpoLutadorDex: {
+      label: "Corpo de Lutador (Agilidade)",
+      formula: "10 + @abilities.dex.mod + min(@abilities.con.mod, @details.level)"
+    },
+    corpoLutadorInt: {
+      label: "Corpo de Lutador (Intelecto)",
+      formula: "10 + @abilities.int.mod + min(@abilities.con.mod, @details.level)"
+    },
+    corpoLutadorWis: {
+      label: "Corpo de Lutador (Sabedoria)",
+      formula: "10 + @abilities.wis.mod + min(@abilities.dex.mod, @details.level)"
+    },
+    corpoLutadorCha: {
+      label: "Corpo de Lutador (Presença)",
+      formula: "10 + @abilities.cha.mod + min(@abilities.dex.mod, @details.level)"
+    },
+
+    // ── DEFESA OFENSIVA ──────────────────────────────────────────────────
+    defesaOfensivaStr: {
+      label: "Defesa Ofensiva (Força)",
+      formula: "10 + @abilities.dex.mod + @abilities.str.mod"
+    },
+    defesaOfensivaDex: {
+      label: "Defesa Ofensiva (Agilidade)",
+      formula: "10 + @abilities.dex.mod + @abilities.dex.mod"
+    },
+    defesaOfensivaInt: {
+      label: "Defesa Ofensiva (Intelecto)",
+      formula: "10 + @abilities.dex.mod + @abilities.int.mod"
+    },
+    defesaOfensivaWis: {
+      label: "Defesa Ofensiva (Sabedoria)",
+      formula: "10 + @abilities.dex.mod + @abilities.wis.mod"
+    },
+    defesaOfensivaCha: {
+      label: "Defesa Ofensiva (Presença)",
+      formula: "10 + @abilities.dex.mod + @abilities.cha.mod"
+    }
+  });
+  // ────────────────────────────────────────────────────────────────────────
+
   CONFIG.ActiveEffect.documentClass = documents.ActiveEffect5e;
   CONFIG.ActiveEffect.legacyTransferral = false;
   CONFIG.Actor.collection = dataModels.collection.Actors5e;
@@ -462,17 +524,6 @@ Hooks.once("setup", function() {
 
   // Set up compendiums with custom applications & sorting
   setupModulePacks();
-
-  // ── Adicionar "Ação de Poder" como primeiro tipo de ativação do grupo Padrão ──
-  const existing = CONFIG.DND5E.activityActivationTypes;
-  CONFIG.DND5E.activityActivationTypes = {
-    powerAction: {
-      label: "DND5E.PowerAction",
-      header: "DND5E.PowerAction",
-      group: "DND5E.ACTIVATION.Category.Standard"
-    },
-    ...existing
-  };
 
   // Create CSS for currencies
   const style = document.createElement("style");

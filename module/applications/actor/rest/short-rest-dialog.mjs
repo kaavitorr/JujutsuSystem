@@ -35,14 +35,10 @@ export default class ShortRestDialog extends BaseRestDialog {
       label: game.i18n.localize("DND5E.REST.HitDice.AutoSpend.Label"),
       hint: game.i18n.localize("DND5E.REST.HitDice.AutoSpend.Hint")
     });
-  context.autoRoll = new BooleanField({
-  label: game.i18n.localize("DND5E.REST.HitDice.AutoSpend.Label"),
-  hint: game.i18n.localize("DND5E.REST.HitDice.AutoSpend.Hint")
-});
-context.autoEnergyRoll = new BooleanField({
-  label: "Auto Spend Energy Dice",
-  hint: "Gasta dados automaticamente até acabar ou a energia ficar cheia."
-});
+    context.autoEnergyRoll = new BooleanField({
+      label: "Gasto Automático de DE",
+      hint: "Gasta dados de energia automaticamente até acabar ou a energia ficar cheia."
+    });
 
     if ( this.actor.system.isNPC ) {
       const hd = this.actor.system.attributes.hd;
@@ -112,47 +108,49 @@ context.autoEnergyRoll = new BooleanField({
     const actor = this.actor;
     const ed = actor.system.energyDice;
     const formData = new foundry.applications.ux.FormDataExtended(this.form).object;
-const autoSpend = formData.autoEnergyED ?? false;
+    const autoSpend = formData.autoEnergyED ?? false;
     const quantity = Number(this.form.energyDenom?.value ?? 1);
 
     if ( ed.value <= 0 ) {
-      ui.notifications.warn("Sem Cursed Energy Dice disponíveis!");
+      ui.notifications.warn("Sem Dados de Energia disponíveis!");
       return;
     }
 
-    let totalRecovered = 0;
-    let diceSpent = 0;
     const currentEnergy = actor.system.energy.total;
     const maxEnergy = actor.system.energy.max;
+    let diceSpent = 0;
 
+    // Determina quantos dados rolar
+    let diceCount;
     if ( autoSpend ) {
-      let currentTotal = currentEnergy;
-      let remainingDice = ed.value;
-      while ( remainingDice > 0 && currentTotal < maxEnergy ) {
-        const roll = await new Roll(ed.denomination).evaluate();
-        totalRecovered += roll.total;
-        currentTotal += roll.total;
-        remainingDice--;
-        diceSpent++;
-      }
+      // Rola até encher ou acabar os dados
+      const energyNeeded = maxEnergy - currentEnergy;
+      const avgPerDie = parseInt(ed.denomination.replace("d", "")) / 2;
+      diceCount = Math.min(ed.value, Math.max(1, Math.ceil(energyNeeded / avgPerDie)));
     } else {
-      const rollsToMake = Math.min(quantity, ed.value);
-      for ( let i = 0; i < rollsToMake; i++ ) {
-        const roll = await new Roll(ed.denomination).evaluate();
-        totalRecovered += roll.total;
-        diceSpent++;
-      }
+      diceCount = Math.min(quantity, ed.value);
     }
 
-    const newTotal = Math.min(currentEnergy + totalRecovered, maxEnergy);
+    // Monta fórmula única com mod CON incluído para rolar todos os dados de uma vez
+    const conMod = actor.system.abilities?.con?.mod ?? 0;
+    const conPart = conMod >= 0 ? ` + ${conMod}` : ` - ${Math.abs(conMod)}`;
+    // Cada dado inclui mod CON: ex "d6 + 2 + d6 + 2"
+    const formula = Array(diceCount).fill(`${ed.denomination}${conPart}`).join(" + ");
+    const roll = await new Roll(formula).evaluate();
+    diceSpent = diceCount;
+
+    // Envia o roll pro chat igual ao dado de vida
+    await roll.toMessage({
+      speaker: ChatMessage.getSpeaker({ actor }),
+      flavor: `${actor.name} recupera PA de Energia Amaldiçoada (${diceSpent}× ${ed.denomination} + mod. CON)`
+    });
+
+    // Aplica a recuperação (mínimo 0 por dado)
+    const recovered = Math.min(Math.max(0, roll.total), maxEnergy - currentEnergy);
+    const newTotal = currentEnergy + recovered;
     await actor.update({
       "system.energy.total": newTotal,
       "system.energyDice.value": ed.value - diceSpent
-    });
-
-    await ChatMessage.create({
-      speaker: ChatMessage.getSpeaker({ actor }),
-      content: `Rolou ${diceSpent}x ${ed.denomination} e recuperou ${Math.min(totalRecovered, maxEnergy - currentEnergy)} PA de Energia Amaldiçoada.`
     });
 
     this.render();

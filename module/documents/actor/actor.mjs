@@ -2187,6 +2187,8 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
     // Take note of the initial hit points and number of hit dice the Actor has
     const hd0 = foundry.utils.getProperty(this, "system.attributes.hd.value");
     const hp0 = foundry.utils.getProperty(this, "system.attributes.hp.value");
+    const energy0 = foundry.utils.getProperty(this, "system.energy.total") ?? 0;
+    const energyDice0 = foundry.utils.getProperty(this, "system.energyDice.value") ?? 0;
 
     // Display a Dialog for rolling hit dice
     if ( config.dialog ) {
@@ -2212,7 +2214,10 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
     // Return the rest result
     const dhd = foundry.utils.getProperty(this, "system.attributes.hd.value") - hd0;
     const dhp = foundry.utils.getProperty(this, "system.attributes.hp.value") - hp0;
-    return this._rest(config, { clone, dhd, dhp });
+    const energyRecovered = (foundry.utils.getProperty(this, "system.energy.total") ?? 0) - energy0;
+    const energyDiceSpent = energyDice0 - (foundry.utils.getProperty(this, "system.energyDice.value") ?? 0);
+    const energyDenomination = this.system.energyDice?.denomination ?? "";
+    return this._rest(config, { clone, dhd, dhp, energyRecovered, energyDiceSpent, energyDenomination });
   }
 
   /* -------------------------------------------- */
@@ -2372,12 +2377,19 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
 
     // Create a chat message
     const pr = new Intl.PluralRules(game.i18n.lang);
+
+    // Linha extra de energia (descanso curto)
+    let energyLine = "";
+    if ( config.type === "short" && result.energyRecovered > 0 ) {
+      energyLine = ` Recuperou também <strong>${result.energyRecovered} PA</strong> de Energia Amaldiçoada (${result.energyDiceSpent}× ${result.energyDenomination}).`;
+    }
+
     let chatData = {
       content: game.i18n.format(message, {
         name: this.name,
         dice: game.i18n.format(`DND5E.HITDICE.Counted.${pr.select(dhd)}`, { number: formatNumber(dhd) }),
         health: game.i18n.format(`DND5E.HITPOINTS.Counted.${pr.select(dhp)}`, { number: formatNumber(dhp) })
-      }),
+      }) + energyLine,
       flavor: this.createRestFlavor(config, result),
       type: "rest",
       rolls: result.rolls,
@@ -2436,22 +2448,40 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
   }
 
   async autoSpendEnergyDice({ threshold=3 }={}) {
-  const ed = this.system.energyDice;
-  const energy = this.system.energy;
-  if ( !ed || !energy ) return;
-  const max = energy.max;
-  let diceRolled = 0;
-  while ( (this.system.energy.total + threshold) <= max && this.system.energyDice.value > 0 ) {
-    const roll = await new Roll(ed.denomination).evaluate();
-    const newTotal = Math.min(this.system.energy.total + roll.total, max);
-    await this.update({
-      "system.energy.total": newTotal,
-      "system.energyDice.value": this.system.energyDice.value - 1
-    });
-    diceRolled++;
+    const ed = this.system.energyDice;
+    const energy = this.system.energy;
+    if ( !ed || !energy ) return;
+    const max = energy.max;
+    const conMod = this.system.abilities?.con?.mod ?? 0;
+    let diceRolled = 0;
+    const rolls = [];
+
+    while ( (this.system.energy.total + threshold) <= max && this.system.energyDice.value > 0 ) {
+      const formula = conMod >= 0 ? `${ed.denomination} + ${conMod}` : `${ed.denomination} - ${Math.abs(conMod)}`;
+      const roll = await new Roll(formula).evaluate();
+      rolls.push(roll);
+      const recovered = Math.max(0, roll.total);
+      const newTotal = Math.min(this.system.energy.total + recovered, max);
+      await this.update({
+        "system.energy.total": newTotal,
+        "system.energyDice.value": this.system.energyDice.value - 1
+      });
+      diceRolled++;
+    }
+
+    // Exibir todos os rolls no chat
+    if ( rolls.length ) {
+      const totalRecovered = rolls.reduce((sum, r) => sum + Math.max(0, r.total), 0);
+      for ( const roll of rolls ) {
+        await roll.toMessage({
+          speaker: ChatMessage.getSpeaker({ actor: this, alias: this.name }),
+          flavor: `${this.name} recupera PA de Energia Amaldiçoada (${ed.denomination} + mod. CON)`
+        });
+      }
+    }
+
+    return diceRolled;
   }
-  return diceRolled;
-}
 
   /* -------------------------------------------- */
 
