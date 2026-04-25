@@ -2198,21 +2198,26 @@ await this._syncTrainingEffect(trainingId, rank + 1);
       hasAttack:    true,
       hasDamage:    damageParts.length > 0,
       paBonus:      baseDenomination,
-      profBonus:    actor?.system?.attributes?.prof ?? 2
+      profBonus:    actor?.system?.attributes?.prof ?? 2,
+      userId:       game.user.id
     };
 
     const content = _renderCardHTML(cardData);
 
-    await ChatMessage.create({
+    const rollMode = game.settings.get("core", "rollMode");
+    const chatData = {
       speaker:  ChatMessage.getSpeaker({ actor }),
       content,
+      rollMode,
       flags: {
         "jujutsu-system": {
           jujutsuCard: true,
           cardData
         }
       }
-    });
+    };
+    ChatMessage.applyRollMode(chatData, rollMode);
+    await ChatMessage.create(chatData);
   }
 
   // ── RENDERIZAR HTML DO CARD ──────────────────────────────────────────────────
@@ -2223,6 +2228,7 @@ await this._syncTrainingEffect(trainingId, rank + 1);
      data-actor-id="${data.actorId ?? ""}"
      data-token-id="${data.tokenId ?? ""}"
      data-activity-id="${data.activityId}"
+     data-user-id="${data.userId ?? ""}"
      data-pa-bonus="${data.paBonus}"
      data-prof-bonus="${data.profBonus}"
      data-is-spell="${data.isSpell}">
@@ -2290,13 +2296,28 @@ await this._syncTrainingEffect(trainingId, rank + 1);
     const card = root.querySelector(".jujutsu-card:not(.jj-extra-card)");
     if ( !card ) return;
 
-    card.querySelector("[data-action='jj-attack']")?.addEventListener("click", async (e) => {
+    const cardUserId = card.dataset.userId ?? "";
+    const isAuthor = cardUserId === game.user.id;
+
+    const atkBtn = card.querySelector("[data-action='jj-attack']");
+    const dmgBtn = card.querySelector("[data-action='jj-damage']");
+
+    if ( !isAuthor ) {
+      if ( atkBtn ) { atkBtn.style.display = "none"; atkBtn.disabled = true; }
+      if ( dmgBtn ) { dmgBtn.style.display = "none"; dmgBtn.disabled = true; }
+    }
+
+    atkBtn?.addEventListener("click", async (e) => {
       e.preventDefault();
+      e.stopPropagation();
+      if ( card.dataset.userId !== game.user.id ) return;
       await _handleAttackRoll(card, message);
     });
 
-    card.querySelector("[data-action='jj-damage']")?.addEventListener("click", async (e) => {
+    dmgBtn?.addEventListener("click", async (e) => {
       e.preventDefault();
+      e.stopPropagation();
+      if ( card.dataset.userId !== game.user.id ) return;
       await _handleDamageRoll(card, message);
     });
 
@@ -2410,6 +2431,10 @@ await this._syncTrainingEffect(trainingId, rank + 1);
     const dmgPanel = card.querySelector("#jj-dmg-panel");
     if ( dmgPanel ) dmgPanel.classList.add("visible");
 
+    // Desabilitar botão de acerto após rolar
+    const atkBtn = card.querySelector(".jj-attack-btn");
+    if ( atkBtn ) { atkBtn.disabled = true; atkBtn.style.opacity = "0.4"; atkBtn.style.cursor = "default"; }
+
     await _updateCardMessage(message, card.outerHTML);
   }
 
@@ -2501,8 +2526,10 @@ await this._syncTrainingEffect(trainingId, rank + 1);
       if ( totalEl ) totalEl.textContent = totalDmg;
     }
 
-    // Ocultar botão de dano
-    card.querySelector(".jj-damage-btn")?.style && (card.querySelector(".jj-damage-btn").style.display = "none");
+    // Desabilitar botão de dano após rolar
+    const dmgBtn = card.querySelector(".jj-damage-btn");
+    if ( dmgBtn ) { dmgBtn.disabled = true; dmgBtn.style.opacity = "0.4"; dmgBtn.style.cursor = "default"; }
+
     await _updateCardMessage(message, card.outerHTML);
   }
 
@@ -2645,7 +2672,7 @@ function _buildBreakdown(roll) {
   }
 
   async function _updateCardMessage(message, cardHTML) {
-    // Não atualiza a mensagem no banco — os listeners já atualizaram o DOM
+    await message.update({ content: cardHTML });
   }
 
   // ── MODIFICADOR DE DANO ──────────────────────────────────────────────────────

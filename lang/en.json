@@ -55,6 +55,7 @@
 "TYPES.Item.toolPl": "Ferramentas",
 "TYPES.Item.weapon": "Arma",
 "TYPES.Item.weaponPl": "Armas",
+"DND5E.ADVANCEMENT.ScaleValue.Type.String.Identifier": "Identificador",
 
 "TYPES.RegionBehavior": {
   "dnd5e.difficultTerrain": "Difficult Terrain",
@@ -578,6 +579,7 @@
 "DND5E.AdvancementSelectionTitle": "Selecionar Tipo de Progressão",
 "DND5E.AdvancementTitle": "Progressão",
 "DND5E.AdvantageMode": "Modo de Vantagem",
+"DND5E.Advantage": "Vantagem",
 "DND5E.Age": "Idade",
 "DND5E.Alignment": "Alinhamento",
 "DND5E.AlignmentCE": "Caótico Mau",
