@@ -20,6 +20,20 @@
   "esmodules": [
     "dnd5e.mjs"
   ],
+  "packs": [
+    {
+      "name": "tecnicas-manipulacao",
+      "label": "Técnicas de Manipulação",
+      "path": "packs/tecnicas-manipulacao",
+      "type": "Item",
+      "system": "jujutsu-system",
+      "flags": {
+        "JujutsuLegacy": {
+          "types": ["spell"]
+        }
+      }
+    }
+  ],
   "styles": [
     {
       "src": "dnd5e.css"

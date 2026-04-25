@@ -90,7 +90,7 @@ export const MANIPULATION_ABILITIES = {
     stage: "expert",
     cost: 6,
     description: "Seus ataques comuns recebem +1d4 de dano adicional.",
-    techniques: ["Ataque Explosivo", "Foco Destruidor"],
+    techniques: ["Golpe Impetuoso", "Foco Destruidor"],
     requires: { stage: "expert", abilities: ["explosaoOfensiva"] }
   },
   focoDefensivo: {
