@@ -472,10 +472,13 @@ context.skills = skillsSorted;
       this.actor.system.details.background instanceof Item5e ? {
         columns, id: "background", label: "DND5E.FeaturesBackground", order: 2000, groups: { origin: "background" }
       } : null,
-      { columns, id: "other", label: "DND5E.FeaturesOther", order: 3000, groups: { origin: "other" } },
-      { columns, id: "jj-combat",  label: "Estilo de Combate",   order: 4000, groups: { origin: "jj-combat"  }, items: [] },
-      { columns, id: "jj-basic",   label: "Habilidades Básicas", order: 5000, groups: { origin: "jj-basic"   }, items: [] },
-      { columns, id: "jj-talents", label: "Talentos",            order: 6000, groups: { origin: "jj-talents" }, items: [] }
+      { columns, id: "other", label: "DND5E.FeaturesOther",      order: 3000, groups: { origin: "other" } },
+      { columns, id: "jj-origin",  label: "Origem de Poder",     order: 4000, groups: { origin: "jj-origin"  }, items: [] },
+      { columns, id: "jj-combat",  label: "Estilo de Combate",   order: 5000, groups: { origin: "jj-combat"  }, items: [] },
+      { columns, id: "jj-path",    label: "Caminho",             order: 6000, groups: { origin: "jj-path"    }, items: [] },
+      { columns, id: "jj-basic",   label: "Habilidades Básicas", order: 7000, groups: { origin: "jj-basic"   }, items: [] },
+      { columns, id: "jj-talents", label: "Talentos",            order: 8000, groups: { origin: "jj-talents" }, items: [] },
+      { columns, id: "jj-flaws",   label: "Defeitos",            order: 9000, groups: { origin: "jj-flaws"   }, items: [] },
     ].filter(_ => _);
     sections[0].items = [...(context.itemCategories.features ?? []), ...context.subclasses];
     context.sections = Inventory.prepareSections(sections);
@@ -917,7 +920,7 @@ context.energyPct = energy?.max > 0 ? ((energy.total / energy.max) * 100).toFixe
     const group = item.parent.items.get(originId);
     // Verificar se o item tem seção customizada Jujutsu
     const jjSection = item.getFlag("jujutsu-system", "featureSection");
-    if ( jjSection && ["jj-combat", "jj-basic", "jj-talents"].includes(jjSection) ) {
+    if ( jjSection && ["jj-origin", "jj-combat", "jj-path", "jj-basic", "jj-talents", "jj-flaws"].includes(jjSection) ) {
       ctx.groups.origin = jjSection;
     } else {
       ctx.groups.origin = "other";
@@ -3819,13 +3822,13 @@ if ( !document.querySelector("#jj-expdef-style") ) {
 function _unhideFeatureSections(element) {
   const featuresTab = element.querySelector('[data-tab="features"]');
   if ( !featuresTab ) return;
-  ["jj-combat", "jj-basic", "jj-talents"].forEach(id => {
+  ["jj-origin", "jj-combat", "jj-path", "jj-basic", "jj-talents", "jj-flaws"].forEach(id => {
     const section = featuresTab.querySelector(`[data-group-origin="${id}"]`);
     if ( section ) section.removeAttribute("hidden");
   });
 }
 
-const JJ_FEATURE_SECTIONS = new Set(["jj-combat", "jj-basic", "jj-talents"]);
+const JJ_FEATURE_SECTIONS = new Set(["jj-origin", "jj-combat", "jj-path", "jj-basic", "jj-talents", "jj-flaws"]);
 
 /**
  * Configura listeners de drop nas seções customizadas de habilidades.
