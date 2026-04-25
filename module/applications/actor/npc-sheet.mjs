@@ -643,20 +643,7 @@ export default class NPCActorSheet extends BaseActorSheet {
  * ============================================================ */
 
 // Geração de PA no início do turno — dialog 2x / 3x / 4x do ND
-Hooks.on("updateCombat", async (combat, changed) => {
-  // Só dispara quando muda o turno
-  if ( !("turn" in changed) && !("round" in changed) ) return;
-  if ( !game.user.isGM ) return;
-
-  const combatant = combat.combatant;
-  if ( !combatant ) return;
-
-  const token = canvas.tokens?.get(combatant.tokenId);
-  if ( !token ) return;
-  const actor = token.actor;
-  if ( !actor || actor.type !== "npc" ) return;
-  if ( !actor.system.energy?.max ) return;
-
+async function _npcEnergyGenerationDialog(actor) {
   const nd = actor.system.details?.cr ?? 1;
 
   const multiplicador = await foundry.applications.api.DialogV2.wait({
@@ -673,20 +660,21 @@ Hooks.on("updateCombat", async (combat, changed) => {
     close: () => "skip"
   });
 
-  if ( !multiplicador || multiplicador === "skip" ) return;
+  if ( !multiplicador || multiplicador === "skip" ) return null;
+  return { nd, multiplicador };
+}
 
+async function _npcApplyEnergyGeneration(actor, nd, multiplicador) {
   const alvo        = nd * Number(multiplicador);
   const geradaAtual = actor.system.energy.generated ?? 0;
   const totalAtual  = actor.system.energy.total ?? 0;
 
-  // Só gera se o alvo for MAIOR que o atual
   if ( alvo <= geradaAtual ) {
     ui.notifications.info(`${actor.name} já tem ${geradaAtual} PA Gerada — alvo ${alvo} não é maior.`);
     return;
   }
 
-  // Quanto precisa gerar para chegar no alvo
-  const necessario   = alvo - geradaAtual;
+  const necessario    = alvo - geradaAtual;
   const transferencia = Math.min(necessario, totalAtual);
 
   if ( transferencia === 0 ) {
@@ -694,17 +682,57 @@ Hooks.on("updateCombat", async (combat, changed) => {
     return;
   }
 
-  const novoTotal   = totalAtual - transferencia;
-  const geradaFinal = geradaAtual + transferencia;
-
   await actor.update({
-    "system.energy.total":     novoTotal,
-    "system.energy.generated": geradaFinal
+    "system.energy.total":     totalAtual - transferencia,
+    "system.energy.generated": geradaAtual + transferencia
   }, { isEnergySystem: true });
 
-  // Re-renderizar o sheet do NPC se estiver aberto
   const sheet = actor.sheet;
   if ( sheet?.rendered ) sheet.render();
+}
+
+Hooks.on("updateCombat", async (combat, changed) => {
+  if ( !("turn" in changed) && !("round" in changed) ) return;
+
+  const combatant = combat.combatant;
+  if ( !combatant ) return;
+
+  const token = canvas.tokens?.get(combatant.tokenId);
+  if ( !token ) return;
+  const actor = token.actor;
+  if ( !actor || actor.type !== "npc" ) return;
+  if ( !actor.system.energy?.max ) return;
+
+  // Encontrar o dono da ficha (jogador ativo não-GM) ou fallback para GM ativo
+  const owner = game.users.find(u => !u.isGM && u.active && actor.testUserPermission(u, "OWNER"))
+    ?? game.users.find(u => u.isGM && u.active);
+
+  if ( !owner ) return;
+
+  // Se o usuário atual é o dono, mostra o dialog direto
+  if ( owner.id === game.user.id ) {
+    const result = await _npcEnergyGenerationDialog(actor);
+    if ( !result ) return;
+    if ( game.user.isGM ) {
+      await _npcApplyEnergyGeneration(actor, result.nd, result.multiplicador);
+    } else {
+      // Jogador envia as escolhas para o GM processar
+      game.socket.emit("system.jujutsu-system", {
+        action: "npcEnergyChoices",
+        actorId: actor.id,
+        nd: result.nd,
+        multiplicador: result.multiplicador
+      });
+    }
+  }
+  // GM emite socket para o dono se não for ele
+  else if ( game.user.isGM ) {
+    game.socket.emit("system.jujutsu-system", {
+      action: "npcEnergyDialog",
+      actorId: actor.id,
+      userId: owner.id
+    });
+  }
 });
 
 // Explosão Defensiva do NPC — mesmo comportamento do jogador

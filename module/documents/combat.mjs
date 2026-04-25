@@ -132,9 +132,24 @@ async _onStartTurn(combatant) {
     this._recoverUses({ turn: true, turnStart: combatant });
 
     if ( combatant.actor?.type === "character" && combatant.actor?.system.energy ) {
-      const choices = await EnergyGenerationDialog.configure(combatant.actor);
-      if ( choices ) {
-        await EnergySystem.processTurnStartWithChoices(combatant.actor, choices);
+      // Encontrar dono da ficha (jogador ativo não-GM) ou fallback GM ativo
+      const owner = game.users.find(u => !u.isGM && u.active && combatant.actor.testUserPermission(u, "OWNER"))
+        ?? game.users.find(u => u.isGM && u.active);
+
+      if ( !owner ) return;
+
+      // Se o usuário atual é o dono, mostra o dialog direto
+      if ( owner.id === game.user.id ) {
+        const choices = await EnergyGenerationDialog.configure(combatant.actor);
+        if ( choices ) await EnergySystem.processTurnStartWithChoices(combatant.actor, choices);
+      }
+      // Caso contrário, GM emite socket para o dono
+      else if ( game.user.isGM ) {
+        game.socket.emit("system.jujutsu-system", {
+          action: "energyGenerationDialog",
+          actorId: combatant.actor.id,
+          userId: owner.id
+        });
       }
     }
   }
@@ -179,3 +194,14 @@ async _onStartTurn(combatant) {
     }
   }
 }
+
+// GM processa escolhas de energia recebidas via socket do jogador
+Hooks.on("ready", () => {
+  game.socket.on("system.jujutsu-system", async (data) => {
+    if ( data.action !== "energyChoicesResult" ) return;
+    if ( !game.user.isGM ) return;
+    const actor = game.actors.get(data.actorId);
+    if ( !actor ) return;
+    await EnergySystem.processTurnStartWithChoices(actor, data.choices);
+  });
+});
