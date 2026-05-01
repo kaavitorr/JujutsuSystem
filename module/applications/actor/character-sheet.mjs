@@ -646,6 +646,12 @@ context.energyPct = energy?.max > 0 ? ((energy.total / energy.max) * 100).toFixe
     context.seisOlhos = !!seisOlhosItem;
     context.seisOlhosMode = this.actor.getFlag("jujutsu-system", "seisOlhosMode") ?? "sealed";
 
+    // Fulgor Negro
+    context.fulgorNegro    = !!this.actor.system.manipulation?.abilities?.fulgorNegro?.unlocked;
+    context.fulgorPrimaria  = this.actor.getFlag("jujutsu-system", "fulgorPrimaria")  ?? 20;
+    context.fulgorSecundaria = this.actor.getFlag("jujutsu-system", "fulgorSecundaria") ?? 15;
+    context.fulgorZona      = this.actor.getFlag("jujutsu-system", "fulgorZona") ?? false;
+
     return context;
   }
 
@@ -1027,32 +1033,22 @@ new foundry.applications.ux.ContextMenu.implementation(
   }
 
 
-    // Colapso de seções das abas Features, Spells e Inventory
-    setTimeout(() => {
-      for ( const tabName of ["features", "spells", "inventory"] ) {
-        const tab = this.element.querySelector(`[data-tab="${tabName}"]`);
-        if ( !tab ) continue;
-        tab.querySelectorAll('.items-header').forEach(header => {
-          header.style.cursor = 'pointer';
-          header.addEventListener('click', (event) => {
-            if ( event.target.closest('.item-controls') ) return;
-            const itemList = header.nextElementSibling;
-            if ( !itemList || !itemList.classList.contains('item-list') ) return;
-            const isCollapsed = header.classList.toggle('collapsed');
-            itemList.style.display = isCollapsed ? 'none' : '';
-            const indicator = header.querySelector('.accordion-indicator');
-            if ( indicator ) indicator.style.transform = isCollapsed ? 'rotate(-90deg)' : '';
-          });
-        });
-      }
-    }, 100);
-
     // Injetar seção de condições Jujutsu na aba Effects
     _injectJJConditions(this.element, this.actor);
+
+    // Injetar data-jj-ref nos li de perícias para tooltip de compendium (tipo Text)
+    _injectSkillRefs(this.element);
+    // Injetar data-jj-ref nos cards de treinamento
+    _injectTrainingRefs(this.element);
+    // Injetar kanjis e refs nos cards de habilidade de manipulação
+    _injectAbilityKanjis(this.element);
+    _injectAbilityRefs(this.element);
+    _applyJJTextTooltips(this.element);
 
     // Seções customizadas de Features (JJ)
     _setupFeatureSectionDrops(this.element, this.actor);
     _unhideFeatureSections(this.element);
+    _setupFeatureSectionCollapse(this.element);
 
     // Botão de Explosão Defensiva — listener no botão do HBS
     this.element.querySelector("[data-action='jj-expdef-trigger']")
@@ -1066,6 +1062,9 @@ new foundry.applications.ux.ContextMenu.implementation(
         await _applySeiOlhosEffects(this.actor, mode);
       }));
 
+    // Fulgor Negro — listeners dos inputs e botão de Zona
+    _setupFulgorNegro(this.element, this.actor);
+
     // Formatar inputs de Yen com pontuação (ex: 5000 → 5.000)
     const _formatYen = val => {
       const num = parseInt(String(val).replace(/\./g, "").replace(/,/g, "")) || 0;
@@ -1076,11 +1075,18 @@ new foundry.applications.ux.ContextMenu.implementation(
       input.dataset.yenFormatted = "1";
       if ( input.value ) input.value = _formatYen(input.value);
       input.addEventListener("focus", () => {
+        // Remove formatação para edição — número puro sem pontos
         input.value = String(parseInt(input.value.replace(/\./g, "").replace(/,/g, "")) || 0);
         input.select();
       });
       input.addEventListener("blur", () => {
-        input.value = _formatYen(input.value);
+        // Antes de formatar, garantir que o Foundry vai salvar o número puro
+        const raw = parseInt(input.value.replace(/\./g, "").replace(/,/g, "")) || 0;
+        input.value = raw;
+        // Disparar change para o Foundry salvar o valor numérico limpo
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+        // Depois formatar para exibição
+        setTimeout(() => { input.value = _formatYen(raw); }, 0);
       });
     });
 
@@ -1537,7 +1543,6 @@ new foundry.applications.ux.ContextMenu.implementation(
   async _prepareManipulationContext(context, options) {
     try {
       const result = prepareManipulationAbilities(this.actor);
-      console.log("JujutsuLegacy | abilities prepared:", JSON.stringify(Object.keys(result)));
       context.abilities = result;
     } catch(err) {
       console.error("JujutsuLegacy | Erro Manipulacao:", err);
@@ -1551,7 +1556,6 @@ new foundry.applications.ux.ContextMenu.implementation(
   async _prepareTrainingsContext(context, options) {
     try {
       const result = prepareTrainings(this.actor);
-      console.log("JujutsuLegacy | trainings prepared:", JSON.stringify(Object.keys(result)));
       context.trainings = result;
     } catch(err) {
       console.error("JujutsuLegacy | Erro Treinamentos:", err);
@@ -1581,66 +1585,9 @@ new foundry.applications.ux.ContextMenu.implementation(
   if ( action === "undoIntensiveTraining" ) {
     return this._onUndoIntensiveTraining(target.dataset.field);
   }
-  if ( action === "toggleSection" ) {
-  return this._onToggleSection(target.dataset.section);
-}
 
   return super._onClickAction(event, target);
 }
-
-  /* -------------------------------------------- */
-
-  /**
-   * Colapsa ou expande uma seção da aba Features, persistindo o estado no localStorage.
-   */
-  _onToggleSection(sectionId) {
-    const storageKey = `jujutsu-system.features.collapsed.${this.actor.id}`;
-    let collapsed;
-    try { collapsed = JSON.parse(localStorage.getItem(storageKey) ?? "[]"); }
-    catch { collapsed = []; }
-
-    // O wrapper .section-accordion é pai de header e content
-    const wrapper = this.element.querySelector(`.section-accordion[data-section-id="${sectionId}"]`);
-    if ( !wrapper ) return;
-
-    const isCollapsed = wrapper.classList.toggle("collapsed");
-    const accordionContent = wrapper.querySelector(".accordion-content");
-
-    if ( accordionContent ) {
-      if ( isCollapsed ) {
-        accordionContent.style.height = accordionContent.scrollHeight + "px";
-        requestAnimationFrame(() => { accordionContent.style.height = "0px"; });
-      } else {
-        accordionContent.style.height = accordionContent.scrollHeight + "px";
-        accordionContent.addEventListener("transitionend", () => { accordionContent.style.height = ""; }, { once: true });
-      }
-    }
-
-    const idx = collapsed.indexOf(sectionId);
-    if ( isCollapsed && idx === -1 ) collapsed.push(sectionId);
-    else if ( !isCollapsed && idx !== -1 ) collapsed.splice(idx, 1);
-    localStorage.setItem(storageKey, JSON.stringify(collapsed));
-  }
-
-  /* -------------------------------------------- */
-
-  /**
-   * Restaura o estado colapsado das seções da aba Features ao renderizar a ficha.
-   */
-  _restoreCollapsedSections() {
-    const storageKey = `jujutsu-system.features.collapsed.${this.actor.id}`;
-    let collapsed;
-    try { collapsed = JSON.parse(localStorage.getItem(storageKey) ?? "[]"); }
-    catch { collapsed = []; }
-
-    for ( const sectionId of collapsed ) {
-      const wrapper = this.element.querySelector(`.section-accordion[data-section-id="${sectionId}"]`);
-      if ( !wrapper ) continue;
-      wrapper.classList.add("collapsed");
-      const accordionContent = wrapper.querySelector(".accordion-content");
-      if ( accordionContent ) accordionContent.style.height = "0px";
-    }
-  }
 
   /* -------------------------------------------- */
 
@@ -2124,6 +2071,12 @@ async _syncTrainingEffect(trainingId, rank) {
         "system.curseResources.cursePoints": cursePoints - nextPtCost,
         "system.masteryPoints": (this.actor.system.masteryPoints ?? 0) + nextPtCost
       });
+
+      // Pop-up Black Flash ao atingir rank máximo via avanço instantâneo
+      if ( (rank + 1) >= (def.maxRank ?? 3) ) {
+        _showBlackFlashPopup("systems/jujutsu-system/assets/satoru.gif", 2500);
+      }
+
       ChatMessage.create({
   speaker: ChatMessage.getSpeaker({ actor: this.actor }),
   content: `⚡ <strong>${this.actor.name}</strong> usou Avanço Instantâneo em <strong>${def.label}</strong>! (★${"★".repeat(rank + 1)})`
@@ -2163,18 +2116,24 @@ async _syncTrainingEffect(trainingId, rank) {
 
     if ( roll.total >= currentDC ) {
       // Sucesso
-      // Sucesso
-const newDC = currentDC + (def.dcIncrement ?? 5);
-await this.actor.update({
-  [`system.trainings.${trainingId}.rank`]: rank + 1,
-  [`system.trainings.${trainingId}.currentDC`]: newDC,
-  "system.masteryPoints": (this.actor.system.masteryPoints ?? 0) + nextPtCost,
-  "system.curseResources.cursePoints": (this.actor.system.curseResources?.cursePoints ?? 0) + 1
-});
-await this._syncTrainingEffect(trainingId, rank + 1); 
+      const newRank = rank + 1;
+      const newDC = currentDC + (def.dcIncrement ?? 5);
+      await this.actor.update({
+        [`system.trainings.${trainingId}.rank`]: newRank,
+        [`system.trainings.${trainingId}.currentDC`]: newDC,
+        "system.masteryPoints": (this.actor.system.masteryPoints ?? 0) + nextPtCost,
+        "system.curseResources.cursePoints": (this.actor.system.curseResources?.cursePoints ?? 0) + 1
+      });
+      await this._syncTrainingEffect(trainingId, newRank);
+
+      // Pop-up ao atingir rank máximo
+      if ( newRank >= (def.maxRank ?? 3) ) {
+        _showBlackFlashPopup("systems/jujutsu-system/assets/satoru.gif", 2500);
+      }
+
       ChatMessage.create({
   speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-  content: `✅ <strong>${this.actor.name}</strong> treinou <strong>${def.label}</strong> com sucesso! (★${"★".repeat(rank + 1)}) +1 Ponto de Maldição.`
+  content: `✅ <strong>${this.actor.name}</strong> treinou <strong>${def.label}</strong> com sucesso! (★${"★".repeat(newRank)}) +1 Ponto de Maldição.`
 });
     } else {
       // Falha: CD reduz em -1, registra PT perdidos
@@ -2491,6 +2450,14 @@ await this._syncTrainingEffect(trainingId, rank + 1);
     const isNat20 = roll.dice[0]?.results[0]?.result === 20;
     const isNat1  = roll.dice[0]?.results[0]?.result === 1;
 
+    // Pegar o resultado do dado ativo — com vantagem/desvantagem pode haver 2 dados,
+    // o ativo é o que NÃO está descartado. Com rolagem normal há só 1 dado.
+    const d20Results = roll.dice[0]?.results ?? [];
+    const d20Ativo = (d20Results.find(r => !r.discarded) ?? d20Results[0])?.result;
+
+    // ── FULGOR NEGRO ─────────────────────────────────────────────────────────────
+    const isFulgor = await _checkFulgorNegro(actor, d20Ativo);
+
     // Renderizar no painel de acerto (Layout B)
     const atkPanel = card.querySelector("#jj-atk-panel");
     const atkVal   = card.querySelector("#jj-atk-val");
@@ -2499,7 +2466,8 @@ await this._syncTrainingEffect(trainingId, rank + 1);
     if ( atkPanel ) {
       atkPanel.classList.add("visible");
       atkVal.textContent = roll.total;
-      atkVal.className = "jj-panel-val" + (isNat20 ? " nat20" : isNat1 ? " nat1" : "");
+      // Fulgor ativa o visual nat20 (vermelho) mesmo sem ser 20 natural
+      atkVal.className = "jj-panel-val" + (isNat20 || isFulgor ? " nat20" : isNat1 ? " nat1" : "");
       const modeLabel = rollMode === "advantage" ? '<span class="jj-pa-badge" style="color:#50a050;border-color:#306030">Vantagem</span>' 
                       : rollMode === "disadvantage" ? '<span class="jj-pa-badge" style="color:#a05050;border-color:#603030">Desvantagem</span>'
                       : "";
@@ -2803,10 +2771,10 @@ function _buildBreakdown(roll) {
       let restante = amount;
 
       // 0. Verificar Explosão Defensiva pendente
-const expDefFlag = actor.getFlag("jujutsu-system", "explosaoDefensivaPendente") ?? null;
-const expDefPendente = expDefFlag?.reducao ?? 0;
-if ( expDefPendente > 0 ) {
-  const reducao = Math.min(expDefPendente, restante);
+      const expDefFlag = actor.getFlag("jujutsu-system", "explosaoDefensivaPendente") ?? null;
+      const expDefPendente = expDefFlag?.reducao ?? 0;
+      if ( expDefPendente > 0 ) {
+        const reducao = Math.min(expDefPendente, restante);
         restante = Math.max(0, restante - reducao);
         await actor.unsetFlag("jujutsu-system", "explosaoDefensivaPendente");
         ChatMessage.create({
@@ -2842,7 +2810,6 @@ if ( expDefPendente > 0 ) {
     }
   }
 
-  console.log("JujutsuLegacy | Chat card customizado registrado ✓");
 })();
 
 /* ============================================================
@@ -3297,7 +3264,6 @@ if ( expDefPendente > 0 ) {
     if ( btn ) { btn.textContent = `✓ ${amount} aplicado`; btn.disabled = true; btn.style.opacity = "0.6"; }
   }
 
-  console.log("JujutsuLegacy | Cards extras registrados ✓");
 })();
 
 (function _registerCursedEnergyConsumption() {
@@ -3343,40 +3309,374 @@ if ( expDefPendente > 0 ) {
  * ============================================================ */
 
 const JJ_CONDITIONS = [
-  { id: "jj-agarrado",        label: "Agarrado",         icon: "fas fa-hand-grab",         desc: "Deslocamento 0. Encerra se quem agarrou ficar incapacitado ou soltar." },
-  { id: "jj-alucinado",       label: "Alucinado",        icon: "fas fa-brain",             desc: "Ataca qualquer criatura próxima indiscriminadamente. ND −2." },
-  { id: "jj-amedrontado",     label: "Amedrontado",      icon: "fas fa-person-running",    desc: "Desvantagem em testes e ataques enquanto fonte do medo estiver visível." },
-  { id: "jj-apaixonado",      label: "Apaixonado",       icon: "fas fa-heart",             desc: "Não pode atacar quem a apaixonou. Quem apaixonou tem vantagem em testes sociais." },
-  { id: "jj-atordoado",       label: "Atordoado",        icon: "fas fa-stars",             desc: "Incapacitado, imóvel, fala hesitante. Falha em For/Agi. Ataques contra têm vantagem." },
-  { id: "jj-bebado",          label: "Bêbado",           icon: "fas fa-beer-mug-empty",    desc: "Desvantagem em Salv. e testes de Agilidade. Encerra com Salv. CON ou situação adequada." },
-  { id: "jj-caido",           label: "Caído",            icon: "fas fa-person-falling",    desc: "Só pode rastejar. Desvantagem em ataques. Ataques a 1,5m têm vantagem." },
-  { id: "jj-cego",            label: "Cego",             icon: "fas fa-eye-slash",         desc: "Falha em testes que requeiram visão. Ataques contra têm vantagem; seus ataques têm desvantagem." },
-  { id: "jj-congelado",       label: "Congelado",        icon: "fas fa-snowflake",         desc: "Incapacitado, imóvel. Resistência a todos os danos. Imune a veneno e doenças." },
-  { id: "jj-desidratado",     label: "Desidratado",      icon: "fas fa-droplet-slash",     desc: "Deslocamento ÷2. 1 nível de exaustão por hora. Só ação OU ação bônus por turno." },
-  { id: "jj-empoderado",      label: "Empoderado",       icon: "fas fa-fist-raised",       desc: "Dano corpo-a-corpo → 1d12. PA de técnicas mal-sucedidas não descontados." },
-  { id: "jj-enfeiticado",     label: "Enfeitiçado",      icon: "fas fa-wand-sparkles",     desc: "Não pode atacar quem a enfeitiçou. Quem enfeitiçou tem vantagem em testes sociais." },
-  { id: "jj-enfurecido",      label: "Enfurecido",       icon: "fas fa-fire-flame-curved", desc: "Ataca fonte da fúria com desvantagem. Dano corpo-a-corpo +1d4. Dura 1 minuto." },
-  { id: "jj-energia-esgotada",label: "Energia Esgotada", icon: "fas fa-battery-empty",     desc: "Não pode usar nenhuma habilidade ou técnica. Também está Letárgica." },
-  { id: "jj-estremecido",     label: "Estremecido",      icon: "fas fa-person-trembling",  desc: "Desvantagem em ataques. Não pode usar técnicas com concentração. Deslocamento custa 2×." },
-  { id: "jj-exausto",         label: "Exausto",          icon: "fas fa-tired",             desc: "−2 em rolagens d20. −1,5m de deslocamento. Acumulável até 3× por técnicas." },
-  { id: "jj-envenenado",      label: "Envenenado",       icon: "fas fa-skull-crossbones",  desc: "Desvantagem em ataques e testes. Após 1 dia, Salv. CON CD 15 para encerrar." },
-  { id: "jj-hipotermico",     label: "Hipotérmico",      icon: "fas fa-temperature-low",   desc: "Desvantagem em Salv. Agi, testes e ataques. Encerra com Medicina CD 10 ou Sobrev. CD 17." },
-  { id: "jj-impedido",        label: "Impedido",         icon: "fas fa-ban",               desc: "Deslocamento 0. Ataques contra têm vantagem; seus ataques têm desvantagem." },
-  { id: "jj-incapacitado",    label: "Incapacitado",     icon: "fas fa-circle-xmark",      desc: "Não pode realizar ações ou reações." },
-  { id: "jj-inconsciente",    label: "Inconsciente",     icon: "fas fa-moon",              desc: "Incapacitado, imóvel, sem ciência. Falha For/Agi. Ataques têm vantagem. Crit a 1,5m." },
-  { id: "jj-invisivel",       label: "Invisível",        icon: "fas fa-ghost",             desc: "Impossível de ver sem técnicas especiais. Seus ataques têm vantagem; ataques contra têm desvantagem." },
-  { id: "jj-letargico",       label: "Letárgico",        icon: "fas fa-person-walking",    desc: "Deslocamento ÷2. Dano de ataques ÷2 (exceto armas de fogo)." },
-  { id: "jj-mudo",            label: "Mudo",             icon: "fas fa-volume-xmark",      desc: "Falha em testes que requeiram fala. Não emite sons pela boca." },
-  { id: "jj-paralisado",      label: "Paralisado",       icon: "fas fa-person-rays",       desc: "Incapacitado, imóvel. Sem ações bônus. Falha For/Agi. Ataques têm vantagem. Crit a 1,5m." },
-  { id: "jj-pesado",          label: "Pesado",           icon: "fas fa-weight-hanging",    desc: "Deslocamento ÷2. Desvantagem em ataques corpo-a-corpo." },
-  { id: "jj-petrificado",     label: "Petrificado",      icon: "fas fa-monument",          desc: "Incapacitado, imóvel, peso ×10. Resistência a todos os danos. Imune a veneno/doenças." },
-  { id: "jj-queimado",        label: "Queimado",         icon: "fas fa-fire",              desc: "1d6 Fogo irredutível na primeira ação/movimento por turno. Sem técnicas com concentração." },
-  { id: "jj-queimadura",      label: "Queimadura",       icon: "fas fa-fire-flame-simple", desc: "Desvantagem em Testes de Concentração. Encerra com Medicina CD 13 ou Sobrev. CD 17." },
-  { id: "jj-sangramento",     label: "Sangramento",      icon: "fas fa-droplet",           desc: "1d6 Cortante irredutível na primeira ação/movimento. Acumulável 3×. Encerra com Medicina CD 12." },
-  { id: "jj-sonolento",       label: "Sonolento",        icon: "fas fa-bed",               desc: "Sem ações bônus ou reações. Desv. Salv. Agi e Sab. Máx. 1 ataque corpo-a-corpo por turno." },
-  { id: "jj-sufocado",        label: "Sufocado",         icon: "fas fa-lungs-virus",       desc: "Desv. Salv. Agi. Após turnos (1+mod.CON), Teste CON CD 10 ou desmaia. CD +2 por turno." },
-  { id: "jj-surdo",           label: "Surdo",            icon: "fas fa-ear-deaf",          desc: "Falha em testes que requeiram audição." }
+  { id: "jj-agarrado",        label: "Agarrado",         icon: "fas fa-hand-grab",         desc: "Deslocamento 0. Encerra se quem agarrou ficar incapacitado ou soltar.",                                              reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.mlfBihj1WTMnp8tt" },
+  { id: "jj-alucinado",       label: "Alucinado",        icon: "fas fa-brain",             desc: "Ataca qualquer criatura próxima indiscriminadamente. ND −2.",                                                        reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.g0jKKMfi2ShUJ3lm" },
+  { id: "jj-amedrontado",     label: "Amedrontado",      icon: "fas fa-person-running",    desc: "Desvantagem em testes e ataques enquanto fonte do medo estiver visível.",                                           reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.8AbcrNaNNfIbQs4G" },
+  { id: "jj-apaixonado",      label: "Apaixonado",       icon: "fas fa-heart",             desc: "Não pode atacar quem a apaixonou. Quem apaixonou tem vantagem em testes sociais.",                                  reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.vImaFZEzGlr0WdJm" },
+  { id: "jj-atordoado",       label: "Atordoado",        icon: "fas fa-stars",             desc: "Incapacitado, imóvel, fala hesitante. Falha em For/Agi. Ataques contra têm vantagem.",                             reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.bR1Lz7cbCZST2Auk" },
+  { id: "jj-bebado",          label: "Bêbado",           icon: "fas fa-beer-mug-empty",    desc: "Desvantagem em Salv. e testes de Agilidade. Encerra com Salv. CON ou situação adequada.",                         reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.wceHJV6dZP4KzaAW" },
+  { id: "jj-caido",           label: "Caído",            icon: "fas fa-person-falling",    desc: "Só pode rastejar. Desvantagem em ataques. Ataques a 1,5m têm vantagem.",                                          reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.SjtAEH0zyJb5VRfv" },
+  { id: "jj-cego",            label: "Cego",             icon: "fas fa-eye-slash",         desc: "Falha em testes que requeiram visão. Ataques contra têm vantagem; seus ataques têm desvantagem.",                  reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.P1ziScgbUVuhsVPz" },
+  { id: "jj-congelado",       label: "Congelado",        icon: "fas fa-snowflake",         desc: "Incapacitado, imóvel. Resistência a todos os danos. Imune a veneno e doenças.",                                    reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.a6IWy4W4n2D8Z8Ze" },
+  { id: "jj-desidratado",     label: "Desidratado",      icon: "fas fa-droplet-slash",     desc: "Deslocamento ÷2. 1 nível de exaustão por hora. Só ação OU ação bônus por turno.",                                 reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.TJU7w36NnMHjnxfD" },
+  { id: "jj-empoderado",      label: "Empoderado",       icon: "fas fa-fist-raised",       desc: "Dano corpo-a-corpo → 1d12. PA de técnicas mal-sucedidas não descontados.",                                         reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.AFNLlT5TrbqmkfbV" },
+  { id: "jj-enfeiticado",     label: "Enfeitiçado",      icon: "fas fa-wand-sparkles",     desc: "Não pode atacar quem a enfeitiçou. Quem enfeitiçou tem vantagem em testes sociais.",                               reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.24HWsBJxkRfUj0It" },
+  { id: "jj-enfurecido",      label: "Enfurecido",       icon: "fas fa-fire-flame-curved", desc: "Ataca fonte da fúria com desvantagem. Dano corpo-a-corpo +1d4. Dura 1 minuto.",                                   reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.IUGCnR8QkoGA6ctr" },
+  { id: "jj-energia-esgotada",label: "Energia Esgotada", icon: "fas fa-battery-empty",     desc: "Não pode usar nenhuma habilidade ou técnica. Também está Letárgica.",                                              reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.S9EiUtSjRVrJqAK8" },
+  { id: "jj-estremecido",     label: "Estremecido",      icon: "fas fa-person-trembling",  desc: "Desvantagem em ataques. Não pode usar técnicas com concentração. Deslocamento custa 2×.",                          reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.sSPiyuksW97O34QI" },
+  { id: "jj-exausto",         label: "Exausto",          icon: "fas fa-tired",             desc: "−2 em rolagens d20. −1,5m de deslocamento. Acumulável até 3× por técnicas.",                                      reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.jUQ0Ojn7NsJcygkg" },
+  { id: "jj-envenenado",      label: "Envenenado",       icon: "fas fa-skull-crossbones",  desc: "Desvantagem em ataques e testes. Após 1 dia, Salv. CON CD 15 para encerrar.",                                     reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.64NP2kxSF8mfti6U" },
+  { id: "jj-hipotermico",     label: "Hipotérmico",      icon: "fas fa-temperature-low",   desc: "Desvantagem em Salv. Agi, testes e ataques. Encerra com Medicina CD 10 ou Sobrev. CD 17.",                        reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.m27RYswlWudR9DFt" },
+  { id: "jj-impedido",        label: "Impedido",         icon: "fas fa-ban",               desc: "Deslocamento 0. Ataques contra têm vantagem; seus ataques têm desvantagem.",                                       reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.TY0bMiK70ov78CLz" },
+  { id: "jj-incapacitado",    label: "Incapacitado",     icon: "fas fa-circle-xmark",      desc: "Não pode realizar ações ou reações.",                                                                               reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.fiVKmMfElwun0dCb" },
+  { id: "jj-inconsciente",    label: "Inconsciente",     icon: "fas fa-moon",              desc: "Incapacitado, imóvel, sem ciência. Falha For/Agi. Ataques têm vantagem. Crit a 1,5m.",                            reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.k2u92af7x9UErMYA" },
+  { id: "jj-invisivel",       label: "Invisível",        icon: "fas fa-ghost",             desc: "Impossível de ver sem técnicas especiais. Seus ataques têm vantagem; ataques contra têm desvantagem.",             reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.X9PdPvCaP6CZH6ez" },
+  { id: "jj-letargico",       label: "Letárgico",        icon: "fas fa-person-walking",    desc: "Deslocamento ÷2. Dano de ataques ÷2 (exceto armas de fogo).",                                                     reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.j0tOdlX3KHl6WS8S" },
+  { id: "jj-mudo",            label: "Mudo",             icon: "fas fa-volume-xmark",      desc: "Falha em testes que requeiram fala. Não emite sons pela boca.",                                                    reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.vVo8o6aHW1JzkFz3" },
+  { id: "jj-paralisado",      label: "Paralisado",       icon: "fas fa-person-rays",       desc: "Incapacitado, imóvel. Sem ações bônus. Falha For/Agi. Ataques têm vantagem. Crit a 1,5m.",                        reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.4fMgcIkU1a0dZ2lt" },
+  { id: "jj-pesado",          label: "Pesado",           icon: "fas fa-weight-hanging",    desc: "Deslocamento ÷2. Desvantagem em ataques corpo-a-corpo.",                                                           reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.CJYCKRZPwzMmZbK1" },
+  { id: "jj-petrificado",     label: "Petrificado",      icon: "fas fa-monument",          desc: "Incapacitado, imóvel, peso ×10. Resistência a todos os danos. Imune a veneno/doenças.",                           reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.IvoYeweAcCAK4FOp" },
+  { id: "jj-queimado",        label: "Queimado",         icon: "fas fa-fire",              desc: "1d6 Fogo irredutível na primeira ação/movimento por turno. Sem técnicas com concentração.",                        reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.zsCYJFxtE28qaQim" },
+  { id: "jj-queimadura",      label: "Queimadura",       icon: "fas fa-fire-flame-simple", desc: "Desvantagem em Testes de Concentração. Encerra com Medicina CD 13 ou Sobrev. CD 17.",                             reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.yPXw8c6JzyUX6Fik" },
+  { id: "jj-sangramento",     label: "Sangramento",      icon: "fas fa-droplet",           desc: "1d6 Cortante irredutível na primeira ação/movimento. Acumulável 3×. Encerra com Medicina CD 12.",                 reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.imw5GzpBqNMPuBIN" },
+  { id: "jj-sonolento",       label: "Sonolento",        icon: "fas fa-bed",               desc: "Sem ações bônus ou reações. Desv. Salv. Agi e Sab. Máx. 1 ataque corpo-a-corpo por turno.",                      reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.rpsUvEOS6Veec4GO" },
+  { id: "jj-sufocado",        label: "Sufocado",         icon: "fas fa-lungs-virus",       desc: "Desv. Salv. Agi. Após turnos (1+mod.CON), Teste CON CD 10 ou desmaia. CD +2 por turno.",                         reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.7xTHnHgiQvrBUde7" },
+  { id: "jj-surdo",           label: "Surdo",            icon: "fas fa-ear-deaf",          desc: "Falha em testes que requeiram audição.",                                                                            reference: "Compendium.jujutsu-system.conteudo.JournalEntry.ZI4IYTRv7YQVnMpf.JournalEntryPage.V1qYSFa9hf5Max5Z" }
 ];
+
+/**
+ * Exibe o gif Black Flash em overlay fullscreen por ~3 segundos ao atingir perfeição.
+ */
+function _showBlackFlashPopup(src = "systems/jujutsu-system/assets/black-flash.gif", duration = 7000) {
+  const secs = (duration / 1000).toFixed(1) + "s";
+  const overlay = document.createElement("div");
+  overlay.style.cssText = `
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0);
+    pointer-events: none;
+    animation: jj-bf-overlay ${secs} ease-out forwards;
+  `;
+
+  const img = document.createElement("img");
+  img.src = src;
+  img.style.cssText = `
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    animation: jj-bf-img ${secs} ease-out forwards;
+  `;
+
+  // Injetar keyframes se ainda não existem
+  if ( !document.getElementById("jj-bf-keyframes") ) {
+    const style = document.createElement("style");
+    style.id = "jj-bf-keyframes";
+    style.textContent = `
+      @keyframes jj-bf-overlay {
+        0%   { background: rgba(0,0,0,0); }
+        10%  { background: rgba(0,0,0,0.85); }
+        75%  { background: rgba(0,0,0,0.85); }
+        100% { background: rgba(0,0,0,0); }
+      }
+      @keyframes jj-bf-img {
+        0%   { opacity: 0; transform: scale(0.8); }
+        10%  { opacity: 1; transform: scale(1); }
+        75%  { opacity: 1; transform: scale(1); }
+        100% { opacity: 0; transform: scale(1.05); }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  overlay.appendChild(img);
+  document.body.appendChild(overlay);
+
+  // Tocar áudio do Black Flash (apenas quando for o gif padrão)
+  if ( src.includes("black-flash") ) {
+    const audio = new Audio("systems/jujutsu-system/assets/itadori-black.ogg");
+    audio.volume = 0.7;
+    audio.play().catch(() => {});
+  }
+
+  setTimeout(() => overlay.remove(), duration);
+}
+
+/**
+ * Injeta data-jj-ref nos cards de habilidade de manipulação para tooltip via fromUuid.
+ * @param {HTMLElement} root
+ */
+function _injectAbilityRefs(root) {
+  const JJ_ABILITY_REFERENCES = {
+    "defesaEnergia":       "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.XBIoo4Xvi3i15IRh",
+    "fulgorNegro":         "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.VQsD5uqmj05cF69D",
+    "explosaoOfensiva":    "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.lsZAEHuvcDNXDNW1",
+    "explosaoDefensiva":   "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.qnmlbd0KIkiHcjXA",
+    "despertarHabilidade": "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.jJyINc1pObzIzdIx",
+    "ultimoRecurso":       "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.uOJ9E6DqsTkRPbYL",
+    "sentirMaldicao":      "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.ygkT8BcKxrb6W1iB",
+    "envolver":            "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.KFRBt9Qs9pux4FJR",
+    "focoAgressivo":       "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.7NlxD1VceHNVLqu0",
+    "focoDefensivo":       "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.5q2sTRGdGk3w8erf",
+    "analiceSuperior":     "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.YFrNnBf3wn7Xtu9F",
+    "fluxoPerfeito":       "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.k0E29NXdCk7SgDgl",
+    "fluxoConstante":      "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.QDjwDQaCvoIX8DQM",
+    "energiaReversa":      "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.6XSRr50Ar7Ma3xsi",
+    "reversaoFeitico":     "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.NzUjuPxfWz3j5r8m",
+    "energiaFlexivel":     "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.yC0xdO30Ly91jZHV",
+    "negacaoEnergia":      "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.GAMRCaZxKgGDK5Zq",
+    "muralhaEnergia":      "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.jX9LwCNSVMGWUYWH",
+    "focoExtremo":         "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.YJPOuVrZW9hp2pF5",
+    "ofensivaExtrema":     "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.9SbAGwJaZMc4UTab",
+    "reversaoSubita":      "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.gRJeXaWBvPWczeIH",
+    "cortina":             "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.ncnvUldh62tP1YbV",
+    "barreiraVazia":       "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.fCF7kqCBCyRfexEt",
+    "barreiraPura":        "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.XpybOwu136RN4jEe",
+    "barreiraBon":         "Compendium.jujutsu-system.conteudo.JournalEntry.NTLmGaxbRETZzwYX.JournalEntryPage.wGkR1gGcPwKE6D5W"
+  };
+  root.querySelectorAll(".ability-card[data-ability-id]").forEach(el => {
+    const id = el.dataset.abilityId;
+    if ( !id || el.dataset.jjRef ) return;
+    const uuid = JJ_ABILITY_REFERENCES[id];
+    if ( uuid ) el.dataset.jjRef = uuid;
+  });
+}
+
+/**
+ * Collapse/expand em todas as barras de seção de features, inventory e spells.
+ * @param {HTMLElement} element
+ */
+function _setupFeatureSectionCollapse(element) {
+  ["features", "inventory", "spells"].forEach(tabId => {
+    const tab = element.querySelector(`[data-tab="${tabId}"]`);
+    if ( !tab ) return;
+    tab.querySelectorAll(".items-section > header, .items-section > .items-header").forEach(header => {
+      if ( header.dataset.jjCollapseBound ) return;
+      header.dataset.jjCollapseBound = "1";
+      header.style.cursor = "pointer";
+      header.style.userSelect = "none";
+      if ( !header.querySelector(".jj-collapse-icon") ) {
+        const icon = document.createElement("i");
+        icon.className = "fas fa-chevron-down jj-collapse-icon";
+        icon.style.cssText = "margin-left: auto; font-size: 10px; opacity: 0.4; transition: transform 200ms ease; flex-shrink: 0;";
+        header.appendChild(icon);
+      }
+      header.addEventListener("click", e => {
+        if ( e.target.closest("button, a, input, [data-action]") ) return;
+        const section = header.closest(".items-section");
+        if ( !section ) return;
+        const isCollapsed = section.classList.toggle("jj-collapsed");
+        const icon = header.querySelector(".jj-collapse-icon");
+        section.querySelectorAll(":scope > *:not(header):not(.items-header)").forEach(el => {
+          el.style.display = isCollapsed ? "none" : "";
+        });
+        if ( icon ) icon.style.transform = isCollapsed ? "rotate(-90deg)" : "";
+      });
+    });
+  });
+}
+
+/**
+ * Injeta kanjis decorativos nos cards de habilidade de manipulação.
+ * @param {HTMLElement} root
+ */
+function _injectAbilityKanjis(root) {
+  const JJ_ABILITY_KANJI = {
+    "defesaEnergia":        "護",
+    "fulgorNegro":          "黒",
+    "explosaoOfensiva":     "爆",
+    "explosaoDefensiva":    "盾",
+    "despertarHabilidade":  "覚",
+    "ultimoRecurso":        "禁",
+    "sentirMaldicao":       "感",
+    "envolver":             "包",
+    "focoAgressivo":        "攻",
+    "focoDefensivo":        "守",
+    "amplificarEnergia":    "増",
+    "absorverEnergia":      "吸",
+    "liberarEnergia":       "解",
+    "controlarFluxo":       "流",
+    "escudoCursed":         "壁",
+    "explosaoMaxima":       "最",
+    "dominioBarreira":      "域",
+    "barreiraPura":         "純",
+    "inversaoBarreira":     "逆",
+    "expulsao":             "放",
+    "selagem":              "封",
+    "destruicao":           "壊",
+    "cura":                 "癒",
+    "potencializar":        "強",
+    "manifestar":           "現"
+  };
+
+  root.querySelectorAll(".ability-card[data-ability-id]").forEach(el => {
+    const id = el.dataset.abilityId;
+    if ( !id ) return;
+    const kanjiEl = el.querySelector(".ability-kanji");
+    if ( kanjiEl && !kanjiEl.textContent.trim() ) {
+      kanjiEl.textContent = JJ_ABILITY_KANJI[id] ?? "術";
+    }
+  });
+}
+
+/**
+ * Injeta data-jj-ref nos elementos de perícia renderizados pelo HBS,
+ * identificados por [data-key], para que _applyJJTextTooltips os processe.
+ * @param {HTMLElement} root
+ */
+function _injectSkillRefs(root) {
+  const JJ_SKILL_REFERENCES = {
+    ath:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.E0HyftT4a8L8izrn",
+    acr:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.TBVH56FoQArmMSBs",
+    ste:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.rOZ9n5PYFuEbF08g",
+    arc:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.JdqcNM9InigMmbKK",
+    slt:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.Fe5nQhWyR8vmTdLC",
+    Cont: "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.tWMttxGVytG2EL1R",
+    his:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.MjR2QOJE5LPKiN0F",
+    inv:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.wLE08CcH5Zj8l1eS",
+    med:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.xLVLvUH9S8hfD1rY",
+    rel:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.x9lTMRKUfHR7g9qN",
+    luc:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.mcIlW9Xizd3l3rtD",
+    ani:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.04XZdF0Ntc60wj12",
+    nat:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.h9MaeejQSTgBF3BM",
+    sur:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.ZKJhD4I3Pc75BNzF",
+    ins:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.dJF7x8aruBfT84cz",
+    prc:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.elJZJXFWk7t0nf31",
+    Sobr: "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.04XZdF0Ntc60wj12",
+    Sort: "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.mcIlW9Xizd3l3rtD",
+    prf:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.cHdibPaupb34dyk4",
+    dec:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.6eg3JWjY8xs6DMC6",
+    itm:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.70xBRlUnlGDapKy6",
+    per:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.vmdCFLdaRG729Yg9",
+    Prov: "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.xLVLvUH9S8hfD1rY"
+  };
+  // O li[data-key] do template .skill-prof já tem data-reference-tooltip com o UUID
+  // do dnd5e base. O _applyTooltips do sistema converte isso em data-tooltip com spinner.
+  // Precisamos injetar data-jj-ref com o UUID correto E limpar o data-tooltip já colocado.
+  root.querySelectorAll("li[data-key]").forEach(el => {
+    const key = el.dataset.key;
+    if ( !key || !(key in JJ_SKILL_REFERENCES) ) return;
+    el.dataset.jjRef = JJ_SKILL_REFERENCES[key];
+    // Remove o tooltip do sistema base para o nosso mouseenter funcionar
+    delete el.dataset.tooltip;
+  });
+}
+
+/**
+ * Injeta data-jj-ref nos cards de treinamento (.training-card[data-training-id])
+ * para que _applyJJTextTooltips busque o conteúdo via fromUuid (tipo Text).
+ * @param {HTMLElement} root
+ */
+function _injectTrainingRefs(root) {
+  const JJ_TRAINING_REFERENCES = {
+    "protecaoEnergia":         "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.D784UnTjqTaJZOEh",
+    "impactoEcoante":          "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.a6Ou5E3jxIMYsZPt",
+    "robusto":                 "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.s0Rq2BmzMI1Pbw2L",
+    "agilidadeAvancada":       "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.AqvfUbRRQzpVlHz1",
+    "energiaAdaptavel":        "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.GMsFUhiFKbSnPsGJ",
+    "energiaBruta":            "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.Z5mDHhz0sVRHsA3B",
+    "golpePenetrante":         "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.3vPFbFcuDdpSvwKT",
+    "periciaNodavel":          "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.miXywfeqLSk6hzI6",
+    "resistenciaAprimorada":   "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.11yZVOrfieCSv8YC",
+    "ritmoCombate":            "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.TYMYMOCH2iZhs9NL",
+    "reversaoDominada":        "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.VLP7DaQoUH5Gfpu3",
+    "fulgorCerteiro":          "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.gA882swrqxLwqj1N",
+    "reversaoDupla":           "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.IT0QweKyExQmAJGc",
+    "reversaoOfensiva":        "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.H7CY8R4LSHeE9D3a",
+    "falhaCritica":            "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.LzT1Zya0el1kuKRp",
+    "dominioIncompleto":       "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.9GZp3e1EQqsKA3ah",
+    "dominioSimples":          "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.lcaWf7WK3I9lCm8q",
+    "cestaOcaDeVime":          "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.oXF8McpPaneyvSxT",
+    "emocaoDaFlorCaida":       "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.2IhjDc0fKUOtdubM",
+    "amplificacaoDominio":     "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.EhzWEVQsCbJWY9wB",
+    "dominioSimplesEstendido": "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.9KQ2h5wAyBFZ1KrE",
+    "expansaoModificada":      "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.fqj9BD86pCg8p3BF",
+    "expansaoFortalecida":     "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.lfnLaby2SreAjXH1",
+    "estiloVersatil":          "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.X5n7DAeosB1zcNqn",
+    "laminaVeloz":             "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.qyauAqqJfHUC9jud"
+  };
+
+  const JJ_TRAINING_KANJI = {
+    "protecaoEnergia": "護",
+    "impactoEcoante": "響",
+    "robusto": "剛",
+    "agilidadeAvancada": "速",
+    "energiaAdaptavel": "変",
+    "energiaBruta": "力",
+    "golpePenetrante": "貫",
+    "periciaNodavel": "技",
+    "resistenciaAprimorada": "耐",
+    "ritmoCombate": "律",
+    "reversaoDominada": "逆",
+    "fulgorCerteiro": "閃",
+    "reversaoDupla": "双",
+    "reversaoOfensiva": "攻",
+    "falhaCritica": "術",
+    "dominioIncompleto": "域",
+    "dominioSimples": "簡",
+    "cestaOcaDeVime": "籠",
+    "emocaoDaFlorCaida": "花",
+    "amplificacaoDominio": "拡",
+    "dominioSimplesEstendido": "延",
+    "expansaoModificada": "改",
+    "expansaoFortalecida": "強",
+    "estiloVersatil": "型",
+    "laminaVeloz": "刃"
+  };
+
+  root.querySelectorAll(".training-card[data-training-id]").forEach(el => {
+    const id = el.dataset.trainingId;
+    if ( !id ) return;
+
+    // Injetar UUID para tooltip
+    if ( !el.dataset.jjRef ) {
+      const uuid = JJ_TRAINING_REFERENCES[id];
+      if ( uuid ) el.dataset.jjRef = uuid;
+    }
+
+    // Injetar kanji decorativo
+    const kanjiEl = el.querySelector(".tc-kanji");
+    if ( kanjiEl && !kanjiEl.textContent ) {
+      kanjiEl.textContent = JJ_TRAINING_KANJI[id] ?? "術";
+    }
+  });
+}
+
+
+/**
+ * Aplica tooltips com conteúdo de JournalEntryPage tipo Text em todos os elementos
+ * que possuam data-jj-ref dentro de `root`. Usa mouseenter para buscar o conteúdo
+ * via fromUuid de forma lazy (só carrega quando o usuário passa o mouse).
+ * @param {HTMLElement} root
+ */
+function _applyJJTextTooltips(root) {
+  root.querySelectorAll("[data-jj-ref]").forEach(el => {
+    if ( el.dataset.jjTooltipBound ) return;
+    el.dataset.jjTooltipBound = "1";
+
+    el.addEventListener("mouseenter", async () => {
+      if ( el.dataset.jjTooltipLoaded ) return;
+
+      const uuid = el.dataset.jjRef;
+      try {
+        const page = await fromUuid(uuid);
+        if ( !page ) return;
+
+        const rawHtml = page.text?.content ?? page.system?.text?.content ?? "";
+        if ( !rawHtml ) return;
+
+        el.dataset.tooltip = rawHtml;
+        el.dataset.tooltipDirection = "UP";
+        el.dataset.jjTooltipLoaded = "1";
+      } catch(e) {
+        // UUID inválido ou page não encontrada — ignora silenciosamente
+      }
+    });
+  });
+}
 
 /**
  * Injeta a seção de condições Jujutsu na aba Effects.
@@ -3420,8 +3720,7 @@ function _injectJJConditions(element, actor) {
       ${JJ_CONDITIONS.map(cond => `
         <div class="jj-cond-item ${activeStatuses.has(cond.id) ? "active" : ""}"
              data-cond-id="${cond.id}"
-             data-tooltip="&lt;strong&gt;${cond.label}&lt;/strong&gt;&lt;hr style='margin:4px 0;border-color:#3a3a50'&gt;${cond.desc}"
-             data-tooltip-direction="UP">
+             ${cond.reference ? `data-jj-ref="${cond.reference}"` : `data-tooltip="${cond.label}" data-tooltip-direction="UP"`}>
           <i class="${cond.icon}"></i>
           <span>${cond.label}</span>
         </div>`).join("")}
@@ -3483,6 +3782,9 @@ function _injectJJConditions(element, actor) {
   });
 
   effectsTab.appendChild(section);
+
+  // Tooltips via fromUuid para JournalEntryPage tipo Text
+  _applyJJTextTooltips(section);
 }
 
 /* ============================================================
@@ -3705,7 +4007,6 @@ function _injectJJConditions(element, actor) {
     document.head.appendChild(style);
   }
 
-  console.log("JujutsuLegacy | Campo de custo de PA nas atividades carregado ✓");
 })();
 
 /* ============================================================
@@ -3899,13 +4200,13 @@ if ( !document.querySelector("#jj-expdef-style") ) {
 function _unhideFeatureSections(element) {
   const featuresTab = element.querySelector('[data-tab="features"]');
   if ( !featuresTab ) return;
-  ["jj-origin", "jj-combat", "jj-path", "jj-basic", "jj-talents", "jj-flaws"].forEach(id => {
+  ["jj-origin", "jj-combat", "jj-path", "jj-basic", "jj-talents", "jj-flaws", "jj-benefits", "jj-curses"].forEach(id => {
     const section = featuresTab.querySelector(`[data-group-origin="${id}"]`);
     if ( section ) section.removeAttribute("hidden");
   });
 }
 
-const JJ_FEATURE_SECTIONS = new Set(["jj-origin", "jj-combat", "jj-path", "jj-basic", "jj-talents", "jj-flaws"]);
+const JJ_FEATURE_SECTIONS = new Set(["jj-origin", "jj-combat", "jj-path", "jj-basic", "jj-talents", "jj-flaws", "jj-benefits", "jj-curses"]);
 
 /**
  * Configura listeners de drop nas seções customizadas de habilidades.
@@ -3957,6 +4258,150 @@ function _setupFeatureSectionDrops(element, actor) {
       if ( hasFlag ) await item.unsetFlag("jujutsu-system", "featureSection");
     });
   });
+}
+
+/* ============================================================
+   FULGOR NEGRO — Lógica de ativação e sidebar
+   ============================================================ */
+
+/**
+ * Verifica se um resultado de d20 ativa o Fulgor Negro.
+ * Chamado diretamente pelo _handleAttackRoll do card customizado.
+ */
+// Map em memória: actorId → true/false (fulgor ativado neste combate)
+const _fulgorAtivadoCombate = new Map();
+
+async function _checkFulgorNegro(actor, d20Result) {
+  if ( !actor || !d20Result ) return false;
+  if ( !actor.system.manipulation?.abilities?.fulgorNegro?.unlocked ) return false;
+
+  const primaria   = Number(actor.getFlag("jujutsu-system", "fulgorPrimaria")  ?? 20);
+  const secundaria = Number(actor.getFlag("jujutsu-system", "fulgorSecundaria") ?? 15);
+  const jaAtivou   = _fulgorAtivadoCombate.get(actor.id) ?? false;
+
+  // Verificar se possui a subclasse Mestre do Fulgor
+  const mestredoFulgor = actor.itemTypes.subclass?.some(s =>
+    (s.identifier ?? s.system?.identifier) === "mestre-do-fulgor"
+  ) ?? false;
+
+  // Já ativou o primeiro Fulgor nesse combate: >= primária ativa direto
+  if ( jaAtivou ) {
+    if ( d20Result >= primaria ) {
+      _showBlackFlashPopup();
+      ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor }),
+        content: `<strong>⚡ FULGOR NEGRO!</strong> ${actor.name} ativou o Fulgor Negro! (${d20Result} ≥ ${primaria})`
+      });
+      return true;
+    }
+    return false;
+  }
+
+  // Primeiro Fulgor do combate: precisa >= primária → rola secundário (a menos que seja Mestre do Fulgor)
+  if ( d20Result < primaria ) return false;
+
+  // Mestre do Fulgor: ativa direto sem secundário
+  if ( mestredoFulgor ) {
+    _fulgorAtivadoCombate.set(actor.id, true);
+    _showBlackFlashPopup();
+    await actor.setFlag("jujutsu-system", "fulgorZona", true);
+    await _applyFulgorZonaEffect(actor, true);
+    ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor }),
+      content: `<strong>⚡ FULGOR NEGRO!</strong> ${actor.name} ativou o Fulgor Negro! (${d20Result} ≥ ${primaria})<br><em>Mestre do Fulgor — sem dado secundário. A partir de agora, todo resultado ≥ ${primaria} ativa o Fulgor.</em>`
+    });
+    return true;
+  }
+
+  const rollSecundario = await new Roll("1d20").evaluate();
+  const resultSecundario = rollSecundario.dice[0].results[0].result;
+
+  if ( game.dice3d ) game.dice3d.showForRoll(rollSecundario, game.user, true);
+
+  await rollSecundario.toMessage({
+    speaker: ChatMessage.getSpeaker({ actor }),
+    flavor: `🎯 Dado Secundário do Fulgor (precisa ≥ ${secundaria}): <strong>${resultSecundario}</strong>`
+  });
+
+  if ( resultSecundario < secundaria ) return false;
+
+  // Primeiro Fulgor ativado!
+  _fulgorAtivadoCombate.set(actor.id, true);
+  _showBlackFlashPopup();
+
+  // Ativar a Zona automaticamente
+  await actor.setFlag("jujutsu-system", "fulgorZona", true);
+  await _applyFulgorZonaEffect(actor, true);
+
+  ChatMessage.create({
+    speaker: ChatMessage.getSpeaker({ actor }),
+    content: `<strong>⚡ FULGOR NEGRO!</strong> ${actor.name} ativou o Fulgor Negro! (${d20Result} ≥ ${primaria}, secundário ${resultSecundario} ≥ ${secundaria})<br><em>A partir de agora, todo resultado ≥ ${primaria} ativa o Fulgor até o fim do encontro.</em>`
+  });
+  return true;
+}
+
+/**
+ * Aplica ou remove o Active Effect de +5 em ataques da Zona do Fulgor Negro.
+ */
+async function _applyFulgorZonaEffect(actor, active) {
+  const FLAG_ID = "jj-fulgor-zona";
+  const existing = actor.effects.find(e => e.getFlag("jujutsu-system", "fulgorZonaId") === FLAG_ID);
+  if ( existing ) await existing.delete();
+  if ( !active ) return;
+
+  await actor.createEmbeddedDocuments("ActiveEffect", [{
+    name: "Fulgor Negro — Zona",
+    icon: "icons/magic/lightning/bolt-strike-gold-orange.webp",
+    origin: actor.uuid,
+    disabled: false,
+    changes: [
+      { key: "system.bonuses.mwak.attack", mode: 2, value: "5", priority: 20 },
+      { key: "system.bonuses.rwak.attack", mode: 2, value: "5", priority: 20 },
+      { key: "system.bonuses.msak.attack", mode: 2, value: "5", priority: 20 },
+      { key: "system.bonuses.rsak.attack", mode: 2, value: "5", priority: 20 }
+    ],
+    flags: { "jujutsu-system": { fulgorZonaId: FLAG_ID } }
+  }]);
+}
+
+/**
+ * Configura os listeners da caixa de Fulgor Negro no sidebar.
+ */
+function _setupFulgorNegro(element, actor) {
+  const box = element.querySelector(".jj-fulgor-box");
+  if ( !box ) return;
+
+  const inputPrimaria = box.querySelector("[name='flags.jujutsu-system.fulgorPrimaria']");
+  if ( inputPrimaria ) {
+    inputPrimaria.addEventListener("change", async () => {
+      const val = Math.min(20, Math.max(1, parseInt(inputPrimaria.value) || 20));
+      inputPrimaria.value = val;
+      await actor.setFlag("jujutsu-system", "fulgorPrimaria", val);
+    });
+  }
+
+  const inputSecundaria = box.querySelector("[name='flags.jujutsu-system.fulgorSecundaria']");
+  if ( inputSecundaria ) {
+    inputSecundaria.addEventListener("change", async () => {
+      const val = Math.min(20, Math.max(1, parseInt(inputSecundaria.value) || 15));
+      inputSecundaria.value = val;
+      await actor.setFlag("jujutsu-system", "fulgorSecundaria", val);
+    });
+  }
+
+  const btnZona = box.querySelector("[data-action='jj-fulgor-zona']");
+  if ( btnZona ) {
+    btnZona.addEventListener("click", async () => {
+      const current = actor.getFlag("jujutsu-system", "fulgorZona") ?? false;
+      const next = !current;
+      await actor.setFlag("jujutsu-system", "fulgorZona", next);
+      await _applyFulgorZonaEffect(actor, next);
+      btnZona.classList.toggle("active", next);
+      btnZona.innerHTML = next
+        ? `<i class="fas fa-eye" inert></i> <span>Desativar Zona</span>`
+        : `<i class="fas fa-eye" inert></i> <span>Ativar Zona</span>`;
+    });
+  }
 }
 
 /* ============================================================
@@ -4148,4 +4593,86 @@ Hooks.on("ready", () => {
       if ( sheet?.rendered ) sheet.render();
     }
   });
+});
+
+/* ============================================================
+   FULGOR NEGRO — Reset da Zona ao iniciar/encerrar combate
+   ============================================================ */
+
+async function _resetFulgorZona(combat) {
+  for ( const combatant of combat.combatants ) {
+    const actor = combatant.actor;
+    if ( !actor ) continue;
+    if ( !actor.system.manipulation?.abilities?.fulgorNegro?.unlocked ) continue;
+    // Limpar estado em memória
+    _fulgorAtivadoCombate.delete(actor.id);
+    // Desativar a zona também
+    const zonaAtiva = actor.getFlag("jujutsu-system", "fulgorZona") ?? false;
+    if ( zonaAtiva ) {
+      await actor.setFlag("jujutsu-system", "fulgorZona", false);
+      await _applyFulgorZonaEffect(actor, false);
+    }
+  }
+}
+
+// Resetar no início de um novo combate
+Hooks.on("combatStart", async (combat) => {
+  await _resetFulgorZona(combat);
+});
+
+// Resetar ao encerrar o combate
+Hooks.on("deleteCombat", async (combat) => {
+  await _resetFulgorZona(combat);
+});
+
+/* ============================================================
+   EXECUTOR — Subclasse: dobra energyDice.max + recupera tudo
+   ============================================================ */
+
+/**
+ * Verifica se o ator tem a subclasse "executor".
+ * @param {Actor5e} actor
+ * @returns {boolean}
+ */
+function _hasExecutorSubclass(actor) {
+  return actor.itemTypes?.subclass?.some(s =>
+    (s.identifier ?? s.system?.identifier) === "executor"
+  ) ?? false;
+}
+
+// Monkeypatch do prepareData para dobrar energyDice.max quando executor
+Hooks.once("ready", () => {
+  const ActorClass = CONFIG.Actor.documentClass;
+  const originalPrepareData = ActorClass.prototype.prepareData;
+
+  ActorClass.prototype.prepareData = function() {
+    originalPrepareData.call(this);
+    if ( this.type !== "character" ) return;
+    if ( !_hasExecutorSubclass(this) ) return;
+
+    const ed = this.system.energyDice;
+    if ( !ed ) return;
+
+    // Dobrar o máximo — o cálculo base é (level * 2) + bonus, executor faz (level * 4) + bonus
+    const level = this.system.details?.level ?? 1;
+    const bonus = ed.bonus ?? 0;
+    this.system.energyDice.max = (level * 4) + bonus;
+  };
+});
+
+// No descanso longo, executor recupera todos os dados de energia
+Hooks.on("dnd5e.preRestCompleted", (actor, result, config) => {
+  if ( config.type !== "long" ) return;
+  if ( !_hasExecutorSubclass(actor) ) return;
+
+  const ed = actor.system.energyDice;
+  if ( !ed ) return;
+
+  const max = ed.max;
+  const current = ed.value;
+  if ( current >= max ) return;
+
+  // Substituir a recuperação parcial pela recuperação total
+  result.updateData ??= {};
+  result.updateData["system.energyDice.value"] = max;
 });

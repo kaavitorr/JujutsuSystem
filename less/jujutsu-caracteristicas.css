@@ -1,0 +1,89 @@
+/* ══════════════════════════════════════════════════════
+   JUJUTSU LEGACY — ABA: CARACTERÍSTICAS
+   Headers de seção, pills de classe/subclasse
+   ══════════════════════════════════════════════════════ */
+
+/* ── Fundo transparente da aba ──────── */
+.tab[data-tab="features"] {
+  background: transparent;
+}
+
+/* ════════════════════════════════════════
+   HEADERS DE SEÇÃO
+   ════════════════════════════════════════ */
+
+.tab[data-tab="features"] .items-section > header,
+.tab[data-tab="features"] .items-section > .items-header {
+  background: linear-gradient(90deg, #1c1c30, #161628);
+  border-bottom: 1px solid var(--jj-border);
+}
+
+.tab[data-tab="features"] .items-section > header h3,
+.tab[data-tab="features"] .items-section > .items-header h3 {
+  color: var(--jj-primary-soft);
+  text-shadow: 0 0 8px rgba(120, 80, 255, 0.3);
+}
+
+.tab[data-tab="features"] .items-section {
+  background: rgba(10, 10, 20, 0.6);
+  border-color: var(--jj-border-soft);
+}
+
+.tab[data-tab="features"] .item:hover {
+  background: rgba(80, 60, 180, 0.08);
+}
+
+/* ════════════════════════════════════════
+   PILL DE CLASSE (Restringido)
+   ════════════════════════════════════════ */
+
+.tab[data-tab="features"] .classes.pills-lg .class,
+.tab[data-tab="features"] .pill-lg {
+  background: linear-gradient(135deg, #0e0e22 0%, #130d20 100%) !important;
+  border: 1px solid #3a2a6a !important;
+  border-radius: 8px !important;
+  box-shadow:
+    0 0 12px rgba(100, 60, 200, 0.2),
+    inset 0 1px 0 rgba(120, 80, 255, 0.1) !important;
+  height: auto !important;
+  padding: 10px 14px !important;
+  gap: 10px !important;
+}
+
+.tab[data-tab="features"] .classes.pills-lg .class:hover,
+.tab[data-tab="features"] .pill-lg:hover {
+  border-color: #6040b0 !important;
+  box-shadow:
+    0 0 20px rgba(100, 60, 200, 0.35),
+    inset 0 1px 0 rgba(120, 80, 255, 0.15) !important;
+}
+
+/* Nome da classe */
+.tab[data-tab="features"] .classes.pills-lg .class .name-stacked .title,
+.tab[data-tab="features"] .pill-lg .name-stacked .title {
+  color: #c0a8ff !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+}
+
+/* Subtítulo (subclasse) */
+.tab[data-tab="features"] .classes.pills-lg .class .name-stacked .subtitle,
+.tab[data-tab="features"] .pill-lg .name-stacked .subtitle {
+  color: #7060a0 !important;
+  font-size: 10px !important;
+}
+
+/* Nível */
+.tab[data-tab="features"] .classes.pills-lg .class .level,
+.tab[data-tab="features"] .pill-lg .level {
+  background: rgba(80, 50, 160, 0.3) !important;
+  border: 1px solid #4a3080 !important;
+  border-radius: 6px !important;
+  color: #c0a8ff !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  min-width: 32px !important;
+  text-align: center !important;
+  padding: 2px 6px !important;
+  text-shadow: 0 0 8px rgba(160, 100, 255, 0.5) !important;
+}

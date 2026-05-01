@@ -1,0 +1,389 @@
+/* ══════════════════════════════════════════════════════
+   JUJUTSU LEGACY — ABA: MANIPULAÇÃO
+   ══════════════════════════════════════════════════════ */
+
+.tab[data-tab="manipulation"] { background: transparent; }
+
+/* ════════════════════════════════════════
+   TOPO — Hexágono + PM + Evolução
+   ════════════════════════════════════════ */
+
+.manip-top {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+/* ── Bloco do Estágio (hexágono) ── */
+.manip-stage-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0e0e1c;
+  border: 1px solid #2a1a6a;
+  border-radius: 10px;
+  padding: 14px 20px;
+  gap: 4px;
+  min-width: 110px;
+  flex-shrink: 0;
+}
+
+.manip-stage-hex {
+  width: 52px;
+  height: 52px;
+  background: #13102a;
+  border: 2px solid #4a30aa;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.manip-stage-hex span {
+  font-size: 18px;
+  font-weight: 700;
+  color: #a587fd;
+}
+
+.manip-stage-lbl {
+  font-size: 12px;
+  font-weight: 600;
+  color: #8d71e9;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+.manip-stage-pts {
+  font-size: 12px;
+  color: #836be4;
+  text-align: center;
+}
+
+/* ── Coluna direita ── */
+.manip-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── PM Row ── */
+.manip-pm-row {
+  background: #0e0e1c;
+  border: 1px solid rgba(214, 74, 74, 0.3);
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.manip-pm-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.manip-pm-lbl {
+  font-size: 9px;
+  color: #cf4646;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.manip-pm-val {
+  font-size: 28px;
+  font-weight: 700;
+  color: #912a2a;
+  line-height: 1.1;
+  background: transparent;
+  border: none;
+  width: 80px;
+  padding: 0;
+}
+
+.manip-pm-val:focus {
+  outline: none;
+  color: #de4d4d;
+}
+
+.manip-pm-desc {
+  font-size: 10px;
+  color: #ca5252;
+}
+
+/* ── Evolução — divisórias estilo C ── */
+.manip-evo-row {
+  background: #0e0e1c;
+  border: 1px solid #1a1a2e;
+  border-radius: 8px;
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+  overflow: hidden;
+}
+
+.manip-evo-seg {
+  flex: 1;
+  padding: 10px 14px;
+  border-right: 1px solid #1a1a2e;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+}
+
+.manip-evo-lbl {
+  font-size: 9px;
+  color: #7e7ebd;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.manip-evo-val {
+  font-size: 20px;
+  font-weight: 700;
+  color: #252545;
+}
+
+.manip-evo-seg.on .manip-evo-val { color: #7050ee; }
+.manip-evo-seg.on .manip-evo-lbl { color: #4a3888; }
+
+.manip-evo-undo {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  background: rgba(180,40,40,0.08);
+  border: 1px solid rgba(180,40,40,0.2);
+  color: rgba(180,40,40,0.4);
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 100ms;
+}
+
+.manip-evo-undo:hover {
+  background: rgba(180,40,40,0.18);
+  border-color: rgba(180,40,40,0.5);
+  color: #cc4040;
+}
+
+.manip-evo-btn-wrap {
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════
+   SECTION HEADER
+   ════════════════════════════════════════ */
+
+.ability-section { margin-top: 14px; }
+
+.section-header.jujutsu-title {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #303052;
+  margin-bottom: 8px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #1a1a2e;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.section-header.jujutsu-title span { color: #4a3888; }
+.section-header.jujutsu-title::after { content: ""; flex: 1; }
+
+/* ════════════════════════════════════════
+   ABILITY GRID
+   ════════════════════════════════════════ */
+
+.ability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+/* ════════════════════════════════════════
+   ABILITY CARD — BASE
+   ════════════════════════════════════════ */
+
+.ability-card {
+  background: #0e0e1c;
+  border: 1px solid #1a1a2e;
+  border-radius: 8px;
+  padding: 13px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 160ms, box-shadow 160ms;
+}
+
+/* ── Kanji decorativo ── */
+.ability-kanji {
+  position: absolute;
+  right: 8px;
+  top: 4px;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: serif;
+  color: #17172a;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Nome ── */
+.ability-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #606090;
+  line-height: 1.2;
+}
+
+/* ── Meta (custo + estágio) ── */
+.ability-meta {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.ability-cost {
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: rgba(180,10,10,0.12);
+  color: #d25656;
+  border: 1px solid rgba(180,10,10,0.2);
+}
+
+.ability-stage {
+  font-size: 10px;
+  color: #2a2a45;
+}
+
+/* ── Ações ── */
+.ability-actions { margin-top: auto; }
+
+.jujutsu-btn.unlocked-state {
+  font-size: 10px;
+  padding: 5px 0;
+  border-radius: 4px;
+  border: none;
+  background: rgba(40,160,60,0.1);
+  color: #30a050;
+  width: 100%;
+  cursor: default;
+}
+
+.jujutsu-btn.locked-state {
+  font-size: 10px;
+  padding: 5px 0;
+  border-radius: 4px;
+  border: 1px solid #1a1a2e;
+  background: transparent;
+  color: #252545;
+  width: 100%;
+  cursor: default;
+}
+
+/* ── Footer com técnicas ── */
+.ability-footer {
+  padding-top: 6px;
+  border-top: 1px solid #1a1a2e;
+  min-height: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+
+.ability-tech-pill {
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  background: rgba(90,60,200,0.1);
+  color: #7367b1;
+  border: 1px solid rgba(90,60,200,0.2);
+  white-space: nowrap;
+}
+
+/* ════════════════════════════════════════
+   ESTADOS DOS CARDS
+   ════════════════════════════════════════ */
+
+/* ── DESBLOQUEADO ── */
+.ability-card.unlocked {
+  border-color: rgba(90,60,200,0.4);
+  background: linear-gradient(145deg, #110e20, #0e0c1a);
+}
+
+.ability-card.unlocked .ability-name {
+  font-size: 15px;
+  color: #c0b0ff;
+  padding-right: 36px;
+}
+
+.ability-card.unlocked .ability-stage { color: #5a4a90; }
+.ability-card.unlocked .ability-footer { border-top-color: rgba(90,60,200,0.2); }
+
+/* Kanji em chamas */
+.ability-card.unlocked .ability-kanji {
+  color: #cc4400;
+  animation: ability-kanji-flame 7.5s ease-in-out infinite;
+}
+
+@keyframes ability-kanji-flame {
+  0%   { color: #8c2f01; text-shadow: 0 0 6px rgba(138, 59, 6, 0.6),  0 0 14px rgba(189, 46, 3, 0.3); }
+  30%  { color: #ab4704; text-shadow: 0 0 10px rgba(174, 97, 2, 0.9), 0 0 22px rgba(184, 59, 1, 0.5),  0 0 40px rgba(200,40,0,0.25); }
+  60%  { color: #9a2502; text-shadow: 0 0 8px rgba(156, 59, 2, 0.7),   0 0 18px rgba(135, 28, 1, 0.4); }
+  80%  { color: #c55d02; text-shadow: 0 0 12px rgba(189, 120, 0, 0.95),0 0 26px rgba(197, 65, 4, 0.55), 0 0 44px rgba(200,40,0,0.2); }
+  100% { color: #993300; text-shadow: 0 0 6px rgba(187, 75, 0, 0.6),  0 0 14px rgba(183, 43, 0, 0.3); }
+}
+
+/* ── DISPONÍVEL ── */
+.ability-card.available {
+  border-color: rgba(90,60,200,0.2);
+}
+
+.ability-card.available .ability-kanji { color: #1a1635; }
+.ability-card.available .ability-name  { color: #7060a8; }
+
+/* ── BLOQUEADO ── */
+.ability-card.locked {
+  opacity: 0.3;
+  filter: grayscale(0.6);
+}
+
+/* ── Hover ── */
+.ability-card.unlocked:hover {
+  border-color: rgba(90,60,200,0.6);
+  box-shadow: 0 0 14px rgba(70,40,180,0.2);
+}
+
+.ability-card.available:hover {
+  border-color: rgba(90,60,200,0.4);
+}
+
+/* ════════════════════════════════════════
+   STAGE BADGES
+   ════════════════════════════════════════ */
+
+.stage-badge-beginner { color: #3a5090; }
+.stage-badge-expert   { color: #5a4090; }
+.stage-badge-master   { color: #7a3060; }

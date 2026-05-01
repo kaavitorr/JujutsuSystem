@@ -441,6 +441,42 @@
         </div>
         {{/if}}
 
+        {{!-- Fulgor Negro — aparece se habilidade desbloqueada --}}
+        {{#if fulgorNegro}}
+        <filigree-box class="jj-fulgor-box">
+            <h3 class="jj-fulgor-header">
+                <i class="fas fa-bolt" inert></i>
+                <span>Fulgor Negro</span>
+            </h3>
+            <div class="jj-fulgor-options">
+                <div class="jj-fulgor-option">
+                    <i class="fas fa-crosshairs" inert></i>
+                    <span class="jj-fulgor-option-lbl">Principal</span>
+                    <input type="number"
+                        name="flags.jujutsu-system.fulgorPrimaria"
+                        value="{{ fulgorPrimaria }}"
+                        min="1" max="20" />
+                </div>
+                <div class="jj-fulgor-option">
+                    <i class="fas fa-dice-d20" inert></i>
+                    <span class="jj-fulgor-option-lbl">Secundária</span>
+                    <input type="number"
+                        name="flags.jujutsu-system.fulgorSecundaria"
+                        value="{{ fulgorSecundaria }}"
+                        min="1" max="20" />
+                </div>
+            </div>
+            <div class="jj-fulgor-zona-wrap">
+                <button type="button"
+                    class="jj-fulgor-zona-btn {{#if fulgorZona}}active{{/if}}"
+                    data-action="jj-fulgor-zona">
+                    <i class="fas fa-eye" inert></i>
+                    <span>{{#if fulgorZona}}Desativar Zona{{else}}Ativar Zona{{/if}}</span>
+                </button>
+            </div>
+        </filigree-box>
+        {{/if}}
+
         {{!-- Seis Olhos — aparece se o item Seis Olhos estiver na ficha --}}
         {{#if seisOlhos}}
         <filigree-box class="jj-seis-olhos-box">

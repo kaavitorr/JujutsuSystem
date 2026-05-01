@@ -1,0 +1,257 @@
+/* ══════════════════════════════════════════════════════
+   JUJUTSU LEGACY — ABA: DETALHES
+   Salvaguardas, Perícias, Ferramentas, proficiency pips
+   ══════════════════════════════════════════════════════ */
+
+/* ════════════════════════════════════════
+   SALVAGUARDAS
+   ════════════════════════════════════════ */
+
+.dnd5e2.sheet.actor.character .sheet-body .saves filigree-box,
+.dnd5e2.sheet.actor.character .sheet-body .saves {
+  --filigree-background-color: #0f0f1c;
+  --filigree-border-color: #302860;
+  --filigree-drop-shadow: drop-shadow(0 0 4px rgba(40, 30, 80, 0.4));
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .saves .header {
+  background: transparent !important;
+  border-bottom: 1px solid #1a1832;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .saves .header h3,
+.dnd5e2.sheet.actor.character .sheet-body .saves .header h4 {
+  color: #504878 !important;
+  letter-spacing: 0.16em;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .saves .header::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #1e1c38;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .saves > ul,
+.dnd5e2.sheet.actor.character .sheet-body .saves ul {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  padding: 4px 8px 8px !important;
+  list-style: none;
+  margin: 0;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .saves ul > li {
+  border-bottom: none !important;
+  padding: 4px 6px;
+  border-radius: 3px;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .saves ul > li:hover {
+  background: rgba(60, 35, 100, 0.10);
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .saves {
+  --proficiency-cycle-enabled-color: #5a3a90;
+  --proficiency-cycle-disabled-color: #2e2850;
+}
+
+/* ════════════════════════════════════════
+   PERÍCIAS
+   ════════════════════════════════════════ */
+
+.dnd5e2.sheet.actor.character .sheet-body .skills filigree-box,
+.dnd5e2.sheet.actor.character .sheet-body .skills {
+  --filigree-background-color: #0f0f1c;
+  --filigree-border-color: #302860;
+  --filigree-drop-shadow: drop-shadow(0 0 4px rgba(40, 30, 80, 0.4));
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .skills .header {
+  background: transparent !important;
+  border-bottom: 1px solid #1a1832;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .skills .header h3,
+.dnd5e2.sheet.actor.character .sheet-body .skills .header h4 {
+  color: #504878 !important;
+  letter-spacing: 0.16em;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .skills .header::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #1e1c38;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .skills ul > li {
+  border-bottom: 1px solid rgba(255,255,255,0.03) !important;
+  padding: 3px 6px;
+  border-radius: 3px;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .skills ul > li:last-child {
+  border-bottom: none !important;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .skills ul > li:hover {
+  background: rgba(60, 35, 100, 0.10);
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .skills {
+  --proficiency-cycle-enabled-color: #5a3a90;
+  --proficiency-cycle-disabled-color: #2e2850;
+}
+
+/* ════════════════════════════════════════
+   FERRAMENTAS
+   ════════════════════════════════════════ */
+
+.dnd5e2.sheet.actor.character .sheet-body .tools filigree-box,
+.dnd5e2.sheet.actor.character .sheet-body .tools {
+  --filigree-background-color: #0f0f1c;
+  --filigree-border-color: #302860;
+  --filigree-drop-shadow: drop-shadow(0 0 4px rgba(40, 30, 80, 0.4));
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .tools .header {
+  background: transparent !important;
+  border-bottom: 1px solid #1a1832;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .tools .header h3,
+.dnd5e2.sheet.actor.character .sheet-body .tools .header h4 {
+  color: #504878 !important;
+  letter-spacing: 0.16em;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .tools .header::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #1e1c38;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .tools ul > li {
+  border-bottom: 1px solid rgba(255,255,255,0.03) !important;
+  padding: 3px 6px;
+  border-radius: 3px;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .tools ul > li:last-child {
+  border-bottom: none !important;
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .tools ul > li:hover {
+  background: rgba(60, 35, 100, 0.10);
+}
+
+.dnd5e2.sheet.actor.character .sheet-body .tools {
+  --proficiency-cycle-enabled-color: #5a3a90;
+  --proficiency-cycle-disabled-color: #2e2850;
+}
+
+/* ════════════════════════════════════════
+   PROFICIENCY PIPS — Mais vibrantes
+   ════════════════════════════════════════ */
+
+.dnd5e2.sheet.actor.character .sheet-body .skills proficiency-cycle,
+.dnd5e2.sheet.actor.character .sheet-body .tools proficiency-cycle,
+.dnd5e2.sheet.actor.character .sheet-body .saves proficiency-cycle {
+  --proficiency-cycle-enabled-color: #ff1c03;
+  --proficiency-cycle-disabled-color: #3d6cc4;
+}
+
+/* ════════════════════════════════════════
+   SEIS OLHOS — Layout com filigree-box
+   ════════════════════════════════════════ */
+
+filigree-box.jj-seis-olhos-box {
+  --filigree-background-color: #0f0f1c;
+  --filigree-border-color: #302860;
+  --filigree-drop-shadow: drop-shadow(0 0 4px rgba(40, 30, 80, 0.4));
+  display: block;
+  margin-top: 2px;
+}
+
+.jj-seis-olhos-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0.75rem 1rem 0.375rem;
+  border: none;
+  margin: 0;
+  font-size: var(--font-size-13);
+}
+
+.jj-seis-olhos-header i {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+.jj-seis-olhos-header span {
+  color: #bbae99;
+  font-size: var(--font-size-13);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.jj-seis-olhos-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 4px 8px 8px;
+  gap: 5px;
+}
+
+.jj-seis-olhos-option { cursor: pointer; }
+.jj-seis-olhos-option input { display: none; }
+
+.jj-seis-olhos-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 4px;
+  background: #0e0e1c;
+  border: 1px solid #221a3a;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #40385a;
+  transition: all 140ms;
+}
+
+.jj-seis-olhos-btn i { font-size: 14px; color: #30285a; }
+
+.jj-seis-olhos-option:hover .jj-seis-olhos-btn {
+  border-color: #3a2a60;
+  color: #7060a0;
+}
+.jj-seis-olhos-option:hover .jj-seis-olhos-btn i { color: #6050a0; }
+
+.jj-seis-olhos-option.active .jj-seis-olhos-btn,
+.jj-seis-olhos-option input:checked ~ .jj-seis-olhos-btn {
+  background: #130e28;
+  border-color: #4a2890;
+  color: #9070d0;
+}
+.jj-seis-olhos-option.active .jj-seis-olhos-btn i,
+.jj-seis-olhos-option input:checked ~ .jj-seis-olhos-btn i {
+  color: #7050b0;
+}
+
+.jj-seis-olhos-warning {
+  padding: 4px 8px 8px;
+  font-size: 9px;
+  color: #906060;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.jj-seis-olhos-warning i { color: #703030; }

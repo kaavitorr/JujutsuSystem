@@ -1,7 +1,7 @@
 <section class="tab {{ tab.cssClass }} jujutsu-section" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
 
   {{!-- ══════════════════════════ MAESTRIA ══════════════════════════ --}}
-  <div class="mastery-header jujutsu-card">
+  <div class="mastery-header jujutsu-treinamento">
 
     <div class="mastery-top">
       <div class="mastery-badge">
@@ -86,11 +86,20 @@
 
     <div class="training-list">
       {{#each group}}
-      <div class="training-card rank-{{this.rank}} {{#if (gte this.rank this.maxRank)}}rank-max{{/if}} {{#unless this.canTrain}}locked{{/unless}}" data-training-id="{{@key}}">
+      <div class="training-card rank-{{this.rank}} {{#if (gte this.rank this.maxRank)}}rank-max{{/if}} {{#unless this.canTrain}}locked{{/unless}}"
+           data-training-id="{{@key}}">
 
-        {{!-- Header --}}
+        {{!-- Kanji decorativo — injetado via JS pelo _injectTrainingRefs --}}
+        <span class="tc-kanji"></span>
+
+        {{!-- Header: dot de status + nome --}}
         <div class="training-header">
+          <span class="tc-dot"></span>
           <span class="training-name">{{this.label}}</span>
+        </div>
+
+        {{!-- Stars + meta (PT e CD) --}}
+        <div class="tc-bottom">
           <div class="training-stars">
             <span class="star {{#if (gte this.rank 1)}}filled{{/if}}">★</span>
             {{#if this.evolutionEffect}}
@@ -100,48 +109,34 @@
             <span class="star {{#if (gte this.rank 3)}}filled{{/if}}">★</span>
             {{/if}}
           </div>
-        </div>
-
-        {{!-- Meta --}}
-        <div class="jujutsu-meta">
-          <span>PT: {{this.nextPtCost}} · PA: {{this.nextPaCost}}</span>
-          <span>CD: {{this.currentDC}}</span>
-        </div>
-
-        {{!-- Efeito atual --}}
-        <div class="training-effect">
-          {{#if (eq this.rank 0)}}{{this.baseEffect}}
-          {{else if (eq this.rank 1)}}★ {{#if this.evolutionEffect}}{{this.evolutionEffect}}{{else}}{{this.baseEffect}}{{/if}}
-          {{else if (eq this.rank 2)}}★★ {{this.perfectionEffect}}
-          {{else}}★★★ {{this.perfectionEffect}}{{/if}}
+          <div class="jujutsu-meta">
+            <span>PT {{this.nextPtCost}}</span>
+            <span>CD {{this.currentDC}}</span>
+          </div>
         </div>
 
         {{!-- Ações --}}
         <div class="jujutsu-actions">
-          {{#if (lt this.rank this.maxRank)}}
-            {{#if this.canTrain}}
-              <button class="jujutsu-btn primary btn-train"
-                data-action="trainAbility"
-                data-training="{{@key}}">
-                Treinar
-              </button>
-              <button class="jujutsu-btn btn-instant"
-                data-action="instantAdvance"
-                data-training="{{@key}}">
-                Instantâneo
-              </button>
-            {{else}}
-              <span class="cant-train">🔒 {{this.lockReason}}</span>
-            {{/if}}
-          {{else}}
+          {{#if (gte this.rank this.maxRank)}}
+            {{!-- Rank máximo: gif Black Flash + label --}}
+            <img class="tc-black-flash-gif"
+                 src="systems/jujutsu-system/assets/satoru.gif"
+                 alt="Black Flash" />
             <span class="max-rank">✦ Perfeição</span>
+          {{else if this.canTrain}}
+            <button class="jujutsu-btn primary btn-train"
+              data-action="trainAbility"
+              data-training="{{@key}}">
+              Treinar
+            </button>
+            <button class="jujutsu-btn btn-instant"
+              data-action="instantAdvance"
+              data-training="{{@key}}">
+              Instantâneo
+            </button>
+          {{else}}
+            <span class="cant-train">🔒 {{this.lockReason}}</span>
           {{/if}}
-        </div>
-
-        <div class="training-progress" data-rank="{{this.rank}}">
-          <span></span>
-          {{#if this.evolutionEffect}}<span></span>{{/if}}
-          {{#if this.perfectionEffect}}<span></span>{{/if}}
         </div>
 
       </div>
@@ -151,5 +146,3 @@
   {{/each}}
 
 </section>
-
-

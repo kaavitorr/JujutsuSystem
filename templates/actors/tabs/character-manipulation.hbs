@@ -1,184 +1,121 @@
 <section class="tab {{ tab.cssClass }} jujutsu-section" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
 
-  {{!-- ═══════════════════════════ HEADER ═══════════════════════════ --}}
-  <div class="manipulation-header jujutsu-card">
+  {{!-- ══════════════════════════════ TOPO ══════════════════════════════ --}}
+  <div class="manip-top">
 
-    <div class="manipulation-stage">
-      <span class="stage-label">Estágio</span>
+    {{!-- Hexágono de estágio --}}
+    <div class="manip-stage-block">
+      <div class="manip-stage-hex">
+        {{#if (eq actor.system.manipulation.stage "master")}}
+          <span>M</span>
+        {{else if (eq actor.system.manipulation.stage "expert")}}
+          <span>P</span>
+        {{else}}
+          <span>I</span>
+        {{/if}}
+      </div>
       {{#if (eq actor.system.manipulation.stage "master")}}
-        <span class="stage-value stage-master">Mestre</span>
+        <span class="manip-stage-lbl">Mestre</span>
       {{else if (eq actor.system.manipulation.stage "expert")}}
-        <span class="stage-value stage-expert">Perito</span>
+        <span class="manip-stage-lbl">Perito</span>
       {{else}}
-        <span class="stage-value stage-beginner">Iniciante</span>
+        <span class="manip-stage-lbl">Iniciante</span>
       {{/if}}
-      <span class="stage-pts">· {{actor.system.manipulation.pointsInvested}} PM investidos</span>
+      <span class="manip-stage-pts">{{actor.system.manipulation.pointsInvested}} PM investidos</span>
     </div>
 
-    <div class="manipulation-resources">
-      <div class="resource-box">
-        <label>Pontos de Maldição</label>
-        <input type="number"
-          name="system.curseResources.cursePoints"
-          value="{{actor.system.curseResources.cursePoints}}"
-          min="0" data-dtype="Number" />
+    <div class="manip-right">
+
+      {{!-- PM + efeito do estágio --}}
+      <div class="manip-pm-row">
+        <div class="manip-pm-left">
+          <span class="manip-pm-lbl">Pontos de Maldição</span>
+          <input class="manip-pm-val" type="number"
+            name="system.curseResources.cursePoints"
+            value="{{actor.system.curseResources.cursePoints}}"
+            min="0" data-dtype="Number" />
+          <span class="manip-pm-desc">
+            {{#if (eq actor.system.manipulation.stage "beginner")}}
+              Ação bônus para ativar / desativar energia
+            {{else if (eq actor.system.manipulation.stage "expert")}}
+              Ativação automática · Proficiência em CON
+            {{else}}
+              +4 dados em descanso longo · Maestria em CON
+            {{/if}}
+          </span>
+        </div>
       </div>
-    </div>
 
+      {{!-- Evolução na Prática — divisória modelo C --}}
+      <div class="manip-evo-row">
+        <div class="manip-evo-seg {{#if actor.system.energy.intensiveTraining.maxEnergy}}on{{/if}}">
+          <span class="manip-evo-lbl">PA Máximo</span>
+          <span class="manip-evo-val">+{{actor.system.energy.intensiveTraining.maxEnergy}}</span>
+          {{#if actor.system.energy.intensiveTraining.maxEnergy}}
+          <button class="manip-evo-undo" data-action="undoIntensiveTraining" data-field="maxEnergy" title="Desfazer">
+            <i class="fas fa-rotate-left"></i>
+          </button>
+          {{/if}}
+        </div>
+        <div class="manip-evo-seg {{#if actor.system.energy.intensiveTraining.generatedEnergy}}on{{/if}}">
+          <span class="manip-evo-lbl">PA Gerada</span>
+          <span class="manip-evo-val">+{{actor.system.energy.intensiveTraining.generatedEnergy}}</span>
+          {{#if actor.system.energy.intensiveTraining.generatedEnergy}}
+          <button class="manip-evo-undo" data-action="undoIntensiveTraining" data-field="generatedEnergy" title="Desfazer">
+            <i class="fas fa-rotate-left"></i>
+          </button>
+          {{/if}}
+        </div>
+        <div class="manip-evo-seg {{#if actor.system.energy.intensiveTraining.cursePoints}}on{{/if}}">
+          <span class="manip-evo-lbl">Pt. Maldição</span>
+          <span class="manip-evo-val">+{{actor.system.energy.intensiveTraining.cursePoints}}</span>
+          {{#if actor.system.energy.intensiveTraining.cursePoints}}
+          <button class="manip-evo-undo" data-action="undoIntensiveTraining" data-field="cursePoints" title="Desfazer">
+            <i class="fas fa-rotate-left"></i>
+          </button>
+          {{/if}}
+        </div>
+        <div class="manip-evo-btn-wrap">
+          <button class="jujutsu-btn primary btn-intensive-training"
+            data-action="intensiveTraining"
+            title="Iniciar Treinamento Intenso (10 dias)">
+            <i class="fas fa-dumbbell"></i> Treinar
+          </button>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  {{!-- ══════════════════════════ EFEITO ════════════════════════════ --}}
-  <div class="stage-effects">
-    {{#if (eq actor.system.manipulation.stage "beginner")}}
-      <p class="stage-effect-text">
-        ⚠️ <strong>Iniciante:</strong> Precisa de ação bônus para ativar e desativar sua energia amaldiçoada.
-      </p>
-    {{else if (eq actor.system.manipulation.stage "expert")}}
-      <p class="stage-effect-text">
-        ✅ <strong>Perito:</strong> Ativação automática de energia + proficiência em CON (Controle de Energia).
-      </p>
-    {{else}}
-      <p class="stage-effect-text">
-        ⭐ <strong>Mestre:</strong> +4 dados de energia em descanso longo + maestria em CON (Controle de Energia).
-      </p>
-    {{/if}}
-  </div>
-
-  {{!-- ═══════════════════ EVOLUÇÃO NA PRÁTICA ═════════════════════ --}}
-  <div class="evolution-section jujutsu-card">
-
-    <div class="evolution-header">
-      <div class="evolution-title-row">
-        <span class="evolution-icon">⬡</span>
-        <h3 class="evolution-title">Evolução na Prática</h3>
-        <span class="evolution-subtitle">Treinamento Intenso — 10 dias</span>
-      </div>
-      <button class="jujutsu-btn primary btn-intensive-training"
-        data-action="intensiveTraining"
-        title="Iniciar Treinamento Intenso (10 dias)">
-        <i class="fas fa-dumbbell"></i> Treinar
-      </button>
-    </div>
-
-    <div class="evolution-counters">
-
-      {{!-- PA Máximo --}}
-      <div class="evo-counter-card {{#if actor.system.energy.intensiveTraining.maxEnergy}}has-training{{/if}}">
-        <div class="evo-counter-icon">
-          <i class="fas fa-arrow-up"></i>
-        </div>
-        <div class="evo-counter-info">
-          <span class="evo-counter-label">PA Máximo</span>
-          <span class="evo-counter-desc">+5 por treino</span>
-        </div>
-        <div class="evo-counter-badge">
-          <span class="evo-counter-value">+{{actor.system.energy.intensiveTraining.maxEnergy}}</span>
-        </div>
-        {{#if actor.system.energy.intensiveTraining.maxEnergy}}
-        <button class="evo-undo-btn" data-action="undoIntensiveTraining" data-field="maxEnergy"
-          title="Desfazer último treino de PA Máximo">
-          <i class="fas fa-rotate-left"></i>
-        </button>
-        {{/if}}
-      </div>
-
-      {{!-- PA Gerada --}}
-      <div class="evo-counter-card {{#if actor.system.energy.intensiveTraining.generatedEnergy}}has-training{{/if}}">
-        <div class="evo-counter-icon">
-          <i class="fas fa-bolt"></i>
-        </div>
-        <div class="evo-counter-info">
-          <span class="evo-counter-label">PA Gerada</span>
-          <span class="evo-counter-desc">+1 por treino (máx. 20)</span>
-        </div>
-        <div class="evo-counter-badge">
-          <span class="evo-counter-value">+{{actor.system.energy.intensiveTraining.generatedEnergy}}</span>
-        </div>
-        {{#if actor.system.energy.intensiveTraining.generatedEnergy}}
-        <button class="evo-undo-btn" data-action="undoIntensiveTraining" data-field="generatedEnergy"
-          title="Desfazer último treino de PA Gerada">
-          <i class="fas fa-rotate-left"></i>
-        </button>
-        {{/if}}
-      </div>
-
-      {{!-- Pontos de Maldição --}}
-      <div class="evo-counter-card {{#if actor.system.energy.intensiveTraining.cursePoints}}has-training{{/if}}">
-        <div class="evo-counter-icon">
-          <i class="fas fa-skull"></i>
-        </div>
-        <div class="evo-counter-info">
-          <span class="evo-counter-label">Pontos de Maldição</span>
-          <span class="evo-counter-desc">+4 PM por treino</span>
-        </div>
-        <div class="evo-counter-badge">
-          <span class="evo-counter-value">+{{actor.system.energy.intensiveTraining.cursePoints}}</span>
-        </div>
-        {{#if actor.system.energy.intensiveTraining.cursePoints}}
-        <button class="evo-undo-btn" data-action="undoIntensiveTraining" data-field="cursePoints"
-          title="Desfazer último treino de PM">
-          <i class="fas fa-rotate-left"></i>
-        </button>
-        {{/if}}
-      </div>
-
-    </div>
-
-    <p class="evolution-note">
-      💡 Gaste <strong>10 dias de treinamento</strong> para obter uma melhoria. Ao escolher <em>PA Gerada</em>, aguarde 10 dias antes de escolhê-la novamente.
-    </p>
-
-  </div>
-
-  {{!-- ═══════════════════════ HABILIDADES ═════════════════════════ --}}
+  {{!-- ═══════════════════════════ HABILIDADES ══════════════════════════ --}}
   {{#each abilities as |group groupKey|}}
   <div class="ability-section">
 
     <h3 class="section-header jujutsu-title">
-      {{#if (eq groupKey "basic")}}
-        <span>◆</span> Habilidades Básicas
-      {{/if}}
-      {{#if (eq groupKey "advanced")}}
-        <span>◆</span> Habilidades Avançadas
-      {{/if}}
-      {{#if (eq groupKey "extreme")}}
-        <span>◈</span> Habilidades Extremas
-      {{/if}}
-      {{#if (eq groupKey "barrier")}}
-        <span>◇</span> Habilidades de Barreira
-      {{/if}}
+      {{#if (eq groupKey "basic")}}    <span>◆</span> Habilidades Básicas   {{/if}}
+      {{#if (eq groupKey "advanced")}} <span>◆</span> Habilidades Avançadas {{/if}}
+      {{#if (eq groupKey "extreme")}}  <span>◈</span> Habilidades Extremas  {{/if}}
+      {{#if (eq groupKey "barrier")}}  <span>◇</span> Habilidades de Barreira {{/if}}
     </h3>
 
     <div class="ability-grid">
       {{#each group}}
-      <div class="ability-card
-        {{#if this.unlocked}}unlocked{{else if this.canUnlock}}available{{else}}locked{{/if}}" data-ability-id="{{@key}}">
+      <div class="ability-card {{#if this.unlocked}}unlocked{{else if this.canUnlock}}available{{else}}locked{{/if}}"
+           data-ability-id="{{@key}}">
 
-        {{!-- Header --}}
-        <div class="ability-header">
-          <span class="ability-name">{{this.label}}</span>
-          <div class="ability-header-right">
-            <span class="ability-cost">{{this.cost}} PM</span>
-            {{#if this.stageLabel}}
-              <span class="ability-stage stage-badge-{{this.stage}}">{{this.stageLabel}}</span>
-            {{/if}}
-          </div>
+        {{!-- Kanji decorativo — injetado via JS --}}
+        <span class="ability-kanji"></span>
+
+        {{!-- Nome + custo --}}
+        <span class="ability-name">{{this.label}}</span>
+        <div class="ability-meta">
+          <span class="ability-cost">{{this.cost}} PM</span>
+          {{#if this.stageLabel}}
+            <span class="ability-stage stage-badge-{{this.stage}}">{{this.stageLabel}}</span>
+          {{/if}}
         </div>
 
-        {{!-- Descrição --}}
-        <div class="ability-desc">{{this.description}}</div>
-
-        {{!-- Técnicas vinculadas --}}
-        {{#if this.techniques.length}}
-        <div class="ability-techniques">
-          <span class="techniques-label">Técnicas:</span>
-          {{#each this.techniques}}
-            <span class="technique-tag">{{this}}</span>
-          {{/each}}
-        </div>
-        {{/if}}
-
-        {{!-- Ação --}}
+        {{!-- Botão de ação --}}
         <div class="ability-actions">
           {{#if this.unlocked}}
             <button class="jujutsu-btn unlocked-state" disabled>✓ Desbloqueado</button>
@@ -190,8 +127,15 @@
               Desbloquear · {{this.cost}} PM
             </button>
           {{else}}
-            <span style="font-size:10px;color:var(--jj-text-dim)">🔒 {{this.lockReason}}</span>
+            <button class="jujutsu-btn locked-state" disabled>🔒 {{this.lockReason}}</button>
           {{/if}}
+        </div>
+
+        {{!-- Divisória + técnicas (sempre presente) --}}
+        <div class="ability-footer">
+          {{#each this.techniques}}
+            <span class="ability-tech-pill">{{this}}</span>
+          {{/each}}
         </div>
 
       </div>

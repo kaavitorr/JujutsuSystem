@@ -1,0 +1,170 @@
+/* ══════════════════════════════════════════════════════
+   JUJUTSU LEGACY — ABA: EFEITOS
+   Headers de seção, seção de condições, fontes padronizadas
+   ══════════════════════════════════════════════════════ */
+
+/* ── Fundo transparente da aba ──────── */
+.tab[data-tab="effects"] {
+  background: transparent;
+}
+
+/* ════════════════════════════════════════
+   HEADERS DE SEÇÃO — Corrigir vermelho padrão
+   ════════════════════════════════════════ */
+
+.dnd5e2 .effects-element .items-header,
+.tab[data-tab="effects"] .effects-element .items-header,
+.tab[data-tab="effects"] .items-section > header,
+.tab[data-tab="effects"] .items-section > .items-header {
+  background: linear-gradient(90deg, #1c1c30, #161628) !important;
+  border-bottom: 1px solid var(--jj-border) !important;
+}
+
+.dnd5e2 .effects-element .items-header *,
+.tab[data-tab="effects"] .effects-element .items-header *,
+.tab[data-tab="effects"] .items-section > header *,
+.tab[data-tab="effects"] .items-section > .items-header * {
+  color: var(--jj-primary-soft) !important;
+  font-family: var(--dnd5e-font-roboto-condensed, sans-serif) !important;
+  text-shadow: none !important;
+}
+
+.tab[data-tab="effects"] .items-section {
+  background: rgba(10, 10, 20, 0.6);
+  border-color: var(--jj-border-soft);
+}
+
+/* ════════════════════════════════════════
+   FONTES PADRONIZADAS — Todos os headers
+   ════════════════════════════════════════ */
+
+.dnd5e2 .effects-element .items-header,
+.dnd5e2 .effects-element .items-header h3,
+.dnd5e2 .effects-element .items-header h4,
+.dnd5e2 .effects-element .items-header span,
+.dnd5e2 .effects-element .items-header label,
+.tab[data-tab="effects"] .items-section > header,
+.tab[data-tab="effects"] .items-section > header h3,
+.tab[data-tab="effects"] .items-section > header h4,
+.tab[data-tab="effects"] .items-section > .items-header,
+.tab[data-tab="effects"] .items-section > .items-header h3,
+.tab[data-tab="effects"] .items-section > .items-header h4,
+.tab[data-tab="effects"] .jj-cond-header,
+.tab[data-tab="effects"] .jj-cond-header * {
+  font-family: var(--dnd5e-font-roboto-condensed, 'Roboto Condensed', sans-serif) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--jj-primary-soft) !important;
+  text-shadow: none !important;
+}
+
+/* ── Header de condições ────────────── */
+.tab[data-tab="effects"] .jj-cond-header {
+  background: linear-gradient(90deg, #1c1c30, #161628) !important;
+  color: var(--jj-primary-soft) !important;
+}
+
+/* ════════════════════════════════════════
+   SEÇÃO DE CONDIÇÕES
+   ════════════════════════════════════════ */
+
+.jj-conditions-section {
+  margin-top: 12px;
+  padding: 0 4px;
+}
+
+.jj-cond-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  margin-bottom: 8px;
+  background: var(--dnd5e-color-maroon, #44000f);
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #e0c0c0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.jj-cond-custom-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 3px;
+  color: #c0a0a0;
+  font-size: 10px;
+  padding: 2px 6px;
+  cursor: pointer;
+  transition: all 120ms;
+}
+
+.jj-cond-custom-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.jj-cond-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.jj-cond-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border: 1px solid #1e1e2e;
+  border-radius: 4px;
+  background: var(--jj-bg-main);
+  cursor: pointer;
+  transition: all 120ms;
+  user-select: none;
+}
+
+.jj-cond-item i {
+  font-size: 11px;
+  color: #404058;
+  flex: none;
+  width: 14px;
+  text-align: center;
+  transition: color 120ms;
+}
+
+.jj-cond-item span {
+  font-size: 11px;
+  color: #505068;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 120ms;
+}
+
+.jj-cond-item:hover {
+  border-color: #3a3a5a;
+  background: #141420;
+}
+
+.jj-cond-item:hover i   { color: #8080b0; }
+.jj-cond-item:hover span { color: #9090c0; }
+
+.jj-cond-item.active {
+  border-color: #6a1a1a;
+  background: #1a0808;
+}
+
+.jj-cond-item.active i   { color: #e05050; }
+.jj-cond-item.active span { color: #c08080; font-weight: 600; }
+
+.jj-cond-item.active:hover {
+  border-color: #a02020;
+  background: #220a0a;
+}
+
+/* ── Override header vermelho padrão do sistema ── */
+.dnd5e2 .effects-element .items-header {
+  background: var(--dnd5e-color-maroon, #44000f) !important;
+}

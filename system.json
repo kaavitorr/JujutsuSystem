@@ -32,14 +32,58 @@
           "types": ["spell"]
         }
       }
-    }
+    },
+   {
+    "name": "conteudo",
+    "label": "Informações",
+    "path": "packs/info",
+    "type": "JournalEntry",
+    "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+    },
+    "system": "jujutsu-system"
+}
   ],
   "styles": [
     {
       "src": "dnd5e.css"
     },
     {
-      "src": "less/jujutsu-card.css"
+      "src": "less/jujutsu-base.css"
+    },
+     {
+      "src": "less/jujutsu-biografia.css"
+    },
+     {
+      "src": "less/jujutsu-caracteristicas.css"
+    },
+     {
+      "src": "less/jujutsu-detalhes.css"
+    },
+     {
+      "src": "less/jujutsu-efeitos.css"
+    },
+     {
+      "src": "less/jujutsu-index.css"
+    },
+     {
+      "src": "less/jujutsu-inventario.css"
+    },
+     {
+      "src": "less/jujutsu-manipulacao.css"
+    },
+     {
+      "src": "less/jujutsu-fulgor.css"
+    },
+     {
+      "src": "less/jujutsu-tecnicas.css"
+    },
+     {
+      "src": "less/jujutsu-treinamentos.css"
+    },
+    {
+      "src": "less/jujutsu-chat-card.css"
     }
   ],
   "documentTypes": {
