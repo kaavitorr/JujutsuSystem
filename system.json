@@ -2,14 +2,14 @@
   "id": "jujutsu-system",
   "title": "Jujutsu Legacy RPG 1.0",
   "description": "A system for playing the fifth edition of the world's most popular role-playing game in the Foundry Virtual Tabletop environment.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "compatibility": {
     "minimum": "14.360",
     "verified": "14"
   },
   "url": "https://github.com/kaavitorr/JujutsuSystem",
   "manifest": "https://raw.githubusercontent.com/kaavitorr/JujutsuSystem/master/system.json",
-  "download": "https://github.com/kaavitorr/JujutsuSystem/releases/download/v1.0.3/jujutsu-system.zip",
+  "download": "https://github.com/kaavitorr/JujutsuSystem/releases/download/v1.0.4/jujutsu-system.zip",
   "authors": [
     {
       "name": "Noroi",
