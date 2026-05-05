@@ -1,0 +1,33 @@
+/* ══════════════════════════════════════════════════════
+   JUJUTSU LEGACY — INDEX
+   Importa todos os arquivos CSS por aba.
+   Use este arquivo como ponto de entrada único,
+   ou importe apenas os que precisar.
+   ══════════════════════════════════════════════════════ */
+
+/* Base — variáveis, chat card, ability scores, fundo global */
+@import url("jujutsu-base.css");
+
+/* Aba: Detalhes — salvaguardas, perícias, ferramentas, seis olhos */
+@import url("jujutsu-detalhes.css");
+
+/* Aba: Inventário — headers de seção, moeda yen */
+@import url("jujutsu-inventario.css");
+
+/* Aba: Características — headers de seção, pills de classe */
+@import url("jujutsu-caracteristicas.css");
+
+/* Aba: Técnicas — headers de seção, spell slots ocultos */
+@import url("jujutsu-tecnicas.css");
+
+/* Aba: Efeitos — headers, condições, fontes padronizadas */
+@import url("jujutsu-efeitos.css");
+
+/* Aba: Manipulação — ability grid, ability cards, domínio */
+@import url("jujutsu-manipulacao.css");
+
+/* Aba: Treinamentos — training cards, mastery, evolution */
+@import url("jujutsu-treinamentos.css");
+
+/* Aba: Biografia — editor, traços, alinhamento */
+@import url("jujutsu-biografia.css");

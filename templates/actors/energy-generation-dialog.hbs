@@ -1,0 +1,53 @@
+<section class="flexcol">
+  <div class="note info">
+    Escolha como gerar sua Energia Amaldiçoada neste turno.
+    <br>Limite atual: <strong>{{ limite }}</strong> PA Gerada | Total disponível: <strong>{{ totalAtual }}</strong>
+  </div>
+
+  <fieldset style="margin-top: 18px;">
+    <legend>Multiplicador Base</legend>
+    <div class="form-group">
+      <label>Quantidade a gerar</label>
+      <div class="form-fields">
+        <select name="baseMultiplier">
+          <option value="2">2x (Padrão)</option>
+          <option value="4">4x (Acúmulo — não gastou PA no turno anterior)</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  {{#if hasAccumulation}}
+  <fieldset style="margin-top: 12px;">
+    <legend>Acúmulo de Energia (Nível 5) — {{ accumulationUses }}/{{ accumulationMax }} usos</legend>
+    <div class="form-group">
+      <label>Usar Acúmulo de Energia (+{{ level }} PA adicional)</label>
+      <div class="form-fields">
+        <input type="checkbox" name="useAccumulation" {{#if (lte accumulationUses 0)}}disabled{{/if}}>
+      </div>
+    </div>
+  </fieldset>
+  {{/if}}
+
+  {{#if hasLiberation}}
+  <fieldset style="margin-top: 12px;">
+    <legend>Liberação de Energia — {{ liberationUses }} uso(s)</legend>
+    <div class="form-group">
+      <label>Usar Liberação de Energia (gera 3x em vez do normal)</label>
+      <div class="form-fields">
+        <input type="checkbox" name="useLiberation" {{#if (lte liberationUses 0)}}disabled{{/if}}>
+      </div>
+    </div>
+  </fieldset>
+  {{/if}}
+
+  <fieldset style="margin-top: 12px;">
+    <legend>Bônus Manual (Feitiço/Habilidade)</legend>
+    <div class="form-group">
+      <label>PA adicional</label>
+      <div class="form-fields">
+        <input type="number" name="flatBonus" value="0" min="0">
+      </div>
+    </div>
+  </fieldset>
+</section>

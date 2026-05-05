@@ -1,0 +1,41 @@
+/* ══════════════════════════════════════════════════════
+   JUJUTSU LEGACY — ABA: TÉCNICAS
+   Spellbook — headers de seção, esconder pips de spell slots
+   ══════════════════════════════════════════════════════ */
+
+/* ── Fundo transparente da aba ──────── */
+.tab[data-tab="spells"] {
+  background: transparent;
+}
+
+/* ════════════════════════════════════════
+   HEADERS DE SEÇÃO
+   ════════════════════════════════════════ */
+
+.tab[data-tab="spells"] .items-section > header,
+.tab[data-tab="spells"] .items-section > .items-header {
+  background: linear-gradient(90deg, #1c1c30, #161628);
+  border-bottom: 1px solid var(--jj-border);
+}
+
+.tab[data-tab="spells"] .items-section > header h3,
+.tab[data-tab="spells"] .items-section > .items-header h3 {
+  color: var(--jj-primary-soft);
+  text-shadow: 0 0 8px rgba(120, 80, 255, 0.3);
+}
+
+.tab[data-tab="spells"] .items-section {
+  background: rgba(10, 10, 20, 0.6);
+  border-color: var(--jj-border-soft);
+}
+
+/* ════════════════════════════════════════
+   ESCONDER PIPS DE SPELL SLOTS
+   ════════════════════════════════════════ */
+
+.tab[data-tab="spells"] .spell-pips,
+.tab[data-tab="spells"] .pips,
+.tab[data-tab="spells"] [class*="pip"],
+.tab[data-tab="spells"] .spell-slots .pip {
+  display: none !important;
+}

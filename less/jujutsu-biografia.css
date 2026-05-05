@@ -1,0 +1,64 @@
+/* ══════════════════════════════════════════════════════
+   JUJUTSU LEGACY — ABA: BIOGRAFIA
+   Estilos específicos da aba de biografia
+   ══════════════════════════════════════════════════════ */
+
+/* ── Fundo transparente da aba ──────── */
+.tab[data-tab="biography"] {
+  background: transparent;
+}
+
+/* ════════════════════════════════════════
+   EDITOR DE TEXTO (ProseMirror / TinyMCE)
+   ════════════════════════════════════════ */
+
+.tab[data-tab="biography"] .editor {
+  background: rgba(10, 10, 20, 0.6);
+  border: 1px solid var(--jj-border-soft);
+  border-radius: 6px;
+}
+
+.tab[data-tab="biography"] .editor-content {
+  color: var(--jj-text-soft);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ── Header / título do campo ──────── */
+.tab[data-tab="biography"] .biography header,
+.tab[data-tab="biography"] .biography .label {
+  color: var(--jj-primary-soft);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--jj-border-soft);
+  padding-bottom: 4px;
+  margin-bottom: 6px;
+}
+
+/* ── Inputs de traços de personalidade ── */
+.tab[data-tab="biography"] textarea,
+.tab[data-tab="biography"] input[type="text"] {
+  background: var(--jj-bg-soft);
+  border: 1px solid var(--jj-border-soft);
+  border-radius: 4px;
+  color: var(--jj-text-main);
+  padding: 6px 8px;
+  font-size: 12px;
+}
+
+.tab[data-tab="biography"] textarea:focus,
+.tab[data-tab="biography"] input[type="text"]:focus {
+  border-color: rgba(120, 80, 255, 0.4);
+  outline: none;
+  box-shadow: 0 0 6px rgba(120, 80, 255, 0.15);
+}
+
+/* ── Seções de características / alinhamento ── */
+.tab[data-tab="biography"] .characteristics label,
+.tab[data-tab="biography"] .alignment label {
+  color: var(--jj-text-dim);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
