@@ -1,6 +1,6 @@
 import aggregateDamageRolls from "../../dice/aggregate-damage-rolls.mjs";
 import simplifyRollFormula from "../../dice/simplify-roll-formula.mjs";
-import { safePropertyExists, staticID } from "../../utils.mjs";
+import { safePropertyExists, simplifyBonus, staticID } from "../../utils.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import IdentifierField from "../fields/identifier-field.mjs";
 import ActivationField from "../shared/activation-field.mjs";
@@ -65,6 +65,28 @@ export default class BaseActivityData extends foundry.abstract.DataModel {
       description: new SchemaField({
         chatFlavor: new StringField()
       }),
+      // Escala de Energia (JJ) — substitui a escala nativa por spell level.
+      // Aplica-se a dano/cura/salvaguarda/redução (não a jogadas de acerto).
+      jjScale: new SchemaField({
+        enabled: new BooleanField(),   // checkbox de exibição (UI) — some o bloco quando vazio
+        formula: new FormulaField({ label: "Escala JJ — incremento (rolagem/flat)" }),
+        cost: new NumberField({ integer: true, nullable: false, min: 1, initial: 1, label: "Escala JJ — custo por incremento (PA)" }),
+        maxPA: new NumberField({ integer: true, nullable: false, min: 0, initial: 0, label: "Escala JJ — máx. PA gasto (0 = ilimitado)" })
+      }),
+      // Custo Constante / Concentração (JJ) — manutenção de PA por turno enquanto
+      // a técnica estiver ativa (liga ao usar; desliga pelo HUD de combate).
+      //   value > 0  → drena esse valor por turno (sobrepõe a concentração)
+      //   concentration → drena 2 PA por turno
+      //   pool: de qual reserva sai ("generated" = Gerada, "total" = Total)
+      constantCost: new SchemaField({
+        enabled: new BooleanField(),   // checkbox de exibição (UI)
+        value: new FormulaField({ deterministic: true, label: "JUJUTSU.ConstantCost.Value" }),
+        pool: new StringField({
+          initial: "generated", label: "JUJUTSU.ConstantCost.Pool",
+          choices: { generated: "Energia Gerada", total: "Energia Total" }
+        }),
+        concentration: new BooleanField({ label: "JUJUTSU.ConstantCost.Concentration" })
+      }),
       duration: new DurationField({
         concentration: new BooleanField(),
         override: new BooleanField()
@@ -90,6 +112,27 @@ export default class BaseActivityData extends foundry.abstract.DataModel {
         requireMagic: new BooleanField()
       })
     };
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Custo de manutenção por turno desta atividade (Custo Constante / Concentração).
+   * Custo Constante (value > 0) sobrepõe a Concentração (2 PA).
+   * @param {object} [rollData]
+   * @returns {{active:boolean, value:number, pool:string, type:("constant"|"concentration"|null)}}
+   */
+  getConstantUpkeep(rollData) {
+    const cc = this.constantCost ?? {};
+    const pool = cc.pool === "total" ? "total" : "generated";
+    const formula = cc.value?.trim?.() ? cc.value : "";
+    if ( formula ) {
+      rollData ??= this.getRollData?.({ deterministic: true });
+      const raw = Math.round(simplifyBonus(formula, rollData ?? {}));
+      if ( Number.isFinite(raw) && raw > 0 ) return { active: true, value: raw, pool, type: "constant" };
+    }
+    if ( cc.concentration ) return { active: true, value: 2, pool, type: "concentration" };
+    return { active: false, value: 0, pool, type: null };
   }
 
   /* -------------------------------------------- */

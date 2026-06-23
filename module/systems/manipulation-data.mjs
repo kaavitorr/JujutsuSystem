@@ -532,31 +532,6 @@ export const TRAININGS_DATA = {
     requires: { special: "expansaoDominio" }
   },
 
-  // ── IMACULADO ────────────────────────────────────────────
-  estiloVersatil: {
-    category: "immaculate",
-    label: "Estilo Versátil",
-    ptCost: [5],
-    paCost: [50],
-    baseDC: 16,
-    dcIncrement: 0,
-    baseEffect: "Pode reduzir dados de dano de técnicas do Novo Estilo das Sombras para reduzir o custo em PA pelo mesmo valor (mín. 1 dado).",
-    evolutionEffect: null,
-    perfectionEffect: null,
-    requires: {}
-  },
-  laminaVeloz: {
-    category: "immaculate",
-    label: "Lâmina Veloz",
-    ptCost: [5],
-    paCost: [50],
-    baseDC: 16,
-    dcIncrement: 0,
-    baseEffect: "Pode ativar Hazy Moon dentro ou fora do turno sem consumir ação. Recebe +2 nas rolagens de dano.",
-    evolutionEffect: null,
-    perfectionEffect: null,
-    requires: {}
-  }
 };
 
 // ============================================================
@@ -644,10 +619,12 @@ export function prepareManipulationAbilities(actor) {
  * Prepara os dados de treinamentos para o template
  */
 export function prepareTrainings(actor) {
-  const result = { general: {}, domain: {}, immaculate: {} };
+  const result = { general: {}, domain: {} };
   const savedTrainings = actor.system.trainings ?? {};
   const trainingPoints = actor.system.curseResources?.trainingPoints ?? 0;
   const energyTotal = actor.system.energy?.total ?? 0;
+  const masteryLevel = actor.system.masteryLevel ?? 0;
+  const dominioExpandido = actor.flags?.["jujutsu-system"]?.dominioExpandido === true;
 
   for ( const [id, def] of Object.entries(TRAININGS_DATA) ) {
     const saved = savedTrainings[id] ?? { rank: 0, currentDC: def.baseDC };
@@ -664,10 +641,15 @@ export function prepareTrainings(actor) {
       : def.evolutionEffect !== null ? 2
       : 1;
 
+    // Pré-requisito especial: Expansão de Domínio (exige Maestria 7 + domínio expandido)
+    const requerDominio = def.requires?.special === "expansaoDominio";
+    const dominioOk = !requerDominio || (masteryLevel >= 7 && dominioExpandido);
+
     // Verificar se pode treinar
     const canTrain = rank < maxRank &&
       trainingPoints >= nextPtCost &&
-      energyTotal >= nextPaCost;
+      energyTotal >= nextPaCost &&
+      dominioOk;
 
     result[def.category][id] = {
       ...def,
@@ -677,10 +659,16 @@ export function prepareTrainings(actor) {
       nextPtCost,
       nextPaCost,
       canTrain,
+      requerDominio,
+      dominioOk,
       lockReason: !canTrain
-        ? (trainingPoints < nextPtCost
-          ? `Faltam ${nextPtCost - trainingPoints} PT`
-          : `Faltam ${nextPaCost - energyTotal} PA Total`)
+        ? (!dominioOk
+          ? "Requer Expansão de Domínio (Maestria 7)"
+          : rank >= maxRank
+            ? "Rank máximo atingido"
+            : trainingPoints < nextPtCost
+              ? `Faltam ${nextPtCost - trainingPoints} PT`
+              : `Faltam ${nextPaCost - energyTotal} PA Total`)
         : ""
     };
   }

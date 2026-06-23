@@ -23,7 +23,8 @@ export default class SaveSheet extends ActivitySheet {
         "systems/jujutsu-system/templates/activity/parts/damage-parts.hbs",
         "systems/jujutsu-system/templates/activity/parts/save-damage.hbs",
         "systems/jujutsu-system/templates/activity/parts/save-details.hbs",
-        "systems/jujutsu-system/templates/activity/parts/save-effect-settings.hbs"
+        "systems/jujutsu-system/templates/activity/parts/save-effect-settings.hbs",
+        "systems/jujutsu-system/templates/activity/parts/jj-scale.hbs"
       ]
     }
   };

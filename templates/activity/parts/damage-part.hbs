@@ -43,7 +43,8 @@
 
 {{#if canScale}}
 {{#with fields.scaling.fields as |fields|}}
-<div class="field-group">
+{{!-- Escala nativa (por spell level) oculta — substituída pela Escala de Energia (JJ) --}}
+<div class="field-group" style="display:none;">
     {{ formField fields.mode name=(concat ../prefix "scaling.mode") value=../source.scaling.mode
                  options=../scalingOptions label="DND5E.DAMAGE.FIELDS.damage.parts.FIELDS.scaling.abbr" hint=false
                  localize=true classes="label-top" rootId=@root.partId }}

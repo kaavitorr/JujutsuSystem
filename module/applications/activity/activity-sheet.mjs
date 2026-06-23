@@ -56,7 +56,8 @@ export default class ActivitySheet extends PseudoDocumentSheet {
       templates: [
         "systems/jujutsu-system/templates/activity/parts/activity-effects.hbs",
         "systems/jujutsu-system/templates/activity/parts/activity-effect-level-limit.hbs",
-        "systems/jujutsu-system/templates/activity/parts/activity-effect-settings.hbs"
+        "systems/jujutsu-system/templates/activity/parts/activity-effect-settings.hbs",
+        "systems/jujutsu-system/templates/activity/parts/constant-cost.hbs"
       ]
     }
   };

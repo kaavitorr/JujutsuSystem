@@ -12,12 +12,38 @@ import { showBlackFlashPopup } from "./popup.mjs";
 // Map em memória: actorId → true/false (fulgor ativado neste combate)
 const fulgorAtivadoCombate = new Map();
 
+/**
+ * Se o ator tem o TREINAMENTO de energia amaldiçoada "Fulgor Certeiro"
+ * (rank ≥ 1, em system.trainings.fulgorCerteiro). O efeito base já reduz a
+ * margem do dado secundário do Fulgor Negro para 11–20.
+ * @param {Actor5e} actor
+ * @returns {boolean}
+ */
+export function hasFulgorCerteiro(actor) {
+  return (Number(actor?.system?.trainings?.fulgorCerteiro?.rank) || 0) > 0;
+}
+
+/**
+ * Limiar do dado SECUNDÁRIO do Fulgor Negro (resultado ≥ X ativa).
+ * Padrão 15 (margem 15–20). Com o treinamento "Fulgor Certeiro", a margem cai
+ * para 11–20 (limiar ≤ 11). Um valor manual mais generoso é respeitado.
+ * @param {Actor5e} actor
+ * @returns {number}
+ */
+export function getFulgorSecundaria(actor) {
+  const certeiro = hasFulgorCerteiro(actor);
+  const flag = Number(actor?.getFlag?.("jujutsu-system", "fulgorSecundaria"));
+  let v = Number.isFinite(flag) ? flag : (certeiro ? 11 : 15);
+  if ( certeiro ) v = Math.min(v, 11); // Fulgor Certeiro garante no mínimo 11–20
+  return v;
+}
+
 export async function checkFulgorNegro(actor, d20Result) {
   if ( !actor || !d20Result ) return false;
   if ( !actor.system.manipulation?.abilities?.fulgorNegro?.unlocked ) return false;
 
   const primaria   = Number(actor.getFlag("jujutsu-system", "fulgorPrimaria")  ?? 20);
-  const secundaria = Number(actor.getFlag("jujutsu-system", "fulgorSecundaria") ?? 15);
+  const secundaria = getFulgorSecundaria(actor);
   const jaAtivou   = fulgorAtivadoCombate.get(actor.id) ?? false;
 
   // Verificar se possui a subclasse Mestre do Fulgor
@@ -33,6 +59,7 @@ export async function checkFulgorNegro(actor, d20Result) {
         speaker: ChatMessage.getSpeaker({ actor }),
         content: `<strong>⚡ FULGOR NEGRO!</strong> ${actor.name} ativou o Fulgor Negro! (${d20Result} ≥ ${primaria})`
       });
+      Hooks.callAll("jujutsu.fulgorNegro", actor);
       return true;
     }
     return false;
@@ -51,18 +78,26 @@ export async function checkFulgorNegro(actor, d20Result) {
       speaker: ChatMessage.getSpeaker({ actor }),
       content: `<strong>⚡ FULGOR NEGRO!</strong> ${actor.name} ativou o Fulgor Negro! (${d20Result} ≥ ${primaria})<br><em>Mestre do Fulgor — sem dado secundário. A partir de agora, todo resultado ≥ ${primaria} ativa o Fulgor.</em>`
     });
+    Hooks.callAll("jujutsu.fulgorNegro", actor);
     return true;
   }
 
   const rollSecundario = await new Roll("1d20").evaluate();
   const resultSecundario = rollSecundario.dice[0].results[0].result;
 
+  const certeiro = hasFulgorCerteiro(actor);
+  const acertou = resultSecundario >= secundaria;
+  const certeiroNota = certeiro ? ` <em>(Fulgor Certeiro: ${secundaria}–20)</em>` : "";
+  const veredito = acertou
+    ? `<strong style="color:#2e8b57;">✓ ${resultSecundario} ≥ ${secundaria} — ATIVOU!</strong>`
+    : `<strong style="color:#b22222;">✗ ${resultSecundario} &lt; ${secundaria} — não ativou.</strong>`;
+
   await rollSecundario.toMessage({
     speaker: ChatMessage.getSpeaker({ actor }),
-    flavor: `🎯 Dado Secundário do Fulgor (precisa ≥ ${secundaria}): <strong>${resultSecundario}</strong>`
+    flavor: `🎯 Dado Secundário do Fulgor — precisa <strong>≥ ${secundaria}</strong>${certeiroNota}<br>${veredito}`
   });
 
-  if ( resultSecundario < secundaria ) return false;
+  if ( !acertou ) return false;
 
   // Primeiro Fulgor ativado!
   fulgorAtivadoCombate.set(actor.id, true);
@@ -76,6 +111,7 @@ export async function checkFulgorNegro(actor, d20Result) {
     speaker: ChatMessage.getSpeaker({ actor }),
     content: `<strong>⚡ FULGOR NEGRO!</strong> ${actor.name} ativou o Fulgor Negro! (${d20Result} ≥ ${primaria}, secundário ${resultSecundario} ≥ ${secundaria})<br><em>A partir de agora, todo resultado ≥ ${primaria} ativa o Fulgor até o fim do encontro.</em>`
   });
+  Hooks.callAll("jujutsu.fulgorNegro", actor);
   return true;
 }
 

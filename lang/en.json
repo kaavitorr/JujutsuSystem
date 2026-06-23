@@ -69,7 +69,7 @@
   }
 },
 
-"DND5E.title": "Dungeon & Dragons Fifth Edition",
+"DND5E.title": "Jujutsu Legacy RPG",
 "DND5E.AbbreviationCR": "CR",
 "DND5E.AbbreviationConc": "Conc.",
 "DND5E.AbbreviationDC": "DC",
@@ -207,6 +207,7 @@
       "Counted": { "one": "{number} ação mítica", "other": "{number} ações míticas" },
       "Header": "Ações Míticas", "Label": "Ação Mítica"
     },
+    "PowerAction": { "Header": "Ações de Poder", "Label": "Ação de Poder" },
     "Reaction": { "Header": "Reações", "Label": "Reação" },
     "ShortRest": { "Label": "Fim de um Descanso Curto" },
     "TurnEnd": { "Label": "Fim do Turno" },
@@ -3418,23 +3419,23 @@
 "DND5E.Shape": "Forma",
 
 "DND5E.SheetClass": {
-  "Character": "Ficha de Personagem D&D 5e",
-  "ClassSummary": "Resumo de Classe D&D 5e",
-  "Container": "Ficha de Contêiner D&D 5e",
-  "DifficultTerrain": "Ficha de Terreno Difícil D&D 5e",
-  "Encounter": "Ficha de Encontro D&D 5e",
-  "Group": "Ficha de Grupo D&D 5e",
-  "Item": "Ficha de Item D&D 5e",
-  "JournalEntry": "Ficha de Diário D&D 5e",
-  "JournalEntryLegacy": "Ficha de Diário D&D 5e (Legado)",
-  "MapLocation": "Ficha de Localização D&D 5e",
-  "NPC": "Ficha de NPC D&D 5e",
-  "RollTable": "Ficha de Tabela de Rolagem D&D 5e",
-  "RotateArea": "Ficha de Área Rotativa D&D 5e",
-  "Rule": "Ficha de Regra D&D 5e",
-  "SpellList": "Ficha de Lista de Magias D&D 5e",
-  "Token": "Ficha de Token D&D 5e",
-  "Vehicle": "Ficha de Veículo D&D 5e"
+  "Character": "Ficha de Personagem Jujutsu Legacy",
+  "ClassSummary": "Resumo de Classe Jujutsu Legacy",
+  "Container": "Ficha de Contêiner Jujutsu Legacy",
+  "DifficultTerrain": "Ficha de Terreno Difícil Jujutsu Legacy",
+  "Encounter": "Ficha de Encontro Jujutsu Legacy",
+  "Group": "Ficha de Grupo Jujutsu Legacy",
+  "Item": "Ficha de Item Jujutsu Legacy",
+  "JournalEntry": "Ficha de Diário Jujutsu Legacy",
+  "JournalEntryLegacy": "Ficha de Diário Jujutsu Legacy (Legado)",
+  "MapLocation": "Ficha de Localização Jujutsu Legacy",
+  "NPC": "Ficha de NPC Jujutsu Legacy",
+  "RollTable": "Ficha de Tabela de Rolagem Jujutsu Legacy",
+  "RotateArea": "Ficha de Área Rotativa Jujutsu Legacy",
+  "Rule": "Ficha de Regra Jujutsu Legacy",
+  "SpellList": "Ficha de Lista de Magias Jujutsu Legacy",
+  "Token": "Ficha de Token Jujutsu Legacy",
+  "Vehicle": "Ficha de Veículo Jujutsu Legacy"
 },
 
 "DND5E.SheetModeEdit": "Editar",
@@ -3619,6 +3620,12 @@
     "Ritual": {
       "label": "Feitiço Máximo"
     },
+    "Reversal": {
+      "label": "Reversão de Feitiço"
+    },
+    "Inherent": {
+      "label": "Feitiço Inerente"
+    },
     "Spell": {
       "label": "Uso de Técnicas",
       "Full": {
@@ -3707,7 +3714,7 @@
 "DND5E.SpellPreparation": {
   "Label": "Preparação de Técnica",
   "Formula": "Fórmula de Preparação",
-  "Method": "Método de Conjuração"
+  "Method": "Tipo de Feitiço"
 },
 "DND5E.SpellPrepared": "Preparada",
 "DND5E.SpellProgArt": "Artífice",
@@ -5318,9 +5325,9 @@
 "MACRO.5eNoActorSelected": "Nenhum ator selecionado ou atribuído foi encontrado para ser alvo da macro.",
 "MACRO.5eUnownedWarn": "Você só pode criar botões de macro para Itens que possui",
 
-"MIGRATION.5eBegin": "Aplicando migração do sistema D&D 5e para a versão {version}. Por favor, aguarde e não feche o jogo nem desligue o servidor.",
-"MIGRATION.5eComplete": "Migração do sistema D&D 5e para a versão {version} concluída!",
-"MIGRATION.5eVersionTooOldWarning": "Seus dados do sistema D&D 5e são de uma versão muito antiga do Foundry e não podem ser migrados com segurança para a versão mais recente. O processo será tentado, mas erros podem ocorrer.",
+"MIGRATION.5eBegin": "Aplicando migração do sistema Jujutsu Legacy para a versão {version}. Por favor, aguarde e não feche o jogo nem desligue o servidor.",
+"MIGRATION.5eComplete": "Migração do sistema Jujutsu Legacy para a versão {version} concluída!",
+"MIGRATION.5eVersionTooOldWarning": "Seus dados do sistema Jujutsu Legacy são de uma versão muito antiga do Foundry e não podem ser migrados com segurança para a versão mais recente. O processo será tentado, mas erros podem ocorrer.",
 
 "SETTINGS.5eAutoCollapseCardL": "Colapsar automaticamente descrições de Cartas de Item no Chat",
 "SETTINGS.5eAutoCollapseCardN": "Colapsar Cartas de Item no Chat",
@@ -5556,12 +5563,19 @@
 "JUJUTSU.CursePoints": "Pontos de Maldição",
 "JUJUTSU.TrainingPoints": "Pontos de Treinamento",
 "JUJUTSU.CurseResources": "Recursos de Maldição",
+"JUJUTSU.HealLimit.Label": "Limite de Cura",
+"JUJUTSU.HealLimit.Formula": "Limite Total de Cura",
+"JUJUTSU.ConstantCost.Value": "Custo Constante por Turno",
+"JUJUTSU.ConstantCost.Pool": "Sai de qual reserva",
+"JUJUTSU.ConstantCost.Concentration": "Concentração (2 PA por turno)",
 "JUJUTSU.EnergyAbilities": "Habilidades de Energia",
 "JUJUTSU.EnergyDice.Current": "Dados de Energia (Atual)",
 "JUJUTSU.EnergyDice.Max": "Dados de Energia (Máximo)",
 "JUJUTSU.EnergyDice.Bonus": "Bônus de Dados de Energia",
 "JUJUTSU.EnergyDice.Denomination": "Tipo de Dado de Energia",
 "JUJUTSU.EnergyDice.Label": "Dados de Energia",
+"JUJUTSU.ArmorPoints.Current": "Pontos de Armadura (Atual)",
+"JUJUTSU.ArmorPoints.Label": "Pontos de Armadura",
 "JUJUTSU.Manipulation.Label": "Manipulação",
 "JUJUTSU.Manipulation.PointsInvested": "PM Investido",
 "JUJUTSU.Manipulation.Abilities": "Habilidades de Manipulação",

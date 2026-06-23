@@ -43,10 +43,6 @@ export function applyFetoRules(abilityId, actor, result, abilityDef) {
   const baseCost      = abilityDef?.cost ?? 10;
   const discountedCost = Math.ceil(baseCost / 2);
   const cursePoints   = actor.system.curseResources?.cursePoints ?? 0;
-  const unlocked      = actor.system.manipulation?.abilities?.[abilityId]?.unlocked ?? false;
-
-  // Já desbloqueada
-  if ( unlocked ) return { can: false, reason: "Já desbloqueada", cost: discountedCost, fetoDiscount: true };
 
   // Ignora requisitos de estágio e habilidades; só verifica PM
   if ( cursePoints < discountedCost ) {

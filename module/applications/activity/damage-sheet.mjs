@@ -21,7 +21,8 @@ export default class DamageSheet extends ActivitySheet {
         ...super.PARTS.effect.templates,
         "systems/jujutsu-system/templates/activity/parts/damage-damage.hbs",
         "systems/jujutsu-system/templates/activity/parts/damage-part.hbs",
-        "systems/jujutsu-system/templates/activity/parts/damage-parts.hbs"
+        "systems/jujutsu-system/templates/activity/parts/damage-parts.hbs",
+        "systems/jujutsu-system/templates/activity/parts/jj-scale.hbs"
       ]
     }
   };

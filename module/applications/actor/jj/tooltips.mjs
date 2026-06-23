@@ -21,13 +21,13 @@ export function injectSkillRefs(root) {
     sur:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.ZKJhD4I3Pc75BNzF",
     ins:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.dJF7x8aruBfT84cz",
     prc:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.elJZJXFWk7t0nf31",
-    Sobr: "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.04XZdF0Ntc60wj12",
-    Sort: "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.mcIlW9Xizd3l3rtD",
+    Sobr: "TODO:UUID_Sobreviencia",  // TODO: substituir pelo UUID correto da página do compêndio
+    Sort: "TODO:UUID_Sortilegio",   // TODO: substituir pelo UUID correto da página do compêndio
     prf:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.cHdibPaupb34dyk4",
     dec:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.6eg3JWjY8xs6DMC6",
     itm:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.70xBRlUnlGDapKy6",
     per:  "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.vmdCFLdaRG729Yg9",
-    Prov: "Compendium.jujutsu-system.conteudo.JournalEntry.uKKV909xsw17EMmE.JournalEntryPage.xLVLvUH9S8hfD1rY"
+    Prov: "TODO:UUID_Provocacao"   // TODO: substituir pelo UUID correto da página do compêndio
   };
   root.querySelectorAll("li[data-key]").forEach(el => {
     const key = el.dataset.key;
@@ -61,9 +61,7 @@ export function injectTrainingRefs(root) {
     "amplificacaoDominio":     "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.EhzWEVQsCbJWY9wB",
     "dominioSimplesEstendido": "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.9KQ2h5wAyBFZ1KrE",
     "expansaoModificada":      "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.fqj9BD86pCg8p3BF",
-    "expansaoFortalecida":     "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.lfnLaby2SreAjXH1",
-    "estiloVersatil":          "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.X5n7DAeosB1zcNqn",
-    "laminaVeloz":             "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.qyauAqqJfHUC9jud"
+    "expansaoFortalecida":     "Compendium.jujutsu-system.conteudo.JournalEntry.tr3t07bsAOPkVrb6.JournalEntryPage.lfnLaby2SreAjXH1"
   };
   const JJ_TRAINING_KANJI = {
     "protecaoEnergia": "護", "impactoEcoante": "響", "robusto": "剛",
@@ -73,8 +71,7 @@ export function injectTrainingRefs(root) {
     "reversaoDupla": "双", "reversaoOfensiva": "攻", "falhaCritica": "術",
     "dominioIncompleto": "域", "dominioSimples": "簡", "cestaOcaDeVime": "籠",
     "emocaoDaFlorCaida": "花", "amplificacaoDominio": "拡", "dominioSimplesEstendido": "延",
-    "expansaoModificada": "改", "expansaoFortalecida": "強", "estiloVersatil": "型",
-    "laminaVeloz": "刃"
+    "expansaoModificada": "改", "expansaoFortalecida": "強"
   };
   root.querySelectorAll(".training-card[data-training-id]").forEach(el => {
     const id = el.dataset.trainingId;
@@ -128,14 +125,35 @@ export function injectAbilityRefs(root) {
 
 export function injectAbilityKanjis(root) {
   const JJ_ABILITY_KANJI = {
-    "defesaEnergia": "護", "fulgorNegro": "黒", "explosaoOfensiva": "爆",
-    "explosaoDefensiva": "盾", "despertarHabilidade": "覚", "ultimoRecurso": "禁",
-    "sentirMaldicao": "感", "envolver": "包", "focoAgressivo": "攻",
-    "focoDefensivo": "守", "amplificarEnergia": "増", "absorverEnergia": "吸",
-    "liberarEnergia": "解", "controlarFluxo": "流", "escudoCursed": "壁",
-    "explosaoMaxima": "最", "dominioBarreira": "域", "barreiraPura": "純",
-    "inversaoBarreira": "逆", "expulsao": "放", "selagem": "封",
-    "destruicao": "壊", "cura": "癒", "potencializar": "強", "manifestar": "現"
+    // básicas
+    "defesaEnergia":       "護",
+    "fulgorNegro":         "黒",
+    "explosaoOfensiva":    "爆",
+    "explosaoDefensiva":   "盾",
+    "despertarHabilidade": "覚",
+    "ultimoRecurso":       "禁",
+    // avançadas
+    "sentirMaldicao":      "感",
+    "envolver":            "包",
+    "focoAgressivo":       "攻",
+    "focoDefensivo":       "守",
+    "analiceSuperior":     "析",
+    "fluxoPerfeito":       "完",
+    "fluxoConstante":      "続",
+    "energiaReversa":      "逆",
+    "reversaoFeitico":     "術",
+    "energiaFlexivel":     "柔",
+    // extremas
+    "focoExtremo":         "極",
+    "negacaoEnergia":      "消",
+    "muralhaEnergia":      "壁",
+    "ofensivaExtrema":     "最",
+    "reversaoSubita":      "突",
+    // barreiras
+    "cortina":             "幕",
+    "barreiraVazia":       "空",
+    "barreiraPura":        "純",
+    "barreiraBon":         "盆"
   };
   root.querySelectorAll(".ability-card[data-ability-id]").forEach(el => {
     const id = el.dataset.abilityId;

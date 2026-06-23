@@ -2465,7 +2465,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
       await this.update({
         "system.energy.total": newTotal,
         "system.energyDice.value": this.system.energyDice.value - 1
-      });
+      }, { isEnergySystem: true });
       diceRolled++;
     }
 
@@ -3425,6 +3425,20 @@ async _preUpdate(changed, options, user) {
         ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor: this }),
           content: `⚡ <b>${this.name}</b> alterou a PA Gerada manualmente: ${antiga} → ${novaGerada} (${sinal})`
+        });
+      }
+    }
+
+    // Avisar no chat quando a Aura Total (reserva) for alterada manualmente
+    const novaTotal = foundry.utils.getProperty(changed, "system.energy.total");
+    if ( Number.isFinite(novaTotal) && !options.isEnergySystem && this.type === "character" ) {
+      const antigaTotal = this.system.energy.total;
+      if ( novaTotal !== antigaTotal ) {
+        const delta = novaTotal - antigaTotal;
+        const sinal = delta > 0 ? `+${delta}` : `${delta}`;
+        ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this }),
+          content: `🌀 <b>${this.name}</b> alterou a Aura Total manualmente: ${antigaTotal} → ${novaTotal} (${sinal})`
         });
       }
     }

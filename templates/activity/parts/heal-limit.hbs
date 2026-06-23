@@ -1,0 +1,74 @@
+<fieldset>
+    <legend>
+        <label class="checkbox">
+            {{ formInput fields.healLimit.fields.enabled value=(or source.healLimit.enabled source.healLimit.formula)
+                         input=@root.inputs.createCheckboxInput }}
+            Limite de Cura <i class="fas fa-heart-circle-bolt" inert></i>
+        </label>
+    </legend>
+
+    {{#if (or source.healLimit.enabled source.healLimit.formula)}}
+    <div class="form-group">
+        <label>Limite total de cura</label>
+        <div class="form-fields">
+            <input type="text" name="healLimit.formula" value="{{ source.healLimit.formula }}"
+                   placeholder="ex: @details.level * 20">
+        </div>
+        <p class="hint">Fórmula ou valor fixo (ex.: <code>@details.level * 20</code>). A cura nunca passa do saldo restante; quando zera, bloqueia até resetar.</p>
+    </div>
+
+    <div class="form-group">
+        <label>Cura automática</label>
+        <div class="form-fields">
+            <label class="checkbox">
+                <input type="checkbox" name="healLimit.autoHeal" {{#if source.healLimit.autoHeal}}checked{{/if}}>
+                Curar no início de cada turno enquanto a técnica estiver ativa
+            </label>
+        </div>
+        <p class="hint">Rola a cura e aplica automaticamente no começo do seu turno (respeitando o limite). A técnica precisa estar ativa (no HUD "Ativas").</p>
+    </div>
+
+    {{#if healLimit.enabled}}
+    <div class="form-group">
+        <label>Saldo atual</label>
+        <div class="form-fields jj-heal-limit-status">
+            <span><strong>{{ healLimit.spent }}</strong> / {{ healLimit.max }} usado &mdash; <strong>{{ healLimit.remaining }}</strong> restante</span>
+            <button type="button" data-action="jjResetHealLimit" class="jj-heal-reset" data-tooltip="Resetar o total usado agora">
+                <i class="fas fa-rotate-left" inert></i> Resetar
+            </button>
+        </div>
+    </div>
+    {{/if}}
+
+    <div class="form-group">
+        <label>Resetar com</label>
+        <div class="form-fields">
+            <select name="healLimit.reset">
+                {{ selectOptions healResetOptions selected=healLimit.reset valueAttr="value" labelAttr="label" }}
+            </select>
+        </div>
+    </div>
+
+    {{#if healLimit.isLongRest}}
+    <div class="form-group">
+        <label>A cada N descansos longos</label>
+        <div class="form-fields">
+            <input type="number" name="healLimit.longRests" value="{{ source.healLimit.longRests }}" min="1" step="1">
+        </div>
+        <p class="hint">Reseta a cada N descansos longos (1 = todo descanso longo).</p>
+    </div>
+    {{/if}}
+
+    {{#if healLimit.isTechnique}}
+    <div class="form-group">
+        <label>Técnica que reseta ao usar</label>
+        <div class="form-fields">
+            <select name="healLimit.technique">
+                {{ selectOptions healTechniqueOptions selected=healLimit.technique valueAttr="value" labelAttr="label" }}
+            </select>
+        </div>
+        <p class="hint">Quando essa técnica for ativada, o limite de cura reseta automaticamente.</p>
+    </div>
+    {{/if}}
+    {{/if}}
+</fieldset>

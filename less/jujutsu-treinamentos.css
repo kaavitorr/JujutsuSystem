@@ -625,3 +625,22 @@
 @media (max-width: 620px) {
   .evolution-counters { grid-template-columns: 1fr; }
 }
+
+/* ── Banner de trava da Maestria 7 ─────────────────────────────────── */
+.mastery-lock-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 7px 12px;
+  background: linear-gradient(90deg, rgba(90,40,150,0.18), rgba(60,20,110,0.08));
+  border: 1px solid #4a2080;
+  border-left: 3px solid #8a40d0;
+  border-radius: 4px;
+  color: #b890e0;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  cursor: help;
+}
+.mastery-lock-banner i { color: #9050d0; font-size: 13px; flex: 0 0 auto; }
+.mastery-lock-banner strong { color: #d0a8ff; }

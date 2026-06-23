@@ -13,6 +13,7 @@
     "lint": "eslint --ext .mjs --ignore-path .gitignore ./",
     "lint:fix": "eslint --ext .mjs --ignore-path .gitignore ./ --fix",
     "postinstall": "npm run build:css && npm run build:db",
+    "test": "node --test",
     "watch": "less-watch-compiler less/ ./ dnd5e.less --source-map"
   },
   "devDependencies": {

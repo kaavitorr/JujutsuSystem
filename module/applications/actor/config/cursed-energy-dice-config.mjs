@@ -64,7 +64,7 @@ static DEFAULT_OPTIONS = {
     await actor.update({
       "system.energy.total": newTotal,
       "system.energyDice.value": energyDice.value - 1
-    });
+    }, { isEnergySystem: true });
 
     roll.toMessage({
       speaker: ChatMessage.getSpeaker({ actor }),

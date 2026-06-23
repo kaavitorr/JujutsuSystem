@@ -242,6 +242,35 @@
                     </div>
                 </div>
             </div>
+
+            {{!-- Pontos de Armadura (Foco Defensivo) --}}
+            <div class="meter-group">
+                <div class="label roboto-condensed-upper">
+                    <span>Pontos de Armadura</span>
+                </div>
+                <div style="display: flex; gap: 4px;">
+                    {{#with system.armorPoints}}
+                    <div class="meter sectioned hit-points armor-points-bar" style="flex:1; --dnd5e-color-hp-1: #4a5a6a; --dnd5e-color-hp-2: #8a9aaa; --dnd5e-color-hp-3: #6a7a8a;" role="meter" aria-valuemin="0" aria-valuenow="{{ value }}" aria-valuemax="{{ max }}">
+                      <div class="progress hit-points armor-points-bar" role="meter" style="--bar-percentage: {{ @root.armorPct }}%; --dnd5e-color-hp-1: #4a5a6a; --dnd5e-color-hp-2: #8a9aaa; --dnd5e-color-hp-3: #6a7a8a;">
+                        <div class="label">
+                          <span class="value">{{ value }}</span>
+                          <span class="separator">&sol;</span>
+                          <span class="max">{{ max }}</span>
+                        </div>
+                        <input type="text" name="system.armorPoints.value" data-dtype="Number"
+                               data-max="{{ max }}" placeholder="0" value="{{ value }}" hidden>
+                      </div>
+                    </div>
+                    {{#if max}}
+                    <button type="button" class="jj-foco-def-btn {{#if value}}active{{/if}}"
+                            data-action="jj-foco-defensivo"
+                            data-tooltip="{{#if value}}Desativar Foco Defensivo{{else}}Ativar Foco Defensivo ({{max}} Pontos de Armadura){{/if}}">
+                      <i class="fas fa-shield-halved" inert></i>
+                    </button>
+                    {{/if}}
+                    {{/with}}
+                </div>
+            </div>
         </div>
 
         {{!-- Death Saves --}}
@@ -546,6 +575,24 @@
                 <i class="fas fa-skull" inert></i> 2d8 dano psíquico no início do turno
             </div>
             {{/if}}
+        </filigree-box>
+        {{/if}}
+
+        {{!-- Expansão de Domínio (Maestria 7) — aparece com Domínio Incompleto + Barreira Vazia --}}
+        {{#if showExpansaoDominio}}
+        <filigree-box class="jj-dominio-box">
+            <h3 class="jj-dominio-header">
+                <i class="fas fa-circle-nodes" inert></i>
+                <span>Expansão de Domínio</span>
+            </h3>
+            <div class="jj-dominio-btn-wrap">
+                <button type="button" class="jj-dominio-trigger-btn {{#if dominioExpandido}}expandido{{/if}}"
+                        data-action="jj-expansao-dominio"
+                        data-tooltip="{{#if dominioExpandido}}Expandir o domínio (1×/combate). Botão direito: configurar técnica/GIF.{{else}}Tentar expandir o domínio (1d20, 20 natural). 1×/combate. Botão direito: configurar.{{/if}}">
+                    <i class="fas fa-circle-nodes" inert></i>
+                    <span>{{#if dominioExpandido}}Expandir{{else}}Tentar Expandir{{/if}}</span>
+                </button>
+            </div>
         </filigree-box>
         {{/if}}
 

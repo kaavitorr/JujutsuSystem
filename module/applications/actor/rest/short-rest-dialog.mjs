@@ -151,7 +151,7 @@ export default class ShortRestDialog extends BaseRestDialog {
     await actor.update({
       "system.energy.total": newTotal,
       "system.energyDice.value": ed.value - diceSpent
-    });
+    }, { isEnergySystem: true });
 
     this.render();
   }

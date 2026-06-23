@@ -324,3 +324,105 @@ filigree-box.jj-enrev-box {
   0%, 100% { box-shadow: inset 0 0 5px rgba(30,140,60,0.1); }
   50%       { box-shadow: inset 0 0 10px rgba(30,160,70,0.2), 0 0 6px rgba(20,120,50,0.15); }
 }
+
+/* ── Expansão de Domínio (Maestria 7) ──────────────────────────────── */
+filigree-box.jj-dominio-box {
+  --filigree-background-color: #0a0614;
+  --filigree-border-color: #3a1a60;
+  --filigree-drop-shadow: drop-shadow(0 0 3px rgba(140, 60, 220, 0.25));
+  display: block;
+  margin-top: 6px;
+}
+
+.jj-dominio-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 8px 3px;
+  border: none;
+  margin: 0;
+}
+
+.jj-dominio-header i {
+  font-size: 9px;
+  color: #9050d0;
+  animation: jj-dominio-pulse 2s ease-in-out infinite;
+}
+
+@keyframes jj-dominio-pulse {
+  0%, 100% { text-shadow: 0 0 4px rgba(140,60,220,0.3); }
+  50%       { text-shadow: 0 0 10px rgba(150,70,230,0.8), 0 0 18px rgba(110,40,190,0.3); }
+}
+
+.jj-dominio-header span {
+  color: #a880c0;
+  font-size: 9px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.jj-dominio-btn-wrap {
+  padding: 0 5px 5px;
+}
+
+.jj-dominio-trigger-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 4px;
+  width: 100%;
+  background: #08040f;
+  border: 1px solid #1f1030;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2a1a40;
+  cursor: pointer;
+  transition: all 140ms;
+}
+
+.jj-dominio-trigger-btn i { font-size: 13px; color: #25153a; transition: color 140ms; }
+.jj-dominio-trigger-btn:hover { border-color: #4a2080; color: #9060c0; }
+.jj-dominio-trigger-btn:hover i { color: #7040a0; }
+.jj-dominio-trigger-btn.expandido {
+  background: #060210;
+  border-color: #5020a0;
+  color: #b070e0;
+  animation: jj-dominio-glow 2s ease-in-out infinite;
+}
+.jj-dominio-trigger-btn.expandido i { color: #9050d0; }
+
+@keyframes jj-dominio-glow {
+  0%, 100% { box-shadow: inset 0 0 5px rgba(120,50,200,0.1); }
+  50%       { box-shadow: inset 0 0 10px rgba(140,60,220,0.2), 0 0 6px rgba(110,40,190,0.15); }
+}
+
+/* ── Botão de ativar/desativar Foco Defensivo (fim da barra de Armadura) ──── */
+.jj-foco-def-btn {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  align-self: stretch;
+  background: #0c121a;
+  border: 1px solid #2a3a4a;
+  border-radius: 3px;
+  color: #5a6a7a;
+  cursor: pointer;
+  transition: all 140ms;
+}
+.jj-foco-def-btn i { font-size: 12px; transition: color 140ms; }
+.jj-foco-def-btn:hover { border-color: #4a6a8a; color: #8aa0b8; }
+.jj-foco-def-btn.active {
+  background: #0a1622;
+  border-color: #5a7a9a;
+  color: #9ab8d0;
+  box-shadow: inset 0 0 6px rgba(120,150,180,0.25);
+}
+.jj-foco-def-btn.active i { color: #b0c8de; }

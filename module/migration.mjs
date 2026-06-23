@@ -479,6 +479,7 @@ export function migrateActorData(actor, actorData, migrationData, flags={}, { ac
   _migrateActorAC(actorData, updateData);
   _migrateActorFlags(actorData, updateData);
   _migrateActorMovementSenses(actorData, updateData);
+  _migrateJujutsuArmorPoints(actorData, updateData);
 
   // Migrate embedded effects
   if ( actorData.effects ) {
@@ -947,6 +948,24 @@ function _migrateActorMovementSenses(actorData, updateData) {
       const keyPath = `system.attributes.senses.ranges.${key}`;
       if ( foundry.utils.getProperty(actorData, keyPath) === 0 ) updateData[keyPath] = null;
     }
+  }
+  return updateData;
+}
+
+/* -------------------------------------------- */
+
+/**
+ * Garante que personagens já existentes tenham o campo de Pontos de Armadura
+ * (Foco Defensivo) inicializado. O máximo é derivado; só o valor é armazenado.
+ * @param {object} actorData    Actor data to migrate.
+ * @param {object} updateData   Existing update to expand upon.
+ * @returns {object}            The updateData to apply.
+ * @private
+ */
+function _migrateJujutsuArmorPoints(actorData, updateData) {
+  if ( actorData.type !== "character" ) return updateData;
+  if ( foundry.utils.getProperty(actorData, "system.armorPoints.value") === undefined ) {
+    updateData["system.armorPoints.value"] = 0;
   }
   return updateData;
 }

@@ -250,6 +250,14 @@ export default class CharacterData extends CreatureTemplate {
           label: "JUJUTSU.EnergyDice.Denomination"
         })
       }, { label: "JUJUTSU.EnergyDice.Label" }),
+      // Pontos de Armadura (efeito do Foco Defensivo). O máximo é derivado das
+      // habilidades; o valor atual é armazenado e editável na sidebar.
+      armorPoints: new SchemaField({
+        value: new NumberField({
+          required: true, nullable: false, integer: true, min: 0, initial: 0,
+          label: "JUJUTSU.ArmorPoints.Current"
+        })
+      }, { label: "JUJUTSU.ArmorPoints.Label" }),
       favorites: new ArrayField(new SchemaField({
         type: new StringField({ required: true, blank: false }),
         id: new StringField({ required: true, blank: false }),
@@ -381,21 +389,48 @@ export default class CharacterData extends CreatureTemplate {
     // Nível de Maestria (baseado em Pontos de Treinamento investidos)
     const mp = this.masteryPoints ?? 0;
     const masteryTable = [
-      { level: 10, pts: 150, sorcerer: "special", die: null, evolution: "expansionSemBarreiras" },
-      { level: 9,  pts: 115, sorcerer: "special", die: null, evolution: null },
-      { level: 7,  pts: 100, sorcerer: "1º",     die: "d12", evolution: "expansaoDominio" },
-      { level: 6,  pts: 75,  sorcerer: "1º",     die: null, evolution: null },
-      { level: 5,  pts: 60,  sorcerer: "2º",     die: "d10", evolution: "feiticoMaximo" },
-      { level: 4,  pts: 35,  sorcerer: "2º",     die: null, evolution: null },
-      { level: 3,  pts: 20,  sorcerer: "3º",     die: "d8",  evolution: "feiticoEstendido" },
-      { level: 2,  pts: 10,  sorcerer: "3º",     die: null, evolution: null },
-      { level: 1,  pts: 1,   sorcerer: "4º",     die: "d6",  evolution: "feiticoBasico" }
+      { level: 10, pts: 150, sorcerer: "special", die: null,  evolution: "expansionSemBarreiras" },
+      { level: 9,  pts: 130, sorcerer: "special", die: null,  evolution: null },
+      { level: 8,  pts: 115, sorcerer: "1º",      die: null,  evolution: null },
+      { level: 7,  pts: 100, sorcerer: "1º",      die: "d12", evolution: "expansaoDominio" },
+      { level: 6,  pts: 75,  sorcerer: "2º",      die: null,  evolution: null },
+      { level: 5,  pts: 60,  sorcerer: "2º",      die: "d10", evolution: "feiticoMaximo" },
+      { level: 4,  pts: 35,  sorcerer: "3º",      die: null,  evolution: null },
+      { level: 3,  pts: 20,  sorcerer: "3º",      die: "d8",  evolution: "feiticoEstendido" },
+      { level: 2,  pts: 10,  sorcerer: "4º",      die: null,  evolution: null },
+      { level: 1,  pts: 1,   sorcerer: "4º",      die: "d6",  evolution: "feiticoBasico" }
     ];
-    const mastery = masteryTable.find(m => mp >= m.pts) ?? { level: 0, pts: 0, sorcerer: "4th", die: null };
+    let mastery = masteryTable.find(m => mp >= m.pts) ?? { level: 0, pts: 0, sorcerer: "4º", die: null, evolution: null };
+    // Trava da Maestria 7: não progride acima do 7º nível até expandir o domínio.
+    const dominioExpandido = this.parent?.flags?.["jujutsu-system"]?.dominioExpandido === true;
+    if ( mastery.level > 7 && !dominioExpandido ) {
+      mastery = masteryTable.find(m => m.level === 7) ?? mastery;
+    }
     this.masteryLevel = mastery.level;
     this.masterySorcerer = mastery.sorcerer;
     this.masteryDie = mastery.die;
     this.masteryEvolution = mastery.evolution;
+    this.masteryLocked = (masteryTable.find(m => mp >= m.pts)?.level ?? 0) > 7 && !dominioExpandido;
+
+    // Pontos de Armadura (Foco Defensivo) — máximo derivado das habilidades:
+    //  • Foco Defensivo desbloqueado → 20
+    //  • Fluxo Constante desbloqueado → +20 adicionais
+    //  • Resistência Aprimorada (rank 1/2/3) → +rank por Nível de Maestria
+    const abilities = this.manipulation?.abilities ?? {};
+    let armorMax = 0;
+    if ( abilities.focoDefensivo?.unlocked ) {
+      armorMax += 20;
+      if ( abilities.fluxoConstante?.unlocked ) armorMax += 20;
+      const resRank = this.trainings?.resistenciaAprimorada?.rank ?? 0;
+      if ( resRank > 0 ) armorMax += resRank * this.masteryLevel;
+    }
+    this.armorPoints ??= {};
+    this.armorPoints.max = armorMax;
+    // Garante que o valor atual nunca exceda o máximo derivado
+    this.armorPoints.value = Math.min(this.armorPoints.value ?? 0, armorMax);
+    // A resistência dos Pontos de Armadura NÃO é resistência do personagem:
+    // ela é aplicada só na camada de PA ao receber dano (damage-application.mjs),
+    // por isso NÃO entra em traits.dr (que reduziria também o dano no PV).
   }
 
   /* -------------------------------------------- */

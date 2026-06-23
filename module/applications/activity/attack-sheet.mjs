@@ -29,7 +29,8 @@ export default class AttackSheet extends ActivitySheet {
         "systems/jujutsu-system/templates/activity/parts/attack-damage.hbs",
         "systems/jujutsu-system/templates/activity/parts/attack-details.hbs",
         "systems/jujutsu-system/templates/activity/parts/damage-part.hbs",
-        "systems/jujutsu-system/templates/activity/parts/damage-parts.hbs"
+        "systems/jujutsu-system/templates/activity/parts/damage-parts.hbs",
+        "systems/jujutsu-system/templates/activity/parts/jj-scale.hbs"
       ]
     }
   };

@@ -100,15 +100,36 @@ export class EnergySystem {
     }
   }
 
+  /**
+   * Sacrifica parte da economia de ações para GERAR energia além do limite do
+   * turno. A energia NÃO surge do nada: é transferida da reserva (energy.total)
+   * para a energia gerada (energy.generated), como uma geração normal — só que
+   * sem respeitar o teto por turno. Limitado ao que existe em `total`.
+   * @returns {Promise<number>} quanto foi efetivamente gerado (0 se sem reserva).
+   */
   static async sacrificeAction(actor, tipo = "action") {
     const level = actor.system.details?.level ?? 1;
-    const ganho = tipo === "action" ? level : 2;
-    const novaGerada = actor.system.energy.generated + ganho;
-    await actor.update({ "system.energy.generated": novaGerada }, { isEnergySystem: true });
+    const desejado = tipo === "action" ? level : 2;
+    const total = actor.system.energy.total ?? 0;
+    const transferencia = Math.min(desejado, total);
+
+    if ( transferencia <= 0 ) {
+      ui.notifications.warn(
+        `${actor.name} não tem Energia na reserva (Total) para sacrificar uma ação.`
+      );
+      return 0;
+    }
+
+    await actor.update({
+      "system.energy.total": total - transferencia,
+      "system.energy.generated": actor.system.energy.generated + transferencia
+    }, { isEnergySystem: true });
+
+    const acao = tipo === "action" ? "ação" : (tipo === "bonus" ? "ação bônus" : "reação");
     ui.notifications.info(
-      `${actor.name} sacrificou uma ${tipo === "action" ? "ação" : "ação bônus/reação"} e ganhou ${ganho} PA Gerada.`
+      `${actor.name} sacrificou uma ${acao} e gerou ${transferencia} de Energia (da reserva, acima do limite).`
     );
-    return ganho;
+    return transferencia;
   }
 
   static async processTurnStartWithChoices(actor, choices) {

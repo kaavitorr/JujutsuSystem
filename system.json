@@ -1,15 +1,15 @@
 {
   "id": "jujutsu-system",
   "title": "Jujutsu Legacy RPG 1.0",
-  "description": "A system for playing the fifth edition of the world's most popular role-playing game in the Foundry Virtual Tabletop environment.",
-  "version": "1.0.5",
+  "description": "Jujutsu Legacy RPG — a Jujutsu Kaisen-inspired tabletop role-playing system for the Foundry Virtual Tabletop environment.",
+  "version": "1.0.6",
   "compatibility": {
     "minimum": "14.360",
     "verified": "14"
   },
   "url": "https://github.com/kaavitorr/JujutsuSystem",
   "manifest": "https://raw.githubusercontent.com/kaavitorr/JujutsuSystem/master/system.json",
-  "download": "https://github.com/kaavitorr/JujutsuSystem/releases/download/v1.0.5/jujutsu-system.zip",
+  "download": "https://github.com/kaavitorr/JujutsuSystem/releases/download/v1.0.6/jujutsu-system.zip",
   "authors": [
     {
       "name": "Noroi",
@@ -331,19 +331,19 @@
     },
     {
       "type": "setup",
-      "url": "systems/jujutsu-system/ui/official/dnd5e-repo.jpg",
-      "thumbnail": "systems/jujutsu-system/ui/official/dnd5e-thumbnail.jpg",
+      "url": "systems/jujutsu-system/ui/official/jjk-repo.jpg",
+      "thumbnail": "systems/jujutsu-system/ui/official/jjk-thumbnail.jpg",
       "loop": false,
       "flags": {}
     }
   ],
   "socket": true,
   "grid": {
-    "distance": 5,
-    "units": "ft"
+    "distance": 1.5,
+    "units": "m"
   },
   "primaryTokenAttribute": "attributes.hp",
-  "background": "systems/jujutsu-system/ui/official/dnd5e-background.webp",
+  "background": "systems/jujutsu-system/ui/official/jjk-background.webp",
   "flags": {
     "compendiumArtMappings": {
       "jujutsu-system": {

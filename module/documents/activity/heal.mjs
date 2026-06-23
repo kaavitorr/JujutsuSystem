@@ -69,10 +69,35 @@ export default class HealActivity extends ActivityMixin(BaseHealActivityData) {
 
   /** @inheritDoc */
   async rollDamage(config={}, dialog={}, message={}) {
+    // Limite total de cura: bloqueia se o saldo acabou; senão a cura já sai
+    // capada ao saldo (via getDamageConfig) e registramos o consumo após rolar.
+    const lim = this.getHealLimit();
+    if ( lim.enabled && lim.remaining <= 0 ) {
+      ui.notifications.warn(`${this.item.name}: limite de cura esgotado — é preciso resetar para curar novamente.`);
+      return null;
+    }
+
     const messageConfig = foundry.utils.mergeObject({
       ["data.flags.JujutsuLegacy.roll.type"]: "healing"
     }, message);
-    return super.rollDamage(config, dialog, messageConfig);
+    // jjApplyHealCap: pede para o getDamageConfig capar a cura ao saldo na rolagem.
+    const rollConfig = lim.enabled ? { ...config, jjApplyHealCap: true } : config;
+    const rolls = await super.rollDamage(rollConfig, dialog, messageConfig);
+
+    if ( lim.enabled && rolls?.length && this.item.isOwner ) {
+      const curado = rolls.reduce((s, r) => s + (Number(r.total) || 0), 0);
+      if ( curado > 0 ) {
+        const novoSpent = Math.min(lim.max, lim.spent + curado);
+        await this.update({ "healLimit.spent": novoSpent });
+        const restante = Math.max(0, lim.max - novoSpent);
+        ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+          content: `💚 <b>${this.item.name}</b> — limite de cura: <b>${novoSpent}/${lim.max}</b> usado (${restante} restante).`
+        });
+      }
+    }
+
+    return rolls;
   }
 
   /* -------------------------------------------- */

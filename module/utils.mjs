@@ -504,7 +504,7 @@ export function areKeysPressed(event, action) {
 /* -------------------------------------------- */
 
 /**
- * Log a console message with the "D&D 5e" prefix and styling.
+ * Log a console message with the "Jujutsu Legacy" prefix and styling.
  * @param {string} message                    Message to display.
  * @param {object} [options={}]
  * @param {string} [options.color="#6e0000"]  Color to use for the log.
@@ -513,7 +513,7 @@ export function areKeysPressed(event, action) {
  */
 export function log(message, { color="#6e0000", extras=[], level="log" }={}) {
   console[level](
-    `%cD&D 5e | %c${message}`, `color: ${color}; font-variant: small-caps`, "color: revert", ...extras
+    `%cJujutsu Legacy | %c${message}`, `color: ${color}; font-variant: small-caps`, "color: revert", ...extras
   );
 }
 

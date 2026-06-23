@@ -10,13 +10,21 @@
       </div>
 
       <div class="mastery-info">
-        <span>Feiticeiro {{actor.system.masterySorcerer}} Grau</span>
+        <span>{{#if (eq actor.system.masterySorcerer "special")}}Feiticeiro de Grau Especial{{else}}Feiticeiro {{actor.system.masterySorcerer}} Grau{{/if}}</span>
         {{#if actor.system.masteryDie}}
           <span>Dado de Energia: {{actor.system.masteryDie}}</span>
         {{/if}}
         <span>PT Investidos: {{actor.system.masteryPoints}}</span>
       </div>
     </div>
+
+    {{#if actor.system.masteryLocked}}
+    <div class="mastery-lock-banner"
+         data-tooltip="Você continua acumulando PT e treinos normalmente, mas o Nível de Maestria não passa do 7º até você Expandir o Domínio com sucesso (botão na barra lateral, 1×/combate, 20 natural).">
+      <i class="fas fa-lock" inert></i>
+      <span>Travado na <strong>Maestria 7</strong> — expanda seu domínio para progredir além</span>
+    </div>
+    {{/if}}
 
     <div class="mastery-bars">
       <div class="bar">
@@ -78,9 +86,6 @@
       {{/if}}
       {{#if (eq groupKey "domain")}}
         <span>◈</span> Domínio e Anti-Domínio
-      {{/if}}
-      {{#if (eq groupKey "immaculate")}}
-        <span>◇</span> Treinamentos de Imaculado
       {{/if}}
     </h3>
 

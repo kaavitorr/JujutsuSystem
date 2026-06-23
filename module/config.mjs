@@ -1027,6 +1027,11 @@ DND5E.activityActivationTypes = {
     header: "DND5E.ACTIVATION.Type.Reaction.Header",
     group: "DND5E.ACTIVATION.Category.Standard"
   },
+  powerAction: {
+    label: "DND5E.ACTIVATION.Type.PowerAction.Label",
+    header: "DND5E.ACTIVATION.Type.PowerAction.Header",
+    group: "DND5E.ACTIVATION.Category.Standard"
+  },
   minute: {
     label: "DND5E.ACTIVATION.Type.Minute.Label",
     header: "DND5E.ACTIVATION.Type.Minute.Header",
@@ -2272,12 +2277,6 @@ DND5E.damageTypes = {
     reference: "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.9SaxFJ9bM3SutaMC",
     color: new Color(0x1E90FF)
   },
-  necrotic: {
-    label: "DND5E.DAMAGE.Type.Necrotic",
-    icon: "systems/jujutsu-system/icons/svg/damage/necrotic.svg",
-    reference: "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.klOVUV5G1U7iaKoG",
-    color: new Color(0x006400)
-  },
   piercing: {
     label: "DND5E.DAMAGE.Type.Piercing",
     icon: "systems/jujutsu-system/icons/svg/damage/piercing.svg",
@@ -3081,6 +3080,14 @@ DND5E.spellcasting = {
   innate: {
     label: "DND5E.SPELLCASTING.METHODS.Innate.label",
     order: -20
+  },
+  reversal: {
+    label: "DND5E.SPELLCASTING.METHODS.Reversal.label",
+    order: -18
+  },
+  inherent: {
+    label: "DND5E.SPELLCASTING.METHODS.Inherent.label",
+    order: -16
   },
   ritual: {
     label: "DND5E.SPELLCASTING.METHODS.Ritual.label",
@@ -4421,6 +4428,9 @@ DND5E.activityTypes = {
   order: {
     documentClass: activities.OrderActivity,
     configurable: false
+  },
+  reduction: {
+    documentClass: activities.ReductionActivity
   },
   save: {
     documentClass: activities.SaveActivity
