@@ -82,30 +82,30 @@ Hooks.once("init", function() {
   }
 
   // ── Jujutsu Legacy: Cálculos de CR customizados ─────────────────────────
-  // "Corpo de Lutador" — 10 + mod principal + mod CON (cap = nível)
+  // "Corpo de Lutador" — 10 + mod principal + min(mod CON, floor(nível / 2))
   // "Defesa Ofensiva"  — 10 + mod AGI + mod principal (sem cap)
   Object.assign(CONFIG.DND5E.armorClasses, {
 
     // ── CORPO DE LUTADOR ─────────────────────────────────────────────────
     corpoLutadorStr: {
       label: "Corpo de Lutador (Força)",
-      formula: "10 + @abilities.str.mod + min(@abilities.con.mod, @details.level)"
+      formula: "10 + @abilities.str.mod + min(@abilities.con.mod, floor(@details.level / 2))"
     },
     corpoLutadorDex: {
       label: "Corpo de Lutador (Agilidade)",
-      formula: "10 + @abilities.dex.mod + min(@abilities.con.mod, @details.level)"
+      formula: "10 + @abilities.dex.mod + min(@abilities.con.mod, floor(@details.level / 2))"
     },
     corpoLutadorInt: {
       label: "Corpo de Lutador (Intelecto)",
-      formula: "10 + @abilities.int.mod + min(@abilities.con.mod, @details.level)"
+      formula: "10 + @abilities.int.mod + min(@abilities.con.mod, floor(@details.level / 2))"
     },
     corpoLutadorWis: {
       label: "Corpo de Lutador (Sabedoria)",
-      formula: "10 + @abilities.wis.mod + min(@abilities.dex.mod, @details.level)"
+      formula: "10 + @abilities.wis.mod + min(@abilities.con.mod, floor(@details.level / 2))"
     },
     corpoLutadorCha: {
       label: "Corpo de Lutador (Presença)",
-      formula: "10 + @abilities.cha.mod + min(@abilities.dex.mod, @details.level)"
+      formula: "10 + @abilities.cha.mod + min(@abilities.con.mod, floor(@details.level / 2))"
     },
 
     // ── DEFESA OFENSIVA ──────────────────────────────────────────────────

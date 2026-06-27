@@ -308,8 +308,8 @@ export async function openNpcGenerator() {
   const estOptions = opts(ESTILOS_HUMANO, "aleatorio");
   const grauOptions = opts(GRAUS_CE, "");
   const origemOptions = `<option value="">— nenhuma —</option>` + opts(ORIGENS_NPC.map(o => [o, o]), "");
-  const manipOptions = MANIPULACOES_LISTA
-    .map(m => `<option value="${m.nome}" title="${(m.desc || "").replace(/"/g, "&quot;")}">${m.nome}${m.ndMin ? ` (ND ${m.ndMin}+)` : ""}</option>`).join("");
+  const manipChecks = MANIPULACOES_LISTA
+    .map(m => `<label class="jj-npcgen-manip-row" title="${(m.desc || "").replace(/"/g, "&quot;")}" style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="checkbox" class="jj-npcgen-manip" value="${m.nome}" style="flex:0 0 auto; width:auto; margin:0;"><span>${m.nome}${m.ndMin ? ` (ND ${m.ndMin}+)` : ""}</span></label>`).join("");
   const rowCss = "display:flex; align-items:center; gap:8px; margin-bottom:8px;";
   const lblCss = "flex:0 0 150px;";
 
@@ -357,9 +357,9 @@ export async function openNpcGenerator() {
           </div>
           <div style="${rowCss} align-items:flex-start;">
             <label style="${lblCss}">Manipulações:</label>
-            <select id="jj-npcgen-manip" multiple size="5" style="flex:1 1 auto;">${manipOptions}</select>
+            <div id="jj-npcgen-manip-box" style="flex:1 1 auto; max-height:150px; overflow-y:auto; border:1px solid #3a3a4a; border-radius:4px; padding:6px 8px; display:flex; flex-direction:column; gap:5px;">${manipChecks}</div>
           </div>
-          <p style="margin:-2px 0 8px; font-size:11px; color:#999;">Segure Ctrl/Cmd para escolher várias (opcional).</p>
+          <p style="margin:-2px 0 8px; font-size:11px; color:#999;">Marque quantas quiser (opcional).</p>
         </div>
 
         <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
@@ -391,7 +391,7 @@ export async function openNpcGenerator() {
         default: true,
         callback: (event, button, dialog) => {
           const root = dialog.element ?? document;
-          const manip = [...(root.querySelector("#jj-npcgen-manip")?.selectedOptions ?? [])].map(o => o.value);
+          const manip = [...root.querySelectorAll("input.jj-npcgen-manip:checked")].map(c => c.value);
           return {
             tipo: root.querySelector("#jj-npcgen-tipo")?.value || "maldicao",
             nd: Number(root.querySelector("#jj-npcgen-nd")?.value ?? 5),

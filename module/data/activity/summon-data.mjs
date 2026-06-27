@@ -50,7 +50,11 @@ export default class BaseSummonActivityData extends BaseActivityData {
       })),
       summon: new SchemaField({
         mode: new StringField(),
-        prompt: new BooleanField({ initial: true })
+        prompt: new BooleanField({ initial: true }),
+        consumeSummoner: new BooleanField({
+          label: "Gasta a PA do invocador",
+          hint: "A criatura usa a PA Gerada do invocador ao ativar técnicas, em vez da própria."
+        })
       }),
       tempHP: new FormulaField()
     };
@@ -129,7 +133,8 @@ export default class BaseSummonActivityData extends BaseActivityData {
       profiles: source.system.summons?.profiles ?? [],
       summon: {
         mode: source.system.summons?.mode ?? "",
-        prompt: source.system.summons?.prompt ?? true
+        prompt: source.system.summons?.prompt ?? true,
+        consumeSummoner: source.system.summons?.consumeSummoner ?? false
       },
       visibility: {
         identifier: source.system.summons?.classIdentifier ?? ""

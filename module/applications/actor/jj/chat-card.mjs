@@ -29,6 +29,18 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
 
 (function _registerJujutsuChatCard() {
 
+  // ── INVOCAÇÕES: quem paga a PA ───────────────────────────────────────────────
+  // Se o ator é uma invocação com "Gasta a PA do invocador" marcado, devolve o
+  // invocador (dono do item que a invocou). Senão, devolve o próprio ator.
+  function _paPayer(actor) {
+    const flags = actor?.flags ?? {};
+    const summon = flags.JujutsuLegacy?.summon ?? flags["jujutsu-system"]?.summon;
+    if ( !summon?.origin || summon.consumeSummoner !== true ) return actor;
+    let doc = null;
+    try { doc = fromUuidSync(summon.origin); } catch { doc = null; }
+    return doc?.actor ?? doc?.parent ?? actor;
+  }
+
   // ── HOOK PRINCIPAL: intercepta o uso de qualquer atividade ──────────────────
   Hooks.on("dnd5e.preUseActivity", (activity, config, dialog) => {
     const item = activity.item;
@@ -52,6 +64,7 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
     // Processar consumo de PA configurado na activity (Attribute type)
     // antes de criar o card, já que bloqueamos o processamento nativo
     if ( actor ) {
+      const payer = _paPayer(actor); // invocação → invocador; senão, o próprio
       const targets = activity.consumption?.targets ?? [];
       for ( const target of targets ) {
         const isGerada = target.target === "energy.generated";
@@ -61,14 +74,18 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
         if ( custo <= 0 ) continue;
         const campo = isGerada ? "system.energy.generated" : "system.energy.total";
         const atual = isGerada
-          ? (actor.system?.energy?.generated ?? 0)
-          : (actor.system?.energy?.total ?? 0);
+          ? (payer.system?.energy?.generated ?? 0)
+          : (payer.system?.energy?.total ?? 0);
         const label = isGerada ? "PA Gerada" : "PA Total";
         if ( atual < custo ) {
-          ui.notifications.warn(`${actor.name} não tem ${label} suficiente! (${atual} disponível, ${custo} necessário)`);
+          ui.notifications.warn(`${payer.name} não tem ${label} suficiente! (${atual} disponível, ${custo} necessário)`);
           return; // aborta criação do card
         }
-        await actor.update({ [campo]: atual - custo }, { isEnergySystem: true });
+        await payer.update({ [campo]: atual - custo }, { isEnergySystem: true });
+        if ( payer !== actor ) ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor }),
+          content: `🔗 <strong>${actor.name}</strong> (invocação) gastou <strong>${custo} ${label}</strong> de <strong>${payer.name}</strong>.`
+        });
       }
     }
 
@@ -183,7 +200,8 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
     <div class="jj-mods">
       <label class="jj-mod-check" title="Metade"><input type="checkbox" data-mod="half"> ½</label>
       <label class="jj-mod-check" title="Um quarto"><input type="checkbox" data-mod="quarter"> ¼</label>
-      <label class="jj-mod-check jj-crit-check" title="Crítico — rola dados novamente"><input type="checkbox" data-mod="crit"> Crit</label>
+      <label class="jj-mod-check jj-crit-check" title="Crítico Perfeito (20 natural) — dobra os dados de dano"><input type="checkbox" data-mod="crit"> Crit</label>
+      <label class="jj-mod-check jj-excedente" title="Crítico Excedente (acerto supera a CA em 10+) — +2 dados do dado base"><input type="checkbox" data-mod="excedente"> Exc</label>
       <label class="jj-mod-check jj-kokusen" title="Fulgor Negro ×2,5"><input type="checkbox" data-mod="kokusen"> K <i class="fas fa-bolt"></i></label>
     </div>
     <span class="jj-footer-total">Total <strong id="jj-total-display">0</strong></span>
@@ -228,7 +246,10 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
     card.querySelector("[data-action='jj-apply-damage']")?.addEventListener("click", () => {
       const base = Number(card.dataset.totalDmg ?? 0);
       const activeMod = card.querySelector(".jj-mod-check input:checked")?.dataset.mod ?? null;
-      const final = _applyModifier(base, activeMod);
+      const bonus = activeMod === "crit"      ? Number(card.dataset.critBonus ?? 0)
+                  : activeMod === "excedente" ? Number(card.dataset.excedenteBonus ?? 0)
+                  : 0;
+      const final = _applyModifier(base, activeMod, bonus);
       let tipos = [];
       try { tipos = JSON.parse(card.dataset.damageTypes || "[]"); } catch { tipos = []; }
       _applyDamageToSelected(final, card, tipos);
@@ -243,23 +264,37 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
         if ( !el ) return;
 
         if ( mod === "crit" ) {
-          // Crítico: rola dados extras se ainda não foram rolados
+          // Crítico Perfeito: rola TODOS os dados de novo (dobra os dados)
+          card.dataset.excedenteBonus = "";
           if ( !card.dataset.critBonus ) {
-            const critBonus = await _rollCritDice(card);
+            const critBonus = await _rollDiceFormula(card.dataset.critFormula);
             card.dataset.critBonus = critBonus;
             const dmgBreak = card.querySelector("#jj-dmg-break");
             if ( dmgBreak && critBonus > 0 ) {
               dmgBreak.innerHTML += `<span class="jj-pa-badge" style="color:#e07040;border-color:#804020">+${critBonus} crit</span>`;
             }
           }
-          const critBonus = Number(card.dataset.critBonus ?? 0);
-          el.textContent = _applyModifier(base, "crit", critBonus);
+          el.textContent = _applyModifier(base, "crit", Number(card.dataset.critBonus ?? 0));
+        } else if ( mod === "excedente" ) {
+          // Crítico Excedente: soma 2 dados do dado base (só na base)
+          card.dataset.critBonus = "";
+          if ( !card.dataset.excedenteBonus ) {
+            const exc = await _rollDiceFormula(card.dataset.excedenteFormula);
+            card.dataset.excedenteBonus = exc;
+            const dmgBreak = card.querySelector("#jj-dmg-break");
+            if ( dmgBreak && exc > 0 ) {
+              dmgBreak.innerHTML += `<span class="jj-pa-badge" style="color:#40a0e0;border-color:#205080">+${exc} exc</span>`;
+            }
+          }
+          el.textContent = _applyModifier(base, "excedente", Number(card.dataset.excedenteBonus ?? 0));
         } else if ( mod === "kokusen" ) {
           // Black Flash: NÃO rola dados, apenas multiplica o base por 2,5
           card.dataset.critBonus = "";
+          card.dataset.excedenteBonus = "";
           el.textContent = _applyModifier(base, "kokusen", 0);
         } else {
           card.dataset.critBonus = "";
+          card.dataset.excedenteBonus = "";
           el.textContent = _applyModifier(base, mod);
         }
       });
@@ -336,6 +371,16 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
     // ── FULGOR NEGRO ─────────────────────────────────────────────────────────────
     const isFulgor = await checkFulgorNegro(actor, d20Ativo);
 
+    // ── CRÍTICO EXCEDENTE (auto) ─────────────────────────────────────────────────
+    // Com um alvo selecionado, se o acerto superar a CA dele em 10+, o Excedente é
+    // marcado automaticamente no dano. Sem alvo, o checkbox continua manual.
+    const alvoExc = Array.from(game.user.targets ?? [])[0];
+    const caAlvo  = Number(alvoExc?.actor?.system?.attributes?.ac?.value);
+    const excedenteAuto = Number.isFinite(caAlvo) && roll.total >= (caAlvo + 10);
+    // Prioridade: 20 natural (Perfeito) vence o Excedente quando ambos ocorrem.
+    card.dataset.autoCrit      = isNat20 ? "1" : "";
+    card.dataset.autoExcedente = (excedenteAuto && !isNat20) ? "1" : "";
+
     // Renderizar no painel de acerto (Layout B)
     const atkPanel = card.querySelector("#jj-atk-panel");
     const atkVal   = card.querySelector("#jj-atk-val");
@@ -355,6 +400,11 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
       }
       if ( card.dataset.jjScaleBonus ) {
         atkBreak.innerHTML += `<span class="jj-pa-badge" style="color:#c0a0ff;border-color:#6040a0;">⚡ +${card.dataset.jjScaleBonus} (escala)</span>`;
+      }
+      if ( isNat20 ) {
+        atkBreak.innerHTML += `<span class="jj-pa-badge" style="color:#ffb030;border-color:#806010;">★ Perfeito! (20 natural — dobra os dados)</span>`;
+      } else if ( excedenteAuto ) {
+        atkBreak.innerHTML += `<span class="jj-pa-badge" style="color:#50b0ff;border-color:#205080;">★ Excedente! (${roll.total} ≥ CA ${caAlvo}+10)</span>`;
       }
     }
 
@@ -462,6 +512,12 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
     }
     card.dataset.critFormula = critParts.join(" + ");
 
+    // Crítico Excedente (acerto supera a CA em 10+): em vez de dobrar os dados,
+    // soma 2 dados do DADO BASE da arma (primeira parte) — só na base.
+    // Ex.: 1d12 + 2d6 → Excedente = 3d12 + 2d6.
+    const baseDen = damageParts[0]?.denomination ?? 6;
+    card.dataset.excedenteFormula = `2d${baseDen}`;
+
     // Label do tipo de dano (todos juntos ou primeiro)
     const dmgLabel = rolls.map(r => r.label).join(" + ");
 
@@ -497,6 +553,30 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
     // Desabilitar botão de dano após rolar
     const dmgBtn = card.querySelector(".jj-damage-btn");
     if ( dmgBtn ) { dmgBtn.disabled = true; dmgBtn.style.opacity = "0.4"; dmgBtn.style.cursor = "default"; }
+
+    // Crítico automático — o jogador ainda pode desmarcar/trocar.
+    // Prioridade: 20 natural (Perfeito, dobra os dados) vence o Excedente.
+    if ( card.dataset.autoCrit === "1" ) {
+      const critBonus = await _rollDiceFormula(card.dataset.critFormula);
+      card.dataset.critBonus = critBonus;
+      const critCb = card.querySelector("input[data-mod='crit']");
+      if ( critCb ) critCb.setAttribute("checked", "checked");
+      const totalEl = card.querySelector("#jj-total-display");
+      if ( totalEl ) totalEl.textContent = _applyModifier(totalDmg, "crit", critBonus);
+      if ( dmgBreak && critBonus > 0 ) {
+        dmgBreak.innerHTML += `<span class="jj-pa-badge" style="color:#e07040;border-color:#804020;">+${critBonus} crit (auto)</span>`;
+      }
+    } else if ( card.dataset.autoExcedente === "1" ) {
+      const exc = await _rollDiceFormula(card.dataset.excedenteFormula);
+      card.dataset.excedenteBonus = exc;
+      const excCb = card.querySelector("input[data-mod='excedente']");
+      if ( excCb ) excCb.setAttribute("checked", "checked");
+      const totalEl = card.querySelector("#jj-total-display");
+      if ( totalEl ) totalEl.textContent = _applyModifier(totalDmg, "excedente", exc);
+      if ( dmgBreak && exc > 0 ) {
+        dmgBreak.innerHTML += `<span class="jj-pa-badge" style="color:#40a0e0;border-color:#205080;">+${exc} exc (auto)</span>`;
+      }
+    }
 
     await _updateCardMessage(message, card.outerHTML);
   }
@@ -553,12 +633,17 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
 
   // ── CONSUMIR PA GERADA ───────────────────────────────────────────────────────
   async function _consumePA(actor, quantidade) {
-    const atual = actor.system?.energy?.generated ?? 0;
+    const payer = _paPayer(actor); // invocação → invocador; senão, o próprio
+    const atual = payer.system?.energy?.generated ?? 0;
     if ( atual < quantidade ) {
-      ui.notifications.warn(`${actor.name} não tem PA Gerada suficiente! (${atual} disponível, ${quantidade} necessário)`);
+      ui.notifications.warn(`${payer.name} não tem PA Gerada suficiente! (${atual} disponível, ${quantidade} necessário)`);
       return false;
     }
-    await actor.update({ "system.energy.generated": atual - quantidade }, { isEnergySystem: true });
+    await payer.update({ "system.energy.generated": atual - quantidade }, { isEnergySystem: true });
+    if ( payer !== actor ) ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor }),
+      content: `🔗 <strong>${actor.name}</strong> (invocação) gastou <strong>${quantidade} PA Gerada</strong> de <strong>${payer.name}</strong>.`
+    });
     return true;
   }
 
@@ -648,26 +733,26 @@ function _buildBreakdown(roll) {
   // Os demais modificam o total base diretamente
   function _applyModifier(base, mod, critBonus = 0) {
     switch ( mod ) {
-      case "half":    return Math.floor(base / 2);
-      case "quarter": return Math.floor(base / 4);
-      case "crit":    return base + critBonus; // base + dados extras rolados
-      case "kokusen": return Math.ceil((base + critBonus) * 2.5); // ×2,5 no total
-      default:        return base;
+      case "half":      return Math.floor(base / 2);
+      case "quarter":   return Math.floor(base / 4);
+      case "crit":      return base + critBonus; // Perfeito: dobra os dados (rola tudo de novo)
+      case "excedente": return base + critBonus; // Excedente: +2 dados do dado base
+      case "kokusen":   return Math.ceil((base + critBonus) * 2.5); // Fulgor Negro ×2,5 no total
+      default:          return base;
     }
   }
 
   // ── ROLAR DADOS EXTRAS DE CRÍTICO ────────────────────────────────────────────
-  async function _rollCritDice(card) {
-    // Pegar a fórmula dos dados usados no dano (sem modificadores fixos)
-    // Guardamos a fórmula de dados pura quando rolamos o dano
-    const critFormula = card.dataset.critFormula;
-    if ( !critFormula ) return 0;
+  // Usado tanto pelo Crítico Perfeito (critFormula = todos os dados) quanto pelo
+  // Crítico Excedente (excedenteFormula = 2 dados do dado base).
+  async function _rollDiceFormula(formula) {
+    if ( !formula ) return 0;
     try {
-      const roll = await new Roll(critFormula).evaluate();
+      const roll = await new Roll(formula).evaluate();
       if ( game.dice3d ) game.dice3d.showForRoll(roll, game.user, true); // sem await
       return roll.total;
     } catch(e) {
-      console.error("JujutsuLegacy | Erro ao rolar crítico:", e);
+      console.error("JujutsuLegacy | Erro ao rolar dados de crítico:", e);
       return 0;
     }
   }
