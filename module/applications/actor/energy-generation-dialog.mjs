@@ -45,6 +45,7 @@ export default class EnergyGenerationDialog extends Dialog5e {
 
     context.actor = actor;
     context.level = level;
+    context.baseMultiplier = baseMultiplier;
     context.limite = limite;
     context.geradaAtual = actor.system.energy.generated;
     context.totalAtual = actor.system.energy.total;

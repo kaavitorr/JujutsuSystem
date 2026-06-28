@@ -10,8 +10,10 @@
       <label>Quantidade a gerar</label>
       <div class="form-fields">
         <select name="baseMultiplier">
-          <option value="2">2x (Padrão)</option>
+          <option value="{{ baseMultiplier }}" selected>{{ baseMultiplier }}x (Padrão)</option>
+          {{#unless (eq baseMultiplier 4)}}
           <option value="4">4x (Acúmulo — não gastou PA no turno anterior)</option>
+          {{/unless}}
         </select>
       </div>
     </div>

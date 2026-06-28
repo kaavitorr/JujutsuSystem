@@ -270,7 +270,8 @@ export default class SummonActivity extends ActivityMixin(BaseSummonActivityData
       mod: rollData.mod,
       origin: this.item.uuid,
       activity: this.id,
-      profile: profile._id
+      profile: profile._id,
+      consumeSummoner: this.summon?.consumeSummoner ?? false
     };
 
     // Match proficiency

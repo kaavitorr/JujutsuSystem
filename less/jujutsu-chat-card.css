@@ -339,6 +339,14 @@
   text-shadow: 0 0 6px rgba(255, 180, 40, 0.4);
 }
 
+/* Crítico Excedente */
+.jj-excedente:has(input:checked) {
+  border-color: #2a6aaa;
+  background: #04101a;
+  color: #50b0ff;
+  text-shadow: 0 0 6px rgba(60, 160, 255, 0.4);
+}
+
 /* ── CARDS EXTRAS — Dano, Cura, Salv, Teste ─────────── */
 .jj-extra-card .jj-panel-full { width: 100%; }
 .jj-extra-card .jj-panels { grid-template-columns: 1fr; }

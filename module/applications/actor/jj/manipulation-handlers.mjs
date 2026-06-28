@@ -102,6 +102,11 @@ export async function onIntensiveTraining(actor) {
   const currentMaxPA = actor.system.energy?.max ?? 0;
   const currentGeneratedBonus = it.generatedEnergy ?? 0;
 
+  const hasEnormousEnergy = actor.items.some(
+    i => i.type === "race" && (i.system?.identifier ?? i.name?.slugify()) === "energia-descomunal"
+  );
+  const trainingPAGain = hasEnormousEnergy ? 10 : 5;
+
   const choice = await foundry.applications.api.DialogV2.wait({
     window: { title: "⚔️ Treinamento Intenso — Evolução na Prática" },
     content: `
@@ -116,8 +121,8 @@ export async function onIntensiveTraining(actor) {
                         cursor:pointer;">
             <input type="radio" name="jj-training-choice" value="maxEnergy" style="flex:0 0 auto;">
             <div>
-              <strong style="color:#c0a0ff;">↑ PA Máximo +5</strong>
-              <div style="font-size:11px; color:#8080a0;">Atual: ${currentMaxPA} → ${currentMaxPA + 5} (treino ${(it.maxEnergy ?? 0) + 1})</div>
+              <strong style="color:#c0a0ff;">↑ PA Máximo +${trainingPAGain}</strong>
+              <div style="font-size:11px; color:#8080a0;">Atual: ${currentMaxPA} → ${currentMaxPA + trainingPAGain} (treino ${(it.maxEnergy ?? 0) + 1})</div>
             </div>
           </label>
 
@@ -180,7 +185,7 @@ export async function onIntensiveTraining(actor) {
   if ( choice === "maxEnergy" ) {
     const novoContador = (it2.maxEnergy ?? 0) + 1;
     updates["system.energy.intensiveTraining.maxEnergy"] = novoContador;
-    chatMsg = `🏋️ <strong>${actor.name}</strong> completou um Treinamento Intenso! <strong>PA Máximo +5</strong> (${novoContador} treino(s) = +${novoContador * 5} PA Máx total de treino).`;
+    chatMsg = `🏋️ <strong>${actor.name}</strong> completou um Treinamento Intenso! <strong>PA Máximo +${trainingPAGain}</strong> (${novoContador} treino(s) = +${novoContador * trainingPAGain} PA Máx total de treino).`;
   } else if ( choice === "generatedEnergy" ) {
     if ( generatedAtLimit ) {
       ui.notifications.warn("Limite de treinos de PA Gerada atingido (20 vezes).");
