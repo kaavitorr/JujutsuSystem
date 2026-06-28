@@ -374,8 +374,12 @@ export default class CharacterData extends CreatureTemplate {
     const bonusOverall = simplifyBonus(this.energy.bonuses?.overall, rollData);
     const bonusLevel = simplifyBonus(this.energy.bonuses?.level, rollData) * level;
     const bonusTemp = this.energy.bonuses?.temp ?? 0;
-    const intensiveBonus = (this.energy.intensiveTraining?.maxEnergy ?? 0) * 5;
-    this.energy.max = (level * 20) + bonusOverall + bonusLevel + bonusTemp + intensiveBonus;
+    const hasEnormousEnergy = this.parent?.items?.some(
+      i => i.type === "race" && (i.system?.identifier ?? i.name?.slugify()) === "energia-descomunal"
+    ) ?? false;
+    if ( hasEnormousEnergy ) this.energy.generation.baseMultiplier = 3;
+    const intensiveBonus = (this.energy.intensiveTraining?.maxEnergy ?? 0) * (hasEnormousEnergy ? 10 : 5);
+    this.energy.max = (level * (hasEnormousEnergy ? 40 : 20)) + bonusOverall + bonusLevel + bonusTemp + intensiveBonus;
 
     // Acúmulo de Energia disponível a partir do nível 5
     if ( level >= 5 ) this.energyAbilities.accumulation.enabled = true;
