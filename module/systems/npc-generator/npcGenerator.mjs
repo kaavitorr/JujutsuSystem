@@ -602,8 +602,7 @@ export function gerarNpc({ nd, tipo, ndTable, curseId, arquetipo, boss,
   const fillerAtaque = podeReservar && dieTarget <= 0;
   let dadoAtq = fillerAtaque ? { expr: '1d6', avg: 3.5 } : dadoMaldicao(dieTarget);
   // LIMITE em ND≤4: um único ataque comum não passa de 4d10 (+mod) — evita "nuke" de
-  // golpe único que pode matar de uma vez. (O golpe forte intencional fica no "Golpe
-  // Concentrado", que só existe quando há multiataque.)
+  // golpe único que pode matar de uma vez.
   const CAP_DADO_AVG = 22; // média de 4d10
   if (_ndDano <= 4 && dadoAtq.avg > CAP_DADO_AVG) {
     dadoAtq = { expr: '4d10', avg: CAP_DADO_AVG };
@@ -625,27 +624,6 @@ export function gerarNpc({ nd, tipo, ndTable, curseId, arquetipo, boss,
       acerto: acertoAtq, alcanceM: 1.5, dano: danoAtqStr,
       tipo: pick(fl.tipos), critRange: critRangeNpc,
       desc: isMald ? `Ataque característico de ${curse?.nome || 'maldição'}.` : 'Ataque característico.',
-    });
-  }
-
-  // "Golpe Concentrado": SÓ aparece quando a criatura tem multiataque (>1 ataque). No
-  // lugar de realizar seus vários ataques, ela desfere um único golpe poderoso, causando
-  // o dano COMBINADO dos ataques sacrificados (quanto mais ataques, mais dano).
-  if (ataquesSugeridos > 1) {
-    const tipoGc = patch.ataques[0]?.tipo || '';
-    const perAtaqueAvg = _avgFormula(danoAtqStr);
-    const alvoConc = Math.round(ataquesSugeridos * perAtaqueAvg);
-    const dm = dadoMaldicao(Math.max(2, alvoConc - modAtq)); // soma o mod uma única vez
-    const danoConcStr = modAtq > 0 ? `${dm.expr} +${modAtq}` : (modAtq < 0 ? `${dm.expr} ${modAtq}` : dm.expr);
-    const avgGc = _avgFormula(danoConcStr);
-    patch.hab_poder = patch.hab_poder || [];
-    patch.hab_poder.push({
-      nome: 'Golpe Concentrado',
-      custoPA: Math.max(2, 2 * (Number(nd) || row.ndNum)),
-      acerto: acertoAtq, dano: danoConcStr, tipo: tipoGc,
-      alcanceM: 1.5, critRange: critRangeNpc,
-      desc: `Em vez de realizar seus ${ataquesSugeridos} ataques na rodada, a criatura concentra todos eles num único golpe devastador, causando o dano combinado dos ataques sacrificados. Ataque corpo-a-corpo contra um alvo: ${acertoAtq >= 0 ? '+' : ''}${acertoAtq} para atingir, causando ${avgGc} (${danoConcStr})${tipoGc ? ` de dano ${tipoGc}` : ''}.`,
-      recarga: '',
     });
   }
 

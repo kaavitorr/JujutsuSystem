@@ -17,6 +17,11 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
   const CARD_TYPES = new Set(["damage", "heal", "save", "check", "utility"]);
 
   // ── HOOK PRINCIPAL ───────────────────────────────────────────────────────────
+  // IMPORTANTE — ordem de registro: o hook de consumo de Recurso customizado (em
+  // chat-card.mjs, importado ANTES deste arquivo em character-sheet.mjs) precisa
+  // continuar registrado antes deste. É o veto dele que impede este card de ser
+  // postado quando o recurso configurado na activity está insuficiente — não mexer
+  // na ordem relativa dos dois sem entender essa dependência.
   Hooks.on("dnd5e.preUseActivity", (activity, config, dialog) => {
     const item = activity.item;
     if ( !item ) return;

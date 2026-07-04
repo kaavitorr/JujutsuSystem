@@ -41,19 +41,110 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
     return doc?.actor ?? doc?.parent ?? actor;
   }
 
+  // Retorna quanto o Seis Olhos reduz do custo de PA do ator.
+  // Selado = floor(prof/2); Poder Completo = prof. Sem o item ou modo = 0.
+  function _seisOlhosReduction(actor) {
+    const hasSeisOlhos = actor?.items?.some(i => i.name === "Seis Olhos" && i.type === "feat");
+    const mode = actor?.getFlag?.("jujutsu-system", "seisOlhosMode");
+    if ( !hasSeisOlhos || !mode ) return 0;
+    const prof = actor.system?.attributes?.prof ?? 2;
+    return mode === "full" ? prof : Math.max(1, Math.floor(prof / 2));
+  }
+
+  // ── RECURSO CUSTOMIZADO: checagem+reserva (síncrona) e confirmação (async) ──
+  // A checagem usa um "reservado localmente" por ator+recurso pra evitar corrida:
+  // actor.getFlag() só reflete o saldo depois que o setFlag anterior é confirmado
+  // pelo servidor (assíncrono), então duas ativações quase simultâneas podem ler o
+  // MESMO saldo antes de qualquer uma escrever, permitindo gastar o recurso 2x mas
+  // descontar só 1x. Descontando o valor já reservado (mas ainda não confirmado)
+  // da conta, a segunda ativação vê o saldo correto mesmo antes da primeira
+  // terminar de persistir.
+  const _pendingResourceDeductions = new Map(); // `${payerId}:${resId}` -> nº reservado
+
+  /**
+   * Verifica saldo (síncrono) e RESERVA o valor se suficiente — ainda não escreve.
+   * Recurso órfão (removido do ator depois de configurado na activity) é
+   * auto-limpo da flag e tratado como "sem custo" (não bloqueia o uso).
+   * @returns {{ok:true, key?:string, resId?:string, name?:string, need?:number}
+   *          |{ok:false, name:string, have:number, need:number}}
+   */
+  function _reserveCustomResource(payer, activity) {
+    const rc = activity.flags?.["jujutsu-system"]?.resourceCost;
+    if ( !rc?.id || !(Number(rc.amount) > 0) ) return { ok: true };
+    const need = Number(rc.amount);
+    const list = payer.getFlag("jujutsu-system", "customResources") ?? [];
+    const idx  = list.findIndex(r => r.id === rc.id);
+    if ( idx < 0 ) {
+      activity.update({ "flags.jujutsu-system.-=resourceCost": null });
+      ui.notifications.warn(`O recurso configurado em "${activity.name}" não existe mais em ${payer.name} — custo removido.`);
+      return { ok: true };
+    }
+    const key = `${payer.id}:${rc.id}`;
+    const pendente = _pendingResourceDeductions.get(key) ?? 0;
+    const have = Number(list[idx].current ?? 0) - pendente;
+    if ( have < need ) return { ok: false, name: list[idx].name, have, need };
+    _pendingResourceDeductions.set(key, pendente + need);
+    return { ok: true, key, resId: rc.id, name: list[idx].name, need };
+  }
+
+  /** Confirma (persiste) uma reserva feita por _reserveCustomResource. */
+  async function _commitCustomResource(payer, reserva) {
+    if ( !reserva?.key ) return; // nada foi reservado (sem custo configurado, ou órfão já tratado)
+    try {
+      const list = payer.getFlag("jujutsu-system", "customResources") ?? [];
+      const idx  = list.findIndex(r => r.id === reserva.resId);
+      if ( idx < 0 ) return;
+      const have = Number(list[idx].current ?? 0);
+      const updated = list.map((r, i) => i === idx ? { ...r, current: Math.max(0, have - reserva.need) } : r);
+      await payer.setFlag("jujutsu-system", "customResources", updated);
+    } finally {
+      const restante = (_pendingResourceDeductions.get(reserva.key) ?? 0) - reserva.need;
+      if ( restante > 0 ) _pendingResourceDeductions.set(reserva.key, restante);
+      else _pendingResourceDeductions.delete(reserva.key);
+    }
+  }
+
   // ── HOOK PRINCIPAL: intercepta o uso de qualquer atividade ──────────────────
   Hooks.on("dnd5e.preUseActivity", (activity, config, dialog) => {
     const item = activity.item;
     if ( !item ) return;
 
-    // Só interceptamos atividades de ataque
-    if ( activity.type !== "attack" ) return;
+    // Interceptamos atividades de ataque e salvaguarda
+    if ( activity.type !== "attack" && activity.type !== "save" ) return;
 
     activateUpkeep(activity); // ativa Custo Constante/Concentração/Duração antes do veto
     resetHealLimitsByTechnique(activity); // reset-por-técnica (o veto abaixo barraria o listener global)
     // Cancelar o comportamento nativo
     _postJujutsuCard(activity, item);
     return false;
+  });
+
+  // ── RECURSO CUSTOMIZADO: consumo em atividades fora do card customizado ──────
+  // (ataque e salvaguarda consomem o recurso dentro de _postJujutsuCard, junto com a PA)
+  //
+  // IMPORTANTE — ordem de registro: este hook precisa continuar registrado ANTES
+  // do hook de extra-cards.mjs (importado logo depois deste arquivo em
+  // character-sheet.mjs). Hooks.call para no primeiro listener que retorna false —
+  // é o veto AQUI que impede o card customizado de dano/cura/perícia/utilidade de
+  // ser postado quando o recurso configurado está insuficiente. Se este hook for
+  // movido para depois daquele, o card passaria a ser postado mesmo sem saldo.
+  Hooks.on("dnd5e.preUseActivity", (activity) => {
+    if ( activity.type === "attack" || activity.type === "save" ) return; // já tratado no card
+    const actor = activity.item?.actor;
+    if ( !actor ) return;
+    if ( !activity.flags?.["jujutsu-system"]?.resourceCost?.id ) return; // nada configurado
+    const payer = _paPayer(actor); // invocação → invocador; senão, o próprio
+    const reserva = _reserveCustomResource(payer, activity);
+    if ( reserva.ok === false ) {
+      ui.notifications.warn(`${payer.name} não tem ${reserva.name} suficiente! (${reserva.have} disponível, ${reserva.need} necessário)`);
+      return false; // bloqueia o uso
+    }
+    _commitCustomResource(payer, reserva).then(() => {
+      if ( payer !== actor && reserva.key ) ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor }),
+        content: `🔗 <strong>${actor.name}</strong> (invocação) gastou <strong>${reserva.need} ${reserva.name}</strong> de <strong>${payer.name}</strong>.`
+      });
+    });
   });
 
   // ── CRIAR O CARD CUSTOMIZADO ─────────────────────────────────────────────────
@@ -70,8 +161,9 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
         const isGerada = target.target === "energy.generated";
         const isTotal  = target.target === "energy.total";
         if ( !isGerada && !isTotal ) continue;
-        const custo = Number(target.value ?? 0);
-        if ( custo <= 0 ) continue;
+        const custoBase = Number(target.value ?? 0);
+        if ( custoBase <= 0 ) continue;
+        const custo = Math.max(0, custoBase - _seisOlhosReduction(actor));
         const campo = isGerada ? "system.energy.generated" : "system.energy.total";
         const atual = isGerada
           ? (payer.system?.energy?.generated ?? 0)
@@ -87,10 +179,25 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
           content: `🔗 <strong>${actor.name}</strong> (invocação) gastou <strong>${custo} ${label}</strong> de <strong>${payer.name}</strong>.`
         });
       }
+
+      // Consumo de Recurso customizado configurado na activity (mesma reserva
+      // síncrona usada pelo hook de atividades fora do card, acima — evita a
+      // corrida de duplo-gasto e já redireciona pro invocador, como a PA)
+      const reservaRecurso = _reserveCustomResource(payer, activity);
+      if ( reservaRecurso.ok === false ) {
+        ui.notifications.warn(`${payer.name} não tem ${reservaRecurso.name} suficiente! (${reservaRecurso.have} disponível, ${reservaRecurso.need} necessário)`);
+        return; // aborta criação do card
+      }
+      await _commitCustomResource(payer, reservaRecurso);
+      if ( payer !== actor && reservaRecurso.key ) ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor }),
+        content: `🔗 <strong>${actor.name}</strong> (invocação) gastou <strong>${reservaRecurso.need} ${reservaRecurso.name}</strong> de <strong>${payer.name}</strong>.`
+      });
     }
 
     // Dados de dano da activity
     const damageParts = activity.damage?.parts ?? [];
+    const isSave = activity.type === "save";
 
     // Montar o HTML do card
     const description = item.system.description?.value ?? "";
@@ -101,6 +208,16 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
       ? (damageParts[0]?.denomination ?? 6)
       : 4;
 
+    // Info de Salvaguarda (ability pode ser Set no dnd5e v4)
+    const saveDC        = isSave ? (activity.save?.dc?.value ?? null) : null;
+    const saveAbilityRaw = isSave ? (activity.save?.ability ?? null) : null;
+    const saveAbility   = saveAbilityRaw instanceof Set
+      ? ([...saveAbilityRaw][0] ?? null)
+      : Array.isArray(saveAbilityRaw) ? (saveAbilityRaw[0] ?? null) : saveAbilityRaw;
+    const saveLabel     = saveAbility
+      ? (CONFIG.DND5E.abilities?.[saveAbility]?.label ?? String(saveAbility).toUpperCase())
+      : null;
+
     const cardData = {
       itemId:       item.id,
       actorId:      actor?.id ?? null,
@@ -109,6 +226,9 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
       itemName:     item.name,
       itemImg:      item.img,
       isSpell,
+      isSave,
+      saveDC,
+      saveLabel,
       hasDescription,
       description:  hasDescription ? description : "",
       damageParts:  damageParts.map((p, i) => ({
@@ -116,8 +236,9 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
         types:   p.types ?? [],
         label:   _damageTypeLabel(p.types)
       })),
-      hasAttack:    true,
+      hasAttack:    !isSave,
       hasDamage:    damageParts.length > 0,
+      saveAbility,
       paBonus:      baseDenomination,
       profBonus:    actor?.system?.attributes?.prof ?? 2,
       userId:       game.user.id
@@ -152,12 +273,14 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
      data-user-id="${data.userId ?? ""}"
      data-pa-bonus="${data.paBonus}"
      data-prof-bonus="${data.profBonus}"
-     data-is-spell="${data.isSpell}">
+     data-is-spell="${data.isSpell}"
+     data-save-dc="${data.saveDC ?? ""}"
+     data-save-ability="${data.saveAbility ?? ""}">
 
   <div class="jj-top-bar">
     <img class="jj-top-icon" src="${data.itemImg}" alt="${data.itemName}">
     <span class="jj-top-name">${data.itemName}</span>
-    <span class="jj-top-sub">${data.isSpell ? "Técnica" : "Ataque"}</span>
+    <span class="jj-top-sub">${data.isSave ? "Salvaguarda" : data.isSpell ? "Técnica" : "Ataque"}</span>
   </div>
 
   ${data.hasDescription ? `<div class="jj-description">${data.description}</div>` : ""}
@@ -172,20 +295,25 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
     </button>
   </div>` : ""}
 
-  <div class="jj-roll-btns">
+  <div class="jj-roll-btns"${data.isSave ? ' style="grid-template-columns:1fr"' : ""}>
     ${data.hasAttack ? `
     <button class="jj-btn jj-attack-btn" data-action="jj-attack">
       <i class="fas fa-dice-d20"></i> Acerto
-    </button>` : `<div></div>`}
+    </button>` : ""}
+    ${data.isSave && data.saveDC ? `
+    <button class="jj-btn jj-save-btn" data-action="jj-roll-save"
+            style="background:color-mix(in srgb,#6040c0 20%,#0e0e18);color:#9070e0;">
+      <i class="fas fa-shield-halved"></i> Salv. CD ${data.saveDC}${data.saveLabel ? ` — ${data.saveLabel}` : ""}
+    </button>` : ""}
     ${data.hasDamage ? `
     <button class="jj-btn jj-damage-btn" data-action="jj-damage">
       <i class="fas fa-burst"></i> Dano
-    </button>` : `<div></div>`}
+    </button>` : ""}
   </div>
 
   <div class="jj-panels">
     <div class="jj-panel" id="jj-atk-panel">
-      <div class="jj-panel-label">Acerto</div>
+      <div class="jj-panel-label">${data.isSave ? "Salv." : "Acerto"}</div>
       <div class="jj-panel-val" id="jj-atk-val">—</div>
       <div class="jj-panel-breakdown" id="jj-atk-break"></div>
     </div>
@@ -228,6 +356,13 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
       if ( atkBtn ) { atkBtn.style.display = "none"; atkBtn.disabled = true; }
       if ( dmgBtn ) { dmgBtn.style.display = "none"; dmgBtn.disabled = true; }
     }
+
+    // Salv. — visível a todos os jogadores (cada um rola pela sua ficha)
+    card.querySelector("[data-action='jj-roll-save']")?.addEventListener("click", async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      await _handleSaveRoll(card);
+    });
 
     atkBtn?.addEventListener("click", async (e) => {
       e.preventDefault();
@@ -316,6 +451,59 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
     });
   });
 
+  // ── ROLAR SALVAGUARDA (qualquer jogador pode clicar pelo token dele) ─────────
+  async function _handleSaveRoll(card) {
+    const { actor: ownerActor, activity } = _resolveCardData(card);
+
+    // Ability e DC do card (já armazenados como data-*)
+    const abilitySet = activity?.save?.ability;
+    const ability    = (abilitySet instanceof Set ? abilitySet.first() : null)
+                    ?? (typeof abilitySet === "string" ? abilitySet : null)
+                    ?? card.dataset.saveAbility
+                    ?? "con";
+    const dc         = Number(card.dataset.saveDc) || activity?.save?.dc?.value || "?";
+    const abilLabel  = CONFIG.DND5E.abilities?.[ability]?.label ?? ability.toUpperCase();
+
+    // Token alvo: primeiro alvo marcado ou token controlado
+    const targetToken = [...(game.user.targets ?? [])][0] ?? canvas.tokens?.controlled?.[0];
+    const targetActor = targetToken?.actor;
+
+    if ( !targetActor ) {
+      ui.notifications.warn("Selecione um token ou marque um alvo para rolar a salvaguarda.");
+      return;
+    }
+
+    const saveMod = targetActor.system?.abilities?.[ability]?.save?.value
+                 ?? targetActor.system?.abilities?.[ability]?.mod
+                 ?? 0;
+    const roll    = await new Roll(`1d20 + ${Number(saveMod)}`, targetActor.getRollData()).evaluate();
+    game.dice3d?.showForRoll(roll, game.user, true);
+
+    const isNat20  = roll.dice[0]?.results[0]?.result === 20;
+    const isNat1   = roll.dice[0]?.results[0]?.result === 1;
+    const success  = isNat20 || (!isNat1 && roll.total >= Number(dc));
+
+    // Mostrar resultado no painel de "Acerto" (renomeado "Salv." no card)
+    const atkPanel = card.querySelector("#jj-atk-panel");
+    const atkVal   = card.querySelector("#jj-atk-val");
+    const atkBreak = card.querySelector("#jj-atk-break");
+
+    if ( atkPanel ) atkPanel.classList.add("visible");
+    if ( atkVal ) {
+      atkVal.textContent = roll.total;
+      atkVal.className   = "jj-panel-val" + (isNat20 ? " nat20" : isNat1 ? " nat1" : "");
+      atkVal.style.color = success ? "#60c080" : "#e05050";
+    }
+    if ( atkBreak ) {
+      atkBreak.innerHTML = _buildBreakdown(roll)
+        + `<span class="jj-mod-pip"> vs CD ${dc} — <strong style="color:${success ? "#60c080" : "#e05050"}">${success ? "✓ Sucesso" : "✗ Falha"}</strong></span>`;
+    }
+
+    // Label dinâmica com nome do alvo
+    const lblEl = card.querySelector("#jj-atk-panel .jj-panel-label");
+    if ( lblEl ) lblEl.textContent = `Salv. ${abilLabel} (${targetActor.name})`;
+  }
+
   // ── ROLAR ATAQUE ─────────────────────────────────────────────────────────────
   async function _handleAttackRoll(card, message) {
     const { actor, activity, item, profBonus, paBonus } = _resolveCardData(card);
@@ -338,7 +526,12 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
 
     // Ambos confirmados — agora sim deduz PA (Explosão Ofensiva + Escala)
     if ( paGastos > 0 ) {
-      const ok = await _consumePA(actor, paGastos);
+      // Se a técnica já teve custo de PA (activity targets), a redução do Seis Olhos
+      // já foi aplicada lá — não aplica de novo na Explosão Ofensiva.
+      const tecnicaTemCustoPA = (activity.consumption?.targets ?? []).some(
+        t => t.target === "energy.generated" || t.target === "energy.total"
+      );
+      const ok = await _consumePA(actor, paGastos, tecnicaTemCustoPA);
       if ( !ok ) { reabilitar(); return; }
     }
     const escala = await applyScaleChoice({ actor, activity, incrementos: escolhaEscala.incrementos });
@@ -429,9 +622,20 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
     if ( dmgBtn0?.disabled ) return;
     if ( dmgBtn0 ) dmgBtn0.disabled = true;
 
-    // PA já gastos no ataque (se houver)
-    // PA já foi escolhido e consumido no Rolar Ataque — usa direto
-    const paGastos = Number(card.dataset.paGastos ?? 0);
+    // PA já gastos no ataque (se houver) ou perguntar agora (salvaguarda)
+    let paGastos = Number(card.dataset.paGastos ?? 0);
+    if ( paGastos === 0 && activity.type === "save" ) {
+      const escolhido = await _paDialog(actor, profBonus, paBonus);
+      if ( escolhido === null ) { if ( dmgBtn0 ) dmgBtn0.disabled = false; return; }
+      paGastos = escolhido;
+      if ( paGastos > 0 ) {
+        const tecnicaTemCustoPA = (activity.consumption?.targets ?? []).some(
+          t => t.target === "energy.generated" || t.target === "energy.total"
+        );
+        const ok = await _consumePA(actor, paGastos, tecnicaTemCustoPA);
+        if ( !ok ) { if ( dmgBtn0 ) dmgBtn0.disabled = false; return; }
+      }
+    }
 
     // Usar labels.damages que já tem fórmula e tipo de dano calculados
     const damageParts  = activity.damage?.parts ?? [];
@@ -632,17 +836,18 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
   }
 
   // ── CONSUMIR PA GERADA ───────────────────────────────────────────────────────
-  async function _consumePA(actor, quantidade) {
+  async function _consumePA(actor, quantidade, reducaoJaAplicada = false) {
+    const custo = reducaoJaAplicada ? quantidade : Math.max(0, quantidade - _seisOlhosReduction(actor));
     const payer = _paPayer(actor); // invocação → invocador; senão, o próprio
     const atual = payer.system?.energy?.generated ?? 0;
-    if ( atual < quantidade ) {
-      ui.notifications.warn(`${payer.name} não tem PA Gerada suficiente! (${atual} disponível, ${quantidade} necessário)`);
+    if ( atual < custo ) {
+      ui.notifications.warn(`${payer.name} não tem PA Gerada suficiente! (${atual} disponível, ${custo} necessário)`);
       return false;
     }
-    await payer.update({ "system.energy.generated": atual - quantidade }, { isEnergySystem: true });
+    await payer.update({ "system.energy.generated": atual - custo }, { isEnergySystem: true });
     if ( payer !== actor ) ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor }),
-      content: `🔗 <strong>${actor.name}</strong> (invocação) gastou <strong>${quantidade} PA Gerada</strong> de <strong>${payer.name}</strong>.`
+      content: `🔗 <strong>${actor.name}</strong> (invocação) gastou <strong>${custo} PA Gerada</strong> de <strong>${payer.name}</strong>.`
     });
     return true;
   }

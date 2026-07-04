@@ -72,6 +72,11 @@
     const rows = html.querySelectorAll("li.activity[data-activity-id], li.item.activity[data-activity-id]");
     if ( !rows.length ) return;
 
+    // Mesmo ator para todas as linhas deste item — calcular uma vez só, não por linha.
+    const hasActor = !!item.actor;
+    const actorRes = item.actor?.getFlag?.("jujutsu-system", "customResources") ?? [];
+    const noResOptionLabel = hasActor ? "— sem recursos —" : "— item sem personagem —";
+
     rows.forEach(row => {
       // Evitar duplicação
       if ( row.querySelector(".jj-pa-cost-field") ) return;
@@ -84,22 +89,55 @@
 
       const { amount, pool } = _getExistingPaCost(activity);
 
-      // Criar campo inline
+      // Recurso customizado já configurado (flag na activity)
+      const rc    = activity.flags?.["jujutsu-system"]?.resourceCost ?? {};
+      const rcId  = rc.id ?? "";
+      const rcAmt = Number(rc.amount) > 0 ? rc.amount : "";
+      const poolAbbr = pool === "total" ? "T" : "G";
+      const resOptions = actorRes.length
+        ? `<option value="">—</option>` + actorRes.map(r =>
+            `<option value="${foundry.utils.escapeHTML(String(r.id))}" ${r.id === rcId ? "selected" : ""}>${foundry.utils.escapeHTML(String(r.name ?? ""))}</option>`
+          ).join("")
+        : `<option value="">${noResOptionLabel}</option>`;
+
+      // Campo de Custo (PA) — reserva mostra só G/T fechada; nome inteiro no dropdown
       const wrapper = document.createElement("div");
       wrapper.className = "jj-pa-cost-field";
       wrapper.innerHTML = `
         <input type="number" class="jj-pa-amount" value="${amount}" placeholder="PA" min="0"
                title="Custo em PA" ${amount ? 'disabled' : ''}>
-        <select class="jj-pa-pool" ${amount ? 'disabled' : ''}>
-          <option value="generated" ${pool === "generated" ? "selected" : ""}>⚡ Gerada</option>
-          <option value="total"     ${pool === "total"     ? "selected" : ""}>🔮 Total</option>
-        </select>
+        <span class="jj-pool-wrap">
+          <select class="jj-pa-pool" title="Reserva de PA" ${amount ? 'disabled' : ''}>
+            <option value="generated" ${pool === "generated" ? "selected" : ""}>⚡ Gerada</option>
+            <option value="total"     ${pool === "total"     ? "selected" : ""}>🔮 Total</option>
+          </select>
+          <span class="jj-pool-abbr">${poolAbbr}</span>
+        </span>
         ${amount ? `<button class="jj-pa-clear" title="Remover custo">✕</button>` : ""}
       `;
 
-      const input    = wrapper.querySelector(".jj-pa-amount");
-      const select   = wrapper.querySelector(".jj-pa-pool");
-      const clearBtn = wrapper.querySelector(".jj-pa-clear");
+      // Campo de Recurso customizado (consumido ao usar a atividade)
+      const resWrapper = document.createElement("div");
+      resWrapper.className = "jj-resource-cost-field";
+      resWrapper.innerHTML = `
+        <select class="jj-res-select" title="Recurso consumido ao usar" ${actorRes.length ? "" : "disabled"}>
+          ${resOptions}
+        </select>
+        <input type="number" class="jj-res-amount" value="${rcAmt}" placeholder="Qtd" min="0"
+               title="Quantidade consumida" ${actorRes.length ? "" : "disabled"}>
+      `;
+
+      const input      = wrapper.querySelector(".jj-pa-amount");
+      const select     = wrapper.querySelector(".jj-pa-pool");
+      const poolAbbrEl = wrapper.querySelector(".jj-pool-abbr");
+      const clearBtn   = wrapper.querySelector(".jj-pa-clear");
+      const resSelect  = resWrapper.querySelector(".jj-res-select");
+      const resAmount  = resWrapper.querySelector(".jj-res-amount");
+
+      // Atualiza a abreviação G/T conforme a reserva escolhida
+      select.addEventListener("change", () => {
+        if ( poolAbbrEl ) poolAbbrEl.textContent = select.value === "total" ? "T" : "G";
+      });
 
       async function _saveCost() {
         const val = parseInt(input.value);
@@ -120,8 +158,26 @@
         ui.notifications.info(`Custo de ${val} PA (${select.value === "total" ? "Total" : "Gerada"}) salvo em "${activity.name}".`);
       }
 
+      // Upsert/remoção do Recurso customizado consumido pela atividade (flag na activity)
+      async function _saveResource() {
+        const id  = resSelect.value;
+        const amt = parseInt(resAmount.value) || 0;
+        if ( !id || amt <= 0 ) {
+          if ( activity.flags?.["jujutsu-system"]?.resourceCost ) {
+            await activity.update({ "flags.jujutsu-system.-=resourceCost": null });
+          }
+          return;
+        }
+        const res = (item.actor?.getFlag?.("jujutsu-system", "customResources") ?? []).find(r => r.id === id);
+        await activity.update({ "flags.jujutsu-system.resourceCost": { id, name: res?.name ?? "", amount: amt } });
+        ui.notifications.info(`Recurso "${res?.name ?? id}" (${amt}) configurado em "${activity.name}".`);
+      }
+
       input.addEventListener("keydown", e => { if ( e.key === "Enter" ) { e.preventDefault(); _saveCost(); } });
       input.addEventListener("blur", _saveCost);
+      resSelect.addEventListener("change", _saveResource);
+      resAmount.addEventListener("keydown", e => { if ( e.key === "Enter" ) { e.preventDefault(); _saveResource(); } });
+      resAmount.addEventListener("blur", _saveResource);
 
       if ( clearBtn ) {
         clearBtn.addEventListener("click", async e => {
@@ -136,11 +192,11 @@
         });
       }
 
-      // Inserir dentro de .item-row, antes dos controles
+      // Inserir dentro de .item-row, antes dos controles (Custo + Recursos)
       const itemRow = row.querySelector(".item-row") ?? row;
       const controls = itemRow.querySelector(".item-controls, .activity-controls, .controls");
-      if ( controls ) itemRow.insertBefore(wrapper, controls);
-      else itemRow.appendChild(wrapper);
+      if ( controls ) { itemRow.insertBefore(wrapper, controls); itemRow.insertBefore(resWrapper, controls); }
+      else { itemRow.appendChild(wrapper); itemRow.appendChild(resWrapper); }
     });
   }
 
@@ -151,14 +207,20 @@
   function _watchForm(form, item) {
     if ( _formObservers.has(form.id) ) return;
 
-    // Injetar imediatamente
-    _injectCostFields(form, item);
-
-    // Observer dentro do form — re-injeta quando a lista mudar
-    const obs = new MutationObserver(() => {
+    // _injectCostFields insere nós no próprio form observado — sem desconectar
+    // durante a injeção, essas inserções disparam o observer de novo, causando
+    // um passe redundante extra a cada mudança real.
+    let obs;
+    function runInject() {
+      obs.disconnect();
       _injectCostFields(form, item);
-    });
-    obs.observe(form, { childList: true, subtree: true });
+      obs.observe(form, { childList: true, subtree: true });
+    }
+
+    obs = new MutationObserver(() => runInject());
+
+    // Injetar imediatamente
+    runInject();
     _formObservers.set(form.id, obs);
 
     // Limpar quando o form for removido do DOM
@@ -214,14 +276,37 @@
     const style = document.createElement("style");
     style.id = "jj-pa-cost-style";
     style.textContent = `
+      /* Cabeçalhos "Cargas" (usos limitados nativos) / "Custo" / "Recursos" —
+         3 colunas de cabeçalho pras 3 colunas de conteúdo que a linha pode ter
+         (usos limitados nativos do dnd5e, quando configurados, continuam
+         renderizando ao lado do Custo/Recursos — sem cabeçalho próprio ficariam
+         desalinhados). */
+      .activities-element .items-header .jj-native-uses-header { width: 70px !important; flex: 0 0 70px !important; justify-content: center; }
+      .activities-element .items-header .jj-cost-header { width: 96px !important; flex: 0 0 96px !important; justify-content: center; }
+      .activities-element .items-header .jj-res-header  { width: 132px !important; flex: 0 0 132px !important; justify-content: center; text-align: center; }
+      /* Esconde a coluna de cargas vazia nas linhas (some quando não há usos limitados) */
+      .activities-element .item-detail.item-uses.empty { display: none !important; }
+
       .jj-pa-cost-field {
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 3px;
+        width: 96px;
         flex: none;
+        box-sizing: border-box;
+      }
+      .jj-resource-cost-field {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        width: 132px;
+        flex: none;
+        box-sizing: border-box;
       }
       .jj-pa-amount {
-        width: 44px;
+        width: 38px;
         height: 22px;
         padding: 0 4px;
         font-size: 11px;
@@ -235,17 +320,60 @@
         color: #6060a0;
         opacity: 0.8;
       }
+      /* Reserva de PA — fechada mostra só G/T (overlay); nome inteiro só no dropdown */
+      .jj-pool-wrap { position: relative; display: inline-flex; align-items: center; }
       .jj-pa-pool {
+        appearance: none;
+        -webkit-appearance: none;
         height: 22px;
+        width: 30px;
         font-size: 10px;
         padding: 0 2px;
         background: #0e0e18;
         border: 1px solid #2a2a40;
         border-radius: 3px;
-        color: #a0a0c0;
+        color: transparent;
         cursor: pointer;
       }
+      .jj-pa-pool option { color: #cfc6ff; background: #0e0e18; }
       .jj-pa-pool:disabled { opacity: 0.7; cursor: default; }
+      .jj-pool-abbr {
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        font-size: 11px;
+        font-weight: 700;
+        color: #b9a6ff;
+      }
+      .jj-pool-abbr::after { content: "⌄"; margin-left: 1px; font-size: 9px; color: #6a6a90; }
+
+      /* Recurso customizado consumido ao usar a atividade */
+      .jj-res-select {
+        height: 22px;
+        max-width: 86px;
+        font-size: 10px;
+        padding: 0 2px;
+        background: #0e0e18;
+        border: 1px solid #2a2a40;
+        border-radius: 3px;
+        color: #c8b0ff;
+        cursor: pointer;
+      }
+      .jj-res-select:disabled { opacity: 0.6; cursor: default; }
+      .jj-res-amount {
+        width: 34px;
+        height: 22px;
+        padding: 0 3px;
+        font-size: 11px;
+        text-align: center;
+        background: #0e0e18;
+        border: 1px solid #2a2a40;
+        border-radius: 3px;
+        color: #c8b0ff;
+      }
+      .jj-res-amount:disabled { opacity: 0.6; }
       .jj-pa-clear {
         width: 18px;
         height: 18px;

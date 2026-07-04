@@ -3,7 +3,8 @@
   {{!-- ══════════════════════════════ TOPO ══════════════════════════════ --}}
   <div class="manip-top">
 
-    {{!-- Hexágono de estágio --}}
+    {{!-- Hexágono de estágio (oculto para restringido) --}}
+    {{#unless isRestringido}}
     <div class="manip-stage-block">
       <div class="manip-stage-hex">
         {{#if (eq actor.system.manipulation.stage "master")}}
@@ -23,10 +24,12 @@
       {{/if}}
       <span class="manip-stage-pts">{{actor.system.manipulation.pointsInvested}} PM investidos</span>
     </div>
+    {{/unless}}
 
     <div class="manip-right">
 
-      {{!-- PM + efeito do estágio --}}
+      {{!-- PM + efeito do estágio (oculto para restringido) --}}
+      {{#unless isRestringido}}
       <div class="manip-pm-row">
         <div class="manip-pm-left">
           <span class="manip-pm-lbl">Pontos de Maldição</span>
@@ -45,6 +48,7 @@
           </span>
         </div>
       </div>
+      {{/unless}}
 
       {{!-- Evolução na Prática — divisória modelo C --}}
       <div class="manip-evo-row">
@@ -66,6 +70,7 @@
           </button>
           {{/if}}
         </div>
+        {{#unless isRestringido}}
         <div class="manip-evo-seg {{#if actor.system.energy.intensiveTraining.cursePoints}}on{{/if}}">
           <span class="manip-evo-lbl">Pt. Maldição</span>
           <span class="manip-evo-val">+{{actor.system.energy.intensiveTraining.cursePoints}}</span>
@@ -75,6 +80,7 @@
           </button>
           {{/if}}
         </div>
+        {{/unless}}
         <div class="manip-evo-btn-wrap">
           <button class="jujutsu-btn primary btn-intensive-training"
             data-action="intensiveTraining"
@@ -88,6 +94,7 @@
   </div>
 
   {{!-- ═══════════════════════════ HABILIDADES ══════════════════════════ --}}
+  {{#unless isRestringido}}
   {{#each abilities as |group groupKey|}}
   <div class="ability-section">
 
@@ -161,5 +168,6 @@
     </div>
   </div>
   {{/each}}
+  {{/unless}}
 
 </section>
