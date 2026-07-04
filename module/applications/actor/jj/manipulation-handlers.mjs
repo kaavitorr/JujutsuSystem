@@ -10,11 +10,14 @@ import { showBlackFlashPopup } from "./popup.mjs";
 // ── Preparação de contexto ────────────────────────────────────────────────────
 
 export async function prepareManipulationContext(actor, context) {
-  try {
-    context.abilities = prepareManipulationAbilities(actor);
-  } catch(err) {
-    console.error("JujutsuLegacy | Erro Manipulacao:", err);
-    context.abilities = { basic: {}, advanced: {}, extreme: {}, barrier: {} };
+  context.isRestringido = actor.itemTypes.class.some(c => c.identifier === "restringido");
+  if ( !context.isRestringido ) {
+    try {
+      context.abilities = prepareManipulationAbilities(actor);
+    } catch(err) {
+      console.error("JujutsuLegacy | Erro Manipulacao:", err);
+      context.abilities = { basic: {}, advanced: {}, extreme: {}, barrier: {} };
+    }
   }
   return context;
 }
@@ -95,6 +98,7 @@ export async function onUndoManipulationAbility(actor, abilityId) {
 // ── Treinamento Intenso ───────────────────────────────────────────────────────
 
 export async function onIntensiveTraining(actor) {
+  const isRestringido = actor.itemTypes.class.some(c => c.identifier === "restringido");
   const it = actor.system.energy?.intensiveTraining ?? {};
   const cursePoints = actor.system.curseResources?.cursePoints ?? 0;
   const generatedAtLimit = (it.generatedEnergy ?? 0) >= 20;
@@ -141,6 +145,7 @@ export async function onIntensiveTraining(actor) {
             </div>
           </label>
 
+          ${!isRestringido ? `
           <label style="display:flex; align-items:center; gap:10px; padding:8px 10px;
                         background:#0e0e1a; border:1px solid #2a2a40; border-radius:6px;
                         cursor:pointer;">
@@ -149,7 +154,7 @@ export async function onIntensiveTraining(actor) {
               <strong style="color:#ffa060;">💀 Pontos de Maldição +4</strong>
               <div style="font-size:11px; color:#8080a0;">Atual: ${cursePoints} PM → ${cursePoints + 4} PM</div>
             </div>
-          </label>
+          </label>` : ""}
 
         </div>
         <p style="margin:10px 0 0; font-size:11px; color:#6060a0;">

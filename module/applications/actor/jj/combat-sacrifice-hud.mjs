@@ -17,6 +17,7 @@ import { getActorUpkeeps, deactivateUpkeep } from "./constant-cost.mjs";
 const SCOPE = "jujutsu-system";
 const FLAG_SAC = "sacrificios";       // flag no ATOR: { action, bonus, reaction }
 const FLAG_POS = "sacrificeHudPos";   // flag no USUÁRIO: { left, top }
+const FLAG_RES = "customResources";   // flag no ATOR: [{ id, name, current, max }]
 
 const SACS = [
   { key: "action",   label: "Ação",       icon: "fa-circle-dot" },
@@ -34,7 +35,7 @@ let hudActorId = null;
 const STYLE_ID = "jj-sacrifice-hud-styles";
 const CSS_TEXT = `
 #jj-sacrifice-hud {
-  position: fixed; z-index: 60; width: 168px;
+  position: fixed; z-index: 60; width: 228px;
   display: flex; flex-direction: column; gap: 6px; padding: 8px;
   border: 1px solid #3a2a6a; border-radius: 10px;
   background: linear-gradient(135deg, #0e0e22 0%, #130d20 100%);
@@ -87,6 +88,54 @@ const CSS_TEXT = `
 #jj-sacrifice-hud .jj-sac-upkeep.is-dur { border-color: #2f5a55; background: rgba(60,140,130,.16); color: #bfe6df; }
 #jj-sacrifice-hud .jj-sac-upkeep.is-dur i { color: #7fd3c6; }
 #jj-sacrifice-hud .jj-sac-upkeep.is-dur:hover { background: rgba(70,170,155,.26); border-color: #4a8a80; }
+
+/* ── Recursos (custom) — cabeçalho no mesmo estilo de "Sacrifícios" ── */
+#jj-sacrifice-hud .jj-sac-resources { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
+#jj-sacrifice-hud .jj-sac-section-header {
+  display: flex; align-items: center; gap: 6px; padding: 1px 4px 5px; margin-bottom: 1px;
+  border-bottom: 1px solid rgba(100,60,200,.25); color: #c0a8ff;
+}
+#jj-sacrifice-hud .jj-sac-section-header i { font-size: 12px; opacity: .9; }
+#jj-sacrifice-hud .jj-sac-section-title { font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+#jj-sacrifice-hud .jj-sac-res-row {
+  display: flex; align-items: center; gap: 6px; width: 100%; padding: 5px 7px;
+  border: 1px solid rgba(100,60,200,.35); border-radius: 7px; background: rgba(100,60,200,.08);
+  cursor: pointer; transition: background .12s ease, border-color .12s ease;
+}
+#jj-sacrifice-hud .jj-sac-res-row:hover { background: rgba(110,70,200,.22); border-color: #7a52d0; }
+#jj-sacrifice-hud .jj-sac-res-name {
+  flex: 1 1 auto; min-width: 0; font-size: 11px; font-weight: 600; color: #d8ccff;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+#jj-sacrifice-hud .jj-sac-res-values { flex: 0 0 auto; display: flex; align-items: center; gap: 3px; }
+#jj-sacrifice-hud .jj-sac-res-values input {
+  width: 30px; padding: 2px 0; text-align: center; font-size: 11px; font-weight: 700;
+  background: rgba(0,0,0,.35); border: 1px solid rgba(100,60,200,.4); border-radius: 4px;
+  color: #ede6ff;
+}
+#jj-sacrifice-hud .jj-sac-res-values input:focus { outline: none; border-color: #7a52d0; }
+#jj-sacrifice-hud .jj-sac-res-sep { flex: 0 0 auto; font-size: 10px; color: #8a78c8; }
+#jj-sacrifice-hud .jj-sac-res-remove {
+  flex: 0 0 auto; display: flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px; background: none; border: none; color: #6c6c78;
+  font-size: 10px; cursor: pointer; transition: color .12s ease;
+}
+#jj-sacrifice-hud .jj-sac-res-remove:hover { color: #ff7676; }
+#jj-sacrifice-hud .jj-sac-res-add { display: flex; align-items: center; gap: 5px; margin-top: 2px; }
+#jj-sacrifice-hud .jj-sac-res-new-name {
+  flex: 1 1 auto; min-width: 0; padding: 5px 8px; font-size: 11px;
+  background: rgba(0,0,0,.35); border: 1px dashed rgba(100,60,200,.4); border-radius: 7px;
+  color: #d8ccff;
+}
+#jj-sacrifice-hud .jj-sac-res-new-name::placeholder { color: #6c6c78; }
+#jj-sacrifice-hud .jj-sac-res-new-name:focus { outline: none; border-style: solid; border-color: #7a52d0; }
+#jj-sacrifice-hud .jj-sac-res-add-btn {
+  flex: 0 0 auto; display: flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 7px; border: 1px solid rgba(100,60,200,.45);
+  background: rgba(100,60,200,.18); color: #b79bff; font-size: 11px; cursor: pointer;
+  transition: background .12s ease, border-color .12s ease;
+}
+#jj-sacrifice-hud .jj-sac-res-add-btn:hover { background: rgba(110,70,200,.35); border-color: #7a52d0; }
 `;
 
 function injectStyles() {
@@ -127,6 +176,7 @@ function getHudActor() {
 }
 
 const sacState = (actor) => actor?.getFlag(SCOPE, FLAG_SAC) ?? {};
+const resourcesState = (actor) => actor?.getFlag(SCOPE, FLAG_RES) ?? [];
 
 /* -------------------------------------------- */
 /*  Render                                      */
@@ -186,8 +236,43 @@ function upkeepHtml(actor) {
   return `<div class="jj-sac-upkeeps"><div class="jj-sac-sub">Ativas</div>${rows}</div>`;
 }
 
+/** Seção "Recursos" — recursos custom nomeados pelo jogador, com valor atual/máximo. */
+function resourcesHtml(actor) {
+  const res = resourcesState(actor);
+  const rows = res.map(r => `
+      <div class="jj-sac-res-row" data-res-id="${r.id}">
+        <span class="jj-sac-res-name" title="${foundry.utils.escapeHTML(r.name)}">${foundry.utils.escapeHTML(r.name)}</span>
+        <div class="jj-sac-res-values">
+          <input type="number" class="jj-sac-res-current" value="${r.current ?? 0}"
+                 data-res-id="${r.id}" data-field="current" data-tooltip="Atual">
+          <span class="jj-sac-res-sep">/</span>
+          <input type="number" class="jj-sac-res-max" value="${r.max ?? 0}"
+                 data-res-id="${r.id}" data-field="max" data-tooltip="Máximo">
+        </div>
+        <button type="button" class="jj-sac-res-remove" data-res-id="${r.id}"
+                data-tooltip="Remover recurso" aria-label="Remover recurso">
+          <i class="fas fa-trash" inert></i>
+        </button>
+      </div>`).join("");
+
+  return `
+    <div class="jj-sac-resources">
+      <div class="jj-sac-section-header">
+        <i class="fas fa-gem" inert></i>
+        <span class="jj-sac-section-title">Recursos</span>
+      </div>
+      ${rows}
+      <div class="jj-sac-res-add">
+        <input type="text" class="jj-sac-res-new-name" placeholder="Novo recurso..." maxlength="40">
+        <button type="button" class="jj-sac-res-add-btn" data-tooltip="Adicionar recurso" aria-label="Adicionar recurso">
+          <i class="fas fa-plus" inert></i>
+        </button>
+      </div>
+    </div>`;
+}
+
 function bodyHtml(actor) {
-  return buttonsHtml(actor) + upkeepHtml(actor);
+  return buttonsHtml(actor) + upkeepHtml(actor) + resourcesHtml(actor);
 }
 
 function innerHtml(actor) {
@@ -261,6 +346,38 @@ function attachButtonListeners(actor) {
       refreshButtons();
     });
   });
+
+  hudEl?.querySelectorAll(".jj-sac-res-values input").forEach(input => {
+    input.addEventListener("change", () => {
+      onResourceFieldChange(actor, input.dataset.resId, input.dataset.field, input.value);
+    });
+  });
+  hudEl?.querySelectorAll(".jj-sac-res-remove").forEach(btn => {
+    btn.addEventListener("click", () => onResourceRemove(actor, btn.dataset.resId));
+  });
+  hudEl?.querySelectorAll(".jj-sac-res-row").forEach(row => {
+    row.addEventListener("click", (e) => {
+      // Não abre o diálogo se o clique foi nos campos numéricos ou no botão de remover —
+      // esses já têm seus próprios listeners (edição direta / remoção).
+      if ( e.target.closest("input, .jj-sac-res-remove") ) return;
+      onResourceClick(actor, row.dataset.resId);
+    });
+  });
+  const addBtn = hudEl?.querySelector(".jj-sac-res-add-btn");
+  const nameInput = hudEl?.querySelector(".jj-sac-res-new-name");
+  const doAdd = async () => {
+    const name = nameInput?.value?.trim();
+    if ( !name ) return;
+    // Trava contra duplo-clique/Enter duplo — sem isso, duas chamadas concorrentes
+    // partem do mesmo estado (getFlag) e uma sobrescreve o recurso que a outra criou.
+    if ( addBtn ) addBtn.disabled = true;
+    if ( nameInput ) nameInput.disabled = true;
+    await onResourceAdd(actor, name); // refreshButtons() dentro já reconstrói o HUD
+  };
+  addBtn?.addEventListener("click", doAdd);
+  nameInput?.addEventListener("keydown", e => {
+    if ( e.key === "Enter" ) { e.preventDefault(); doAdd(); }
+  });
 }
 
 /* -------------------------------------------- */
@@ -276,6 +393,121 @@ async function onSacrifice(actor, tipo, btn) {
   const ganho = await EnergySystem.sacrificeAction(actor, tipo); // "action"→nível; senão→2
   if ( ganho > 0 ) await actor.setFlag(SCOPE, FLAG_SAC, { ...sacState(actor), [tipo]: true });
   refreshButtons();                          // re-renderiza com o estado real
+}
+
+/* -------------------------------------------- */
+/*  Recursos (custom)                           */
+/* -------------------------------------------- */
+
+async function onResourceAdd(actor, name) {
+  if ( !actor || !name ) return;
+  const res = foundry.utils.deepClone(resourcesState(actor));
+  res.push({ id: foundry.utils.randomID(), name, current: 0, max: 0 });
+  await actor.setFlag(SCOPE, FLAG_RES, res);
+  refreshButtons();
+}
+
+async function onResourceRemove(actor, resId) {
+  if ( !actor || !resId ) return;
+  const res = foundry.utils.deepClone(resourcesState(actor)).filter(r => r.id !== resId);
+  await actor.setFlag(SCOPE, FLAG_RES, res);
+  refreshButtons();
+}
+
+/**
+ * Publica no chat o resultado de uma mudança no valor ATUAL de um recurso custom.
+ * Formato: "[Nome] recebeu/usou X [recurso], ficando com Y de Z" — ou sem "de Z"
+ * quando o recurso não tem máximo definido (max = 0). Nada é postado se delta for 0.
+ */
+function postResourceMessage(actor, name, delta, newCurrent, max) {
+  if ( !delta ) return;
+  const safeName = foundry.utils.escapeHTML(name);
+  const verbo = delta > 0 ? "recebeu" : "usou";
+  const amount = Math.abs(delta);
+  const hasMax = (max ?? 0) > 0;
+  const frase = hasMax
+    ? `${verbo} <strong>${amount}</strong> ${safeName}, ficando com <strong>${newCurrent}</strong> de <strong>${max}</strong>`
+    : `${verbo} <strong>${amount}</strong> ${safeName}, ficando com <strong>${newCurrent}</strong>`;
+  ChatMessage.create({
+    speaker: ChatMessage.getSpeaker({ actor }),
+    content: `<strong>${actor.name}</strong> ${frase}.`
+  });
+}
+
+async function onResourceFieldChange(actor, resId, field, rawValue) {
+  if ( !actor || !resId || !["current", "max"].includes(field) ) return;
+  const res = foundry.utils.deepClone(resourcesState(actor));
+  const entry = res.find(r => r.id === resId);
+  if ( !entry ) return;
+  const anterior = entry[field] ?? 0;
+  const digitado = parseInt(rawValue) || 0;
+  const novo = Math.max(0, digitado);
+  entry[field] = novo;
+  await actor.setFlag(SCOPE, FLAG_RES, res);
+
+  // Só reconstrói o HUD inteiro se o valor precisou ser corrigido (ex.: negativo) —
+  // senão o input já mostra exatamente o que foi digitado, nada visual pra atualizar.
+  if ( novo !== digitado ) refreshButtons();
+
+  // Só avisa no chat quando o valor ATUAL muda manualmente — editar o máximo é só
+  // recalibrar o teto do recurso, não um ganho/uso.
+  if ( field === "current" ) postResourceMessage(actor, entry.name, novo - anterior, novo, entry.max);
+}
+
+/**
+ * Clique num recurso: pergunta uma quantidade e se é para usar (gastar) ou receber
+ * (ganhar), aplica no valor atual e avisa no chat. Sem limite máximo definido (max = 0),
+ * o aviso só menciona a quantidade, sem a fração "de Y".
+ */
+async function onResourceClick(actor, resId) {
+  const entry = resourcesState(actor).find(r => r.id === resId);
+  if ( !actor || !entry ) return;
+
+  const safeName = foundry.utils.escapeHTML(entry.name);
+  const content = `
+    <div style="display:flex; flex-direction:column; gap:8px; padding:2px 0 4px;">
+      <p style="margin:0; font-size:12px; color:#aaa;">
+        Quanto de <strong style="color:#d8ccff;">${safeName}</strong> você quer usar ou receber?
+      </p>
+      <input type="number" id="jj-res-amount" min="1" step="1" value="1" autofocus
+             style="width:100%; padding:7px 8px; font-size:15px; text-align:center;
+                    background:rgba(0,0,0,.35); border:1px solid rgba(100,60,200,.45);
+                    border-radius:7px; color:#ede6ff;">
+    </div>`;
+  const readAmount = (dialog) =>
+    Math.max(1, parseInt(dialog.element.querySelector("#jj-res-amount")?.value) || 1);
+
+  const result = await foundry.applications.api.DialogV2.wait({
+    window: { title: "Usar ou Receber Recurso" },
+    content,
+    buttons: [
+      {
+        action: "use", label: "Usar", icon: "fa-solid fa-minus", default: true,
+        callback: (event, button, dialog) => ({ mode: "use", amount: readAmount(dialog) })
+      },
+      {
+        action: "gain", label: "Receber", icon: "fa-solid fa-plus",
+        callback: (event, button, dialog) => ({ mode: "gain", amount: readAmount(dialog) })
+      },
+      { action: "cancel", label: "Cancelar", icon: "fa-solid fa-xmark" }
+    ],
+    rejectClose: false,
+    close: () => null
+  });
+  if ( !result?.mode ) return;
+
+  const res = foundry.utils.deepClone(resourcesState(actor));
+  const target = res.find(r => r.id === resId);
+  if ( !target ) return;
+  const max = target.max ?? 0;
+  const anterior = target.current ?? 0;
+  const delta = result.mode === "use" ? -result.amount : result.amount;
+  target.current = Math.max(0, anterior + delta);
+  await actor.setFlag(SCOPE, FLAG_RES, res);
+  refreshButtons();
+
+  // Usa o delta REALMENTE aplicado (pode ser menor que o pedido, se travou no 0)
+  postResourceMessage(actor, entry.name, target.current - anterior, target.current, max);
 }
 
 /* -------------------------------------------- */

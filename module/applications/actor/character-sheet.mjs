@@ -176,12 +176,7 @@ export default class CharacterActorSheet extends BaseActorSheet {
     { tab: "effects", label: "DND5E.Effects", icon: "fas fa-bolt" },
     { tab: "bastion", label: "DND5E.Bastion.Label", icon: "fas fa-chess-rook", condition: this.hasBastion },
     // { tab: "specialTraits", label: "DND5E.SpecialTraits", icon: "fas fa-star" },
-    { 
-  tab: "manipulation", 
-  label: "JUJUTSU.Manipulation.Tab", 
-  icon: "fas fa-hand-sparkles",
-  condition: actor => !actor.itemTypes.class.some(c => c.identifier === "restringido")
-},
+    { tab: "manipulation", label: "JUJUTSU.Manipulation.Tab", icon: "fas fa-hand-sparkles" },
     { tab: "trainings", label: "JUJUTSU.Trainings.Tab", icon: "fas fa-dumbbell" },
     { tab: "biography", label: "DND5E.Biography", icon: "fas fa-feather" }
   ];
