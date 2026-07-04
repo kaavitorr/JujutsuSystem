@@ -240,6 +240,7 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
       hasDamage:    damageParts.length > 0,
       saveAbility,
       paBonus:      baseDenomination,
+      excedenteDados: _excedenteDiceCount(damageParts),
       profBonus:    actor?.system?.attributes?.prof ?? 2,
       userId:       game.user.id
     };
@@ -329,7 +330,7 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
       <label class="jj-mod-check" title="Metade"><input type="checkbox" data-mod="half"> ½</label>
       <label class="jj-mod-check" title="Um quarto"><input type="checkbox" data-mod="quarter"> ¼</label>
       <label class="jj-mod-check jj-crit-check" title="Crítico Perfeito (20 natural) — dobra os dados de dano"><input type="checkbox" data-mod="crit"> Crit</label>
-      <label class="jj-mod-check jj-excedente" title="Crítico Excedente (acerto supera a CA em 10+) — +2 dados do dado base"><input type="checkbox" data-mod="excedente"> Exc</label>
+      <label class="jj-mod-check jj-excedente" title="Crítico Excedente (acerto supera a CA em 10+) — +${data.excedenteDados} dados do dado base"><input type="checkbox" data-mod="excedente"> Exc</label>
       <label class="jj-mod-check jj-kokusen" title="Fulgor Negro ×2,5"><input type="checkbox" data-mod="kokusen"> K <i class="fas fa-bolt"></i></label>
     </div>
     <span class="jj-footer-total">Total <strong id="jj-total-display">0</strong></span>
@@ -717,10 +718,11 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
     card.dataset.critFormula = critParts.join(" + ");
 
     // Crítico Excedente (acerto supera a CA em 10+): em vez de dobrar os dados,
-    // soma 2 dados do DADO BASE da arma (primeira parte) — só na base.
-    // Ex.: 1d12 + 2d6 → Excedente = 3d12 + 2d6.
+    // soma dados do DADO BASE da arma (primeira parte) — só na base. 2 dados se o
+    // base for um único dado (1dX); 4 dados se o base já tiver mais de 1 dado (ex.
+    // 2d6), pra manter a mesma proporção — ver _excedenteDiceCount.
     const baseDen = damageParts[0]?.denomination ?? 6;
-    card.dataset.excedenteFormula = `2d${baseDen}`;
+    card.dataset.excedenteFormula = `${_excedenteDiceCount(damageParts)}d${baseDen}`;
 
     // Label do tipo de dano (todos juntos ou primeiro)
     const dmgLabel = rolls.map(r => r.label).join(" + ");
@@ -883,6 +885,35 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
     return formula;
   }
 
+  // Conta quantos dados de UMA denominação específica aparecem numa fórmula (ex.:
+  // bonus="1d6" com denomination=6 → 1). Ignora termos de denominação diferente e
+  // modificadores fixos — serve pra somar dados "escondidos" no bonus da mesma
+  // denominação do dado principal, tratando "1d6" (number) + "1d6" (bonus) como os
+  // mesmos 2 dados de uma "2d6" declarada direto (number:2) — NÃO como algo diferente.
+  function _countMatchingDice(bonusFormula, denomination) {
+    if ( !bonusFormula ) return 0;
+    let total = 0;
+    for ( const m of String(bonusFormula).matchAll(/(\d*)d(\d+)/gi) ) {
+      if ( Number(m[2]) === denomination ) total += (m[1] ? Number(m[1]) : 1);
+    }
+    return total;
+  }
+
+  // Crítico Excedente (acerto supera a CA em 10+): soma dados do DADO BASE (primeira
+  // parte de dano). Quando o dado base já tem MAIS DE 1 dado (contando também dados
+  // de mesma denominação escondidos no `bonus` — ex. number:1 + bonus:"1d6" conta
+  // como 2, igual a number:2 direto), dobra pra 4 dados em vez de 2 — senão o "passo"
+  // de dano fica distorcido ao subir de 1d12 pra 2d6 (o teto do dado único):
+  //   1d12 + Excedente(2d12) = 3d12 → máx 36
+  //   2d6  + Excedente(2d6)  = 4d6  → máx 24  (proporcionalmente pior que o 1d12!)
+  //   2d6  + Excedente(4d6)  = 6d6  → máx 36  (mesma proporção: ×3 o nº de dados)
+  function _excedenteDiceCount(damageParts) {
+    const base = damageParts?.[0];
+    if ( !base ) return 2;
+    const baseTotalDados = (base.number ?? 1) + _countMatchingDice(base.bonus, base.denomination ?? 6);
+    return baseTotalDados > 1 ? 4 : 2;
+  }
+
   function _resolveAbilityMod(part, actor) {
     // Por padrão usa o mod da habilidade de ataque do ator
     const ability = actor.system?.attributes?.spellcasting
@@ -941,7 +972,7 @@ function _buildBreakdown(roll) {
       case "half":      return Math.floor(base / 2);
       case "quarter":   return Math.floor(base / 4);
       case "crit":      return base + critBonus; // Perfeito: dobra os dados (rola tudo de novo)
-      case "excedente": return base + critBonus; // Excedente: +2 dados do dado base
+      case "excedente": return base + critBonus; // Excedente: +2 ou +4 dados do dado base (ver _excedenteDiceCount)
       case "kokusen":   return Math.ceil((base + critBonus) * 2.5); // Fulgor Negro ×2,5 no total
       default:          return base;
     }
