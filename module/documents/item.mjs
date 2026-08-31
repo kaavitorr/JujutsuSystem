@@ -1110,6 +1110,42 @@ export default class Item5e extends SystemDocumentMixin(Item) {
   }
 
   /* -------------------------------------------- */
+
+  /**
+   * Export Data de um Molde de Feitiço empacota as manifestações/técnicas (itens reais do
+   * compendium, ligadas por flag). O JSON ganha `flags.jujutsu-system.feiticoBundle` com os
+   * filhos; ao importar em outro mundo, um hook recria tudo religado ao novo Molde (ver
+   * data/item/feitico-template.mjs). Outros tipos de item usam o comportamento padrão.
+   * @inheritDoc
+   */
+  async exportToJSON(options={}) {
+    if ( this.type !== "feiticoTemplate" ) return super.exportToJSON(options);
+    const contents = await this.system.contents;
+    const bundle = Array.from(contents.values()).map(i => {
+      const o = i.toObject();
+      delete o._id;
+      delete o.folder;
+      return o;   // mantém flags jujutsu-system.feitico.{slot,parent} para religar na importação
+    });
+    // toObject() = objeto puro (deep clone). Limpamos os campos voláteis à mão —
+    // a importação recria tudo.
+    const data = this.toObject();
+    delete data._id;
+    delete data.folder;
+    delete data.ownership;
+    delete data.sort;
+    foundry.utils.setProperty(data, "flags.jujutsu-system.feiticoBundle", bundle);
+    foundry.utils.setProperty(data, "_stats.exportSource", {
+      world: game.world?.id, system: game.system.id,
+      coreVersion: game.version, systemVersion: game.system.version
+    });
+    const filename = ["fvtt", this.documentName, this.name?.slugify?.(), this.id].filter(Boolean).join("-");
+    (foundry.utils.saveDataToFile ?? globalThis.saveDataToFile)(
+      JSON.stringify(data, null, 2), `${filename}.json`
+    );
+  }
+
+  /* -------------------------------------------- */
   /*  Socket Event Handlers                       */
   /* -------------------------------------------- */
 

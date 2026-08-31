@@ -1,0 +1,212 @@
+<section class="tab {{ tab.cssClass }} feitico-tab" data-tab="{{ tab.id }}" data-group="{{ tab.group }}"
+         style="--feitico-color: #e3b53c;">
+
+  {{!-- ═════════════════ MOLDE DE FEITIÇO (nome + salvar) ═════════════════ --}}
+  <div class="feitico-molde-bar">
+    <div class="feitico-name-field">
+      <label>Nome do Feitiço</label>
+      <input type="text" class="feitico-name-input" name="flags.jujutsu-system.feiticoName"
+             value="{{ feitico.name }}" placeholder="Nome do Feitiço" />
+    </div>
+    <div class="feitico-molde-actions">
+      <button type="button" class="feitico-save-template-btn" data-action="feitico-import-json"
+              data-tooltip="Importar um Molde a partir de um JSON (exportado por 'Salvar Molde' → Export Data) direto nesta ficha">
+        <i class="fas fa-file-import" inert></i>
+        <span>Importar JSON</span>
+      </button>
+      <button type="button" class="feitico-save-template-btn" data-action="feitico-save-template"
+              data-tooltip="Exportar o Feitiço atual como Molde (arraste para outra ficha para instalar)">
+        <i class="fas fa-bookmark" inert></i>
+        <span>Salvar Molde</span>
+      </button>
+    </div>
+  </div>
+
+  {{!-- ═════════════════ PAINEL DE PROFICIÊNCIA (por Nível de Maestria) ═════════════════ --}}
+  <div class="feitico-rank-panel">
+    <div class="feitico-rank-current">
+      <span class="feitico-rank-label">Proficiência</span>
+      <span class="feitico-rank-value feitico-prof-{{ feitico.proficiencia.id }}">{{ feitico.proficiencia.label }}</span>
+      <span class="feitico-rank-primary">Maestria <i>·</i> Nv {{ feitico.maestria }}</span>
+    </div>
+
+    <div class="feitico-rank-track">
+      {{#each feitico.tiers as |t|}}
+      <div class="feitico-rank-node feitico-prof-{{ t.id }} {{#if t.isCurrent}}current{{/if}} {{#unless t.reqMet}}locked{{/unless}}"
+           data-tooltip="<strong>Requisito:</strong> Nível de Maestria {{ t.mainReq }}.<br/><strong>Benefícios:</strong><ul>{{#each t.benefits as |b|}}<li>{{ b }}</li>{{/each}}</ul>">
+        <span class="feitico-rank-node-dot"></span>
+        <span class="feitico-rank-node-name">{{ t.label }}</span>
+        <span class="feitico-rank-node-reqs">M{{ t.mainReq }}</span>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  {{!-- ═════════════════ SLOTS DE MANIFESTAÇÃO ═════════════════ --}}
+  <div class="feitico-slots">
+  {{#each feitico.slots as |slot|}}
+  <div class="feitico-slot-card {{#if slot.blocked}}blocked{{/if}} {{#if (or slot.manifestacao slot.hasTecnicas)}}is-filled{{/if}}"
+       data-feitico-slot="{{ slot.id }}">
+
+    <div class="feitico-slot-label-row">
+      <span class="feitico-slot-label">{{ slot.label }}</span>
+      {{#if slot.blocked}}
+      <span class="feitico-blocked-badge" data-tooltip="{{ slot.blockedReason }}">
+        <i class="fas fa-lock" inert></i>
+      </span>
+      {{/if}}
+    </div>
+
+    {{#if slot.manifestacao}}
+    <div class="feitico-manif-row {{#if slot.manifestacao.blocked}}blocked{{/if}}" data-item-id="{{ slot.manifestacao.id }}" draggable="true"
+         data-action="feitico-display-card" data-tooltip="{{#if slot.blocked}}{{ slot.blockedReason }}{{else}}Enviar para o chat{{/if}}">
+      <div class="feitico-manif-portrait {{#if @root.feitico.isEditMode}}is-editable{{/if}}"
+           {{#if @root.feitico.isEditMode}}data-action="feitico-change-image" data-item-id="{{ slot.manifestacao.id }}"
+           data-tooltip="Trocar imagem"{{/if}}>
+        <img src="{{ slot.manifestacao.img }}" alt="{{ slot.manifestacao.name }}" />
+        {{#if @root.feitico.isEditMode}}<i class="feitico-manif-portrait-edit fas fa-camera" inert></i>{{/if}}
+      </div>
+      <div class="feitico-manif-info">
+        <div class="feitico-manif-name">{{ slot.manifestacao.name }}</div>
+        {{#if slot.manifestacao.subtitle}}<div class="feitico-manif-sub">{{ slot.manifestacao.subtitle }}</div>{{/if}}
+      </div>
+      <div class="feitico-manif-actions">
+        <a class="feitico-action" data-action="feitico-roll" data-item-id="{{ slot.manifestacao.id }}"
+           data-tooltip="Usar manifestação">
+          <i class="fas fa-dice-d20" inert></i>
+        </a>
+        <a class="feitico-action" data-action="feitico-edit" data-item-id="{{ slot.manifestacao.id }}"
+           data-tooltip="Editar">
+          <i class="fas fa-edit" inert></i>
+        </a>
+        <a class="feitico-action feitico-action-danger" data-action="feitico-unassign-manif"
+           data-slot="{{ slot.id }}" data-tooltip="Remover do slot">
+          <i class="fas fa-xmark" inert></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="feitico-req-chips">
+      {{#each slot.requirements as |req|}}
+      <div class="feitico-req-chip {{#if req.met}}met{{else}}unmet{{/if}}" style="--cat-color: #e3b53c;">
+        <span class="feitico-req-chip-status" data-tooltip="{{#if req.met}}Atendido (Maestria {{ req.currentLevel }}){{else}}Não atendido (Maestria {{ req.currentLevel }}/{{ req.level }}){{/if}}">
+          <i class="fas {{#if req.met}}fa-check{{else}}fa-xmark{{/if}}" inert></i>
+        </span>
+        <span class="feitico-req-chip-maestria">Maestria</span>
+        <span class="feitico-req-chip-sep">Nv</span>
+        <input type="number" class="feitico-req-level" min="1" max="7" value="{{ req.level }}"
+               data-feitico-req="level"
+               data-item-id="{{ req.manifestacaoId }}" data-index="{{ req.index }}"
+               data-tooltip="Nível de Maestria mínimo exigido" />
+        <a class="feitico-req-chip-remove" data-action="feitico-req-remove"
+           data-item-id="{{ req.manifestacaoId }}" data-index="{{ req.index }}"
+           data-tooltip="Remover requisito">
+          <i class="fas fa-trash" inert></i>
+        </a>
+      </div>
+      {{/each}}
+      {{#if slot.canAddReq}}
+      <a class="feitico-req-add-chip" data-action="feitico-req-add" data-item-id="{{ slot.manifestacao.id }}"
+         data-tooltip="Adicionar requisito de Maestria (máx. 6)">
+        <i class="fas fa-plus" inert></i><span>Requisito</span>
+      </a>
+      {{/if}}
+    </div>
+
+    {{else}}
+    <div class="feitico-manif-empty feitico-drop-zone" data-feitico-drop="manif">
+      <i class="fas fa-hand-fist" inert></i>
+      <span>{{ localize "JUJUTSU.Feitico.SlotEmpty" }}</span>
+      <button type="button" class="feitico-manif-create-btn" data-action="feitico-create-manif" data-slot="{{ slot.id }}">
+        <i class="fas fa-plus" inert></i>
+        <span>Criar Manifestação</span>
+      </button>
+    </div>
+    {{/if}}
+
+    <div class="feitico-tecnicas-row feitico-tecnicas-split feitico-drop-zone" data-feitico-drop="tecnica">
+      <span class="feitico-tecnicas-label">{{ slot.tecnicasLabel }}</span>
+
+      {{!-- Chip de técnica (partial inline). --}}
+      {{#*inline "feiticoTecChip"}}
+      <div class="feitico-tecnica-chip {{#if blocked}}blocked{{/if}}" data-item-id="{{ id }}" draggable="true"
+           {{#if blocked}}data-tooltip="Bloqueada — manifestação pai não atende requisitos"{{/if}}>
+        <img src="{{ img }}" alt="{{ name }}" />
+        <span class="feitico-tecnica-chip-name">{{ name }}</span>
+        <div class="feitico-tecnica-chip-actions">
+          <a data-action="feitico-roll" data-item-id="{{ id }}" data-tooltip="Rolar"><i class="fas fa-dice-d20" inert></i></a>
+          <a data-action="feitico-edit" data-item-id="{{ id }}" data-tooltip="Editar"><i class="fas fa-edit" inert></i></a>
+          <a data-action="feitico-unassign-tecnica" data-item-id="{{ id }}" data-tooltip="Remover do slot"><i class="fas fa-xmark" inert></i></a>
+        </div>
+      </div>
+      {{/inline}}
+
+      {{#if slot.hasTecnicas}}
+      <div class="feitico-tecnicas-cols">
+        <div class="feitico-tecnicas-col feitico-tecnicas-col-grau">
+          {{#each slot.tecnicasGrau as |tec|}}{{> feiticoTecChip tec}}{{/each}}
+        </div>
+        <div class="feitico-tecnicas-col feitico-tecnicas-col-aux">
+          {{#each slot.tecnicasAux as |tec|}}{{> feiticoTecChip tec}}{{/each}}
+        </div>
+      </div>
+      {{else}}
+      <span class="feitico-tecnicas-empty-hint">Arraste uma técnica ou clique no +</span>
+      {{/if}}
+
+      <a class="feitico-tecnica-add-chip" data-action="feitico-create-tecnica" data-slot="{{ slot.id }}"
+         data-tooltip="Criar técnica">
+        <i class="fas fa-plus" inert></i>
+      </a>
+    </div>
+
+  </div>
+  {{/each}}
+  </div>
+
+  {{!-- ═════════════════ MANIPULAÇÕES DE HABILIDADE ═════════════════
+        OCULTO nesta versão — volta na PRÓXIMA versão como a mecânica de
+        VOTOS (compromissos de feiticeiro). Os handlers (manip-*), o contexto
+        (feitico.manipulacoes) e o CSS (jj-manip-*) continuam no código;
+        reativar = remover o comentário do bloco abaixo. --}}
+  {{!--
+  <div class="jj-manip-section">
+    <div class="jj-manip-header">
+      <span>MANIPULAÇÕES DE HABILIDADE</span>
+      <span class="jj-manip-counter" data-tooltip="Ativas por vez = seu bônus de proficiência">
+        {{ feitico.manipulacoes.ativas }} / {{ feitico.manipulacoes.limite }} ativas
+      </span>
+      <button type="button" class="jj-manip-add" data-action="manip-create" data-tooltip="Nova manipulação">
+        <i class="fas fa-plus" inert></i>
+      </button>
+    </div>
+
+    {{#each feitico.manipulacoes.lista as |m|}}
+    <div class="jj-manip-card {{#if m.ativa}}is-ativa{{/if}} {{#if m.bloqueada}}is-bloqueada{{/if}}">
+      <button type="button" class="jj-manip-toggle" data-action="manip-toggle" data-id="{{ m.id }}"
+              data-tooltip="{{#if m.ativa}}Desativar{{else}}Ativar{{/if}}">
+        <i class="fas {{#if m.ativa}}fa-circle-check{{else}}fa-circle{{/if}}" inert></i>
+      </button>
+      <div class="jj-manip-body">
+        <div class="jj-manip-title">
+          <strong>{{ m.nome }}</strong>
+          <div class="jj-manip-acts">
+            <a data-action="manip-chat" data-id="{{ m.id }}" data-tooltip="Enviar para o chat"><i class="fas fa-comment-dots" inert></i></a>
+            <a data-action="manip-edit" data-id="{{ m.id }}" data-tooltip="Editar"><i class="fas fa-edit" inert></i></a>
+            <a data-action="manip-del" data-id="{{ m.id }}" data-tooltip="Remover"><i class="fas fa-trash" inert></i></a>
+          </div>
+        </div>
+        {{#if m.desc}}<div class="jj-manip-desc">{{{ m.desc }}}</div>{{/if}}
+        <div class="jj-manip-meta">
+          {{#if m.duracao}}<span><b>Duração:</b> {{ m.duracao }}</span>{{/if}}
+          {{#if m.requisito}}<span><b>Requisito:</b> {{ m.requisito }}</span>{{/if}}
+        </div>
+      </div>
+    </div>
+    {{else}}
+    <p class="jj-manip-empty">Nenhuma manipulação. Clique no + para adicionar (consulta e ativação por aqui).</p>
+    {{/each}}
+  </div>
+  --}}
+
+</section>

@@ -17,6 +17,7 @@ import SourceConfig from "../../shared/source-config.mjs";
 import AbilityConfig from "../config/ability-config.mjs";
 import ArmorClassConfig from "../config/armor-class-config.mjs";
 import ConcentrationConfig from "../config/concentration-config.mjs";
+import ArmorPointsConfig from "../config/armor-points-config.mjs";
 import DamagesConfig from "../config/damages-config.mjs";
 import DeathConfig from "../config/death-config.mjs";
 import HitDiceConfig from "../config/hit-dice-config.mjs";
@@ -1487,6 +1488,8 @@ export default class BaseActorSheet extends PrimarySheetMixin(
         return this._renderChild(new AbilityConfig({ ...config, key: ability }));
       case "armorClass":
         return this._renderChild(new ArmorClassConfig(config));
+      case "armorPoints":
+        return this._renderChild(new ArmorPointsConfig(config));
       case "creatureType":
         return this._renderChild(new CreatureTypeConfig(this.actor.system.details.race?.id
           ? { document: this.actor.system.details.race, keyPath: "type" } : config));

@@ -28,6 +28,8 @@ export default class CursedEnergyConfig extends BaseConfigSheet {
     context.data = this.document.system.energy;
     context.fields = this.document.system.schema.fields.energy.fields;
     context.source = this.document.system._source.energy;
+    // Restrições só existem no schema de personagem (NPC tem máximo manual)
+    context.ehPersonagem = this.document.type === "character";
     return context;
   }
 /** @inheritDoc */

@@ -42,4 +42,33 @@
             </div>
         </div>
     </fieldset>
+    {{#if ehPersonagem}}
+    <fieldset style="margin-top: 12px;">
+        <legend class="roboto-condensed-upper">Restrições de Energia</legend>
+        <div class="form-group">
+            <label>Perda de 1/4</label>
+            <div class="form-fields">
+                <input type="checkbox" name="system.energy.restrictions.quarter"
+                       {{checked source.restrictions.quarter}}>
+            </div>
+            <p class="hint">Perde 5 de PA máximo a cada 20 completados (1/4). Ganhos parciais ficam inteiros até fechar o degrau.</p>
+        </div>
+        <div class="form-group">
+            <label>Perda de metade</label>
+            <div class="form-fields">
+                <input type="checkbox" name="system.energy.restrictions.half"
+                       {{checked source.restrictions.half}}>
+            </div>
+            <p class="hint">Perde 5 de PA máximo a cada 10 completados (metade). Ganhos parciais ficam inteiros até fechar o degrau.</p>
+        </div>
+        <div class="form-group">
+            <label>Perda fixa</label>
+            <div class="form-fields">
+                <input type="number" name="system.energy.restrictions.flat"
+                       value="{{ source.restrictions.flat }}" min="0" placeholder="0">
+            </div>
+            <p class="hint">PA máximo perdido ou sacrificado em valor fixo.</p>
+        </div>
+    </fieldset>
+    {{/if}}
 </div>

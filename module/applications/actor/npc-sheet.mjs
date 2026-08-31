@@ -536,6 +536,24 @@ export default class NPCActorSheet extends BaseActorSheet {
     this.element.querySelector("[data-action='jj-npc-expdef']")
       ?.addEventListener("click", () => _npcExplosaoDefensiva(this.actor));
 
+    // ── Botão Gerar Energia — transfere genPerTurn da reserva (Total) pra PA
+    // Gerada, respeitando o teto genMax. O diálogo do personagem não serve aqui:
+    // depende de energyAbilities/energy.bonuses, que o schema de NPC não tem.
+    this.element.querySelector("[data-action='jj-gerar-aura']")
+      ?.addEventListener("click", async () => {
+        const e = this.actor.system.energy;
+        const gerar = Math.min(e.genPerTurn ?? 0, (e.genMax ?? 0) - (e.generated ?? 0), e.total ?? 0);
+        if ( gerar <= 0 ) {
+          ui.notifications.info(`${this.actor.name} não gera mais Energia agora (Gerada ${e.generated ?? 0}/${e.genMax ?? 0}, reserva ${e.total ?? 0}).`);
+          return;
+        }
+        await this.actor.update({
+          "system.energy.total": e.total - gerar,
+          "system.energy.generated": e.generated + gerar
+        }, { isEnergySystem: true });
+        ui.notifications.info(`${this.actor.name} gerou ${gerar} de Energia Amaldiçoada.`);
+      });
+
     // ── Atualizar porcentagens das barras de energia ───────
     const energy = this.actor.system.energy;
     const barTotal = this.element.querySelector(".npc-energy-bar-total");
@@ -545,6 +563,15 @@ export default class NPCActorSheet extends BaseActorSheet {
     const barGen = this.element.querySelector(".npc-energy-bar-gen");
     if ( barGen && energy.genMax ) {
       barGen.style.setProperty("--bar-percentage", `${Math.round((energy.generated / energy.genMax) * 100)}%`);
+    }
+
+    // ── Barra de Pontos de Armadura — só a % preenchida; a edição por clique
+    // direto na barra é o mecanismo nativo #toggleMeter do BaseActorSheet
+    // (o input escondido está no template, com clamp 0..máx pelo data-max). ──
+    const armor = this.actor.system.armorPoints;
+    const barArmor = this.element.querySelector(".npc-armor-bar");
+    if ( barArmor && armor?.max ) {
+      barArmor.style.setProperty("--bar-percentage", `${Math.round((armor.value / armor.max) * 100)}%`);
     }
 
     // ── Atualizar energia máxima baseado no treinamento intenso ────────────

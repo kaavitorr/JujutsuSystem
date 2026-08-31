@@ -54,6 +54,12 @@ function _buildActorData(patch) {
 
   const desloc = Number(patch.deslocamento) || 0;
 
+  // Pontos de Armadura (humanoide cujo grau de Energia concede PA): o aspecto
+  // "Pontos de Armadura" traz o valor no texto — vira campo real da ficha com a
+  // mesma absorção do personagem (damage-application.mjs).
+  const aspPA = (patch.aspectos || []).find(a => a.nome === "Pontos de Armadura");
+  const paMax = aspPA ? (Number(/(\d+)/.exec(aspPA.descricao || "")?.[1]) || 0) : 0;
+
   return {
     name: `${patch.emoji ? patch.emoji + " " : ""}${patch.nome}`,
     type: "npc",
@@ -69,6 +75,7 @@ function _buildActorData(patch) {
         biography: { value: patch.descricao || "" }
       },
       ...(Object.keys(traits).length ? { traits } : {}),
+      ...(paMax > 0 ? { armorPoints: { value: paMax, max: paMax } } : {}),
       energy: {
         max:        Number(patch.pa_max) || 0,
         total:      Number(patch.pa_max) || 0,
@@ -101,22 +108,41 @@ function _dmgKey(tipo) {
   return "";
 }
 
-/** "3d6" / "2d8+5" / "10" → { number, denomination, bonus } (ou null). */
+/** "3d6" / "2d8+5" / "2d10 +5 +1d4 +3d4" / "10" → { dice: [{number, denomination}…],
+ *  bonus } (ou null). Aceita VÁRIOS grupos de dados: ataques de humanoide somam
+ *  o +1d4 do estilo e o +Nd4 do grau de Energia Amaldiçoada na mesma fórmula. */
 function _parseFormula(f) {
-  const s = String(f || "").trim();
-  const m = s.match(/^(\d*)d(\d+)\s*(?:\+\s*(\d+))?$/i);
-  if ( m ) return { number: m[1] ? Number(m[1]) : 1, denomination: Number(m[2]), bonus: m[3] ? String(m[3]) : "" };
-  if ( /^\d+$/.test(s) ) return { number: null, denomination: null, bonus: s };
-  return null;
+  const s = String(f || "").replace(/\s+/g, "");
+  if ( !s ) return null;
+  const tokens = s.match(/[+-]?(?:\d*d\d+|\d+)/gi);
+  if ( !tokens || tokens.join("") !== s ) return null; // tem algo além de dados/bônus
+  const dice = [];
+  let bonus = 0;
+  for ( const t of tokens ) {
+    const sign = t[0] === "-" ? -1 : 1;
+    const body = t.replace(/^[+-]/, "");
+    const m = body.match(/^(\d*)d(\d+)$/i);
+    if ( m ) {
+      const n = (m[1] ? Number(m[1]) : 1) * sign;
+      if ( n <= 0 ) return null; // dado negativo não rola
+      dice.push({ number: n, denomination: Number(m[2]) });
+    } else bonus += sign * Number(body);
+  }
+  return { dice, bonus: bonus ? String(bonus) : "" };
 }
-function _damagePart(formula, tipo) {
+/** Partes de dano (schema DamageField aceita 1 dado por parte): 1 parte por grupo
+ *  de dados, bônus fixo anexado à primeira; fórmula só de bônus vira parte sem dados. */
+function _damageParts(formula, tipo) {
   const p = _parseFormula(formula);
   if ( !p ) return null;
   const key = _dmgKey(tipo);
-  const part = { types: key ? [key] : [] };
-  if ( p.number != null ) { part.number = p.number; part.denomination = p.denomination; }
-  if ( p.bonus ) part.bonus = p.bonus;
-  return part;
+  const types = key ? [key] : [];
+  if ( !p.dice.length ) return p.bonus ? [{ types, bonus: p.bonus }] : null;
+  return p.dice.map((d, i) => {
+    const part = { types, number: d.number, denomination: d.denomination };
+    if ( i === 0 && p.bonus ) part.bonus = p.bonus;
+    return part;
+  });
 }
 const _rangeM = (alcanceM) => ({ value: String(Number(alcanceM) || 1.5), units: "m" });
 const _newId = () => foundry.utils.randomID();
@@ -126,21 +152,21 @@ function _abilityActivities(h, cd) {
   const id = _newId();
   const range = _rangeM(h.alcanceM);
   if ( h.save ) {
-    const part = _damagePart(h.dano, h.tipo);
+    const parts = _damageParts(h.dano, h.tipo);
     return { [id]: {
       _id: id, type: "save", name: h.nome, range,
       save: { ability: [ABILITY_MAP[h.save] || "con"], dc: { calculation: "", formula: String(cd || 10) } },
-      damage: { onSave: "half", parts: part ? [part] : [] }
+      damage: { onSave: "half", parts: parts || [] }
     } };
   }
   if ( h.dano ) {
-    const part = _damagePart(h.dano, h.tipo);
-    return { [id]: { _id: id, type: "damage", name: h.nome, range, damage: { parts: part ? [part] : [] } } };
+    const parts = _damageParts(h.dano, h.tipo);
+    return { [id]: { _id: id, type: "damage", name: h.nome, range, damage: { parts: parts || [] } } };
   }
   if ( h.cura ) {
-    const part = _damagePart(h.cura, null);
+    const parts = _damageParts(h.cura, null);
     // Só cria a atividade de cura se a fórmula realmente fizer parse (evita cura no-op).
-    if ( part ) return { [id]: { _id: id, type: "heal", name: h.nome, range, healing: { ...part, types: ["healing"] } } };
+    if ( parts?.length ) return { [id]: { _id: id, type: "heal", name: h.nome, range, healing: { ...parts[0], types: ["healing"] } } };
   }
   return null;
 }
@@ -178,7 +204,7 @@ function _withDerived(h) {
 /** Atividade de ataque (acerto fixo + dano). */
 function _attackActivities(a) {
   const id = _newId();
-  const part = _damagePart(a.dano, a.tipo);
+  const parts = _damageParts(a.dano, a.tipo);
   const ranged = a.alcanceTipo === "ranged";
   return { [id]: {
     _id: id, type: "attack", name: a.nome, range: _rangeM(a.alcanceM),
@@ -187,7 +213,7 @@ function _attackActivities(a) {
       critical: { threshold: a.critRange || 20 },
       type: { value: ranged ? "ranged" : "melee", classification: "weapon" }
     },
-    damage: { includeBase: false, parts: part ? [part] : [] }
+    damage: { includeBase: false, parts: parts || [] }
   } };
 }
 

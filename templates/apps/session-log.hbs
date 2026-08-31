@@ -1,0 +1,87 @@
+<div class="session-log-app">
+
+  {{#if players.length}}
+  <div class="session-log-portraits">
+    {{#each players as |p|}}
+    <button type="button" class="session-log-portrait {{#if p.saved}}saved{{/if}} {{#if p.expanded}}active{{/if}}"
+            data-action="togglePlayerCard" data-actor-id="{{p.actorId}}"
+            data-tooltip="{{p.name}}" aria-label="{{p.name}}">
+      <img src="{{p.img}}" alt="{{p.name}}" />
+      {{#if p.saved}}<i class="fas fa-check session-log-saved-badge" inert></i>{{/if}}
+    </button>
+    {{/each}}
+  </div>
+
+  <div class="session-log-cards">
+    {{#each players as |p|}}
+    {{#if p.expanded}}
+    <div class="session-log-card" data-actor-id="{{p.actorId}}">
+      <header class="session-log-card-header">
+        <img src="{{p.img}}" alt="{{p.name}}" />
+        <span class="session-log-card-name">{{p.name}}</span>
+      </header>
+
+      <div class="session-log-fields">
+        <div class="session-log-field">
+          <label>Pontos de Treinamento</label>
+          <input type="number" min="0" data-field="trainingPoints" value="{{p.trainingPoints}}" />
+        </div>
+        <div class="session-log-field">
+          <label>Pontos de Maldição</label>
+          <input type="number" min="0" data-field="cursePoints" value="{{p.cursePoints}}" />
+        </div>
+        <div class="session-log-field">
+          <label>Treinamento Intenso</label>
+          <input type="number" min="0" data-field="intensiveTrainingsNote" value="{{p.intensiveTrainingsNote}}" />
+        </div>
+        <div class="session-log-field">
+          <label>Yen</label>
+          <input type="text" inputmode="numeric" data-field="currency" value="{{p.currencyDisplay}}" />
+        </div>
+      </div>
+
+      <div class="session-log-dropzone" data-actor-id="{{p.actorId}}">
+        {{#if p.items.length}}
+        <div class="session-log-items">
+          {{#each p.items as |item|}}
+          <span class="session-log-item-chip">
+            {{item.name}}
+            <button type="button" data-action="removeStagedItem" data-index="{{@index}}"
+                    aria-label="Remover item">×</button>
+          </span>
+          {{/each}}
+        </div>
+        {{else}}
+        <p class="session-log-dropzone-hint">Arraste um item ou equipamento aqui</p>
+        {{/if}}
+      </div>
+
+      <div class="session-log-notes">
+        <label>Observações</label>
+        <prose-mirror name="notes" value="{{p.notes}}"></prose-mirror>
+      </div>
+
+      <button type="button" class="session-log-save-btn" data-action="savePlayerCard">
+        <i class="fas fa-check" inert></i> Salvar
+      </button>
+    </div>
+    {{/if}}
+    {{/each}}
+  </div>
+
+  <div class="session-log-session-notes">
+    <label>Observações finais / narrativa da sessão</label>
+    <prose-mirror name="session-notes" value="{{sessionNotes}}"></prose-mirror>
+  </div>
+
+  <footer class="session-log-footer">
+    <button type="button" class="session-log-create-btn" data-action="createLog">
+      <i class="fas fa-book" inert></i> Criar Log
+    </button>
+  </footer>
+
+  {{else}}
+  <p class="session-log-empty">Nenhum personagem de jogador encontrado nesta campanha.</p>
+  {{/if}}
+
+</div>

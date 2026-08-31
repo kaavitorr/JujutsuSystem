@@ -31,6 +31,8 @@
 "TYPES.Item.backgroundPl": "—",
 "TYPES.Item.container": "Contêiner",
 "TYPES.Item.containerPl": "Contêineres",
+  "TYPES.Item.feiticoTemplate": "Molde de Feitiço",
+  "TYPES.Item.feiticoTemplatePl": "Moldes de Feitiço",
 "TYPES.Item.class": "Classe",
 "TYPES.Item.classPl": "Classes",
 "TYPES.Item.consumable": "Consumível",
@@ -5582,5 +5584,8 @@
 "JUJUTSU.Manipulation.Tab": "Manipulação",
 "JUJUTSU.Trainings.Label": "Treinamentos",
 "JUJUTSU.Trainings.Tab": "Treinamentos",
+  "JUJUTSU.Feitico.Tab": "Feitiço",
+  "JUJUTSU.Feitico.Label": "Feitiço",
+  "JUJUTSU.Feitico.SlotEmpty": "Arraste uma manifestação aqui",
 "JUJUTSU.MasteryPoints": "Pontos de Maestria (PT Investido)"
 }

@@ -175,7 +175,15 @@ export default class CharacterData extends CreatureTemplate {
             required: true, nullable: false, integer: true, initial: 0,
             label: "JUJUTSU.Energy.BonusFlat"
           })
-        }, { label: "JUJUTSU.Energy.Generation" })
+        }, { label: "JUJUTSU.Energy.Generation" }),
+        restrictions: new SchemaField({
+          quarter: new BooleanField({ required: true, initial: false, label: "JUJUTSU.Energy.RestrictionQuarter" }),
+          half: new BooleanField({ required: true, initial: false, label: "JUJUTSU.Energy.RestrictionHalf" }),
+          flat: new NumberField({
+            required: true, nullable: false, integer: true, min: 0, initial: 0,
+            label: "JUJUTSU.Energy.RestrictionFlat"
+          })
+        }, { label: "JUJUTSU.Energy.Restrictions" })
       }, { label: "JUJUTSU.Energy.Label" }),
       curseResources: new SchemaField({
         cursePoints: new NumberField({
@@ -189,6 +197,14 @@ export default class CharacterData extends CreatureTemplate {
         lostTrainingPoints: new NumberField({
           required: true, nullable: false, integer: true, min: 0, initial: 0,
           label: "JUJUTSU.LostTrainingPoints"
+        }),
+        narratorTrainingPoints: new NumberField({
+          required: true, nullable: false, integer: true, min: 0, initial: 0,
+          label: "JUJUTSU.NarratorTrainingPoints"
+        }),
+        spentTrainingPoints: new NumberField({
+          required: true, nullable: false, integer: true, min: 0, initial: 0,
+          label: "JUJUTSU.SpentTrainingPoints"
         })
       }, { label: "JUJUTSU.CurseResources" }),
       energyAbilities: new SchemaField({
@@ -379,7 +395,14 @@ export default class CharacterData extends CreatureTemplate {
     ) ?? false;
     if ( hasEnormousEnergy ) this.energy.generation.baseMultiplier = 3;
     const intensiveBonus = (this.energy.intensiveTraining?.maxEnergy ?? 0) * (hasEnormousEnergy ? 10 : 5);
-    this.energy.max = (level * (hasEnormousEnergy ? 40 : 20)) + bonusOverall + bonusLevel + bonusTemp + intensiveBonus;
+    let energyMax = (level * (hasEnormousEnergy ? 40 : 20)) + bonusOverall + bonusLevel + bonusTemp + intensiveBonus;
+    // Restrições permanentes de energia em DEGRAUS: perde 5 a cada 20 COMPLETADOS (1/4)
+    // ou 5 a cada 10 COMPLETADOS (metade). Ganhos parciais (ex.: +5 do Treinamento
+    // Intenso) ficam inteiros até fechar o degrau. A perda fixa sai por último.
+    const restr = this.energy.restrictions ?? {};
+    if ( restr.quarter ) energyMax -= Math.floor(energyMax / 20) * 5;
+    if ( restr.half ) energyMax -= Math.floor(energyMax / 10) * 5;
+    this.energy.max = Math.max(0, energyMax - (restr.flat ?? 0));
 
     // Acúmulo de Energia disponível a partir do nível 5
     if ( level >= 5 ) this.energyAbilities.accumulation.enabled = true;
