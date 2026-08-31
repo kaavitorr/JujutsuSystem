@@ -180,6 +180,37 @@
                 </div>
                 {{/with}}
 
+                {{!-- Pontos de Armadura — absorção igual à do personagem (resistência a tudo exceto Verdadeiro).
+                      Edição por clique igual à barra de PV (mecanismo #toggleMeter do sheet): clicar troca o
+                      texto por um input na própria barra, com clamp 0..máx pelo data-max.
+                      No modo edição a engrenagem abre o config de máximo/atual.
+                      Oculta fora do modo edição quando o NPC não tem PA (máx. 0). --}}
+                {{#if (or @root.editable system.armorPoints.max)}}
+                <div class="meter sectioned hit-points npc-armor-bar"
+                     data-tooltip="Pontos de Armadura — enquanto ativos, resistência (metade) a todo dano exceto Verdadeiro. Clique para editar o valor atual."
+                     style="cursor:pointer; --dnd5e-color-hp-1:#4a5a6a; --dnd5e-color-hp-2:#8a9aaa; --dnd5e-color-hp-3:#6a7a8a;">
+                  <div class="progress hit-points" role="meter" aria-valuemin="0"
+                       aria-valuenow="{{system.armorPoints.value}}" aria-valuemax="{{system.armorPoints.max}}"
+                       style="--dnd5e-color-hp-1:#4a5a6a; --dnd5e-color-hp-2:#8a9aaa; --dnd5e-color-hp-3:#6a7a8a;">
+                    <div class="label" style="gap:2px;">
+                      <span class="value">{{system.armorPoints.value}}</span>
+                      <span class="separator">&sol;</span>
+                      <span class="max">{{system.armorPoints.max}}</span>
+                      {{#if @root.editable}}
+                      <button type="button" class="config-button unbutton" data-action="showConfiguration"
+                              data-config="armorPoints" data-tooltip="Configurar Pontos de Armadura"
+                              aria-label="Configurar Pontos de Armadura">
+                        <i class="fas fa-cog" inert></i>
+                      </button>
+                      {{/if}}
+                    </div>
+                    <input type="text" name="system.armorPoints.value" data-dtype="Number"
+                           data-min="0" data-max="{{system.armorPoints.max}}"
+                           placeholder="0" value="{{system.armorPoints.value}}" hidden>
+                  </div>
+                </div>
+                {{/if}}
+
             </div>
 
         </div>
@@ -337,7 +368,14 @@
             <div style="display:flex; flex-direction:column; gap:3px; min-width:200px;">
               <div style="display:flex; justify-content:space-between; font-size:9px; text-transform:uppercase; letter-spacing:0.08em; color:#707090;">
                 <span>Energia Amaldiçoada</span>
-                <span>PA Gerado</span>
+                <span style="display:inline-flex; align-items:center; gap:4px;">
+                  <span>PA Gerado</span>
+                  <a class="jj-generate-energy-btn glow" data-action="jj-gerar-aura"
+                     data-tooltip="Gerar Energia Amaldiçoada (transfere da reserva p/ a PA Gerada)"
+                     aria-label="Gerar Energia Amaldiçoada">
+                    <i class="fas fa-bolt" inert></i>
+                  </a>
+                </span>
               </div>
               <div style="display:flex; gap:4px;">
                 {{#with system.energy}}

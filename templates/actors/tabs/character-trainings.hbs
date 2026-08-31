@@ -3,6 +3,11 @@
   {{!-- ══════════════════════════ MAESTRIA ══════════════════════════ --}}
   <div class="mastery-header jujutsu-treinamento">
 
+    <div class="pt-available-badge" data-tooltip="PT Jogador + PT Narrador − PT Perdidos − PT Gastos">
+      <span class="label">PT Disponível</span>
+      <span class="value">{{availableTrainingPoints}}</span>
+    </div>
+
     <div class="mastery-top">
       <div class="mastery-badge">
         <span class="level">{{actor.system.masteryLevel}}º</span>
@@ -28,10 +33,16 @@
 
     <div class="mastery-bars">
       <div class="bar">
-        <label>Pontos de Treinamento</label>
+        <label>PT Jogador</label>
         <input type="number"
           name="system.curseResources.trainingPoints"
           value="{{actor.system.curseResources.trainingPoints}}" />
+      </div>
+      <div class="bar">
+        <label>PT Narrador</label>
+        <input type="number"
+          name="system.curseResources.narratorTrainingPoints"
+          value="{{actor.system.curseResources.narratorTrainingPoints}}" />
       </div>
       <div class="bar">
         <label>PT Investidos</label>
@@ -42,8 +53,14 @@
       <div class="bar bar-lost">
         <label>PT Perdidos</label>
         <input type="number"
-          name="system.curseResources.lostTrainingPoints"
-          value="{{actor.system.curseResources.lostTrainingPoints}}" />
+          value="{{actor.system.curseResources.lostTrainingPoints}}"
+          readonly />
+      </div>
+      <div class="bar bar-spent">
+        <label>PT Gastos</label>
+        <input type="number"
+          value="{{actor.system.curseResources.spentTrainingPoints}}"
+          readonly />
       </div>
     </div>
 

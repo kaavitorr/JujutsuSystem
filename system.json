@@ -50,6 +50,9 @@
       "src": "dnd5e.css"
     },
     {
+      "src": "less/tab-feitico.css"
+    },
+    {
       "src": "less/jujutsu-base.css"
     },
      {
@@ -178,6 +181,12 @@
           "description.value",
           "description.chat",
           "unidentified.description"
+        ]
+      },
+      "feiticoTemplate": {
+        "htmlFields": [
+          "description.value",
+          "description.chat"
         ]
       },
       "loot": {

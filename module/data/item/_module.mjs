@@ -5,6 +5,7 @@ import ContainerData from "./container.mjs";
 import EquipmentData from "./equipment.mjs";
 import FacilityData from "./facility.mjs";
 import FeatData from "./feat.mjs";
+import FeiticoTemplateData from "./feitico-template.mjs";
 import LootData from "./loot.mjs";
 import RaceData from "./race.mjs";
 import SpellData from "./spell.mjs";
@@ -20,6 +21,7 @@ export {
   EquipmentData,
   FacilityData,
   FeatData,
+  FeiticoTemplateData,
   LootData,
   RaceData,
   SpellData,
@@ -47,6 +49,7 @@ export const config = {
   equipment: EquipmentData,
   facility: FacilityData,
   feat: FeatData,
+  feiticoTemplate: FeiticoTemplateData,
   loot: LootData,
   race: RaceData,
   spell: SpellData,

@@ -481,63 +481,32 @@
 
 .jj-favorites-header h3 { margin: 0; flex: 1; }
 
-.jj-gerar-aura-box {
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;
-  background: #0a061a;
-  border: 1px solid #3a1a80;
-  border-radius: 4px;
-  display: flex;
+/* ── Botão de gerar Energia manualmente — raio pequeno e discreto do lado do
+   título "PA Gerado" (mesmo visual do hunter-system: 11px, brilho suave) ── */
+.jj-generate-energy-btn {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-.jj-gerar-aura-pill {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  border: none;
-  padding: 0;
+  flex: 0 0 auto;
   cursor: pointer;
-  color: #6040b0;
-  transition: color 140ms;
+  color: #4a90d9;
+  transition: filter .15s;
 }
 
-.jj-gerar-aura-pill i {
-  font-size: 13px;
-  pointer-events: none;
-  animation: jj-aura-pulse 2s ease-in-out infinite;
+.jj-generate-energy-btn i { font-size: 11px; }
+
+.jj-generate-energy-btn:hover {
+  filter: brightness(1.3) drop-shadow(0 0 4px #4a90d9);
 }
 
-@keyframes jj-aura-pulse {
-  0%, 100% { text-shadow: 0 0 4px rgba(100,60,220,0.4); }
-  50%       { text-shadow: 0 0 10px rgba(120,80,255,1), 0 0 18px rgba(80,40,180,0.5); }
+.jj-generate-energy-btn.glow i {
+  animation: jj-generate-energy-glow 1.8s ease-in-out infinite;
 }
 
-.jj-gerar-aura-box:hover { border-color: #6030c0; }
-.jj-gerar-aura-pill:hover { color: #9070e0; }
-
-.jj-gerar-aura-pill i {
-  font-size: 22px;
-  color: #7050c0;
-  pointer-events: none;
-  animation: jj-aura-pulse 2s ease-in-out infinite;
+@keyframes jj-generate-energy-glow {
+  0%, 100% { filter: drop-shadow(0 0 1px #4a90d9); opacity: .85; }
+  50%      { filter: drop-shadow(0 0 6px #4a90d9); opacity: 1; }
 }
-
-@keyframes jj-aura-pulse {
-  0%, 100% { text-shadow: 0 0 6px rgba(100,60,220,0.5); }
-  50%       { text-shadow: 0 0 14px rgba(120,80,255,1), 0 0 28px rgba(80,40,180,0.5); }
-}
-
-.jj-gerar-aura-pill:hover {
-  box-shadow: inset 0 0 16px rgba(100,60,220,0.35), 0 0 14px rgba(100,60,220,0.3);
-}
-
-.jj-gerar-aura-pill:hover i { color: #9070e0; }
 
 /* ── CRITICAL — Natural 20 ────────────── */
 .jj-panel-val.nat20 {

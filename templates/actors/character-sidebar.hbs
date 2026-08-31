@@ -178,7 +178,14 @@
       <i class="fas fa-cog" inert></i>
     </button>
     {{/if}}
-    <span>PA Gerado</span>
+    <span style="display: inline-flex; align-items: center; gap: 4px;">
+      <span>PA Gerado</span>
+      <a class="jj-generate-energy-btn glow" data-action="jj-gerar-aura"
+         data-tooltip="Gerar Energia Amaldiçoada (mesmo efeito de passar o turno)"
+         aria-label="Gerar Energia Amaldiçoada">
+        <i class="fas fa-bolt" inert></i>
+      </a>
+    </span>
   </div>
   <div style="display: flex; gap: 4px;">
     {{#with system.energy}}
@@ -325,13 +332,6 @@
               <i class="fas fa-bookmark" inert></i>
               <span class="roboto-upper">{{ localize "DND5E.Favorites" }}</span>
           </h3>
-          <div class="jj-gerar-aura-box">
-            <button type="button" class="jj-gerar-aura-pill"
-                    data-action="jj-gerar-aura"
-                    data-tooltip="Gerar Energia Amaldiçoada">
-              <i class="fas fa-bolt" inert></i>
-            </button>
-          </div>
         </div>
         <ul class="unlist">
             {{#each favorites}}

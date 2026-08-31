@@ -1,0 +1,19 @@
+<section class="flexcol">
+    <div class="final-value">{{ source.value }} / {{ source.max }}</div>
+    <fieldset class="card">
+        <legend>Pontos de Armadura</legend>
+        <div class="form-group">
+            <label>Máximo</label>
+            <div class="form-fields">
+                <input type="number" name="system.armorPoints.max" value="{{ source.max }}" min="0">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Atual</label>
+            <div class="form-fields">
+                <input type="number" name="system.armorPoints.value" value="{{ source.value }}" min="0">
+            </div>
+        </div>
+    </fieldset>
+    <p class="hint">Enquanto houver Pontos de Armadura ativos, a criatura recebe metade do dano de todos os tipos, exceto Verdadeiro.</p>
+</section>

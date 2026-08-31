@@ -139,6 +139,14 @@ export default class NPCData extends CreatureTemplate {
           generatedEnergy: new NumberField({ required: true, nullable: false, integer: true, min: 0, initial: 0 })
         })
       }),
+      // ── PONTOS DE ARMADURA — mesma camada de absorção do personagem: enquanto
+      // houver valor, a criatura resiste (metade) a todo dano exceto Verdadeiro
+      // (aplicado em damage-application.mjs). GM define valor/máximo (não há
+      // derivação de manipulações pra NPC).
+      armorPoints: new SchemaField({
+        value: new NumberField({ required: true, nullable: false, integer: true, min: 0, initial: 0 }),
+        max:   new NumberField({ required: true, nullable: false, integer: true, min: 0, initial: 0 })
+      }, { label: "JUJUTSU.ArmorPoints.Label" }),
       traits: new SchemaField({
         ...TraitsFields.common,
         ...TraitsFields.creature,

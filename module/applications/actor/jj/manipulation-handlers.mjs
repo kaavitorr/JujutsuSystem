@@ -4,7 +4,7 @@
  * Todas as funções recebem `actor` como primeiro parâmetro em vez de usar `this`.
  */
 
-import { prepareManipulationAbilities, prepareTrainings, MANIPULATION_ABILITIES, TRAININGS_DATA } from "../../../systems/manipulation-data.mjs";
+import { prepareManipulationAbilities, prepareTrainings, MANIPULATION_ABILITIES, TRAININGS_DATA, getAvailableTrainingPoints } from "../../../systems/manipulation-data.mjs";
 import { showBlackFlashPopup } from "./popup.mjs";
 
 // ── Preparação de contexto ────────────────────────────────────────────────────
@@ -23,6 +23,7 @@ export async function prepareManipulationContext(actor, context) {
 }
 
 export async function prepareTrainingsContext(actor, context) {
+  context.availableTrainingPoints = getAvailableTrainingPoints(actor);
   try {
     context.trainings = prepareTrainings(actor);
   } catch(err) {
@@ -378,7 +379,7 @@ export async function onTrainAbility(actor, trainingId, instant) {
 
   const nextPtCost = def.ptCost[rank] ?? def.ptCost[def.ptCost.length - 1];
   const nextPaCost = def.paCost[rank] ?? def.paCost[def.paCost.length - 1];
-  const trainingPoints = actor.system.curseResources?.trainingPoints ?? 0;
+  const trainingPoints = getAvailableTrainingPoints(actor);
   const energyTotal = actor.system.energy?.total ?? 0;
   const cursePoints = actor.system.curseResources?.cursePoints ?? 0;
 
@@ -412,8 +413,10 @@ export async function onTrainAbility(actor, trainingId, instant) {
     return;
   }
 
+  // Só consome a PA aqui — o PT só é debitado (via spentTrainingPoints/lostTrainingPoints,
+  // ver getAvailableTrainingPoints) depois do resultado da rolagem, já que sucesso e falha
+  // têm destinos diferentes no extrato.
   await actor.update({
-    "system.curseResources.trainingPoints": trainingPoints - nextPtCost,
     "system.energy.total": energyTotal - nextPaCost
   }, { isEnergySystem: true });
 
@@ -431,11 +434,13 @@ export async function onTrainAbility(actor, trainingId, instant) {
   if ( roll.total >= currentDC ) {
     const newRank = rank + 1;
     const newDC = currentDC + (def.dcIncrement ?? 5);
+    const spentPt = actor.system.curseResources?.spentTrainingPoints ?? 0;
     await actor.update({
       [`system.trainings.${trainingId}.rank`]: newRank,
       [`system.trainings.${trainingId}.currentDC`]: newDC,
       "system.masteryPoints": (actor.system.masteryPoints ?? 0) + nextPtCost,
-      "system.curseResources.cursePoints": (actor.system.curseResources?.cursePoints ?? 0) + 1
+      "system.curseResources.cursePoints": (actor.system.curseResources?.cursePoints ?? 0) + 1,
+      "system.curseResources.spentTrainingPoints": spentPt + nextPtCost
     });
     await syncTrainingEffect(actor, trainingId, newRank);
     if ( newRank >= (def.maxRank ?? 3) ) showBlackFlashPopup("systems/jujutsu-system/assets/satoru.gif", 2500);
@@ -469,12 +474,13 @@ export async function onUndoTraining(actor, trainingId) {
   const ptRefund = def.ptCost[prevRankIdx] ?? def.ptCost[0];
   const currentDC = actor.system.trainings?.[trainingId]?.currentDC ?? def.baseDC;
   const prevDC = Math.max(def.baseDC, currentDC - (def.dcIncrement ?? 5));
+  const spentPt = actor.system.curseResources?.spentTrainingPoints ?? 0;
 
   await actor.update({
     [`system.trainings.${trainingId}.rank`]: currentRank - 1,
     [`system.trainings.${trainingId}.currentDC`]: prevDC,
     "system.masteryPoints": Math.max(0, (actor.system.masteryPoints ?? 0) - ptRefund),
-    "system.curseResources.trainingPoints": (actor.system.curseResources?.trainingPoints ?? 0) + ptRefund
+    "system.curseResources.spentTrainingPoints": Math.max(0, spentPt - ptRefund)
   });
   await syncTrainingEffect(actor, trainingId, currentRank - 1);
 

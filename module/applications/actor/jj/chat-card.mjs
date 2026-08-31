@@ -19,7 +19,8 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
  *   1. Jogador clica na técnica/arma na ficha
  *   2. Card aparece no chat com: nome, descrição, botões de Rolar Ataque e Rolar Dano
  *   3. Ao clicar em Rolar Ataque: dialog pergunta quantos dados de PA quer gastar
- *      (0 até dobro do bônus de proficiência, limitado pela PA gerada disponível)
+ *      (0 até o bônus de proficiência, +2/rank do treino Impacto Ecoante,
+ *      limitado pela PA gerada disponível)
  *   4. Rolagem de acerto aparece no card com breakdown clicável
  *   5. Ao clicar em Rolar Dano: mesma pergunta de PA
  *   6. Dano aparece no card — se múltiplos tipos, divide em colunas
@@ -552,13 +553,16 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
     const roll = await new Roll(formula, actor.getRollData()).evaluate();
     // Mostrar resultado IMEDIATAMENTE, animar dados em paralelo
     if ( game.dice3d ) game.dice3d.showForRoll(roll, game.user, true); // sem await
-    const isCrit = roll.total >= (activity.attack?.critical?.threshold ?? 20);
 
     // Pegar o resultado do dado ativo — com vantagem/desvantagem pode haver 2 dados,
     // o ativo é o que NÃO está descartado. Com rolagem normal há só 1 dado.
     const d20Results = roll.dice[0]?.results ?? [];
     const d20Ativo = (d20Results.find(r => !r.discarded) ?? d20Results[0])?.result;
 
+    // Crítico pelo dado NATURAL vs limiar da atividade — o getter criticalThreshold
+    // considera o limiar da atividade E do item (padrão 20). Nat 20 segue "Perfeito".
+    const limiarCrit = activity.criticalThreshold ?? 20;
+    const isCrit  = typeof d20Ativo === "number" && d20Ativo >= limiarCrit;
     const isNat20 = d20Ativo === 20;
     const isNat1  = d20Ativo === 1;
 
@@ -571,9 +575,9 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
     const alvoExc = Array.from(game.user.targets ?? [])[0];
     const caAlvo  = Number(alvoExc?.actor?.system?.attributes?.ac?.value);
     const excedenteAuto = Number.isFinite(caAlvo) && roll.total >= (caAlvo + 10);
-    // Prioridade: 20 natural (Perfeito) vence o Excedente quando ambos ocorrem.
-    card.dataset.autoCrit      = isNat20 ? "1" : "";
-    card.dataset.autoExcedente = (excedenteAuto && !isNat20) ? "1" : "";
+    // Prioridade: crítico (dado ≥ limiar — dobra os dados) vence o Excedente quando ambos ocorrem.
+    card.dataset.autoCrit      = isCrit ? "1" : "";
+    card.dataset.autoExcedente = (excedenteAuto && !isCrit) ? "1" : "";
 
     // Renderizar no painel de acerto (Layout B)
     const atkPanel = card.querySelector("#jj-atk-panel");
@@ -583,8 +587,8 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
     if ( atkPanel ) {
       atkPanel.classList.add("visible");
       atkVal.textContent = roll.total;
-      // Fulgor ativa o visual nat20 (vermelho) mesmo sem ser 20 natural
-      atkVal.className = "jj-panel-val" + (isNat20 || isFulgor ? " nat20" : isNat1 ? " nat1" : "");
+      // Fulgor e crítico por limiar ativam o visual nat20 (vermelho) mesmo sem ser 20 natural
+      atkVal.className = "jj-panel-val" + (isCrit || isFulgor ? " nat20" : isNat1 ? " nat1" : "");
       const modeLabel = rollMode === "advantage" ? '<span class="jj-pa-badge" style="color:#50a050;border-color:#306030">Vantagem</span>' 
                       : rollMode === "disadvantage" ? '<span class="jj-pa-badge" style="color:#a05050;border-color:#603030">Desvantagem</span>'
                       : "";
@@ -597,6 +601,8 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
       }
       if ( isNat20 ) {
         atkBreak.innerHTML += `<span class="jj-pa-badge" style="color:#ffb030;border-color:#806010;">★ Perfeito! (20 natural — dobra os dados)</span>`;
+      } else if ( isCrit ) {
+        atkBreak.innerHTML += `<span class="jj-pa-badge" style="color:#e07040;border-color:#804020;">💥 Crítico! (${d20Ativo} ≥ ${limiarCrit} — dobra os dados)</span>`;
       } else if ( excedenteAuto ) {
         atkBreak.innerHTML += `<span class="jj-pa-badge" style="color:#50b0ff;border-color:#205080;">★ Excedente! (${roll.total} ≥ CA ${caAlvo}+10)</span>`;
       }
@@ -623,6 +629,15 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
     if ( dmgBtn0?.disabled ) return;
     if ( dmgBtn0 ) dmgBtn0.disabled = true;
 
+    // Salvaguarda: não houve etapa de "Acerto", então a Escala de Energia (JJ) é
+    // escolhida AQUI — antes da Explosão Ofensiva, como no ataque. Só ESCOLHE; a
+    // dedução de PA acontece depois que o diálogo de PA não for cancelado.
+    let escolhaEscalaSave = null;
+    if ( activity.type === "save" ) {
+      escolhaEscalaSave = await chooseJJScale({ actor, activity });
+      if ( escolhaEscalaSave === null ) { if ( dmgBtn0 ) dmgBtn0.disabled = false; return; } // cancelado
+    }
+
     // PA já gastos no ataque (se houver) ou perguntar agora (salvaguarda)
     let paGastos = Number(card.dataset.paGastos ?? 0);
     if ( paGastos === 0 && activity.type === "save" ) {
@@ -636,6 +651,13 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
         const ok = await _consumePA(actor, paGastos, tecnicaTemCustoPA);
         if ( !ok ) { if ( dmgBtn0 ) dmgBtn0.disabled = false; return; }
       }
+    }
+
+    // Nada foi cancelado — deduz a PA da escala e guarda o bônus p/ rolar abaixo
+    // (nos ataques isso foi feito no "Acerto"; aqui é o único ponto da salvaguarda).
+    if ( escolhaEscalaSave ) {
+      const escala = await applyScaleChoice({ actor, activity, incrementos: escolhaEscalaSave.incrementos });
+      card.dataset.jjScaleBonus = escala.bonusFormula ?? "";
     }
 
     // Usar labels.damages que já tem fórmula e tipo de dano calculados
@@ -715,6 +737,13 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
       const diceOnly = jjScaleBonus.split("+").map(t => t.trim()).filter(t => /^\d*d\d+$/i.test(t)).join(" + ");
       if ( diceOnly ) critParts.push(diceOnly);
     }
+    // Dano Crítico Adicional da atividade (damage.critical.bonus) — entra junto
+    // dos dados re-rolados; resolvido com o rollData p/ aceitar @mod etc.
+    const bonusCritico = activity?.damage?.critical?.bonus;
+    if ( bonusCritico ) {
+      try { critParts.push(Roll.replaceFormulaData(String(bonusCritico), rollData)); }
+      catch(e) { console.warn("JujutsuLegacy | Bônus de crítico inválido:", bonusCritico, e); }
+    }
     card.dataset.critFormula = critParts.join(" + ");
 
     // Crítico Excedente (acerto supera a CA em 10+): em vez de dobrar os dados,
@@ -790,7 +819,12 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
   // ── DIALOG DE PA ─────────────────────────────────────────────────────────────
   async function _paDialog(actor, profBonus, denomination) {
     const paDisp = actor.system?.energy?.generated ?? 0;
-    const maxPA  = Math.min(profBonus * 2, paDisp);
+    // Impacto Ecoante (treinamento geral): amplia o limite de dados da Explosão
+    // Ofensiva em +2 por rank (Base +2, Evolução +4, Perfeição +6). NPCs não têm
+    // treinamentos — a leitura opcional cobre isso (limite normal).
+    const ecoanteRank = actor.system?.trainings?.impactoEcoante?.rank ?? 0;
+    const ecoanteBonus = ecoanteRank * 2;
+    const maxPA  = Math.min(profBonus + ecoanteBonus, paDisp);
 
     if ( maxPA === 0 ) return 0; // sem PA disponível, não pergunta
 
@@ -801,7 +835,9 @@ import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
           <p style="margin:0 0 8px">Gastar PA para adicionar dados de dano?</p>
           <p style="margin:0 0 4px; font-size:12px; color:#aaa;">
             PA Gerada disponível: <strong>${paDisp}</strong> &nbsp;|&nbsp;
-            Máximo: <strong>${maxPA}</strong> d${denomination}
+            Máximo: <strong>${maxPA}</strong> d${denomination}${ecoanteBonus
+              ? ` <span style="color:#c0a0ff">(limite ${profBonus} + ${ecoanteBonus} Impacto Ecoante)</span>`
+              : ""}
           </p>
           <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
             <label style="flex:0 0 auto">Dados de PA:</label>

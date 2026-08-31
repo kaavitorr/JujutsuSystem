@@ -55,6 +55,21 @@ globalThis.dnd5e = {
 /* -------------------------------------------- */
 
 Hooks.once("init", function() {
+
+  // ── CSS da aba Feitiço ────────────────────────────────────────────────────
+  // Também registrado em system.json > styles; injetado aqui porque o servidor
+  // guarda o manifest do sistema em cache — um arquivo NOVO de estilo só entra
+  // na lista depois de reiniciar o servidor. Pelo código, carrega já no F5.
+  {
+    const href = "systems/jujutsu-system/less/tab-feitico.css";
+    if ( !document.querySelector(`link[href="${href}"]`) ) {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = href;
+      document.head.appendChild(link);
+    }
+  }
+
   globalThis.dnd5e = game.dnd5e = Object.assign(game.system, globalThis.dnd5e);
   utils.log(`Initializing the D&D Fifth Game System - Version ${dnd5e.version}\n${DND5E.ASCII}`);
 
@@ -248,6 +263,12 @@ Hooks.once("init", function() {
     makeDefault: true,
     types: ["container"],
     label: "DND5E.SheetClass.Container"
+  });
+  DocumentSheetConfig.unregisterSheet(Item, "jujutsu-system", applications.item.ItemSheet5e, { types: ["feiticoTemplate"] });
+  DocumentSheetConfig.registerSheet(Item, "jujutsu-system", applications.item.FeiticoTemplateSheet, {
+    makeDefault: true,
+    types: ["feiticoTemplate"],
+    label: "TYPES.Item.feiticoTemplate"
   });
 
   DocumentSheetConfig.registerSheet(JournalEntry, "jujutsu-system", applications.journal.JournalEntrySheet5e, {

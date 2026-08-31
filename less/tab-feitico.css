@@ -1,0 +1,786 @@
+/* ══════════════════════════════════════════════════════
+   ABA FEITIÇO — Manifestações + Técnicas
+   Sistema Hunter x Hunter — Foundry VTT
+   ══════════════════════════════════════════════════════ */
+
+.feitico-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px 10px 14px;
+  --feitico-color: #828892;
+}
+
+.feitico-template-hint {
+  margin: 0;
+  padding: 8px 10px;
+  font-size: 12px;
+  color: #9090b0;
+  background: #0c0c18;
+  border: 1px solid #2a2a48;
+  border-radius: 4px;
+}
+
+/* ── Barra do Molde (nome + salvar) ─────────────────── */
+.feitico-molde-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  background: #0a0a12;
+  border: 1px solid #20202e;
+  border-radius: 8px;
+}
+
+.feitico-name-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.feitico-name-field label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #565678;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.feitico-name-field .feitico-name-input {
+  background: #14142a;
+  border: 1px solid #2c2c44;
+  border-radius: 5px;
+  color: #e0d8ff;
+  font-size: 12px;
+  padding: 5px 10px;
+  width: 220px;
+  transition: border-color 140ms ease;
+}
+
+.feitico-name-field .feitico-name-input::placeholder { color: #4a4a68; }
+
+.feitico-name-field .feitico-name-input:focus {
+  border-color: var(--feitico-color, #5a5a80);
+  outline: none;
+}
+
+.feitico-molde-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.feitico-save-template-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 150px;
+  padding: 6px 14px;
+  background: #16162a;
+  border: 1px solid #2c2c44;
+  border-radius: 5px;
+  color: #b0a8d0;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: all 140ms ease;
+}
+
+.feitico-save-template-btn:hover {
+  background: #1c1c36;
+  border-color: var(--feitico-color, #5a5a80);
+  color: #f0ecff;
+}
+
+.feitico-save-template-btn i { font-size: 11px; color: var(--feitico-color, #a0a0d0); }
+
+/* ── Painel de Proficiência ─────────────────────────── */
+.feitico-rank-panel {
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  padding: 12px 16px;
+  background: radial-gradient(140% 180% at 0% 0%, color-mix(in srgb, var(--feitico-color) 10%, transparent), transparent 55%),
+              linear-gradient(180deg, #0c0c18 0%, #08080f 100%);
+  border: 1px solid #26263c;
+  border-left: 3px solid var(--feitico-color);
+  border-radius: 8px;
+}
+
+.feitico-rank-current {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  flex: 0 0 auto;
+  padding-right: 16px;
+  border-right: 1px solid #1e1e30;
+  min-width: 130px;
+}
+
+.feitico-rank-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6a6a8a;
+  font-weight: 700;
+}
+
+.feitico-rank-value {
+  font-family: var(--dnd5e-font-roboto-slab, serif);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  color: #b0b0d0;
+}
+
+.feitico-rank-value.feitico-prof-basico     { color: #9b8acb; }
+.feitico-rank-value.feitico-prof-estendido { color: #6fa8dc; }
+.feitico-rank-value.feitico-prof-maximo    { color: #d97b52; }
+.feitico-rank-value.feitico-prof-expansao {
+  color: #f0c060;
+  text-shadow: 0 0 12px rgba(240, 192, 96, 0.5);
+}
+
+.feitico-rank-primary {
+  font-size: 11px;
+  color: #8a8ab0;
+}
+
+.feitico-rank-primary i { color: var(--feitico-color); font-style: normal; margin: 0 2px; }
+
+.feitico-rank-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  flex: 1 1 auto;
+  position: relative;
+}
+
+.feitico-rank-track::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: #22223a;
+  z-index: 0;
+}
+
+.feitico-rank-node {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 4px 7px;
+  border-radius: 4px;
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.feitico-rank-node-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #2a2a40;
+  border: 1px solid #3a3a5a;
+}
+
+.feitico-rank-node.locked { opacity: 0.4; filter: grayscale(0.6); }
+
+.feitico-rank-node.current { transform: translateY(-2px); }
+.feitico-rank-node.current .feitico-rank-node-dot {
+  box-shadow: 0 0 8px 1px currentColor;
+}
+
+.feitico-rank-node.feitico-prof-basico .feitico-rank-node-dot     { color: #9b8acb; }
+.feitico-rank-node.feitico-prof-estendido .feitico-rank-node-dot { color: #6fa8dc; }
+.feitico-rank-node.feitico-prof-maximo .feitico-rank-node-dot    { color: #d97b52; }
+.feitico-rank-node.feitico-prof-expansao .feitico-rank-node-dot  { color: #f0c060; }
+.feitico-rank-node.current .feitico-rank-node-dot { background: currentColor; border-color: currentColor; }
+
+.feitico-rank-node-name {
+  font: 700 10.5px var(--dnd5e-font-roboto-slab, serif);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #8080a0;
+}
+
+.feitico-rank-node.feitico-prof-basico .feitico-rank-node-name     { color: #9b8acb; }
+.feitico-rank-node.feitico-prof-estendido .feitico-rank-node-name { color: #6fa8dc; }
+.feitico-rank-node.feitico-prof-maximo .feitico-rank-node-name    { color: #d97b52; }
+.feitico-rank-node.feitico-prof-expansao .feitico-rank-node-name  { color: #f0c060; }
+
+.feitico-rank-node-reqs {
+  font-size: 9px;
+  color: #5a5a78;
+}
+
+.feitico-rank-node-action {
+  position: absolute;
+  top: -2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #14142a;
+  border: 1px solid #4a4a70;
+  border-radius: 3px;
+  color: #8080c0;
+  font-size: 8px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.feitico-rank-node-action:hover { border-color: #f0c060; color: #f0c060; }
+.feitico-rank-node-action.active {
+  background: rgba(240, 192, 96, 0.15);
+  border-color: #c09030;
+  color: #f0c060;
+}
+
+/* ── Slots ───────────────────────────────────────────── */
+.feitico-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feitico-slot-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px 12px;
+  background: linear-gradient(180deg, #0d0d17 0%, #0a0a12 100%);
+  border: 1px solid #1e1e30;
+  border-radius: 8px;
+  transition: border-color 160ms ease;
+}
+
+.feitico-slot-card.is-filled { border-color: #2a2a44; }
+.feitico-slot-card.blocked { opacity: 0.85; filter: grayscale(0.25); }
+
+.feitico-slot-label-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.feitico-slot-label {
+  font: 700 11px var(--dnd5e-font-roboto-slab, serif);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7a74a0;
+}
+
+.feitico-blocked-badge {
+  font-size: 11px;
+  color: #d06060;
+  margin-left: auto;
+}
+
+/* ── Linha da manifestação ───────────────────────────── */
+.feitico-manif-row {
+  display: grid;
+  grid-template-columns: 46px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: grab;
+  transition: background 140ms ease;
+}
+
+.feitico-manif-row:hover { background: rgba(255,255,255,0.03); }
+
+.feitico-manif-row.blocked { position: relative; }
+.feitico-manif-row.blocked::after {
+  content: "\f023";
+  font-family: "Font Awesome 6 Free", "FontAwesome";
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  color: #d06060;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.feitico-manif-portrait {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  padding: 2px;
+  background: conic-gradient(var(--feitico-color), color-mix(in srgb, var(--feitico-color) 30%, #0c0c14) 60%, var(--feitico-color));
+  box-shadow: 0 0 10px -2px var(--feitico-color);
+}
+
+.feitico-manif-portrait img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 2px solid #08080f;
+}
+
+.feitico-manif-portrait.is-editable { cursor: pointer; }
+
+.feitico-manif-portrait-edit {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(6, 6, 12, 0.7);
+  color: #e0d8ff;
+  font-size: 13px;
+  opacity: 0;
+  transition: opacity 120ms ease;
+  pointer-events: none;
+}
+
+.feitico-manif-portrait.is-editable:hover .feitico-manif-portrait-edit { opacity: 1; }
+
+.feitico-manif-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.feitico-manif-name {
+  font: 700 13px var(--dnd5e-font-roboto, sans-serif);
+  color: #e0d8ff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.feitico-manif-sub { font-size: 10px; color: #8080a8; }
+
+/* Alternador Focado / Versátil */
+.feitico-manif-mode-toggle {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 2px;
+  border: 1px solid #24243a;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.feitico-mode-btn {
+  background: transparent;
+  border: none;
+  color: #5a5a78;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+}
+/* folga extra nas PONTAS externas: a pílula (radius 999px) curva pra dentro e
+   comeria o respiro do texto do 1º/último botão */
+.feitico-mode-btn:first-child { padding-left: 14px; }
+.feitico-mode-btn:last-child  { padding-right: 14px; }
+.feitico-mode-btn + .feitico-mode-btn { border-left: 1px solid #24243a; }
+.feitico-mode-btn:hover { color: #c0c0e0; }
+.feitico-mode-btn.active {
+  background: rgba(155, 89, 208, 0.22);
+  color: #d0b8ff;
+}
+
+.feitico-manif-actions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.feitico-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #2a2a40;
+  border-radius: 50%;
+  background: #0c0c18;
+  color: #6060a0;
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 120ms ease;
+}
+
+.feitico-action:hover {
+  border-color: #4a4a70;
+  color: #a0a0d0;
+  background: #14142a;
+}
+
+.feitico-action-danger:hover {
+  border-color: #803030;
+  color: #d06060;
+  background: #1a0a0a;
+}
+
+/* ── Empty / Drop zone da manifestação ───────────────── */
+.feitico-manif-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  background: rgba(255,255,255,0.015);
+  border: 1px dashed #2a2a48;
+  border-radius: 6px;
+  color: #4a4a6a;
+  font-size: 11px;
+  font-style: italic;
+  text-align: center;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.feitico-manif-empty:hover { border-color: #3a3a60; }
+.feitico-manif-empty i { font-size: 16px; }
+
+.feitico-manif-create-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: #14142a;
+  border: 1px solid #3a3a60;
+  border-radius: 4px;
+  color: #b0a8d0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 140ms ease;
+}
+
+.feitico-manif-create-btn:hover {
+  background: #1a1a3a;
+  border-color: #5a5a80;
+  color: #e0d8ff;
+}
+
+.feitico-manif-create-btn i { font-size: 11px; }
+
+.feitico-drop-zone.drag-hover {
+  border-color: #6fa8dc !important;
+  background: #0e1a28 !important;
+  color: #9fc5ff !important;
+}
+
+/* ── Requisitos de Categoria (chips) ─────────────────── */
+.feitico-req-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-left: 4px;
+}
+
+.feitico-req-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 5px 3px 6px;
+  background: #0c0c14;
+  border: 1px solid var(--cat-color, #2a2a40);
+  border-radius: 999px;
+}
+
+.feitico-req-chip.met { box-shadow: inset 0 0 0 1px rgba(46, 204, 113, 0.15); }
+.feitico-req-chip.unmet { opacity: 0.75; }
+
+.feitico-req-chip-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 8px;
+}
+
+.feitico-req-chip.met .feitico-req-chip-status { background: rgba(46, 204, 113, 0.18); color: #5fd08a; }
+.feitico-req-chip.unmet .feitico-req-chip-status { background: rgba(208, 96, 96, 0.18); color: #d06060; }
+
+.feitico-req-cat {
+  background: transparent;
+  border: none;
+  color: var(--cat-color, #c0c0e0);
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 0 2px;
+  cursor: pointer;
+  max-width: 130px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.feitico-req-cat:focus { outline: none; }
+
+.feitico-req-chip-maestria {
+  color: var(--cat-color, #c0c0e0);
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 0 2px;
+}
+
+.feitico-req-chip-sep { font-size: 9px; color: #5a5a78; }
+
+.feitico-req-level {
+  width: 26px;
+  background: #14142a;
+  border: 1px solid #3a3a60;
+  border-radius: 999px;
+  color: #c0c0e0;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 1px 2px;
+  text-align: center;
+}
+.feitico-req-level:focus { border-color: #5a5a80; outline: none; }
+
+.feitico-req-chip-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: #5a5a78;
+  cursor: pointer;
+  font-size: 9px;
+}
+.feitico-req-chip-remove:hover { color: #d06060; }
+
+.feitico-req-add-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border: 1px dashed #3a3a5a;
+  border-radius: 999px;
+  color: #6a6a90;
+  font-size: 10.5px;
+  cursor: pointer;
+  transition: all 140ms ease;
+}
+.feitico-req-add-chip:hover { border-color: #5a5a80; color: #c0c0e0; }
+.feitico-req-add-chip i { font-size: 9px; }
+
+/* ── Técnicas filhas (chips) ─────────────────────────── */
+.feitico-tecnicas-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 6px 2px;
+  margin-top: 2px;
+  border-top: 1px solid #16162200;
+  background-image: linear-gradient(90deg, transparent, #1a1a2c 15%, #1a1a2c 85%, transparent);
+  background-position: top;
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+}
+
+.feitico-tecnicas-label {
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #565678;
+  font-weight: 700;
+  margin-right: 2px;
+}
+
+.feitico-tecnicas-empty-hint {
+  font-size: 10px;
+  color: #4a4a6a;
+  font-style: italic;
+}
+
+/* ── Layout em duas colunas (ficha do personagem) ─────────────
+   À esquerda as técnicas com Grau, à direita as Auxiliares. O molde
+   (item sheet) não recebe .feitico-tecnicas-split e mantém o flex-wrap. */
+.feitico-tecnicas-row.feitico-tecnicas-split {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
+.feitico-tecnicas-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 12px;
+  align-items: start;
+}
+
+.feitico-tecnicas-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+}
+
+/* O chip ocupa no máximo a largura da coluna; o nome trunca se faltar espaço. */
+.feitico-tecnicas-split .feitico-tecnica-chip { max-width: 100%; }
+.feitico-tecnicas-split .feitico-tecnica-chip-name { min-width: 0; }
+.feitico-tecnicas-split > .feitico-tecnica-add-chip { align-self: flex-start; }
+
+.feitico-tecnica-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 5px 3px 3px;
+  background: #12121e;
+  border: 1px solid #24243a;
+  border-radius: 999px;
+  cursor: grab;
+  transition: border-color 140ms ease;
+}
+
+.feitico-tecnica-chip:hover { border-color: #3a3a60; }
+
+.feitico-tecnica-chip.blocked { position: relative; }
+.feitico-tecnica-chip.blocked::after {
+  content: "\f023";
+  font-family: "Font Awesome 6 Free", "FontAwesome";
+  font-weight: 900;
+  color: #d06060;
+  font-size: 9px;
+  margin-left: 2px;
+}
+
+.feitico-tecnica-chip img {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.feitico-tecnica-chip-name {
+  font-size: 10.5px;
+  color: #c0c0e0;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.feitico-tecnica-grau {
+  flex: 0 0 auto;
+  background: #0c0c14;
+  border: 1px solid #3a2a5a;
+  border-radius: 999px;
+  color: #b89dff;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 4px;
+  cursor: pointer;
+  max-width: 64px;
+}
+.feitico-tecnica-grau:focus { outline: none; }
+
+.feitico-tecnica-chip-actions {
+  display: none;
+  gap: 2px;
+  margin-left: 2px;
+}
+
+.feitico-tecnica-chip:hover .feitico-tecnica-chip-actions { display: flex; }
+
+.feitico-tecnica-chip-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: #6a6a90;
+  font-size: 9px;
+  cursor: pointer;
+}
+.feitico-tecnica-chip-actions a:hover { color: #c0c0e0; }
+.feitico-tecnica-chip-actions a[data-action="feitico-unassign-tecnica"]:hover { color: #d06060; }
+
+.feitico-tecnica-add-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1px dashed #3a3a5a;
+  border-radius: 50%;
+  color: #6a6a90;
+  cursor: pointer;
+  font-size: 9px;
+  transition: all 140ms ease;
+}
+.feitico-tecnica-add-chip:hover { border-color: #5a5a80; color: #c0c0e0; }
+
+/* Molde Feitiço (item sheet) — sem :hover funcional pra rolar/editar sem mouse persistente,
+   deixa ações sempre visíveis (sheet é uma janela pequena, não precisa esconder). */
+.feitico-template-tab .feitico-tecnica-chip-actions,
+.feitico-template-tab .feitico-manif-actions { display: flex; }
+
+/* ═══════════════ Manipulações de Habilidade ═══════════════ */
+.jj-manip-section {
+  margin-top: 18px; padding-top: 14px; border-top: 1px solid #2a2a44;
+}
+.jj-manip-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+}
+.jj-manip-header > span:first-child {
+  font-size: 12px; font-weight: 800; letter-spacing: 1.5px; color: var(--hxh-gold-dim, #c8a84b);
+}
+.jj-manip-counter {
+  font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+  background: rgba(200,168,75,.1); border: 1px solid rgba(200,168,75,.3); color: #d8be6a;
+}
+.jj-manip-add {
+  margin-left: auto; width: 26px; height: 26px; padding: 0; cursor: pointer;
+  background: transparent; border: 1px solid rgba(200,168,75,.4); border-radius: 6px;
+  color: #c8a84b; transition: all 120ms;
+}
+.jj-manip-add:hover { background: rgba(200,168,75,.12); border-color: #c8a84b; }
+
+.jj-manip-card {
+  display: flex; gap: 10px; padding: 8px 10px; margin: 6px 0;
+  background: #12121e; border: 1px solid #24243a; border-left: 3px solid #3a3a55;
+  border-radius: 6px; transition: border-color 120ms, background 120ms;
+}
+.jj-manip-card.is-ativa { border-left-color: #4a9d5b; background: #101a12; }
+.jj-manip-card.is-bloqueada .jj-manip-toggle { opacity: .3; cursor: not-allowed; }
+
+.jj-manip-toggle {
+  flex: 0 0 auto; align-self: flex-start; width: 24px; height: 24px; padding: 0; cursor: pointer;
+  background: transparent; border: none; color: #5a5a70; font-size: 16px; transition: color 120ms;
+}
+.jj-manip-toggle:hover { color: #8a8aa8; }
+.jj-manip-card.is-ativa .jj-manip-toggle { color: #5cc276; }
+
+.jj-manip-body { flex: 1; min-width: 0; }
+.jj-manip-title { display: flex; align-items: center; gap: 8px; }
+.jj-manip-title strong { font-size: 13px; color: #e6d6a0; }
+.jj-manip-acts { margin-left: auto; display: flex; gap: 8px; opacity: 0; transition: opacity 120ms; }
+.jj-manip-card:hover .jj-manip-acts { opacity: 1; }
+.jj-manip-acts a { color: #6a6a85; font-size: 11px; cursor: pointer; }
+.jj-manip-acts a:hover { color: #c8a84b; }
+
+.jj-manip-desc { font-size: 11px; color: #b8b8cc; line-height: 1.5; margin: 3px 0; }
+.jj-manip-desc p { margin: 2px 0; }
+.jj-manip-meta { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 4px; font-size: 10px; color: #8a8aa0; }
+.jj-manip-meta b { color: #a89a6a; }
+.jj-manip-empty { font-size: 11px; color: #6a6a80; font-style: italic; padding: 6px 2px; }

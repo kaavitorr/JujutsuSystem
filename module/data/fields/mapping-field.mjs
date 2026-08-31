@@ -36,7 +36,11 @@ export default class MappingField extends foundry.data.fields.TypedObjectField {
       initialKeys: null,
       initialValue: null,
       initialKeysOnly: false,
-      expandKeys: false
+      // v14: a expansão de caminhos pontilhados é feita POR CAMPO na limpeza do update.
+      // Com false, `update({"...abilities.X.unlocked": v})` chega aqui como chave literal
+      // "X.unlocked", falha a validação da entrada e é DESCARTADO em silêncio (o resto do
+      // update passa). true = comportamento do core (TypedObjectField).
+      expandKeys: true
     });
   }
 
