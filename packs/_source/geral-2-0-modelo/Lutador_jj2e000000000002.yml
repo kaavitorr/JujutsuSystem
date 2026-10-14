@@ -1,0 +1,112 @@
+_id: jj2e000000000002
+name: Lutador
+type: class
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Lutador-icon.png
+system:
+  identifier: lutador
+  levels: 1
+  description:
+    value: >-
+      <p style="text-align:center"><span
+      style="font-size:x-large"><strong>LUTADOR</strong></span></p><p><span
+      style="font-size:large"><strong>Pontos de
+      Vida</strong></span></p><p><strong>Vida Base:</strong> 7 por nível de
+      personagem.</p><p><strong>Vida por Ponto de Constituição:</strong> 7 por
+      ponto.</p><p></p><p><span style="font-size:large"><strong>Energia
+      Amaldiçoada</strong></span></p><p><strong>Energia Base:</strong> 10 por
+      nível de personagem.</p><p></p><p><span
+      style="font-size:large"><strong>Proficiências</strong></span></p><ul><li><p><strong>Equipamentos:</strong>
+      Recebe 2 Pontos de Proficiência entre qualquer tipo de
+      arma.</p></li><li><p><strong>Salvaguarda:</strong> Recebe 2 Pontos de
+      Proficiência para distribuir entre as
+      Salvaguardas.</p></li><li><p><strong>Perícias:</strong> Escolha 3 Pontos
+      de Proficiência para distribuir entre as
+      Perícias.</p></li></ul><p></p><p><span
+      style="font-size:large"><strong>Informações
+      Gerais</strong></span></p><ul><li><p><strong>Atributo Principal:</strong>
+      Força.</p></li><li><p><strong>Habilidades de Especialização:</strong> Você
+      recebe 2 habilidades de "Proeza
+      Física".</p></li><li><p><strong>Equipamentos:</strong> Uma arma marcial ou
+      ¥ 3.000 e; ¥ 5.000.</p></li></ul><p></p><p style="text-align:center"><span
+      style="font-size:x-large"><strong>Características de
+      Combate</strong></span></p><hr><p><span
+      style="font-size:large"><strong>Guerrilheiro</strong></span></p><p>Como um
+      lutador, você pode se especializar tanto em lutar com armas como
+      desarmado, recebendo bônus diferentes dependendo do caminho
+      escolhido.</p><p></p><h4>Mestre das Armas</h4><hr><p>Você treinou
+      incansavelmente na utilização de um tipo de Ferramenta Amaldiçoada
+      específica, permitindo que você dominasse seu uso próximo a perfeição.
+      Você recebe acesso as seguintes
+      características:</p><ul><li><p><strong>Maestria:</strong> Você recebe 2
+      Pontos de Proficiência em um único tipo de Ferramenta
+      Amaldiçoada.</p></li><li><p><strong>Imbuir Feitiço:</strong> A cada 5
+      níveis que você permanecer usando uma mesma arma para canalizar seu
+      feitiço, você a faz evoluir em um grau de classificação das Ferramentas
+      Amaldiçoadas.</p></li><li><p><strong>Arma Favorita:</strong> Toda vez que
+      você subir de nível, você pode escolher uma Ferramenta Amaldiçoada e
+      receber a proficiência "Mestre" com ela, mesmo que você não possua
+      proficiência no tipo. Mas ela só funciona para uma Ferramenta Específica e
+      não o tipo da arma.</p></li><li><p><strong>Posições de Combate:</strong>
+      Como um Mestre das Armas, você dominou um conjunto de posições que te
+      ajudam no meio de combate, você recebe acesso as seguintes
+      posições:</p><ul><li><p><strong>Posição Defensiva:</strong> Você aumenta
+      sua Classe de Resistência em 2 e pode seu valor de engajamento aumenta em
+      +2 até você ser considerado Totalmente
+      Engajado.</p></li><li><p><strong>Posição Ofensiva:</strong> Seu
+      deslocamento aumento em 5 metros e você recebe +1 de dano igual seu grau
+      de Proficiência (Treinado + 1; Proficiente +2; Especializado +3; Mestre
+      +4).</p></li><li><p><strong>Sentinela:</strong> Toda vez que uma criatura
+      tiver você ou um aliado como alvo de um ataque ou técnica que faça rolagem
+      de acerto, você pode, como Reação, realizar consumir um Ponto de Ação [⬢]
+      para realizar um ataque contra a criatura (máximo de 3 por rodada). Você
+      pode se mover até 3 metros do seu deslocamento disponível antes de fazer
+      esse ataque.</p></li></ul><p>Você pode consumir um Ponto de Ação [⬢] para
+      mudar entre as posições, podendo usar essa característica como
+      Reação.</p></li></ul><p></p><h4>Punho Ardente</h4><hr><p>Seus golpes
+      desarmados são brutais e você consegue transformar praticamente qualquer
+      parte do seu corpo em uma arma contra seus oponentes. Você recebe acesso
+      as seguintes características:</p><ul><li><p><strong>Golpe Brutal:</strong>
+      Sempre que você causar dano máximo ou um acerto crítico em uma criatura,
+      você pode realizar um ataque adicional com custo de ação [⬢] reduzido em
+      1.</p></li><li><p><strong>Interceptar:</strong> Quando uma criatura
+      realizar uma jogada de ataque (Comum ou de Técnica) contra você e errar,
+      você pode gastar duas ações [⬢⬢] como Reação para interceptar o golpe e
+      atira-la por cima do seu ombro, arremessando-a contra o chão e impondo a
+      condição "Caído" se ela falhar em uma Salvaguarda de Agilidade. Se ela
+      receber a condição dessa forma, ele recebe a condição "Estremecido" se
+      tentar levantar antes do fim do turno.</p></li><li><p><strong>Mãos
+      Letais:</strong> Suas jogadas de ataque (Comum) corpo-a-corpo passam a
+      receber os mesmos benefícios de uma arma marcial. Dessa forma, você pode
+      escolher qualquer propriedade de uma arma marcial para seus ataques,
+      podendo mudar essa escolha toda vez que sobe de
+      nível.</p></li><li><p><strong>Corpo Forjado:</strong> Você recebe
+      resistência +5 a danos do tipo Contundente, Cortante e
+      Perfurante.</p></li></ul>
+    chat: ''
+flags:
+  jujutsu-system:
+    legacy2:
+      vidaBase: 7
+      energiaBase: 10
+      atributoPrincipal: str
+      espIniciais: 2
+      proficiencias:
+        armas: 2
+        salvaguardas: 2
+        pericias: 3
+ownership:
+  default: 0
+effects: []
+folder: duEiLT0m9eoDwk8O
+sort: 150000
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814173453
+  modifiedTime: 1791816834191
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2e000000000002'

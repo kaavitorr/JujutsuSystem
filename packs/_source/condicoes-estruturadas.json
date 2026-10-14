@@ -1,0 +1,345 @@
+[
+ {
+  "nome": "MENTAIS",
+  "desc": "Condições relacionadas à mente da criatura.",
+  "conds": [
+   {
+    "id": "jj-alucinado",
+    "label": "Alucinado",
+    "icone": "fas fa-brain",
+    "desc": "ND −2 para características ligadas ao ND. Ataca qualquer criatura próxima, inimiga ou não.",
+    "ref": "TpWxYhdphv2t6ju2"
+   },
+   {
+    "id": "jj-amedrontado",
+    "label": "Amedrontado",
+    "icone": "fas fa-person-running",
+    "desc": "Usa todas as ações para se afastar da fonte do medo até 30 m; desvantagem para atacá-la.",
+    "ref": "7uoeQCgUQqYB3BHc"
+   },
+   {
+    "id": "jj-apaixonado",
+    "label": "Apaixonado",
+    "icone": "fas fa-heart",
+    "desc": "3 desvantagens para atacar o alvo da paixão e em interações sociais com ele; receio de atacá-lo.",
+    "ref": "qzPfOlEQkkPGLVtU"
+   },
+   {
+    "id": "jj-enfeiticado",
+    "label": "Enfeitiçado",
+    "icone": "fas fa-wand-sparkles",
+    "desc": "Não ataca quem o enfeitiçou nem o alveja. Quem enfeitiçou tem vantagem social.",
+    "ref": "TRCsuSIH7akPftYE"
+   }
+  ]
+ },
+ {
+  "nome": "DEFESAS",
+  "desc": "Condições relacionadas à defesa do personagem.",
+  "conds": [
+   {
+    "id": "jj-enfurecido",
+    "label": "Enfurecido",
+    "icone": "fas fa-fire-flame-curved",
+    "desc": "CR −2 e só pode gastar PA com ataques.",
+    "ref": "zHe7ghSbtRlEXsjb"
+   },
+   {
+    "id": "jj-exposto",
+    "label": "Exposto",
+    "icone": "fas fa-shield-halved",
+    "desc": "Classe de Resistência −2.",
+    "ref": "FNhBRcO2D1UkPQkq"
+   },
+   {
+    "id": "jj-inconsciente",
+    "label": "Inconsciente",
+    "icone": "fas fa-moon",
+    "desc": "Incapacitado; CR 0. Não contribui nem ajuda aliados.",
+    "ref": "9bkl5hVlhmL5dqj1"
+   }
+  ]
+ },
+ {
+  "nome": "PERCEPÇÃO",
+  "desc": "Condições relacionadas à percepção do personagem.",
+  "conds": [
+   {
+    "id": "jj-cego",
+    "label": "Cego",
+    "icone": "fas fa-eye-slash",
+    "desc": "Sem percepção visual. Falha em testes que exijam ver. Ataques com desvantagem; sofre vantagem.",
+    "ref": "ynw3U5rbGI7OEIYu"
+   },
+   {
+    "id": "jj-desatento",
+    "label": "Desatento",
+    "icone": "fas fa-circle-question",
+    "desc": "Iniciativa 1 e sem Reações. Remove-se no início do próprio turno.",
+    "ref": "jLNT8yCazygi6ArT"
+   },
+   {
+    "id": "jj-invisivel",
+    "label": "Invisível",
+    "icone": "fas fa-ghost",
+    "desc": "Invisível sem técnicas especiais; área de escuridão densa para se esconder. Ataques com vantagem; sofre desvantagem.",
+    "ref": "lvxeCwhwEDZHAtii"
+   },
+   {
+    "id": "jj-surdo",
+    "label": "Surdo",
+    "icone": "fas fa-ear-deaf",
+    "desc": "Sem percepção auditiva e imune a ações auditivas.",
+    "ref": "4ltRSh6qh1J8L740"
+   },
+   {
+    "id": "jj-silenciado",
+    "label": "Silenciado",
+    "icone": "fas fa-volume-xmark",
+    "desc": "Não fala nem lança encantamentos.",
+    "ref": "Ye8ha3SyDWUKWLVB"
+   }
+  ]
+ },
+ {
+  "nome": "AÇÕES",
+  "desc": "Condições relacionadas aos Pontos de Ação do personagem.",
+  "conds": [
+   {
+    "id": "jj-atordoado",
+    "label": "Atordoado",
+    "icone": "fas fa-stars",
+    "desc": "−4 Pontos de Ação. Deslocamento 3 m. Falha em For e Agi. Ataques têm vantagem.",
+    "ref": "oqZQ2ajKLMQLIUE9"
+   },
+   {
+    "id": "jj-bebado",
+    "label": "Bêbado",
+    "icone": "fas fa-beer-mug-empty",
+    "desc": "Desvantagem em Testes e Salvaguardas de Agilidade. Sem ações com Reação. Encerra com Salv. CON.",
+    "ref": "ucEuHySKUtbpHHVE"
+   },
+   {
+    "id": "jj-concussao",
+    "label": "Concussão",
+    "icone": "fas fa-circle-exclamation",
+    "desc": "−2 Pontos de Ação. Desvantagem em testes e Salvaguardas de Agilidade.",
+    "ref": "rXIVqoktPZpDzkeu"
+   },
+   {
+    "id": "jj-desorientado",
+    "label": "Desorientado",
+    "icone": "fas fa-arrows-spin",
+    "desc": "Consome 1 PA adicional em ações que usam PA.",
+    "ref": "v3an1hjrqSTIVYRF"
+   },
+   {
+    "id": "jj-incapacitado",
+    "label": "Incapacitado",
+    "icone": "fas fa-circle-xmark",
+    "desc": "−2 Pontos de Ação. Consome 1 PA adicional em ações e técnicas com Reação.",
+    "ref": "t2FWlx8UCukoyPAY"
+   },
+   {
+    "id": "jj-sonolento",
+    "label": "Sonolento",
+    "icone": "fas fa-bed",
+    "desc": "−1 Ponto de Ação. Desvantagem em Salv. Agi e Sab. Máx. 1 ataque ou técnica de dano.",
+    "ref": "DPzjW24I9zyTVGDm"
+   },
+   {
+    "id": "jj-paralisado",
+    "label": "Paralisado",
+    "icone": "fas fa-person-rays",
+    "desc": "Sem ações; fala pausadamente. Considerado Incapacitado; CR reduzido à metade.",
+    "ref": "MKTqTCse3i4q65UW"
+   }
+  ]
+ },
+ {
+  "nome": "FÍSICAS",
+  "desc": "Condições relacionadas a estados físicos.",
+  "conds": [
+   {
+    "id": "jj-agarrado",
+    "label": "Agarrado",
+    "icone": "fas fa-hand-grab",
+    "desc": "Deslocamento 0. Escapa com Teste Resistido de Atletismo. Movimentar custa o dobro.",
+    "ref": "jKsdLPwcUG1UCPPV"
+   },
+   {
+    "id": "jj-desidratado",
+    "label": "Desidratado",
+    "icone": "fas fa-droplet-slash",
+    "desc": "Deslocamento ÷2. 1 nível de exaustão por hora e −1 Ponto de Ação no turno. Encerra com 500 ml de água.",
+    "ref": "ta87A3Hi6qKbcfby"
+   },
+   {
+    "id": "jj-empoderado",
+    "label": "Empoderado",
+    "icone": "fas fa-fist-raised",
+    "desc": "Ataques corpo-a-corpo +1 passo. Não perde PA ao errar técnica. Imune a terreno difícil.",
+    "ref": "j7PBrhnyA6S16YdE"
+   },
+   {
+    "id": "jj-energia-esgotada",
+    "label": "Energia Esgotada",
+    "icone": "fas fa-battery-empty",
+    "desc": "Não pode usar habilidades ou técnicas. Também está Letárgico.",
+    "ref": "dzLhwYGLXaSph2NZ"
+   },
+   {
+    "id": "jj-exausto",
+    "label": "Exausto",
+    "icone": "fas fa-tired",
+    "desc": "−2 em rolagens d20 e −1,5 m de deslocamento. Efeito Colateral reduz só 2 PA/nível. Máx. 3 por condições.",
+    "ref": "1NYdKYXZYPT3fXCH"
+   },
+   {
+    "id": "jj-hipotermico",
+    "label": "Hipotérmico",
+    "icone": "fas fa-temperature-low",
+    "desc": "1 desvantagem em Salvaguardas e Testes de Agilidade e em jogadas de ataque. Trata com Medicina CD 10 ou Sobrevivência CD 17.",
+    "ref": "Upq7sAxjKe0iRf4o"
+   },
+   {
+    "id": "jj-sufocado",
+    "label": "Sufocado",
+    "icone": "fas fa-lungs-virus",
+    "desc": "Sem palavras e desvantagem em Salv. Agi. Após 1 + mod. CON turnos, Teste CON CD 10 (+2/turno) ou desmaia.",
+    "ref": "nhSU998IvHDrIhpZ"
+   }
+  ]
+ },
+ {
+  "nome": "MOVIMENTO",
+  "desc": "Condições relacionadas ao deslocamento do personagem.",
+  "conds": [
+   {
+    "id": "jj-acelerado",
+    "label": "Acelerado",
+    "icone": "fas fa-forward-fast",
+    "desc": "+2 Pontos de Ação (máx. 8) e +10 m de deslocamento. Custo dobra com duração prolongada.",
+    "ref": "wsnVHxfuvmLPXb9q"
+   },
+   {
+    "id": "jj-caido",
+    "label": "Caído",
+    "icone": "fas fa-person-falling",
+    "desc": "Só rasteja (1 m extra por metro). Desvantagem em ataques e ataques a distância contra ele têm... Encerra levantando com 1 Ação.",
+    "ref": "oY0bnrEa1qpajUGM"
+   },
+   {
+    "id": "jj-estremecido",
+    "label": "Estremecido",
+    "icone": "fas fa-person-trembling",
+    "desc": "Desvantagem em ataques, sem concentração e deslocamento custa 1,5 m extra.",
+    "ref": "aVZzLjrVJCW8jOOK"
+   },
+   {
+    "id": "jj-impedido",
+    "label": "Impedido",
+    "icone": "fas fa-ban",
+    "desc": "Sem ações com movimento; 1 desvantagem em ataques. Escapa com Atletismo na CD de remoção (12 + For ou 17 fixo).",
+    "ref": "KsXjzgsk9ue34GfF"
+   },
+   {
+    "id": "jj-lento",
+    "label": "Lento",
+    "icone": "fas fa-person-walking-with-cane",
+    "desc": "−10 m de deslocamento no turno e 1 m extra de custo por metro.",
+    "ref": "3EJ9bs9STptwXPb9"
+   },
+   {
+    "id": "jj-voando",
+    "label": "Voando",
+    "icone": "fas fa-dove",
+    "desc": "Movimento de voo igual ao padrão. Só pode ser alvejado a distância ou por voadores.",
+    "ref": "BtU6X5YifQ1uVGPl"
+   },
+   {
+    "id": "jj-letargico",
+    "label": "Letárgico",
+    "icone": "fas fa-person-walking",
+    "desc": "Deslocamento ÷2 e dano de ataques ÷2 (exceto armas de fogo).",
+    "ref": "5BLuQfwPZzgkG3l9"
+   },
+   {
+    "id": "jj-pesado",
+    "label": "Pesado",
+    "icone": "fas fa-weight-hanging",
+    "desc": "Deslocamento ÷2 e desvantagem em ataques corpo-a-corpo.",
+    "ref": "0VeVeEoqu054mdYO"
+   }
+  ]
+ },
+ {
+  "nome": "DANO",
+  "desc": "Condições de dano por rodadas; remove-se com a ação Remover (Medicina na CD da criatura).",
+  "conds": [
+   {
+    "id": "jj-envenenado",
+    "label": "Envenenado",
+    "icone": "fas fa-skull-crossbones",
+    "desc": "Dano de Veneno por turno igual ao atributo principal do atacante; 3 rodadas (reaplicar reseta).",
+    "ref": "Jo4UFzxrCkhqYl6z"
+   },
+   {
+    "id": "jj-chocado",
+    "label": "Chocado",
+    "icone": "fas fa-bolt",
+    "desc": "Dano Elétrico por turno igual a metade do atributo do atacante; 3 rodadas (reaplicar reseta).",
+    "ref": "O9bIMRDLcbXMoISd"
+   },
+   {
+    "id": "jj-congelando",
+    "label": "Congelando",
+    "icone": "fas fa-snowflake",
+    "desc": "Fica Lento e sofre dano de Frio por turno igual ao atributo do atacante; 1 rodada (reaplicar reseta).",
+    "ref": "LC4qkxossoQ8t251"
+   },
+   {
+    "id": "jj-confuso",
+    "label": "Confuso",
+    "icone": "fas fa-shuffle",
+    "desc": "Fica Desorientado e sofre dano Psíquico por turno igual a metade do atributo do atacante; 2 rodadas (reaplicar reseta).",
+    "ref": "lw5SnygMLJslduBm"
+   },
+   {
+    "id": "jj-corroendo",
+    "label": "Corroendo",
+    "icone": "fas fa-flask",
+    "desc": "Dano Ácido por turno igual ao atributo do atacante; 3 rodadas (reaplicar reseta).",
+    "ref": "UzBrqJokBl2KW2ad"
+   },
+   {
+    "id": "jj-em-chamas",
+    "label": "Em Chamas",
+    "icone": "fas fa-fire",
+    "desc": "Dano de Fogo por turno igual ao atributo do atacante; 3 rodadas (reaplicar reseta).",
+    "ref": "JMQbj2yVH6MTmg2Y"
+   },
+   {
+    "id": "jj-entropia",
+    "label": "Entropia",
+    "icone": "fas fa-hurricane",
+    "desc": "Fica Amedrontado e sofre dano de Alma por turno igual a metade do atributo do atacante; 2 rodadas (reaplicar reseta).",
+    "ref": "wf5oTX2apWqYSqFE"
+   },
+   {
+    "id": "jj-irradiado",
+    "label": "Irradiado",
+    "icone": "fas fa-radiation",
+    "desc": "Dano de Energia por turno igual ao atributo do atacante; 3 rodadas (reaplicar reseta).",
+    "ref": "3rylfx81bY4xBoWS"
+   },
+   {
+    "id": "jj-sangramento",
+    "label": "Sangramento",
+    "icone": "fas fa-droplet",
+    "desc": "Dano Perfurante ou Cortante por turno igual ao atributo do atacante; 3 rodadas (reaplicar reseta).",
+    "ref": "0zArqMLjD3Zq1MTa"
+   }
+  ]
+ }
+]

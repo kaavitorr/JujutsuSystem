@@ -1,0 +1,22 @@
+_id: jj2a000000000054
+_key: '!items!jj2a000000000054'
+name: Recuperação de Foco
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: recuperacao-de-foco
+  description:
+    value: <p><em><strong>Requisito:</strong> Dispersão de Energia</em></p><p>Toda vez que você ativar o Energia Atrasada como consequência de um 20 natural, você recupera 2 Pontos de Ação [⬢⬢], mas só podem ser utilizados fora do seu turno.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Punho Divergente
+      requisitos:
+        - Dispersão de Energia
+folder: jj2f000000000010
+ownership:
+  default: 0
+effects: []
+sort: 0

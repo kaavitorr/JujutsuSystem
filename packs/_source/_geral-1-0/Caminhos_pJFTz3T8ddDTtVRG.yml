@@ -1,0 +1,22 @@
+name: Caminhos
+sorting: m
+folder: null
+type: Item
+_id: pJFTz3T8ddDTtVRG
+sort: 100000
+color: '#b47022'
+flags:
+  scene-packer:
+    hash: 2283dc073ca4ef97d095875e3a8343e48bfe46c4
+_stats:
+  compendiumSource: Folder.pJFTz3T8ddDTtVRG
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881431
+  modifiedTime: 1776624881711
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+description: ''
+_key: '!folders!pJFTz3T8ddDTtVRG'

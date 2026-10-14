@@ -1,0 +1,80 @@
+folder: CCX4s71za6dlwTZc
+name: Médico de Campo
+type: feat
+img: icons/magic/defensive/armor-green-hex.webp
+system:
+  description:
+    value: >-
+      <p>Você desbloqueia instantaneamente a Energia Reversa e recebe 1
+      Habilidade de Especialização dela, mas todas as suas técnicas de dano de
+      Feitiços passam a custar 1 Ponto de Ação [⬢] adicional.<br>Além disso,
+      você dobra o limite de Pontos de Energia Reversa que pode ter de 30 para
+      60.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791817086906
+  modifiedTime: 1791817118258
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: zWOcfQFS8W6geju8
+sort: 200000
+_key: '!items!zWOcfQFS8W6geju8'

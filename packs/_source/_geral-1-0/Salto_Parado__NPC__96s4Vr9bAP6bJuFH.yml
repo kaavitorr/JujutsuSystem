@@ -1,0 +1,74 @@
+_id: 96s4Vr9bAP6bJuFH
+name: Salto Parado (NPC)
+type: feat
+img: icons/creatures/mammals/deer-movement-leap-green.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 5000000
+flags:
+  scene-packer:
+    hash: e14dd5bb4243ce360dc09b1200057e2b0b31e8c4
+    sourceId: Item.96s4Vr9bAP6bJuFH
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Salto Parado (–):</strong> O salto em distância da criatura é
+      de até 15 metros e seu salto em altura é de até 9 metros, com ou sem uma
+      corrida inicial.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: salto-parado-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.y6S72ih8ggQcchrU
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910529
+  modifiedTime: 1776624910565
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!96s4Vr9bAP6bJuFH'

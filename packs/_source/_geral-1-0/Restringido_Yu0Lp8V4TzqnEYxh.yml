@@ -1,0 +1,586 @@
+_id: Yu0Lp8V4TzqnEYxh
+name: Restringido
+type: class
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Resrtingido.png
+effects: []
+folder: gpiuGQQptpbYBAnm
+sort: 600000
+flags:
+  cf: {}
+  core:
+    sheetClass: dnd5e.Tidy5eItemSheetQuadrone
+  scene-packer:
+    hash: 3bcdd1306eddc5ce5c92e3e9bacaa30248d5f957
+    sourceId: Item.aYlUpTY0J6XMH13M
+    defaultPermission: 3
+  dnd5e: {}
+system:
+  description:
+    value: "<p style=\"text-align:center\"><span style=\"font-size:38px\"><strong>RESTRINGIDO</strong></span></p><p>\_</p><p><span style=\"font-size:large\"><strong>PONTOS DE VIDA</strong></span></p><p class=\"MsoNormal\">D<strong>ado de Vida:</strong> 1d12 por nível de Restringido.</p><p class=\"MsoNormal\"><strong>Pontos de Vida no 1º nível:</strong> 12 + seu modificador de Constituição.</p><p class=\"MsoNormal\"><strong>Média de Vida por nível:</strong> 7 + seu modificador de constituição por nível posterior.</p><p class=\"MsoNormal\"><strong>Pontos de Vida nos níveis seguintes:</strong> 1d12 + seu modificador de constituição por nível posterior.</p><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>PROFICIÊNCIAS</strong></span></p><p class=\"MsoNormal\"><strong>Equipamentos:</strong> Armas Marciais, uma Arma a sua escolha.</p><p class=\"MsoNormal\"><strong>Salvaguarda:</strong> Força ou Agilidade e Constituição.</p><p class=\"MsoNormal\"><strong>Perícias:</strong> Escolha 4 perícias para receber proficiência, sem ser Controle de Energia, Feitiço e Sorte.</p><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>INFORMAÇÕES GERAIS</strong></span></p><p class=\"MsoBodyText\"><strong>Atributo Principal:</strong> Força ou Agilidade (à sua escolha).</p><p class=\"MsoNormal\"><strong>Habilidade Inata:</strong> Escolha entre “Corpo de Lutador” ou “Superioridade Absoluta”.</p><p class=\"MsoNormal\"><strong>Talento:</strong> Escolha dois entre qualquer talento que você possua os requisitos.</p><p class=\"MsoNormal\"><strong>Equipamentos:</strong> Você recebe uma arma amaldiçoada de 4º grau, um par óculos ou lentes de contato que permite ver energia amaldiçoada e; $ 5.000.</p><p><strong>Arsenal Vazio:</strong> Você recebe um Espírito com a habilidade “Inventário” que demora 9 níveis para amadurecer e ser usado. Ele pode armazenar 10 ferramentas e não sofre dano ou pode ser alvo enquanto estiver junto de seu corpo</p><p></p><img src=\"systems/jujutsu-system/assets/Tabelas/Restringido.png\"><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CRIANDO UM ESPECIALISTA</strong></span></p></td></tr></tbody></table><p>Para criar rapidamente um Restringido, primeiro distribua seus atributos, colocando o mais alto em Força ou Agilidade, de acordo com sua escolha de atributo principal. O segundo atributo mais alto deve ser Constituição. Escolha a origem de poder de Restrição Celestial e as habilidades básicas de Corpo de Lutador, Retomar Fôlego e Poço de Estamina.</p><p class=\"MsoNormal\">Após isso, foque em pegar talentos para aumentar suas perícias que serão importantes no início do jogo, principalmente em talentos que dão proficiência nas perícias: Atletismo, Acrobacia, Percepção e Sobrevivência.</p><p style=\"margin:0cm -1.65pt 0.0001pt 7.1pt;text-align:justify\"><span style=\"font-family:'Chaparral Pro, serif'\">\_</span></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>ACERTO E SALVAGUARDA</strong></span></p></td></tr></tbody></table><p>Você possui os seguintes modificadores para acerto de técnica ou feitiços e CD de Salvaguardas:</p><p class=\"MsoBodyText\"><strong>CD das técnicas =</strong> 8 + bônus de proficiência + seu modificador de Força ou Agilidade.</p><p class=\"MsoBodyText\"><strong>Modificador da técnica =</strong> seu bônus de proficiência + seu modificador de Força ou Agilidade.</p><p style=\"margin:0cm -1.65pt 0.0001pt 7.1pt;text-align:justify\"><span style=\"font-family:'Chaparral Pro, serif'\">\_</span></p><p></p><p style=\"text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DE COMBATE</strong></span></p><p>\_Como um manipulador, você recebe as seguintes características:<span style=\"font-family:'Chaparral Pro, serif'\">\_</span><span style=\"font-size:20.0pt;mso-bidi-font-size:11.0pt;font-family:'Chaparral Pro',serif\"><strong style=\"mso-bidi-font-weight:normal\">\_</strong></span></p><table border=\"1\" style=\"margin-left:7.1pt;border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt\" class=\"MsoTableGrid\"><tbody><tr style=\"mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes\"><td><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>PECULIARIDADES DO RESTRINGIDO</strong></span></p><p class=\"MsoNormal\">Como uma criatura sem nenhuma energia amaldiçoada, você tem algumas características inatas da sua natureza. Você recebe acesso as seguintes características inatamente:</p><ul><li><p><em>Você é imune a habilidade de “Sentir Maldição” da manipulação de Energia Amaldiçoada;</em></p></li><li><p><em>Você pode passar livremente entre domínios e barreiras. Seja entrando, saindo ou se movendo dentro dele;</em></p></li><li><p><em>Você é naturalmente imune aos efeitos de acerto automático dos domínios;</em></p></li><li><p><em>Você possui “Vigor” no lugar de energia amaldiçoada e utiliza a mesma regra para geração da mesma;</em></p></li><li><p><em>Você pode treinar seu “Vigor” pelas regras de Treinamento Intenso do “Capítulo 6”.</em></p></li></ul></td></tr></tbody></table><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CORPO APRIMORADO</strong></span></p></td></tr></tbody></table><p>A partir do <strong>1º nível de Restringido</strong>, devido a sua restrição, você recebeu certos benefícios gerais que ajudam você a se sobressair em combate. Você recebe as seguintes características:</p><ul><li><p><strong>Treinamento Físico:</strong> Você muda a perícia de “Controle de Energia” para “Controle Físico” e pode utiliza-la nos Treinamentos do Capítulo 6.5. Você não pode aprender treinamentos que usem efeitos ou habilidades que você não tem acesso, como “Energia Reversa”;</p></li><li><p><strong>Força Eficiente:</strong> Você recebe um bônus em Testes de Atributo de Força, Agilidade e Constituição igual metade do seu nível de personagem (arredondado para baixo);</p></li><li><p><strong>Golpe Certeiro:</strong> Você pode usar uma ação bônus para realizar um ataque (Comum) adicional, causando 1d4 de dano extra nesse ataque. A criatura atingida deve realizar uma Salvaguarda de Força para não receber a condição “Caído” ou ser empurrada por 9 metros de distância (à sua escolha).</p></li><li><p><strong>Velocidade Anormal:</strong> Seu deslocamento de caminhada, nado e escalada se torna 12. A partir do 5º nível de restringido, ele aumenta para 15 e novamente para 18 no 9º nível de restringido. Caso você possua “Perito em Fuga”, você recebe 3 metros de deslocamento adicionais.</p></li></ul><p style=\"margin:0cm 5.4pt 0.0001pt 7.1pt;text-align:justify\"></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CONSTITUIÇÃO ANÔMALA</strong></span></p></td></tr></tbody></table><p>A partir do <strong>2º nível de Restringido</strong>, seu físico evoluiu, te dando um metabolismo extremamente acelerado e um vigor extremo. Você recebe acesso as seguintes características:</p><ul><li><p><strong>Queima Agressiva:</strong> Você pode consumir 1 Ponto de Vigor para adicionar 1d4 de dano a sua próxima jogada de ataque (Comum) ou 1 dado de dano à sua próxima técnica. Você não pode adicionar um número de dados maior que seu bônus de proficiência.</p></li><li><p><strong>Queima Defensiva:</strong> Você pode consumir 1 Ponto de Vigor para reduzir 1d4 de dano ou adicionar 2d8 de redução a sua próxima redução de dano baseada em 2d8, até um máximo igual ao vigor gerado disponível.</p></li><li><p><strong>Metabolismo Extremo:</strong> Seu descanso longo se torna de 2 horas e seu descanso curto de 5 minutos. Além disso, você recupera todos os seus Pontos de Vigor, assim como os dados de vigor em um descanso longo.</p></li></ul><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>MESTRE DO COMBATE</strong></span></p></td></tr></tbody></table><p>A partir do <strong>3º nível de Restringido</strong>, você treinou o uso das armas para poder lutar de forma eficiente com o maior número de armas possíveis. Desde que você tenha proficiência em uma ferramenta amaldiçoada, você dobra os bônus numéricos da aba de características dela e pode escolher receber os seguintes benefícios enquanto estiver a utilizando:</p><p></p><p><span style=\"font-size:large\"><strong>MESTRE DA LÂMINA</strong></span></p><hr><p>Enquanto estiver utilizando armas cortantes, você recebe as seguintes características:</p><ul><li><p><strong>Corte Inevitável:</strong> Suas jogadas de ataque (Comuns e de Técnica) com arma cortante ignoram resistências e imunidades a dano Cortante.</p></li><li><p><strong>Ofensiva Brutal:</strong> Em caso de acerto crítico, você causa 2 dados de dano adicionais e você recebe +3 em suas rolagens de acerto até o fim do seu turno seguinte.</p></li><li><p><strong>Execução Veloz:</strong> Ao executar uma técnica com alcance diferente de “Toque”, você pode mudar seu dano para cortante e aparecer instantaneamente atrás da criatura com o golpe já executado. Se sua rolagem for um 20 natural, você ignora qualquer reação que a criatura tenha utilizado e ela perde a reação.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>PERITO EM ARMAS ESPECIAIS</strong></span></p><hr><p><span style=\"font-size:10.0pt;font-family:'Chaparral Pro',serif\">Enquanto estiver utilizando uma arma especial corpo-a-corpo, você recebe as seguintes características:</span></p><ul><li><p><strong>Ataque Certeiro: </strong>Ao errar duas jogadas de ataque (Comuns) ou uma técnica, você pode escolher ter acerto automático na sua próxima rolagem de acerto. Esse efeito se repete múltiplas vezes e só acumula enquanto você estiver utilizando uma arma especial.</p></li><li><p><strong>Proficiência Afiada</strong>: Ao executar uma técnica de dano, você causa 2 dados de dano adicionais, mas o dano não pode ultrapassar o máximo de dano que a técnica poderia causar sem esses dados. Esse efeito só funciona se você iniciou seu turno com uma arma especial em mãos.</p></li><li><p><strong>Golpe Veloz</strong>: Toda vez que uma criatura entrar ou sair do seu alcance, você pode realizar uma jogada de ataque (Comum), causando 4d4 + seu modificador principal em dano. Esse efeito funciona mesmo contra características que ignoram reações, não importa qual seja.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>MESTRE DOS PUNHOS</strong></span></p><hr><p>Enquanto estiver desarmado ou armas marciais, você recebe as seguintes características:</p><ul><li><p><strong>Defesa Impecável:</strong> Enquanto você não possuir nenhuma aliado a até 4,5 metros de distância, você pode escolher aplicar um dos seguintes efeitos nas jogadas de ataque corpo-a-corpo da criatura:</p><ol><li><p class=\"TextoPadro\">A criatura recebe -2 de acerto em todas as rolagens de acerto corpo-a-corpo;</p></li><li><p class=\"TextoPadro\">A criatura recebe desvantagem na primeira rolagem de acerto contra você de cada criatura;</p></li><li><p class=\"TextoPadro\">Toda vez que uma criatura te atacar, você pode devolver 1d8 de dano contra ela.</p></li></ol></li><li><p><strong>Postura Inquebrável:</strong> Toda vez que você receber um ataque corpo-a-corpo ou a distância, você reduz o dano sofrido em um valor igual seu bônus de proficiência.</p></li><li><p><strong>Desviar Golpe:</strong> Ao ser alvo de uma jogada de ataque (Comum ou de Técnica) corpo-a-corpo, você pode usar sua reação para desviar o ataque para outra criatura a até 3 metros dela. Se você desviar uma técnica, você deve consumir uma quantidade de Pontos de Vigor igual a quantidade de Energia Amaldiçoada usada pela técnica.</p></li></ul><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\">Você só pode se beneficiar de um conjunto de efeitos acima por rodada. Ao usar o conjunto de benefícios no turno, trocar para outro conjunto não concede os benefícios dele.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>AUMENTO NO VALOR DE ATRIBUTO</strong></span></p></td></tr></tbody></table><p>Quando você atinge o <strong>4º nível</strong> e novamente no <strong>8º, 12º, 16º</strong> e <strong>19º nível</strong>, você pode aumentar um valor de atributo, à sua escolha, em 2 ou você pode aumentar dois valores de atributo, à sua escolha, em 1. Como padrão, você não pode elevar um valor de atributo acima de 20 com esta característica.</p><p class=\"MsoBodyText\">A partir do <strong>12º nível</strong>, você pode elevar um valor de atributo até 22 com está característica. A partir do <strong>16º nível,</strong> você pode elevar um valor de atributo até 24 com está característica.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>REFORÇO DE VIGOR</strong></span></p></td></tr></tbody></table><p>A partir do <strong>5º nível de Restringido</strong>, você se torna capaz de liberar quantidades enormes de vitalidade do seu corpo. Você recebe acesso as seguintes características:</p><ul><li><p><em>Até 3 vezes por encontro, você pode escolher gerar Pontos de Vigor adicionais igual seu nível de restringido;</em></p></li><li><p><em>Você dobra seus dados de vida atuais, também dobrando os recebidos futuramente;</em></p></li><li><p><em>Você passa a recuperar 1 Ponto de Vida por segundo fora de combate e um valor igual seu nível de personagem no início de cada um de seus turnos, dentro dele. Essa cura sempre está ativa enquanto você não possuir mais de 4 níveis de exaustão e, ao cair a 0 Pontos de Vida, você estabiliza automaticamente e cura 1 de PV por segundo.</em></p><p class=\"MsoBodyText\"><em>Ao curar o equivalente a metade da sua vida, você levanta novamente, até lá você sofre falha em Salvaguarda de Morte ao sofrer dano de forma padrão.</em></p></li></ul><p class=\"MsoNormal\">\_</p><p class=\"TextoPadro\">A partir do <strong>10º nível de Restringido</strong>, você se torna imune a “Feridas Brutais” e “Ferimentos Persistentes” enquanto seus Pontos de Vida estiverem acima de 1/3 do total. Isso inclui desmembramento.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>ARMA VIVA</strong></span></p></td></tr></tbody></table><p>A partir do <strong>6º nível de Restringido</strong>, você aprendeu a continuar a luta independentemente do seu estado físico, resistindo a dor e mantendo uma ofensiva poderosa de forma constante. Você recebe as seguintes características:</p><ul><li><p><strong>Resistência Superior:</strong> Você recebe 1 Ponto de Redução de dano para todo dano sofrido. No início de cada um de seus turnos, você recebe 1 adicional, até um máximo igual seu nível de personagem.</p></li><li><p><strong>Impacto Inesperado:</strong> Ao usar uma ação bônus, você faz com que sua próxima jogada de ataque (Comum ou de Técnica) empurre uma criatura por 9 metros de distância ao falhar em uma Salvaguarda de Força. Se a criatura colidir com um objeto ou estrutura de 1,5 metros de raio ou maior, ela recebe 3d8 de dano Contundente adicional.</p><p class=\"TextoPadro\">A partir do 10º nível, você pode aplicar esse efeito em uma técnica de dano sem o uso de uma ação bônus, mas apenas uma vez por rodada.</p></li><li><p><strong>Ataque Brutal</strong>: Em uma jogada de ataque (Comum ou de Técnica) que resulte em um crítico, você causa dano adicional igual ao seu nível de personagem (arredondado para baixo).</p><p>A partir do <strong>10º nível</strong>, você recebe 1d6 de dano adicional em todos os seus ataques (Comuns).<span style=\"font-size:8.0pt;font-family:'Chaparral Pro',serif;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-bidi-font-family:'Chaparral Pro';color:black\"><em>\_</em></span></p></li></ul><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>ATAQUE EXTRA</strong></span></p></td></tr></tbody></table><p>A partir do <strong>7º nível de Restringido</strong>, você pode atacar duas vezes, ao invés de uma, quando usar a ação “Atacar” durante o seu turno. A partir do <strong>12º nível</strong>, você passa a poder atacar três vezes ao usar a ação “Atacar”.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>POTENCIAL AMALDIÇOADO</strong></span></p></td></tr></tbody></table><p>A partir do <strong>9º nível de Restringido</strong>, você pode escolher entre receber 40 Pontos de Treinamento ou 75 Ppntos de Vigor máximos. Você recebe esse benefício novamente no <strong>13º </strong>e<strong> 17º nível</strong>.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>REGENERAÇÃO SUPREMA</strong></span></p></td></tr></tbody></table><p>A partir do <strong>10º nível de Restringido</strong>, seu metabolismo se tornou acelerado a tal nível que você consegue recuperar rapidamente sua estamina, podendo exercer ainda mais poder em combate, assim como se recuperando rapidamente de qualquer ferida.</p><p class=\"TextoPadro\">Você gera naturalmente 3 vezes o seu nível em Pontos de Vigor e, enquanto estiver abaixo da metade dos seus Pontos de Vida, você recupera Pontos de Vida adicionais igual seu nível de personagem.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>EXISTÊNCIA APRIMORADA</strong></span></p></td></tr></tbody></table><p>A partir do <strong>11º nível de Restringido</strong>, você treinou seu corpo a tal nível que sua restrição celestial passou a lhe conceder uma resistência absurda a todas as maldições, assim como energia amaldiçoada e seus efeitos. Você recebe as seguintes características:</p><ul><li><p><em>Você recebe resistência a todos os tipos de dano;</em></p></li><li><p><em>Você recebe vantagem em Salvaguardas contra qualquer efeito/condição causada por Energia Amaldiçoada ou reversa;</em></p></li><li><p><em>No início de cada encontro, você recebe 60 Pontos de Armadura com as regras do “Foco Defensivo” do Capítulo 6;</em></p></li><li><p><em>Toda vez que você sofrer dano crítico, você pode escolher receber 1 nível de exaustão para nega-lo, sofrendo apenas o dano normal do ataque.</em></p></li></ul><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>OFENSIVA ABSOLUTA</strong></span></p></td></tr></tbody></table><p>A partir do <strong>14º nível de Restringido</strong>, você aprendeu a canalizar toda sua força em golpes extremamente poderosos. Você pode colocar quantos Pontos de Vigor tiver disponíveis ao realizar um ataque com sua Queima Agressiva do Constituição Anômala. Além disso, você pode gastar 5 Pontos de Vigor para transformar todo dano causado por você em dano do tipo “Verdadeiro” até o início do seu próximo turno.</p><p class=\"TextoPadro\">Adicionalmente, todas as suas técnicas de dano têm o dano aumentado em 1 passo (d6 &gt; d8 &gt; d10 &gt; d12).</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>VELOCIDADE EXTREMA</strong></span></p></td></tr></tbody></table><p><span style=\"mso-bidi-font-size:10.0pt\">A partir do <strong>15º nível de Restringido</strong>,</span><span style=\"mso-bidi-font-size:10.0pt;mso-bidi-font-family:'Times New Roman';mso-bidi-theme-font:minor-bidi\"> você se tornou tão rápido que seus movimentos parecem até miragens, até para criaturas de alto nível. Você recebe as seguintes características:</span></p><ul><li><p><span style=\"mso-bidi-font-size:10.0pt\"><em>Você recebe uma ação bônus adicional, que só pode ser usada em efeitos, técnicas ou habilidades diferentes;</em></span></p></li><li><p><span style=\"mso-bidi-font-size:10.0pt\"><em>Você recebe uma reação adicional, que só pode ser usada em efeitos, técnicas ou habilidades diferentes;</em></span></p></li><li><p><em>Você pode usar seu deslocamento para se mover instantaneamente para qualquer lugar que você tenha deslocamento para alcançar, ignorando qualquer tipo de reação que seria gerada pelo seu movimento. Você desaparece da sua localização atual e aparece no seu destino final.</em></p></li></ul><p class=\"MsoNormal\"><span style=\"font-size:6.0pt;font-family:'Chaparral Pro',serif;mso-font-width:105%\"><em>\_</em></span></p><p class=\"MsoNormal\">As ações recebidas são renovadas no início de cada um de seus turnos.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>EVOLUÇÃO SUPREMA</strong></span></p></td></tr></tbody></table><p>A partir do <strong>18º nível de Restringido</strong>, você pode distribuir livremente 6 pontos entre seus atributos, respeitando o limite máximo de cada um deles.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>REALIZAÇÃO</strong></span></p></td></tr></tbody></table><p>A partir do <strong>19º nível de Restringido</strong>, você supera os limites do que seria possível normalmente até para suas habilidades, atingindo um novo patamar de poder. Você recebe acesso as seguintes características:</p><ul><li><p><em>O dano de seus ataques com arma amaldiçoada se torna 4d8 no lugar do original;</em></p></li><li><p><em>Você recebe uma jogada de ataque (Comum) adicional na característica Ataque Extra;</em></p></li><li><p><em>Você recebe todos os benefícios do Mestre do Combate simultaneamente, independentemente da arma utilizada;</em></p></li><li><p><em>Sua Classe de Resistência se torna 30. Qualquer aumento externo, sem ser HB, pode eleva-la até um máximo de 35;</em></p></li><li><p><em>Sua resistência a dano do Existência Aprimorada passa a englobar dano do tipo “Verdadeiro” independentemente da fonte, e suas resistências não podem ser ignoradas de nenhuma forma.</em></p></li></ul><p></p>"
+    chat: ''
+  source:
+    custom: Estilo de Combate (JL)
+    rules: '2014'
+    revision: 1
+    book: Livro do Jogador 1.0
+    page: '33'
+    license: ''
+  identifier: restringido
+  levels: 1
+  advancement:
+    IMoq25MSzfHb3msQ:
+      _id: IMoq25MSzfHb3msQ
+      type: HitPoints
+      configuration: {}
+      value: {}
+      flags: {}
+      hint: ''
+    PuLKwkCPgeCEJP7P:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 4
+      _id: PuLKwkCPgeCEJP7P
+      title: ''
+      icon: null
+      flags: {}
+      hint: ''
+    fdbxaETpLaFnyW6d:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 8
+      _id: fdbxaETpLaFnyW6d
+      title: ''
+      icon: null
+      flags: {}
+      hint: ''
+    HIz7R6xayJffkmwi:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 12
+      _id: HIz7R6xayJffkmwi
+      title: ''
+      icon: null
+      flags: {}
+      hint: ''
+    9kBgx2nxyTa6Hqjf:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 16
+      _id: 9kBgx2nxyTa6Hqjf
+      title: ''
+      icon: null
+      flags: {}
+      hint: ''
+    2LR4go8wOdGrbynu:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 20
+      _id: 2LR4go8wOdGrbynu
+      title: ''
+      icon: null
+      flags: {}
+      hint: ''
+    uHsPllOiffIosIpS:
+      type: Trait
+      level: 1
+      configuration:
+        grants:
+          - saves:str
+          - saves:dex
+          - saves:con
+        mode: default
+        allowReplacements: false
+        choices: []
+      value:
+        chosen:
+          - saves:int
+          - saves:cha
+      _id: uHsPllOiffIosIpS
+      flags: {}
+      hint: ''
+      title: ''
+    UzPpRS5bTrnZZtdb:
+      _id: UzPpRS5bTrnZZtdb
+      type: Trait
+      configuration:
+        mode: default
+        allowReplacements: false
+        grants: []
+        choices:
+          - count: 4
+            pool:
+              - skills:acr
+              - skills:ath
+              - skills:prf
+              - skills:Cont
+              - skills:dec
+              - skills:ste
+              - skills:his
+              - skills:itm
+              - skills:ins
+              - skills:inv
+              - skills:rel
+              - skills:nat
+              - skills:prc
+              - skills:per
+              - skills:slt
+              - skills:med
+              - skills:ani
+              - skills:sur
+              - skills:luc
+      level: 1
+      title: ''
+      icon: null
+      value:
+        chosen: []
+      flags: {}
+      hint: ''
+    F4zPu7ZErtbUNa5G:
+      _id: F4zPu7ZErtbUNa5G
+      type: ScaleValue
+      configuration:
+        identifier: ''
+        type: string
+        distance:
+          units: ''
+        scale:
+          '1':
+            value: '1'
+          '5':
+            value: '2'
+          '9':
+            value: '3'
+          '10':
+            value: '4'
+          '15':
+            value: '5'
+          '17':
+            value: '6'
+      value: {}
+      title: Dificuldade Inefável
+      hint: <p>@scale.restringido.dificuldade</p>
+      flags: {}
+    9rRfcq0QyI1e1RTp:
+      _id: 9rRfcq0QyI1e1RTp
+      type: ItemChoice
+      configuration:
+        choices:
+          '1':
+            count: 2
+            replacement: false
+          '3':
+            count: 1
+            replacement: false
+          '6':
+            count: 1
+            replacement: false
+          '9':
+            count: 1
+            replacement: false
+          '12':
+            count: 1
+            replacement: false
+          '15':
+            count: 1
+            replacement: false
+          '17':
+            count: 1
+            replacement: false
+          '18':
+            count: 1
+            replacement: false
+        allowDrops: true
+        type: null
+        pool:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.PCMv2ROyNP67Q8K8
+          - uuid: Compendium.jujutsu-compendium.geral.Item.mNYaKca3GBGD4Ipq
+          - uuid: Compendium.jujutsu-compendium.geral.Item.sk7mBM0pII8LGdfq
+          - uuid: Compendium.jujutsu-compendium.geral.Item.8Fly1UAXqAO2rh19
+          - uuid: Compendium.jujutsu-compendium.geral.Item.JNOIRp3vD13sYdMH
+          - uuid: Compendium.jujutsu-compendium.geral.Item.8Hj19qiJfaPZGTsA
+          - uuid: Compendium.jujutsu-compendium.geral.Item.bva5epdYxzThtP6M
+          - uuid: Compendium.jujutsu-compendium.geral.Item.0XPCGOxGdkWcR2Vo
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4vLQ7n8G6rrhE1xx
+          - uuid: Compendium.jujutsu-compendium.geral.Item.PX684p6nV5rCcNdS
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4Hiwy0wrIrTms5MM
+          - uuid: Compendium.jujutsu-compendium.geral.Item.DrBpdedmyqnhM5df
+          - uuid: Compendium.jujutsu-compendium.geral.Item.2PhKSjK9qj9ZR6N7
+          - uuid: Compendium.jujutsu-compendium.geral.Item.gefdu4YHs1PfzAbO
+          - uuid: Compendium.jujutsu-compendium.geral.Item.L4S34HfMD3TMfDiK
+          - uuid: Compendium.jujutsu-compendium.geral.Item.jrqGxj4hXB45vVxR
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Cej9rFPAZLCga4bT
+          - uuid: Compendium.jujutsu-compendium.geral.Item.nXYRnZGNuaoam45h
+          - uuid: Compendium.jujutsu-compendium.geral.Item.XkZ9ajfGzxGXcHzO
+          - uuid: Compendium.jujutsu-compendium.geral.Item.QaXricyQqGncSfOs
+          - uuid: Compendium.jujutsu-compendium.geral.Item.XPSJ7haBC8du3TIm
+          - uuid: Compendium.jujutsu-compendium.geral.Item.tXDjrnCSmSN0anzs
+          - uuid: Compendium.jujutsu-compendium.geral.Item.27hODHpzlrfada74
+          - uuid: Compendium.jujutsu-compendium.geral.Item.vYTryoZKA6kl4ura
+          - uuid: Compendium.jujutsu-compendium.geral.Item.JjdXdRphZg6ixnEJ
+          - uuid: Compendium.jujutsu-compendium.geral.Item.iLAcZMqSs8gqfsUL
+          - uuid: Compendium.jujutsu-compendium.geral.Item.KhSlw4AIhzDSJt0L
+          - uuid: Compendium.jujutsu-compendium.geral.Item.GTpLN4dXVTQxEUGM
+          - uuid: Compendium.jujutsu-compendium.geral.Item.pjcfpwper3gCbN6k
+          - uuid: Compendium.jujutsu-compendium.geral.Item.H9TXciC0Ty7XK2z8
+          - uuid: Compendium.jujutsu-compendium.geral.Item.OpBdHF32rJuWcA4I
+          - uuid: Compendium.jujutsu-compendium.geral.Item.CQ5A81X2Oo6Mki8P
+          - uuid: Compendium.jujutsu-compendium.geral.Item.SuYYqkz57omrdkkL
+          - uuid: Compendium.jujutsu-compendium.geral.Item.qt30lLRhjbaJofBS
+          - uuid: Compendium.jujutsu-compendium.geral.Item.fy033ppmg7T4NROi
+          - uuid: Compendium.jujutsu-compendium.geral.Item.V9HGMLfMpofEyJDk
+          - uuid: Compendium.jujutsu-compendium.geral.Item.phjhzAtEriRqTfbj
+          - uuid: Compendium.jujutsu-compendium.geral.Item.mDTLUIskoUZB9ZRP
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4L6kFKQP5UFDxCsV
+          - uuid: Compendium.jujutsu-compendium.geral.Item.WKcWzfXwCPwKwDld
+          - uuid: Compendium.jujutsu-compendium.geral.Item.jH0ECBJlq0VCuPe9
+          - uuid: Compendium.jujutsu-compendium.geral.Item.qeOcNGu2ske9fHL8
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Bcfjw23FfpY3CrRs
+          - uuid: Compendium.jujutsu-compendium.geral.Item.a9jqktyNovVcoe2C
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4dfu8ht0CY1crbf6
+          - uuid: Compendium.jujutsu-compendium.geral.Item.ggNxaU8N5oQZm2ge
+          - uuid: Compendium.jujutsu-compendium.geral.Item.eZgER2916B2oEGYZ
+          - uuid: Compendium.jujutsu-compendium.geral.Item.ajDH8V2kPLjp8BYf
+          - uuid: Compendium.jujutsu-compendium.geral.Item.R4JNiv4iRt0TlEBF
+          - uuid: Compendium.jujutsu-compendium.geral.Item.37os1n1MC8Z9Tb0Z
+        spell: null
+        restriction:
+          list: []
+      value:
+        added: {}
+        replaced: {}
+      title: Talentos
+      hint: >-
+        <p>Escolha 1 Talento Simples se você não pegou um Aspecto Inato Escolha
+        1 Talento adicional se você for das variantes: Humano Normal ou Tribo
+        Gyudondond. Escolha 2 Talentos adicionais se você for das variantes:
+        Kurta ou Escória da Cidade Meteoro</p>
+      flags: {}
+    kPsWDy3riOGFQcgU:
+      type: ItemGrant
+      _id: kPsWDy3riOGFQcgU
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.G6KVxtP5nCnJmjlP
+            optional: false
+          - uuid: Compendium.jujutsu-compendium.geral.Item.hktaKRuc4ILQZVeU
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 1
+      hint: ''
+      title: Característica de Restringido
+    qBP1Xw1LEqIpkYnz:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.yPnj1bEHH3wTfed0
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 2
+      hint: ''
+      title: Característica de Restringido
+      _id: qBP1Xw1LEqIpkYnz
+    yi3r8iY5e96VdzeJ:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.irXzwSBKnVAsGGXl
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 3
+      hint: ''
+      title: Característica de Restringido
+      _id: yi3r8iY5e96VdzeJ
+    rsEZYyLOeF4Dfswl:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.gP2U0QQWiytZWTiN
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 5
+      hint: ''
+      title: Característica de Restringido
+      _id: rsEZYyLOeF4Dfswl
+    i6ZxhBOa511gbBoC:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.B1JCyLxvYO3Gn908
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 6
+      hint: ''
+      title: Característica de Restringido
+      _id: i6ZxhBOa511gbBoC
+    27Zh9JXJdm2mxvDr:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.U60aCKJlCyIne4rs
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 10
+      hint: ''
+      title: Característica de Restringido
+      _id: 27Zh9JXJdm2mxvDr
+    7Ae5kq3YvwAWFXqL:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.78cxyX8UyNxsQbPX
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 11
+      hint: ''
+      title: Característica de Restringido
+      _id: 7Ae5kq3YvwAWFXqL
+    JjcoN293vCTmaOlK:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.MIpnI0N61VKsXz88
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 14
+      hint: ''
+      title: Característica de Restringido
+      _id: JjcoN293vCTmaOlK
+    MhHyvVom9knj85jz:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.cW5L9d7Synv9YY6C
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 15
+      hint: ''
+      title: Característica de Restringido
+      _id: MhHyvVom9knj85jz
+    gFktfxIR9RKRUEaU:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 6
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+        max: null
+      value:
+        type: asi
+      level: 18
+      title: ''
+      icon: null
+      flags: {}
+      hint: ''
+      _id: gFktfxIR9RKRUEaU
+    Ga76ZNuRPXN0S1Q8:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.1kdi4KFO9iTnvSBy
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 19
+      hint: ''
+      title: Característica de Restringido
+      _id: Ga76ZNuRPXN0S1Q8
+    egu6EPvQyRwauQ2u:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.OX7APnnOsC0Dp8Yx
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 18
+      hint: ''
+      title: Característica de Restringido
+      _id: egu6EPvQyRwauQ2u
+    O7ejRBE0ZOc8ZkZU:
+      _id: O7ejRBE0ZOc8ZkZU
+      type: ItemChoice
+      configuration:
+        choices:
+          '1':
+            count: 2
+            replacement: false
+          '2':
+            count: 1
+            replacement: false
+          '3':
+            count: 1
+            replacement: false
+        allowDrops: true
+        type: null
+        pool:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.fQEiotOxozaIn9Y3
+          - uuid: Compendium.jujutsu-compendium.geral.Item.wmEVc5Z1tlvnyhmI
+          - uuid: Compendium.jujutsu-compendium.geral.Item.cYNOBnXsF2DQbLp4
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Cg7GMea45zirlfmv
+          - uuid: Compendium.jujutsu-compendium.geral.Item.fKBsvfBVThJQo3OV
+          - uuid: Compendium.jujutsu-compendium.geral.Item.yK6KUhmiwhedWoJr
+          - uuid: Compendium.jujutsu-compendium.geral.Item.LfeLCqX7GeBHky3I
+          - uuid: Compendium.jujutsu-compendium.geral.Item.1WfsoBmRw2myPy6K
+          - uuid: Compendium.jujutsu-compendium.geral.Item.nqY0kXLjbLdxj4pD
+          - uuid: Compendium.jujutsu-compendium.geral.Item.xL27COxWdlxR6Stj
+          - uuid: Compendium.jujutsu-compendium.geral.Item.35F6OComd4fEqH0t
+          - uuid: Compendium.jujutsu-compendium.geral.Item.6y4aKtW9WO0zMUnZ
+          - uuid: Compendium.jujutsu-compendium.geral.Item.41PHgY9tpdzt0A9b
+          - uuid: Compendium.jujutsu-compendium.geral.Item.wNPjexjrgaUnkfch
+          - uuid: Compendium.jujutsu-compendium.geral.Item.vn7JIDj3L9ewgbQ8
+          - uuid: Compendium.jujutsu-compendium.geral.Item.t5Wfu7rP3PxQbz7h
+          - uuid: Compendium.jujutsu-compendium.geral.Item.mx0rPWHN77YIGBBn
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Ei9tWn7AyUysLG1j
+          - uuid: Compendium.jujutsu-compendium.geral.Item.lkLiBQJVew52xsOF
+          - uuid: Compendium.jujutsu-compendium.geral.Item.8RlTJZ5TdHba6SCZ
+          - uuid: Compendium.jujutsu-compendium.geral.Item.q9zRwIu676imWcTa
+          - uuid: Compendium.jujutsu-compendium.geral.Item.WjCQZh2jkRtAyb3u
+          - uuid: Compendium.jujutsu-compendium.geral.Item.WNXnczNahQRdMKz0
+          - uuid: Compendium.jujutsu-compendium.geral.Item.javwcPNBIaASRnF2
+          - uuid: Compendium.jujutsu-compendium.geral.Item.iy9L7AZLLWeVTepP
+          - uuid: Compendium.jujutsu-compendium.geral.Item.XhHkv3em6MFoe035
+          - uuid: Compendium.jujutsu-compendium.geral.Item.b1CtPJ60TJKVhhdc
+        spell: null
+        restriction:
+          list: []
+      value:
+        added: {}
+        replaced: {}
+      title: Habilidades Básicas
+      hint: ''
+      flags: {}
+  spellcasting:
+    progression: full
+    ability: str
+    preparation:
+      formula: ''
+  wealth: ''
+  startingEquipment: []
+  hd:
+    denomination: d12
+    spent: 0
+    additional: ''
+  primaryAbility:
+    value:
+      - str
+    all: true
+  properties: []
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.classes.eT3zSsu3P3BYCqXq
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624882956
+  modifiedTime: 1782615105360
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!Yu0Lp8V4TzqnEYxh'

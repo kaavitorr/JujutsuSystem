@@ -1,0 +1,354 @@
+folder: onrz3qUGUndiIaUB
+name: Maldição
+type: race
+img: systems/jujutsu-system/assets/Origens/Mahito_Cursed_Clash.webp
+system:
+  description:
+    value: "<p>Ajuste de Atributo: +4 Pontos de Atributo para distribuir entre todos os 6 atributos.</p><p class=\"MsoNormal\">Pontos de Vida Base: 6 Pontos de Vida.</p><p class=\"MsoNormal\"><strong>Tamanho:</strong> Normalmente, entre 1,50 e 3,00 metros (Médio).</p><p class=\"MsoNormal\"><strong>Peso:</strong> Normalmente, entre 65 e 300 kg.</p><p class=\"MsoNormal\"><strong>Deslocamento:</strong> 9 metros.</p><p class=\"MsoNormal\"><strong>Nado:</strong> 4,5 metros.\_</p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ORIGEM</strong></span></p></td></tr></tbody></table><p>Essas características acompanham a existência do personagem, são representações da sua origem, sendo uma parte essencial de como ele vê o mundo e de como o mundo olha pra ele.</p><p style=\"margin:0.5pt 0cm 0.0001pt 7.1pt;text-align:justify\"></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM</strong></span></p><hr><p><strong style=\"mso-bidi-font-weight:normal\">Natureza Amaldiçoada:</strong><span style=\"mso-bidi-font-weight:bold\"> Seu corpo é composto totalmente de energia amaldiçoada. Dessa forma, você pode se regenerar facilmente a utilizando. Você recebe imunidade a </span><strong style=\"mso-bidi-font-weight:normal\">“Ferimentos Persistentes”</strong><span style=\"mso-bidi-font-weight:bold\">. Adicionalmente, você recebe automaticamente a habilidade de manipulação </span><strong style=\"mso-bidi-font-weight:normal\">“Energia Reversa”</strong><span style=\"mso-bidi-font-weight:bold\"> e sua nomenclatura muda para </span><strong style=\"mso-bidi-font-weight:normal\">“Regeneração Amaldiçoada”,</strong><span style=\"mso-bidi-font-weight:bold\"> mas ela possui a mesma função da original, assim como suas técnicas que são adquiridas junto dela.</span></p><p style=\"tab-stops:467.8pt\" class=\"TextoPadro\"><strong style=\"mso-bidi-font-weight:normal\">Constituição de Maldição: </strong>Você recebe 10 Pontos de Energia Amaldiçoada (PA) adicional por nível de personagem e recebe 2 adicionais toda vez que receber um máximo adicional sem ser por aumento de nível.</p><p style=\"tab-stops:467.8pt\" class=\"TextoPadro\"><strong style=\"mso-bidi-font-weight:normal\">Manipulação Instintiva: </strong><span style=\"mso-bidi-font-weight:bold\">Por ser feito de energia amaldiçoada, você tem uma capacidade incrível em manipula-la, permitindo eficiência extrema. O custo dos seus feitiços e habilidades menores é reduzido em -2, até um mínimo de 1 PA.</span></p><p style=\"tab-stops:467.8pt\" class=\"TextoPadro\"><strong style=\"mso-bidi-font-weight:normal\">Corpo Bestial:</strong><span style=\"mso-bidi-font-weight:bold\"> Você pode diminuir a redução da </span><strong style=\"mso-bidi-font-weight:normal\">“Manipulação Instintiva”</strong><span style=\"mso-bidi-font-weight:bold\"> para -1 e receber </span><strong style=\"mso-bidi-font-weight:normal\">3 Traços Animais Comuns</strong><span style=\"mso-bidi-font-weight:bold\"> e </span><strong style=\"mso-bidi-font-weight:normal\">2 Traços Animais Específicos</strong><span style=\"mso-bidi-font-weight:bold\"> da Origem de Poder de </span><strong style=\"mso-bidi-font-weight:normal\">Corpo Amaldiçoado</strong><span style=\"mso-bidi-font-weight:bold\">.</span></p><p></p><p><span style=\"font-size:large\"><strong>DESVANTAGENS DA VARIANTE</strong></span></p><hr><p><strong style=\"mso-bidi-font-weight:normal\">Aniquilação Mútua: </strong><span style=\"mso-bidi-font-weight:bold\">Seu corpo não pode conter energia reversa por ser feito totalmente de energia negativa. Dessa forma, você não pode utilizar Reversão de Feitiços assim como recebe dano dobrado de energia reversa e Reversão de Feitiços.</span></p><p style=\"tab-stops:467.8pt\" class=\"TextoPadro\"><strong style=\"mso-bidi-font-weight:normal\">Natureza Imutável:</strong><span style=\"mso-bidi-font-weight:bold\"> Você não recebe e nem possui talentos de origem.</span></p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  advancement:
+    thrtYH4KG74MbuZ9:
+      type: AbilityScoreImprovement
+      _id: thrtYH4KG74MbuZ9
+      configuration:
+        points: 4
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 4
+        locked: []
+        recommendation: null
+        max: null
+      value:
+        type: asi
+      level: 0
+      flags: {}
+      hint: ''
+      name: ''
+      img: null
+    rEJzDVRlCiq4jyq7:
+      type: Size
+      _id: rEJzDVRlCiq4jyq7
+      configuration:
+        sizes:
+          - sm
+          - med
+          - lg
+      level: 0
+      value: {}
+      flags: {}
+      hint: ''
+      name: ''
+      img: null
+    pWi09QUI278nzGY8:
+      type: Trait
+      configuration:
+        grants:
+          - languages:standard:common
+        mode: default
+        allowReplacements: false
+        choices: []
+      _id: pWi09QUI278nzGY8
+      level: 0
+      value:
+        chosen: []
+      flags: {}
+      hint: ''
+    4RXJIfXI8J2WfgL2:
+      _id: 4RXJIfXI8J2WfgL2
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.GxEUkN6EJVXw16Wf
+            optional: false
+            sort: 0
+        optional: false
+        spell: null
+        sorting: m
+      value: {}
+      level: 0
+      flags: {}
+      hint: ''
+      name: Pontos de Vida
+      img: null
+    8aPE0FrMa7fh4qox:
+      type: ItemChoice
+      configuration:
+        choices:
+          '3':
+            count: 1
+            replacement: false
+        allowDrops: true
+        type: null
+        pool:
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.PCMv2ROyNP67Q8K8
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.mNYaKca3GBGD4Ipq
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.sk7mBM0pII8LGdfq
+            sort: 0
+        spell: null
+        restriction:
+          list: []
+          school: []
+        sorting: a
+      value:
+        added: {}
+        replaced: {}
+      hint: <p>Escolha um Talento de Espécie</p>
+      _id: 8aPE0FrMa7fh4qox
+      flags: {}
+      name: Talentos de Origem
+    9rRfcq0QyI1e1RTp:
+      _id: 9rRfcq0QyI1e1RTp
+      type: ItemChoice
+      configuration:
+        choices:
+          '1':
+            count: 2
+            replacement: false
+        allowDrops: true
+        type: null
+        pool:
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.8Fly1UAXqAO2rh19
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.SBibOrA2mgMb82Qp
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.0N6NmnILW86w4qR8
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.Q5g77MGi9t6uH0uw
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.8Hj19qiJfaPZGTsA
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.bva5epdYxzThtP6M
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.a3OLnXxwOSTZojBg
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.0XPCGOxGdkWcR2Vo
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.4vLQ7n8G6rrhE1xx
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.dnR1ns2a6urTcvr6
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.gQom5By6V2abdBAO
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.PX684p6nV5rCcNdS
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.4Hiwy0wrIrTms5MM
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.fGt2po4NVQBr7saj
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.DrBpdedmyqnhM5df
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.WDdV8vnztHsi18oA
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.2PhKSjK9qj9ZR6N7
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.gefdu4YHs1PfzAbO
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.NT6nv9HynoEkTqUL
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.L4S34HfMD3TMfDiK
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.jrqGxj4hXB45vVxR
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.gNrFJeMSWa2SGR23
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.Cej9rFPAZLCga4bT
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.YGsPyMbx3Q6GKfBO
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.nXYRnZGNuaoam45h
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.1P8wNY9xG6RGXmiM
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.MBBQd83Q6P614jrc
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.XkZ9ajfGzxGXcHzO
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.utdKiltzKI6cFnSO
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.QaXricyQqGncSfOs
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.jCjvybObzeHjkWKb
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.XPSJ7haBC8du3TIm
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.tXDjrnCSmSN0anzs
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.27hODHpzlrfada74
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.0VRXKCA3lQKQSkxK
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.3RrzrSM3iLKNmwH6
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.HsPf7P60L4PIbK4k
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.hLBy2ZFlmsE7v4Fm
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.v6XZkUwlcLB8wwFR
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.PRjcts3kjrZZKv6L
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.IGIb8Fr7vnD1JKix
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.pT1S7NmzelMzPFPF
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.cD1SgHP8kMH77imf
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.oH6BGnvWBx1n4Ds2
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.vYTryoZKA6kl4ura
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.VGkooToLC4u4HsY4
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.JjdXdRphZg6ixnEJ
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.iLAcZMqSs8gqfsUL
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.Cjvv2wq5YJOWA0WV
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.p0IajBaWITr65Rvo
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.KhSlw4AIhzDSJt0L
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.L2Ve7qyNma421OQs
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.GTpLN4dXVTQxEUGM
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.izKIpkjly0PexyU6
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.fAwZxGnWs82vEr9F
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.pjcfpwper3gCbN6k
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.oQgpciD22RtFnr7P
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.1RChJ4MjOP97lVo8
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.H9TXciC0Ty7XK2z8
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.OpBdHF32rJuWcA4I
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.CQ5A81X2Oo6Mki8P
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.SuYYqkz57omrdkkL
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.qt30lLRhjbaJofBS
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.pfGafuLl8I1MZUMt
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.fy033ppmg7T4NROi
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.V9HGMLfMpofEyJDk
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.phjhzAtEriRqTfbj
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.9aRaYO8fzWmPCoDM
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.8gcJM57EAa9NmSyE
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.mDTLUIskoUZB9ZRP
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.4L6kFKQP5UFDxCsV
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.WKcWzfXwCPwKwDld
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.jH0ECBJlq0VCuPe9
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.qeOcNGu2ske9fHL8
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.Bcfjw23FfpY3CrRs
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.a9jqktyNovVcoe2C
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.4dfu8ht0CY1crbf6
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.ggNxaU8N5oQZm2ge
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.1UpwwTpw3KVVLyEK
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.hsXv0CtLb2nBPeai
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.i689nZOi2n5bYjs3
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.eZgER2916B2oEGYZ
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.ajDH8V2kPLjp8BYf
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.zXRth93yChuZhaHb
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.R4JNiv4iRt0TlEBF
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.PCMv2ROyNP67Q8K8
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.mNYaKca3GBGD4Ipq
+            sort: 0
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.sk7mBM0pII8LGdfq
+            sort: 0
+        spell: null
+        restriction:
+          list: []
+          school: []
+        sorting: a
+      value:
+        added: {}
+        replaced: {}
+      hint: >-
+        <p>Escolha 1 Talento Simples se você não pegou um Aspecto Inato Escolha
+        1 Talento adicional se você for das variantes: Humano Normal ou Tribo
+        Gyudondond. Escolha 2 Talentos adicionais se você for das variantes:
+        Kurta ou Escória da Cidade Meteoro</p>
+      flags: {}
+      name: Talentos
+  movement:
+    units: m
+    hover: false
+    ignoredDifficultTerrain: []
+    speeds:
+      walk: '9'
+      burrow: ''
+      climb: ''
+      fly: ''
+      swim: '4.5'
+  senses:
+    units: m
+    special: ''
+    ranges:
+      darkvision: null
+      blindsight: null
+      tremorsense: null
+      truesight: null
+  type:
+    value: humanoid
+    custom: ''
+    subtype: ''
+  identifier: maldicao
+effects: []
+flags:
+  scene-packer:
+    hash: 67eee98e596c8e15d667f2c4fc3cc39d4c880220
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816812240
+  modifiedTime: 1791816812240
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: JEotq0xTcZTgJIqD
+sort: 350000
+_key: '!items!JEotq0xTcZTgJIqD'

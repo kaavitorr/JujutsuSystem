@@ -1,0 +1,22 @@
+_id: jj2a000000000104
+_key: '!items!jj2a000000000104'
+name: Expandir Energia
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: expandir-energia
+  description:
+    value: <p><em><strong>Requisito:</strong> Fonte de Poder</em></p><p>Você libera uma enorme quantidade de Energia que serve como dissuasor para os Espíritos Amaldiçoados mais fracos. Todos os Espíritos com ND igual a metade do seu nível ou inferior não irão se aproximar mais de 30 metros de distância de você.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Ressonância da Alma
+      requisitos:
+        - Fonte de Poder
+folder: jj2f000000000016
+ownership:
+  default: 0
+effects: []
+sort: 0

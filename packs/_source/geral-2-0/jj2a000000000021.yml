@@ -1,0 +1,25 @@
+_id: jj2a000000000021
+_key: '!items!jj2a000000000021'
+name: 'Gestos: Cone e Leque'
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: gestos-cone-e-leque
+  description:
+    value: |-
+      <p><em><strong>Requisito:</strong> Gestos: Flecha e Linha</em></p><p>Você aprende a utilizar os gestos de Cone e Leque na ativação de suas técnicas, modificando seu alcance. Ao gastar um Ponto de Ação [⬢] e uma quantidade de PA igual a ordem da habilidade (Básico – 1 PA | Estendido – 2 PA | Máximo – 3 PA), você pode modificar o alcance da sua técnica para uma das seguintes:</p><ul><li><strong>Leque:</strong> Você faz seu ataque pegar uma área de 180º a sua frente. Todas as criaturas passam a ter que realizar uma Salvaguarda de Agilidade (ou a original). Sofrendo todo dano se falharem ou metade se obtiverem sucesso, mas o dano se torna d6.</li><li><strong>Cone:</strong> Você faz seu ataque pegar uma área de 55º a sua frente. Todas as criaturas passam a ter que realizar uma Salvaguarda de Agilidade (ou a original). Sofrendo todo dano se falharem ou metade se obtiverem sucesso, mas o dano se torna d6.</li></ul>
+      <table><thead><tr><th>Ordem</th><th>Leque</th><th>Cone</th></tr></thead><tbody><tr><td>Básico</td><td>6 metros</td><td>10 metros</td></tr><tr><td>Estendido</td><td>12 metros</td><td>20 metros</td></tr><tr><td>Máximo</td><td>18 metros</td><td>30 metros</td></tr></tbody></table>
+      <p>Caso a técnica modificada seja uma “Flecha” e tenha uma condição, você paga 2 PA adicionais para modifica-la para o modelo de Leque ou Cone.<br>Os gestos só funcionam em técnicas que causam dano e/ou condições negativas.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Manipulação de Técnica
+      requisitos:
+        - 'Gestos: Flecha e Linha'
+folder: jj2f000000000004
+ownership:
+  default: 0
+effects: []
+sort: 0

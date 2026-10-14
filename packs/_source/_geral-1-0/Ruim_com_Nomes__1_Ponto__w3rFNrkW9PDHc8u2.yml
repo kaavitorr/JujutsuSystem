@@ -1,0 +1,77 @@
+name: Ruim com Nomes (1 Ponto)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects: []
+folder: ImFD309NSdjSZUT5
+sort: 2000000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: f0f0e01f6d7c8ce2bf664aa77c5bdb090e71173a
+    sourceId: Item.OpfFcRq1vdaK1oNR
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: "<p>Você tem um sério problema com nomes, e vive trocando ou falando o nome das pessoas de forma errada, muitas vezes atraindo sua raiva.</p><p>\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Você recebe -1 em qualquer Teste de Atributo de Presença</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: ruim-com-nomes-1-ponto
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.aB3ADBzD6BnUocDF
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902159
+  modifiedTime: 1776624902180
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: w3rFNrkW9PDHc8u2
+_key: '!items!w3rFNrkW9PDHc8u2'

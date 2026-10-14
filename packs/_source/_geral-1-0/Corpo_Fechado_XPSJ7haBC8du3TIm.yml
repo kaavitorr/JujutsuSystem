@@ -1,0 +1,62 @@
+folder: vG1tvdXvcpq70Tb5
+name: Corpo Fechado
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>Sua pele parece de aço e, por mais que esteja ferido, raramente você
+      demonstra sinais de lesões e cortes, sendo difícil até mesmo sangrar
+      quando cortado.</p><p><strong>Característica:</strong> Recebe + 2 em
+      Salvaguardas contra as condições “Sangramento” e “Queimado”.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: alvo-marcado
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: ba64831e68dad90b14a14703c4cc590a915cadfe
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902137
+  modifiedTime: 1776913391608
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: XPSJ7haBC8du3TIm
+sort: 1700000
+_key: '!items!XPSJ7haBC8du3TIm'

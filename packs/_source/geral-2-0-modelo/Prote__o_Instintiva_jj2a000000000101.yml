@@ -1,0 +1,42 @@
+_id: jj2a000000000101
+name: Proteção Instintiva
+type: feat
+img: icons/magic/earth/barrier-stone-pillar-purple.webp
+system:
+  identifier: protecao-instintiva
+  description:
+    value: >-
+      <p>Abaixo você pode adquirir as habilidades do caminho de “Ressonância da
+      Alma”. Permitindo usar talentos que ajudam o usuário a impor sua vontade
+      no mundo ao seu redor.</p><p>Você tem um sentimento que te guia a entender
+      mais sobre sua alma. Isso não te da exatamente um poder sobre ela, mas te
+      ajuda a defende-la de forma instintiva e poder usa-la para impor sua
+      presença no mundo. Você recebe uma quantidade de Resistência a dano da
+      alma igual ao seu nível de personagem.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Ressonância da Alma
+      requisitos: []
+folder: jj2f000000000016
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816219335
+  modifiedTime: 1791816219335
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000101'

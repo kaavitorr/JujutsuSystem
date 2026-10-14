@@ -1,0 +1,22 @@
+_id: jj2a000000000025
+_key: '!items!jj2a000000000025'
+name: Redução de Potência (Voto)
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: reducao-de-potencia-voto
+  description:
+    value: <p><em><strong>Requisito:</strong> Manipulação Rápida</em></p><p><em>Exemplo de Voto da Manipulação Rápida:</em></p><p>Você reduz o dano final da sua “Retaliação Rápida” em 2 dados de dano para impor a condição “Sangramento” se a criatura falhar em uma Salvaguarda de Constituição.</p><p><strong>Duração:</strong> Instantâneo · <strong>Requisito:</strong> Retalhação Rápida · <strong>Manipulação Rápida</strong></p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Manipulação de Técnica
+      requisitos:
+        - Manipulação Rápida
+folder: jj2f000000000004
+ownership:
+  default: 0
+effects: []
+sort: 0

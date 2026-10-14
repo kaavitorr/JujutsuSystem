@@ -1,0 +1,842 @@
+import { formatNumber, getPluralRules, simplifyBonus, splitSemicolons } from "../../utils.mjs";
+import { createCheckboxInput } from "../fields.mjs";
+import BaseActorSheet from "./api/base-actor-sheet.mjs";
+import HabitatConfig from "./config/habitat-config.mjs";
+import TreasureConfig from "./config/treasure-config.mjs";
+import Ruleset from "../../systems/ruleset.mjs";
+import { buildNpc2Context, configureNpc2Parts, NPC2_TABS, updateNpc2Actions, updateNpc2Rank } from "./jj/legacy2-npc-sheet.mjs";
+import { legacy2ActionMax, acoesTetoEfetivo, SKILL_GROUPS } from "./jj/legacy2-sheet.mjs";
+import { mountLegacy2Layout } from "./jj/legacy2-layout.mjs";
+import { injectJJConditions } from "./jj/conditions.mjs";
+import { assignNpcProfile, removeNpcProfile } from "./jj/npc-profile-selection.mjs";
+
+const TextEditor = foundry.applications.ux.TextEditor.implementation;
+
+/**
+ * Extension of base actor sheet for NPCs.
+ */
+export default class NPCActorSheet extends BaseActorSheet {
+  /** @override */
+  static DEFAULT_OPTIONS = {
+    actions: {
+      editDescription: NPCActorSheet.#editDescription,
+      jj2ActionPip: function(event, target) { if (Ruleset.isV2() && target.dataset.value?.trim()) return updateNpc2Actions(this, Math.min(Number(target.dataset.value), acoesTetoEfetivo(this.actor))); },
+      jj2RestoreActions: function() { if (Ruleset.isV2()) return updateNpc2Actions(this, acoesTetoEfetivo(this.actor)); },
+      jj2RefineEnergy: function() { if (Ruleset.isV2() && this.isEditable) return _npcGenerateEnergy(this.actor); },
+      jj2Rank: function(event, target) { return updateNpc2Rank(this, target, Ruleset, CONFIG.DND5E.abilities); },
+      jj2RemoveNpcProfile: function(event, target) { if (Ruleset.isV2()) return removeNpcProfile(this, target.dataset.profileType); }
+    },
+    classes: ["npc", "vertical-tabs"],
+    position: {
+      width: 700,
+      height: 700
+    }
+  };
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  static PARTS = {
+    header: {
+      template: "systems/jujutsu-system/templates/actors/npc-header.hbs"
+    },
+    sidebarCollapser: {
+      container: { classes: ["main-content"], id: "main" },
+      template: "systems/jujutsu-system/templates/actors/parts/sidebar-collapser.hbs"
+    },
+    sidebar: {
+      container: { classes: ["main-content"], id: "main" },
+      template: "systems/jujutsu-system/templates/actors/npc-sidebar.hbs"
+    },
+    abilityScores: {
+      container: { classes: ["main-content"], id: "main" },
+      template: "systems/jujutsu-system/templates/actors/npc-ability-scores-2.hbs"
+    },
+    details: {
+      container: { classes: ["tab-body"], id: "tabs" },
+      template: "systems/jujutsu-system/templates/actors/tabs/npc-summary-2.hbs", scrollable: [""]
+    },
+    skills: {
+      container: { classes: ["tab-body"], id: "tabs" },
+      template: "systems/jujutsu-system/templates/actors/tabs/character-skills-2.hbs",
+      scrollable: [""]
+    },
+    features: {
+      container: { classes: ["tab-body"], id: "tabs" },
+      template: "systems/jujutsu-system/templates/actors/tabs/actor-features.hbs",
+      templates: ["systems/jujutsu-system/templates/inventory/inventory.hbs", "systems/jujutsu-system/templates/inventory/activity.hbs"],
+      scrollable: [""]
+    },
+    inventory: {
+      container: { classes: ["tab-body"], id: "tabs" },
+      template: "systems/jujutsu-system/templates/actors/tabs/actor-inventory.hbs",
+      templates: [
+        "systems/jujutsu-system/templates/inventory/inventory.hbs", "systems/jujutsu-system/templates/inventory/activity.hbs",
+        "systems/jujutsu-system/templates/inventory/encumbrance.hbs"
+      ],
+      scrollable: [""]
+    },
+    spells: {
+      container: { classes: ["tab-body"], id: "tabs" },
+      template: "systems/jujutsu-system/templates/actors/tabs/creature-spells.hbs",
+      scrollable: [""]
+    },
+    effects: {
+      container: { classes: ["tab-body"], id: "tabs" },
+      template: "systems/jujutsu-system/templates/actors/tabs/actor-effects.hbs",
+      scrollable: [""]
+    },
+    biography: {
+      container: { classes: ["tab-body"], id: "tabs" },
+      template: "systems/jujutsu-system/templates/actors/tabs/npc-biography.hbs",
+      scrollable: [""]
+    },
+    specialTraits: {
+      classes: ["flexcol"],
+      container: { classes: ["tab-body"], id: "tabs" },
+      template: "systems/jujutsu-system/templates/actors/tabs/creature-special-traits.hbs",
+      scrollable: [""]
+    },
+    warnings: {
+      template: "systems/jujutsu-system/templates/shared/sheet-warnings-dialog.hbs"
+    },
+    tabs: {
+      id: "tabs",
+      classes: ["tabs-right"],
+      template: "systems/jujutsu-system/templates/shared/sidebar-tabs.hbs"
+    }
+  };
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  static TABS = [
+    { tab: "features", label: "DND5E.Features", icon: "fas fa-list" },
+    { tab: "inventory", label: "DND5E.Inventory", svg: "systems/jujutsu-system/icons/svg/backpack.svg" },
+    { tab: "spells", label: "TYPES.Item.spellPl", icon: "fas fa-book" },
+    { tab: "skills", label: "Perícias", condition: () => Ruleset.isV2() },
+    { tab: "effects", label: "DND5E.EFFECT.Tab", icon: "fas fa-bolt" },
+    { tab: "biography", label: "DND5E.Biography", icon: "fas fa-feather" },
+    { tab: "specialTraits", label: "DND5E.SpecialTraits", icon: "fas fa-star" }
+  ];
+
+  /* -------------------------------------------- */
+  /*  Properties                                  */
+  /* -------------------------------------------- */
+
+  /**
+   * Description currently being edited.
+   * @type {string|null}
+   */
+  editingDescriptionTarget = null;
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  tabGroups = {
+    primary: "features"
+  };
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  _filters = {
+    features: { name: "", properties: new Set() },
+    effects: { name: "", properties: new Set() },
+    inventory: { name: "", properties: new Set() },
+    spells: { name: "", properties: new Set() }
+  };
+
+  /* -------------------------------------------- */
+  /*  Rendering                                   */
+  /* -------------------------------------------- */
+
+  /** @override */
+  async _configureInventorySections(sections) {
+    sections.forEach(s => s.minWidth = 200);
+  }
+
+  _configureRenderParts(options) {
+    const parts = super._configureRenderParts(options);
+    if (Ruleset.isV2() && !this.actor.limited) return configureNpc2Parts(parts);
+    delete parts.details; delete parts.abilityScores; delete parts.skills;
+    return parts;
+  }
+
+  async _configureRenderOptions(options) {
+    await super._configureRenderOptions(options);
+    if (Ruleset.isV2() && !this.actor.limited && options.isFirstRender && !options.tab) this.tabGroups.primary = "details";
+  }
+
+  _getTabs() {
+    if (!Ruleset.isV2() || this.actor.limited) return super._getTabs();
+    if (!NPC2_TABS.some(([id]) => id === this.tabGroups.primary)) this.tabGroups.primary = "details";
+    return Object.fromEntries(NPC2_TABS.map(([id,label,icon]) => [id, {
+      id, label, icon, group: "primary", active: this.tabGroups.primary === id,
+      cssClass: this.tabGroups.primary === id ? "active" : ""
+    }]));
+  }
+
+  _toggleSidebar(collapsed) {
+    if (!Ruleset.isV2() || this.actor.limited) return super._toggleSidebar(collapsed);
+    const closed = typeof collapsed === "boolean" ? collapsed : !this.element.classList.contains("sidebar-collapsed");
+    this.element.classList.toggle("sidebar-collapsed", closed);
+    const button = this.element.querySelector(".sidebar-collapser");
+    button?.setAttribute("aria-expanded", String(!closed));
+    button?.setAttribute("aria-label", closed ? "Expandir sidebar" : "Recolher sidebar");
+    return closed;
+  }
+
+  async _onDropItem(event, item) {
+    if (Ruleset.isV2() && ["taxonomy", "archetype"].includes(item.type)) {
+      if (!this.isEditable || event._behavior === "none") return;
+      if (!await assignNpcProfile(this.actor, item.type, item))
+        ui.notifications.warn("A escala do perfil deve somar exatamente 12 pontos.");
+      return;
+    }
+    return super._onDropItem(event, item);
+  }
+
+  /** Match the shared 2.0 skill labels to their roll attributes, preserving the 1.0 handler. */
+  _roll(event, target) {
+    if ( !Ruleset.isV2() || target.dataset.type !== "skill" ) return super._roll(event, target);
+    const key = target.closest("[data-key]")?.dataset.key;
+    const definition = SKILL_GROUPS.flatMap(group => group.skills).find(([id]) => id === key);
+    if ( !definition ) return super._roll(event, target);
+    const selected = this.actor.system.skills?.[key]?.ability;
+    const ability = key === "inv" && ["wis", "int"].includes(selected) ? selected : definition[2];
+    this.actor.rollSkill({ skill: key, ability, event });
+    return false;
+  }
+
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  async _prepareContext(options) {
+    const context = {
+      ...await super._prepareContext(options),
+      important: !foundry.utils.isEmpty(this.actor.classes) || this.actor.system.traits.important,
+      isNPC: true
+    };
+    context.hasClasses = context.itemCategories.classes?.length;
+    context.spellbook = this._prepareSpellbook(context);
+    if (Ruleset.isV2() && !this.actor.limited) {
+      context.rootId = this.id;
+      context.jj2 = buildNpc2Context(this.actor, CONFIG.DND5E, Ruleset, CONFIG.JUJUTSU);
+    }
+    return context;
+  }
+
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  async _preparePartContext(partId, context, options) {
+    context = await super._preparePartContext(partId, context, options);
+    switch ( partId ) {
+      case "biography": return this._prepareBiographyContext(context, options);
+      case "details": return this._prepareHeaderContext(context, options);
+      case "effects": return this._prepareEffectsContext(context, options);
+      case "features": return this._prepareFeaturesContext(context, options);
+      case "header": return this._prepareHeaderContext(context, options);
+      case "inventory": return this._prepareInventoryContext(context, options);
+      case "sidebar": return this._prepareSidebarContext(context, options);
+      case "specialTraits": return this._prepareSpecialTraitsContext(context, options);
+      case "spells": return this._prepareSpellsContext(context, options);
+      default: return context;
+    }
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Prepare rendering context for the biography tab.
+   * @param {ApplicationRenderContext} context  Context being prepared.
+   * @param {HandlebarsRenderOptions} options   Options which configure application rendering behavior.
+   * @returns {ApplicationRenderContext}
+   * @protected
+   */
+  async _prepareBiographyContext(context, options) {
+    if ( this.actor.limited ) return context;
+
+    const enrichmentOptions = {
+      secrets: this.actor.isOwner, relativeTo: this.actor, rollData: context.rollData
+    };
+    context.enriched = {
+      public: await TextEditor.enrichHTML(this.actor.system.details.biography.public, enrichmentOptions),
+      value: await TextEditor.enrichHTML(this.actor.system.details.biography.value, enrichmentOptions)
+    };
+    if ( this.editingDescriptionTarget ) context.editingDescription = {
+      target: this.editingDescriptionTarget,
+      value: foundry.utils.getProperty(this.actor._source, this.editingDescriptionTarget)
+    };
+
+    return context;
+  }
+
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  async _prepareEffectsContext(context, options) {
+    context = await super._prepareEffectsContext(context, options);
+    context.hasConditions = true;
+    return context;
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Prepare rendering context for the features tab.
+   * @param {ApplicationRenderContext} context  Context being prepared.
+   * @param {HandlebarsRenderOptions} options   Options which configure application rendering behavior.
+   * @returns {ApplicationRenderContext}
+   * @protected
+   */
+  async _prepareFeaturesContext(context, options) {
+    const sections = Object.entries(CONFIG.DND5E.activityActivationTypes).reduce((obj, [id, config], i) => {
+      const { header: label, passive } = config;
+      if ( passive ) return obj;
+      obj[id] ??= {
+        id, label, order: (i + 1) * 100, items: [], minWidth: 210,
+        columns: ["recovery", "uses", "roll", "formula", "controls"]
+      };
+      return obj;
+    }, {});
+    sections.passive = {
+      id: "passive", label: "DND5E.Features", order: 0, items: [], minWidth: 210,
+      columns: ["recovery", "uses", "roll", "formula", "controls"]
+    };
+    context.itemCategories.features?.forEach(i => {
+      const ctx = context.itemContext[i.id];
+      sections[ctx.group]?.items.push(i);
+    });
+    context.sections = customElements.get(this.options.elements.inventory).prepareSections(Object.values(sections));
+    context.listControls = {
+      label: "DND5E.FeatureSearch",
+      list: "features",
+      filters: [
+        { key: "action", label: "DND5E.ACTIVATION.Type.Action.Label" },
+        { key: "bonus", label: "DND5E.ACTIVATION.Type.BonusAction.Label" },
+        { key: "reaction", label: "DND5E.ACTIVATION.Type.Reaction.Label" },
+        { key: "legendary", label: "DND5E.ACTIVATION.Type.Legendary.Label" },
+        { key: "lair", label: "DND5E.ACTIVATION.Type.Lair.Label" }
+      ],
+      sorting: [
+        { key: "m", label: "SIDEBAR.SortModeManual", dataset: { icon: "fa-solid fa-arrow-down-short-wide" } },
+        { key: "a", label: "SIDEBAR.SortModeAlpha", dataset: { icon: "fa-solid fa-arrow-down-a-z" } }
+      ]
+    };
+    return context;
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Prepare rendering context for the header.
+   * @param {ApplicationRenderContext} context  Context being prepared.
+   * @param {HandlebarsRenderOptions} options   Options which configure application rendering behavior.
+   * @returns {ApplicationRenderContext}
+   * @protected
+   */
+  async _prepareHeaderContext(context, options) {
+    context.portrait = await this._preparePortrait(context);
+
+    if ( this.actor.limited ) {
+      const enrichmentOptions = { relativeTo: this.actor, rollData: context.rollData };
+      context.enriched = {
+        public: await TextEditor.enrichHTML(this.actor.system.details.biography.public, enrichmentOptions)
+      };
+      return context;
+    }
+
+    context.abilities = this._prepareAbilities(context);
+    context.classes = context.itemCategories.classes;
+
+    // Legendary Actions & Resistances
+    const plurals = getPluralRules({ type: "ordinal" });
+    const resources = context.source.resources;
+    for ( const res of ["legact", "legres"] ) {
+      const { max, value } = resources[res];
+      context[res] = Array.fromRange(max, 1).map(n => {
+        const i18n = res === "legact" ? "LegendaryAction" : "LegendaryResistance";
+        const filled = value >= n;
+        const classes = ["pip"];
+        if ( filled ) classes.push("filled");
+        return {
+          n: max - n, filled,
+          tooltip: `DND5E.${i18n}.Label`,
+          label: _loc(`DND5E.${i18n}.Ordinal.${plurals.select(n)}`, { n }),
+          classes: classes.join(" ")
+        };
+      });
+    }
+    context.hasLegendaries = resources.legact.max || resources.legres.max
+      || (context.modernRules && resources.lair.value) || (!context.modernRules && resources.lair.initiative);
+
+    // Visibility
+    if ( this._mode === this.constructor.MODES.PLAY ) {
+      context.showDeathSaves = context.important && !context.system.attributes.hp.value;
+      context.showInitiativeScore = dnd5e.settings.rulesVersion === "modern";
+    }
+    context.showLoyalty = context.important && game.settings.get("jujutsu-system", "loyaltyScore") && game.user.isGM;
+    context.showRests = game.user.isGM || (this.actor.isOwner && game.settings.get("jujutsu-system", "allowRests"));
+
+    return context;
+  }
+
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  async _prepareInventoryContext(context, options) {
+    context = await super._prepareInventoryContext(context, options);
+    context.encumbrance = context.system.attributes.encumbrance;
+    return context;
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Prepare rendering context for the sidebar.
+   * @param {ApplicationRenderContext} context  Context being prepared.
+   * @param {HandlebarsRenderOptions} options   Options which configure application rendering behavior.
+   * @returns {ApplicationRenderContext}
+   * @protected
+   */
+  async _prepareSidebarContext(context, options) {
+    const { attributes, details } = context.system;
+
+    // Gear
+    const gear = await this.actor.items.filter(i => i.system.quantity && i.system.properties?.has("gear"));
+    if ( gear.length ) context.gear = gear.map(item => {
+      const { name, uuid } = item.system.gearPresentationData();
+      return {
+        draggable: true,
+        label: name,
+        link: {
+          action: "showDocument",
+          itemId: item.id,
+          quantity: item.system.quantity,
+          uuid
+        },
+        value: item.system.quantity > 1 ? item.system.quantity : undefined
+      };
+    }).sort((lhs, rhs) => lhs.label.localeCompare(rhs.label, game.i18n.lang));
+
+    // Habitat
+    if ( details.habitat.value.length || details.habitat.custom ) {
+      const { habitat } = details;
+      const any = details.habitat.value.find(({ type }) => type === "any");
+      context.habitat = [
+        ...habitat.value.map(({ type, subtype }) => {
+          let { label } = CONFIG.DND5E.habitats[type] ?? {};
+          if ( label && (!any || (type === "any")) ) {
+            if ( subtype ) label = _loc("DND5E.Habitat.Subtype", { type: label, subtype });
+            return { label };
+          }
+          return null;
+        }, []).filter(_ => _),
+        ...splitSemicolons(habitat.custom).map(label => ({ label }))
+      ].sort((a, b) => a.label.localeCompare(b.label, game.i18n.lang));
+    }
+
+    // Senses
+    context.senses = this._prepareSenses(context);
+    if ( this.actor.system.skills.prc ) context.senses.push({
+      key: "passivePerception",
+      label: _loc("DND5E.PassivePerception"),
+      value: this.actor.system.skills.prc.passive
+    });
+
+    // Skills & Tools
+    const skillSetting = game.settings.get("jujutsu-system", "defaultSkills");
+    context.skills = this._prepareSkillsTools(context, "skills")
+      .filter(v => v.prof.multiplier || skillSetting.has(v.key) || v.roll.bonus || v.bonuses.passive);
+    context.tools = this._prepareSkillsTools(context, "tools");
+
+    // Speed
+    context.speed = [
+      ...Object.entries(CONFIG.DND5E.movementTypes).filter(([, m]) => !m.hidden).map(([k, { label }]) => {
+        const value = attributes.movement.speeds[k];
+        if ( !value ) return null;
+        const data = { label, value };
+        if ( (k === "fly") && attributes.movement.hover ) data.icons = [{
+          icon: "fas fa-cloud", label: _loc("DND5E.MOVEMENT.Hover")
+        }];
+        return data;
+      }),
+      ...splitSemicolons(attributes.movement.special).map(label => ({ label }))
+    ].filter(_ => _);
+
+    // Traits
+    context.traits = this._prepareTraits(context);
+
+    // Treasure
+    if ( details?.treasure?.value.size ) {
+      const any = details.treasure.value.has("any");
+      context.treasure = Array.from(details.treasure.value)
+        .map(id => {
+          const { label } = CONFIG.DND5E.treasure[id] ?? {};
+          if ( label && (!any || (id === "any")) ) return { label };
+          return null;
+        }, [])
+        .filter(_ => _)
+        .sort((a, b) => a.label.localeCompare(b.label, game.i18n.lang));
+    }
+
+    return context;
+  }
+
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  async _prepareSpecialTraitsContext(context, options) {
+    context = await super._prepareSpecialTraitsContext(context, options);
+
+    const { fields } = this.document.system.schema;
+    context.flags.sections.unshift({
+      label: _loc("DND5E.NPC.Label"),
+      fields: [{
+        field: fields.identifier,
+        hint: "DND5E.IdentifierError",
+        localize: true,
+        name: "system.identifier",
+        placeholder: this.document.identifier,
+        value: context.source.identifier
+      }, {
+        field: fields.traits.fields.important,
+        input: createCheckboxInput,
+        name: "system.traits.important",
+        value: context.source.traits.important
+      }, {
+        group: {
+          label: "DND5E.NPC.FIELDS.attributes.price.label",
+          hint: "DND5E.NPC.FIELDS.attributes.price.hint"
+        },
+        fields: [{
+          classes: "label-top",
+          field: fields.attributes.fields.price.fields.value,
+          name: "system.attributes.price.value",
+          value: context.source.attributes.price.value
+        }, {
+          choices: CONFIG.DND5E.currencies,
+          classes: "label-top",
+          field: fields.attributes.fields.price.fields.denomination,
+          name: "system.attributes.price.denomination",
+          value: context.source.attributes.price.denomination
+        }]
+      }]
+    });
+
+    return context;
+  }
+
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  async _prepareSpellsContext(context, options) {
+    context = await super._prepareSpellsContext(context, options);
+    context.classSpellcasting = Object.values(this.actor.classes).some(c => c.spellcasting?.levels);
+
+    const { abilities, attributes, rolls } = this.actor.system;
+    context.spellcasting = [];
+    const msak = simplifyBonus(rolls.attack?.msak?.bonus, context.rollData);
+    const rsak = simplifyBonus(rolls.attack?.rsak?.bonus, context.rollData);
+    const spellcaster = Object.values(this.actor.spellcastingClasses)[0];
+    const ability = spellcaster?.spellcasting.ability ?? attributes.spellcasting;
+    const spellAbility = abilities[ability];
+    const mod = spellAbility?.mod ?? 0;
+    const attackBonus = msak === rsak ? msak : 0;
+    context.spellcasting.push({
+      label: _loc("DND5E.SpellcastingClass", {
+        class: spellcaster?.name ?? _loc("DND5E.NPC.Label")
+      }),
+      level: spellcaster?.system.levels ?? attributes.spell.level,
+      ability: {
+        ability, mod,
+        label: CONFIG.DND5E.abilities[ability]?.label
+      },
+      attack: mod + attributes.prof + attackBonus,
+      save: spellAbility?.dc ?? 0,
+      noSpellcaster: !spellcaster,
+      concentration: {
+        mod: attributes.concentration.save,
+        tooltip: _loc("DND5E.AbilityConfigure", { ability: _loc("DND5E.Concentration") })
+      }
+    });
+
+    return context;
+  }
+
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  async _renderFrame(options) {
+    const html = await super._renderFrame(options);
+    this._renderSourceFrame(html);
+    html.querySelector(".header-elements")?.insertAdjacentHTML("beforeend", '<div class="cr-xp"></div>');
+    return html;
+  }
+
+  /* -------------------------------------------- */
+  /*  Item Preparation Helpers                    */
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  _assignItemCategories(item) {
+    if (["taxonomy", "archetype"].includes(item.type)) return new Set(["npcProfiles"]);
+    if ( ["class", "subclass"].includes(item.type) ) return new Set(["classes"]);
+    const categories = super._assignItemCategories(item);
+    if ( item.type === "weapon" ) categories.add("features");
+    return categories;
+  }
+
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  async _prepareItem(item, ctx) {
+    await super._prepareItem(item, ctx);
+    const isPassive = item.system.properties?.has("trait")
+      || CONFIG.DND5E.activityActivationTypes[item.system.activities?.contents[0]?.activation.type]?.passive;
+    ctx.group = isPassive ? "passive" : item.system.activities?.contents[0]?.activation.type || "passive";
+  }
+
+  /* -------------------------------------------- */
+  /*  Life-Cycle Handlers                         */
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    const modern = Ruleset.isV2() && !this.actor.limited;
+    this.element.classList.toggle("jj2-ruptura", modern);
+    this.element.classList.toggle("jj2-npc", modern);
+    if (modern) {
+      mountLegacy2Layout(this.element);
+      const sidebar = this.element.querySelector(".jj2-npc-sidebar"), collapser = this.element.querySelector(".sidebar-collapser");
+      if (sidebar && collapser && collapser.parentElement !== sidebar) sidebar.prepend(collapser);
+      this._toggleSidebar(this.element.classList.contains("sidebar-collapsed"));
+      injectJJConditions(this.element, this.actor);
+    }
+
+    if ( !this.actor.limited ) {
+      this._renderCreateInventory();
+      this._renderAttunement(context, options);
+      this._renderSpellbook(context, options);
+    }
+
+    const elements = this.element.querySelector(".header-elements .cr-xp");
+    if (this.actor.limited) return;
+    if (elements) {
+      const xp = this.actor.system.details.xp.value;
+      elements.innerText = xp === null ? "" : _loc("DND5E.ExperiencePoints.Format", { value: formatNumber(xp) });
+    }
+
+    if ( this.editingDescriptionTarget ) {
+      this.element.querySelectorAll("prose-mirror").forEach(editor => editor.addEventListener("save", () => {
+        this.editingDescriptionTarget = null;
+        this.render();
+      }));
+    }
+
+    // ── Explosão Defensiva NPC ─────────────────────────────
+    this.element.querySelector("[data-action='jj-npc-expdef']")
+      ?.addEventListener("click", () => { if(this.isEditable) return _npcExplosaoDefensiva(this.actor); });
+
+    // ── Botão Gerar Energia — transfere genPerTurn da reserva (Total) pra PA
+    // Gerada, respeitando o teto genMax. O diálogo do personagem não serve aqui:
+    // depende de energyAbilities/energy.bonuses, que o schema de NPC não tem.
+    this.element.querySelector("[data-action='jj-gerar-aura']")
+      ?.addEventListener("click", () => { if(this.isEditable) return _npcGenerateEnergy(this.actor); });
+
+    // ── Atualizar porcentagens das barras de energia ───────
+    const energy = this.actor.system.energy;
+    const barTotal = this.element.querySelector(".npc-energy-bar-total");
+    if ( barTotal && energy.max ) {
+      barTotal.style.setProperty("--bar-percentage", `${Math.round((energy.total / energy.max) * 100)}%`);
+    }
+    const barGen = this.element.querySelector(".npc-energy-bar-gen");
+    if ( barGen && energy.genMax ) {
+      barGen.style.setProperty("--bar-percentage", `${Math.round((energy.generated / energy.genMax) * 100)}%`);
+    }
+
+    // ── Barra de Pontos de Armadura — só a % preenchida; a edição por clique
+    // direto na barra é o mecanismo nativo #toggleMeter do BaseActorSheet
+    // (o input escondido está no template, com clamp 0..máx pelo data-max). ──
+    const armor = this.actor.system.armorPoints;
+    const barArmor = this.element.querySelector(".npc-armor-bar");
+    if ( barArmor && armor?.max ) {
+      barArmor.style.setProperty("--bar-percentage", `${Math.round((armor.value / armor.max) * 100)}%`);
+    }
+
+    // ── Atualizar energia máxima baseado no treinamento intenso ────────────
+    _npcSyncIntensiveTraining(this.actor);
+  }
+
+  /* -------------------------------------------- */
+  /*  Event Listeners and Handlers                */
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  _addDocumentItemTypes(tab) {
+    const types = super._addDocumentItemTypes(tab);
+    if ( tab === "features" ) types.push("weapon");
+    return types;
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Handle expanding the description editor.
+   * @this {NPCActorSheet}
+   * @param {Event} event         Triggering click event.
+   * @param {HTMLElement} target  Button that was clicked.
+   */
+  static #editDescription(event, target) {
+    if ( target.ariaDisabled ) return;
+    this.editingDescriptionTarget = target.dataset.target;
+    this.render();
+  }
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  _showConfiguration(event, target) {
+    let app;
+    const config = { document: this.actor };
+    switch ( target.dataset.config ) {
+      case "habitat":
+        app = new HabitatConfig(config);
+        break;
+      case "treasure":
+        app = new TreasureConfig(config);
+        break;
+    }
+    if ( app ) {
+      this._renderChild(app);
+      return false;
+    }
+  }
+
+  /* -------------------------------------------- */
+  /*  Form Handling                               */
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  _processFormData(event, form, formData) {
+    const submitData = super._processFormData(event, form, formData);
+
+    // Convert CR
+    let cr = submitData.system?.details?.cr;
+    if ( (cr === "") || (cr === "—") ) foundry.utils.setProperty(submitData, "system.details.cr", null);
+    else {
+      cr = { "1/8": 0.125, "⅛": 0.125, "1/4": 0.25, "¼": 0.25, "1/2": 0.5, "½": 0.5 }[cr] || parseFloat(cr);
+      if ( Number.isNaN(cr) ) cr = null;
+      else foundry.utils.setProperty(submitData, "system.details.cr", cr < 1 ? cr : parseInt(cr));
+    }
+
+    return submitData;
+  }
+
+  /* -------------------------------------------- */
+  /*  Drag & Drop                                 */
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  async _onDragStart(event) {
+    const target = event.currentTarget;
+    if ( target.classList.contains("pill") ) {
+      const dataset = target.querySelector("[data-item-id]")?.dataset ?? {};
+      const item = await this.actor.items.get(dataset.itemId)?.system.asGear?.();
+      if ( item ) {
+        event.dataTransfer.setData("text/plain", JSON.stringify({
+          data: item.isEmbedded ? item.toObject() : game.items.fromCompendium(item),
+          type: "Item"
+        }));
+        return;
+      }
+    }
+    return super._onDragStart(event);
+  }
+}
+
+async function _npcGenerateEnergy(actor) {
+  const e = actor.system.energy;
+  const gerar = Math.min(e.genPerTurn ?? 0, (e.genMax ?? 0) - (e.generated ?? 0), e.total ?? 0);
+  if (gerar <= 0) return ui.notifications.info(`${actor.name} não gera mais Energia agora (Gerada ${e.generated ?? 0}/${e.genMax ?? 0}, reserva ${e.total ?? 0}).`);
+  await actor.update({ "system.energy.total": e.total - gerar, "system.energy.generated": e.generated + gerar }, { isEnergySystem: true });
+  ui.notifications.info(`${actor.name} gerou ${gerar} de Energia Amaldiçoada.`);
+}
+
+// Explosão Defensiva do NPC — mesmo comportamento do jogador
+async function _npcExplosaoDefensiva(actor) {
+  const flagData     = actor.getFlag("jujutsu-system", "explosaoDefensivaPendente") ?? null;
+  const pendente     = flagData?.reducao ?? 0;
+  const pendenteCusto = flagData?.paCusto ?? 0;
+
+  if ( pendente > 0 ) {
+    const cancel = await foundry.applications.api.DialogV2.confirm({
+      window: { title: "🛡️ Explosão Defensiva Ativa" },
+      content: `<p>Redução de <strong>${pendente}</strong> pendente (custo: <strong>${pendenteCusto} PA</strong>).</p><p>Deseja cancelar e recuperar a PA?</p>`,
+      yes: { label: "Cancelar e Devolver PA" },
+      no:  { label: "Manter" }
+    });
+    if ( !cancel ) return;
+    await actor.unsetFlag("jujutsu-system", "explosaoDefensivaPendente");
+    const paAtual = actor.system?.energy?.generated ?? 0;
+    await actor.update({ "system.energy.generated": paAtual + pendenteCusto });
+    ui.notifications.info("Explosão Defensiva cancelada. PA devolvida.");
+    return;
+  }
+
+  const paDisp = actor.system?.energy?.generated ?? 0;
+  if ( paDisp === 0 ) {
+    ui.notifications.warn(`${actor.name} não tem PA Gerada disponível!`);
+    return;
+  }
+
+  const paGasto = await foundry.applications.api.DialogV2.wait({
+    window: { title: "🛡️ Explosão Defensiva" },
+    content: `
+      <div style="padding:8px 0">
+        <p style="margin:0 0 8px">Gastar PA para reduzir o próximo dano?</p>
+        <p style="margin:0 0 4px; font-size:12px; color:#aaa;">
+          PA Gerada disponível: <strong>${paDisp}</strong>
+        </p>
+        <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
+          <label style="flex:0 0 auto">Dados d4:</label>
+          <input type="number" id="jj-npc-expdef-input"
+                 value="0" min="0" max="${paDisp}"
+                 style="width:60px; text-align:center;">
+          <span style="font-size:12px; color:#aaa;">1 PA por dado</span>
+        </div>
+      </div>`,
+    buttons: [
+      {
+        label: "Rolar", action: "ok", default: true,
+        callback: (event, button, dialog) => {
+          const input = dialog.element?.querySelector("#jj-npc-expdef-input");
+          return Math.max(0, Math.min(Number(input?.value ?? 0), paDisp));
+        }
+      },
+      { label: "Cancelar", action: "cancel", callback: () => null }
+    ],
+    rejectClose: false,
+    close: () => null
+  });
+
+  if ( !paGasto ) return;
+
+  const roll = await new Roll(`${paGasto}d4`).evaluate();
+  if ( game.dice3d ) game.dice3d.showForRoll(roll, game.user, true);
+
+  await actor.setFlag("jujutsu-system", "explosaoDefensivaPendente", { reducao: roll.total, paCusto: paGasto });
+  await actor.update({ "system.energy.generated": Math.max(0, paDisp - paGasto) });
+
+  await roll.toMessage({
+    speaker: ChatMessage.getSpeaker({ actor }),
+    flavor: `🛡️ <strong>${actor.name}</strong> usa Explosão Defensiva — reduz <strong>${roll.total}</strong> do próximo dano!`
+  });
+}
+
+async function _npcSyncIntensiveTraining(actor) {
+  // Reservado para uso futuro
+}

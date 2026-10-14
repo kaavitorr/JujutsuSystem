@@ -1,0 +1,43 @@
+_id: jj2a000000000079
+name: Realização
+type: feat
+img: icons/magic/holy/meditation-chi-focus-blue.webp
+system:
+  identifier: realizacao
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Velocidade Descomunal</em></p><p>Todos
+      os seus ataques (Comuns) passam a causar 3d8 de dano no lugar do original,
+      independente da arma. Você também recebe as seguintes características
+      adicionais:</p><ul><li>Você recebe 2 Pontos de Ação adicionais de forma
+      permanente, somando um total de 8;</li><li>Você pode usar qualquer técnica
+      ou ataque (Comum) como Reação ao consumir um Ponto de Ação [⬢]
+      adicional.</li></ul>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Ofensivo
+      requisitos:
+        - Velocidade Descomunal
+folder: jj2f000000000013
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791815052441
+  modifiedTime: 1791815052441
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000079'

@@ -1,0 +1,22 @@
+_id: jj2a000000000049
+_key: '!items!jj2a000000000049'
+name: Corpo Indestrutível
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: corpo-indestrutivel
+  description:
+    value: <p><em><strong>Requisito:</strong> Potencialização Extrema</em></p><p>Uma vez por descanso longo, você pode negar um dano que você sofreria, reduzindo-o a 0. Se o dano for superior a 160, você apenas o reduz em 160 e recebe o excedente normalmente.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Corpo de Guerreiro
+      requisitos:
+        - Potencialização Extrema
+folder: jj2f000000000009
+ownership:
+  default: 0
+effects: []
+sort: 0

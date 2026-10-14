@@ -1,0 +1,424 @@
+[
+  {
+    "nome": "CONDIÇÕES MENTAIS",
+    "desc": "São condições relacionadas a mente da criatura.",
+    "condicoes": [
+      {
+        "nome": "ALUCINADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 2 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "A criatura tem seu Nível de Desafio (caso possua) diminuído em 2 para características ligadas ao ND;",
+          "A criatura sofrendo de alucinações, ataca qualquer outra criatura que esteja próxima, independentemente se é inimigo ou não."
+        ]
+      },
+      {
+        "nome": "AMEDRONTADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 2 Pontos de Energia Amaldiçoada (PA)",
+        "bullets": [
+          "Você vai utilizar todas as suas ações para se afastar da fonte do seu medo até estar a mais de 30 metros dela;",
+          "Você tem uma desvantagem em atacar a fonte do seu medo."
+        ]
+      },
+      {
+        "nome": "APAIXONADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 3 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Você tem 3 desvantagens para atacar o alvo da sua paixão;",
+          "Você tem 3 desvantagens em testes de interação contra o alvo da sua paixão;",
+          "Você fica receoso em atacar o alvo da sua paixão e ela o valor máximo de vantagem em testes de interação social contra você."
+        ]
+      },
+      {
+        "nome": "ENFEITIÇADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 2 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura enfeitiçada não pode atacar quem a enfeitiçou ou tê-lo como alvo de habilidades ou efeitos nocivos.",
+          "Quem o enfeitiçou possui vantagem em Testes de Atributo feitos para interagir socialmente com a criatura."
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "CONDIÇÕES DE DEFESAS",
+    "desc": "São condições relacionadas ao a defesa do personagem.",
+    "condicoes": [
+      {
+        "nome": "ENFURECIDO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 6 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Quando uma criatura está enfurecida, ela se comporta de forma imprudente e fica menos capaz de se defender.",
+          "Ela sofre uma penalidade de -2 na Classe de Resistência;",
+          "Ela não pode gastar Pontos de Energia Amaldiçoada em nenhuma ação que não seja um ataque."
+        ]
+      },
+      {
+        "nome": "EXPOSTO",
+        "custo": "Custo em pontos para técnicas de aspecto ou memórias. | 6 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Alguns ataques podem deixar um inimigo temporariamente vulnerável;",
+          "Quando uma criatura está exposta, sua Classe de Resistência sofre uma penalidade de -2."
+        ]
+      },
+      {
+        "nome": "INCONSCIENTE",
+        "custo": "Custo em pontos para técnicas de aspecto ou memórias. | 15 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Quando uma criatura está inteiramente incapaz de agi, ela está inconsciente.",
+          "Quando um alvo está incapacitado, sua Classe de Resistência se torna 0;",
+          "Não pode contribuir e nem ajudar aliados de nenhuma forma."
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "CONDIÇÕES DE PERCEPÇÃO",
+    "desc": "São condições relacionadas ao a percepção do personagem.",
+    "condicoes": [
+      {
+        "nome": "CEGO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 5 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura Cega não pode ver usando percepção baseada em luz;",
+          "Ela não pode usar nenhuma Ação que exija que o alvo seja visto.",
+          "Os ataques de uma criatura cega sofrem 1 Desvantagem, enquanto ataques contra ela ganham 1 Vantagem."
+        ]
+      },
+      {
+        "nome": "DESATENTO",
+        "custo": "Custo em pontos para técnicas de aspecto ou memórias. | Não pode ser aplicado por Feitiços.",
+        "bullets": [
+          "Uma criatura desatenta age no combate com Iniciativa 1 e não pode realizar Reações.",
+          "A condição desatento é removida automaticamente no início do turno da criatura."
+        ]
+      },
+      {
+        "nome": "INVISÍVEL",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 10 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura invisível é impossível de ser vista sem a ajuda de habilidades ou feitiços sensoriais;",
+          "Uma criatura invisível tem sua energia amaldiçoada oculta, podendo ser encontrada só por testes de percepção;",
+          "Para o propósito de se esconder, a criatura é considerada em área de escuridão densa;",
+          "A localização da criatura pode ser detectada por qualquer barulho que ela faça ou rastros que ela deixe;",
+          "Jogadas de ataque contra a criatura sofrem desvantagem, e os ataques da criatura possuem vantagem."
+        ]
+      },
+      {
+        "nome": "SURDO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 2 Ponto de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura Surda não consegue utilizar nenhuma percepção baseada em som.",
+          "Ela não pode ser afetada por nenhuma ação auditiva."
+        ]
+      },
+      {
+        "nome": "SILENCIADO",
+        "custo": "Custo em pontos para técnicas de aspecto ou memórias. | 4 Ponto de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura silenciada não consegue realizar nenhuma ação que precise falar ou de encantamentos;",
+          "Uma criatura silenciada não consegue se comunicar através de palavras."
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "CONDIÇÕES DE AÇÕES",
+    "desc": "São condições relacionadas aos Pontos de Ação do personagem.",
+    "condicoes": [
+      {
+        "nome": "ATORDOADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 7 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura atordoada tem -4 Pontos de Ação [⬢⬢⬢⬢];",
+          "A criatura tem seu deslocamento reduzido a 3 metros no turno dela;",
+          "A criatura falha automaticamente em Salvaguardas de Força ou Agilidade.",
+          "Jogadas de acerto tem 1 vantagem contra a criatura;"
+        ]
+      },
+      {
+        "nome": "BÊBADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 5 Ponto de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura em estado de embriaguez se comporta de forma visivelmente diferente de seu habitual.",
+          "Uma criatura bêbada recebe desvantagem em Testes e Salvaguardas de Agilidade;",
+          "Uma criatura bêbada não consegue utilizar ações com a palavra-chave Reação;",
+          "A condição se encerra quando a criatura passar em uma Salvaguarda de Constituição ou em situações que o Narrador acreditar serem efetivas, por exemplo, tomar café forte, ser jogado em água fria, assistir a uma cena forte."
+        ]
+      },
+      {
+        "nome": "CONCUSSÃO",
+        "custo": "Custo em pontos para técnicas de aspecto ou memórias. | 4 Ponto de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura com concussão tem -2 Pontos de Ação [⬢⬢];",
+          "Uma criatura com concussão está nauseada e tonta, recebendo desvantagem em testes e salvaguardas de agilidade."
+        ]
+      },
+      {
+        "nome": "DESORIENTADO",
+        "custo": "Custo em pontos para técnicas de aspecto ou memórias. | 5 Ponto de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura desorientada consome 1 PA adicional ao ativar qualquer ação que usar PA."
+        ]
+      },
+      {
+        "nome": "INCAPACITADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 4 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura incapacitada perde 2 Pontos de Ação [⬢⬢];",
+          "Uma criatura incapacitada consome 1 PA adicional em ações e técnicas com a palavra-chave Reação."
+        ]
+      },
+      {
+        "nome": "SONOLENTO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 4 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "A criatura perde 1 Ponto de Ação [⬢];",
+          "A criatura recebe desvantagem em Salvaguardas de Agilidade e Sabedoria;",
+          "A criatura sonolenta, independentemente das habilidades, não pode usar mais de um ataque e/ou técnica de dano."
+        ]
+      },
+      {
+        "nome": "PARALISADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 12 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura paralisada não pode realizar ações até que a paralisia termine;",
+          "Uma criatura paralisada se comunica pausadamente ou não consegue falar de forma inteligível;",
+          "Uma criatura paralisada é considerada como “Incapacitado”;",
+          "Uma criatura paralisada tem sua Classe de Resistência reduzida pela metade."
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "CONDIÇÕES FÍSICAS",
+    "desc": "São condições relacionadas a estados físicos.",
+    "condicoes": [
+      {
+        "nome": "AGARRADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 2 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "O deslocamento de uma criatura agarrada é reduzido a 0;",
+          "A criatura não pode se mover a menos que faça um Teste Resistido de Atletismo contra a criatura a agarrando;",
+          "Se mover com uma criatura agarrada, independentemente quem passou no teste, custa dobro do deslocamento;",
+          "A condição encerra caso a criatura que a agarrou fique incapacitada (veja a condição) ou solte a criatura agarrada."
+        ]
+      },
+      {
+        "nome": "DESIDRATADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 2 Ponto de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura desidratada tem seu deslocamento reduzido pela metade.",
+          "A criatura sofre 1 nível de exaustão a cada 1 hora.",
+          "A criatura, no turno dela, perde um Ponto de Ação [⬢].  A condição se encerra logo após a ingestão de, no mínimo, 500 ml de água."
+        ]
+      },
+      {
+        "nome": "EMPODERADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 5 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Suas jogadas de ataque corpo-a-corpo, aumentam em um passo;",
+          "Uma criatura empoderada não perde PA ao errar uma técnica que faça rolagem de acerto;",
+          "O deslocamento de criaturas empoderadas não pode ser reduzido por terreno difícil."
+        ]
+      },
+      {
+        "nome": "ENERGIA ESGOTADA",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | Não pode ser reproduzido.",
+        "bullets": [
+          "Uma criatura com energia esgotada não pode utilizar nenhuma habilidade ou técnica.",
+          "Uma criatura com energia esgotada está letárgica (veja a condição)."
+        ]
+      },
+      {
+        "nome": "EXAUSTO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 4 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura exausta recebe -2 em rolagens no d20;",
+          "Uma criatura exausta perde 1,5 metros de deslocamento;",
+          "Se utilizado como redutor de “Efeito Colateral”, você só reduz 2 PA por nível de exaustão;",
+          "Exaustão por condição pode ser aplicada até 3 vezes através feitiços, técnicas e habilidades, não podendo superar esse valor. Se ela tiver com acúmulos de exaustão normal, a soma não irá superar 5 através dessa condição."
+        ]
+      },
+      {
+        "nome": "HIPOTÉRMICO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 3 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura hipotérmica sofre 1 desvantagem em Salvaguardas e Testes de Agilidade; e jogadas de ataque.",
+          "A condição se estende até que seja tratada de forma adequada com um Teste de Atributo de Sabedoria (Medicina) CD 10 ou um Teste de Atributo de Sabedoria (Sobrevivência) CD 17."
+        ]
+      },
+      {
+        "nome": "SUFOCADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 2 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "A criatura não consegue formular palavras entendíveis.",
+          "A criatura recebe desvantagem em Salvaguarda de Agilidade, podendo permanecer neste estado por um número de turnos igual 1 + o seu modificador de Constituição (mínimo de 1 turno), após isso deve fazer um Teste de Constituição CD 10, para não desmaiar, no início de cada turno, em cada um dos turnos seguintes é aumentado +2 ao Teste."
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "CONDIÇÕES DE MOVIMENTO",
+    "desc": "São condições relacionadas ao deslocamento do personagem.",
+    "condicoes": [
+      {
+        "nome": "ACELERADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 10 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Você recebe 2 Pontos de Ação [⬢] adicionais em cada um de seus turnos, até um máximo de 8;",
+          "Você recebe 10 metros de deslocamento adicional pela duração da condição;",
+          "O custo dobra em caso de duração prolongada."
+        ]
+      },
+      {
+        "nome": "CAÍDO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 2 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Você só pode rastejar, consumindo 1 metro de movimento adicional para cada 1 metro que se mover;",
+          "Ataques a distância conta a criatura recebem 1 desvantagem;",
+          "Ataques corpo-a-corpo contra a criatura recebem 1 vantagem;",
+          "A criatura recebe 1 desvantagem para qualquer rolagem de ataque e consome uma ação [⬢] para levantar."
+        ]
+      },
+      {
+        "nome": "ESTREMECIDO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 4 Ponto de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura estremecida sofre 1 desvantagem em jogadas de ataque;",
+          "A criatura estremecida não pode manter concentração e falha automaticamente ao tentar;",
+          "Cada 1,5 metro de deslocamento da criatura estremecida custa 1,5 metro adicional."
+        ]
+      },
+      {
+        "nome": "IMPEDIDO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 4 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura impedida não consegue realizar nenhuma ação que envolva movimento;",
+          "Uma criatura Impedida sofre 1 desvantagem em rolagens de ataque.",
+          "Uma criatura Impedida pode usar a ação “Escapar” para se libertar, fazendo um teste de atletismo na CD da remoção. Que é sempre 12 + atributo de Força do quem te deixou impedido ou 17 fixo para objetos e estruturas."
+        ]
+      },
+      {
+        "nome": "LENTO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 3 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura lenta perde 10 metros de deslocamento no turno;",
+          "Uma criatura lenta consome 1 metro de movimento adicional para cada 1 metro que se mover."
+        ]
+      },
+      {
+        "nome": "VOANDO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 5 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Você recebe movimento de voo igual seu movimento padrão;",
+          "Você só pode ser alvejado por ataques a distância, efeitos com alcance ou criaturas voadoras."
+        ]
+      },
+      {
+        "nome": "LETÁRGICO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 5 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura letárgica tem seu deslocamento reduzido pela metade.",
+          "Os danos de ataques feitos pela criatura são reduzidos pela metade, exceto de ataques feitos por armas de fogo."
+        ]
+      },
+      {
+        "nome": "PESADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | 2 Pontos de Energia Amaldiçoada (PA).",
+        "bullets": [
+          "Uma criatura pesada tem seu deslocamento reduzido pela metade.",
+          "A criatura sofre desvantagem em suas jogadas de ataque corpo-a-corpo."
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "CONDIÇÕES DE DANO",
+    "desc": "São condições relacionadas aos seus tipos de dano, causando dano por rodadas. Remover uma condição de dano usa sempre a ação “Remover”, realizando um teste de perícia de medicina na CD da criatura.",
+    "condicoes": [
+      {
+        "nome": "ENVENENADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | Através do gatilho de dano.",
+        "bullets": [
+          "A criatura sofre dano de Veneno no início de cada turno dela;",
+          "A criatura sofre um valor de dano igual ao atributo principal da criatura ou resistência a veneno do PdN;",
+          "A condição dura por 3 rodadas. Aplicar uma segunda vez irá resetar a duração, não acumulando."
+        ]
+      },
+      {
+        "nome": "CHOCADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | Através do gatilho de dano.",
+        "bullets": [
+          "A criatura sofre dano Elétrico no início de cada turno dela;",
+          "A criatura sofre um valor de dano igual a metade do atributo principal da criatura;",
+          "A condição dura por 3 rodadas. Aplicar uma segunda vez irá resetar a duração, não acumulando."
+        ]
+      },
+      {
+        "nome": "CONGELANDO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | Através do gatilho de dano.",
+        "bullets": [
+          "A criatura sofre a condição “Lento”;",
+          "A criatura sofre dano de Frio no início de cada turno dela;",
+          "A criatura sofre um valor de dano igual ao atributo principal do atacante;",
+          "A condição dura por 1 rodada (termina no fim do turno dela). Aplicar uma segunda vez irá resetar a duração, não acumulando."
+        ]
+      },
+      {
+        "nome": "CONFUSO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | Através do gatilho de dano.",
+        "bullets": [
+          "A criatura sofre a condição “Desorientado”;",
+          "A criatura sofre dano Psíquico no início de cada turno dela;",
+          "A criatura sofre um valor de dano igual a metade do atributo principal do atacante;",
+          "A condição dura por 2 rodadas. Aplicar uma segunda vez irá resetar a duração, não acumulando."
+        ]
+      },
+      {
+        "nome": "CORROENDO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | Através do gatilho de dano.",
+        "bullets": [
+          "A criatura sofre dano de Ácido no início de cada turno dela;",
+          "A criatura sofre um valor de dano igual ao atributo principal do atacante;",
+          "A condição dura por 3 rodadas. Aplicar uma segunda vez irá resetar a duração, não acumulando."
+        ]
+      },
+      {
+        "nome": "EM CHAMAS",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | Através do gatilho de dano..",
+        "bullets": [
+          "A criatura sofre dano de Fogo no início de cada turno dela;",
+          "A criatura sofre um valor de dano igual ao atributo principal do atacante;",
+          "A condição dura por 3 rodadas. Aplicar uma segunda vez irá resetar a duração, não acumulando."
+        ]
+      },
+      {
+        "nome": "ENTROPIA",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | Através do gatilho de dano.",
+        "bullets": [
+          "A criatura recebe a condição “Amedrontado”.",
+          "A criatura sofre dano na Alma no início de cada turno dela;",
+          "A criatura sofre um valor de dano igual a metade do atributo principal do atacante;",
+          "A condição dura por 2 rodadas. Aplicar uma segunda vez irá resetar a duração, não acumulando."
+        ]
+      },
+      {
+        "nome": "IRRADIADO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | Através do gatilho de dano.",
+        "bullets": [
+          "A criatura sofre dano de Energia no início de cada turno dela;",
+          "A criatura sofre um valor de dano igual ao atributo principal do atacante;",
+          "A condição dura por 3 rodadas. Aplicar uma segunda vez irá resetar a duração, não acumulando."
+        ]
+      },
+      {
+        "nome": "SANGRAMENTO",
+        "custo": "Custo em pontos para feitiços inatos ou herdados | Através do gatilho de dano.",
+        "bullets": [
+          "Uma criatura sangrando sofre dano Perfurante ou Cortante, no início de cada turno dela;",
+          "A criatura sofre um valor de dano igual ao atributo principal da criatura atacante;",
+          "A condição dura por 3 rodadas. Aplicar uma segunda vez irá resetar a duração, não acumulando."
+        ]
+      }
+    ]
+  }
+]

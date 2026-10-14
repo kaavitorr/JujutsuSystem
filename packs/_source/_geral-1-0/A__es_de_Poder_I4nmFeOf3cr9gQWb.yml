@@ -1,0 +1,22 @@
+name: Ações de Poder
+type: Item
+sorting: a
+sort: 0
+color: '#2d9a79'
+flags:
+  scene-packer:
+    hash: b9b0ad6b3f0567ad46cb0b3cbb62217caad92718
+_id: I4nmFeOf3cr9gQWb
+folder: 9HObc0XIMJNrJaWH
+description: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910214
+  modifiedTime: 1776624910214
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!I4nmFeOf3cr9gQWb'

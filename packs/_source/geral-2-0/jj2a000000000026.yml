@@ -1,0 +1,22 @@
+_id: jj2a000000000026
+_key: '!items!jj2a000000000026'
+name: Canalização Máxima
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: canalizacao-maxima
+  description:
+    value: <p><em><strong>Requisito:</strong> Todas as outras 7 habilidades da Manipulação de Técnica</em></p><p>Você se tornou capaz de concentrar quantidades colossais de energia amaldiçoada em uma única técnica. Ao ativar uma técnica qualquer, você pode optar por carregá-la ao longo de vários turnos.</p><p>Enquanto estiver carregando a técnica, você deve manter sua Concentração, consumir normalmente o custo de ações exigido por ela e pode gastar até 3 PA por turno. Para cada 1 PA gasto dessa forma, você aumenta em 3 metros todos os alcances da técnica e adiciona 3 dados ao dano causado por ela.</p><p>Esse bônus pode ser acumulado ao longo de vários turnos de carregamento, até um máximo de 36 dados de dano máximo.</p><p>A qualquer momento durante o seu turno, você pode encerrar a canalização e liberar a técnica, resolvendo imediatamente todos os seus efeitos com os bônus acumulados.</p><p>Se você perder a Concentração por qualquer motivo, você sofre metade do dano acumulado e perde todos os recursos investidos.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Manipulação de Técnica
+      requisitos:
+        - Todas as outras 7 habilidades da Manipulação de Técnica
+folder: jj2f000000000004
+ownership:
+  default: 0
+effects: []
+sort: 0

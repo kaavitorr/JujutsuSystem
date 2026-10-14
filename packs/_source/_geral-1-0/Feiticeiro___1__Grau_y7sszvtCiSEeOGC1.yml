@@ -1,0 +1,149 @@
+folder: A016Ya5NrTpIpIrs
+name: Feiticeiro - 1º Grau
+type: feat
+img: icons/magic/light/orbs-hand-gray.webp
+system:
+  description:
+    value: >-
+      <p class="Default">São aqueles que dominaram o básico e parte do avançado
+      da Energia Amaldiçoada com grande nível de proficiência, aumentando o ND
+      efetivo do PdN em 5. Eles recebem as seguintes
+      características:</p><ul><li><p><em>Recebe 60 Pontos de
+      Vida;</em></p></li><li><p><em>Aumenta a Classe de Dificuldade em
+      +4;</em></p></li><li><p><em>Sua Classe de Resistência aumenta em
+      +3;</em></p></li><li><p><em>Recebe resistência a todos os tipos de
+      dano;</em></p></li><li><p><em>Você recebe +3 de acerto em suas jogadas de
+      ataque (comuns e de Técnica);</em></p></li><li><p><em>Recebe 3d4 de dano
+      extra em todas as jogadas de ataque que realizar;Detecta energia
+      amaldiçoada em um raio de 30 metros, tendo +6 em percepção para encontrar
+      essas criaturas em furtividade</em></p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  requirements: ''
+  identifier: 5-perito
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects:
+  - name: 1º Grau
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.y7sszvtCiSEeOGC1
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: false
+    flags:
+      dnd5e:
+        riders:
+          statuses: []
+      dae:
+        disableCondition: ''
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+      core:
+        overlay: false
+      JujutsuLegacy:
+        riders:
+          statuses: []
+    img: icons/magic/light/orbs-hand-gray.webp
+    _id: qO8qBTEeuUHD5BMX
+    type: base
+    system:
+      changes:
+        - key: system.attributes.hp.max
+          type: add
+          value: '+60'
+          phase: initial
+          priority: 20
+        - key: system.bonuses.spell.dc
+          type: add
+          value: '+4'
+          phase: initial
+          priority: 20
+        - key: system.bonuses.mwak.damage
+          type: add
+          value: +3d4
+          phase: initial
+          priority: 20
+        - key: system.bonuses.rwak.damage
+          type: add
+          value: +3d4
+          phase: initial
+          priority: 20
+        - key: system.attributes.ac.bonus
+          type: add
+          value: '+3'
+          phase: initial
+          priority: null
+        - key: system.bonuses.mwak.attack
+          type: add
+          value: '+3'
+          phase: initial
+          priority: null
+        - key: system.bonuses.rwak.attack
+          type: add
+          value: '+3'
+          phase: initial
+          priority: null
+    description: ''
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    sort: 0
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '14.364'
+      systemId: jujutsu-system
+      systemVersion: 1.0.6
+      createdTime: 1776624910563
+      modifiedTime: 1782449553712
+      lastModifiedBy: 371UX0Acl9j9oJ0Q
+      exportSource: null
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!y7sszvtCiSEeOGC1.qO8qBTEeuUHD5BMX'
+sort: 100000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  rsr5e:
+    quickFooter:
+      value: true
+  scene-packer:
+    hash: 8a58bcef87a16b064e058ee6eed4c807bdd76950
+_stats:
+  compendiumSource: Item.IxuYJz2t7xMlsyOa
+  duplicateSource: Item.IxuYJz2t7xMlsyOa
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624910563
+  modifiedTime: 1782449363937
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_id: y7sszvtCiSEeOGC1
+_key: '!items!y7sszvtCiSEeOGC1'

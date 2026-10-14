@@ -1,0 +1,52 @@
+<header class="sheet-header jj2-header jj2-hero {{#if jj2.isRestringido}}jj2-hero-stamina{{/if}}">
+  <div class="jj2-hero-art">
+    <div class="jj2-portrait portrait {{#if portrait.token}}token{{/if}}">
+      {{#with portrait}}
+        {{#if isVideo}}<video src="{{ src }}" autoplay muted loop playsinline disablepictureinpicture {{#if @root.editable}}data-action="{{ action }}"{{else}}data-action="showArtwork"{{/if}} {{#if (and @root.editable path)}}data-edit="{{ path }}" data-type="{{ type }}"{{/if}}></video>
+        {{else}}<img src="{{ src }}" alt="{{ @root.actor.name }}" {{#if @root.editable}}data-action="{{ action }}"{{else}}data-action="showArtwork"{{/if}} {{#if (and @root.editable path)}}data-edit="{{ path }}" data-type="{{ type }}"{{/if}}>{{/if}}
+      {{/with}}
+    </div>
+    {{#if editable}}<label class="jj2-portrait-toggle" data-tooltip="{{#if portrait.token}}Mostrar retrato{{else}}Mostrar token{{/if}}"><input type="checkbox" name="flags.jujutsu-system.showTokenPortrait" role="switch" aria-label="Usar imagem do token" {{ checked portrait.token }}><span class="jj2-portrait-switch" aria-hidden="true"></span></label>{{/if}}
+  </div>
+  <div class="jj2-hero-identity">
+    <div class="jj2-nameplate">{{#if editable}}<input type="text" name="name" class="document-name" value="{{ actor._source.name }}" aria-label="Nome do personagem">{{else}}<h1 class="document-name">{{ actor.name }}</h1>{{/if}}</div>
+    <div class="jj2-header-meta"><span>{{#if jj2.estiloNome}}{{ jj2.estiloNome }}{{else}}Estilo de Combate{{/if}}</span></div>
+    {{#if jj2.isRestringido}}
+    <div class="jj2-hero-resources jj2-stamina-resources">
+      <div class="jj2-stamina-bars">
+        {{> "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs" id="hp" label="Vida" path="system.attributes.hp.value" value=system.attributes.hp.value max=system.attributes.hp.effectiveMax pct=jj2.hpPct configKey="hitPoints" }}
+        {{> "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs" id="wounds" label="Ferimentos" path="system.legacy2.wounds.value" value=jj2.wounds.value max=jj2.wounds.max pct=jj2.wounds.pct }}
+      </div>
+      <div class="jj2-header-emblems">
+        <div class="jj2-stamina-emblem">
+        {{> "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs" id="stamina" label="Estamina" path="system.energy.generated" value=jj2.energyAvailable max=jj2.refinement sigil=true sigilLabel="Restaurar Estamina" sigilImage="systems/jujutsu-system/assets/ficha/estamina-especialista-outline.webp" }}
+        </div>
+        {{> "systems/jujutsu-system/templates/actors/parts/jj2-action-ring.hbs" }}
+      </div>
+    </div>
+    {{else}}
+    <div class="jj2-hero-resources">
+      <div class="jj2-header-bars">
+        {{> "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs" id="hp" label="Vida" path="system.attributes.hp.value" value=system.attributes.hp.value max=system.attributes.hp.effectiveMax pct=jj2.hpPct configKey="hitPoints" }}
+        {{> "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs" id="energy" label="Energia (PA)" path="system.energy.total" value=system.energy.total max=system.energy.max pct=jj2.energyPct configKey="cursedEnergy" }}
+        {{> "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs" id="wounds" label="Ferimentos" path="system.legacy2.wounds.value" value=jj2.wounds.value max=jj2.wounds.max pct=jj2.wounds.pct }}
+      </div>
+      <div class="jj2-header-emblems">
+      {{> "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs" id="refinement" label="Refinada" path="system.energy.generated" value=jj2.energyAvailable max=jj2.refinement unbounded=true sigil=true }}
+      {{> "systems/jujutsu-system/templates/actors/parts/jj2-action-ring.hbs" }}
+      </div>
+    </div>
+    {{/if}}
+  </div>
+  <div class="jj2-hero-actions">
+    {{#if (or showRests jj2.creationPending)}}<div class="jj2-rests">{{#if jj2.creationPending}}<button type="button" data-action="jj2Creation" class="jj2-action always-interactive" aria-label="Continuar criação do personagem" data-tooltip="Continuar criação do personagem">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="personalization"}}</button>{{/if}}{{#if showRests}}{{#each CONFIG.restTypes}}<button type="button" data-action="rest" data-type="{{ @key }}" class="jj2-action always-interactive" aria-label="{{ localize label }}" data-tooltip="{{ localize label }}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=@key }}</button>{{/each}}{{/if}}</div>{{/if}}
+    <div class="jj2-level" aria-label="Nível {{ system.details.level }}">
+      <svg class="jj2-level-seal" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true">
+        <circle cx="40" cy="40" r="35" stroke-width="1.7" stroke-dasharray="28 9 3 9" transform="rotate(-18 40 40)" />
+        <path class="jj2-level-seal-energy" d="M40 11a29 29 0 0 1 25 14M69 40a29 29 0 0 1-14 25M25 65a29 29 0 0 1-14-25" stroke-width="3" />
+        <path d="M40 2v6M40 72v6M2 40h6M72 40h6M13 13l4 4M63 63l4 4M13 67l4-4M63 17l4-4" stroke-width="1.5" />
+      </svg>
+      <div class="jj2-level-number"><strong>{{ system.details.level }}</strong></div><span>Nível</span>
+    </div>
+  </div>
+</header>

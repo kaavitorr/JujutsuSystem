@@ -1,0 +1,74 @@
+name: PdN - Receptáculo
+type: feat
+img: systems/jujutsu-system/assets/Origens/Yuji_Itadori_29748.webp
+effects: []
+folder: SkcL0ylAJiRyvOc5
+sort: 200000
+flags:
+  scene-packer:
+    hash: b2c0a9ff04059b074b42b2017ee2b2ebcd921974
+    sourceId: Item.SyTIP4RJOOJrjcTG
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <ul><li><p> A criatura recebe 4 Pontos de Atributo de Força e seu
+      deslocamento aumenta em 3 metros;</p></li><li><p>A margem para acertar
+      Fulgor Negro com ele aumenta em 1 (19-20).</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: transmorfo
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.FHZNYaf9hn4p4S7K
+  duplicateSource: Item.mbQAtPSeresZaZkL
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624910543
+  modifiedTime: 1782450739288
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_id: SnTRHIRjguyaqrR7
+_key: '!items!SnTRHIRjguyaqrR7'

@@ -1,0 +1,22 @@
+name: Estrategista
+type: Item
+sorting: m
+sort: 87500
+color: '#000000'
+flags:
+  scene-packer:
+    hash: 486a429b413085daebc6da4b50eac0a7b4206871
+_id: 6Lp7GKcjjdPyxHoV
+folder: sE4zROXK6hDLuikm
+description: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911263
+  modifiedTime: 1776905994759
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!6Lp7GKcjjdPyxHoV'

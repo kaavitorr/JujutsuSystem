@@ -1,0 +1,55 @@
+_id: jj2a000000000035
+name: Barreira Estratégica
+type: feat
+img: icons/magic/defensive/shield-hex-gold.webp
+system:
+  identifier: barreira-estrategica
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Manipulação de Ambiente</em></p><p>Você
+      se torna capaz de manipular os hexágonos dentro da barreira vazia para
+      ativação de efeitos únicos durante um combate. Ao gastar 3 Pontos de Ação
+      [⬢⬢⬢] e 15 PA, você pode criar uma barreira vazia de 20 metros de raio e
+      com 20 vezes o seu nível de Pontos de Vida. Enquanto dentro da barreira,
+      você recebe as seguintes características:</p><ul><li><strong>Defesa
+      Rápida:</strong> Você pode utilizar os hexágonos para proteger uma
+      criatura aliada ou a si mesmo de um ataque (Comum ou de Técnica) de uma
+      criatura inimiga, fazendo sua barreira receber dano no
+      lugar.</li><li><strong>Distração:</strong> Você pode sacrificar 10 Pontos
+      de Vida da barreira para atirar um hexágono contra a criatura inimiga, o
+      espatifando, fazendo com que a próxima rolagem de acerto contra ela tenha
+      uma desvantagem.</li><li><strong>Defesa Constante:</strong> Você pode
+      deixar diversos hexágonos ao redor de até 3 criaturas voluntárias (podendo
+      incluir você entre as três). Enquanto esse efeito estiver ativo, você pode
+      anular uma jogada de ataque (Comum) a distância ao sacrificar 5 Pontos de
+      Vida da barreira.</li></ul><p>Sua barreira vazia não impede entrada ou
+      saída de criaturas e só pode sofrer dano se for atacada diretamente. Se
+      ela for destruída, você não pode criar outra por 1 minuto.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Técnicas de Barreira
+      caminho: Técnicas de Barreiras
+      requisitos:
+        - Manipulação de Ambiente
+folder: jj2f000000000007
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816758442
+  modifiedTime: 1791816758442
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000035'

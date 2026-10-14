@@ -1,0 +1,17 @@
+<div class="rolls jj2-activation-panel jj2-test-panel">
+  <ul class="dice unlist">{{#each dice}}<li><img src="{{icon}}" alt="{{label}}"><span class="label">{{label}}</span></li>{{/each}}</ul>
+  <div class="jj2-test-counters">
+    <div class="jj2-counter"><label for="{{rootId}}-test-advantages">Vantagens</label><div class="jj2-counter-value jj2-counter-controls">
+      <button type="button" data-action="jj2StepCounter" data-step="-1" aria-label="Diminuir vantagens"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+      <input id="{{rootId}}-test-advantages" type="number" name="jj2Test.vantagens" value="{{jj2Test.vantagens}}" min="0" max="6" step="1" inputmode="numeric">
+      <button type="button" data-action="jj2StepCounter" data-step="1" aria-label="Aumentar vantagens">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}</button>
+    </div><small>+2 por vantagem</small></div>
+    <div class="jj2-counter jj2-counter-bane"><label for="{{rootId}}-test-disadvantages">Desvantagens</label><div class="jj2-counter-value jj2-counter-controls">
+      <button type="button" data-action="jj2StepCounter" data-step="-1" aria-label="Diminuir desvantagens"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+      <input id="{{rootId}}-test-disadvantages" type="number" name="jj2Test.desvantagens" value="{{jj2Test.desvantagens}}" min="0" max="6" step="1" inputmode="numeric">
+      <button type="button" data-action="jj2StepCounter" data-step="1" aria-label="Aumentar desvantagens">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}</button>
+    </div><small>−2 por desvantagem</small></div>
+  </div>
+  <p class="jj2-test-advantage-note">Saldo de vantagens <strong>{{jj2Test.bonusLabel}}</strong></p>
+  <ul class="formulas unlist">{{#each rolls}}<li><div class="formula-line"><span class="formula">{{roll.formula}}</span><span class="label">Fórmula</span></div></li>{{/each}}</ul>
+</div>

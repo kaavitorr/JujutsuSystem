@@ -1,0 +1,22 @@
+name: Habilidades Básicas
+type: Item
+sorting: a
+sort: 0
+color: '#000000'
+flags:
+  scene-packer:
+    hash: 0877416d185a7e82313ed24327b4fec289e052df
+_id: G1M8tPdHa94Qiodb
+folder: hRjnfrCi2GynI6bk
+description: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910214
+  modifiedTime: 1782450207158
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_key: '!folders!G1M8tPdHa94Qiodb'

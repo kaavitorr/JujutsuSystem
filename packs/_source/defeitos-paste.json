@@ -1,0 +1,421 @@
+{
+  "defeitos": [
+    {
+      "nome": "AMNÉSIA",
+      "pontos": 1,
+      "texto": "Você simplesmente não consegue guardar informação por muito tempo, mesmo que sejam coisas bobas ou muito importantes. Pode até esquecer que perdeu um braço.\nVocê tem desvantagem em qualquer Teste de Atributo de Sabedoria para se lembrar de algo."
+    },
+    {
+      "nome": "CEGO",
+      "pontos": 1,
+      "texto": "Você não enxerga. O personagem compensa a perda da visão, tornando-se mais sensível aos outros estímulos sensoriais. Mas as imagens e as pistas visuais lhes passam desapercebidas.\nAs ações que envolvam a coordenação visual e manual são muito difíceis de serem realizadas, sobretudo nas situações tensas. Você falha automaticamente em Testes relacionados a visão."
+    },
+    {
+      "nome": "CLEPTOMANÍACO",
+      "pontos": 1,
+      "texto": "Você rouba coisas de que não precisa, não por seu valor, apenas por serem interessantes. Sempre que surgir a chance de roubar algo, você irá roubar. Um cleptomaníaco nunca devolve para os donos o produto de seus roubos, e lutará para evitar que isso aconteça.\nSe ignorar sua vontade de roubar, você recebe -1 em todas as suas jogadas até que roube o objeto cobiçado (não cumulativo)."
+    },
+    {
+      "nome": "COMPULSIVO",
+      "pontos": 1,
+      "texto": "Existe algo que você precisa fazer constantemente e que lhe traz alguma gratificação emocional, normalmente um alívio de ansiedade e/ou angústia. São hábitos mal adaptativos que já foram executados inúmeras vezes e acontecem quase automaticamente. É comum que haja um \"gatilho\" ou situações que tragam sua compulsão à tona. Se ignorar uma vez sua compulsão, você perde um Ponto de Ação [⬢] até que a faça novamente. Você recebe -2 em Testes de Atributo de Sabedoria (Investigação)."
+    },
+    {
+      "nome": "CONVENCIDO",
+      "pontos": 1,
+      "texto": "Seu tópico de conversação favorito é você mesmo. Você sempre tenta levar todas as conversas para o tópico das suas conquistas e sucessos, e nunca falha em tentar receber o crédito por qualquer coisa com a qual esteja remotamente relacionado. Você não consegue evitar lembrar de seus feitos.\nVocê recebe -2 em Testes de Atributo de Atuação."
+    },
+    {
+      "nome": "DEPRESSIVO",
+      "pontos": 1,
+      "texto": "Você pode subitamente perder a motivação de viver ou de prosseguir em sua empreitada pelos seus sonhos, não há hora ou lugar para a tristeza profunda te atingir, podendo ser desde durante uma refeição e até no meio de uma batalha decisiva.\nSempre que houver um encontro contra inimigos, sua primeira jogada de ataque será feita com 6 desvantagens, mesmo que você possua vantagem para fazer o ataque."
+    },
+    {
+      "nome": "ESFOMEADO",
+      "pontos": 1,
+      "texto": "Você tem um estômago sem fundo, seja por ter passado fome em algum momento da sua vida ou por apenas ter nascido dessa forma.\nVocê necessita comer o dobro que uma pessoa normal para se manter no dia."
+    },
+    {
+      "nome": "FALTA DE SORTE",
+      "pontos": 1,
+      "texto": "A vida parece sempre querer rir da sua cara, não importa o quanto você tente e se prepare, alguma coisa sempre acaba dando errada.\nUma vez por dia, o Narrador pode transformar uma rolagem bem-sucedida em uma falha, essa rolagem pode ser sua ou de qualquer outro, desde que seja para atrapalhar sua vida."
+    },
+    {
+      "nome": "FANTASIOSO",
+      "pontos": 1,
+      "texto": "Você acredita ser alguém ou alguma coisa que não é, ou acha que pode fazer alguma coisa de que não é capaz. Fantasias são sustentadas pelas convicções do personagem, portanto não é uma boa ideia tentar o contrariar.\nSempre que alguém for contrário ou não acreditar na sua fantasia, você recebe a condição “Enfurecido” e ataca a criatura que discordou da sua fantasia."
+    },
+    {
+      "nome": "FÚRIA INCONTROLÁVEL",
+      "pontos": 1,
+      "texto": "Tudo é capaz de te irritar e provocar sua fúria, desde ataques que te causem dor até uma provocação infantil e que seja obviamente uma armadilha.\nVocê recebe 2 desvantagens em Salvaguardas contra Testes de Atributo de Sabedoria (Provocação) e não pode ser acalmado por Testes de Atributo."
+    },
+    {
+      "nome": "IGNORANTE",
+      "pontos": 1,
+      "texto": "Você acha que já possui quase todo o conhecimento necessário para atingir seus objetivos e, precisa apenas continuar seguindo seu caminho atual até o fim, vendo todo resto apenas como perca de tempo."
+    },
+    {
+      "nome": "INGÊNUO",
+      "pontos": 1,
+      "texto": "Talvez faltem alguns parafusos na sua cabeça, ou talvez você jamais tenha aprendido a separar a realidade da ficção. Não importa porque, você é extremamente vulnerável a mentiras sutis e meias-verdades.\nCaso não seja algo muito absurdo, você recebe desvantagem em Testes de Atributo de Sabedoria (Intuição)."
+    },
+    {
+      "nome": "MEGALOMANÍACO",
+      "pontos": 1,
+      "texto": "Você acredita ser invencível, imortal, alguém destinado a realizar um grande objetivo e acha que ninguém jamais conseguirá detê-lo. Você com frequência ignora perigos que poderiam matá-lo. Nunca recusa um desafio, nunca se rende, nunca foge e sempre luta até o fim.\nVocê recebe -2 em Testes de Atributo de Persuasão."
+    },
+    {
+      "nome": "MENTIROSO",
+      "pontos": 1,
+      "texto": "Você sempre tenta se sobressair com suas mentiras, sempre que tiver a oportunidade de parecer melhor do que você realmente é, não há hesitação, mesmo que faça com que um oponente mais poderoso se interesse em tirar sua vida. Chega a mentir tanto que começa a ser desacreditado.\nVocê recebe -2 em Testes de Atributo de Enganação."
+    },
+    {
+      "nome": "ORGULHO CEGO",
+      "pontos": 1,
+      "texto": "Você é incapaz de ignorar provocações e insultos de qualquer tipo direcionados a você, seus companheiros ou entes queridos, independentemente do quão a situação seja inapropriada para isso, podendo partir para a violência caso fique muito irritado.\nVocê falha automaticamente em Salvaguardas contra Testes de Atributo de Provocação."
+    },
+    {
+      "nome": "OLFATO RUIM",
+      "pontos": 1,
+      "texto": "Você não pode sentir o cheiro e o gosto de nada direito, o que pode colocar você em perigo (por exemplo, sentir o cheiro de algo queimando). Para você, todo tipo de comida tem o mesmo gosto. Exceto pela aparência, você não pode dizer se um alimento está estragado.\nVocê tem desvantagem em Testes de Atributo de Sabedoria (Percepção) relacionados ao olfato."
+    },
+    {
+      "nome": "RETRUCADOR",
+      "pontos": 1,
+      "texto": "Você não fica quieto um segundo e tem que responder a tudo que as pessoas falam, muitas vezes fazendo pouco dos outros.\nVocê recebe -2 em Testes de Atributo de Presença (Persuasão)."
+    },
+    {
+      "nome": "RUIM COM NOMES",
+      "pontos": 1,
+      "texto": "Você tem um sério problema com nomes, e vive trocando ou falando o nome das pessoas de forma errada, muitas vezes atraindo sua raiva.\nVocê recebe -1 em qualquer Teste de Atributo de Presença"
+    },
+    {
+      "nome": "SEDUTOR INCORRIGÍVEL",
+      "pontos": 1,
+      "texto": "Você não consegue resistir a fazer tentativas casuais para seduzir qualquer um que encaixe em seus critérios de parceiro sexual, mesmo que você possa não querer ter um relacionamento sério (ou qualquer relacionamento). Porém isso não significa que você é um bom sedutor.\nEnquanto estiver na presença de seu interesse amoroso, você não consegue se concentrar e todos os seus Testes de Atributo sofrem -1 de penalidade."
+    },
+    {
+      "nome": "SENSO DE DIREÇÃO RUIM",
+      "pontos": 1,
+      "texto": "Você é tão ruim com senso de direção que pode se perder em um corredor sem portas ou janelas e não importa se seus amigos estiverem de olho em você, no primeiro deslize, você some da vista deles, como mágica.\nSempre que você não estiver em uma batalha e se deslocar de um lugar para o outro, andando ou correndo, você deve jogar um d6. Em um resultado 3 ou menor, você se perde e pode parar a até 500 metros de distância do ponto de partida. Caso você esteja acompanhado, você pode jogar o d6 duas vezes e escolher o resultado."
+    },
+    {
+      "nome": "SÓSIA",
+      "pontos": 1,
+      "texto": "Você é parecido com a descrição de outra pessoa, o que causa a confusão de identidades. Isso pode provocar inúmeras situações desagradáveis, ou mesmo perigosas, principalmente se o seu \"outro eu\" tiver péssima reputação ou estiver sendo procurado por algum crime."
+    },
+    {
+      "nome": "TIMIDEZ",
+      "pontos": 1,
+      "texto": "Você sente uma dificuldade enorme em lidar com pessoas, mesmo que você seja amigo delas, e tenta evitar situações sociais sempre que possível.\nVocê recebe 1 desvantagem em Testes de Atributo de Atuação."
+    },
+    {
+      "nome": "VOZ FINA",
+      "pontos": 1,
+      "texto": "Você possui uma voz tão fina que chega a ser engraçada e não importa o quanto tente engrossar ou disfarçar e não importa o seu tamanho ou aparência, nada impede que quem ouça sua voz ache a engraçada.\nVocê tem desvantagem em Testes de Atributo de Presença (Intimidação), com criaturas que possam te ouvir."
+    },
+    {
+      "nome": "VISÃO RUIM",
+      "pontos": 1,
+      "texto": "Você tem uma visão defeituosa devido a um problema incorrigível, por exemplo, ser caolho, míope ou enxergar mal por algum outro motivo, você pode usar óculos para corrigir, mas quando o deixa cair ou o perde, a dificuldade de enxergar é clara.\nVocê tem 1 desvantagem em Testes de Atributo relacionados à visão."
+    },
+    {
+      "nome": "CHANTAGEM",
+      "pontos": 3,
+      "texto": "Alguém de grande influência tem um segredo seu, um objeto importante ou mantém como refém uma pessoa muito preciosa para você (deve ser previamente combinado com o Narrador).\nDe tempos em tempos, emissários dessa pessoa surgem para instruí-lo a cumprir demandas, as quais podem acarretar sérios perigos ou entrar em conflito com seus princípios."
+    },
+    {
+      "nome": "CHURRIADO",
+      "pontos": 3,
+      "texto": "Você tem muitos pontos positivos, mas a força física certamente não é uma delas, e por mais que você invista seu tempo em treinar seu corpo, para aumentar sua força física, o resultado vai acabar sendo só uma aparência melhor.\nVocê tem desvantagem em qualquer Testes de Atributo ou Salvaguarda de Força."
+    },
+    {
+      "nome": "CURIOSO",
+      "pontos": 3,
+      "texto": "Você simplesmente é curioso demais em um assunto específico, sempre que algo te chama atenção sobre ele, você sente uma vontade incontrolável para descobrir tudo que pode sobre o assunto, muitas vezes deixando para trás o seu bom senso.\nCaso você ignore esses mistérios você não consegue se concentrar em mais nada, recebe -1 em todos os Testes de Atributo."
+    },
+    {
+      "nome": "DEMENTE",
+      "pontos": 3,
+      "texto": "Sua inteligência e capacidade de aprendizado são reduzidas. Por conta disso, não consegue aprender nada sozinho. Seu limite para o atributo Sabedoria se torna 16 e nada pode aumenta-lo, nem mesmo feitiços Inatos."
+    },
+    {
+      "nome": "DEPENDENTE",
+      "pontos": 3,
+      "texto": "Você se sente totalmente inseguro quando não tem seus companheiros para te ajudar ou proteger, pode ser por medo, insegurança ou por sempre querer se mostrar.\nEnquanto não estiver com nenhum companheiro ou criatura que esteja cooperando contigo, dentro do seu raio de visão, você recebe -1 em todas as suas jogadas."
+    },
+    {
+      "nome": "DÍVIDA DE JOGO",
+      "pontos": 3,
+      "texto": "Você deve uma quantia absurda de dinheiro a uma ou mais figuras extremamente poderosas e influentes. Trata-se de uma dívida tão elevada que talvez nunca consiga quitá-la. Além disso, qualquer tentativa de enganar ou despistar seus credores apenas aumenta a determinação deles em capturá-lo.\nUma vez por semana, em um dia predefinido pelo Narrador, um emissário aparecerá para cobrar 30d20 mil Iene (¥). Caso o pagamento não seja realizado, no início do dia seguinte você deverá fazer uma Salvaguarda de Sabedoria com CD igual ao seu nível + o número de semanas em atraso.\nSe falhar nessa salvaguarda, independentemente de onde esteja, você nunca estará verdadeiramente seguro: o personagem é considerado perdido, podendo morrer por envenenamento, sabotagem ou sequestro, a critério do Narrador."
+    },
+    {
+      "nome": "DUPLA PERSONALIDADE",
+      "pontos": 3,
+      "texto": "Sua mente abriga duas personalidades distintas, com valores, comportamentos ou objetivos conflitantes. A troca entre elas pode ser sutil ou abrupta, mas nunca passa despercebida para quem convive com você por tempo suficiente.\nNo início de cada dia, ou sempre que você falhar em uma Salvaguarda de Presença CD 15 em uma situação de estresse intenso (humilhação, medo extremo, dor emocional, perigo iminente), o Narrador pode determinar qual personalidade assume o controle. Enquanto a personalidade secundária estiver ativa:\nO Narrador pode impor decisões, falas ou atitudes coerentes com essa personalidade;\nVocê sofre desvantagem em Todas Perícias que for proficiente;\nVocê falha automaticamente em Salvaguardas de Sabedoria e Intelecto.\nA personalidade original retorna automaticamente após um descanso longo ou quando um evento marcante ocorre (definido pelo Narrador)."
+    },
+    {
+      "nome": "FALTA DE HIGIENE",
+      "pontos": 3,
+      "texto": "Você foge da água como se ela fosse um veneno. Sua aversão a banhos frequentes e à limpeza afeta como as pessoas te veem e suas interações.\nVocê falha automaticamente em Testes de Atributo de Persuasão e tem -10 em seu valor passivo."
+    },
+    {
+      "nome": "GANANCIOSO",
+      "pontos": 3,
+      "texto": "Você realmente ama dinheiro, talvez, o motivo que lhe fez partir para se aventurar pelo mundo. Sempre que alguém falar de formas de ganhar quantidades consideráveis de dinheiro, por um pedido, uma missão ou revelando a localização de um tesouro escondido, você não consegue resistir, caso perca a oportunidade, você é acometido por uma grande depressão.\nCaso se recuse a ganhar, perca dinheiro ou chances de enriquecer, você recebe -1 em todas as suas jogadas por 1d6 dias."
+    },
+    {
+      "nome": "HIPOCONDRÍACO",
+      "pontos": 3,
+      "texto": "Quando qualquer pessoa fala de uma doença que você não conheça, mesmo se ela não existir, se você não passar em uma Salvaguarda de Constituição CD 16, logo após o próximo descanso longo, você começa a sentir os sintomas dessa doença por 1d4 dias."
+    },
+    {
+      "nome": "MÁ FAMA",
+      "pontos": 3,
+      "texto": "Você é infame. Talvez você tenha fracassado em alguma missão importante, foi derrotado ou humilhado publicamente, é um ex-criminoso tentando se reformar. Por algum motivo, ninguém acredita ou confia em você, além de terem grandes suspeitas sobre seus atos, seja de forma merecida ou não. Ao escolher este defeito, você pode definir uma alcunha inicial, com aprovação do Narrador.\nVocê recebe -2 em Testes de Atributo de Persuasão."
+    },
+    {
+      "nome": "MEDROSO",
+      "pontos": 3,
+      "texto": "O medo é seu companheiro constante, qualquer coisa possivelmente assustadora o impressiona e faz com que esbugalhe os olhos e grite, mesmo que você seja capaz de fazer o mesmo ou até superar ou que a criatura seja mais fraca que você.\nVocê é sempre o último nas ordens de iniciativa."
+    },
+    {
+      "nome": "MONSTRUOSO",
+      "pontos": 3,
+      "texto": "Sua aparência é repulsiva e assustadora. Você não pode sair pelas ruas como gente normal; as pessoas ficarão assustadas ou furiosas. Todos que possuem esta desvantagem, podem esconder sua monstruosidade com roupas adequadas.\nVocê ganha 1 nível (caso não tenha) ou aumenta 1 nível de preconceito."
+    },
+    {
+      "nome": "NARCISISTA",
+      "pontos": 3,
+      "texto": "Você ama a si mesmo e está sempre cuidando da própria aparência com grande afinco. Sua aparência reflete no desempenho de suas performances, caso não esteja arrumado e se sentindo belo ou esteja sujo, mesmo as batalhas não serão travadas com grande vontade.\nQuando você não está arrumado ou sujo, todos os seus Testes de Atributo de Sabedoria sofrem -1 de penalidade."
+    },
+    {
+      "nome": "OBSESSIVO",
+      "pontos": 3,
+      "texto": "Obsessão por algo material. Os jogadores que possuírem esse defeito terão na avaliação de suas aventuras uma análise interpretativa, na qual será avaliada as tentativas de se aproximar ou sustentar sua obsessão.\nCaso você tenha ignorado sua obsessão, todos os seus Testes de Atributo sofrem -1 de penalidade até que você volte a alimentar sua obsessão."
+    },
+    {
+      "nome": "PARANOICO",
+      "pontos": 3,
+      "texto": "Você não confia em ninguém, nem em seus amigos. Nunca pede e nem aceita nenhuma ajuda, nem mesmo o tratamento de seus ferimentos. Não consegue descansar ou dormir direito: mesmo que esteja em uma estalagem ou outro lugar que parece ser totalmente seguro.\nVocê precisa de, no mínimo, 2 horas para se acalmar e achar que está tudo certo, para começar um descanso curto ou longo."
+    },
+    {
+      "nome": "PREGUIÇOSO",
+      "pontos": 3,
+      "texto": "No início de cada dia, role 1d4. O resultado indica a quantidade máxima de tarefas que você consegue realizar sem sofrer penalidades. Após exceder esse limite, seus Pontos de Energia Amaldiçoada (PA) atuais são reduzidos em 1/4 (arredondando para cima).\nEsses são alguns exemplos de tarefas, mas o Narrador pode estipular outras:\nRealizar atividades não relacionadas ao seu trabalho atual;\nParticipar de um encontro de combate;\nExecutar pedidos, ordens ou favores que não tenham partido de você.\nEssa penalidade só pode ocorrer uma vez por dia e é redefinida ao final de um descanso longo."
+    },
+    {
+      "nome": "SINCERIDADE EXCESSIVA",
+      "pontos": 3,
+      "texto": "Você é incapaz de mentir, seja por valores morais ou simplesmente dificuldade em ocultar a verdade. E por mais que você se esforce para contar uma mentira, sempre será óbvio que não se trata da verdade.\nVocê tem desvantagem em Testes de Atributo de Presença (Enganação)."
+    },
+    {
+      "nome": "SONÂMBULO",
+      "pontos": 3,
+      "texto": "Você pode começar a andar e falar enquanto dorme. Você pode até lutar e agir como se estivesse consciente, mas acorda se sofrer qualquer dano e não se lembra de nada que tenha acontecido enquanto estava sonâmbulo.\nAo final de cada descanso, você deve fazer um Teste de Constituição CD 15 para saber se conseguiu descansar. Em caso de falha, você não se beneficia de nenhuma característica de um descanso longo."
+    },
+    {
+      "nome": "SUICIDA",
+      "pontos": 3,
+      "texto": "Você não dá valor à própria vida. Embora não tenha coragem para se matar, sempre procura oportunidades de morrer desafiando inimigos poderosos, correndo riscos desnecessários ou fazendo coisas de forma impensada."
+    },
+    {
+      "nome": "SURDO",
+      "pontos": 3,
+      "texto": "Você é totalmente surdo, incapaz de ouvir qualquer som. Isso pode ter ocorrido por um acidente, um ferimento antigo ou você nasceu assim.\nVocê falha automaticamente em Testes de Atributo que dependam da audição."
+    },
+    {
+      "nome": "TRAPALHÃO",
+      "pontos": 3,
+      "texto": "Sempre que você se move, sai esbarrando em tudo pela sua frente ou tropeça no nada, não consegue carregar qualquer coisa sem que tudo acabe no chão.\nAo realizar uma falha crítica em uma jogada de ataque, você não só erra o golpe como também desencadeia um dos seguintes efeitos, de acordo com o Narrador:\nAcerta a si mesmo ou um aliado próximo, causando até 5 pontos de dano na criatura;\nDeixa a arma cair no chão;\nTropeça e recebe a condição “Caído”."
+    },
+    {
+      "nome": "VÍCIO",
+      "pontos": 3,
+      "texto": "Você é dependente de uma substância específica, como álcool, nicotina, açúcar, drogas, determinados alimentos ou compostos similares. Sempre que deixa de consumir essa substância, os efeitos da abstinência passam a se acumular da seguinte forma:\n1 Dia Sem Consumo: você recebe desvantagem nas jogadas para determinar a iniciativa.\n2 Dias Sem Consumo: você não recebe nenhum benefício ao finalizar descansos curtos.\nA Partir do 3º Dia: para cada dia adicional sem consumir a substância, você perde 5 Pontos de Energia Amaldiçoada (PA) do seu valor máximo.\nOs Pontos de Energia Amaldiçoada (PA) perdidos dessa forma só são recuperados após o término de um descanso longo, desde que o vício tenha sido satisfeito antes desse descanso."
+    },
+    {
+      "nome": "CONSUMIDOR COMPULSIVO",
+      "pontos": 5,
+      "texto": "Você é impulsivo quando se trata de compras e gasta dinheiro de maneira descontrolada em itens que, muitas vezes, são inúteis ou prejudiciais.\nSempre que falarem em compras, você é o primeiro a se voluntariar a acompanhar a pessoa e ao entrar em uma loja ou mercado, você deve fazer uma Salvaguarda de Sabedoria CD 18 para evitar gastar 50% do dinheiro total que você possuir.\nSe a loja não tiver produtos o suficiente para fazê-lo gastar 50%, você compra a loja."
+    },
+    {
+      "nome": "DISTRAÍDO",
+      "pontos": 5,
+      "texto": "Você tem dificuldade para se concentrar em alguma coisa. Consequentemente, seu personagem geralmente não possui o conhecimento necessário em várias situações.\nVocê recebe – 2 em Testes de Atributo de Sabedoria (Intuição e Percepção) e Intelecto (História e Investigação)."
+    },
+    {
+      "nome": "DOENÇA TERMINAL",
+      "pontos": 5,
+      "texto": "Você sofre de uma doença terrível e incurável, que consome lentamente sua vitalidade. No passado, você já foi muito mais forte do que é hoje, mas seu corpo está em constante declínio.\nSempre que você cair a 0 Pontos de Vida, perde permanentemente 1 ponto do atributo Constituição. Caso esse atributo chegue a 0, o personagem morre."
+    },
+    {
+      "nome": "MEDIOCRE",
+      "pontos": 5,
+      "texto": "Seu personagem não se destaca em nada do que faz, vivendo constantemente à sombra da mediocridade e sendo incapaz de brilhar nos momentos mais decisivos. Você nunca recebe os efeitos de acertos críticos em jogadas com o d20."
+    },
+    {
+      "nome": "PACIFISTA",
+      "pontos": 5,
+      "texto": "Você adota uma postura pacifista em sua abordagem à vida, buscando solucionar conflitos por meio do diálogo e da compreensão. Evita o uso da violência sempre que possível, priorizando a paz e a harmonia em suas interações.\nVocê só consegue executar ações que possam causar dano quando um aliado estiver com menos de 50% de Pontos de Vida ou alguma criatura não combatente estiver com risco de vida. Quando sozinho, você sempre se rende ou busca o caminho da não violência."
+    },
+    {
+      "nome": "SONOLÊNCIA",
+      "pontos": 5,
+      "texto": "Por algum motivo, você está sempre com sono, não importa se dormiu normalmente no dia anterior ou se acabou de acordar.\nNo início de um encontro de combate, você deve rolar 1d6, e em um resultado 3 ou menor, você passa a primeira rodada do combate com a condição “Inconsciente”. Esse teste pode ser solicitado pelo Narrador em qualquer outro momento também."
+    },
+    {
+      "nome": "VIAJANTE",
+      "pontos": 5,
+      "texto": "Você não é bom com responsabilidades e não consegue ficar muito tempo no mesmo lugar, como se fazer isso tornasse sua vida insuportável. Você abandona pessoas com quem se importa sem olhar pra trás e recusa qualquer trabalho que o faça ficar preso em um lugar.\nCaso você passe mais de 1 mês no mesmo lugar, com exceção estar treinando para atributos ou Pontos de Maldição, você recebe desvantagem e -1 em todas as rolagens que realizar."
+    },
+    {
+      "nome": "TRAUMA PROFUNDO/FOBIA",
+      "pontos": 5,
+      "texto": "Em seu passado você passou por uma situação traumática irrecuperável, desde uma perda terrível, ter sofrido agressões ou qualquer evento negativamente marcante.\nToda vez que você se depara com uma situação semelhante ou possui um gatilho que traga suas memórias à tona, você é tomado por perturbações nítidas que pode te impedir de realizar ações ou comprometer sua concentração, devendo fazer uma Salvaguarda de Sabedoria CD 15, se passar no teste, você supera momentaneamente o trauma, se falhar, todos as suas jogadas com d20 sofrem -5 de penalidade. Após esse 1 minuto, você pode repetir o teste."
+    }
+  ],
+  "peculiaridades": [
+    {
+      "nome": "LISTA DE PECULIARIDADES",
+      "pontos": null,
+      "texto": "Abaixo você pode escolher entre as desvantagens e seus benefícios:"
+    },
+    {
+      "nome": "VISÕES FUGAZES",
+      "pontos": null,
+      "texto": "Você vê coisas que não deveria, como aparições que não existem e ilusões de terror.\nPenalidade: Uma vez por interação ou 2 vezes por combate, o narrador pode impor falha em uma rolagem de acerto.\nBônus: Você recebe uma habilidade de especialização adicional."
+    },
+    {
+      "nome": "FERIDA AMALDIÇOADA",
+      "pontos": null,
+      "texto": "Você possui uma ferida que recebeu de uma maldição durante algum momento da sua infância que ressurge com poder assustador em momentos importantes.\nPenalidade: No início de cada encontro, você deve rolar 1d20. Em um resultado de 10 ou menor, você é afetado pela sua maldição que te causa uma dor terrível durante o combate. Você recebe a condição “Incapacitado” por 3 rodadas do combate.\nApós ser afetado por essa característica, ela não te afeta novamente até o fim do seu próximo descanso longo.\nBenefício: Seus Pontos de Vida base aumentam em +1;"
+    },
+    {
+      "nome": "GÊMEO AMALDIÇOADO",
+      "pontos": null,
+      "texto": "Os gêmeos são sinais de mal agouro no mundo de Jujutsu. Devido ao seu destino e poderes compartilhados, eles costumam ser muito fracos ao invés de poderosos.\nAté que um deles morra em prol do outro durante a narrativa, os dois são severamente penalizados.\nPenalidade: Os gêmeos possuem a Energia Amaldiçoada Máxima e Refinamento divididas entre si, recebendo cada um, metade do total.\nBenefícios: Caso um gêmeo morra em prol do outro, ele pode escolher levar consigo o corpo físico ou a energia. Se ele deixar a energia, a sua base aumenta em 5. Se levar a energia, você recebe 4 Pontos de Atributo e recebe a origem de poder Fisicamente Dotado e o Estilo de Combate de Restringido, podendo refazer sua ficha."
+    },
+    {
+      "nome": "FÍSICO LIMITADO",
+      "pontos": null,
+      "texto": "Você foi amaldiçoado com um físico frágil que nunca pode se igualar com o das outras pessoas, pegando doenças mais facilmente e tendo mais dificuldade em se recuperar ou resistir a lesões severas.\nPenalidade: Seu limite de Constituição se torna 10 e você perde 1 Ponto de Vida Base.\nBenefícios: Sua Energia Base aumenta em 2 Pontos e seu valor de Intelecto ou Sabedoria aumenta em 1."
+    },
+    {
+      "nome": "APETITE CANIBAL",
+      "pontos": null,
+      "texto": "Você tem impulsos fortes por ingerir carne humana, mas deseja que ela seja preparada com maestria para conseguir saciar sua fome.\nPenalidade: Se você não ingerir um banquete de carne humana (pelo menos 5 kg) pelo menos 1 vez por mês, você recebe -1 em todas as rolagens do d20 até que ela seja ingerida. Esse bônus vai se acumulando todo mês até que você seja saciado.\nEssa maldição não acumula caso você esteja em uma condição que impossibilitaria você de saciar sua fome, como selado ou preso, parando apenas em -1.\nBenefícios: Você recebe 1 Habilidade de Especialização de Proezas Físicas."
+    },
+    {
+      "nome": "CORPO EXAURIDO",
+      "pontos": null,
+      "texto": "Você está sempre cansado — não por trabalhar demais, mas porque seu corpo nunca teve um nível alto de energia devido à maldição que o afeta.\nPenalidade: Ao final de cada encontro, você deve realizar uma Salvaguarda de Constituição CD 18. Em caso de falha, você recebe 1 nível de exaustão.\nA CD aumenta em +5 para cada encontro adicional que você participar antes de completar um descanso longo. Para cada descanso longo realizado antes de voltar a lutar, a CD é reduzida em −5, até um mínimo de 20.\nBenefícios: Você recebe 2 Pontos de Proficiência e 1 de Energia Base adicional."
+    },
+    {
+      "nome": "PESADELOS TERRÍVEIS",
+      "pontos": null,
+      "texto": "Seu sono nunca é tranquilo e muitas vezes vem acompanhado de cenas horríveis de mortes das pessoas que você ama ou de lutas em que a vitória é impossível.\nPenalidade: Ao fim de um descanso longo, você deve rolar 1d20. Em um resultado de 10 ou menor, você acorda com 1 nível de exaustão que não pode ser removido a menos que seja por um descanso longo bem sucedido.\nCaso você falhe também no próximo descanso, você não remove a exaustão adquirida por essa característica e acumula uma adicional, até um máximo de 5 níveis.\nBenefícios: Você recebe imunidade a condição “Amedrontado” e 4 Pontos de Proficiência em Intimidação."
+    },
+    {
+      "nome": "MÁ CICATRIZAÇÃO",
+      "pontos": null,
+      "texto": "Uma maldição em seu corpo afeta diretamente sua capacidade de cicatrizar e se curar.\nPenalidade: Toda vez que você for curado de qualquer forma, você recebe uma das seguintes penalidades dependendo do tipo de cura recebida:\nVocê reduz 2 dados de dano da cura (mínimo 1);\nEm um valor fixo, você sofre penalidade de metade do seu Atributo de Constituição (arredondado para cima);\nSe você for curado diretamente metade ou o valor total da sua vida de uma vez, você reduz esse valor em 1/3.\nBenefícios: Você aumenta sua vida e energia base em 1."
+    },
+    {
+      "nome": "TREMORES INVOLUNTÁRIOS",
+      "pontos": null,
+      "texto": "Sua maldição afeta sua coordenação e controle motor em momentos de dificuldade.\nPenalidade: Uma vez por rodada, ao sofrer um crítico, você recebe a condição “Estremecido” de forma automática até o fim do seu próximo turno. Esse efeito passa para criaturas controladas por você.\nBenefício: Seu valor de refinamento aumenta em +2."
+    },
+    {
+      "nome": "PRESENÇA INCÔMODA",
+      "pontos": null,
+      "texto": "Sua presença causa desconforto nas pessoas ao redor, fazendo elas terem diversos tipos de reações diferentes quando te olham, como calafrios ou apenas medo.\nPenalidade: Você tem 2 desvantagens em testes de interações sociais contra criaturas que possam te ver. Isso afeta seu valor passivo nesses testes.\nBenefícios: Você recebe 2 vantagens em Testes de Atributo de Intimidação – que é imune a penalidade – e Sobrevivência."
+    },
+    {
+      "nome": "RESPIRAÇÃO INSTÁVEL",
+      "pontos": null,
+      "texto": "Sua maldição se concentra nos seus pulmões fazendo você não conseguir manter um fôlego estável de forma alguma.\nPenalidade: Se você usar mais de 3 Pontos de Ação para deslocamento adicional no turno, você recebe 1 nível de exaustão até realizar um descanso curto ou longo. É possível acumular diversos níveis dessa forma.\nBenefícios: Você aprendeu a utilizar seus recursos de forma muito eficiente. Você recebe uma vantagem contra todas as criaturas abaixo de você na iniciativa."
+    },
+    {
+      "nome": "AZAR ABSURDO",
+      "pontos": null,
+      "texto": "Pequenos azares te acompanham constantemente e são exacerbados pela sua maldição.\nPenalidade: Sempre que você tirar 1 natural, algo absurdo irá ocorrer, mesmo que não faça sentido algum desde que seja para dificultar sua vida.\nEssa característica te afeta mesmo que você possua algo que permita rolar novamente suas rolagens. Você poderá rolar novamente, mas ainda sofrerá as consequências dessa maldição pelo 1 natural.\nBenefícios: Toda vez que você tirar um 20 natural, você recupera Energia Amaldiçoada Total em um valor igual seu atributo de Intelecto."
+    },
+    {
+      "nome": "LEMBRETE SOMBRIO",
+      "pontos": null,
+      "texto": "Você amaldiçoou uma pessoa querida sem querer, causando um sofrimento tremendo a essa criatura. Saber disso causa um enorme tormento a sua mente, algo que acompanha você a cada segundo da sua vida.\nPenalidade: Você recebe -1 em todas as rolagens no d20. Além disso, você pode sofrer gatilhos aleatórios toda vez que se lembrar da pessoa. Isso pode ocorrer sob as seguintes circunstâncias:\nVocê vê essa pessoa;\nVocê recebe notícias sobre a pessoa;\nEncontra algo diretamente ligado a ela (objeto, memória forte, local importante);\nÉ colocado em uma situação que relembra claramente do ocorrido (à critério do mestre).\nToda vez que esses casos ocorrerem, sua penalidade se torna -3 pelas próximas 4 horas.\nBenefícios: Seu valor de Sabedoria aumenta em +1 e você recebe 2 Habilidades de Especialização adicionais."
+    },
+    {
+      "nome": "ENERGIA DESTRUTIVA",
+      "pontos": null,
+      "texto": "Sua energia amaldiçoada consegue ser maléfica até mesmo ao seu próprio corpo.\nPenalidade: Sempre que utilizar uma técnica, você recebe dano diretamente na sua vida igual ao custo em PA dela.\nBenefícios: Sua energia base aumenta em 3."
+    },
+    {
+      "nome": "VOZ AMALDIÇOADA",
+      "pontos": null,
+      "texto": "Algo fala dentro da sua mente com sua própria voz, sussurrando seus pensamentos mais destrutivos.\nPenalidade: A qualquer momento, o Narrador pode emitir ordens intrusivas que nunca serão ao seu favor. Você pode realizar uma Salvaguarda de Presença CD 13. Em caso de falha, você pode escolher entre executar a ação ou sofrer -3 em todas as rolagens no d20 até o fim do encontro ou pela próxima hora (afeta seus valores passivos de perícia).\nA cada vez que você passar na Salvaguarda, você aumenta a CD da próxima em +1, resetando ao falhar.\nBenefícios: No início de cada dia, você pode escolher rolar 1d20. A qualquer momento, você pode substituir uma rolagem sua ou de uma criatura qualquer a até 30 metros pelo resultado da rolagem."
+    },
+    {
+      "nome": "RASTRO DA DESGRAÇA",
+      "pontos": null,
+      "texto": "As coisas simplesmente dão errado ao seu redor devido a sua maldição.\nPenalidade: Sempre que você tirar 1 natural, você recebe uma condição aleatória de até 7 PA.\nBenefícios: Sua margem de critico por excedente se torna 8 ao invés de 10."
+    },
+    {
+      "nome": "REFLEXO AMALDIÇOADO",
+      "pontos": null,
+      "texto": "Nada que é ruim vem sozinho e sua maldição é a forma perfeita de representar isso.\nPenalidade: Sempre que você falhar catastroficamente em realizar uma ação que esteja tentando fazer, como falhar por 10 ou mais em uma rolagem ou tirar 1 natural, o narrador recebe 1 Ponto de Reflexo Amaldiçoado. Esses pontos devem ser utilizados para forçar a falha de qualquer rolagem que com certeza irá piorar a vida do dono dessa maldição, seja de forma direta ou indiretamente.\nBenefícios: Você recebe 1 Ponto de Vida Base e recebe 2 Habilidades de Especialização adicionais."
+    },
+    {
+      "nome": "SEDE DE SANGUE IMPOSTA",
+      "pontos": null,
+      "texto": "As criaturas adoram o cheiro de seu sangue e não irão perder a oportunidade de tirar sua vida.\nPenalidade: Sempre que você ficar com menos de 50% da sua vida, as criaturas irão automaticamente mudar o alvo para você até que esteja morto.\nBenefícios: Você recebe 1 Ponto de Vida Base e 1 Ponto de Atributo de Presença."
+    },
+    {
+      "nome": "OLHAR DO ABISMO",
+      "pontos": null,
+      "texto": "Você presenciou algo que mudou sua vida para a pior, fazendo com que você temesse tudo que esteja um pouquinho fora do seu alcance.\nPenalidade: Sempre que você estiver de cara com uma criatura inimiga com ND maior que seu nível, você deve realizar uma Salvaguarda de Sabedoria CD 10, onde ela aumenta em +4 para cada ND que a criatura possuir acima do seu nível. Se você falhar, você recebe a condição “Amedrontado” contra ela por 1 minuto ou até sofrer dano e irá correr com tudo para o mais longe possível dela.\nEnquanto estiver enfrentando essa criatura, você deve rolar 1d4 no início de cada turno. Em um resultado de 1 ou 2, você deve realizar a Salvaguarda novamente.\nVocê só pode ser amedrontado dessa forma até 3 vezes por descanso longo.\nBenefício: Você recebe 3 Pontos de Proficiência e imunidade a condição “Atordoado”."
+    },
+    {
+      "nome": "MALDIÇÃO DESCONTROLADA",
+      "pontos": null,
+      "texto": "Sua maldição toma uma forma tangível de nível especial ligada a você e mata qualquer criatura que te ofenda de qualquer forma, mesmo que seja amigos durante uma brincadeira. Isso faz com que você se torne perigoso demais para as criaturas ao seu redor.\nEssa maldição possui uma ficha de ND 17 e não pode ser morta enquanto você estiver vivo e volta a vida caso você seja revivido de alguma forma.\nPenalidade: Se descobrirem as transgressões da sua maldição, você é considerado como um criminoso para a sociedade Jujutsu, podendo ser condenado a execução. Além disso, a maldição irá pedir algo macabro ou cruel para você pelo menos 1 vez a cada 3 dias. Se você recusar, você recebe a condição “Letárgico” por 24 horas.\nBenefício: Você recebe 3 Pontos de Foco. A qualquer momento, você pode gastar 1 Ponto de Foco para negar uma condição qualquer recebida."
+    },
+    {
+      "nome": "CORPO FRÁGIL",
+      "pontos": null,
+      "texto": "Seu corpo é tão frágil que ameaça se quebrar com a menor das pressões devido a uma maldição contida em seu corpo e o reforço da sua energia amaldiçoada é a única coisa que faz com que você possa funcionar como uma pessoa normal.\nPenalidade: Ao sofrer uma rolagem de ataque (Comum), você sofre 1 dado de dano adicional e ao sofrer uma técnica, você recebe 1/3 dos dados totais sofridos (arredondado para cima) como dano adicional.\nBenefício: Você aprendeu a lutar com um corpo quebrado. Você é imune aos efeitos de redução de Pontos de Ação das condições, embora ainda sofra todos os outros efeitos relacionados as condições."
+    },
+    {
+      "nome": "VOTO VINCULATIVO",
+      "pontos": null,
+      "texto": "Você firmou um voto com entidades extremamente poderosas — sejam líderes do mundo Jujutsu ou maldições de alto nível. Sua existência agora serve a eles.\nPenalidade: Você não pode ferir, trair ou agir diretamente contra qualquer criatura com a qual tenha firmado o voto. Qualquer tentativa de fazê-lo resulta em morte imediata.\nSe uma dessas entidades estiver em risco e você tiver conhecimento disso, você é obrigado a agir para protegê-la, dentro de suas capacidades.\nCorrentes de Servidão: Ordens diretas dessas entidades não podem ser recusadas sem resistência. Ao receber uma ordem que vá contra seus interesses diretos, faça uma Salvaguarda de Presença (CD 10). Em caso falha, você deve cumprir a ordem. Se obtiver sucesso, você recebe a condição “Letárgico” e -3 em todas as rolagens no d20 até que as ordens sejam cumpridas.\nSeu voto só pode ser quebrado se todas as entidades envolvidas (mínimo 5) morrerem, mas você não pode ter nenhuma relação com a morte delas.\nBenefício: Você desbloqueia sua Energia Reversa e recebe 3 Habilidades de Especialização dessa arvore."
+    },
+    {
+      "nome": "VISÃO DETURPADA DO MUNDO",
+      "pontos": null,
+      "texto": "Diversos acontecimentos desde a sua infância relacionado a maldições fez com que você criasse uma visão distorcida do mundo, ao culpar os não-feiticeiros pela existência das maldições, não sendo nem um pouco diferente delas.\nPenalidade: Sempre que um não-feiticeiro tentar te impedir diretamente ou causar qualquer tipo de prejuízo ou empecilho a você, o Narrador pode pedir uma Salvaguarda de Sabedoria CD 12. Em caso de falha, você se torna violento e tenta neutralizar a criatura imediatamente.\nA cada vez que você obtiver sucesso, a CD aumenta em +2 até o momento que você falhar, resetando os efeitos quando isso ocorrer.\nBenefícios: Você pode escolher um feitiço específico de 3 com requisito de 4 ou mais Pontos de Ação. Reduza o custo de Pontos de Ação dele ou de uma habilidade menor dentro dele em 1 de forma permanente."
+    },
+    {
+      "nome": "DESTINO ENTRELAÇADO",
+      "pontos": null,
+      "texto": "Seu destino está ligado a um espírito amaldiçoado de grau especial. Sua existência e a dela são uma só.\nPenalidade: Você tem um vínculo de morte com a maldição, fazendo com que a morte dela ou a sua cause a morte do outro.\nSegredo da Condenação: Você sabe a identidade e os poderes da maldição, mas toda vez que você tentar revela-la, você deve realizar uma Salvaguarda de Sabedoria CD 28. Em caso de falha, você perde metade dos seus Pontos de Vida e Energia máximos por 7 dias e não pode tentar revelar sobre ela durante esse período.\nSe obtiver sucesso, você consegue falar sobre a maldição, mas recebe 2d8 de dano Psíquico por rodada enquanto estiver revelando algo sobre ela.\nA maldição possui as mesmas limitações que você, não podendo revelar sobre você sem pagar o preço.\nBenefícios: Você e a Maldição recebem um bônus de +2 nos Pontos de Vida e +5 nos Pontos de Energia Base."
+    },
+    {
+      "nome": "DOENÇA SOBRENATURAL",
+      "pontos": null,
+      "texto": "Você possui uma doença contraída a partir de uma maldição em algum momento no seu passado que faz com que você tenha momentos de inconsciência em ocasiões decisivas e importantes.\nPenalidade: Ao causar um acerto crítico em uma rolagem de acerto, o ataque é interrompido e você recebe a condição “Inconsciente” até o fim do seu turno seguinte.\nEssa penalidade te afeta apenas uma vez e reseta ao fim de cada descanso longo.\nBenefícios: Você é imune a condições de “Dano”."
+    },
+    {
+      "nome": "CAÇADOR SOMBRIO",
+      "pontos": null,
+      "texto": "Seu feitiço inato faz com que você emita uma energia muito específica, facilmente rastreável por uma maldição que anseia consumir sua existência.\nPenalidade: Uma vez por dia, ao utilizar seu feitiço inato, você deve rolar 1d12. Em um resultado 1, você recebe uma Marca de Presa, indicando que a maldição de ND 17 percebeu sua presença.\nAo acumular 5 Marcas de Presa, a maldição descobre sua localização e surgirá em até 30 dias para caçá-lo e consumi-lo.\nAlém disso, a cada 2 níveis que você adquirir, o ND da maldição aumenta em +1.\nBenefícios: Você aprendeu a controlar sua energia amaldiçoada de forma a quase não vazar vestígios, com medo de ser encontrado. Você recebe 2 Habilidades de Especialização de “Canalização de Energia”, 2 Pontos de Proficiência em Feitiçaria e 1 Ponto de Atributo em Intelecto."
+    },
+    {
+      "nome": "DESEJO SOMBRIO",
+      "pontos": null,
+      "texto": "Uma maldição em seu corpo faz com que você desenvolva desejos sombrios de tempos em tempos, precisando saciá-los para manter um certo nível de sanidade.\nPenalidade: Ao final de cada sessão ou evento marcante na mesa, desde que ocorram em dias diferentes, role 1d6. Em um resultado de 4 ou mais, o Desejo Sombrio se manifesta.\nO desejo sombrio é sempre algo moralmente condenável e, geralmente, configura um crime dentro da sociedade jujutsu. Você deve escolher três tipos de desejos sombrios: um leve, um moderado e um grave. Quando o desejo se manifestar, role 1d3 para determinar qual deles ocorrerá (ou d6 em mesas presenciais):\n1 – Leve: Você irá manipular, trair ou causar sofrimento a um inocente ou aliado, conforme sua escolha.\n2 – Moderado: Você irá ferir gravemente um inocente ou aliado ou; destruir algo importante.\n3 – Grave: Você irá matar, sacrificar ou cometer um ato extremo punível com a morte pelas leis.\nVocê deve definir previamente uma única ação específica para cada um dos três níveis, que representarão seus desejos sombrios.\nFalhar em cumprir seu desejo sombrio faz você ter -4 em todas as rolagens não relacionadas a cumpri-lo até que ele seja saciado.\nBenefícios: Você recebe 2 Pontos Lendários para usar em modificadores."
+    }
+  ]
+}

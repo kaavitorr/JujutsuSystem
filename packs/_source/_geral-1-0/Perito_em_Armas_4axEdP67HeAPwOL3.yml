@@ -1,0 +1,97 @@
+folder: Ae6h1X3fm2Sv6iWS
+name: Perito em Armas
+type: feat
+img: icons/skills/melee/weapons-crossed-swords-yellow.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Enquanto estiver utilizando uma “Ferramenta
+      Amaldiçoada”, você recebe as seguintes
+      características:</p><ul><li><p><strong>Reserva de Energia:</strong> Você
+      pode colocar até 10 Pontos de Energia Amaldiçoada (PA) em sua “Ferramenta
+      Amaldiçoada”. A qualquer momento, ao executar um feitiço básico, estendido
+      ou máximo através dela, você pode gastar até 2 PA armazenados na arma para
+      reduzir o custo do feitiço pelo mesmo valor.</p></li><li><p><strong>Arma
+      Preferida:</strong> Enquanto estiver utilizando uma “Ferramenta
+      Amaldiçoada”, você pode mudar seu dano para 2d6 e receber +1 de acerto em
+      rolagens com ela. Adicionalmente, toda rodada, você pode escolher um de
+      seus ataques (Comuns ou de Técnica) que teria desvantagem ou penalidade no
+      acerto por meios externos e negar esses dois, rolando
+      normalmente.</p></li><li><p><strong>Golpe Brutal:</strong> Sempre que
+      derrotar uma criatura com uma jogada de ataque (Comum ou de Técnica)
+      usando uma “Ferramenta Amaldiçoada”, você pode se mover até 9 metros e
+      realizar um novo ataque (Comum) contra uma outra criatura, causando 1 dado
+      de dano adicional nesse ataque. A cada vez que você matar ou derrotar uma
+      criatura no combate, tirando a primeira vez, os dados adicionais aumentam
+      em 2 até um máximo de 6 dados.Caso você esteja lutando contra apenas uma
+      criatura, você pode, uma vez por rodada, consumir 3 PA para causar 2d8 de
+      dano adicional em uma jogada de ataque (Comum ou de
+      Técnica).</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776919932635
+  modifiedTime: 1776919932679
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: 4axEdP67HeAPwOL3
+sort: 100000
+_key: '!items!4axEdP67HeAPwOL3'

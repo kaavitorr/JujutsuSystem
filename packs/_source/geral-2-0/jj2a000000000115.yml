@@ -1,0 +1,22 @@
+_id: jj2a000000000115
+_key: '!items!jj2a000000000115'
+name: Reversão Externa
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: reversao-externa
+  description:
+    value: <p><em><strong>Requisito:</strong> Recuperando Reservas</em></p><p>Você se torna capaz de usar Energia Reversa em outras criaturas que não sejam você, mas você recupera apenas metade dos Pontos de Vida das outras criaturas do que você recuperaria em si mesmo.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Energia Reversa
+      caminho: Técnica de Energia Reversa
+      requisitos:
+        - Recuperando Reservas
+folder: jj2f000000000018
+ownership:
+  default: 0
+effects: []
+sort: 0

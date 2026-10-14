@@ -1,0 +1,40 @@
+_id: jj2a000000000117
+name: Reversão Extrema
+type: feat
+img: icons/magic/life/heart-cross-strong-green.webp
+system:
+  identifier: reversao-extrema
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> 7 Habilidades de Energia
+      Reversa</em></p><p>Você passa a conseguir usar 5 Pontos de Energia Reversa
+      por rodada e pode utilizar “Regeneração de Feridas” em outras
+      criaturas.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Energia Reversa
+      caminho: Técnica de Energia Reversa
+      requisitos:
+        - 7 Habilidades de Energia Reversa
+folder: jj2f000000000018
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814679687
+  modifiedTime: 1791814679687
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000117'

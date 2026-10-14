@@ -1,0 +1,24 @@
+name: Traços NPCS
+type: Item
+sorting: a
+sort: 600000
+color: '#2d4e9a'
+flags:
+  core:
+    sourceId: Folder.Zh6nXJyphmH4TF72
+  scene-packer:
+    hash: fa33e998880591d22e9411d6a2d30fcd842db72c
+_id: Zh6nXJyphmH4TF72
+folder: null
+description: ''
+_stats:
+  compendiumSource: Folder.Zh6nXJyphmH4TF72
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910213
+  modifiedTime: 1776924287384
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!Zh6nXJyphmH4TF72'

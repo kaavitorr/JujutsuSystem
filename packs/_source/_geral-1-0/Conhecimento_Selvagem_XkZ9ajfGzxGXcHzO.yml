@@ -1,0 +1,64 @@
+folder: vG1tvdXvcpq70Tb5
+name: Conhecimento Selvagem
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>Você passou tanto tempo e estudou tanto sobre a natureza que você
+      consegue até mesmo fazer novas descobertas ao juntas pontos remotamente
+      relacionados de criaturas ou espécies
+      parecidas.</p><p><strong>Requisito:</strong> Sabedoria 18, Afinidade
+      Natural.</p><p><strong>Característica:</strong> Você recebe maestria em
+      Testes de Atributo de Sabedoria (Natureza).</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: alvo-marcado
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: 68bd6da6a692d9e060df0b6a0d841529b2c53996
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902138
+  modifiedTime: 1776913390099
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+_id: XkZ9ajfGzxGXcHzO
+sort: 1500000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_key: '!items!XkZ9ajfGzxGXcHzO'

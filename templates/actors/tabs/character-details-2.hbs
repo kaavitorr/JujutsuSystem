@@ -1,0 +1,144 @@
+<section class="tab {{ tab.cssClass }} jj2-details" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
+
+  {{!-- ═══════════════════ ESTILO DE COMBATE ═══════════════════ --}}
+  <div class="left">
+    <fieldset class="jj2-estilo-box">
+      <legend>{{ localize "JUJUTSU.2.Estilo.Label" }}</legend>
+      {{#if jj2.estiloNome}}
+      <div class="jj2-estilo-info">
+        <span class="jj2-estilo-nome"><strong>{{ jj2.estiloNome }}</strong></span>
+        <span>{{ localize "JUJUTSU.2.Estilo.VidaBase" }}: <strong>{{ jj2.estiloInfo.vidaBase }}</strong></span>
+        <span>{{ localize "JUJUTSU.2.Estilo.EnergiaBase" }}: <strong>{{ jj2.estiloInfo.energiaBase }}</strong></span>
+        <span>{{ localize "JUJUTSU.2.Estilo.AtributoPrincipal" }}: <strong>{{ jj2.principalLabel }}</strong></span>
+      </div>
+      {{#if jj2.escolhivel}}
+      <div class="form-group">
+        <label>{{ localize "JUJUTSU.2.Estilo.AtributoPrincipal" }}</label>
+        <div class="form-fields">
+          {{#if editable}}
+          <select name="system.legacy2.principalEscolhido">
+            {{ selectOptions jj2.principais selected=jj2.principalEscolhido labelAttr="label" }}
+          </select>
+          {{else}}
+          <div>{{ jj2.principalLabel }}</div>
+          {{/if}}
+        </div>
+      </div>
+      {{/if}}
+      {{else if editable}}
+      <button type="button" class="jj2-escolher-estilo" data-action="jj2EscolherEstilo">
+        <i class="fas fa-hand-fist" inert></i> Escolher Estilo de Combate
+      </button>
+      {{else}}
+      <div class="jj2-estilo-info"><span>Sem Estilo de Combate</span></div>
+      {{/if}}
+    </fieldset>
+
+    {{!-- ═══════════════════ PONTOS DE TREINO ═══════════════════ --}}
+    <fieldset class="jj2-pontos-box">
+      <legend>{{ localize "JUJUTSU.2.Pontos.Label" }}</legend>
+      <div class="jj2-pontos-bar">
+        <span class="jj2-pontos-count">{{ jj2.pontos.available }} / {{ jj2.pontos.total }}</span>
+        <span class="jj2-pontos-hint">{{ localize "JUJUTSU.2.Pontos.Disponiveis" total=jj2.pontos.total available=jj2.pontos.available }}</span>
+      </div>
+      {{#if editable}}
+      <div class="form-group">
+        <label>Concessão do Mestre (+)</label>
+        <div class="form-fields">
+          <input type="number" name="system.legacy2.pontos.extra" value="{{ jj2.pontos.extra }}" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>PV da Espécie</label>
+        <div class="form-fields">
+          <input type="number" name="system.legacy2.pvEspecie" value="{{ jj2.pvEspecie }}" min="0">
+        </div>
+      </div>
+      {{/if}}
+    </fieldset>
+
+    {{!-- ═══════════════════ ATRIBUTOS (1-12) ═══════════════════ --}}
+    <fieldset class="jj2-atributos-box">
+      <legend>Atributos (1-12)</legend>
+      <ul class="jj2-atributos">
+        {{#each jj2.abilities as |ab|}}
+        <li data-key="{{ ab.key }}">
+          {{#if @root.editable}}
+          <input type="number" class="jj2-attr-input" name="system.abilities.{{ ab.key }}.value"
+                 value="{{ ab.value }}" min="1" max="12" data-dtype="Number">
+          {{else}}
+          <span class="jj2-attr-value">{{ ab.value }}</span>
+          {{/if}}
+          <a class="name {{ @root.rollableClass }} {{ ab.roll }}" data-action="roll" data-type="ability"
+             data-ability="{{ ab.key }}">{{ ab.label }}</a>
+          <a class="name abbr {{ @root.rollableClass }} {{ ab.roll }}" data-action="roll" data-type="ability"
+             data-ability="{{ ab.key }}">{{ ab.abbr }}</a>
+        </li>
+        {{/each}}
+      </ul>
+    </fieldset>
+
+    {{!-- ═══════════════════ SALVAGUARDAS ═══════════════════ --}}
+    <fieldset class="jj2-saves-box">
+      <legend>Salvaguardas</legend>
+      <ul class="jj2-list">
+        {{#each jj2.saves as |sv|}}
+        <li data-key="{{ sv.key }}">
+          <div class="jj2-dots" data-ctx="saves" data-key="{{ sv.key }}" data-tooltip="{{ sv.rankLabel }}">
+            {{#each @root.jj2.rankDots as |dot|}}
+            <button type="button" class="jj2-dot {{#if (lte dot sv.rank)}}filled{{/if}}"
+                    data-action="jj2Rank" data-rank="{{ dot }}" aria-label="{{ sv.rankLabel }}" {{ disabled (not @root.editable) }}></button>
+            {{/each}}
+          </div>
+          <a class="name {{ @root.rollableClass }}" data-action="roll" data-type="ability"
+             data-ability="{{ sv.key }}">{{ sv.label }}</a>
+          <div class="bonus">{{ dnd5e-formatModifier sv.total }}</div>
+        </li>
+        {{/each}}
+      </ul>
+    </fieldset>
+  </div>
+
+  <div class="right">
+    {{!-- ═══════════════════ PERÍCIAS ═══════════════════ --}}
+    <fieldset class="jj2-skills-box">
+      <legend>Perícias</legend>
+      <ul class="jj2-list">
+        {{#each jj2.skills as |sk|}}
+        <li data-key="{{ sk.key }}">
+          <div class="jj2-dots" data-ctx="skills" data-key="{{ sk.key }}" data-tooltip="{{ sk.rankLabel }}">
+            {{#each @root.jj2.rankDots as |dot|}}
+            <button type="button" class="jj2-dot {{#if (lte dot sk.rank)}}filled{{/if}}"
+                    data-action="jj2Rank" data-rank="{{ dot }}" aria-label="{{ sk.rankLabel }}" {{ disabled (not @root.editable) }}></button>
+            {{/each}}
+          </div>
+          <div class="ability roboto-upper">{{ sk.abilityAbbr }}</div>
+          <a class="name {{ @root.rollableClass }}" data-action="roll" data-type="skill"
+             data-key="{{ sk.key }}">{{ sk.label }}</a>
+          <div class="bonus">{{ dnd5e-formatModifier sk.total }}</div>
+        </li>
+        {{/each}}
+      </ul>
+    </fieldset>
+
+    {{!-- ═══════════════════ ARMAS ═══════════════════ --}}
+    <fieldset class="jj2-armas-box">
+      <legend>Armas</legend>
+      <ul class="jj2-list">
+        {{#each jj2.armas as |ar|}}
+        <li data-key="{{ ar.key }}">
+          <div class="jj2-dots" data-ctx="armas" data-key="{{ ar.key }}" data-tooltip="{{ ar.rankLabel }}">
+            {{#each @root.jj2.rankDots as |dot|}}
+            <button type="button" class="jj2-dot {{#if (lte dot ar.rank)}}filled{{/if}}"
+                    data-action="jj2Rank" data-rank="{{ dot }}" aria-label="{{ ar.rankLabel }}" {{ disabled (not @root.editable) }}></button>
+            {{/each}}
+          </div>
+          <a class="name">{{ ar.label }}</a>
+          <div class="bonus">{{ dnd5e-formatModifier ar.bonus }}</div>
+        </li>
+        {{/each}}
+      </ul>
+    </fieldset>
+  </div>
+
+</section>

@@ -1,0 +1,285 @@
+name: Espírito Marcial
+type: feat
+img: icons/magic/symbols/fleur-de-lis-yellow.webp
+effects: []
+folder: TOc92NuiE5uyXD8M
+sort: 1700000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 7bbb2a03777e69566dd91b7bc3b4b6ea20e0adf5
+    sourceId: Item.56za1y6eXu2k49Rg
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+system:
+  description:
+    value: >-
+      <p>Seu espírito queima com uma obstinação sem igual, permitindo que você
+      se recuse a continuar caído. Quando você receber dano suficiente para
+      ficar com 0 Pontos de Vida e não morrer, você levanta com 1 Ponto de Vida
+      / Vitalidade no final daquele turno e recebe 2d10 + Seu modificador de
+      Constituição em Pontos de Vida temporários ou 2 Pontos de Vitalidade (PVE)
+      temporários que duram por 1 minuto. Essa característica pode ser utilizada
+      uma vez, recuperando seu uso após realizar um descanso longo.</p><p>A
+      partir do <strong>9º nível</strong>, os Pontos de Vida temporários mudam
+      para 5d10 e para 8d10 no <strong>15º nível</strong>.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: espirito-marcial
+  activities:
+    zEKtEBI3XShRWTAz:
+      type: heal
+      _id: zEKtEBI3XShRWTAz
+      sort: 0
+      activation:
+        type: action
+        value: null
+        override: false
+        condition: ''
+      consumption:
+        scaling:
+          allowed: false
+        spellSlot: true
+        targets: []
+      description:
+        chatFlavor: ''
+      duration:
+        units: inst
+        concentration: false
+        override: false
+      effects: []
+      range:
+        override: false
+        units: self
+        special: ''
+      target:
+        template:
+          contiguous: false
+          units: ft
+          type: ''
+          stationary: false
+        affects:
+          choice: false
+          count: ''
+          type: ''
+        override: false
+        prompt: true
+      uses:
+        spent: 0
+        recovery: []
+        max: ''
+      healing:
+        number: 3
+        denomination: 8
+        types:
+          - temphp
+        custom:
+          enabled: false
+        scaling:
+          number: 1
+        bonus: '@abilities.con.mod'
+      name: Espírito Marcial
+      img: null
+      flags: {}
+      visibility:
+        level: {}
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+    2WLVwOCmMdc62uNp:
+      type: heal
+      sort: 0
+      activation:
+        type: action
+        value: null
+        override: false
+        condition: ''
+      consumption:
+        scaling:
+          allowed: false
+        spellSlot: true
+        targets: []
+      description:
+        chatFlavor: ''
+      duration:
+        units: inst
+        concentration: false
+        override: false
+      effects: []
+      range:
+        override: false
+        units: self
+        special: ''
+      target:
+        template:
+          contiguous: false
+          units: ft
+          type: ''
+          stationary: false
+        affects:
+          choice: false
+          count: ''
+          type: ''
+        override: false
+        prompt: true
+      uses:
+        spent: 0
+        recovery: []
+        max: ''
+      healing:
+        number: 7
+        denomination: 10
+        types:
+          - temphp
+        custom:
+          enabled: false
+        scaling:
+          number: 1
+        bonus: '@abilities.con.mod'
+      name: Espírito Marcial (7d10)
+      _id: 2WLVwOCmMdc62uNp
+      img: null
+      flags: {}
+      visibility:
+        level: {}
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+    Y5qMSpiM6r8Tsar1:
+      type: heal
+      sort: 0
+      activation:
+        type: action
+        value: null
+        override: false
+        condition: ''
+      consumption:
+        scaling:
+          allowed: false
+        spellSlot: true
+        targets: []
+      description:
+        chatFlavor: ''
+      duration:
+        units: inst
+        concentration: false
+        override: false
+      effects: []
+      range:
+        override: false
+        units: self
+        special: ''
+      target:
+        template:
+          contiguous: false
+          units: ft
+          type: ''
+          stationary: false
+        affects:
+          choice: false
+          count: ''
+          type: ''
+        override: false
+        prompt: true
+      uses:
+        spent: 0
+        recovery: []
+        max: ''
+      healing:
+        number: 12
+        denomination: 10
+        types:
+          - temphp
+        custom:
+          enabled: false
+        scaling:
+          number: 1
+        bonus: '@abilities.con.mod'
+      name: Espírito Marcial (12d10)
+      _id: Y5qMSpiM6r8Tsar1
+      img: null
+      flags: {}
+      visibility:
+        level: {}
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.uMNWzaM7WqfTGRaL
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624882939
+  modifiedTime: 1776624882973
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: 35F6OComd4fEqH0t
+_key: '!items!35F6OComd4fEqH0t'

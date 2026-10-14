@@ -1,0 +1,45 @@
+_id: jj2a000000000093
+name: Domínio Veloz
+type: feat
+img: icons/magic/movement/trail-streak-impact-blue.webp
+system:
+  identifier: dominio-veloz
+  description:
+    value: >-
+      <p>Abaixo você poderá adquirir as habilidades do Novo Estilo das Sombras,
+      permitindo que você possa lutar mesmo sem possuir um feitiço
+      inato.</p><p><em><strong>Requisito:</strong> Domínio
+      Simples</em></p><p>Você consegue expandir seu domínio com incrível
+      velocidade, se tornando capaz de expandi-lo como uma Reação. Além disso,
+      você recebe as seguintes características:</p><ul><li>Você pode se mover
+      até 5 metros antes que seu domínio se expanda completamente;</li><li>Uma
+      vez por rodada, dentro do seu domínio, você pode realizar uma jogada de
+      ataque (Comum) com custo de 1 Ponto de Ação [⬢] reduzido.</li></ul>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Novo Estilo das Sombras
+      requisitos:
+        - Domínio Simples
+folder: jj2f000000000015
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816111385
+  modifiedTime: 1791816111385
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000093'

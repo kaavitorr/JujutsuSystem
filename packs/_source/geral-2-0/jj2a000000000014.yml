@@ -1,0 +1,22 @@
+_id: jj2a000000000014
+_key: '!items!jj2a000000000014'
+name: Transferência de Emergência
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: transferencia-de-emergencia
+  description:
+    value: <p><em><strong>Requisito:</strong> Vínculo Amaldiçoado</em></p><p>Uma vez por descanso curto ou longo, quando você for alvo de uma jogada de ataque (Comum ou de Técnica), você pode usar uma Reação para cancelar e invocar novamente seu Shikigami (ou apenas invoca-lo) na sua frente, fazendo ele sofrer dano no seu lugar, gastando um Ponto de Ação [⬢]. Caso ele não esteja invocado, você deve pagar o custo de PA e de ações da ativação da invocação dele em adicional a ação dessa característica.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Invocador de Shikigami
+      requisitos:
+        - Vínculo Amaldiçoado
+folder: jj2f000000000003
+ownership:
+  default: 0
+effects: []
+sort: 0

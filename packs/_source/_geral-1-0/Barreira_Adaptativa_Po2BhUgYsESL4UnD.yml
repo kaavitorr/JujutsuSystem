@@ -1,0 +1,87 @@
+folder: udJ0kfznjzJEChhq
+name: Barreira Adaptativa
+type: feat
+img: icons/magic/defensive/shield-hex-blue.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">A partir do <strong>10º nível de
+      Especialista</strong>, após receber acesso a barreiras puras, você se
+      torna capaz de manipula-las livremente para tomar a forma que desejar,
+      assim como adicionar regras mais facilmente. Você recebe as seguintes
+      características:</p><ul><li><p><em>Suas barreiras tem os Pontos de Vida
+      finais multiplicados por 3;</em></p></li><li><p><em>Suas barreiras livres
+      ou inferiores podem receber 2 regras adicionais
+      livremente;</em></p></li><li><p><em>Suas barreiras puras ou superiores
+      podem receber 2 regras adicionais gastando 1 hora para
+      cada;</em></p></li><li><p><em>Suas barreiras recebem +4 de Classe de
+      Resistência.</em></p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.367'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881635
+  modifiedTime: 1788212886527
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: Po2BhUgYsESL4UnD
+sort: 0
+_key: '!items!Po2BhUgYsESL4UnD'

@@ -1,0 +1,52 @@
+<fieldset>
+    <legend>{{ localize "DND5E.ItemSpeciesDetails" }}</legend>
+
+    {{!-- Identifier --}}
+    {{ formField fields.identifier value=source.identifier placeholder=item.identifier hint="DND5E.IdentifierError"
+                 localize=true rootId=partId }}
+
+    {{!-- Vida Base da Origem (flag fora do schema; a criação leva ao ator) --}}
+    <div class="form-group">
+        <label>Vida Base</label>
+        <input type="number" name="flags.jujutsu-system.legacy2.pvEspecie"
+               value="{{legacy2.pvEspecie}}" step="1" placeholder="0"
+               data-dtype="Number" aria-label="Vida Base">
+        <p class="hint">Soma à Vida Base do Estilo de Combate — cada nível e cada ponto de Constituição passam a render este valor a mais de PV.</p>
+    </div>
+
+    {{!-- Pontos de Vida adicional (bônus, não escala com nível/Constituição) --}}
+    <div class="form-group">
+        <label>Pontos de Vida adicional</label>
+        <input type="number" name="flags.jujutsu-system.pvAdicional"
+               value="{{pvAdicionalOrigem}}" step="1" placeholder="0"
+               data-dtype="Number" aria-label="Pontos de Vida adicional">
+        <p class="hint">Soma direto no total de PV do personagem como bônus (não entra como Vida Base nem escala com nível ou Constituição).</p>
+    </div>
+
+    {{!-- Energia Base da Origem (flag fora do schema; a criação leva ao ator) --}}
+    <div class="form-group">
+        <label>Energia Base</label>
+        <input type="number" name="flags.jujutsu-system.legacy2.energiaEspecie"
+               value="{{legacy2.energiaEspecie}}" step="1" placeholder="0"
+               data-dtype="Number" aria-label="Energia Base">
+        <p class="hint">Soma à Energia Base do Estilo de Combate — cada nível e cada treino de Energia Máxima passam a render este valor a mais.</p>
+    </div>
+
+    {{!-- Energia adicional (bônus, não escala com nível) --}}
+    <div class="form-group">
+        <label>Energia Adicional</label>
+        <input type="number" name="flags.jujutsu-system.energiaAdicional"
+               value="{{energiaAdicionalOrigem}}" step="1" placeholder="0"
+               data-dtype="Number" aria-label="Energia Adicional">
+        <p class="hint">Soma direto no total de Pontos de Energia Amaldiçoada como bônus (não escala com nível).</p>
+    </div>
+
+    {{!-- Atributos adicionais (pontos extras no orçamento de atributos) --}}
+    <div class="form-group">
+        <label>Atributos adicionais</label>
+        <input type="number" name="flags.jujutsu-system.atributosAdicionais"
+               value="{{atributosAdicionaisOrigem}}" step="1" placeholder="0"
+               data-dtype="Number" aria-label="Atributos adicionais">
+        <p class="hint">Quando diferente de zero, concede pontos extras de atributo na criação — ou depois, somando ao orçamento de atributos da ficha.</p>
+    </div>
+</fieldset>

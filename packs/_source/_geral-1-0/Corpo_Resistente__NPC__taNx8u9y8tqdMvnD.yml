@@ -1,0 +1,76 @@
+_id: taNx8u9y8tqdMvnD
+name: Corpo Resistente (NPC)
+type: feat
+img: icons/creatures/magical/construct-gargoyle-stone-gray.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 2000000
+flags:
+  scene-packer:
+    hash: a5fb3f632326a3a6db5e74715fda886de2cc489b
+    sourceId: Item.taNx8u9y8tqdMvnD
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Corpo Resistente (Dobra o PV efetivo da criatura):
+      </strong>Sempre que a criatura for alvo de um ataque corpo-a-corpo que
+      requeira uma jogada de ataque, role um d6. Com o resultado de 4 e 5, a
+      criatura não é afetada. Em um 6, a criatura não é afetada e metade do dano
+      (arredondado para baixo) volta para o atacante.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: corpo-resistente-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.oHUxw6LBtLVAFuQT
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910560
+  modifiedTime: 1776624910578
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!taNx8u9y8tqdMvnD'

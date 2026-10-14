@@ -1,0 +1,97 @@
+<div class="jj2m-shell">
+  <header class="jj2m-header">
+    <div class="jj2m-identity">
+      <img src="{{actor.img}}" alt="" class="jj2m-portrait">
+      <div><span class="jj2m-eyebrow">Jujutsu Legacy 2.0</span><h2>Mapa de caminhos</h2><p>{{actor.name}}</p></div>
+    </div>
+    <div class="jj2m-budget" aria-label="Escolhas de especialização" aria-live="polite">
+      <output>{{escolhas.disponiveis}}</output><div><strong>escolhas disponíveis</strong><span>{{escolhas.usadas}} de {{escolhas.totais}} utilizadas</span></div>
+    </div>
+    <div class="jj2m-header-actions">
+      {{#if ehGM}}<button type="button" class="jj2m-adm {{#if admMode}}on{{/if}}" data-action="adm" aria-pressed="{{admMode}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="edit"}}<span>Requisitos</span></button>{{/if}}
+      <button type="button" class="jj2m-icon-button" data-action="fechar" aria-label="Fechar árvore">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="close"}}</button>
+    </div>
+  </header>
+  <div class="jj2m-layout">
+    <nav class="jj2m-categories" aria-label="Árvores de especialização">
+      <h3>Especializações</h3>
+      {{#each categorias}}
+      <button type="button" class="jj2m-category {{#if ativa}}ativa{{/if}}" data-action="categoria" data-categoria="{{nome}}" aria-pressed="{{ativa}}" style="--category-color:{{cor}}">
+        <span class="jj2m-category-art"><img src="{{icone}}" alt="" loading="lazy"></span>
+        <span class="jj2m-category-copy"><strong>{{nome}}</strong><small>{{aprendidas}} / {{total}} aprendidas</small></span>
+      </button>
+      {{/each}}
+      <p class="jj2m-nav-note">{{#if admMode}}Modo Mestre: selecione uma habilidade para editar seus requisitos.{{else}}Escolha uma especialização para explorar seus caminhos.{{/if}}</p>
+    </nav>
+    <main class="jj2m-map">
+      <div class="jj2m-map-heading">
+        <img src="{{categoria.icone}}" alt="">
+        <div><h3>{{categoria.nome}}</h3><p>{{categoria.aprendidas}} / {{categoria.total}} aprendidas <span>{{quantidadeCaminhos}} caminhos</span></p></div>
+      </div>
+      <div class="jj2m-map-toolbar">
+        <div class="jj2m-legend"><span class="aprendida">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="check"}}Aprendida</span><span class="disponivel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="8"/></svg>Disponível</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Bloqueada</span></div>
+        <div class="jj2m-zoom">
+          <button type="button" class="jj2m-icon-button" data-action="reduzir" aria-label="Reduzir zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+          <output class="jj2m-zoom-value">100%</output>
+          <button type="button" class="jj2m-icon-button" data-action="ampliar" aria-label="Ampliar zoom">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}</button>
+          <button type="button" data-action="ajustar">Ver tudo</button>
+          <button type="button" data-action="centralizar" aria-label="Restaurar zoom e posição">100%</button>
+        </div>
+      </div>
+      <div class="jj2m-viewport" aria-label="Mapa de habilidades; arraste o fundo para mover">
+        {{#if mapa.nos.length}}
+        <div class="jj2m-stage" style="width:{{mapa.largura}}px;height:{{mapa.altura}}px;">
+          <svg class="jj2m-lines" width="{{mapa.largura}}" height="{{mapa.altura}}" viewBox="0 0 {{mapa.largura}} {{mapa.altura}}" aria-hidden="true">
+            {{#each mapa.linhas}}<path class="jj2m-line {{estado}} {{#if destaque}}destaque{{/if}}" d="{{d}}" data-de="{{de}}" data-para="{{para}}"/>{{/each}}
+          </svg>
+          {{#each mapa.caminhos}}
+          <div class="jj2m-path-heading" style="top:{{y}}px;">
+            <span class="jj2m-path-symbol">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="tree"}}</span>
+            <div class="jj2m-path-title"><span>Caminho de especialização · {{quantidade}} habilidades</span><h4 class="jj2m-path-label" data-tooltip="{{nome}}">{{nome}}</h4></div>
+          </div>
+          {{/each}}
+          {{#each mapa.nos}}
+          <button type="button" class="jj2m-node {{estado}} {{#if selecionado}}selecionado{{/if}} {{#if exigido}}exigido{{/if}}" data-action="selecionar" data-nome="{{nome}}" data-uuid="{{uuid}}" aria-pressed="{{selecionado}}" data-tooltip="{{dica}}" style="left:{{x}}px;top:{{y}}px;">
+            <span class="jj2m-node-main"><span class="jj2m-node-art"><img src="{{img}}" alt="" loading="lazy"></span><strong>{{nome}}</strong></span>
+            <span class="jj2m-node-status">
+              {{#if (eq estado "adquirido")}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="check"}}{{else if (eq estado "bloqueado")}}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>{{else}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}{{/if}}
+              <span>{{#if contagem}}{{contagem.atual}} / {{contagem.max}} habilidades{{else if livre}}{{#if (eq estado "adquirido")}}Aprendida{{else}}Sem requisitos{{/if}}{{else}}{{estadoLabel}}{{/if}}</span>
+            </span>
+          </button>
+          {{/each}}
+        </div>
+        {{else}}<div class="jj2m-empty">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="tree"}}<h3>Nenhuma habilidade nesta árvore</h3><p>Confira as especializações no compêndio Geral - 2.0.</p></div>{{/if}}
+      </div>
+      <footer class="jj2m-map-footer"><span>Conexões indicam dependências entre habilidades.</span><span>Arraste para mover · Roda para zoom</span></footer>
+    </main>
+    <aside class="jj2m-detail" aria-label="Detalhes da habilidade">
+      {{#if selecionado}}
+      <div class="jj2m-detail-top"><span>{{selecionado.caminho}}</span><span class="jj2m-state {{selecionado.estado}}">{{selecionado.estadoLabel}}</span></div>
+      <div class="jj2m-detail-heading"><span class="jj2m-detail-art"><img src="{{selecionado.img}}" alt=""></span><h3>{{selecionado.nome}}</h3></div>
+      <section class="jj2m-requirements"><h4>Requisitos</h4>
+        {{#each requisitos}}
+        <div class="jj2m-requirement {{#if ok}}cumprido{{else}}pendente{{/if}}">
+          <span class="jj2m-req-mark">{{#if ok}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="check"}}{{else}}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>{{/if}}</span>
+          <div><p>{{texto}}</p>{{#if informativo}}<small>Verificar com o Mestre</small>{{/if}}
+            {{#each contagens}}<span class="jj2m-count">{{atual}} / {{max}} desbloqueadas · {{alvo}}</span><div class="jj2m-progress" role="progressbar" aria-label="Progresso do requisito" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{pct}}"><span style="width:{{pct}}%"></span></div>{{/each}}
+            {{#if links.length}}<div class="jj2m-required-links">{{#each links}}<button type="button" data-action="requisito" data-nome="{{nome}}">Ver {{nome}}</button>{{/each}}</div>{{/if}}
+          </div>
+        </div>
+        {{else}}<p class="jj2m-free">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="check"}}Sem requisitos de habilidade</p>{{/each}}
+      </section>
+      <div class="jj2m-actions">
+        {{#if podeEditar}}
+          {{#if (eq selecionado.estado "adquirido")}}<button type="button" class="jj2m-learn esquecer" data-action="esquecer" data-nome="{{selecionado.nome}}">Desfazer escolha</button>
+          {{else if temEscolhas}}
+            {{#if (eq selecionado.estado "disponivel")}}<button type="button" class="jj2m-learn" data-action="aprender" data-nome="{{selecionado.nome}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}Aprender · 1 escolha</button>
+            {{else if ehGM}}<button type="button" class="jj2m-learn gm" data-action="aprender" data-nome="{{selecionado.nome}}">Conceder (Mestre) · 1 escolha</button>
+            {{else}}<button type="button" class="jj2m-learn" disabled>Requisitos pendentes</button>{{/if}}
+          {{else}}<button type="button" class="jj2m-learn" disabled>Sem escolhas disponíveis</button>{{/if}}
+        {{else}}<button type="button" class="jj2m-learn" disabled>Somente leitura</button>{{/if}}
+        <button type="button" class="jj2m-open" data-action="abrir">Abrir habilidade no compêndio</button>
+      </div>
+      {{#if selecionadoHtml}}<section class="jj2m-description"><h4>Habilidade</h4><div>{{{selecionadoHtml}}}</div></section>{{/if}}
+      {{else}}<div class="jj2m-empty">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="tree"}}<h3>Seu próximo passo</h3><p>Selecione uma habilidade para ver sua descrição e requisitos.</p></div>{{/if}}
+    </aside>
+  </div>
+</div>

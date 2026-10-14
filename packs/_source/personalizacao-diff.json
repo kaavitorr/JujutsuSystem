@@ -1,0 +1,47 @@
+{
+  "sairam": [
+    "Analfabeto (3)",
+    "Audição Ruim (1)",
+    "Coração Mole (1)",
+    "Existência Valiosa (3)",
+    "Ferida Fantasma (3)",
+    "Linhagem Demoníaca (1)",
+    "Mudo (1)",
+    "Ponto Fraco (5)",
+    "Rosto Debochado (1)"
+  ],
+  "mudaramTexto": [
+    "Amnésia",
+    "Cego",
+    "Chantagem",
+    "Demente",
+    "Dependente",
+    "Distraído",
+    "Doença Terminal",
+    "Dupla Personalidade",
+    "Esfomeado",
+    "Falta de Higiene",
+    "Falta de Sorte",
+    "Fúria Incontrolável",
+    "Ganancioso",
+    "Hipocondríaco",
+    "Ignorante",
+    "Ingênuo",
+    "Má Fama",
+    "Retrucador",
+    "Ruim com Nomes",
+    "Sinceridade Excessiva",
+    "Sonolência",
+    "Surdo",
+    "Timidez",
+    "Trapalhão",
+    "Trauma Profundo/Fobia",
+    "Voz Fina"
+  ],
+  "novos": [
+    "PREGUIÇOSO",
+    "VÍCIO",
+    "CONSUMIDOR COMPULSIVO",
+    "MEDIOCRE"
+  ]
+}

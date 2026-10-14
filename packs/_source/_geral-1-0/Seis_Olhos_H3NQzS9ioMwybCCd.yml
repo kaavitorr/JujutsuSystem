@@ -1,0 +1,47 @@
+folder: t7KnTdTtCv4SjPz7
+name: Seis Olhos
+type: feat
+_id: H3NQzS9ioMwybCCd
+img: systems/jujutsu-system/assets/Traits/Seis-olhos-ic.png
+system:
+  activities: {}
+  uses:
+    spent: 0
+    recovery: []
+    max: ''
+  advancement: {}
+  description:
+    value: ''
+    chat: ''
+  identifier: gojo
+  source:
+    revision: 1
+    rules: '2014'
+  crewed: false
+  enchant: {}
+  prerequisites:
+    items: []
+    repeatable: false
+    level: null
+  properties: []
+  requirements: ''
+  type:
+    value: ''
+    subtype: ''
+effects: []
+sort: 0
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+flags: {}
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1777058506718
+  modifiedTime: 1782448474308
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!H3NQzS9ioMwybCCd'

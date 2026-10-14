@@ -1,0 +1,41 @@
+_id: jj2a000000000003
+name: Selos Complexos
+type: feat
+img: icons/magic/holy/prayer-hands-glowing-yellow-white.webp
+system:
+  identifier: selos-complexos
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Selos de Mão</em></p><p>O uso constante
+      dos selos permitiu que você evoluísse na sua utilização, dando margem para
+      reduzir ainda mais o custo de suas técnicas. Você passa a poder fazer
+      selos complexos que reduzem o custo de uma técnica em duas ações [⬢⬢], mas
+      você consome 2 usos de selos no processo.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Selos e Encantamentos
+      requisitos:
+        - Selos de Mão
+folder: jj2f000000000002
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814737376
+  modifiedTime: 1791815028057
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000003'

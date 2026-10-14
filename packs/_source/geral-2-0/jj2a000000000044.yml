@@ -1,0 +1,22 @@
+_id: jj2a000000000044
+_key: '!items!jj2a000000000044'
+name: Entrada Impactante
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: entrada-impactante
+  description:
+    value: <p><em><strong>Requisito:</strong> Punho Devastador</em></p><p>No início de cada encontro, ao chegar no seu turno, você pode escolher uma criatura abaixo de você na iniciativa e se mover na direção dela, desferindo um golpe devastador, impondo a condição Atordoado automaticamente no alvo.</p><p>Além disso, você sempre tem uma vantagem contra criaturas abaixo de você na iniciativa dinâmica.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Corpo de Guerreiro
+      requisitos:
+        - Punho Devastador
+folder: jj2f000000000009
+ownership:
+  default: 0
+effects: []
+sort: 0

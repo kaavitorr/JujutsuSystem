@@ -1,0 +1,76 @@
+/* Feitiço 2.0: the existing manifestation slots and item actions, in the sheet's manga palette. */
+.jj2-ruptura .jj2-feitico { --feitico-color: var(--jj2-gold); gap: 14px; padding: 0; font: 400 12px/1.4 JJ2Condensed, sans-serif; color: var(--jj2-paper); }
+.jj2-ruptura .jj2-feitico.active { display: flex; flex-direction: column; }
+.jj2-ruptura .jj2-feitico > * { flex: none; }
+.jj2-ruptura .jj2-feitico .jj2-feitico-heading { display: grid; grid-template-columns: 48px minmax(0,1fr); gap: 10px 14px; align-items: center; padding: 14px; border: 1px solid #a67bda70; border-left: 3px solid var(--jj2-purple); background: linear-gradient(116deg,#a67bda24 0 58%,transparent 58%),#17131f; box-shadow: 3px 3px #08080b; }
+.jj2-ruptura .jj2-feitico .jj2-feitico-emblem { display: grid; place-items: center; width: 48px; height: 52px; color: var(--jj2-gold); background: #100d17; border: 1px solid #efbf5180; transform: rotate(-4deg); }
+.jj2-ruptura .jj2-feitico .jj2-feitico-emblem svg { width: 29px; height: 29px; }
+.jj2-ruptura .jj2-feitico .feitico-name-field { flex-direction: column; align-items: stretch; gap: 5px; min-width: 0; }
+.jj2-ruptura .jj2-feitico .feitico-name-field label { color: var(--jj2-purple); font: italic 700 17px/1 JJ2Condensed,sans-serif; letter-spacing: .3px; text-transform: uppercase; }
+.dnd5e2.sheet.actor.character.jj2-ruptura .jj2-feitico .feitico-name-input { box-sizing: border-box; width: 100%; height: 35px; padding: 3px 8px; border: 1px solid #a67bda55; border-bottom: 2px solid var(--jj2-purple); border-radius: 0; background: #100d1755; color: var(--jj2-paper); font: italic 700 23px/1.1 JJ2Condensed,sans-serif; }
+.jj2-ruptura .jj2-feitico .feitico-name-input::placeholder { color: var(--jj2-muted); }
+.jj2-ruptura .jj2-feitico .feitico-molde-actions { grid-column: 1 / -1; justify-content: flex-end; gap: 7px; }
+.jj2-ruptura .jj2-feitico .feitico-save-template-btn { min-width: 0; min-height: 30px; padding: 5px 10px; border-radius: 0; border-color: #a67bda55; background: #100d17; color: var(--jj2-paper); letter-spacing: 0; }
+.jj2-ruptura .jj2-feitico .feitico-save-template-btn:last-child { border-color: #efbf5155; color: var(--jj2-gold); }
+.jj2-ruptura .jj2-feitico button svg { width: 16px; height: 16px; pointer-events: none; }
+.jj2-ruptura .jj2-feitico button:focus-visible { outline: 2px solid var(--jj2-gold); outline-offset: 2px; }
+.jj2-ruptura .jj2-feitico button:hover { border-color: var(--jj2-gold); color: var(--jj2-gold); background-color: #292031; }
+.jj2-ruptura .jj2-feitico .feitico-rank-panel { flex-direction: column; gap: 0; padding: 10px 12px; border: 1px solid #a67bda44; border-radius: 0; background: #18141f; }
+.jj2-ruptura .jj2-feitico .feitico-rank-current { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; gap: 5px 10px; align-items: baseline; min-width: 0; padding: 0 0 9px; border-right: 0; }
+.jj2-ruptura .jj2-feitico .feitico-rank-label { color: var(--jj2-muted); font: 400 11px/1.3 JJ2Condensed,sans-serif; letter-spacing: 0; text-transform: none; }
+.jj2-ruptura .jj2-feitico .feitico-rank-value { font: italic 700 16px/1.2 JJ2Condensed,sans-serif; color: var(--jj2-gold); }
+.jj2-ruptura .jj2-feitico .feitico-rank-primary { margin-left: auto; color: var(--jj2-muted); font: 400 11px/1.3 JJ2Condensed,sans-serif; }
+.jj2-ruptura .jj2-feitico .feitico-rank-track { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 5px; padding: 0; }
+.jj2-ruptura .jj2-feitico .feitico-rank-track::before { content: none; }
+.jj2-ruptura .jj2-feitico .feitico-rank-node { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; min-width: 0; padding: 8px 3px; border: 1px solid #a67bda55; border-radius: 0; background: #21192d; opacity: 1; }
+.jj2-ruptura .jj2-feitico .feitico-rank-node.current { border-color: var(--jj2-gold); background: #efbf5110; }
+.jj2-ruptura .jj2-feitico .feitico-rank-node.locked { background: #100d17; opacity: .5; }
+.jj2-ruptura .jj2-feitico .feitico-rank-node-name { color: var(--jj2-paper); font: 700 11px/1.2 JJ2Condensed,sans-serif; text-align: center; }
+.jj2-ruptura .jj2-feitico .feitico-rank-node-reqs { color: var(--jj2-purple); font: 700 15px/1 JJ2Condensed,sans-serif; }
+.jj2-ruptura .jj2-feitico .feitico-rank-node.current .feitico-rank-node-reqs { color: var(--jj2-gold); }
+.jj2-ruptura .jj2-feitico .feitico-rank-ability { display: flex; align-items: center; justify-content: center; gap: 3px; font: 400 9px/1.2 JJ2Condensed,sans-serif; color: var(--jj2-muted); }
+.jj2-ruptura .jj2-feitico .feitico-rank-ability svg { width: 11px; height: 11px; }
+.jj2-ruptura .jj2-feitico .feitico-slots { gap: 14px; }
+.jj2-ruptura .jj2-feitico .feitico-slot-card { padding: 0 12px 12px; gap: 9px; border: 1px solid #a67bda55; border-left: 3px solid var(--jj2-purple); border-radius: 0; background: repeating-linear-gradient(155deg,transparent 0 18px,#ffffff04 18px 19px),#18141e; box-shadow: 3px 3px #08080b; }
+.jj2-ruptura .jj2-feitico .feitico-slot-card.blocked { opacity: 1; filter: none; border-left-color: #ba737d; }
+.jj2-ruptura .jj2-feitico .feitico-slot-label-row { padding: 9px 0; border-bottom: 1px solid #a67bda44; }
+.jj2-ruptura .jj2-feitico .feitico-slot-label { margin: 0; padding: 0; border: 0; color: var(--jj2-paper); font: italic 700 18px/1.1 JJ2Condensed,sans-serif; letter-spacing: .3px; }
+.jj2-ruptura .jj2-feitico .feitico-blocked-badge { display: flex; align-items: center; gap: 4px; color: #e798a2; font-size: 10px; }
+.jj2-ruptura .jj2-feitico .feitico-blocked-badge svg { width: 14px; height: 14px; }
+.jj2-ruptura .jj2-feitico .feitico-manif-row { grid-template-columns: 48px minmax(0,1fr) auto; padding: 2px 0; gap: 10px; border-radius: 0; }
+.jj2-ruptura .jj2-feitico .feitico-manif-row.blocked::after, .jj2-ruptura .jj2-feitico .feitico-tecnica-chip.blocked::after { content: none; }
+.jj2-ruptura .jj2-feitico .feitico-manif-portrait { box-sizing: border-box; width: 48px; height: 50px; padding: 2px; border: 1px solid #efbf5166; border-radius: 0; background: #100d17; box-shadow: none; }
+.jj2-ruptura .jj2-feitico .feitico-manif-portrait img { width: 100%; height: 100%; border: 0; border-radius: 0; object-fit: contain; }
+.jj2-ruptura .jj2-feitico .feitico-manif-portrait-edit { border-radius: 0; }
+.jj2-ruptura .jj2-feitico .feitico-manif-name { font: 700 17px/1.2 JJ2Condensed,sans-serif; color: var(--jj2-paper); overflow-wrap: anywhere; }
+.jj2-ruptura .jj2-feitico .feitico-manif-sub { color: var(--jj2-muted); }
+.jj2-ruptura .jj2-feitico .feitico-manif-actions { gap: 4px; }
+.jj2-ruptura .jj2-feitico :is(.feitico-action,.feitico-tecnica-chip-actions button,.feitico-tecnica-add-chip) { display: grid; place-items: center; flex: none; width: 26px; height: 27px; min-height: 27px; margin: 0; padding: 4px; border: 1px solid #a67bda55; border-radius: 0; color: var(--jj2-purple); background: #100d17; }
+.jj2-ruptura .jj2-feitico .feitico-req-chips { gap: 5px; padding: 0; }
+.jj2-ruptura .jj2-feitico .feitico-req-chip { gap: 5px; padding: 3px 5px; border: 1px solid #a67bda44; border-radius: 0; background: #100d17; box-shadow: none; }
+.jj2-ruptura .jj2-feitico .feitico-req-chip.unmet { opacity: 1; border-color: #ba737d77; }
+.jj2-ruptura .jj2-feitico .feitico-req-chip-status { display: grid; place-items: center; background: transparent; color: var(--jj2-purple); border-radius: 0; }
+.jj2-ruptura .jj2-feitico .feitico-req-chip.unmet .feitico-req-chip-status { color: #e798a2; }
+.jj2-ruptura .jj2-feitico .feitico-req-chip-status svg { width: 13px; height: 13px; }
+.jj2-ruptura .jj2-feitico .feitico-req-chip-maestria { color: var(--jj2-muted); }
+.dnd5e2.sheet.actor.character.jj2-ruptura .jj2-feitico .feitico-req-level { width: 30px; height: 24px; min-height: 24px; padding: 2px; border: 1px solid #a67bda55; border-radius: 0; background: #261b32; color: var(--jj2-paper); font: 700 12px/1 JJ2Condensed,sans-serif; }
+.jj2-ruptura .jj2-feitico .feitico-req-chip-remove { display: grid; place-items: center; flex: none; width: 22px; height: 24px; min-height: 24px; margin: 0; padding: 3px; border: 0; background: transparent; color: var(--jj2-muted); }
+.jj2-ruptura .jj2-feitico .feitico-req-add-chip { min-height: 28px; padding: 4px 7px; gap: 4px; border: 1px dashed #a67bda55; border-radius: 0; color: var(--jj2-purple); background: #100d17; }
+.jj2-ruptura .jj2-feitico .feitico-manif-empty { flex-wrap: wrap; padding: 11px 8px; gap: 8px; border: 1px dashed #a67bda55; border-radius: 0; color: var(--jj2-muted); font-style: normal; background: #100d1755; }
+.jj2-ruptura .jj2-feitico .feitico-manif-empty > span { flex: 1 1 140px; text-align: left; font-size: 11px; }
+.jj2-ruptura .jj2-feitico .feitico-manif-create-btn { padding: 5px 8px; min-height: 30px; border-radius: 0; border-color: #a67bda55; color: var(--jj2-paper); background: #261b32; letter-spacing: 0; text-transform: none; }
+.jj2-ruptura .jj2-feitico .feitico-tecnicas-row { padding: 8px 0 0; gap: 8px; margin: 0; border-top: 1px solid #a67bda33; background: none; }
+.jj2-ruptura .jj2-feitico .jj2-feitico-techniques-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.jj2-ruptura .jj2-feitico .feitico-tecnicas-label { color: var(--jj2-purple); font: 700 12px/1.2 JJ2Condensed,sans-serif; letter-spacing: 0; text-transform: none; }
+.jj2-ruptura .jj2-feitico .feitico-tecnicas-empty-hint { padding: 0 0 3px; color: var(--jj2-muted); font: 400 11px/1.3 JJ2Condensed,sans-serif; }
+.jj2-ruptura .jj2-feitico .feitico-tecnicas-cols { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+.jj2-ruptura .jj2-feitico .feitico-tecnicas-cols:not(:has(.feitico-tecnicas-col-aux)) { grid-template-columns: minmax(0,1fr); }
+.jj2-ruptura .jj2-feitico .feitico-tecnicas-col { align-items: stretch; gap: 7px; }
+.jj2-ruptura .jj2-feitico .feitico-tecnica-chip { display: grid; grid-template-columns: 30px minmax(0,1fr) auto; align-items: center; gap: 5px 8px; padding: 7px; border-radius: 0; border-left: 2px solid var(--jj2-purple); border-color: #a67bda55; background: #100d1766; }
+.jj2-ruptura .jj2-feitico .feitico-tecnica-chip img { width: 30px; height: 32px; object-fit: contain; border: 1px solid #a67bda44; border-radius: 0; }
+.jj2-ruptura .jj2-feitico .feitico-tecnica-chip-name { display: block; max-width: none; color: var(--jj2-paper); font: 700 13px/1.2 JJ2Condensed,sans-serif; overflow-wrap: anywhere; white-space: normal; }
+.jj2-ruptura .jj2-feitico .jj2-feitico-technique-title small { color: var(--jj2-muted); font-size: 10px; }
+.jj2-ruptura .jj2-feitico .feitico-tecnica-chip-actions { grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 4px; margin: 0; }
+.jj2-ruptura .jj2-feitico .jj2-feitico-lock { color: #e798a2; }
+.jj2-ruptura .jj2-feitico .jj2-feitico-lock svg { width: 14px; height: 14px; }
+.jj2-ruptura .jj2-feitico .feitico-drop-zone.drag-hover { border-color: var(--jj2-gold); background-color: #efbf510c; box-shadow: inset 0 0 0 1px #efbf5155; }

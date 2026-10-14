@@ -1,0 +1,22 @@
+name: Características Lendárias
+type: Item
+sorting: a
+sort: 300000
+color: '#2d4e9a'
+flags:
+  scene-packer:
+    hash: b4116ec69355196fec1683aa44c50ad072a2ae6c
+_id: Df2mM1kDzniTsvOe
+folder: Zh6nXJyphmH4TF72
+description: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910214
+  modifiedTime: 1776624910214
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!Df2mM1kDzniTsvOe'

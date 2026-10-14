@@ -1,0 +1,46 @@
+_id: jj2a000000000023
+name: Aprimorar Alcance
+type: feat
+img: icons/magic/fire/explosion-embers-orange.webp
+system:
+  identifier: aprimorar-alcance
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Um gesto qualquer</em></p><p>Ao
+      executar uma técnica, você pode gastar 1 PA para aprimorar o alcance
+      delas, sem limite da quantidade máxima de PA que você pode
+      gastar.</p><ul><li><strong>Linha ou Flecha:</strong> Aumenta o alcance da
+      técnica em 3 metros adicionais.</li><li><strong>Cone ou Leque:</strong>
+      Aumenta o alcance da técnica em 2 metros adicionais.</li><li><strong>Raio
+      e Emanação:</strong> Aumenta o alcance da técnica em 1 metro
+      adicional.</li></ul>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Manipulação de Técnica
+      requisitos:
+        - >-
+          Gestos: Flecha e Linha ou Gestos: Cone e Leque ou Gestos: Raio e
+          Emanação
+folder: jj2f000000000004
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814918024
+  modifiedTime: 1791814918024
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000023'

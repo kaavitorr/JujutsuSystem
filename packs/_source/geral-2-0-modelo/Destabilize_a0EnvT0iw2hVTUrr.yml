@@ -1,0 +1,228 @@
+name: Destabilize
+type: spell
+img: icons/skills/melee/blade-tips-triple-steel.webp
+effects: []
+folder: AyLkZuGRCltus8nB
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickVersatile:
+      value: false
+      altValue: false
+    quickOther:
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      value: true
+      altValue: true
+    quickAttack:
+      value: true
+      altValue: true
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+      altValue:
+        '0': true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: f1662da2bb778492e42251e8822a6f2da857b297
+    sourceId: Item.a5cm3m20C3vusMKP
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+    quickOther:
+      context: ''
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+    quickAttack:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+system:
+  description:
+    value: "<p>Você saca sua arma, desferindo um ataque contra a criatura inimiga em um golpe fluido antes de girar seu corpo e acertar as pernas da criatura com a bainha. O alvo deve realizar uma Salvaguarda de [[/save dex dc=@attributes.spell.dc]] para não receber a condição <strong>“Caído”.</strong></p><hr><p>\_<strong>Duração:</strong>\_Instantâneo</p><p><strong>Alcance:</strong>\_Toque</p><p><strong>Requisito:</strong> Katana, Ação de Poder</p><p>Dano: 2d10 de dano Cortante</p><p><strong>Custo:</strong> 2 PA</p>"
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  activation:
+    type: powerAction
+    condition: ''
+    value: 1
+  duration:
+    value: ''
+    units: inst
+    expiry: null
+  target:
+    affects:
+      choice: false
+      type: ''
+    template:
+      units: m
+      contiguous: false
+      stationary: false
+      type: ''
+      count: ''
+      size: '30'
+      width: '4.5'
+  range:
+    units: touch
+    special: ''
+  uses:
+    max: ''
+    recovery: []
+    spent: 0
+  ability: ''
+  level: 1
+  school: trs
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  properties: []
+  activities:
+    kwi14SI7ueXbFxoF:
+      type: attack
+      _id: kwi14SI7ueXbFxoF
+      img: ''
+      sort: 0
+      activation:
+        type: action
+        override: false
+      consumption:
+        scaling:
+          allowed: false
+        spellSlot: true
+        targets:
+          - type: attribute
+            value: '2'
+            target: energy.generated
+            scaling: {}
+      description:
+        chatFlavor: ''
+        value: ''
+      duration:
+        units: inst
+        concentration: false
+        override: false
+        expiry: null
+      effects: []
+      flags: {}
+      range:
+        units: self
+        override: false
+      target:
+        template:
+          contiguous: false
+          stationary: false
+          units: m
+        affects:
+          choice: false
+        override: false
+        prompt: true
+      uses:
+        spent: 0
+        recovery: []
+        max: ''
+      visibility:
+        level:
+          min: null
+          max: null
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+      attack:
+        critical:
+          threshold: null
+        flat: false
+        type:
+          value: ''
+          classification: ''
+        ability: ''
+        bonus: ''
+      damage:
+        critical:
+          bonus: ''
+        includeBase: true
+        parts:
+          - custom:
+              enabled: false
+              formula: ''
+            number: 2
+            denomination: 10
+            bonus: ''
+            types:
+              - slashing
+            scaling:
+              mode: ''
+              number: 1
+            modifiers: []
+      name: ''
+      behaviors: []
+      jjScale:
+        enabled: false
+        cost: 1
+        maxPA: 0
+      constantCost:
+        enabled: false
+        pool: generated
+        concentration: false
+  identifier: muscle-barrier
+  method: spell
+  prepared: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791829184039
+  modifiedTime: 1791829184039
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: a0EnvT0iw2hVTUrr
+sort: 100000
+_key: '!items!a0EnvT0iw2hVTUrr'

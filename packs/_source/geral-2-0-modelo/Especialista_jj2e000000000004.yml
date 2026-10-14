@@ -1,0 +1,81 @@
+_id: jj2e000000000004
+name: Especialista
+type: class
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Especialista-Icon.png
+system:
+  identifier: especialista
+  levels: 1
+  description:
+    value: >-
+      <p style="text-align:center"><span
+      style="font-size:x-large"><strong>ESPECIALISTA</strong></span></p><p><span
+      style="font-size:large"><strong>Pontos de
+      Vida</strong></span></p><p><strong>Vida Base:</strong> 5 por nível de
+      personagem.</p><p><strong>Vida por Ponto de Constituição:</strong> 5 por
+      ponto.</p><p></p><p><span style="font-size:large"><strong>Energia
+      Amaldiçoada</strong></span></p><p><strong>Energia Base:</strong> 15 por
+      nível de personagem.</p><p></p><p><span
+      style="font-size:large"><strong>Proficiências</strong></span></p><ul><li><p><strong>Equipamentos:</strong>
+      Recebe 1 Ponto de Proficiência entre qualquer tipo de
+      arma.</p></li><li><p><strong>Salvaguarda:</strong> Recebe 2 Pontos de
+      Proficiência para distribuir entre as
+      Salvaguardas.</p></li><li><p><strong>Perícias:</strong> Escolha 3 Pontos
+      de Proficiência para distribuir entre as
+      Perícias.</p></li></ul><p></p><p><span
+      style="font-size:large"><strong>Informações
+      Gerais</strong></span></p><ul><li><p><strong>Atributo Principal:</strong>
+      Intelecto.</p></li><li><p><strong>Habilidades de Especialização:</strong>
+      Você recebe 2 habilidade de "Feitiço
+      Inato".</p></li><li><p><strong>Equipamentos:</strong> Uma arma cortante,
+      especial ou ¥ 3.000 e; ¥ 8.000.</p></li></ul><p></p><p
+      style="text-align:center"><span
+      style="font-size:x-large"><strong>Características de
+      Combate</strong></span></p><hr><p><span
+      style="font-size:large"><strong>Manipulação de
+      Feitiço</strong></span></p><p>Você adquire a habilidade de manipular seus
+      próprios feitiços para adaptá-las às suas necessidades, usando a energia
+      excedente delas para beneficiar suas habilidades. Toda vez que você
+      executar um feitiço ou técnica de manipulação, seja por si mesmo ou por um
+      Shikigami, você recebe 2 Dados de Técnica, definidos por um d6.</p><p>A
+      qualquer momento durante seu turno, você pode utilizar os dados de técnica
+      para ativar um dos seguintes
+      efeitos:</p><ul><li><p><strong>Aprimoramento:</strong> Você pode gastar
+      quantos dados de técnica quiser para aumentar o dano da técnica pelo
+      resultado da rolagem dos dados, mas deve usa-los antes de saber se ela
+      acertou ou errou.</p></li><li><p><strong>Regenerar Maldição:</strong> Você
+      pode gastar quantos dados de técnica desejar e curar um Shikigami pelo
+      mesmo valor do resultado dos dados.</p></li><li><p><strong>Ativação
+      Secundária:</strong> Você pode gastar quantos dados de técnica desejar
+      para reduzir o custo da sua técnica pelo mesmo valor de dados
+      consumidos.</p></li></ul><p>Você pode ter um máximo de dados de técnica
+      igual a 1 + seu bônus de proficiência. Além disso, você também recebe 1
+      habilidade de Especialização de Feitiço Inato imediatamente ao adquirir
+      esse Estilo de Combate.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    legacy2:
+      vidaBase: 5
+      energiaBase: 15
+      atributoPrincipal: int
+      espIniciais: 2
+      proficiencias:
+        armas: 1
+        salvaguardas: 2
+        pericias: 3
+ownership:
+  default: 0
+effects: []
+folder: duEiLT0m9eoDwk8O
+sort: 100000
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791813322426
+  modifiedTime: 1791816831823
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2e000000000004'

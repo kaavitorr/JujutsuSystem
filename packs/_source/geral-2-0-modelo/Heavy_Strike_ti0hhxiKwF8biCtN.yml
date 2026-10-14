@@ -1,0 +1,245 @@
+_id: ti0hhxiKwF8biCtN
+name: Heavy Strike
+type: spell
+img: icons/skills/melee/unarmed-punch-fist-blue.webp
+effects: []
+folder: AWDdu9KCy1KeXLsN
+sort: 100000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickVersatile:
+      value: false
+      altValue: false
+    quickOther:
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      value: true
+      altValue: true
+    quickAttack:
+      value: true
+      altValue: true
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+      altValue:
+        '0': true
+    quickSave:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 8dcab746c62e6d2e36c4db72568822cef6bbd2d2
+    sourceId: Item.c2bIThaAcB2xKdTa
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+    quickOther:
+      context: ''
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+    quickAttack:
+      value: true
+    quickSave:
+      value: true
+  midi-qol:
+    fumbleThreshold: null
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  midiProperties:
+    confirmTargets: default
+    saveDamage: default
+    bonusSaveDamage: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+system:
+  description:
+    value: "<p>Você avança na direção de uma criatura desferindo um golpe pesado contra o estômago do alvo. A criatura deve realizar uma Salvaguarda de [[/save str dc=@attributes.spell.dc]] para não receber a condição <strong>“Caído”.</strong></p><hr><p><strong style=\"box-sizing:border-box;user-select:text\">Duração:</strong> Instantâneo</p><p><strong style=\"box-sizing:border-box;user-select:text\">Alcance:</strong>\_Toque</p><p><strong style=\"box-sizing:border-box;user-select:text\">Requisito:</strong>\_<span style=\"font-family:'Signika, sans-serif'\">Ação de Poder</span></p><p><strong style=\"box-sizing:border-box;user-select:text\">Dano: </strong>2d10 de dano Contundente</p><p><strong>Custo:</strong> 2 PA</p>"
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  activation:
+    type: action
+    condition: ''
+    value: 1
+  duration:
+    value: ''
+    units: inst
+    expiry: null
+  target:
+    affects:
+      choice: false
+      type: ''
+    template:
+      units: ft
+      contiguous: false
+      stationary: false
+      type: ''
+  range:
+    units: self
+    special: ''
+  uses:
+    max: ''
+    recovery: []
+    spent: 0
+  ability: str
+  level: 1
+  school: trs
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  properties: []
+  activities:
+    dnd5eactivity000:
+      _id: dnd5eactivity000
+      type: attack
+      activation:
+        type: action
+        value: null
+        override: false
+      consumption:
+        targets:
+          - type: material
+            value: '2'
+            target: ''
+            scaling:
+              mode: ''
+          - type: attribute
+            value: '2'
+            target: energy.generated
+            scaling:
+              mode: ''
+        scaling:
+          allowed: false
+          max: ''
+        spellSlot: false
+      description:
+        chatFlavor: ''
+        value: ''
+      duration:
+        units: inst
+        concentration: false
+        override: false
+        expiry: null
+      effects: []
+      range:
+        override: false
+        units: self
+      target:
+        prompt: true
+        template:
+          contiguous: false
+          units: ft
+          stationary: false
+        affects:
+          choice: false
+        override: false
+      uses:
+        spent: 0
+        max: ''
+        recovery: []
+      attack:
+        ability: str
+        bonus: ''
+        critical:
+          threshold: null
+        flat: false
+        type:
+          value: melee
+          classification: spell
+      damage:
+        critical:
+          bonus: ''
+        includeBase: true
+        parts:
+          - custom:
+              enabled: false
+              formula: ''
+            number: 2
+            denomination: 10
+            bonus: ''
+            types:
+              - bludgeoning
+              - slashing
+              - piercing
+            scaling:
+              mode: ''
+              number: 1
+            modifiers: []
+      sort: 0
+      name: ''
+      img: ''
+      flags: {}
+      visibility:
+        level:
+          min: null
+          max: null
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+      behaviors: []
+      jjScale:
+        enabled: false
+        cost: 1
+        maxPA: 0
+      constantCost:
+        enabled: false
+        pool: generated
+        concentration: false
+  identifier: heavy-throw
+  method: spell
+  prepared: 0
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.5n3nNkkPYNLZ0Wux
+  duplicateSource: null
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791829184044
+  modifiedTime: 1791829184044
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!ti0hhxiKwF8biCtN'

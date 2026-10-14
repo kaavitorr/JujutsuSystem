@@ -1,0 +1,41 @@
+_id: jj2a000000000034
+name: Manipulação de Ambiente
+type: feat
+img: icons/magic/symbols/cog-glowing-green.webp
+system:
+  identifier: manipulacao-de-ambiente
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Barreira Vazia</em></p><p>Você se torna
+      capaz de modificar o interior da sua barreira vazia, dando a aparência que
+      desejar ao reorganizar os hexágonos que compõe a estrutura dela. Você
+      consome duas 2 Ponto de Ação [⬢⬢] e 2 PA para modificar o interior de uma
+      barreira vazia após ela ser criada.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Técnicas de Barreira
+      caminho: Técnicas de Barreiras
+      requisitos:
+        - Barreira Vazia
+folder: jj2f000000000007
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816751588
+  modifiedTime: 1791816751588
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000034'

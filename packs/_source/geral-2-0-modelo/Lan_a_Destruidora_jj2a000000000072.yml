@@ -1,0 +1,44 @@
+_id: jj2a000000000072
+name: Lança Destruidora
+type: feat
+img: icons/skills/melee/spear-tips-triple-orange.webp
+system:
+  identifier: lanca-destruidora
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Ataque Cadenciado</em></p><p>Ao término
+      do cálculo de dano de uma ou mais criaturas, por uma jogada de ataque ou
+      técnica sua, caso o valor dos Pontos de Vida restantes seja igual ou menor
+      que o seu nível, a criatura recebe o dano necessário para ter seus PVs
+      reduzidos a 0.</p><p>Sempre que uma criatura for derrotada por essa
+      característica, aumenta em +5 na contagem do seu nível para reduzir os
+      Pontos de Vida a 0 (até um máximo de +20), que dura até o final do
+      encontro.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Ofensivo
+      requisitos:
+        - Ataque Cadenciado
+folder: jj2f000000000013
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814977111
+  modifiedTime: 1791814977111
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000072'

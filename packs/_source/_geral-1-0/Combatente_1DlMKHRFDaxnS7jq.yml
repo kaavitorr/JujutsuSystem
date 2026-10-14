@@ -1,0 +1,97 @@
+folder: pJFTz3T8ddDTtVRG
+name: Combatente
+type: subclass
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Caminhos/Sukuna_Cursed_Clash.webp
+system:
+  description:
+    value: "<table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>COMBATENTE</strong></span></p></td></tr></tbody></table><p class=\"MsoNormal\">Combatentes são aqueles que focam em manipular sua energia amaldiçoada para causar grandes quantidades de dano através de seus feitiços, sejam corpo-a-corpo ou a distância. Eles diferem dos lutadores devido a sua menor capacidade de combate direto.</p><p></p><p><span style=\"font-size:large\"><strong>CONTROLANDO RITMO</strong></span></p><hr><p>A partir do <strong>2º nível de Especialista</strong>, seu corpo passa a emitir grandes quantidades de energia amaldiçoada, que você pode usar para aprimorar seus golpes e sua velocidade.</p><p class=\"TextoPadro\">Sempre que você errar uma jogada de ataque (Comum ou de Técnica), pode escolher um dos seguintes efeitos para a sua próxima ação:</p><ul><li><p>Receber +2 nas jogadas de acerto em um ataque (Comum ou de Técnica);</p></li><li><p>Ou aumentar em +2 a CD de uma técnica ou feitiço em área (apenas para o dano).</p></li></ul><p class=\"TextoPadro\">\_</p><p class=\"TextoPadro\">Além disso, sempre que utilizar a ação “Atacar”, você pode realizar uma jogada de ataque adicional. Por fim, sempre que obtiver um 1 natural em uma jogada de ataque, você pode rolá-la novamente.</p><p></p><p><span style=\"font-size:large\"><strong>ATIVAÇÃO VELOZ</strong></span></p><hr><p>A partir do <strong>6º nível de Especialista</strong>, você aprendeu a ativar suas técnicas e feitiços com grande velocidade, movendo sua energia por instinto para causar efeitos massivos durante um combate. Sempre que você utilizar uma técnica de manipulação ou feitiço com uma ação de poder, role um d20. Em um resultado de 11 ou maior, você pode, dentro de 3 rodadas, utilizar uma técnica, habilidade menor ou feitiço de custo inferior que utilize ação de poder, mas você pode ativa-la usando uma ação bônus no lugar.</p><p class=\"MsoNormal\">Adicionalmente, suas técnicas, feitiços e características com duração maior que 1 rodada não podem ser interrompidas por técnicas, feitiços, características ou efeitos, a menos que possuam “Concentração”. Caso alguma habilidade tenha um efeito constante que force sua desativação, ela volta de onde parou após você se livrar do efeito.</p><p>\_</p><p><span style=\"font-size:large\"><strong>MANIPULAÇÃO DEFENSIVA</strong></span></p><hr><p>A partir do <strong>10º nível de Especialista</strong>, você aprendeu a ativar suas habilidades de se deslocar no espaço com tanta velocidade que você é capaz de mitigar parte do dano que você sofre durante um combate. Desde que tenha se teletransportado durante seu turno, você recebe resistência a dano Contundente, Cortante e Perfurante até o início do seu turno seguinte.</p><p>\_</p><p><span style=\"font-size:large\"><strong>DIFICULDADE CRESCENTE</strong></span></p><hr><p>A partir do <strong>14º nível de Especialista</strong>, toda vez que a criatura tirar um resultado no dado de 5 ou menor em Salvaguarda sua, ou você realizar um acerto crítico com técnica ou feitiço, você aumenta a CD de técnicas e feitiços para tomar todo ou metade do dano em +2, ou o acerto das suas técnicas ou feitiços em +2 respectivamente. Você pode acumular um máximo de 32 de CD ou +10 de acerto.</p><p class=\"MsoListParagraph\">Além disso, ao executar uma técnica ou feitiço com mais de 8 PA, você pode fazer com que o primeiro um terço dos dados tenham resultado máximo.</p>"
+    chat: ''
+  source:
+    rules: '2014'
+    revision: 1
+  identifier: combatente
+  classIdentifier: especialista
+  advancement:
+    3YFBOMqTtd0qDDnh:
+      type: ItemGrant
+      _id: 3YFBOMqTtd0qDDnh
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.qPwi5zjoID4kuU0J
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 2
+      title: ''
+      hint: ''
+      flags: {}
+    Aa7rzW9DmTFz4VVw:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.3ewupwxlpmZgC4d4
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 6
+      title: ''
+      hint: ''
+      _id: Aa7rzW9DmTFz4VVw
+      flags: {}
+    p9G1ButgZQ38CT3M:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.CNfMQoaesqluq8TG
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 10
+      title: ''
+      hint: ''
+      _id: p9G1ButgZQ38CT3M
+      flags: {}
+    f9RfBWo6xrGYOTsN:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.t3rmRk6bzqbjojD6
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 14
+      title: ''
+      hint: ''
+      _id: f9RfBWo6xrGYOTsN
+      flags: {}
+  spellcasting:
+    progression: none
+    ability: ''
+    preparation:
+      formula: ''
+effects: []
+sort: 350000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: ac31a28ea9bbc68b13450bbdac2c7e880f719bd7
+  core: {}
+_stats:
+  compendiumSource: Item.5DNdPVt1SNlAA1LD
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881609
+  modifiedTime: 1776972739198
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: 1DlMKHRFDaxnS7jq
+_key: '!items!1DlMKHRFDaxnS7jq'

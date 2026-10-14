@@ -1,0 +1,40 @@
+_id: jj2a000000000009
+name: Forma Dominada
+type: feat
+img: icons/magic/unholy/hand-claw-fire-blue.webp
+system:
+  identifier: forma-dominada
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Ativação Dupla</em></p><p>Você dominou
+      os efeitos dos selos no seu feitiço com tanta maestria que você pode ir
+      além dos limites comuns. Você dobra sua quantidade total de selos e pode
+      gastar até 3 por vez na ativação de uma expansão de domínio.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Selos e Encantamentos
+      requisitos:
+        - Ativação Dupla
+folder: jj2f000000000002
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814786730
+  modifiedTime: 1791814786730
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000009'

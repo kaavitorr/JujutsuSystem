@@ -1,0 +1,20 @@
+type: Item
+folder: null
+name: Defeitos
+color: '#36b07b'
+sorting: a
+_id: 1wtvCpgHBnSBUfAg
+description: ''
+sort: 0
+flags: {}
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791829169028
+  modifiedTime: 1791829173969
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!1wtvCpgHBnSBUfAg'

@@ -1,0 +1,146 @@
+name: Entrada Impactante  (Lendário)
+type: feat
+img: icons/creatures/magical/spirit-fear-energy-pink.webp
+effects: []
+folder: Df2mM1kDzniTsvOe
+sort: 0
+flags:
+  scene-packer:
+    hash: 0dcebae53299f1735734106052c5251295364233
+    sourceId: Item.0KNRFePZDR6hhf1O
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+system:
+  description:
+    value: >-
+      <p><strong>Entrada Impactante (Aumenta o dano virtual da criatura na
+      primeira rodada):</strong> A primeira jogada de ataque corpo-a-corpo que a
+      criatura fizer em um encontro de combate tem acerto automático, causa o
+      dobro dos dados de dano e impõe a condição “Atordoado” no alvo do
+      ataque.</p>
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    recovery: []
+    spent: 0
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  activities:
+    dnd5eactivity000:
+      _id: dnd5eactivity000
+      type: utility
+      activation:
+        type: special
+        value: 1
+        condition: ''
+        override: false
+      consumption:
+        targets: []
+        scaling:
+          allowed: false
+          max: ''
+        spellSlot: true
+      description:
+        chatFlavor: ''
+      duration:
+        concentration: false
+        value: ''
+        units: inst
+        special: ''
+        override: false
+      effects: []
+      range:
+        units: self
+        special: ''
+        override: false
+      target:
+        template:
+          count: ''
+          contiguous: false
+          type: ''
+          size: ''
+          width: ''
+          height: ''
+          units: ft
+          stationary: false
+        affects:
+          count: ''
+          type: ''
+          choice: false
+          special: ''
+        prompt: true
+        override: false
+      uses:
+        spent: 0
+        max: ''
+        recovery: []
+      roll:
+        formula: ''
+        name: ''
+        prompt: false
+        visible: false
+      sort: 0
+      img: null
+      flags: {}
+      visibility:
+        level: {}
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+  identifier: entrada-impactante
+  enchant: {}
+  advancement: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.xUNFtknSDCSCjzek
+  duplicateSource: Item.0KNRFePZDR6hhf1O
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910531
+  modifiedTime: 1776624910566
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: ClPEqlgoX2Gvz5u9
+_key: '!items!ClPEqlgoX2Gvz5u9'

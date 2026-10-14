@@ -1,0 +1,22 @@
+_id: jj2a000000000105
+_key: '!items!jj2a000000000105'
+name: Análise Constante
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: analise-constante
+  description:
+    value: <p><em><strong>Requisito:</strong> 5 Pontos de Presença; Fonte de Poder</em></p><p>Sua sensitividade a energia amaldiçoada é superior à das outras criaturas. Ao usar 2 Pontos de Ação [⬢⬢] e 5 PA, você pode escolher uma criatura no campo de batalha e analisa-la de forma constante. Toda vez que ela estiver abaixo de você na iniciativa, você recebe uma vantagem contra ela. Esse efeito dura por 1 minuto.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Ressonância da Alma
+      requisitos:
+        - 5 Pontos de Presença e Fonte de Poder
+folder: jj2f000000000016
+ownership:
+  default: 0
+effects: []
+sort: 0

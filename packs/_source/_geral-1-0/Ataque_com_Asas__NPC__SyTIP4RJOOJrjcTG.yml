@@ -1,0 +1,77 @@
+_id: SyTIP4RJOOJrjcTG
+name: Ataque com Asas (NPC)
+type: feat
+img: icons/creatures/birds/raptor-hawk-flying.webp
+effects: []
+folder: I4nmFeOf3cr9gQWb
+sort: 100000
+flags:
+  scene-packer:
+    hash: b3108e5ecb4f2cb2ac8bbbcfb032743856e2dc68
+    sourceId: Item.SyTIP4RJOOJrjcTG
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Ataque com Asas (Aumenta o dano efetivo por rodada da criatura,
+      considerando que acerte duas criaturas): </strong>A criatura bate suas
+      asas. Cada alvo a até 6 metros da criatura deve ser bem sucedido em um
+      Teste de Resistência de Destreza ou sofrerá dano de Concussão e receberá a
+      condição “Caído”. Após bater as asas, a criatura pode voar até metade do
+      seu deslocamento.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: ataque-com-asas-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.FHZNYaf9hn4p4S7K
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910543
+  modifiedTime: 1776624910570
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!SyTIP4RJOOJrjcTG'

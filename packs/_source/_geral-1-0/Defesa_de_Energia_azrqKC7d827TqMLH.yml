@@ -1,0 +1,97 @@
+_id: azrqKC7d827TqMLH
+name: Defesa de Energia
+type: feat
+img: icons/magic/light/explosion-star-glow-silhouette.webp
+effects: []
+folder: G1M8tPdHa94Qiodb
+sort: 400000
+flags:
+  scene-packer:
+    hash: ba1d9f3bf92b037ac519d518185a2f8f3757a350
+    sourceId: Item.azrqKC7d827TqMLH
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+system:
+  description:
+    value: >-
+      <p><strong>Defesa de Energia:</strong> A criatura reduz todo dano que não
+      possua Energia Amaldiçoada pela metade e você recebe a técnica “Defesa
+      Sólida”.</p>
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    recovery: []
+    spent: 0
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  activities: {}
+  identifier: acao-de-poder--hatsu-liberar-presenca
+  enchant: {}
+  advancement:
+    Xf2OJQfjmd1Ai6P7:
+      type: ItemGrant
+      _id: Xf2OJQfjmd1Ai6P7
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-system.tecnicas-manipulacao.Item.tldGQUafFscx8iAs
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 0
+      flags: {}
+      hint: ''
+      title: ''
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.bejiqHWpc2YWAwX8
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624910552
+  modifiedTime: 1782450164982
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_key: '!items!azrqKC7d827TqMLH'

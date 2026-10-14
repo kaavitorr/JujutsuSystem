@@ -1,0 +1,74 @@
+_id: a1AryEOJuLwYGii7
+name: Luz Própria (NPC)
+type: feat
+img: icons/magic/light/explosion-beam-impact-silhouette.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 3600000
+flags:
+  scene-packer:
+    hash: 2782a8ba467c6973db9824e8def01a2d6c80d7fd
+    sourceId: Item.a1AryEOJuLwYGii7
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Luz Própria (–): </strong>A criatura consegue criar luz de uma
+      parte do seu corpo, iluminando uma esfera com raio de 6 metros com luz
+      direta e mais 3 metros como penumbra.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: luz-propria-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.z03XAg5AfhNKWWXg
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910550
+  modifiedTime: 1776624910573
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!a1AryEOJuLwYGii7'

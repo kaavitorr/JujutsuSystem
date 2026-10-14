@@ -1,0 +1,39 @@
+_id: jj2a000000000060
+name: Sentir Maldição
+type: feat
+img: icons/magic/light/explosion-star-blue-large.webp
+system:
+  identifier: sentir-maldicao
+  description:
+    value: >-
+      <p>Você consegue sentir espíritos amaldiçoados e energia amaldiçoada em
+      uma área de 6 metros vezes o seu nível de personagem. Você ainda precisa
+      realizar um Teste de Atributo de Sabedoria (Percepção) contra criaturas
+      que estão tentando se esconder dos seus sentidos.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Canalização de Energia
+      requisitos: []
+folder: jj2f000000000011
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816466214
+  modifiedTime: 1791816466214
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000060'

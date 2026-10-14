@@ -1,0 +1,58 @@
+_id: jj2a000000000004
+name: Encantamentos
+type: feat
+img: icons/magic/symbols/rune-sigil-hook-white-red.webp
+system:
+  identifier: encantamentos
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Selos Complexos</em></p><p>Diferente
+      dos selos de mão, os encantamentos são utilizados para reduzir o custo de
+      ativação de uma habilidade ou aumentar seu poder, fazendo com que
+      habilidades muito custosas possam ser ativadas com relativa facilidade.
+      Eles são compostos por frases longas que devem ser recitadas em ordem.
+      Enquanto recita um encantamento, você sempre se mantém em “Concentração” e
+      não pode ativar outras técnicas do seu feitiço enquanto recita.</p><p>Um
+      encantamento pode ser dividido entre versos simples, medianos e complexos,
+      onde cada um demora mais que o anterior para ser recitado, mas aumenta o
+      benefício de forma proporcional.</p><p>Os benefícios concedidos por cada
+      verso é fixo de acordo com seu nível, onde ao recitar um encantamento,
+      você pode escolher entre reduzir o custo, aumentar a CD ou aumentar os
+      dados de dano da técnica.</p><ul><li><strong>Verso Simples:</strong> A
+      técnica termina sua ativação no início do seu próximo turno e você pode
+      escolher entre reduzir o custo, aumentar a CD ou o dano em 2 PA, CD ou
+      Dados de Dano respectivamente.</li><li><strong>Verso Mediano:</strong> A
+      técnica termina sua ativação no início do seu segundo turno e você pode
+      escolher entre reduzir o custo, aumentar a CD ou o dano em 4 PA, CD ou
+      Dados de Dano respectivamente.</li><li><strong>Verso Complexo:</strong> A
+      técnica termina sua ativação no início do seu terceiro turno e você pode
+      escolher entre reduzir o custo, aumentar a CD ou o dano em 6 PA, CD ou
+      Dados de Dano respectivamente.</li></ul>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Selos e Encantamentos
+      requisitos:
+        - Selos Complexos
+folder: jj2f000000000002
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814751697
+  modifiedTime: 1791814751697
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000004'

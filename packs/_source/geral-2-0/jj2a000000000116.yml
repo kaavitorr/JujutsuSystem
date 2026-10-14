@@ -1,0 +1,22 @@
+_id: jj2a000000000116
+_key: '!items!jj2a000000000116'
+name: Regeneração por Fulgor
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: regeneracao-por-fulgor
+  description:
+    value: <p><em><strong>Requisito:</strong> Recuperando Reservas</em></p><p>Toda vez que você acertar uma criatura com um Fulgor Negro, você é capaz de gastar 3 Pontos de Energia Amaldiçoada do seu valor Total para recuperar 1 Ponto de Energia Reversa de forma imediata, até um máximo igual a 10 Pontos de Energia Reversa de uma única vez.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Energia Reversa
+      caminho: Técnica de Energia Reversa
+      requisitos:
+        - Recuperando Reservas
+folder: jj2f000000000018
+ownership:
+  default: 0
+effects: []
+sort: 0

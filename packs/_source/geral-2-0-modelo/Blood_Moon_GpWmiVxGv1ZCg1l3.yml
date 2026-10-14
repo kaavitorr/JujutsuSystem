@@ -1,0 +1,230 @@
+name: Blood Moon
+type: spell
+img: icons/skills/melee/blood-slash-foam-red.webp
+effects: []
+folder: AyLkZuGRCltus8nB
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickVersatile:
+      value: false
+      altValue: false
+    quickOther:
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      value: true
+      altValue: true
+    quickAttack:
+      value: true
+      altValue: true
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+      altValue:
+        '0': true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: f1662da2bb778492e42251e8822a6f2da857b297
+    sourceId: Item.a5cm3m20C3vusMKP
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+    quickOther:
+      context: ''
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+    quickAttack:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+system:
+  description:
+    value: "<p>Uma técnica que pode ser utilizada dentro do domínio simples ao criar uma lâmina de energia amaldiçoada envolta da sua katana. Quando uma criatura entrar dentro da área do seu domínio simples, você 3 cortes extremamente velozes que parecem ser feitos quase simultaneamente. Após atingir o alvo, você deve realizar mais duas rolagens de acerto que não causam dano, impondo a condição <strong>“Sangramento”</strong> sem a necessidade de uma Salvaguarda ao atingir as 3.</p><hr><p>\_<strong>Duração:</strong>\_Instantâneo</p><p><strong>Alcance:</strong>\_Até 4,5 metros, Linha</p><p><strong>Requisito:</strong> Katana, Domínio Simples, Ação de Poder</p><p><strong>Dano:</strong> 10d10 de dano Cortante</p><p><strong>Custo:</strong> 10 PA</p>"
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  activation:
+    type: powerAction
+    condition: ''
+    value: 1
+  duration:
+    value: ''
+    units: inst
+    expiry: null
+  target:
+    affects:
+      choice: false
+      type: ''
+    template:
+      units: m
+      contiguous: false
+      stationary: false
+      type: ''
+      count: ''
+      size: '30'
+      width: '4.5'
+  range:
+    units: m
+    special: ''
+    value: '4.5'
+  uses:
+    max: ''
+    recovery: []
+    spent: 0
+  ability: ''
+  level: 2
+  school: trs
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  properties: []
+  activities:
+    kwi14SI7ueXbFxoF:
+      type: attack
+      _id: kwi14SI7ueXbFxoF
+      img: ''
+      sort: 0
+      activation:
+        type: action
+        override: false
+      consumption:
+        scaling:
+          allowed: false
+        spellSlot: true
+        targets:
+          - type: attribute
+            value: '10'
+            target: energy.generated
+            scaling:
+              mode: ''
+      description:
+        chatFlavor: ''
+        value: ''
+      duration:
+        units: inst
+        concentration: false
+        override: false
+        expiry: null
+      effects: []
+      flags: {}
+      range:
+        units: self
+        override: false
+      target:
+        template:
+          contiguous: false
+          stationary: false
+          units: m
+        affects:
+          choice: false
+        override: false
+        prompt: true
+      uses:
+        spent: 0
+        recovery: []
+        max: ''
+      visibility:
+        level:
+          min: null
+          max: null
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+      attack:
+        critical:
+          threshold: null
+        flat: false
+        type:
+          value: ''
+          classification: ''
+        ability: ''
+        bonus: ''
+      damage:
+        critical:
+          bonus: ''
+        includeBase: true
+        parts:
+          - custom:
+              enabled: false
+              formula: ''
+            number: 10
+            denomination: 10
+            bonus: ''
+            types:
+              - slashing
+            scaling:
+              mode: ''
+              number: 1
+            modifiers: []
+      name: ''
+      jjScale:
+        enabled: false
+        cost: 1
+        maxPA: 0
+      constantCost:
+        enabled: false
+        pool: generated
+        concentration: false
+      behaviors: []
+  identifier: muscle-barrier
+  method: spell
+  prepared: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791829184033
+  modifiedTime: 1791829184033
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: GpWmiVxGv1ZCg1l3
+sort: 500000
+_key: '!items!GpWmiVxGv1ZCg1l3'

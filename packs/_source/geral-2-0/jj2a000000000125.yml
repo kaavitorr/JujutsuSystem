@@ -1,0 +1,22 @@
+_id: jj2a000000000125
+_key: '!items!jj2a000000000125'
+name: Modificação de Domínio
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: modificacao-de-dominio
+  description:
+    value: <p><em><strong>Requisito:</strong> Domínio Completo</em></p><p>Essa habilidade permite que você modifique sua Expansão de Domínio quase livremente através de certos votos durante sua ativação. Você pode escolher uma das seguintes opções:</p><ul><li><strong>Exterior Forte:</strong> Você inverte os Pontos de Vida do exterior e interior da expansão de domínio;</li><li><strong>Mover Localização:</strong> Você pode mover a expansão até 90 metros para qualquer direção ao cria-la;</li><li><strong>Compressão:</strong> Você pode comprimir a área exterior da expansão na hora da ativação, aumentando a Classe de Resistência dela em +3.</li></ul>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Domínio e Anti-Domínio
+      caminho: Técnicas de Expansão de Domínio
+      requisitos:
+        - Domínio Completo
+folder: jj2f000000000020
+ownership:
+  default: 0
+effects: []
+sort: 0

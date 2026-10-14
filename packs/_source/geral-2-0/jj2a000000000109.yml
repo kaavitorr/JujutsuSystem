@@ -1,0 +1,39 @@
+_id: jj2a000000000109
+_key: '!items!jj2a000000000109'
+name: Energia Reversa — Visão Geral
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: energia-reversa-visao-geral
+  description:
+    value: |-
+      <h2>Energia Reversa</h2><p>Dentro do mundo de Jujutsu, uma das artes mais difíceis de dominar é a técnica da Energia Reversa. Ela permite transformar energia negativa (Energia Amaldiçoada) em energia positiva, utilizando o conceito de que negativo multiplicado a negativo resulta em positivo, dando origem à Energia Reversa. Entretanto, isso faz com que utilizar técnicas alimentadas por energia positiva custe, teoricamente, o dobro do que custariam se fossem ativadas com energia negativa.</p>
+      <p>A Energia Reversa, diferentemente da energia negativa, é extremamente eficiente na regeneração de todos os tipos de ferimentos, utilizando a alma como molde para reconstruir o corpo. Graças a isso, um feiticeiro pode se recuperar até mesmo das piores lesões, desde que permaneça vivo e com o cérebro intacto.</p>
+      <h3>Alcançando a Energia Reversa</h3>
+      <p>Com exceção de caminhos que já despertam naturalmente a Energia Reversa, como Estrategista, essa técnica é extremamente difícil de ser aprendida. Entretanto, sua aprendizagem se torna mais fácil conforme a campanha avança, especialmente quando o personagem é colocado sob grande pressão.</p>
+      <p>Para despertar sua Energia Reversa, você deve estar em uma situação adversa, mesmo que fora de combate, na qual seu uso seja realmente necessário. O narrador pode escolher a forma que desejar para despertar energia reversa, mas caso escolha a métrica do sistema, ela será a mais difícil possível.</p>
+      <p>Sempre que essas condições forem atendidas, você poderá realizar um Teste de Atributo de Constituição (Controle de Energia) <strong>CD 40</strong>. Em caso de sucesso, você desperta a Energia Reversa. Essa CD, porém, não permanece fixa durante toda a campanha, diminuindo conforme as condições a seguir:</p>
+      <h4>Despertar Natural</h4><p>Independentemente das condições, um personagem pode alcançar a Energia Reversa ao atingir o 12º nível de personagem, liberando todos os seus benefícios.</p>
+      <h4>Entendimento da Energia Amaldiçoada</h4><p>Uma vez por descanso longo, ao entrar na Zona como consequência de um Fulgor Negro, você reduz permanentemente em 1 a CD do Teste de Atributo necessário para aprender a Energia Reversa.</p>
+      <h4>Entendimento Natural — Aprendizado Rápido</h4>
+      <table><thead><tr><th>Origens</th><th>CD Inicial</th><th>Outros</th><th>CD Inicial</th></tr></thead><tbody>
+      <tr><td>Receptáculo (Condicional)</td><td>35</td><td>Sentinela</td><td>35</td></tr>
+      <tr><td>Feto Amaldiçoado</td><td>25</td><td>Mestre de Barreiras</td><td>30</td></tr>
+      <tr><td>Maldição</td><td>20</td><td>Feitiços Específicos</td><td>25</td></tr>
+      </tbody></table>
+      <h4>Critérios de Aprendizado</h4><p>Fica sempre a critério do Narrador definir quais situações podem ser utilizadas para o aprendizado. Caso opte pelas regras deste capítulo, algumas condições podem disparar um teste de <strong>1d20 + Constituição + nível</strong>:</p>
+      <ul><li>Ficar com 1/3 ou menos dos Pontos de Vida durante uma luta com risco de morte;</li><li>Cair a 0 Pontos de Vida e não morrer;</li><li>Atingir um Fulgor Negro com dois resultados 20 (principal e secundário);</li><li>Precisar salvar um companheiro caído fora de combate;</li><li>Ter seu Feitiço Inato se mostrando inútil contra um oponente por mais de 3 rodadas (neste caso, o teste pode ser repetido a cada 3 rodadas).</li></ul>
+      <p>Embora não existam sucessos automáticos em Testes de Atributo ao obter um 20 natural, sempre que um jogador realizar um teste para aprender Energia Reversa e obtiver um 20 natural, o Narrador pode reduzir permanentemente em 1 a CD dos testes futuros caso ele decida que a cena foi o suficiente para essa recompensa.</p>
+      <h3>Técnicas de Energia Reversa</h3><p>Diferente das outras habilidades, você recebe um número de escolhas de habilidades de energia reversa a cada 4 habilidades de especialização que você possui. Isso significa que você não consome escolhas de habilidade de especialização para pegar pelo menos 5 habilidades de energia reversa.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Energia Reversa
+      caminho: null
+      requisitos: []
+folder: jj2f000000000017
+ownership:
+  default: 0
+effects: []
+sort: 0

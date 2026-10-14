@@ -1,0 +1,22 @@
+name: Habilidades Avançadas
+type: Item
+sorting: a
+sort: 0
+color: '#bf7373'
+flags:
+  scene-packer:
+    hash: 3cb3a4aefc1b5530f1499b52192205508e95f2f4
+_id: uS2gx1xTr6SoRtWP
+folder: hRjnfrCi2GynI6bk
+description: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910214
+  modifiedTime: 1782450214697
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_key: '!folders!uS2gx1xTr6SoRtWP'

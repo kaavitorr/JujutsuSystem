@@ -1,0 +1,130 @@
+folder: A016Ya5NrTpIpIrs
+name: Feiticeiro - 2º Grau
+type: feat
+img: icons/magic/light/orbs-firefly-hand-yellow.webp
+system:
+  description:
+    value: >-
+      <p class="Default">São aqueles que dominaram o básico e parte do avançado
+      da Energia Amaldiçoada com certo nível de proficiência, aumentando o ND
+      efetivo do PdN em 4. Eles recebem as seguintes
+      características:</p><p>Aumenta a Classe de Dificuldade em +3;</p><p>Recebe
+      2d4 de dano extra em todas as jogadas de ataque que realizar;</p><p>Recebe
+      50 Pontos de Armadura e resistência a todos os tipos de dano enquanto eles
+      não acabarem;</p><p>Detecta energia amaldiçoada em um raio de 24 metros,
+      tendo +5 em percepção para encontrar essas criaturas em furtividade.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  requirements: ''
+  identifier: 4-profissional
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects:
+  - name: 2º Grau
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.IxuYJz2t7xMlsyOa
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: false
+    flags:
+      dnd5e:
+        riders:
+          statuses: []
+      dae:
+        disableCondition: ''
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+      core:
+        overlay: false
+      JujutsuLegacy:
+        riders:
+          statuses: []
+    img: icons/magic/light/orbs-firefly-hand-yellow.webp
+    _id: qO8qBTEeuUHD5BMX
+    type: base
+    system:
+      changes:
+        - key: system.attributes.hp.tempmax
+          type: add
+          value: '+50'
+          phase: initial
+          priority: 20
+        - key: system.bonuses.spell.dc
+          type: add
+          value: '+3'
+          phase: initial
+          priority: 20
+        - key: system.bonuses.mwak.damage
+          type: add
+          value: +2d4
+          phase: initial
+          priority: null
+        - key: system.bonuses.rwak.damage
+          type: add
+          value: +2d4
+          phase: initial
+          priority: null
+    description: ''
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    sort: 0
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '14.364'
+      systemId: jujutsu-system
+      systemVersion: 1.0.6
+      createdTime: 1776624910537
+      modifiedTime: 1782449445009
+      lastModifiedBy: 371UX0Acl9j9oJ0Q
+      exportSource: null
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!IxuYJz2t7xMlsyOa.qO8qBTEeuUHD5BMX'
+sort: 0
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  rsr5e:
+    quickFooter:
+      value: true
+  scene-packer:
+    hash: b6fedc32f23461f72270748054f3f359a598e584
+_stats:
+  compendiumSource: null
+  duplicateSource: Item.OSx3zvRqecaSFy3U
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624910537
+  modifiedTime: 1782449283254
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_id: IxuYJz2t7xMlsyOa
+_key: '!items!IxuYJz2t7xMlsyOa'

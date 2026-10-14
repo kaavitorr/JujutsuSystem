@@ -1,0 +1,84 @@
+folder: QwYh3uEF10z8gSGn
+name: Domínio Completo
+type: feat
+img: icons/magic/defensive/barrier-shield-dome-blue-purple.webp
+system:
+  description:
+    value: >-
+      <p>A partir do <strong>15º nível de Sentinela</strong>, você se tornou tão
+      habilidoso na utilização do seu domínio que ele deixa de impor limitações
+      sobre seus movimentos. Enquanto seu domínio simples estiver ativo, você
+      pode se mover livremente e não consome mais Pontos de Energia Amaldiçoada
+      (PA) para ativá-lo ou mantê-lo ativo.</p><p class="MsoNormal">Além disso,
+      durante um choque de domínios, a quantidade de Pontos de Vida do seu
+      domínio é duplicada, permitindo que ele resista por muito mais tempo.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-emissor
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: d8a632d7930b501d57e292fcb3875f3aa448cd29
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1782435486349
+  modifiedTime: 1782435487406
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: 2bTYkmkLTHOdTpLv
+sort: 800000
+_key: '!items!2bTYkmkLTHOdTpLv'

@@ -1,0 +1,43 @@
+_id: jj2a000000000037
+name: Criação Instantânea
+type: feat
+img: icons/magic/lightning/bolt-strike-explosion-blue.webp
+system:
+  identifier: criacao-instantanea
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Barreira Adaptativa e Barreira
+      Pura</em></p><p>Sua habilidade com barreiras faz com que você possa
+      cria-las muito mais rapidamente que o normal. Você consegue formar
+      barreiras de até 10 metros de raio de forma instantânea, desde que você
+      esteja dentro da área dela. Além disso, seu custo de ações para criar
+      qualquer barreira é reduzido em 2 Pontos de Ação [⬢⬢].</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Técnicas de Barreira
+      caminho: Técnicas de Barreiras
+      requisitos:
+        - Barreira Adaptativa
+        - Barreira Pura
+folder: jj2f000000000007
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816771908
+  modifiedTime: 1791816771908
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000037'

@@ -1,0 +1,20 @@
+type: Item
+folder: IcfAIm1favakYIEh
+name: Talentos de Perícia
+color: null
+sorting: a
+_id: dX9XlTQArgwL00FB
+description: ''
+sort: 0
+flags: {}
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776630860079
+  modifiedTime: 1776630860079
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!dX9XlTQArgwL00FB'

@@ -1,0 +1,13 @@
+<section class="jj2-generation-content">
+  <header class="jj2-generation-heading"><span>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="energy" }}</span><div><h2>Refinamento</h2><p>Prepare sua Energia (PA) para este turno.</p></div></header>
+  <div class="jj2-generation-metrics">
+    <div><span>Limite</span><strong>{{ limite }}<small>PA</small></strong></div>
+    <div><span>Refinada</span><strong>{{ geradaAtual }}<small>PA</small></strong></div>
+    <div><span>Reserva</span><strong>{{ totalAtual }}<small>PA</small></strong></div>
+  </div>
+  <fieldset class="jj2-generation-bonus"><legend>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add" }}Bônus de PA adicional</legend>
+    <div class="form-group"><label for="{{ rootId }}-generation-bonus">PA adicional</label><div class="form-fields"><input id="{{ rootId }}-generation-bonus" type="number" name="flatBonus" value="0" min="0" step="1"></div></div>
+    <p>Use o bônus de um feitiço ou habilidade. Ele é somado além do limite normal.</p>
+  </fieldset>
+  <p class="jj2-generation-note">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="energy" }}A energia é transferida da sua reserva.</p>
+</section>

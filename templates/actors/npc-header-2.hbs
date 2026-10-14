@@ -1,0 +1,29 @@
+<header class="sheet-header jj2-header jj2-hero {{#if jj2.npc.profileTags}}jj2-npc-has-profiles{{/if}}">
+  <div class="jj2-hero-art"><div class="jj2-portrait portrait {{#if portrait.token}}token{{/if}}">
+    {{#with portrait}}{{#if isVideo}}<video src="{{src}}" autoplay muted loop playsinline disablepictureinpicture {{#if @root.editable}}data-action="{{action}}" data-edit="{{path}}" data-type="{{type}}"{{else}}data-action="showArtwork"{{/if}}></video>{{else}}<img src="{{src}}" alt="{{@root.actor.name}}" {{#if @root.editable}}data-action="{{action}}" data-edit="{{path}}" data-type="{{type}}"{{else}}data-action="showArtwork"{{/if}}>{{/if}}{{/with}}
+  </div>{{#if editable}}<label class="jj2-portrait-toggle"><input type="checkbox" name="flags.jujutsu-system.showTokenPortrait" role="switch" aria-label="Usar imagem do token" {{checked portrait.token}}><span class="jj2-portrait-switch" aria-hidden="true"></span></label>{{/if}}</div>
+  <div class="jj2-hero-identity">
+    <div class="jj2-nameplate {{#if jj2.npc.longName}}jj2-npc-name-long{{/if}}">{{#if editable}}<input type="text" name="name" class="document-name" value="{{actor._source.name}}" aria-label="Nome do NPC" title="{{actor.name}}">{{else}}<h1 class="document-name" title="{{actor.name}}">{{actor.name}}</h1>{{/if}}</div>
+    <div class="jj2-header-meta"><span>NPC</span><span class="jj2-npc-category">{{jj2.npc.category}}</span>
+      {{#if jj2.npc.profileTags}}<div class="jj2-npc-profile-tags">{{#each jj2.npc.profileTags}}
+        <div class="jj2-npc-profile-tag" data-profile-type="{{type}}" title="{{kind}}: {{label}}">
+          {{#if uuid}}<button type="button" class="jj2-profile-open always-interactive" data-action="{{#if @root.owner}}editDocument{{else}}showDocument{{/if}}" data-uuid="{{uuid}}" aria-label="{{kind}}: {{label}}"><small>{{kind}}</small><b>{{label}}</b></button>{{else}}<div class="jj2-profile-open"><small>{{kind}}</small><b>{{label}}</b></div>{{/if}}
+          {{#if @root.editable}}<button type="button" class="jj2-profile-remove" data-action="jj2RemoveNpcProfile" data-profile-type="{{type}}" aria-label="Remover {{kind}} da ficha" title="Remover da ficha">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="close"}}</button>{{/if}}
+        </div>
+      {{/each}}</div>{{/if}}
+    </div>
+    <div class="jj2-hero-resources">
+      <div class="jj2-header-bars">
+        {{> "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs" id="hp" label="Vida" path="system.attributes.hp.value" value=system.attributes.hp.value max=system.attributes.hp.effectiveMax pct=jj2.hpPct configKey="hitPoints"}}
+        {{> "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs" id="energy" label="Energia" path="system.energy.total" value=system.energy.total max=system.energy.max pct=jj2.energyPct}}
+      </div>
+      <div class="jj2-header-emblems">
+      {{> "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs" id="refinement" label="Refinada" path="system.energy.generated" value=jj2.energyAvailable max=system.energy.genMax unbounded=true sigil=true}}
+      {{> "systems/jujutsu-system/templates/actors/parts/jj2-action-ring.hbs"}}
+      </div>
+    </div>
+  </div><div class="jj2-hero-actions">
+    {{#if showRests}}<div class="jj2-rests">{{#each CONFIG.restTypes}}<button type="button" class="jj2-action always-interactive" data-action="rest" data-type="{{@key}}" aria-label="{{localize label}}" data-tooltip="{{localize label}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=@key}}</button>{{/each}}</div>{{/if}}
+    <div class="jj2-level" aria-label="Nível de Desafio {{jj2.npc.nd}}"><svg class="jj2-level-seal" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true"><circle cx="40" cy="40" r="35" stroke-width="1.7" stroke-dasharray="28 9 3 9"/><path class="jj2-level-seal-energy" d="M40 11a29 29 0 0 1 25 14M69 40a29 29 0 0 1-14 25M25 65a29 29 0 0 1-14-25" stroke-width="3"/></svg><div class="jj2-level-number">{{#if editable}}<input type="number" name="system.legacy2.nd" value="{{jj2.npc.nd}}" min="1" step="1" aria-label="Nível de Desafio">{{else}}<strong>{{jj2.npc.nd}}</strong>{{/if}}</div><span>ND</span></div>
+  </div>
+</header>

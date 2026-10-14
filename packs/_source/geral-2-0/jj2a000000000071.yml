@@ -1,0 +1,22 @@
+_id: jj2a000000000071
+_key: '!items!jj2a000000000071'
+name: Ataque Cadenciado
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: ataque-cadenciado
+  description:
+    value: <p><em><strong>Requisito:</strong> Evasão de Contra-Ataque</em></p><p>Quando mais ataques você acerta, mais você se perde no fervor da batalha. A cada ataque bem-sucedido contra uma criatura, você recebe +1 vantagem contra ela de forma acumulativa. Esse efeito reseta quando você erra uma jogada de ataque ou troca de criatura.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Ofensivo
+      requisitos:
+        - Evasão de Contra-Ataque
+folder: jj2f000000000013
+ownership:
+  default: 0
+effects: []
+sort: 0

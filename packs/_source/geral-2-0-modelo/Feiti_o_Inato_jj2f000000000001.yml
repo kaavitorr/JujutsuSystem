@@ -1,0 +1,20 @@
+_id: jj2f000000000001
+type: Item
+name: Feitiço Inato
+folder: 1roC0BlA1sepbPGH
+color: '#8a4fd0'
+sorting: m
+description: ''
+sort: 300000
+flags: {}
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814495677
+  modifiedTime: 1791814495677
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!jj2f000000000001'

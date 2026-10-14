@@ -1,0 +1,22 @@
+_id: jj2a000000000077
+_key: '!items!jj2a000000000077'
+name: Movimento Instantâneo
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: movimento-instantaneo
+  description:
+    value: <p><em><strong>Requisito:</strong> Reflexo Marcial</em></p><p>Você pode usar seu deslocamento para alcançar instantaneamente qualquer ponto que esteja dentro da distância que poderia percorrer normalmente, ignorando quaisquer reações que seriam desencadeadas pelo seu movimento.</p><p>Caso se mova 5 metros ou mais dessa forma antes de realizar um ataque, esse ataque é feito com 2 vantagens.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Ofensivo
+      requisitos:
+        - Reflexo Marcial
+folder: jj2f000000000013
+ownership:
+  default: 0
+effects: []
+sort: 0

@@ -1,0 +1,22 @@
+_id: jj2a000000000097
+_key: '!items!jj2a000000000097'
+name: Domínio Móvel
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: dominio-movel
+  description:
+    value: <p><em><strong>Requisito:</strong> Expansão Aumentada</em></p><p>Ao expandir seu domínio, você se torna capaz de reduzir o tamanho dele pela metade para permitir que você possa se mover junto dele.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Novo Estilo das Sombras
+      requisitos:
+        - Expansão Aumentada
+folder: jj2f000000000015
+ownership:
+  default: 0
+effects: []
+sort: 0

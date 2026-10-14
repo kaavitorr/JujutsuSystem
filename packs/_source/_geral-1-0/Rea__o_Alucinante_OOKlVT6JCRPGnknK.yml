@@ -1,0 +1,84 @@
+folder: QwYh3uEF10z8gSGn
+name: Reação Alucinante
+type: feat
+img: icons/magic/unholy/barrier-shield-glowing-pink.webp
+system:
+  description:
+    value: >-
+      <p>A partir do <strong>10º nível de Sentinela</strong>, você está sempre
+      pronto para combate e raramente algo vai te pegar de surpresa. Quando um
+      combate se iniciar, você é sempre o primeiro da iniciativa e pode realizar
+      seu turno duas vezes seguidas.</p><p class="TextoPadro">Adicionalmente,
+      você é totalmente imune a condição “Surpreso” e passa automaticamente em
+      Testes de Atributo de Sabedoria (Percepção) para detectar algo dentro do
+      seu domínio simples.</p><p></p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-emissor
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: d8a632d7930b501d57e292fcb3875f3aa448cd29
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1782435418894
+  modifiedTime: 1782435419854
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: OOKlVT6JCRPGnknK
+sort: 500000
+_key: '!items!OOKlVT6JCRPGnknK'

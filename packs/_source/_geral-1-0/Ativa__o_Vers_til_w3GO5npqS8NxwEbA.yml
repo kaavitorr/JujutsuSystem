@@ -1,0 +1,101 @@
+folder: udJ0kfznjzJEChhq
+name: Ativação Versátil
+type: feat
+img: icons/magic/defensive/shield-hex-purple.webp
+system:
+  description:
+    value: >-
+      <p class="TextoPadro">A partir do <strong>6º nível de
+      Especialista</strong>, você pode utilizar suas barreiras vazias tanto para
+      formar cenários ao seu redor quanto para te auxiliar em um combate. Você
+      pode usar uma ação de poder e metade do seu PA gerado para criar uma
+      barreira vazia de 30 metros de raio, 20 vezes o seu nível em Pontos de
+      Vida e 15 de CR, sendo formada por diversos hexágonos.</p><p
+      class="MsoNormal">A barreira pode tomar a aparência que você quiser
+      dentro, podendo até manifestar coisas do dia a dia, como se fosse uma
+      ilusão, mas não é possível esconder criaturas ou tocar nas ilusões de
+      forma padrão. Enquanto ela estiver ativa, você recebe acesso as seguintes
+      ações:</p><ul><li><p><strong>Defesa Rápida:</strong> Você pode utilizar os
+      hexágonos para proteger uma criatura aliada ou a si mesmo de um ataque
+      (Comum ou de Técnica) de uma criatura inimiga, fazendo sua barreira
+      receber dano no lugar.</p></li><li><p><strong>Distração:</strong> Você
+      pode sacrificar 10 Pontos de Vida para atirar um hexágono contra a
+      criatura inimiga o espatifando, fazendo com que a próxima rolagem de
+      acerto contra ela tenha vantagem.</p></li><li><p><strong>Defesa
+      Constante:</strong> Você pode deixar diversos hexágonos ao redor de até 3
+      criaturas voluntárias (podendo incluir você entre as três). Enquanto esse
+      efeito estiver ativo, você pode anular uma jogada de ataque (Comum) a
+      distância ao sacrificar 5 Pontos de Vida da barreira.</p><p
+      class="TextoPadro"></p></li></ul><p class="TextoPadro">Sua barreira vazia
+      não impede entrada ou saída de criaturas e só pode sofrer dano se for
+      atacada diretamente. Se ela for destruída, você não pode criar outra por 5
+      minutos.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.367'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881651
+  modifiedTime: 1788212896359
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: w3GO5npqS8NxwEbA
+sort: -50000
+_key: '!items!w3GO5npqS8NxwEbA'

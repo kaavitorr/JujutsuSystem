@@ -1,0 +1,20 @@
+_id: jj2f000000000012
+type: Item
+name: Habilidades Especiais
+folder: 1roC0BlA1sepbPGH
+color: '#d0a040'
+sorting: m
+description: ''
+sort: 400000
+flags: {}
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814497422
+  modifiedTime: 1791814497422
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!jj2f000000000012'

@@ -1,0 +1,21 @@
+_id: jj2a000000000018
+_key: '!items!jj2a000000000018'
+name: Execução Veloz
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: execucao-veloz
+  description:
+    value: <p>A terceira disciplina dentro das habilidades de Feitiço inato é a da Manipulação de Técnica. Ela permite que você modifique de forma quase livre o seu feitiço inato, desencadeando diversos efeitos diferentes.</p><p>Desde que sua técnica seja de “Toque” com alcance de até 2 metros de distância, você pode gastar 2 PA para reduzir o requisito de ativação dela em um Ponto de Ação [⬢]. Esse efeito não funciona em técnicas afetadas por Selos.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Manipulação de Técnica
+      requisitos: []
+folder: jj2f000000000004
+ownership:
+  default: 0
+effects: []
+sort: 0

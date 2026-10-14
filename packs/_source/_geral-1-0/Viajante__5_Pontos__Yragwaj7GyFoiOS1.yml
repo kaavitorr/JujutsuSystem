@@ -1,0 +1,122 @@
+_id: Yragwaj7GyFoiOS1
+name: Viajante (5 Pontos)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects:
+  - _id: jGpGHagMPPqimHHx
+    disabled: false
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    origin: Compendium.world.op-rpg.Yragwaj7GyFoiOS1
+    transfer: true
+    flags:
+      core:
+        statusId: ''
+      dae:
+        stackable: none
+        durationExpression: ''
+        specialDuration: []
+        transfer: true
+    tint: '#ffffff'
+    name: Vício
+    description: ''
+    statuses: []
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 5.3.2
+      createdTime: 1776624902138
+      modifiedTime: 1776624902138
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+      exportSource: null
+    img: icons/magic/death/undead-ghosts-trio-blue.webp
+    type: base
+    system:
+      changes:
+        - key: system.abilities.con.bonuses.save
+          value: '- 2'
+          priority: 39
+          type: custom
+          phase: initial
+    sort: 0
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!Yragwaj7GyFoiOS1.jGpGHagMPPqimHHx'
+folder: mTmB9L9Ikog43GoQ
+sort: 600000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 5a2e11be699910819b72b8274b151bab07e40a7c
+    sourceId: Item.2jFb89N4lJaoiEct
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: "<p>Você não é bom com responsabilidades e não consegue ficar muito tempo no mesmo lugar, como se fazer isso tornasse sua vida insuportável. Você abandona pessoas com quem se importa sem olhar pra trás e recusa qualquer trabalho que o faça ficar preso em um lugar.</p><p>\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Caso você passe mais de 1 mês no mesmo lugar, com exceção estar treinando para técnicas ou Pontos de Nen, você recebe desvantagem e -1 em todas as rolagens que realizar.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: viajante-6-pontos
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.xfWaUXbwqVExc0Lz
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902138
+  modifiedTime: 1776624902172
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!Yragwaj7GyFoiOS1'

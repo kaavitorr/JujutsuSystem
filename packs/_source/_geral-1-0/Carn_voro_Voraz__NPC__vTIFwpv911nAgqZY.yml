@@ -1,0 +1,80 @@
+_id: vTIFwpv911nAgqZY
+name: Carnívoro Voraz (NPC)
+type: feat
+img: icons/creatures/abilities/mouth-teeth-rows-red.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 1600000
+flags:
+  scene-packer:
+    hash: 3b278acd5f5950379539fd130df04c8c6a473d0e
+    sourceId: Item.vTIFwpv911nAgqZY
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p><strong>Carnívoro Voraz (–):</strong> Caso um alvo Médio ou menor, que
+      seja feita de carne, caia a 0 Pontos de Vida por um ataque feito pela
+      criatura, ele será devorado, sendo deixado apenas os ossos do alvo, se
+      possuir.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: carnivoro-voraz-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.yTZBdu4su9jXyMiJ
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910561
+  modifiedTime: 1776624910578
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!vTIFwpv911nAgqZY'

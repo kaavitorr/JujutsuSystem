@@ -1,0 +1,20 @@
+_id: jj2f000000000019
+type: Item
+name: Domínio e Anti-Domínio
+folder: 1roC0BlA1sepbPGH
+color: '#d04080'
+sorting: m
+description: ''
+sort: 100000
+flags: {}
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814493107
+  modifiedTime: 1791814493107
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!jj2f000000000019'

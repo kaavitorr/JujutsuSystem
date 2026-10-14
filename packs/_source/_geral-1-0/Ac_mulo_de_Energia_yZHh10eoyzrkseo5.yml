@@ -1,0 +1,120 @@
+name: Acúmulo de Energia
+type: feat
+img: icons/magic/holy/yin-yang-balance-symbol.webp
+effects: []
+folder: TH5zgkPcMDGwUXiB
+sort: 125000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      value: true
+      altValue: true
+    quickDamage:
+      context:
+        '0': Energia
+      value:
+        '0': true
+        '1': true
+      altValue:
+        '0': true
+        '1': true
+    quickCharges:
+      value:
+        use: true
+      altValue:
+        use: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: c264847364ff0755060f9f9bf8a0e60b21b26044
+    sourceId: Item.jJpOzSv8HySulyGD
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDamage:
+      context: []
+      value:
+        '0': true
+    quickOther:
+      context: ''
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+    consumeUses:
+      value: true
+  midi-qol:
+    effectActivation: false
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    rollOther: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    ignoreTotalCover: false
+system:
+  description:
+    value: >-
+      <p class="MsoBodyText">A partir do 5º nível de Lutador, você aprende a
+      liberar uma quantidade enorme de Energia Amaldiçoada em um momento
+      oportuno. No início do seu turno, você pode gerar um valor de Pontos de
+      Energia Amaldiçoada (PA) adicional igual ao nível do seu personagem. Essa
+      característica pode ser utilizada 3 vezes por encontro.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: evolucao-sobre-humana
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.BM0dai3OdhQUGakP
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911395
+  modifiedTime: 1776903362188
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: yZHh10eoyzrkseo5
+_key: '!items!yZHh10eoyzrkseo5'

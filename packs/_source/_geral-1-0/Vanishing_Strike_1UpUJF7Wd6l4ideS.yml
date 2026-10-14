@@ -1,0 +1,215 @@
+name: Vanishing Strike
+type: spell
+img: icons/skills/melee/strike-slashes-orange.webp
+effects: []
+folder: AWDdu9KCy1KeXLsN
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickVersatile:
+      value: false
+      altValue: false
+    quickOther:
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      value: true
+      altValue: true
+    quickAttack:
+      value: true
+      altValue: true
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+      altValue:
+        '0': true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: f1662da2bb778492e42251e8822a6f2da857b297
+    sourceId: Item.a5cm3m20C3vusMKP
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+    quickOther:
+      context: ''
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+    quickAttack:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+system:
+  description:
+    value: "<p>Ao realizar uma jogada de ataque contra uma criatura dentro do alcance dessa técnica, você desaparece de vista, aparecendo em um local 4,5 metros atrás dela. Essa técnica tem margem de acerto crítico 18-20.</p><hr><p>\_<strong>Duração:</strong>\_Instantâneo</p><p><strong>Alcance:</strong>\_Até 18 metros, Linha</p><p><strong>Requisito:</strong>\_Ação de Poder</p><p><strong>Dano:</strong> 8d10 de dano Contundente, Cortante ou Perfurante</p><p><strong>Custo:</strong> 8 PA</p>"
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  activation:
+    type: action
+    condition: ''
+    value: 1
+  duration:
+    value: ''
+    units: inst
+  target:
+    affects:
+      choice: false
+      type: ''
+    template:
+      units: ft
+      contiguous: false
+      stationary: false
+      type: ''
+  range:
+    units: m
+    special: ''
+    value: '18'
+  uses:
+    max: ''
+    recovery: []
+    spent: 0
+  ability: ''
+  level: 4
+  school: trs
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  properties: []
+  activities:
+    fInUtSaXEiRAzwmN:
+      type: attack
+      _id: fInUtSaXEiRAzwmN
+      img: ''
+      sort: 0
+      activation:
+        type: action
+        override: false
+      consumption:
+        scaling:
+          allowed: false
+        spellSlot: true
+        targets:
+          - type: attribute
+            value: '8'
+            target: energy.generated
+            scaling: {}
+      description:
+        chatFlavor: ''
+      duration:
+        units: inst
+        concentration: false
+        override: false
+      effects: []
+      flags: {}
+      range:
+        units: self
+        override: false
+      target:
+        template:
+          contiguous: false
+          stationary: false
+          units: m
+        affects:
+          choice: false
+        override: false
+        prompt: true
+      uses:
+        spent: 0
+        recovery: []
+        max: ''
+      visibility:
+        level:
+          min: null
+          max: null
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+      attack:
+        critical:
+          threshold: 18
+        flat: false
+        type:
+          value: ''
+          classification: ''
+        ability: ''
+        bonus: ''
+      damage:
+        critical:
+          bonus: ''
+        includeBase: true
+        parts:
+          - custom:
+              enabled: false
+              formula: ''
+            number: 6
+            denomination: 10
+            bonus: ''
+            types:
+              - bludgeoning
+              - slashing
+              - piercing
+            scaling:
+              mode: ''
+              number: 1
+      name: ''
+  identifier: muscle-barrier
+  method: spell
+  prepared: 0
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776975583974
+  modifiedTime: 1776976129909
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: 1UpUJF7Wd6l4ideS
+sort: 400000
+_key: '!items!1UpUJF7Wd6l4ideS'

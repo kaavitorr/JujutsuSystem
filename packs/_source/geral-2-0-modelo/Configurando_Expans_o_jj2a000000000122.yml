@@ -1,0 +1,56 @@
+_id: jj2a000000000122
+name: Configurando Expansão
+type: feat
+img: icons/magic/unholy/projectile-smoke-trail-pink.webp
+system:
+  identifier: configurando-expansao
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Domínio Incompleto ou
+      Superior</em></p><p>Você se torna capaz de adicionar efeitos especiais de
+      forma permanente ao seu domínio, ao invés de apenas usá-lo para choques de
+      domínio. Ao adquirir essa habilidade, você pode escolher a natureza dele
+      da seguinte forma:</p><ul><li><strong>Morte Certa:</strong> Seu domínio só
+      funciona com acerto garantido, mas ele impõe a condição “Paralisado” ou
+      similar a criatura inimiga e ela sofre 30 Pontos de Dano diretamente na
+      vida dela, ignorando qualquer resistência. Você pode escolher o tipo de
+      dano aplicado.</li><li><strong>Ativação Múltipla:</strong> Seu domínio
+      permite que você ative, de forma simultânea, as habilidades de diversas
+      criaturas que você controla ou de habilidades que você roubou ou copiou
+      com seu feitiço. No caso de feitiços copiados ou roubados, você pode
+      trocar entre eles, mas só pode manter um máximo de 2 ativos por
+      vez.</li><li><strong>Área Absoluta:</strong> Seu domínio permite que você
+      utilize seu feitiço básico e estendido e suas habilidades menores em todas
+      as criaturas no interior dele de forma
+      simultânea.</li><li><strong>Variante:</strong> Seu domínio consegue fazer
+      uma das coisas que não foram citadas acima, mas sua construção não deve
+      fugir do nível de repercussão das 3 habilidades acima e deve ser discutido
+      com seu narrador.</li></ul>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Domínio e Anti-Domínio
+      caminho: Técnicas de Expansão de Domínio
+      requisitos:
+        - Domínio Incompleto ou Superior
+folder: jj2f000000000020
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814542541
+  modifiedTime: 1791814542541
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000122'

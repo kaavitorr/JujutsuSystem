@@ -1,0 +1,101 @@
+name: Amaldiçoado Pelo Conhecimento
+type: feat
+img: icons/magic/death/projectile-skull-fire-purple.webp
+effects: []
+folder: CCX4s71za6dlwTZc
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: a292dba2965efef14d1a69f07dc11e28d3f04419
+    sourceId: Item.Hez4KPalMbrokmnd
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: >-
+      <p>Você tem uma facilidade maior para aprender qualquer coisa relacionada
+      a energia amaldiçoada e seu controle sobre ela avança a passos largos.
+      Você recebe as seguintes características:</p><ul><li><p>Sempre que você
+      rolar 1 no resultado do d20, você pode rolar novamente e usar o novo
+      resultado;</p></li><li><p>Você pode criar barreiras usando da sua reserva
+      Total de Energia sem consumir do seu limite de
+      Refinamento;</p></li></ul><p>Além disso, você também deve escolher uma
+      entre as duas especializações:</p><p></p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-conjurador
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791817057985
+  modifiedTime: 1791817064965
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_id: mAIeDFc3vnoi5HI9
+sort: 100000
+_key: '!items!mAIeDFc3vnoi5HI9'

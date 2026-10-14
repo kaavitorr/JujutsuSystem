@@ -1,0 +1,172 @@
+/* ══════════════════════════════════════════════════════════════════
+   JUJUTSU LEGACY 2.0 — Aba Detalhes + Sidebar
+   Atributos 1-12, escada de proficiência em 4 bolinhas, pontos de
+   treino, estilo de combate e caixa de CR.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── Escada: 4 bolinhas ────────────────────────────────── */
+.jj2-dots {
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+  min-width: 64px;
+}
+
+.jj2-dot {
+  width: 11px;
+  height: 11px;
+  padding: 0;
+  border: 1px solid var(--dnd5e-color-gold, #c9a959);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background 100ms ease, box-shadow 100ms ease;
+}
+
+.jj2-dot:hover {
+  box-shadow: 0 0 5px rgba(201, 169, 89, 0.6);
+}
+
+.jj2-dot.filled {
+  background: var(--dnd5e-color-gold, #c9a959);
+}
+
+.jj2-dot:disabled {
+  cursor: default;
+  opacity: 0.65;
+  box-shadow: none;
+}
+
+/* ── Listas (salvaguardas/perícias/armas) ───────────────── */
+.jj2-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.jj2-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.jj2-list li:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.jj2-list .name {
+  flex: 1;
+  color: var(--color-text-primary);
+}
+
+.jj2-list .bonus {
+  min-width: 34px;
+  text-align: right;
+  font-weight: 600;
+}
+
+/* ── Atributos ──────────────────────────────────────────── */
+.jj2-atributos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 12px;
+}
+
+.jj2-atributos li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.jj2-attr-input {
+  width: 52px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.jj2-attr-value {
+  min-width: 52px;
+  text-align: center;
+  font-weight: 700;
+  font-size: var(--font-size-18);
+}
+
+.jj2-atributos .abbr {
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-10);
+}
+
+/* ── Estilo de Combate ─────────────────────────────────── */
+.jj2-estilo-info {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 4px 6px;
+  font-size: var(--font-size-12);
+  color: var(--color-text-secondary);
+}
+
+/* ── Pontos de Treino ──────────────────────────────────── */
+.jj2-pontos-bar {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 4px 6px;
+}
+
+.jj2-pontos-count {
+  font-size: var(--font-size-18);
+  font-weight: 700;
+  color: var(--dnd5e-color-gold, #c9a959);
+}
+
+.jj2-pontos-hint {
+  font-size: var(--font-size-11);
+  color: var(--color-text-secondary);
+}
+
+/* ── Sidebar 2.0: caixa de CR ──────────────────────────── */
+.jj2-cr-box {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 6px 10px;
+  border: 1px solid var(--dnd5e-color-gold, #c9a959);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.jj2-cr-box .value {
+  font-size: var(--font-size-24);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.jj2-cr-box .hint {
+  font-size: var(--font-size-10);
+  color: var(--color-text-tertiary);
+}
+
+/* ── Fieldsets da aba ──────────────────────────────────── */
+.jj2-details fieldset {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 6px;
+}
+
+.jj2-details legend {
+  font-size: var(--font-size-11);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-secondary);
+  padding: 0 6px;
+}

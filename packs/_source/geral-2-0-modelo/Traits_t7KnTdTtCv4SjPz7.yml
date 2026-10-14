@@ -1,0 +1,20 @@
+type: Item
+folder: onrz3qUGUndiIaUB
+name: Traits
+color: null
+sorting: a
+_id: t7KnTdTtCv4SjPz7
+description: ''
+sort: 0
+flags: {}
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816812090
+  modifiedTime: 1791816812090
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!t7KnTdTtCv4SjPz7'

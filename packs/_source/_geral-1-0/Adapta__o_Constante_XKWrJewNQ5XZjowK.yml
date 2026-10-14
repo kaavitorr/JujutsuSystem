@@ -1,0 +1,88 @@
+folder: 4Y1roiDtwfsWjAv6
+name: Adaptação Constante
+type: feat
+img: icons/magic/symbols/rune-sigil-rough-white-teal.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">A partir do <strong>10º nível de
+      Especialista</strong>, você aprende a manipular seu feitiço para
+      utiliza-lo constantemente ao seu favor a cada segundo do combate, criando
+      vantagens e aberturas para causar ainda mais dano ao seu oponente. Você
+      recebe as seguintes características:</p><ul><li><p><em>Você não pode ter
+      desvantagem em jogadas de ataque (Comuns e de
+      Técnica);</em></p></li><li><p><em>Você recebe 2d4 de dano adicional em
+      cada uma de suas jogadas de ataque (Comuns e de
+      Técnica);</em></p></li><li><p><em>Toda vez que você causar um acerto
+      crítico, você causa 1 dado de dano adicional em ataques (Comuns) e 3 dados
+      adicionais em técnicas. Esse dano é sempre aplicado ao final da rolagem de
+      dano, de acordo com as regras padrões.</em></p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881640
+  modifiedTime: 1776921967943
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: XKWrJewNQ5XZjowK
+sort: 75000
+_key: '!items!XKWrJewNQ5XZjowK'

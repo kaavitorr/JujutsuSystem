@@ -1,0 +1,77 @@
+folder: QwYh3uEF10z8gSGn
+name: Domínio Veloz
+type: feat
+img: icons/magic/air/wind-vortex-swirl-blue-purple.webp
+system:
+  description:
+    value: "<p>A partir do <strong>2º nível de Sentinela</strong>, você se tornou tão adepto na criação de seu domínio que aprendeu a expandi-lo com uma velocidade surpreendente. Você passa a poder ativar seu domínio usando uma reação. Além disso, ao expandi-lo dessa forma, recebe os seguintes benefícios:</p><ul><li><p><em>Você pode pagar 2 PA para utilizar outra característica ou técnica que exija uma reação como parte da mesma reação;</em></p></li><li><p><em>Você pode realizar uma jogada de ataque (Comum) contra uma criatura ao seu alcance;</em></p></li><li><p><em>Você pode se mover até 4,5 metros antes que seu domínio se expanda completamente.</em></p></li></ul><p></p><p>Além disso, você recebe acesso às seguintes características, que podem ser utilizadas um número de vezes igual ao seu bônus de proficiência:</p><ul><li><p><em>Uma vez por expansão de domínio, você pode negar um acerto crítico;</em></p></li><li><p><em>Uma vez por expansão de domínio, você pode receber +5 em uma jogada de acerto;</em></p></li><li><p><em>Uma vez por expansão de domínio, você pode negar uma condição que receberia.</em></p></li></ul><p style=\"margin:0cm 0.15pt 0.0001pt 7.1pt;text-align:justify\" class=\"MsoNormal\"><span style=\"font-size:10pt;font-family:'Chaparral Pro', serif\">\_</span></p><p class=\"MsoNormal\">Sempre que expandir seu domínio simples, você pode escolher uma das características acima para utilizar. No entanto, o número total de usos dessas características não pode exceder seu bônus de proficiência.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-emissor
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: d8a632d7930b501d57e292fcb3875f3aa448cd29
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1782435329165
+  modifiedTime: 1782435329212
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: eTvwQ2GthiGizK2X
+sort: 200000
+_key: '!items!eTvwQ2GthiGizK2X'

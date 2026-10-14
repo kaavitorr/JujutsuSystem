@@ -1,0 +1,3 @@
+<section class="jj2-attributes jj2-npc-attributes" aria-label="Atributos do NPC">
+  {{#each jj2.abilities}}<div class="jj2-ability {{#if principal}}principal{{/if}}" data-ability="{{key}}"><a class="jj2-ability-heading {{@root.rollableClass}}" data-action="roll" data-type="ability" aria-label="Rolar {{label}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=key}}{{abbr}}</a>{{#if (and @root.editable (not @root.jj2.npc.derivedAttributes))}}<input type="number" name="system.abilities.{{key}}.value" value="{{sourceValue}}" min="1" max="12" data-dtype="Number" aria-label="{{label}}">{{else}}<strong>{{value}}</strong>{{/if}}<span class="jj2-ability-label">{{label}}</span></div>{{/each}}
+</section>

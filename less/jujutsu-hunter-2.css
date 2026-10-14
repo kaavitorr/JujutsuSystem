@@ -1,0 +1,8 @@
+/* Keep the already-loaded Foundry stylesheet URL across this layout update. */
+@import url("./jujutsu-hunter-approved-2.css");
+@import url("./jujutsu-npc-2.css");
+@import url("./jujutsu-npc-profiles-2.css");
+@import url("./jujutsu-resistances-2.css");
+@import url("./jujutsu-documents-2.css");
+@import url("./jujutsu-feitico-2.css");
+@import url("./character-creation-2.css");

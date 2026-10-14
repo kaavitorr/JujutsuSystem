@@ -1,0 +1,40 @@
+_id: jj2a000000000043
+name: Punho Devastador
+type: feat
+img: icons/skills/melee/unarmed-punch-fist-white.webp
+system:
+  identifier: punho-devastador
+  description:
+    value: >-
+      <p>Ao causar um acerto crítico, você causa dano adicional igual o seu
+      atributo principal e a criatura deve realizar uma Salvaguarda de
+      Constituição para não perder um Ponto de Ação [⬢] no início do próximo
+      turno dela. Essa característica pode ser ativada múltiplas vezes por
+      rodada.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Corpo de Guerreiro
+      requisitos: []
+folder: jj2f000000000009
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816317288
+  modifiedTime: 1791816317288
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000043'

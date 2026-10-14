@@ -1,0 +1,22 @@
+name: Técnicas
+sorting: m
+folder: V7LPPawJA1q5iJPU
+type: Item
+_id: SsZOdO35WnQXh9of
+description: ''
+sort: 0
+color: null
+flags:
+  scene-packer:
+    hash: bbb47486325f146081c26d3c0d3b88a1be87e83f
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911263
+  modifiedTime: 1776624911263
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!SsZOdO35WnQXh9of'

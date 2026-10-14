@@ -1,0 +1,43 @@
+_id: jj2a000000000090
+name: Bastião
+type: feat
+img: icons/magic/defensive/shield-barrier-deflect-teal.webp
+system:
+  identifier: bastiao
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Corpo Fechado</em></p><p>Sua defesa
+      aumenta conforme você recebe ataques bem-sucedidos. Sempre que for
+      atingido por um ataque durante a rodada, sua Resistência contra todos os
+      tipos de dano aumenta em +1. Esse bônus é cumulativo e permanece até o
+      início do seu próximo turno, quando é completamente reiniciado.</p><p>A
+      Resistência concedida por essa característica pode se somar a outras
+      fontes de Resistência.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Defensivo
+      requisitos:
+        - Corpo Fechado
+folder: jj2f000000000014
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816086586
+  modifiedTime: 1791816086586
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000090'

@@ -1,0 +1,22 @@
+_id: jj2a000000000095
+_key: '!items!jj2a000000000095'
+name: Domínio da Proteção
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: dominio-da-protecao
+  description:
+    value: <p><em><strong>Requisito:</strong> Adepto das Sombras</em></p><p>Você recebe 10 Pontos de Resistência a todos os tipos de dano enquanto estiver dentro da área do seu domínio. Essa resistência se aplica a outras criaturas.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Novo Estilo das Sombras
+      requisitos:
+        - Adepto das Sombras
+folder: jj2f000000000015
+ownership:
+  default: 0
+effects: []
+sort: 0

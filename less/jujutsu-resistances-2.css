@@ -1,0 +1,114 @@
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistances {
+  --res-purple: #ad80df; --res-gold: #f0c34f;
+  --res-green: #72cf81; --res-red: #ef6578;
+  position: relative; margin-block: 20px 10px; padding: 16px 14px 0;
+  border: 1px solid #514060; border-left: 3px solid var(--res-purple);
+  background: linear-gradient(135deg, #a67bda08 0 16%, transparent 16%), #141019;
+  container-type: inline-size;
+}
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistances-heading {
+  position: absolute; inset: -13px 0 auto; display: flex; justify-content: center;
+  pointer-events: none;
+}
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistances-heading h2 {
+  display: flex; align-items: center; gap: 6px; margin: 0; padding: 3px 18px;
+  border: 0; border-bottom: 2px solid #ad80df85; background: #32233f; color: #f4ede2;
+  font: italic 700 16px/18px JJ2Condensed, sans-serif; text-transform: uppercase; letter-spacing: .4px;
+  clip-path: polygon(7px 0, 100% 0, calc(100% - 7px) 100%, 0 100%);
+}
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistances-heading svg { width: 15px; height: 15px; color: var(--res-purple); }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(4, 40px);
+  grid-auto-flow: column; gap: 4px 20px; padding: 0 0 8px;
+}
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-row { --res-accent: #8d7c9f; min-width: 0; display: grid; grid-template-rows: 16px 24px; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-row.editing { grid-template-columns: minmax(0, 1fr) max-content; column-gap: 8px; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-row.editing .jj2-resistance-name { grid-column: 1; grid-row: 1; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-row.editing .jj2-resistance-meter { grid-column: 1; grid-row: 2; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-name {
+  display: grid; grid-template-columns: minmax(0, 1fr) max-content minmax(0, 1fr); align-items: center; gap: 4px;
+  height: 16px; margin: 0; color: #b99ace;
+}
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-name h3 {
+  grid-column: 2; grid-row: 1; margin: 0; padding: 0 3px; border: 0; color: #e6ddec; text-align: center;
+  font: 700 12px/16px JJ2Condensed, sans-serif;
+}
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-meter {
+  display: grid; grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr);
+  align-items: center; height: 24px;
+}
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-half { position: relative; display: block; height: 1px; background: #665072; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-half::before {
+  content: ""; position: absolute; top: -3px; width: 1px; height: 7px; background: #806991;
+}
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-left::before { left: 0; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-right::before { right: 0; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-fill {
+  position: absolute; top: -1.5px; width: var(--res-fill); height: 4px; opacity: 0;
+  background: repeating-linear-gradient(125deg, #ffffff22 0 1px, transparent 1px 7px), var(--res-accent);
+}
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-left .jj2-resistance-fill { right: 0; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-right .jj2-resistance-fill { left: 0; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-row.positive { --res-accent: var(--res-green); }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-row.negative { --res-accent: var(--res-red); }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-row.immune { --res-accent: var(--res-gold); }
+.dnd5e2.sheet.actor.jj2-ruptura .positive .jj2-resistance-right .jj2-resistance-fill,
+.dnd5e2.sheet.actor.jj2-ruptura .negative .jj2-resistance-left .jj2-resistance-fill { opacity: 1; }
+.dnd5e2.sheet.actor.jj2-ruptura .immune .jj2-resistance-fill { width: 100%; opacity: .55; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-center { position: relative; display: grid; place-items: center; width: 32px; height: 24px; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-hex { position: absolute; inset: 0; width: 32px; height: 24px; pointer-events: none; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-hex path { fill: #1b1523; stroke: var(--res-accent); stroke-width: 1.2; }
+.dnd5e2.sheet.actor.jj2-ruptura .positive .jj2-resistance-hex path { fill: #193025; }
+.dnd5e2.sheet.actor.jj2-ruptura .negative .jj2-resistance-hex path { fill: #371c27; }
+.dnd5e2.sheet.actor.jj2-ruptura .immune .jj2-resistance-hex path { fill: #32280f; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-value {
+  fill: #eee6f5; stroke: none; font: 700 18px JJ2Condensed, sans-serif;
+  font-variant-numeric: tabular-nums; letter-spacing: 0; text-anchor: middle; dominant-baseline: central;
+}
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-center input {
+  position: relative; box-sizing: border-box; width: 30px; height: 22px; margin: 0; padding: 0; text-align: center;
+  border: 0; border-radius: 0; background: transparent; box-shadow: none; color: transparent; caret-color: var(--res-accent);
+  font: 700 12px/22px JJ2Condensed, sans-serif; font-variant-numeric: tabular-nums; letter-spacing: 0;
+}
+.dnd5e2.sheet.actor.jj2-ruptura .positive .jj2-resistance-value,
+.dnd5e2.sheet.actor.jj2-ruptura .negative .jj2-resistance-value,
+.dnd5e2.sheet.actor.jj2-ruptura .immune .jj2-resistance-value { fill: var(--res-accent); }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-center:focus-within .jj2-resistance-value { visibility: hidden; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-center input:focus { color: #eee6f5; }
+.dnd5e2.sheet.actor.jj2-ruptura .positive .jj2-resistance-center input:focus,
+.dnd5e2.sheet.actor.jj2-ruptura .negative .jj2-resistance-center input:focus { color: var(--res-accent); }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-center input { appearance: textfield; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-center input::-webkit-inner-spin-button,
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-center input::-webkit-outer-spin-button { appearance: none; margin: 0; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-center input:focus-visible { outline: 1px solid var(--res-purple); outline-offset: 2px; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-immunity {
+  position: relative; grid-column: 2; grid-row: 2; align-self: center; justify-self: end;
+  display: flex; align-items: center; gap: 4px; height: 16px; margin: 0;
+  font: 10px/16px JJ2Condensed, sans-serif; color: #afa0bf; white-space: nowrap; cursor: pointer;
+}
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-immunity input {
+  --checkbox-size: 12px; appearance: none; display: block; box-sizing: border-box;
+  width: 12px; height: 12px; min-width: 12px; min-height: 12px; flex: 0 0 12px; margin: 0; padding: 0;
+  border: 1px solid #887199; border-radius: 0; background: #1b1523; box-shadow: none; cursor: pointer; transition: none;
+}
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-immunity input::before,
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-immunity input::after { content: none; display: none; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-immunity > svg { position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 12px; height: 12px; color: var(--res-gold); visibility: hidden; pointer-events: none; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-immunity input:checked { border-color: var(--res-gold); background: #32280f; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-immunity input:checked + svg { visibility: visible; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-immunity input:focus-visible { outline: 1px solid var(--res-purple); outline-offset: 2px; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-immunity-mark { grid-column: 3; grid-row: 1; justify-self: start; display: flex; margin-left: 2px; color: var(--res-gold); }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-immunity-mark svg { width: 13px; height: 13px; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-keys { margin-inline: -14px; border-top: 1px solid #3d3348; padding: 6px 14px; font-size: 10px; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-keys summary { cursor: pointer; color: #b39bcf; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-keys dl { margin-bottom: 0; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-keys dl > div { padding-block: 6px; border-top: 1px solid #3d3348; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-keys dt { font-weight: 700; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-keys dd { margin: 4px 0 0; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-keys code { display: block; overflow-wrap: anywhere; user-select: text; color: #d6c7e9; }
+@container (max-width: 440px) {
+  .dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(6, 40px); gap: 4px 14px; }
+}
+@container (max-width: 320px) {
+  .dnd5e2.sheet.actor.jj2-ruptura .jj2-resistance-immunity span { display: none; }
+}

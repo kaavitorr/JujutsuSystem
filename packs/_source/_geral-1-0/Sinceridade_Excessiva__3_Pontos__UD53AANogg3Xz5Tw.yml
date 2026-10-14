@@ -1,0 +1,77 @@
+_id: UD53AANogg3Xz5Tw
+name: Sinceridade Excessiva (3 Pontos)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects: []
+folder: xaOZscxiXFUTyHS5
+sort: 2100000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 1d9ab4eab4455d33a87020e232bf6818d372b7c1
+    sourceId: Item.OE7Q6EdPLhfcqb2Z
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: "<p>Você é incapaz de mentir, seja por valores morais ou simplesmente dificuldade em ocultar a verdade. E por mais que você se esforce para contar uma mentira, sempre será óbvio que não se trata da verdade.</p><p>\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Você tem desvantagem em Testes de Atributo de Presença (Enganação).</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: sinceridade-excessiva-2-ponto
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.9xPJogSYccuXVzSJ
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902136
+  modifiedTime: 1776624902171
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!UD53AANogg3Xz5Tw'

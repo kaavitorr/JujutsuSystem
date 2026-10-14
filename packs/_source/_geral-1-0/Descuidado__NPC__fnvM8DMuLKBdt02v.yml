@@ -1,0 +1,75 @@
+_id: fnvM8DMuLKBdt02v
+name: Descuidado (NPC)
+type: feat
+img: icons/creatures/eyes/human-single-brown.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 1100000
+flags:
+  scene-packer:
+    hash: 19dfeb3fc1036fdae377cb3fbe564967aef5268a
+    sourceId: Item.fnvM8DMuLKBdt02v
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Descuidado (–): </strong>No início do seu turno, a criatura
+      pode ganhar vantagem em todas as jogadas de ataque corpo-a-corpo que ela
+      fizer durante seu turno, mas as jogadas de ataque contra ela têm vantagem
+      até o início do próximo turno da criatura.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: descuidado-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.VEVqWsTfZrug79t8
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910553
+  modifiedTime: 1776624910574
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!fnvM8DMuLKBdt02v'

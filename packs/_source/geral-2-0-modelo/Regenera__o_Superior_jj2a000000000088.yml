@@ -1,0 +1,41 @@
+_id: jj2a000000000088
+name: Regeneração Superior
+type: feat
+img: icons/magic/life/cross-embers-glow-yellow-purple.webp
+system:
+  identifier: regeneracao-superior
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Impulso Físico</em></p><p>No início de
+      cada descanso longo, você recebe uma quantidade de Pontos de Cura igual ao
+      seu nível de personagem. A qualquer momento, você pode gastar 1 Ponto de
+      Cura para recuperar um valor de Pontos de Vida igual a duas vezes o seu
+      nível de personagem.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Defensivo
+      requisitos:
+        - Impulso Físico
+folder: jj2f000000000014
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816057644
+  modifiedTime: 1791816057644
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000088'

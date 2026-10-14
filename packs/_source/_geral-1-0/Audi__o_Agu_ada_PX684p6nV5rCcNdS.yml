@@ -1,0 +1,62 @@
+folder: vG1tvdXvcpq70Tb5
+name: Audição Aguçada
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p class="MsoBodyText">Possui uma audição sensível, capaz de perceber sons
+      baixos e distantes, ou identificar de onde se originam.</p><p
+      class="MsoBodyText"><strong>Característica:</strong> Você tem vantagem em
+      Testes de Atributo de Sabedoria (Percepção) relacionados a audição.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: alvo-marcado
+  activities: {}
+  enchant: {}
+  advancement: {}
+  cover: null
+  crewed: false
+effects: []
+flags:
+  scene-packer:
+    hash: b1a613ee7d16eecec4517bbfe937fbb14d56cad0
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902133
+  modifiedTime: 1776913384241
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: PX684p6nV5rCcNdS
+sort: 500000
+_key: '!items!PX684p6nV5rCcNdS'

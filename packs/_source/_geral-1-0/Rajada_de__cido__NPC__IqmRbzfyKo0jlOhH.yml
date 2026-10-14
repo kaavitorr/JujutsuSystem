@@ -1,0 +1,80 @@
+_id: IqmRbzfyKo0jlOhH
+name: Rajada de Ácido (NPC)
+type: feat
+img: icons/magic/acid/projectile-stream-bubbles.webp
+effects: []
+folder: I4nmFeOf3cr9gQWb
+sort: 1000000
+flags:
+  scene-packer:
+    hash: 091795ff7bbbcf9a5caa5f06c59eac24d8cee42c
+    sourceId: Item.IqmRbzfyKo0jlOhH
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Rajada de Ácido (Aumenta o dano efetivo por rodada da criatura,
+      considerando que acerte duas criaturas): </strong>A criatura cospe ácido
+      em uma linha de 9 metros de comprimento e 1,5 metro de largura. Cada alvo
+      na linha deve realizar um Teste de Resistência de Destreza, sofrendo dano
+      de ácido se falhar na resistência, ou metade desse dano se obtive sucesso.
+      A criatura pode usar esta característica uma vez. No início de cada um dos
+      turnos da criatura, role 1d6. Se o resultado for 6, a criatura recupera o
+      uso desta característica. Essa característica também se recarrega quando a
+      criatura termina um descanso curto ou longo.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: rajada-de-acido-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.JjJoEFJthm18RuQb
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910537
+  modifiedTime: 1776624910568
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!IqmRbzfyKo0jlOhH'

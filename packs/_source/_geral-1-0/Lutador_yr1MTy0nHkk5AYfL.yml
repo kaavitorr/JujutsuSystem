@@ -1,0 +1,500 @@
+_id: yr1MTy0nHkk5AYfL
+name: Lutador
+type: class
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Lutador-icon.png
+effects: []
+folder: gpiuGQQptpbYBAnm
+sort: 187500
+flags:
+  core:
+    sheetClass: ''
+  cf: {}
+  scene-packer:
+    hash: 0badd6fd548280574d27179d695fd2202f27f010
+    sourceId: Item.8e4MTxitUXXFKe5V
+    defaultPermission: 3
+  dnd5e: {}
+system:
+  description:
+    value: "<p style=\"text-align:center\"><span style=\"font-size:38px\"><strong>LUTADOR</strong></span></p><p style=\"margin-top:0cm;margin-right:-1.65pt;margin-bottom:.0001pt;margin-left:7.1pt;text-align:justify\"><span style=\"font-family:'Chaparral Pro, serif'\">\_\_</span></p><p><span style=\"font-size:large\"><strong>PONTOS DE VIDA</strong></span></p><p class=\"MsoNormal\"><strong>Dado de Vida:</strong> 1d10 por nível de Lutador.</p><p class=\"MsoNormal\"><strong>Pontos de Vida no 1º nível:</strong> 10 + seu modificador de Constituição.</p><p class=\"MsoNormal\"><strong>Média de Vida por nível:</strong> 6 + seu modificador de constituição por nível posterior.</p><p class=\"MsoNormal\"><strong>Pontos de Vida nos níveis seguintes:</strong> 1d10 + seu modificador de constituição por nível posterior.</p><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>PROFICIÊNCIAS</strong></span></p><p class=\"MsoNormal\"><strong>Equipamentos:</strong> Armas Marciais e uma “Ferramenta Amaldiçoada” a sua escolha.</p><p class=\"MsoNormal\"><strong>Salvaguarda:</strong> Força ou Agilidade e Constituição.</p><p class=\"MsoNormal\"><strong>Perícias:</strong> Escolha 3 perícias entre: Atletismo, Acrobacia, Intimidação, Intuição, Percepção, Prestidigitação, Provocação e Sobrevivência.</p><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>INFORMAÇÕES GERAIS</strong></span></p><p class=\"MsoBodyText\"><strong>Atributo Principal:</strong> Força ou Agilidade (à sua escolha).</p><p class=\"MsoNormal\"><strong>Habilidade Inata</strong>: Escolha entre “Corpo de Lutador” ou “Homem de Aço”.</p><p class=\"MsoNormal\"><strong>Talento:</strong> Escolha um entre qualquer talento que você possua os requisitos.</p><p class=\"MsoNormal\"><strong>Equipamentos:</strong> Uma arma marcial ou $ 3.000 e; $ 5.000.</p><img src=\"systems/jujutsu-system/assets/Tabelas/Lutador.png\"><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm pt 0cm 0pt\" class=\"MsoTableGrid\"><tbody><tr style=\"mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes\"><td><p style=\"line-height:7pt;mso-line-height-rule:exactly;tab-stops:363.15pt;text-align:center\"><span style=\"font-size:large\"><strong>CRIANDO UM LUTADOR</strong></span></p></td></tr></tbody></table><p>Para criar rapidamente um Lutador primeiro distribua seus atributos, colocando o mais alto em Força ou Agilidade, de acordo com sua escolha de atributo principal. O segundo atributo mais alto deve ser Constituição. Escolha uma origem de poder de Feitiço Inato, Imaculado, Receptáculo ou Corpo Amaldiçoado e as habilidades básicas de Corpo de Lutador ou Proficiência Avançada, Espírito Marcial e Retomar Fôlego.</p><p class=\"MsoNormal\">Após isso, foque em pegar talentos para aumentar suas perícias que serão importantes no início do jogo, principalmente em talentos que dão proficiência nas perícias: Atletismo, Acrobacia, Percepção e Sobrevivência.</p><p style=\"margin-top:0cm;margin-right:5.4pt;margin-bottom:.0001pt;margin-left:7.1pt;tab-stops:524.5pt;text-align:justify\"><span style=\"font-family:'Chaparral Pro, serif'\">\_</span></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm pt 0cm 0pt\" class=\"MsoTableGrid\"><tbody><tr style=\"mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes\"><td><p style=\"line-height:7pt;mso-line-height-rule:exactly;tab-stops:363.15pt;text-align:center\"><span style=\"font-size:large\"><strong>ACERTO E SALVAGUARDA</strong></span></p></td></tr></tbody></table><p><strong>CD dos Feitiços =</strong> 8 + bônus de proficiência + seu modificador de Força ou Agilidade.</p><p class=\"MsoBodyText\"><strong>Modificador do Feitiço =</strong> seu bônus de proficiência + seu modificador de Força ou Agilidade.</p><p></p><p style=\"text-align:center\"><span style=\"font-size:x-large\"><strong>CARACTERÍSTICAS DE COMBATE</strong></span></p><p>\_Como um Lutador, você recebe as seguintes características:<span style=\"font-family:'Chaparral Pro, serif'\">\_</span><span style=\"font-size:20pt;font-family:'Chaparral Pro', serif\"><strong>\_</strong></span></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>COMBATENTE SELVAGEM</strong></span></p></td></tr></tbody></table><p style=\"text-align:justify\">A partir do 1º nível de Lutador, ao realizar uma jogada de ataque (comum) corpo a corpo desarmado durante a batalha, você pode implementar seus golpes, escolhendo um dos seguintes movimentos especiais:</p><ul><li><p><strong>Avanço Selvagem:</strong> Se você se mover pelo menos 3 metros em linha reta antes do ataque, o alvo sofre 1d6 de dano extra.</p><p class=\"MsoListParagraph\">Alternativamente, você pode escolher não causar o dano extra e forçar a criatura atingida, com categoria de tamanho Grande ou menor, a ser bem-sucedida em uma Salvaguarda de Força para não ser empurrada para um espaço desocupado a até 6 metros dela. Caso bata em uma estrutura ou objeto com raio maior que 1,5 metro, recebe 2d8 de dano extra.</p></li><li><p><strong>Golpe Baixo:</strong> Você pode mirar um golpe nas pernas do inimigo para inibir sua mobilidade. A criatura recebe 1d6 de dano extra e uma redução de 3 metros do seu deslocamento, até o final do próximo turno dela.</p><p class=\"MsoListParagraph\">Alternativamente, você pode escolher não causar o dano extra e a redução de deslocamento para forçar a criatura atingida a receber a condição “Caído”, sem a necessidade de um teste.</p></li><li><p><strong>Subjugador:</strong> Você executa uma jogada de ataque (comum) corpo a corpo contra uma criatura, com categoria de tamanho Grande ou menor, e impõe a condição “Agarrado” ao invés de causar dano.</p></li></ul><p style=\"margin:0cm 5.4pt 0.0001pt 7.1pt;text-align:justify\"></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CAMINHO DO LUTADOR</strong></span></p></td></tr></tbody></table><p style=\"text-align:justify\">A partir do <strong>2º nível de Lutador</strong>, você pode definir a natureza das suas habilidades, permitindo que você possa escolher entre Punho Divergente, Mestre do Fulgor, Demolidor ou Mestre das Armas. Você pode ver as características desse caminho no fim desse Estilo de Combate.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>MESTRE DO COMBATE</strong></span></p></td></tr></tbody></table><p style=\"text-align:justify\">A partir do 3º nível de Lutador, sua natureza agressiva e seu porte físico vigoroso lhe concedem os seguintes benefícios:</p><ul><li><p><strong>Mãos Letais:</strong> Suas jogadas de ataque (comum) corpo a corpo desarmado passam a receber os mesmos benefícios de uma arma marcial. Dessa forma, você pode escolher qualquer uma de suas propriedades para esses ataques. Essa escolha pode ser refeita sempre que você adquirir um novo nível de Lutador.</p></li><li><p><strong>Truque Sujo:</strong> Jogadas de ataque (comum) com resultado 1 no d20 são considerados acertos críticos.</p></li><li><p><strong>Ippon Seoi:</strong> Ao atingir uma criatura com uma jogada de ataque (Comum), você pode escolher diminuir seu dano pela metade para agarra-la na altura do peito e atira-la por cima do seu ombro. A criatura deve realizar uma Salvaguarda de Agilidade para não sofrer a condição “Caído”.</p><p class=\"MsoListParagraph\">Se a criatura já estiver agarrada, você pode usar uma ação bônus ou ação de poder para ativar essa característica sem precisar realizar uma rolagem de acerto.</p></li><li><p><strong>Golpe Esmagador:</strong> Ao realizar uma jogada de ataque (Comum) corpo a corpo contra uma criatura sob a condição “Caído”, você recebe +5 de acerto.</p></li></ul><p style=\"text-align:justify\">\_</p><p style=\"text-align:justify\">Além disso, você também pode realizar os seguintes feitos, uma quantidade de vezes igual ao seu bônus de Proficiência e você recupera todos os seus usos ao término de um descanso curto ou longo.</p><ul><li><p>Ignorar o acerto crítico de uma criatura contra você e receber o dano normal da jogada, no lugar;</p></li><li><p>Ignora resistências ou invulnerabilidades de um alvo que acertou com uma jogada de ataque (comum ou Técnicas);</p></li><li><p>Ignorar a falha de uma jogada de ataque (comum) corpo a corpo que você faça e jogar novamente.</p></li></ul><p style=\"text-align:justify\"></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>AUMENTO NO VALOR DE ATRIBUTO</strong></span></p></td></tr></tbody></table><p style=\"text-align:justify\">Quando você atinge o <strong>4º nível</strong> e novamente no <strong>8º, 12º, 16º</strong> e <strong>19º nível</strong>, você pode aumentar um valor de atributo, à sua escolha, em 2 ou você pode aumentar dois valores de atributo, à sua escolha, em 1. Como padrão, você não pode elevar um valor de atributo acima de 20 com esta característica.</p><p style=\"text-align:justify\">A partir do <strong>12º nível</strong>, você pode elevar um valor de atributo até 22 com está característica. A partir do <strong>16º nível,</strong> você pode elevar um valor de atributo até 24 com está característica.</p><p style=\"text-align:justify\"></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>REFORÇO DE VIGOR</strong></span></p></td></tr></tbody></table><p style=\"text-align:justify\">A partir do <strong>5º nível de Lutador</strong>, você aprende a liberar uma quantidade enorme de Energia Amaldiçoada em um momento oportuno. No início do seu turno, você pode gerar um valor de Pontos de Energia Amaldiçoada (PA) adicional igual ao nível do seu personagem. Essa característica pode ser utilizada 3 vezes por encontro.</p><p class=\"MsoNormal\"><span style=\"font-size:8pt;font-family:'Chaparral Pro', serif;color:black\"><em>\_</em></span></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>ATAQUE EXTRA</strong></span></p></td></tr></tbody></table><p>A partir do <strong>7º nível de Restringido</strong>, você pode atacar duas vezes, ao invés de uma, quando usar a ação “Atacar” durante o seu turno. A partir do <strong>12º nível</strong>, você passa a poder atacar três vezes ao usar a ação “Atacar”.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>POTENCIAL AMALDIÇOADO</strong></span></p></td></tr></tbody></table><p style=\"text-align:justify\">A partir do <strong>9º nível de Lutador</strong>, você pode escolher entre receber 15 Pontos de Maldição ou 30 Pontos de Treinamento ou 50 PA máximos. Você recebe esse benefício novamente no 13º e 17º nível.</p><p style=\"text-align:justify\"></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>ESPÍRITO INABALÁVEL</strong></span></p></td></tr></tbody></table><p style=\"text-align:justify\"><span style=\"mso-bidi-font-size:10.0pt\">A partir do <strong>11º nível de Lutador</strong>,</span><span style=\"mso-bidi-font-size:10.0pt;mso-bidi-font-family:'Times New Roman';mso-bidi-theme-font:minor-bidi\"> </span>você consegue se manter em combate puramente com seu espírito inabalável, secando até os últimos vestígios de energia para continuar em combate. Você recebe resistência a todos os tipos de dano.</p><p style=\"text-indent:49.6pt;tab-stops:467.8pt;text-align:justify\">Adicionalmente, se você cair a 0 Pontos de Vida e não morrer, você recupera metade dos seus Pontos de Vida e pode continuar lutando. Essa característica não pode ser usada novamente por 3 dias.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>VISÃO DO FULGOR</strong></span></p></td></tr></tbody></table><p style=\"text-align:justify\">A partir do <strong>15º nível de Lutador</strong>, ao atingir o fulgor, você teve um vislumbre que te causou um sentimento instintivo de como circular sua energia amaldiçoada com perfeição. Desde que você já tenha ativado o Fulgor Negro antes, você pode usar essa característica para que sua próxima rolagem de acerto (Comum) ative seu Fulgor Negro de forma garantida, desde que ela acerte o alvo, mas você não entra em zona.</p><p style=\"text-align:justify\">Você não pode utilizar essa característica novamente até o fim de um descanso longo.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>MESTRE LUTADOR</strong></span></p></td></tr></tbody></table><p style=\"text-align:justify\">A partir do <strong>18º nível de Lutador</strong>, você pode distribuir livremente 6 pontos entre seus atributos, respeitando o limite máximo de 24 em cada um deles. Além disso, você pode escolher dois atributos para aplicar esses pontos até o valor máximo de 30.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CONTROLE ABSOLUTO</strong></span></p></td></tr></tbody></table><p style=\"text-align:justify\">A partir do <strong>19º nível de lutador</strong>, você transcende os limites de meros combatentes e atinge um patamar que será passado adiante em lendas. Como resultado, você recebe as seguintes características:</p><ul><li><p style=\"text-align:justify\"><strong>Golpe Potencializado:</strong> Suas jogadas de ataque (Comuns) com margem 15-19 que não forem consideradas um acerto crítico, causam o resultado máximo possível da rolagem dos dados;</p></li><li><p style=\"text-align:justify\"><strong>Ataque Destruidor:</strong> Atingir uma criatura com ND 10 ou menor reduz os Pontos de Vida dela a 0;</p></li><li><p style=\"text-align:justify\"><strong>Ataque Certeiro:</strong> Você acerta automaticamente suas rolagens de ataque (Comuns e de Técnica) e rola apenas para definir um acerto crítico e o efeito do “Golpe Potencializado”.</p></li></ul><p></p>"
+    chat: ''
+  source:
+    custom: Estilo de Combate (JL)
+    rules: '2014'
+    revision: 1
+    book: Livro do Jogador 1.0
+    page: '39'
+    license: ''
+  identifier: lutador
+  levels: 1
+  advancement:
+    bWjjdAo3evIVTk8y:
+      _id: bWjjdAo3evIVTk8y
+      type: HitPoints
+      configuration: {}
+      value: {}
+      flags: {}
+      hint: ''
+    he1zAvFVvT8Fkn9F:
+      _id: he1zAvFVvT8Fkn9F
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 4
+      title: ''
+      icon: null
+      flags: {}
+      hint: ''
+    zt7ckdoVUTgBvw5v:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 8
+      title: ''
+      icon: null
+      _id: zt7ckdoVUTgBvw5v
+      flags: {}
+      hint: ''
+    QmkQ7voUxMrsXxVV:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 12
+      title: ''
+      icon: null
+      _id: QmkQ7voUxMrsXxVV
+      flags: {}
+      hint: ''
+    qMFAGAOB4kpXfuXK:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 16
+      title: ''
+      icon: null
+      _id: qMFAGAOB4kpXfuXK
+      flags: {}
+      hint: ''
+    njXl1fMEciQmWhx3:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 20
+      title: ''
+      icon: null
+      _id: njXl1fMEciQmWhx3
+      flags: {}
+      hint: ''
+    oHqFhTBoQJ7vzC8V:
+      type: Trait
+      level: 1
+      configuration:
+        grants:
+          - saves:con
+        mode: default
+        allowReplacements: false
+        choices:
+          - count: 1
+            pool:
+              - saves:str
+              - saves:dex
+      value:
+        chosen:
+          - saves:wis
+          - saves:cha
+      _id: oHqFhTBoQJ7vzC8V
+      title: ''
+      hint: ''
+      flags: {}
+    eXktvg2r6IIaMEpU:
+      _id: eXktvg2r6IIaMEpU
+      type: Trait
+      configuration:
+        mode: default
+        allowReplacements: false
+        grants: []
+        choices:
+          - count: 3
+            pool:
+              - skills:acr
+              - skills:ath
+              - skills:itm
+              - skills:ins
+              - skills:prc
+              - skills:slt
+              - skills:med
+              - skills:sur
+      level: 1
+      title: ''
+      icon: null
+      value:
+        chosen: []
+      flags: {}
+      hint: ''
+    98V68zlkJpycip4z:
+      _id: 98V68zlkJpycip4z
+      type: ScaleValue
+      configuration:
+        identifier: dificuldade
+        type: string
+        distance:
+          units: ''
+        scale:
+          '1':
+            value: '1'
+          '5':
+            value: '2'
+          '9':
+            value: '3'
+          '10':
+            value: '4'
+          '15':
+            value: '5'
+          '17':
+            value: '6'
+      value: {}
+      title: Dificuldade Inefável
+      hint: <p>@scale.lutador.dificuldade</p>
+      flags: {}
+    yqqyekhePYT0kgOs:
+      type: Subclass
+      _id: yqqyekhePYT0kgOs
+      configuration: {}
+      flags: {}
+      value:
+        document: null
+        uuid: null
+      level: 2
+      hint: ''
+      title: Caminhos do Lutador
+    O7ejRBE0ZOc8ZkZU:
+      _id: O7ejRBE0ZOc8ZkZU
+      type: ItemChoice
+      configuration:
+        choices:
+          '1':
+            count: 2
+            replacement: false
+          '2':
+            count: 1
+            replacement: false
+          '3':
+            count: 1
+            replacement: false
+        allowDrops: true
+        type: null
+        pool:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.fQEiotOxozaIn9Y3
+          - uuid: Compendium.jujutsu-compendium.geral.Item.wmEVc5Z1tlvnyhmI
+          - uuid: Compendium.jujutsu-compendium.geral.Item.cYNOBnXsF2DQbLp4
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Cg7GMea45zirlfmv
+          - uuid: Compendium.jujutsu-compendium.geral.Item.fKBsvfBVThJQo3OV
+          - uuid: Compendium.jujutsu-compendium.geral.Item.yK6KUhmiwhedWoJr
+          - uuid: Compendium.jujutsu-compendium.geral.Item.LfeLCqX7GeBHky3I
+          - uuid: Compendium.jujutsu-compendium.geral.Item.1WfsoBmRw2myPy6K
+          - uuid: Compendium.jujutsu-compendium.geral.Item.nqY0kXLjbLdxj4pD
+          - uuid: Compendium.jujutsu-compendium.geral.Item.xL27COxWdlxR6Stj
+          - uuid: Compendium.jujutsu-compendium.geral.Item.35F6OComd4fEqH0t
+          - uuid: Compendium.jujutsu-compendium.geral.Item.6y4aKtW9WO0zMUnZ
+          - uuid: Compendium.jujutsu-compendium.geral.Item.41PHgY9tpdzt0A9b
+          - uuid: Compendium.jujutsu-compendium.geral.Item.wNPjexjrgaUnkfch
+          - uuid: Compendium.jujutsu-compendium.geral.Item.vn7JIDj3L9ewgbQ8
+          - uuid: Compendium.jujutsu-compendium.geral.Item.t5Wfu7rP3PxQbz7h
+          - uuid: Compendium.jujutsu-compendium.geral.Item.mx0rPWHN77YIGBBn
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Ei9tWn7AyUysLG1j
+          - uuid: Compendium.jujutsu-compendium.geral.Item.lkLiBQJVew52xsOF
+          - uuid: Compendium.jujutsu-compendium.geral.Item.8RlTJZ5TdHba6SCZ
+          - uuid: Compendium.jujutsu-compendium.geral.Item.q9zRwIu676imWcTa
+          - uuid: Compendium.jujutsu-compendium.geral.Item.WjCQZh2jkRtAyb3u
+          - uuid: Compendium.jujutsu-compendium.geral.Item.WNXnczNahQRdMKz0
+          - uuid: Compendium.jujutsu-compendium.geral.Item.javwcPNBIaASRnF2
+          - uuid: Compendium.jujutsu-compendium.geral.Item.iy9L7AZLLWeVTepP
+          - uuid: Compendium.jujutsu-compendium.geral.Item.XhHkv3em6MFoe035
+          - uuid: Compendium.jujutsu-compendium.geral.Item.b1CtPJ60TJKVhhdc
+        spell: null
+        restriction:
+          list: []
+      value:
+        added: {}
+        replaced: {}
+      title: Habilidades Básicas
+      hint: ''
+      flags: {}
+    LK7YFWWUfqCBWNOU:
+      type: ItemGrant
+      _id: LK7YFWWUfqCBWNOU
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.sfIKMfEa5Y3TwcQR
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 1
+      hint: ''
+      title: ''
+    SBgeEgRyLDh5NniE:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.vHvW6ieAn85ATeoo
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 2
+      hint: ''
+      title: ''
+      _id: SBgeEgRyLDh5NniE
+    hf6oheHnUiW89gII:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.IEwYitBNNNjeyWUr
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 3
+      hint: ''
+      title: ''
+      _id: hf6oheHnUiW89gII
+    JnfS3uHY2QpDdrN9:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.yZHh10eoyzrkseo5
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 5
+      hint: ''
+      title: ''
+      _id: JnfS3uHY2QpDdrN9
+    VGlllVM5Wx0JGvvI:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Du7gK5PdMckUXLVm
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 11
+      hint: ''
+      title: ''
+      _id: VGlllVM5Wx0JGvvI
+    IdaSDGIcw8tgxg4i:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.06RwqJNxmw9KkSFo
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 15
+      hint: ''
+      title: ''
+      _id: IdaSDGIcw8tgxg4i
+    ZC9gemA3g174xjxN:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.ankN2bI6SO627t2n
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 19
+      hint: ''
+      title: ''
+      _id: ZC9gemA3g174xjxN
+    9rRfcq0QyI1e1RTp:
+      _id: 9rRfcq0QyI1e1RTp
+      type: ItemChoice
+      configuration:
+        choices:
+          '1':
+            count: 2
+            replacement: false
+          '3':
+            count: 1
+            replacement: false
+          '6':
+            count: 1
+            replacement: false
+          '9':
+            count: 1
+            replacement: false
+          '12':
+            count: 1
+            replacement: false
+          '15':
+            count: 1
+            replacement: false
+          '18':
+            count: 1
+            replacement: false
+        allowDrops: true
+        type: null
+        pool:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.8Hj19qiJfaPZGTsA
+          - uuid: Compendium.jujutsu-compendium.geral.Item.bva5epdYxzThtP6M
+          - uuid: Compendium.jujutsu-compendium.geral.Item.0XPCGOxGdkWcR2Vo
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4vLQ7n8G6rrhE1xx
+          - uuid: Compendium.jujutsu-compendium.geral.Item.PX684p6nV5rCcNdS
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4Hiwy0wrIrTms5MM
+          - uuid: Compendium.jujutsu-compendium.geral.Item.DrBpdedmyqnhM5df
+          - uuid: Compendium.jujutsu-compendium.geral.Item.2PhKSjK9qj9ZR6N7
+          - uuid: Compendium.jujutsu-compendium.geral.Item.gefdu4YHs1PfzAbO
+          - uuid: Compendium.jujutsu-compendium.geral.Item.37os1n1MC8Z9Tb0Z
+          - uuid: Compendium.jujutsu-compendium.geral.Item.L4S34HfMD3TMfDiK
+          - uuid: Compendium.jujutsu-compendium.geral.Item.jrqGxj4hXB45vVxR
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Cej9rFPAZLCga4bT
+          - uuid: Compendium.jujutsu-compendium.geral.Item.nXYRnZGNuaoam45h
+          - uuid: Compendium.jujutsu-compendium.geral.Item.XkZ9ajfGzxGXcHzO
+          - uuid: Compendium.jujutsu-compendium.geral.Item.QaXricyQqGncSfOs
+          - uuid: Compendium.jujutsu-compendium.geral.Item.XPSJ7haBC8du3TIm
+          - uuid: Compendium.jujutsu-compendium.geral.Item.tXDjrnCSmSN0anzs
+          - uuid: Compendium.jujutsu-compendium.geral.Item.27hODHpzlrfada74
+          - uuid: Compendium.jujutsu-compendium.geral.Item.vYTryoZKA6kl4ura
+          - uuid: Compendium.jujutsu-compendium.geral.Item.JjdXdRphZg6ixnEJ
+          - uuid: Compendium.jujutsu-compendium.geral.Item.iLAcZMqSs8gqfsUL
+          - uuid: Compendium.jujutsu-compendium.geral.Item.KhSlw4AIhzDSJt0L
+          - uuid: Compendium.jujutsu-compendium.geral.Item.GTpLN4dXVTQxEUGM
+          - uuid: Compendium.jujutsu-compendium.geral.Item.pjcfpwper3gCbN6k
+          - uuid: Compendium.jujutsu-compendium.geral.Item.H9TXciC0Ty7XK2z8
+          - uuid: Compendium.jujutsu-compendium.geral.Item.OpBdHF32rJuWcA4I
+          - uuid: Compendium.jujutsu-compendium.geral.Item.CQ5A81X2Oo6Mki8P
+          - uuid: Compendium.jujutsu-compendium.geral.Item.SuYYqkz57omrdkkL
+          - uuid: Compendium.jujutsu-compendium.geral.Item.qt30lLRhjbaJofBS
+          - uuid: Compendium.jujutsu-compendium.geral.Item.fy033ppmg7T4NROi
+          - uuid: Compendium.jujutsu-compendium.geral.Item.V9HGMLfMpofEyJDk
+          - uuid: Compendium.jujutsu-compendium.geral.Item.phjhzAtEriRqTfbj
+          - uuid: Compendium.jujutsu-compendium.geral.Item.mDTLUIskoUZB9ZRP
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4L6kFKQP5UFDxCsV
+          - uuid: Compendium.jujutsu-compendium.geral.Item.WKcWzfXwCPwKwDld
+          - uuid: Compendium.jujutsu-compendium.geral.Item.jH0ECBJlq0VCuPe9
+          - uuid: Compendium.jujutsu-compendium.geral.Item.qeOcNGu2ske9fHL8
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Bcfjw23FfpY3CrRs
+          - uuid: Compendium.jujutsu-compendium.geral.Item.a9jqktyNovVcoe2C
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4dfu8ht0CY1crbf6
+          - uuid: Compendium.jujutsu-compendium.geral.Item.ggNxaU8N5oQZm2ge
+          - uuid: Compendium.jujutsu-compendium.geral.Item.eZgER2916B2oEGYZ
+          - uuid: Compendium.jujutsu-compendium.geral.Item.ajDH8V2kPLjp8BYf
+          - uuid: Compendium.jujutsu-compendium.geral.Item.R4JNiv4iRt0TlEBF
+          - uuid: Compendium.jujutsu-compendium.geral.Item.8Fly1UAXqAO2rh19
+          - uuid: Compendium.jujutsu-compendium.geral.Item.JNOIRp3vD13sYdMH
+        spell: null
+        restriction:
+          list: []
+      value:
+        added: {}
+        replaced: {}
+      title: Talentos
+      hint: >-
+        <p>Escolha 1 Talento Simples se você não pegou um Aspecto Inato Escolha
+        1 Talento adicional se você for das variantes: Humano Normal ou Tribo
+        Gyudondond. Escolha 2 Talentos adicionais se você for das variantes:
+        Kurta ou Escória da Cidade Meteoro</p>
+      flags: {}
+  spellcasting:
+    progression: full
+    ability: str
+    preparation:
+      formula: ''
+  wealth: ''
+  startingEquipment: []
+  hd:
+    denomination: d10
+    spent: 0
+    additional: ''
+  primaryAbility:
+    value: []
+    all: true
+  properties: []
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.classes.snhHNJhJ12IWrr41
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624882972
+  modifiedTime: 1782662311582
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!yr1MTy0nHkk5AYfL'

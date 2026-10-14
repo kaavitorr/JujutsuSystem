@@ -1,0 +1,133 @@
+name: Vicio (3 Pontos)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects:
+  - _id: jGpGHagMPPqimHHx
+    disabled: false
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    origin: Compendium.world.op-rpg.Yragwaj7GyFoiOS1
+    transfer: true
+    flags:
+      core:
+        statusId: ''
+      dae:
+        stackable: none
+        durationExpression: ''
+        specialDuration: []
+        transfer: true
+    tint: '#ffffff'
+    name: Vício
+    description: ''
+    statuses: []
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 5.3.2
+      createdTime: 1776624902123
+      modifiedTime: 1776624902123
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+      exportSource: null
+    img: icons/magic/death/undead-ghosts-trio-blue.webp
+    type: base
+    system:
+      changes:
+        - key: system.abilities.con.bonuses.save
+          value: '- 2'
+          priority: 39
+          type: custom
+          phase: initial
+    sort: 0
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!AVnbgCg7lDtOYuD3.jGpGHagMPPqimHHx'
+folder: xaOZscxiXFUTyHS5
+sort: 2600000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 38d717500518520c877e9c4f11bf97262037a62f
+    sourceId: Item.2jFb89N4lJaoiEct
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p>Você é dependente de uma substância específica, como álcool, nicotina,
+      açúcar, drogas, determinados alimentos ou compostos similares. Sempre que
+      deixa de consumir essa substância, os efeitos da abstinência passam a se
+      acumular da seguinte forma:</p><p><strong>1 Dia Sem Consumo:</strong> você
+      recebe desvantagem nas jogadas para determinar a
+      iniciativa.</p><p><strong>2 Dias Sem Consumo:</strong> você não recebe
+      nenhum benefício ao finalizar descansos curtos.</p><p><strong>A Partir do
+      3º Dia:</strong> para cada dia adicional sem consumir a substância, você
+      perde 5 Pontos de Aura do seu valor máximo.</p><p>Os Pontos de Aura
+      perdidos dessa forma só são recuperados após o término de um descanso
+      longo, desde que o vício tenha sido satisfeito antes desse descanso.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: vicio-3-pontos
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.xfWaUXbwqVExc0Lz
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902123
+  modifiedTime: 1776624902166
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: AVnbgCg7lDtOYuD3
+_key: '!items!AVnbgCg7lDtOYuD3'

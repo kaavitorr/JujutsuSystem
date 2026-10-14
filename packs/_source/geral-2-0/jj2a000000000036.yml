@@ -1,0 +1,22 @@
+_id: jj2a000000000036
+_key: '!items!jj2a000000000036'
+name: Barreira Adaptativa
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: barreira-adaptativa
+  description:
+    value: <p><em><strong>Requisito:</strong> Barreira Estratégica</em></p><p>Sua eficiência na criação de barreiras faz com que elas se tornem mais robustas e flexíveis. Você recebe as seguintes características:</p><ul><li>Suas barreiras tem os Pontos de Vida finais multiplicados por 2;</li><li>Você pode criar duas regras adicionais fixas para suas barreiras, que podem ser usadas sem limites;</li><li>Suas barreiras recebem resistência 10 contra todos os tipos de dano e imunidade a dano Psíquico e da Alma.</li></ul>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Técnicas de Barreira
+      caminho: Técnicas de Barreiras
+      requisitos:
+        - Barreira Estratégica
+folder: jj2f000000000007
+ownership:
+  default: 0
+effects: []
+sort: 0

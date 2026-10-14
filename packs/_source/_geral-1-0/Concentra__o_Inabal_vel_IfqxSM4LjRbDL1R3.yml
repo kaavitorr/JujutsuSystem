@@ -1,0 +1,173 @@
+folder: 6Lp7GKcjjdPyxHoV
+name: Concentração Inabalável
+type: feat
+img: icons/magic/control/silhouette-aura-energy.webp
+system:
+  description:
+    value: >-
+      <p class="MsoBodyText">A partir do <strong>11º nível de
+      Estrategista</strong>, você se tornou capaz de entrar em um estado de foco
+      tão grande que qualquer ação sua tem pouca, senão nenhuma margem para
+      erro. Durante 1 minuto, todas as suas rolagens no d20 com resultado de 9
+      ou menor no dado são consideradas como 10 natural.</p><p
+      class="MsoBodyText">Você pode utilizar essa característica 3 vezes por
+      dia, recuperando seus usos após o fim de um descanso longo.</p>
+    chat: ''
+  source:
+    revision: 1
+    rules: '2014'
+  cover: null
+  crewed: false
+  uses:
+    max: '3'
+    recovery:
+      - period: lr
+        type: recoverAll
+    spent: 0
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  activities:
+    dnd5eactivity000:
+      _id: dnd5eactivity000
+      type: damage
+      activation:
+        type: bonus
+        value: 1
+        condition: ''
+        override: false
+      consumption:
+        targets:
+          - type: itemUses
+            target: ''
+            value: '1'
+            scaling:
+              mode: ''
+              formula: ''
+        scaling:
+          allowed: false
+          max: ''
+        spellSlot: true
+      description:
+        chatFlavor: ''
+      duration:
+        concentration: false
+        value: ''
+        units: inst
+        special: ''
+        override: false
+      effects: []
+      range:
+        units: self
+        special: ''
+        override: false
+      target:
+        template:
+          count: ''
+          contiguous: false
+          type: ''
+          size: ''
+          width: ''
+          height: ''
+          units: ft
+          stationary: false
+        affects:
+          count: ''
+          type: self
+          choice: false
+          special: ''
+        prompt: true
+        override: false
+      uses:
+        spent: 0
+        max: ''
+        recovery: []
+      damage:
+        critical:
+          allow: false
+          bonus: ''
+        parts:
+          - number: 2
+            denomination: 8
+            bonus: '@mod'
+            types: []
+            custom:
+              enabled: false
+              formula: ''
+            scaling:
+              mode: whole
+              number: null
+              formula: ''
+      sort: 0
+      img: null
+      flags: {}
+      visibility:
+        level: {}
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+  identifier: recuo-estrategico
+  enchant: {}
+  advancement: {}
+effects: []
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: 10a774bffcd617a78f268ca418045b9bfb84047d
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+    consumeUses:
+      value: true
+    quickOther:
+      context: ''
+    quickDamage:
+      context:
+        '0': Pontos de Aura
+      value:
+        '0': true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776906081733
+  modifiedTime: 1776906084047
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: IfqxSM4LjRbDL1R3
+sort: 95313
+_key: '!items!IfqxSM4LjRbDL1R3'

@@ -1,0 +1,38 @@
+_id: jj2a000000000102
+name: Fonte de Poder
+type: feat
+img: icons/magic/light/beam-strike-village-yellow.webp
+system:
+  identifier: fonte-de-poder
+  description:
+    value: >-
+      <p>Você aprende a canalizar o poder da sua alma para atacar de forma um
+      pouco mais efetiva. Você pode adicionar metade do seu atributo de Presença
+      em suas rolagens de dano.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Ressonância da Alma
+      requisitos: []
+folder: jj2f000000000016
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816233838
+  modifiedTime: 1791816233838
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000102'

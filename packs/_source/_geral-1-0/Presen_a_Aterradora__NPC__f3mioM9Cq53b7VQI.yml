@@ -1,0 +1,80 @@
+_id: f3mioM9Cq53b7VQI
+name: Presença Aterradora (NPC)
+type: feat
+img: icons/creatures/abilities/lion-roar-yellow.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 4400000
+flags:
+  scene-packer:
+    hash: 3310a7b533196f8a7414c961ce769548869b8eed
+    sourceId: Item.f3mioM9Cq53b7VQI
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Presença Aterradora (Aumenta em 25% o PV efetivo de criaturas
+      com ND 10 ou menor): </strong>Cada alvo a até 18 metros da criatura, que
+      puder vê-la, deve ser bem sucedida em um Teste de Resistência de Espírito
+      ou receberá a condição “Amedrontado” por 1 minuto. Um alvo amedrontado
+      pode repetir o Teste de Resistência no final de cada um dos turnos dele,
+      com desvantagem se a criatura estiver na linha de visão do alvo,
+      terminando o efeito sobre si, se obtiver sucesso. Se o alvo for bem
+      sucedido no teste, ou o se o efeito terminar nele, ele fica imune à
+      Presença Aterradora da criatura pelas próximas 24 horas.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: presenca-aterradora-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.4pApXzYF5xP9J99A
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910553
+  modifiedTime: 1776624910574
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!f3mioM9Cq53b7VQI'

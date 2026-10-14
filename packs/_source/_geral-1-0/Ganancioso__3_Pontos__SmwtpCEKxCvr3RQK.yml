@@ -1,0 +1,77 @@
+_id: SmwtpCEKxCvr3RQK
+name: Ganancioso (3 Pontos)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects: []
+folder: xaOZscxiXFUTyHS5
+sort: 1300000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: b7f06da973571955ea84ee73256bc2b554fef852
+    sourceId: Item.k1pkEjKqHHcRNe5d
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: "<p>Você realmente ama dinheiro, talvez, o motivo que lhe fez partir para se aventurar nos mares. Sempre que alguém falar de formas de ganhar quantidades consideráveis de dinheiro, por um pedido, uma missão ou revelando a localização de um tesouro escondido, você não consegue resistir, caso perca a oportunidade, você é acometido por uma grande depressão.</p><p>\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Caso se recuse a ganhar, perca dinheiro ou chances de enriquecer, você recebe -1 em todas as suas jogadas por 1d6 dias.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: ganancioso-2-pontos
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.IZEG3PRmaP5Y6lJK
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902135
+  modifiedTime: 1776624902170
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!SmwtpCEKxCvr3RQK'

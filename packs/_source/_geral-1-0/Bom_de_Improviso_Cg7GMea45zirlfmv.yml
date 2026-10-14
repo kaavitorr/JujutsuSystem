@@ -1,0 +1,87 @@
+name: Bom de Improviso
+type: feat
+img: icons/magic/symbols/question-stone-yellow.webp
+effects: []
+folder: TOc92NuiE5uyXD8M
+sort: 200000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: e73c5e736b5da06d2692b9a58fc2859625725680
+    sourceId: Item.56za1y6eXu2k49Rg
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Você pode escolher 3 perícias dentre: Acrobacia,
+      Atletismo, Atuação, Ciência, Enganação, Furtividade, História,
+      Intimidação, Intuição, Investigação, Percepção, Persuasão, Pilotagem,
+      Prestidigitação, Provocação, Sobrevivência e Tecnologia, para receber o
+      talento referente a essas perícias, ganhando a proficiência normal
+      nelas.</p><p class="MsoNormal">Você também consegue contornar mesmo os
+      piores cenários com sua sagacidade e pensamento rápido. Ao falhar em um
+      Teste de Atributo por menos de 5, você pode alterar o resultado para um
+      sucesso.</p><p class="MsoNormal">Essa característica pode ser usada até 3
+      vezes e você recupera todos os seus usos ao término de um descanso
+      longo.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: bom-de-improviso
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.uMNWzaM7WqfTGRaL
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 1.0.2
+  createdTime: 1776624882941
+  modifiedTime: 1777071805596
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: Cg7GMea45zirlfmv
+_key: '!items!Cg7GMea45zirlfmv'

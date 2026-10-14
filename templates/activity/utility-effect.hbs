@@ -1,0 +1,10 @@
+<section class="tab activity-{{ tab.id }} {{ tab.cssClass }}" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
+    {{> "systems/jujutsu-system/templates/activity/parts/activity-effects.hbs" }}
+    {{> "systems/jujutsu-system/templates/activity/parts/activity-behaviors.hbs" }}
+    <fieldset>
+        <legend>{{ localize "DND5E.UTILITY.FIELDS.roll.label" }}</legend>
+        {{ formField fields.roll.fields.name value=source.roll.name }}
+        {{ formField fields.roll.fields.formula value=source.roll.formula }}
+    </fieldset>
+    {{> "systems/jujutsu-system/templates/activity/parts/constant-cost.hbs" }}
+</section>

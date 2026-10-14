@@ -1,0 +1,21 @@
+_id: jj2a000000000127
+_key: '!items!jj2a000000000127'
+name: Domínio Simples
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: dominio-simples
+  description:
+    value: <p>Todo personagem recebe automaticamente uma técnica anti-domínio ao atingir o 6º nível de personagem. Ele pode escolher entre as 3 primeiras técnicas anti-domínio.</p><p>Ao sacrificar sua capacidade de se mover, você pode entrar em posição de saque antes de expandir um pequeno domínio de 5 metros de raio ao seu redor. Um domínio simples possui as seguintes características:</p><ul><li>O domínio simples cancela os efeitos do Inescapável, Fatal e Irresistível dentro da sua área;</li><li>O domínio simples faz o teste de choque contra o domínio, mas ele não consegue tirar PV do domínio ao vencer;</li><li>O domínio simples possui 50 vezes o seu nível de personagem em Pontos de Vida;</li><li>O domínio simples é destruído ao chegar a 0 Pontos de Vida.</li></ul>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Domínio e Anti-Domínio
+      caminho: Técnicas Anti-Domínio
+      requisitos: []
+folder: jj2f000000000021
+ownership:
+  default: 0
+effects: []
+sort: 0

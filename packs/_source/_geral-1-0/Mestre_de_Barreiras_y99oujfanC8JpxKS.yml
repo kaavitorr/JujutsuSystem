@@ -1,0 +1,97 @@
+folder: pJFTz3T8ddDTtVRG
+name: Mestre de Barreiras
+type: subclass
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Caminhos/Kenjaku_29.webp
+system:
+  description:
+    value: "<table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>MESTRE DE BARREIRAS</strong></span></p></td></tr></tbody></table><p class=\"MsoNormal\">Os mestres de barreiras são feiticeiros que tem facilidade em manipular e criar barreiras no dia a dia e durante o combate. Assim como fortalecer outras barreiras e até a própria técnica, caso ela utilize barreiras como base.</p><p style=\"margin:0cm 0.15pt 0.0001pt 7.1pt;text-align:justify\"></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>MANIPULAÇÃO DE BARREIRA</strong></span></p><hr><p class=\"MsoNormal\"><span style=\"mso-bidi-font-size:10.0pt\">A partir do <strong>2º nível de Especialista</strong>, você aprendeu a utilizar barreiras como quem manipula a própria energia amaldiçoada, adquirindo uma incrível facilidade em sua execução. Você recebe as seguintes características:</span></p><ul><li><p><span style=\"mso-bidi-font-size:10.0pt\"><em>Você demora apenas um dia para adicionar cada efeito/regra a uma barreira e pode manter duas preparadas por vez;</em></span></p></li><li><p><span style=\"mso-bidi-font-size:10.0pt\"><em>Você recebe a habilidade de Manipulação – “<strong>Cortina (Véu)”</strong> do <strong>Capítulo 6 </strong>e pode cria-la com uma ação bônus;</em></span></p></li><li><p><span style=\"mso-bidi-font-size:10.0pt\"><em>A partir do <strong>6º nível</strong>, você recebe a habilidade – <strong>“Barreira Vazia”</strong>, recebendo <strong>“Barreira Pura”</strong> no <strong>10º nível</strong> e <strong>“Barreira Bon”</strong> no <strong>14º nível de Especialista</strong>.</em></span></p></li></ul><p style=\"margin-right:0.15pt\" class=\"TextoPadro\"><span style=\"font-size:7pt;font-family:''\">\_</span></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>ATIVAÇÃO VERSÁTIL</strong></span></p><hr><p class=\"TextoPadro\">A partir do <strong>6º nível de Especialista</strong>, você pode utilizar suas barreiras vazias tanto para formar cenários ao seu redor quanto para te auxiliar em um combate. Você pode usar uma ação de poder e metade do seu PA gerado para criar uma barreira vazia de 30 metros de raio, 20 vezes o seu nível em Pontos de Vida e 15 de CR, sendo formada por diversos hexágonos.</p><p class=\"MsoNormal\">A barreira pode tomar a aparência que você quiser dentro, podendo até manifestar coisas do dia a dia, como se fosse uma ilusão, mas não é possível esconder criaturas ou tocar nas ilusões de forma padrão. Enquanto ela estiver ativa, você recebe acesso as seguintes ações:</p><ul><li><p><strong>Defesa Rápida:</strong> Você pode utilizar os hexágonos para proteger uma criatura aliada ou a si mesmo de um ataque (Comum ou de Técnica) de uma criatura inimiga, fazendo sua barreira receber dano no lugar.</p></li><li><p><strong>Distração:</strong> Você pode sacrificar 10 Pontos de Vida para atirar um hexágono contra a criatura inimiga o espatifando, fazendo com que a próxima rolagem de acerto contra ela tenha vantagem.</p></li><li><p><strong>Defesa Constante:</strong> Você pode deixar diversos hexágonos ao redor de até 3 criaturas voluntárias (podendo incluir você entre as três). Enquanto esse efeito estiver ativo, você pode anular uma jogada de ataque (Comum) a distância ao sacrificar 5 Pontos de Vida da barreira.</p><p class=\"TextoPadro\"></p></li></ul><p class=\"TextoPadro\">Sua barreira vazia não impede entrada ou saída de criaturas e só pode sofrer dano se for atacada diretamente. Se ela for destruída, você não pode criar outra por 5 minutos.</p><p></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>BARREIRA ADAPTATIVA</strong></span></p><hr><p class=\"MsoNormal\">A partir do <strong>10º nível de Especialista</strong>, após receber acesso a barreiras puras, você se torna capaz de manipula-las livremente para tomar a forma que desejar, assim como adicionar regras mais facilmente. Você recebe as seguintes características:</p><ul><li><p><em>Suas barreiras tem os Pontos de Vida finais multiplicados por 3;</em></p></li><li><p><em>Suas barreiras livres ou inferiores podem receber 2 regras adicionais livremente;</em></p></li><li><p><em>Suas barreiras puras ou superiores podem receber 2 regras adicionais gastando 1 hora para cada;</em></p></li><li><p><em>Suas barreiras recebem +4 de Classe de Resistência.</em></p></li></ul><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>GRANDE MESTRE</strong></span></p><hr><p class=\"TextoPadro\">A partir do <strong>14º nível de Estrategista</strong>, você aprendeu a utilizar as Barreiras Bon com maestria, permitindo que você crie barreiras praticamente indestrutíveis desde que elas possuam regras aceitáveis:</p><ul><li><p><em>Suas barreiras Bon são indestrutíveis se possuírem regras que permitam a saída intacta do alvo;</em></p></li><li><p><em>Suas Barreiras Bon só podem ser destruídas a força por outro Grande Mestre Especialista se elas cumprirem a regra 1;</em></p></li><li><p><em>Suas Barreiras Vazias ou inferiores tem os Pontos de Vida finais multiplicados por 5. Não afeta o Ativação Versátil.</em></p></li></ul><p class=\"TextoPadro\">\_</p><p class=\"TextoPadro\">Além disso, uma vez por descanso curto ou longo, você pode usar uma ação de poder e 10 Pontos de Energia Amaldiçoada (PA) por rodada para criar uma Barreira Bon de 4,5 metros de raio ao seu redor com 1.500 Pontos de Vida e 35 de CR por 1 minuto. Enquanto ela existir, você fica imune a qualquer dano externo.</p><p class=\"TextoPadro\">Enquanto essa barreira existir, você e outras criaturas dentro dela não podem afetar criaturas do lado de fora com técnicas ou feitiços e vice-versa.</p>"
+    chat: ''
+  source:
+    rules: '2014'
+    revision: 1
+  identifier: mestre-de-barreiras
+  classIdentifier: estrategista
+  advancement:
+    jCtJU3OpNJP3C2De:
+      type: ItemGrant
+      _id: jCtJU3OpNJP3C2De
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.SPDBTPy0L34qv3qP
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 2
+      title: ''
+      hint: ''
+      flags: {}
+    qq4F4JtCbQ7C77IN:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.w3GO5npqS8NxwEbA
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 6
+      title: ''
+      hint: ''
+      _id: qq4F4JtCbQ7C77IN
+      flags: {}
+    nfkc4H2fT34GsfOg:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Po2BhUgYsESL4UnD
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 10
+      title: ''
+      hint: ''
+      _id: nfkc4H2fT34GsfOg
+      flags: {}
+    KgQ4gTYjFvN7GT1p:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.ZE2jcuUyKw0S2lF1
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 14
+      title: ''
+      hint: ''
+      _id: KgQ4gTYjFvN7GT1p
+      flags: {}
+  spellcasting:
+    progression: none
+    ability: ''
+    preparation:
+      formula: ''
+effects: []
+sort: 550000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: ba15926efb073f47321991eb57da3e5adcc7f132
+  core: {}
+_stats:
+  compendiumSource: Item.5DNdPVt1SNlAA1LD
+  duplicateSource: Item.H4Zrhs8lCL8xvO4I
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881652
+  modifiedTime: 1776972808454
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: y99oujfanC8JpxKS
+_key: '!items!y99oujfanC8JpxKS'

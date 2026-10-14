@@ -1,0 +1,22 @@
+_id: jj2a000000000098
+_key: '!items!jj2a000000000098'
+name: Troca Arriscada
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: troca-arriscada
+  description:
+    value: <p><em><strong>Requisito:</strong> Domínio Móvel</em></p><p>Sempre que uma criatura errar uma jogada de ataque (Comum ou de Técnica) que tenha você como alvo, você pode escolher ser atingido automaticamente para receber 3 vantagens no próximo ataque (Comum ou de Técnica) contra ela.</p><p>Caso você faça isso contra uma técnica da criatura, você também recebe 3 dados de dano adicionais.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Novo Estilo das Sombras
+      requisitos:
+        - Domínio Móvel
+folder: jj2f000000000015
+ownership:
+  default: 0
+effects: []
+sort: 0

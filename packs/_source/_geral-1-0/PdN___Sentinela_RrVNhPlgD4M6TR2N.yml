@@ -1,0 +1,133 @@
+_id: RrVNhPlgD4M6TR2N
+name: PdN - Sentinela
+type: feat
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Sentinela.jpg
+effects:
+  - name: Sentinela
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.RrVNhPlgD4M6TR2N
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: false
+    img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Sentinela.jpg
+    _id: g8TtVe58BbvO7nbP
+    type: base
+    system:
+      changes:
+        - key: system.attributes.ac.armor
+          type: add
+          value: '+2'
+          phase: initial
+          priority: 20
+        - key: system.bonuses.rwak.damage
+          type: add
+          value: +1d4
+          phase: initial
+          priority: 20
+    description: ''
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    sort: 0
+    flags:
+      dnd5e:
+        riders:
+          statuses: []
+      dae:
+        disableCondition: ''
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+      core:
+        overlay: false
+      JujutsuLegacy:
+        riders:
+          statuses: []
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      exportSource: null
+      coreVersion: '14.364'
+      systemId: jujutsu-system
+      systemVersion: 1.0.6
+      createdTime: 1776624910542
+      modifiedTime: 1782450046661
+      lastModifiedBy: 371UX0Acl9j9oJ0Q
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!RrVNhPlgD4M6TR2N.g8TtVe58BbvO7nbP'
+folder: bep1QbqDytG1F90j
+sort: 400000
+flags:
+  scene-packer:
+    hash: fcb912112c1f790cc755ac1aeb3a9691fcbf1ea2
+    sourceId: Item.RrVNhPlgD4M6TR2N
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p class="Default">Sentinela: Você recebe a característica “Domínio
+      Simples” do Sentinela e os seguintes adicionais:</p><ul><li><p>Você recebe
+      uma rolagem de ataque (Comum) adicional;</p></li><li><p> Você recebe +2 de
+      Classe de Resistência;</p></li><li><p>Seus ataques recebem 1d4 de dano
+      adicional.</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aspecto--acao-rapida
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.dTKrVVb8he1gCO7U
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624910542
+  modifiedTime: 1782450009452
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_key: '!items!RrVNhPlgD4M6TR2N'

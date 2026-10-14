@@ -1,0 +1,78 @@
+_id: XhXgSeHKFKS71v2z
+name: Envolver
+type: feat
+img: icons/magic/light/orbs-hand-gray.webp
+effects: []
+folder: uS2gx1xTr6SoRtWP
+sort: 0
+flags:
+  scene-packer:
+    hash: 46ee2c733553fb12bbadd38962cd2289dbb703b2
+    sourceId: Item.XhXgSeHKFKS71v2z
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p><strong>Envolver:</strong> Você recebe a habilidade de Manipulação –
+      “Envolver Objeto” do Capítulo 6.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aspecto--gyo-foco-defensivo
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.YmnU9odlYrWDXe2D
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624910548
+  modifiedTime: 1782450289974
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_key: '!items!XhXgSeHKFKS71v2z'

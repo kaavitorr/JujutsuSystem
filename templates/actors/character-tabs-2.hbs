@@ -1,0 +1,3 @@
+<nav class="jj2-tabs-nav tabs" data-group="primary" aria-label="Abas da ficha">
+  {{#each tabs}}<button type="button" class="item always-interactive {{#if active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="{{ id }}" aria-pressed="{{#if active}}true{{else}}false{{/if}}">{{ label }}</button>{{/each}}
+</nav>

@@ -1,0 +1,107 @@
+folder: jAa1chkB8M4oVNXk
+name: PV Herdado / Inato
+type: feat
+_id: JrW8QBYrVPG9nzwZ
+img: icons/magic/life/heart-shadow-red.webp
+system:
+  description:
+    value: ''
+    chat: ''
+  source:
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  properties: []
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: pv-humano
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects:
+  - name: PV Herdado
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.JrW8QBYrVPG9nzwZ
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: false
+    _id: RrfsHOO2clcI1bGg
+    description: ''
+    transfer: true
+    statuses: []
+    flags:
+      dae:
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+        disableCondition: ''
+      dnd5e:
+        riders:
+          statuses: []
+      core:
+        overlay: false
+      JujutsuLegacy:
+        riders:
+          statuses: []
+    tint: '#ffffff'
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '14.364'
+      systemId: jujutsu-system
+      systemVersion: 5.3.2
+      createdTime: 1776624889183
+      modifiedTime: 1782568639071
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+      exportSource: null
+    img: icons/magic/life/heart-shadow-red.webp
+    type: base
+    system:
+      changes:
+        - key: system.attributes.hp.bonuses.overall
+          value: '+4'
+          priority: 28
+          type: add
+          phase: initial
+    sort: 0
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!JrW8QBYrVPG9nzwZ.RrfsHOO2clcI1bGg'
+sort: 100000
+ownership:
+  default: 0
+  v3jAvKuyCM7VFuIU: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 11e96939d80f0441d80646045b5958892590271d
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624889183
+  modifiedTime: 1776924554654
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!JrW8QBYrVPG9nzwZ'

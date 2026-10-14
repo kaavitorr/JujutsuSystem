@@ -1,0 +1,84 @@
+folder: iNRg6lP5gBnxUlSD
+name: Aprendizado
+type: feat
+img: icons/commodities/treasure/token-engraved-red-glowing.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Os feiticeiros inatos acabam que precisarem dominar
+      diferentes atividades para complementar suas habilidades.</p><p
+      class="MsoListParagraph"><strong>Característica:</strong> Você pode
+      escolher uma perícia para receber proficiência e uma perícia que você
+      tenha proficiência para receber maestria nela.</p>
+    chat: ''
+  source:
+    custom: LdJ Capítulo 6
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: Humano Normal
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: aprendizado
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 100000
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  MhGXeDSlt2zUqR0J: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: bca7b0b6bdae6408cc428372fc72755356d29230
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  compendiumSource: Item.pIaAt98DZBQngnAh
+  duplicateSource: Item.IHkbJQILPKbQABJg
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902129
+  modifiedTime: 1776962871374
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: JeC6KoI3H47ldIvt
+_key: '!items!JeC6KoI3H47ldIvt'

@@ -1,0 +1,21 @@
+_id: jj2a000000000043
+_key: '!items!jj2a000000000043'
+name: Punho Devastador
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: punho-devastador
+  description:
+    value: <p>Ao causar um acerto crítico, você causa dano adicional igual o seu atributo principal e a criatura deve realizar uma Salvaguarda de Constituição para não perder um Ponto de Ação [⬢] no início do próximo turno dela. Essa característica pode ser ativada múltiplas vezes por rodada.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Corpo de Guerreiro
+      requisitos: []
+folder: jj2f000000000009
+ownership:
+  default: 0
+effects: []
+sort: 0

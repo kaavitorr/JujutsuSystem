@@ -1,0 +1,65 @@
+folder: vG1tvdXvcpq70Tb5
+name: Desengajar
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>Você aprendeu a sair com segurança de uma situação perigosa, podendo se
+      afastar rapidamente de qualquer perigo ao seu
+      redor.</p><p><strong>Característica:</strong> Ao utilizar uma ação bônus e
+      2 PA, você pode se mover para longe de um oponente evitando reações como
+      Ataque de Oportunidade.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: desbravador
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 1900000
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  MhGXeDSlt2zUqR0J: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 3e52e45e316432b8aa25db9303457f76de9c1f98
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: Item.pIaAt98DZBQngnAh
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902118
+  modifiedTime: 1776913392543
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: 27hODHpzlrfada74
+_key: '!items!27hODHpzlrfada74'

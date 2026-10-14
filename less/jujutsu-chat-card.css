@@ -1,0 +1,64 @@
+/* ══════════════════════════════════════════════════════════════════
+   JUJUTSU LEGACY — ESTILOS DE CHAT (cards nativos 6.0.0)
+   Após a migração para os cards nativos do dnd5e 6.0.0, restam aqui
+   apenas os estilos dos elementos que continuam vivos nas mensagens
+   nativas: badges injetados (Explosão Ofensiva, Escala, Excedente,
+   Maestria) e o mini-card do Fulgor Negro (dano ×2,5). O card
+   customizado foi removido — mensagens antigas no histórico do chat
+   perdem o visual, sem impacto funcional.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── PA BADGE (chips injetados nas mensagens nativas) ── */
+.jj-pa-badge {
+  font-size: 9px;
+  padding: 2px 5px;
+  border: 1px solid #30206a;
+  border-radius: 2px;
+  color: #7050c0;
+  background: #0e0820;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+/* ── FULGOR NEGRO — mini-card de dano ×2,5 ───────────── */
+.jj-fulgor-mini {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  margin: 2px 0;
+  border: 1px solid #804020;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #1a0a00 0%, #0e0e18 100%);
+  font-size: 12px;
+}
+
+.jj-fulgor-label {
+  font-weight: 700;
+  color: #ffb030;
+  text-shadow: 0 0 6px rgba(255, 180, 40, 0.4);
+  white-space: nowrap;
+}
+
+.jj-fulgor-totals {
+  color: #ccc;
+  white-space: nowrap;
+}
+
+.jj-fulgor-totals strong { color: #ff6050; }
+
+.jj-fulgor-aplicar {
+  margin-left: auto;
+  padding: 3px 10px;
+  border: 1px solid #a02020;
+  border-radius: 3px;
+  background: #0e0820;
+  color: #ff6050;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+
+.jj-fulgor-aplicar:hover { border-color: #ff6050; color: #ffb0b0; }
+.jj-fulgor-aplicar:disabled { opacity: 0.4; cursor: default; }

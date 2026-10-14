@@ -1,0 +1,113 @@
+<section class="tab sidebar-tab flexcol" data-tab="sidebar" data-group="primary">
+
+  {{!-- Pontos de Vida --}}
+  <div class="meter-group">
+    <div class="label roboto-condensed-upper">
+      <span>{{ localize "DND5E.HitPoints" }}</span>
+      {{#if editable}}
+      <button type="button" class="config-button unbutton" data-action="showConfiguration"
+              data-config="hitPoints" data-tooltip="DND5E.HitPointsConfig"
+              aria-label="{{ localize 'DND5E.HitPointsConfig' }}">
+        <i class="fas fa-cog" inert></i>
+      </button>
+      {{/if}}
+    </div>
+    <div style="display: flex; gap: 4px;">
+      {{#with system.attributes.hp}}
+      <div class="meter sectioned hit-points" style="flex: 1;">
+        <div class="progress hit-points" role="meter" aria-valuemin="0" aria-valuenow="{{ value }}"
+             aria-valuemax="{{ max }}" style="--bar-percentage: {{ pct }}%">
+          <div class="label">
+            <span class="value">{{ value }}</span>
+            <span class="separator">&sol;</span>
+            <span class="max">{{ max }}</span>
+          </div>
+          <input type="text" name="system.attributes.hp.value" data-dtype="Number"
+                 placeholder="0" value="{{ value }}" hidden>
+        </div>
+      </div>
+      {{/with}}
+    </div>
+  </div>
+
+  {{!-- Classe de Resistência (2.0) --}}
+  <div class="meter-group">
+    <div class="label roboto-condensed-upper">
+      <span>Classe de Resistência</span>
+    </div>
+    <div class="jj2-cr-box">
+      <span class="value">{{ system.attributes.ac.value }}</span>
+      <span class="hint">10 + ⌊({{ jj2.principalLabel }} + AGI + CON) ÷ 3⌋</span>
+    </div>
+  </div>
+
+  {{!-- Energia Amaldiçoada (Total + PA Gerado) --}}
+  <div class="meter-group">
+    <div class="label roboto-condensed-upper" style="display: flex; justify-content: space-between;">
+      <span>Energia Amaldiçoada</span>
+      <span style="display: inline-flex; align-items: center; gap: 4px;">
+        <span>PA Gerado</span>
+        <a class="jj-generate-energy-btn glow" data-action="jj-gerar-aura"
+           data-tooltip="Gerar Energia Amaldiçoada (mesmo efeito de passar o turno)"
+           aria-label="Gerar Energia Amaldiçoada">
+          <i class="fas fa-bolt" inert></i>
+        </a>
+      </span>
+    </div>
+    <div style="display: flex; gap: 4px;">
+      {{#with system.energy}}
+      <div class="meter sectioned hit-points cursed-energy-bar" style="flex: 2;">
+        <div class="progress hit-points" role="meter" aria-valuemin="0" aria-valuenow="{{ total }}"
+             aria-valuemax="{{ max }}" style="--bar-percentage: {{ @root.energyPct }}%">
+          <div class="label">
+            <span class="value">{{ total }}</span>
+            <span class="separator">&sol;</span>
+            <span class="max">{{ max }}</span>
+          </div>
+          <input type="text" name="system.energy.total" data-dtype="Number"
+                 placeholder="0" value="{{ total }}" hidden>
+        </div>
+      </div>
+      <div class="meter sectioned hit-points" style="flex: 1; --dnd5e-color-hp-1: #2a6aaa; --dnd5e-color-hp-2: #4a90d9; --dnd5e-color-hp-3: #3a80c9;">
+        <div class="progress hit-points" role="meter" style="--bar-percentage: 100%">
+          <div class="label">
+            <input type="text" name="system.energy.generated" data-dtype="Number"
+                   placeholder="0" value="{{ generated }}"
+                   style="background:transparent; border:none; color:inherit; text-align:center; width:100%;">
+          </div>
+        </div>
+      </div>
+      {{/with}}
+    </div>
+  </div>
+
+  {{!-- Pontos de Armadura (Foco Defensivo) --}}
+  <div class="meter-group">
+    <div class="label roboto-condensed-upper">
+      <span>Pontos de Armadura</span>
+    </div>
+    <div style="display: flex; gap: 4px;">
+      {{#with system.armorPoints}}
+      <div class="meter sectioned hit-points armor-points-bar" style="flex:1; --dnd5e-color-hp-1: #4a5a6a; --dnd5e-color-hp-2: #8a9aaa; --dnd5e-color-hp-3: #6a7a8a;" role="meter" aria-valuemin="0" aria-valuenow="{{ value }}" aria-valuemax="{{ max }}">
+        <div class="progress hit-points armor-points-bar" role="meter" style="--bar-percentage: {{ @root.armorPct }}%; --dnd5e-color-hp-1: #4a5a6a; --dnd5e-color-hp-2: #8a9aaa; --dnd5e-color-hp-3: #6a7a8a;">
+          <div class="label">
+            <span class="value">{{ value }}</span>
+            <span class="separator">&sol;</span>
+            <span class="max">{{ max }}</span>
+          </div>
+          <input type="text" name="system.armorPoints.value" data-dtype="Number"
+                 data-max="{{ max }}" placeholder="0" value="{{ value }}" hidden>
+        </div>
+      </div>
+      {{#if max}}
+      <button type="button" class="jj-foco-def-btn {{#if value}}active{{/if}}"
+              data-action="jj-foco-defensivo"
+              data-tooltip="{{#if value}}Desativar Foco Defensivo{{else}}Ativar Foco Defensivo ({{max}} Pontos de Armadura){{/if}}">
+        <i class="fas fa-shield-halved" inert></i>
+      </button>
+      {{/if}}
+      {{/with}}
+    </div>
+  </div>
+
+</section>

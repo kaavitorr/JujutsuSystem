@@ -1,0 +1,83 @@
+folder: iNRg6lP5gBnxUlSD
+name: Resiliência
+type: feat
+img: icons/commodities/treasure/token-engraved-red-glowing.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Devido à natureza de seus poderes, eles costumam ser
+      mais adaptativos ao ambiente ao redor e as diferentes habilidades.</p><p
+      class="MsoListParagraph"><strong>Característica:</strong> Você recebe
+      proficiência em uma Salvaguarda a sua escolha.</p>
+    chat: ''
+  source:
+    custom: LdJ Capítulo 6
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: Kiriko
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: resiliencia
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 300000
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  MhGXeDSlt2zUqR0J: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 69398281550eefedb1d2fd92a411b02c8e44214c
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  compendiumSource: Item.pIaAt98DZBQngnAh
+  duplicateSource: Item.0cKBPEUSHPO2V6m7
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902131
+  modifiedTime: 1776962883542
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: LIxVfMsvsX0L1Pmu
+_key: '!items!LIxVfMsvsX0L1Pmu'

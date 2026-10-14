@@ -1,0 +1,222 @@
+_id: ZOAhBicXzOEKWEgN
+name: Cabeçada (NPC)
+type: weapon
+img: icons/creatures/abilities/bull-head-horns-glowing.webp
+effects: []
+folder: LVzVKYAvuAHFakez
+sort: 0
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: false
+      altValue: false
+    quickProperties:
+      value: true
+      altValue: true
+    quickVersatile:
+      value: false
+      altValue: false
+    quickOther:
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      value: true
+      altValue: true
+    quickCharges:
+      value:
+        quantity: false
+      altValue:
+        quantity: false
+    quickAttack:
+      value: true
+      altValue: true
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+      altValue:
+        '0': true
+    quickSave:
+      value: true
+      altValue: true
+    quickTemplate:
+      value: true
+      altValue: true
+  scene-packer:
+    hash: 89b85631061a69f92d764ef3e019bd45ccc86874
+    sourceId: Item.ZOAhBicXzOEKWEgN
+  core: {}
+  cf: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+system:
+  description:
+    value: >-
+      <p>Ataque Corpo-a-Corpo com Arma: A baleia insular realiza uma investida
+      com a cabeça em um cilindro de 15 metros. Cada criatura na área deve
+      realizar um teste de resistência de destreza CD 24, sofrendo 83 (15d10) de
+      concussão se falhar na resistência, ou metade desse dano caso obtenha
+      sucesso. Empurrando todas as criaturas, que não passarem em um teste de
+      força CD 20, por 9 metros, também deve ser bem sucedida em um teste de
+      resistência de Constituição CD 20 ou ficará atordoada até o final do
+      próximo turno da baleia.</p>
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  quantity: 1
+  weight:
+    value: 0
+    units: lb
+  price:
+    value: 0
+    denomination: gp
+  attunement: ''
+  equipped: true
+  rarity: ''
+  identified: true
+  cover: null
+  range:
+    value: null
+    long: null
+    units: ft
+    reach: null
+  uses:
+    max: ''
+    recovery: []
+    spent: 0
+  damage:
+    versatile:
+      number: null
+      denomination: null
+      bonus: ''
+      types: []
+      custom:
+        enabled: false
+        formula: ''
+      scaling:
+        mode: ''
+        number: null
+        formula: ''
+    base:
+      number: 15
+      denomination: 10
+      bonus: ''
+      types:
+        - bludgeoning
+      custom:
+        enabled: false
+        formula: ''
+      scaling:
+        mode: ''
+        number: null
+        formula: ''
+  armor:
+    value: 10
+  hp:
+    value: 0
+    max: 0
+    dt: null
+    conditions: ''
+  properties: []
+  proficient: 1
+  unidentified:
+    description: ''
+  type:
+    value: natural
+    baseItem: ''
+  container: null
+  attuned: false
+  activities:
+    dnd5eactivity000:
+      _id: dnd5eactivity000
+      type: save
+      activation:
+        type: action
+        value: 1
+        condition: ''
+        override: false
+      consumption:
+        targets: []
+        scaling:
+          allowed: false
+          max: ''
+        spellSlot: true
+      description:
+        chatFlavor: ''
+      duration:
+        concentration: false
+        value: ''
+        units: inst
+        special: ''
+        override: false
+      effects: []
+      range:
+        units: self
+        special: ''
+        override: false
+      target:
+        template:
+          count: ''
+          contiguous: false
+          type: cylinder
+          size: '15'
+          width: ''
+          height: ''
+          units: m
+          stationary: false
+        affects:
+          count: ''
+          type: ''
+          choice: false
+          special: ''
+        prompt: true
+        override: false
+      uses:
+        spent: 0
+        max: ''
+        recovery: []
+      damage:
+        onSave: half
+        parts: []
+      save:
+        ability:
+          - dex
+        dc:
+          calculation: str
+          formula: ''
+      sort: 0
+      img: null
+      flags: {}
+      visibility:
+        level: {}
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+  identifier: cabecada-npc
+  ammunition: {}
+  crew:
+    value: []
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Item.zKiEySCx77PnZlCP
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910550
+  modifiedTime: 1776624910572
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!ZOAhBicXzOEKWEgN'

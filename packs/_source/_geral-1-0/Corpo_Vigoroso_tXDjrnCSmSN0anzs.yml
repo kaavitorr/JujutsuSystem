@@ -1,0 +1,65 @@
+folder: vG1tvdXvcpq70Tb5
+name: Corpo Vigoroso
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>Você nasceu com um corpo mais rígido e enérgico, suas feridas se curam
+      mais rápido e seu corpo aguenta muito mais esforço e ferimentos que o
+      normal.</p><p><strong>Característica:</strong> Sempre que passar de nível,
+      caso queira, você pode rolar uma segunda vez o seu dado de vida, e
+      escolher o maior resultado, para aumentar o seu valor máximo de Pontos de
+      Vida. Ao terminar um descanso curto você sempre pode usar 1 dado de vida
+      além dos que você já tem.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: alvo-marcado
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: ba64831e68dad90b14a14703c4cc590a915cadfe
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902156
+  modifiedTime: 1776913392074
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: tXDjrnCSmSN0anzs
+sort: 1800000
+_key: '!items!tXDjrnCSmSN0anzs'

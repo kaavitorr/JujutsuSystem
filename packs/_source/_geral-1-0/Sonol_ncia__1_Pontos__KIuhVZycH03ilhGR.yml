@@ -1,0 +1,83 @@
+_id: KIuhVZycH03ilhGR
+name: Sonolência (1 Pontos)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects: []
+folder: ImFD309NSdjSZUT5
+sort: 2300000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 70b708207853df4af07fba0a62ff4a4c798a683b
+    sourceId: Item.6eY0F6Jp92TWWk8D
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p>Por algum motivo, você está sempre com sono, não importa se dormiu
+      normalmente no dia anterior ou se acabou de acordar.</p><p>No início de um
+      encontro de combate, você deve rolar 1d6, e em um resultado 3 ou menor,
+      você passa a primeira rodada do combate com a condição “Inconsciente”.
+      Esse teste pode ser solicitado pelo Narrador em qualquer outro momento
+      também.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: sonolencia-1-pontos
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.vaD0XYw0xVAjVw4N
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902129
+  modifiedTime: 1776624902168
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!KIuhVZycH03ilhGR'

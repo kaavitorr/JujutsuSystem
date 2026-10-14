@@ -1,0 +1,45 @@
+_id: jj2a000000000002
+name: Selos de Mão
+type: feat
+img: icons/magic/nature/plant-seed-hands-glow-yellow.webp
+system:
+  identifier: selos-de-mao
+  description:
+    value: >-
+      <p>A primeira disciplina dentro das habilidades de Feitiço inato é a dos
+      Selos e Encantamentos. Você é capaz de utilizar diversos selos para
+      reduzir o custo de ação ou usar encantamentos amplificar suas
+      habilidades.</p><p>Você aprendeu a adicionar complexidade a ativação de
+      suas habilidades para facilitar sua ativação. Você recebe 3 usos de selos
+      ao aprender essa habilidade e 1 adicionais toda vez que aprender uma nova
+      habilidade desse caminho, recuperando todos os gastos ao realizar um
+      descanso curto ou longo.</p><p>Ao consumir um selo, você deve ter pelo
+      menos uma mão livre e faz com que você reduza o custo da sua próxima
+      técnica em um Ponto de Ação [⬢], até um mínimo de uma.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Selos e Encantamentos
+      requisitos: []
+folder: jj2f000000000002
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814714978
+  modifiedTime: 1791814714978
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000002'

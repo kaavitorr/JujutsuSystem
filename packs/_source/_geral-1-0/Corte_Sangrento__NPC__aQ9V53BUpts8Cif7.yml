@@ -1,0 +1,77 @@
+_id: aQ9V53BUpts8Cif7
+name: Corte Sangrento (NPC)
+type: feat
+img: icons/skills/wounds/injury-triple-slash-bleed.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 650000
+flags:
+  scene-packer:
+    hash: 63c8d46f8eded0e9cab08e21a3549853be99c46c
+    sourceId: Item.aQ9V53BUpts8Cif7
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Corte Sangrento (–): </strong>Uma vez por turno, após acertar
+      um alvo com uma jogada de ataque corpo-a-corpo com arma cortante, o alvo
+      atingido deve ser bem sucedido em um Teste de Resistência de Constituição
+      ou receberá a condição “Sangramento”. Esta característica pode ser usada
+      até 5 vezes por dia e recarrega logo após o término de um descanso
+      longo.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: corte-sangrento-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.hyLilKLejhIKKr6R
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910551
+  modifiedTime: 1776624910573
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!aQ9V53BUpts8Cif7'

@@ -1,0 +1,363 @@
+/* Jujutsu 2.0 item, activity and activity selection surfaces; native forms remain intact. */
+/* Dynamic initiative: a round snapshot with a distinct lead position and a quiet ranking. */
+.jj2-initiative-card { --initiative-ink: #121017; --initiative-paper: #f3eee3; --initiative-purple: #a67bda; --initiative-gold: #efbf51; box-sizing: border-box; min-width: 0; margin: 6px 0; padding: 0; overflow: hidden; color: var(--initiative-paper); background: repeating-linear-gradient(155deg, transparent 0 18px, #ffffff03 18px 19px), var(--initiative-ink); border: 1px solid #a67bda55; border-left: 3px solid var(--initiative-gold); border-radius: 0; box-shadow: 3px 3px 0 #08070c80; font: 400 12px/1.25 JJ2Condensed, sans-serif; }
+.jj2-initiative-card .jj2-initiative-header { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; align-items: center; gap: 9px; min-width: 0; padding: 12px 10px 10px; border-bottom: 1px solid #efbf5140; background: linear-gradient(115deg, #a67bda22 0 62%, transparent 62%), #1a1522; }
+.jj2-initiative-card .jj2-initiative-emblem { display: grid; place-items: center; width: 30px; height: 34px; color: var(--initiative-gold); border: 1px solid #efbf5166; background: #121017; clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
+.jj2-initiative-card .jj2-initiative-icon { display: block; width: 20px; height: 20px; pointer-events: none; }
+.jj2-initiative-card .jj2-initiative-heading { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.jj2-initiative-card .jj2-initiative-kicker { color: #b8a4d0; font: 700 8px/1 JJ2Condensed, sans-serif; letter-spacing: 1px; text-transform: uppercase; }
+.jj2-initiative-card .jj2-initiative-title { color: var(--initiative-paper); font: italic 700 21px/1 JJ2Condensed, sans-serif; letter-spacing: .5px; text-transform: uppercase; }
+.jj2-initiative-card .jj2-initiative-round { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-width: 44px; padding-left: 10px; border-left: 1px solid #efbf5144; }
+.jj2-initiative-card .jj2-initiative-round > span { color: var(--initiative-gold); font: 700 8px/1 JJ2Condensed, sans-serif; letter-spacing: 1px; text-transform: uppercase; }
+.jj2-initiative-card .jj2-initiative-round > strong { color: var(--initiative-gold); font: 700 29px/1 JJ2Condensed, sans-serif; font-variant-numeric: tabular-nums; }
+.jj2-initiative-card .jj2-initiative-columns { display: grid; grid-template-columns: 24px minmax(0, 1fr) 40px; gap: 7px; margin: 0 8px; padding: 7px 6px 5px; color: #a29aac; font: 700 8px/1 JJ2Condensed, sans-serif; letter-spacing: .7px; text-transform: uppercase; }
+.jj2-initiative-card .jj2-initiative-columns > span:last-child { text-align: center; }
+.jj2-initiative-card ol.jj2-initiative-list { list-style: none; padding: 0 8px 4px; margin: 0; }
+.jj2-initiative-card .jj2-initiative-row { box-sizing: border-box; display: grid; grid-template-columns: 24px 30px minmax(0, 1fr) 40px; align-items: center; gap: 7px; min-height: 44px; margin: 0 0 4px; padding: 5px 6px; border: 1px solid #a67bda22; border-left: 2px solid #a67bda55; background: #ffffff02; }
+.jj2-initiative-card .jj2-initiative-row:nth-child(even) { background: #a67bda08; }
+.jj2-initiative-card .jj2-initiative-position { display: grid; place-items: center; min-width: 0; color: #a99abb; font: italic 700 16px/1 JJ2Condensed, sans-serif; font-variant-numeric: tabular-nums; }
+.jj2-initiative-card .jj2-initiative-portrait { box-sizing: border-box; display: grid; place-items: center; width: 30px; height: 32px; overflow: hidden; border: 1px solid #a67bda55; background: #1d1728; clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); }
+.jj2-initiative-card .jj2-initiative-portrait img { display: block; width: 100%; height: 100%; margin: 0; border: 0; border-radius: 0; object-fit: cover; object-position: center top; }
+.jj2-initiative-card .jj2-initiative-avatar-fallback { color: var(--initiative-purple); }
+.jj2-initiative-card .jj2-initiative-name { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--initiative-paper); font: 700 13px/1.2 JJ2Condensed, sans-serif; }
+.jj2-initiative-card .jj2-initiative-score { display: grid; place-items: center; box-sizing: border-box; min-width: 40px; height: 32px; padding: 0 2px; color: var(--initiative-paper); background: #a67bda10; border: 1px solid #a67bda55; border-bottom: 2px solid #a67bda88; font: 700 20px/1 JJ2Condensed, sans-serif; font-variant-numeric: tabular-nums; clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
+.jj2-initiative-card .jj2-initiative-row.is-leading { border-color: #efbf5144; border-left-color: var(--initiative-gold); background: linear-gradient(115deg, #efbf5114, #efbf5104); }
+.jj2-initiative-card .is-leading .jj2-initiative-position { color: var(--initiative-gold); }
+.jj2-initiative-card .is-leading .jj2-initiative-portrait { border-color: #efbf5166; }
+.jj2-initiative-card .is-leading .jj2-initiative-score { color: var(--initiative-ink); background: var(--initiative-gold); border-color: var(--initiative-gold); }
+.jj2-initiative-card .jj2-initiative-footer { display: flex; justify-content: space-between; gap: 8px; padding: 7px 10px; border-top: 1px solid #a67bda22; color: #a29aac; background: #0b090f66; font: 700 8px/1 JJ2Condensed, sans-serif; letter-spacing: .5px; text-transform: uppercase; }
+/* Attack and technique activation: ink panels, outlined seals and restrained gold accents. */
+.application.jj2-document:is(.jj2-activation, .jj2-attack-dialog, .jj2-roll-dialog, .jj2-defensive-burst) { border-top: 3px solid var(--jj2-purple); }
+.application.jj2-document:is(.jj2-activation, .jj2-attack-dialog, .jj2-roll-dialog, .jj2-defensive-burst) .window-content { overflow-y: auto; max-height: calc(100vh - 90px); gap: 10px; padding: 12px; }
+.jj2-document .jj2-activation-panel { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.jj2-document .jj2-activation-hero { position: relative; display: grid; grid-template-columns: 64px minmax(0, 1fr) 24px; align-items: center; gap: 12px; min-height: 88px; padding: 12px; border: 1px solid #a67bda70; border-left: 3px solid var(--jj2-purple); background: linear-gradient(115deg, #a67bda25 0 55%, transparent 55%), repeating-linear-gradient(155deg, transparent 0 12px, #ffffff04 12px 13px), #19141f; box-shadow: 3px 3px 0 #050509; }
+.jj2-document .jj2-activation-art { width: 64px; height: 64px; padding: 4px; border: 1px solid #efbf5180; background: #101015; clip-path: polygon(7px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 7px); }
+.jj2-document .jj2-activation-art img { width: 100%; height: 100%; border: 0; border-radius: 0; object-fit: contain; }
+.jj2-document .jj2-activation-kicker { display: block; margin-bottom: 5px; color: var(--jj2-gold); font: 700 10px/1 JJ2Condensed, sans-serif; letter-spacing: 1.4px; text-transform: uppercase; }
+.application.jj2-document .jj2-activation-hero h2 { margin: 0; padding: 0; border: 0; font: italic 700 24px/1.05 JJ2Condensed, sans-serif; text-transform: uppercase; color: var(--jj2-paper); overflow-wrap: anywhere; text-shadow: 2px 2px #050509; }
+.jj2-document .jj2-activation-subtitle { display: block; margin-top: 5px; font: 400 11px/1.3 JJ2Condensed, sans-serif; color: var(--jj2-muted); }
+.jj2-document .jj2-activation-hero > svg { width: 24px; height: 24px; color: var(--jj2-purple); }
+.jj2-document .jj2-activation-controls { display: flex; flex-direction: column; gap: 12px; }
+.jj2-document .jj2-activation-field { display: grid; grid-template-columns: 105px minmax(0, 1fr); align-items: center; gap: 6px 10px; }
+.jj2-document .jj2-activation-field > label { font: 700 12px/1.2 JJ2Condensed, sans-serif; text-transform: uppercase; }
+.jj2-document .jj2-activation-field > p { grid-column: 1 / -1; margin: 0; color: var(--jj2-muted); font: 400 10px/1.4 JJ2Condensed, sans-serif; }
+.jj2-document .jj2-gesture { padding: 10px; border: 1px solid #a67bda40; background: #a67bda0a; }
+.jj2-document .jj2-gesture select option:disabled { color: #797581; background: #141218; }
+.jj2-document .jj2-advantage-counters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding-top: 4px; }
+.jj2-document .jj2-counter { --counter-accent: var(--jj2-gold); display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 0; }
+.jj2-document .jj2-counter-bane { --counter-accent: var(--jj2-purple); }
+.jj2-document .jj2-counter > label { color: var(--counter-accent); font: italic 700 14px/1 JJ2Condensed, sans-serif; letter-spacing: .5px; text-transform: uppercase; }
+.jj2-document .jj2-counter > span { font: 400 10px/1 JJ2Condensed, sans-serif; color: var(--jj2-muted); }
+.jj2-document .jj2-counter-value { display: flex; justify-content: center; align-items: center; gap: 7px; width: 100%; }
+.application.jj2-document:is(.jj2-activation, .jj2-attack-dialog, .jj2-roll-dialog, .jj2-defensive-burst) .jj2-activation-panel .jj2-counter-value input[type='number'] { box-sizing: border-box; width: 60px; height: 62px; min-height: 62px; flex: none; margin: 0; padding: 0; border: 0; border-bottom: 2px solid var(--counter-accent); background: linear-gradient(145deg, #ffffff06, transparent), #19151f; color: var(--jj2-paper); font: 700 32px/62px JJ2Condensed, sans-serif; text-align: center; appearance: textfield; clip-path: polygon(50% 0, 100% 22%, 100% 78%, 50% 100%, 0 78%, 0 22%); }
+.jj2-document .jj2-counter-value input::-webkit-inner-spin-button, .jj2-document .jj2-counter-value input::-webkit-outer-spin-button, .jj2-document input.jj2-stat-seal::-webkit-inner-spin-button, .jj2-document input.jj2-stat-seal::-webkit-outer-spin-button { appearance: none; margin: 0; }
+.application.jj2-document .jj2-counter-value button { display: grid; place-items: center; flex: none; width: 27px; height: 28px; margin: 0; padding: 4px; border: 1px solid #ffffff18; border-radius: 0; color: var(--counter-accent); background: #1b1721; box-shadow: none; }
+.jj2-document .jj2-counter-value button svg { width: 16px; height: 16px; pointer-events: none; }
+.jj2-document .jj2-counter-icon { display: block; flex: none; pointer-events: none; }
+.application.jj2-document .jj2-counter-value button:hover { border-color: var(--counter-accent); background: #ffffff0a; }
+.jj2-document .jj2-advantage-result { display: flex; justify-content: center; align-items: center; gap: 10px; padding: 6px; border-top: 1px solid #a67bda35; border-bottom: 1px solid #a67bda35; color: var(--jj2-muted); font: 700 10px/1.2 JJ2Condensed, sans-serif; text-transform: uppercase; }
+.jj2-document .jj2-advantage-result strong { font-size: 16px; color: var(--jj2-paper); }
+.jj2-document .jj2-activation-note { margin: -5px 0 0; color: var(--jj2-muted); font: 400 10px/1.3 JJ2Condensed, sans-serif; text-align: center; }
+.jj2-document .jj2-burst { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 9px 12px; padding: 12px; border: 1px solid #efbf5155; border-left: 3px solid var(--jj2-gold); background: linear-gradient(115deg, #efbf510d, transparent 65%), #18141c; box-shadow: 3px 3px 0 #050509; }
+.jj2-document .jj2-burst-heading { grid-column: 1 / -1; display: flex; align-items: center; gap: 7px; padding-bottom: 8px; border-bottom: 1px solid #efbf5133; color: var(--jj2-gold); }
+.jj2-document .jj2-burst-heading svg { width: 17px; height: 17px; }
+.application.jj2-document .jj2-burst-heading h3 { flex: 1; margin: 0; color: var(--jj2-paper); font: italic 700 16px/1 JJ2Condensed, sans-serif; text-transform: uppercase; }
+.jj2-document .jj2-burst-heading > span { font: 700 16px/1 JJ2Condensed, sans-serif; }
+.jj2-document .jj2-burst .jj2-counter > label { font: 700 10px/1 JJ2Condensed, sans-serif; }
+.application.jj2-document:is(.jj2-activation, .jj2-attack-dialog, .jj2-roll-dialog, .jj2-defensive-burst) .jj2-activation-panel .jj2-burst .jj2-counter-value input[type='number'] { width: 46px; height: 48px; min-height: 48px; font-size: 25px; line-height: 48px; }
+.jj2-document .jj2-burst .jj2-counter-value { gap: 4px; }
+.jj2-document .jj2-burst > p { align-self: center; margin: 0; color: var(--jj2-muted); font: 400 11px/1.55 JJ2Condensed, sans-serif; }
+.jj2-document .jj2-burst > p b { color: var(--jj2-gold); }
+.jj2-document .jj2-activation-breakdown { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding-top: 4px; }
+.jj2-document .jj2-activation-breakdown > div { display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 0; text-align: center; }
+.application.jj2-document:is(.jj2-activation, .jj2-attack-dialog, .jj2-roll-dialog, .jj2-defensive-burst) .jj2-activation-panel .jj2-activation-breakdown .jj2-stat-seal { box-sizing: border-box; display: grid; place-items: center; width: 60px; height: 60px; min-height: 60px; margin: 0; padding: 0; border: 1px solid #a67bda88; border-bottom: 3px solid var(--jj2-purple); background: #a67bda0d; color: var(--jj2-paper); font: 700 27px/60px JJ2Condensed, sans-serif; text-align: center; appearance: textfield; clip-path: polygon(9px 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%, 0 9px); }
+.application.jj2-document:is(.jj2-activation, .jj2-attack-dialog, .jj2-roll-dialog, .jj2-defensive-burst) .jj2-activation-panel .jj2-activation-breakdown > div:nth-child(2) .jj2-stat-seal { border-color: #efbf5188; border-bottom-color: var(--jj2-gold); background: #efbf510a; }
+.jj2-document .jj2-activation-breakdown :is(strong, label) { padding: 3px 7px; background: #25202e; color: var(--jj2-paper); font: italic 700 11px/1 JJ2Condensed, sans-serif; text-transform: uppercase; }
+.jj2-document .jj2-activation-breakdown small { width: 100%; color: var(--jj2-muted); font: 400 9px/1.2 JJ2Condensed, sans-serif; overflow-wrap: anywhere; }
+.jj2-document .jj2-attack-formula { display: flex; gap: 12px; align-items: center; padding: 10px 12px; border: 1px solid #a67bda44; background: #17131f; }
+.jj2-document .jj2-attack-formula > svg { flex: none; width: 34px; height: 38px; color: var(--jj2-purple); }
+.jj2-document .jj2-attack-formula > div { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.jj2-document .jj2-attack-formula span { color: var(--jj2-purple); font: 700 9px/1 JJ2Condensed, sans-serif; text-transform: uppercase; }
+.jj2-document .jj2-attack-formula strong { color: var(--jj2-paper); font: 700 13px/1.3 JJ2Condensed, sans-serif; overflow-wrap: anywhere; }
+.application.jj2-document:is(.jj2-activation, .jj2-attack-dialog, .jj2-roll-dialog, .jj2-defensive-burst) :is(.form-footer, .dialog-buttons) { margin-top: 4px; border-top: 1px solid #a67bda55; padding-top: 10px; }
+.application.jj2-document:is(.jj2-activation, .jj2-attack-dialog, .jj2-roll-dialog, .jj2-defensive-burst) :is(.form-footer, .dialog-buttons) button { min-height: 36px; color: var(--jj2-ink); background: var(--jj2-gold); border: 1px solid var(--jj2-gold); border-radius: 0; font: italic 700 14px/1 JJ2Condensed, sans-serif; text-transform: uppercase; box-shadow: 3px 3px 0 #050509; }
+.application.jj2-document { --jj2-ink: #101015; --jj2-paper: #f3eee3; --jj2-purple: #a67bda; --jj2-gold: #efbf51; --jj2-muted: #aaa7b4; --color-text-primary: #f3eee3; --color-text-secondary: #aaa7b4; --color-text-tertiary: #a67bda; --color-text-dark-primary: #f3eee3; --color-text-dark-secondary: #aaa7b4; --dnd5e-color-gold: #a67bda; --dnd5e-inventory-border: 1px solid #a67bda55; --item-control-color: #aaa7b4; --item-control-interactive-color: #f3eee3; --item-control-active-color: #efbf51; color: var(--jj2-paper); background: var(--jj2-ink); border: 1px solid #a67bda88; border-radius: 0; box-shadow: 5px 5px 0 #050509bb; font-family: JJ2Condensed, sans-serif; }
+.application.jj2-document.jj2-item-sheet::before { content: none !important; background: none !important; }
+.application.jj2-document .window-header { background: #17131f; border-bottom: 1px solid #a67bda44; color: var(--jj2-paper); }
+.application.dnd5e2.jj2-document.jj2-weapon-choice:not(.minimized) > .window-header { display: flex; align-items: center; gap: 6px; min-height: 36px; padding: 6px 8px; margin-block-end: 0; }
+.application.dnd5e2.jj2-document.jj2-weapon-choice:not(.minimized) > .window-header .window-title { position: static; inset: auto; z-index: auto; visibility: visible; flex: 1; min-width: 0; margin: 0; color: var(--jj2-paper); font: 700 14px/20px JJ2Condensed, sans-serif; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.jj2-document .window-title { color: var(--jj2-paper); font: 700 12px/1 JJ2Condensed, sans-serif; }
+.application.dnd5e2.jj2-document.jj2-activity-sheet:not(.minimized) > .window-header { box-sizing: border-box; display: flex; align-items: center; gap: 6px; height: 36px; min-height: 36px; padding: 6px 8px; margin-block-end: 0; }
+.application.dnd5e2.jj2-document.jj2-activity-sheet:not(.minimized) > .window-header .window-title { position: static; inset: auto; inset-inline: auto; inset-block-start: auto; z-index: auto; flex: 1 1 0; min-width: 0; margin: 0; padding: 0; color: var(--jj2-paper); font: 700 12px/20px JJ2Condensed, sans-serif; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.application.dnd5e2.jj2-document.jj2-activity-sheet:not(.minimized) > .window-content { margin-block-start: 0; padding-block-start: 16px; }
+.application.dnd5e2.jj2-document:is(.jj2-activation, .jj2-attack-dialog, .jj2-roll-dialog, .jj2-defensive-burst):not(.minimized) > .window-header { box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; flex: 0 0 auto; height: auto; min-height: 36px; padding: 6px 8px; margin-block-end: 0; }
+.application.dnd5e2.jj2-document:is(.jj2-activation, .jj2-attack-dialog, .jj2-roll-dialog, .jj2-defensive-burst):not(.minimized) > .window-header .window-title { position: static; inset: auto; inset-inline: auto; inset-block-start: auto; z-index: auto; flex: 1 1 0; min-width: 0; margin: 0; padding: 0; color: var(--jj2-paper); font: 700 14px/20px JJ2Condensed, sans-serif; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.application.dnd5e2.jj2-document:is(.jj2-activation, .jj2-attack-dialog, .jj2-roll-dialog, .jj2-defensive-burst):not(.minimized) > .window-header .window-subtitle { position: static; inset: auto; inset-inline: auto; inset-block-start: auto; z-index: auto; order: 1; flex: 0 0 100%; min-width: 0; max-width: 100%; margin: 0; padding: 0; color: var(--jj2-muted); font: 400 12px/16px JJ2Condensed, sans-serif; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.application.dnd5e2.jj2-document:is(.jj2-activation, .jj2-attack-dialog, .jj2-roll-dialog, .jj2-defensive-burst) > .window-header .window-subtitle:empty, .application.dnd5e2.jj2-document:is(.jj2-activation, .jj2-attack-dialog, .jj2-roll-dialog, .jj2-defensive-burst):has(.jj2-activation-hero) > .window-header .window-subtitle { display: none; }
+.application.dnd5e2.jj2-document:is(.jj2-activation, .jj2-attack-dialog, .jj2-roll-dialog, .jj2-defensive-burst):not(.minimized) > .window-content { margin-block-start: 0; }
+.jj2-document .window-header .header-control::before { content: none !important; }
+.jj2-document .window-header .header-control { display: grid; place-items: center; color: var(--jj2-muted); }
+.jj2-document .window-header .header-control:hover { color: var(--jj2-gold); }
+.jj2-document .jj2-document-icon { width: 16px; height: 16px; flex: none; vertical-align: middle; pointer-events: none; }
+.jj2-document .window-header .jj2-document-icon { width: 14px; height: 14px; }
+.application.jj2-document .window-content { color: var(--jj2-paper); padding: 12px; gap: 12px; background: repeating-linear-gradient(155deg, transparent 0 18px, #ffffff03 18px 19px), var(--jj2-ink); scrollbar-width: thin; scrollbar-color: var(--jj2-purple) transparent; }
+.jj2-document :is(.hint, .notes) { color: var(--jj2-muted); font: 400 11px/1.4 JJ2Condensed, sans-serif; }
+.jj2-document :is(label, .form-group > label, .label) { color: var(--jj2-paper); font-family: JJ2Condensed, sans-serif; }
+.application.jj2-document input:not([type='checkbox']):not([type='radio']):not([type='range']), .application.jj2-document select, .application.jj2-document textarea { color: var(--jj2-paper); background: #a67bda0d; border: 1px solid #a67bda44; border-radius: 0; box-shadow: none; font-family: JJ2Condensed, sans-serif; }
+.jj2-document :is(input, select):not([type='checkbox']):not([type='radio']):not([type='range']) { min-height: 28px; font-size: 12px; }
+.jj2-document :is(input, select, textarea):focus { outline: 1px solid var(--jj2-purple); border-color: var(--jj2-purple); box-shadow: none; }
+.jj2-document :is(input, select, textarea):disabled { opacity: .65; }
+.jj2-document :is(input[type='checkbox'], input[type='radio']) { accent-color: var(--jj2-gold); }
+.jj2-document select option { background: #17131f; color: var(--jj2-paper); }
+.jj2-document :is(.form-group, .form-fields) { min-width: 0; }
+.application.jj2-document fieldset { min-width: 0; padding: 12px; margin: 4px 0 10px; border: 1px solid #a67bda55; border-left: 3px solid var(--jj2-purple); border-radius: 0; background: repeating-linear-gradient(155deg, transparent 0 18px, #ffffff03 18px 19px), #19151f; }
+.application.jj2-document fieldset > legend { padding: 3px 7px; color: var(--jj2-purple); background: #100d17; font: italic 700 13px/1 JJ2Condensed, sans-serif; letter-spacing: .3px; }
+.jj2-document fieldset .form-group { margin: 6px 0; }
+.application.dnd5e2.jj2-document.jj2-activity-sheet .damage-part > .form-fields.field-groups { gap: 8px; padding-right: 0; }
+.application.dnd5e2.jj2-document.jj2-activity-sheet .damage-part .field-group { align-items: flex-end; gap: 6px; }
+.application.dnd5e2.jj2-document.jj2-activity-sheet .damage-part .field-group > .form-group { min-width: 0; margin: 0; }
+.application.dnd5e2.jj2-document.jj2-activity-sheet .damage-part .multi-select :is(multi-select, string-tags):has(.input-element-tags:empty) { margin-block-start: 0; }
+.application.dnd5e2.jj2-document.jj2-activity-sheet .damage-part .multi-select .input-element-tags:empty { min-height: 12px; }
+.application.dnd5e2.jj2-document.jj2-activity-sheet .damage-part .field-group > .control-button { position: static; inset: auto; display: grid; place-items: center; flex: 0 0 28px; width: 28px; height: 28px; min-height: 28px; margin: 0; padding: 4px; border: 1px solid #a67bda55; background: #100d17; }
+.jj2-document .form-group > label { font: 700 12px/1.2 JJ2Condensed, sans-serif; }
+.jj2-document :is(.form-fields, .form-group) .label { color: var(--jj2-muted); font: 700 9px/1 JJ2Condensed, sans-serif; }
+.jj2-document :is(button, a.item):focus-visible { outline: 2px solid var(--jj2-gold); outline-offset: -2px; }
+.jj2-document :is(.control-button, .config-button) { color: var(--jj2-purple); border-radius: 0; }
+.jj2-document :is(.control-button, .config-button):hover { color: var(--jj2-gold); }
+.jj2-document .effect.collapsed [data-action='toggleExpand'] svg { transform: rotate(-90deg); }
+.application.jj2-document nav.tabs { display: flex; gap: 5px; padding: 0 0 8px; margin: 0; border: 0; border-bottom: 1px solid #a67bda55; }
+.application.jj2-document nav.tabs .item { display: flex; align-items: center; justify-content: center; flex: 1; gap: 5px; padding: 8px 5px; border: 1px solid #ffffff1a; background: #19151f; color: var(--jj2-muted); font: 700 11px/1 JJ2Condensed, sans-serif; text-transform: uppercase; text-shadow: none; }
+.application.jj2-document nav.tabs .item > span { padding: 0; border: 0 !important; }
+.application.jj2-document nav.tabs .item.active { background: #a67bda; border-color: #a67bda; color: #101015; clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); }
+.application.jj2-document nav.tabs .item:not(.active):hover { color: var(--jj2-paper); border-color: var(--jj2-purple); }
+.jj2-document .tab { scrollbar-width: thin; scrollbar-color: var(--jj2-purple) transparent; }
+.application.jj2-document.jj2-item-sheet .sheet-header { min-height: 100px; margin: 0; padding: 12px; gap: 12px; border: 1px solid #a67bda55; border-left: 3px solid var(--jj2-purple); background: linear-gradient(115deg, #a67bda22 0 58%, transparent 58%), #17141f; --dnd5e-document-image-size: 76px; }
+.application.jj2-document.jj2-item-sheet .sheet-header .document-image { box-sizing: border-box; width: 76px; height: 80px; border: 1px solid #efbf5180; border-radius: 0; background: #100d17; object-fit: contain; box-shadow: none; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); }
+.application.jj2-document.jj2-item-sheet .sheet-header > .middle { align-items: stretch; justify-content: center; gap: 8px; }
+.application.jj2-document.jj2-item-sheet .sheet-header .document-name { width: 100%; margin: 0; padding: 4px 0; color: var(--jj2-paper); font: italic 700 24px/1.05 JJ2Condensed, sans-serif; text-align: left; text-transform: uppercase; }
+.application.jj2-document.jj2-item-sheet .sheet-header input.document-name { height: 36px; padding: 3px 6px; background: #100d1770; border-bottom: 2px solid var(--jj2-purple); }
+.application.jj2-document.jj2-item-sheet .sheet-header .subtitles { align-items: center; justify-content: flex-start; height: auto; gap: 5px; font: 700 11px/1.2 JJ2Condensed, sans-serif; color: var(--jj2-purple); }
+.application.jj2-document.jj2-item-sheet .sheet-header .common-fields { flex-basis: 76px; color: var(--jj2-gold); }
+.application.jj2-document.jj2-item-sheet[data-jj2-item-type='spell'] .sheet-header .common-fields { flex-basis: 34px; }
+.application.jj2-document.jj2-item-sheet .sheet-header .common-fields:not(:has(input, select, .value, dnd5e-icon, img, svg)) { display: none; }
+/* The native item sheet offsets its tabs for scrolling and reserves a floating-button footer. */
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet:not(.minimized) .window-content { box-sizing: border-box; padding: 12px; gap: 10px; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .window-content > :is(.sheet-header, nav.tabs, .tab) { box-sizing: border-box; width: 100%; min-width: 0; margin-inline: 0; margin-inline-start: 0; margin-inline-end: 0; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .sheet-header { display: grid; grid-template-columns: 76px minmax(0, 1fr) auto; align-items: center; margin-block: 0; padding: 10px; gap: 10px; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .sheet-header > .left { display: grid; place-items: center; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .sheet-header > .middle { width: 100%; min-width: 0; align-items: stretch; justify-content: center; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .sheet-header .document-name { box-sizing: border-box; width: 100%; min-width: 0; text-align: center; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .sheet-header .common-fields { min-width: 0; flex-basis: auto; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .window-content > .tab.activities { margin: 0; padding: 0; min-height: 0; scrollbar-gutter: stable both-edges; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .tab.activities { padding: 0; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .activities-element { display: block; box-sizing: border-box; width: 100%; min-width: 0; margin: 0; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .activities-element :is(.activities-list, .items-section, .item-list) { box-sizing: border-box; width: 100%; min-width: 0; margin-inline: 0; }
+.application.jj2-document.jj2-item-sheet .sheet-header .school { --icon-size: 28px; padding: 2px; }
+.application.jj2-document.jj2-item-sheet .sheet-header .level-badge { background: #100d17; border-color: var(--jj2-gold); color: var(--jj2-gold); }
+.application.jj2-document.jj2-item-sheet hr.ampersand { display: none; }
+.application.jj2-document.jj2-item-sheet .spell-block { box-sizing: border-box; width: 100%; padding: 10px 12px; margin: 2px 0 6px; border: 1px solid #a67bda44; border-left: 3px solid var(--jj2-purple); background: #19151f; color: var(--jj2-paper); font: 400 12px/1.5 JJ2Condensed, sans-serif; }
+.application.jj2-document.jj2-item-sheet .spell-block :is(h3, .label) { color: var(--jj2-purple); }
+.application.jj2-document.jj2-item-sheet .info-block { padding: 10px; background: #19151f; border: 1px solid #a67bda44; }
+.application.jj2-document.jj2-item-sheet .item-descriptions .description.card { padding: 0; border: 1px solid #a67bda55; border-left: 3px solid var(--jj2-purple); border-radius: 0; background: #19151f; box-shadow: 3px 3px 0 #08080b99; }
+.application.jj2-document.jj2-item-sheet .item-descriptions .description > .header { gap: 8px; min-height: 40px; padding: 9px 12px; border-bottom: 1px solid #a67bda33; background: linear-gradient(115deg, #a67bda18 0 55%, transparent 55%), #17131f; }
+.application.jj2-document.jj2-item-sheet .item-descriptions .description > .header::before { content: none !important; }
+.application.jj2-document.jj2-item-sheet .item-descriptions .description > .header > span { color: var(--jj2-paper); font: italic 700 15px/1 JJ2Condensed, sans-serif; text-align: left; }
+.application.jj2-document.jj2-item-sheet .jj2-description-chevron { color: var(--jj2-purple); }
+.application.jj2-document.jj2-item-sheet .description.collapsed .jj2-description-chevron { transform: rotate(-90deg); }
+.application.jj2-document.jj2-item-sheet .description.empty .jj2-description-chevron { visibility: hidden; }
+.application.jj2-document.jj2-item-sheet .item-descriptions .description:not(.collapsed) .editor { padding: 9px 12px; }
+.jj2-document :is(prose-mirror, .editor-content) { color: var(--jj2-paper); background: #100d1755; font-family: JJ2Condensed, sans-serif; }
+.jj2-document .pills .pill { color: var(--jj2-muted); border-color: #a67bda44; border-radius: 0; }
+.application.jj2-document .items-section { border: 1px solid #a67bda55; border-left: 3px solid var(--jj2-purple); border-radius: 0; background: #19151f; box-shadow: 3px 3px 0 #08080b99; }
+.application.jj2-document .items-section > .items-header { min-height: 40px; padding: 9px 12px; background: linear-gradient(115deg, #a67bda26 0 55%, transparent 55%), #100d17 !important; border-bottom: 1px solid #a67bda55 !important; }
+.application.jj2-document .items-header > h3 { margin: 0; color: var(--jj2-paper) !important; font: italic 700 15px/1 JJ2Condensed, sans-serif !important; }
+.jj2-document .items-header .item-header { color: var(--jj2-muted) !important; font-family: JJ2Condensed, sans-serif !important; }
+.application.jj2-document.jj2-item-sheet .activities-element .items-header > .item-header { display: none !important; }
+.application.jj2-document.jj2-item-sheet .activities-element .item-list > .activity { margin: 5px 7px; border: 1px solid #ffffff20; border-left: 2px solid #a67bda77; border-radius: 0; background: repeating-linear-gradient(155deg, transparent 0 14px, #ffffff03 14px 15px), #14111b; }
+.application.jj2-document.jj2-item-sheet .activities-element .item-list > .activity:first-child { border-left-color: var(--jj2-gold); }
+.application.jj2-document.jj2-item-sheet .activities-element .item-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 5px 10px; min-height: 0; padding: 6px 8px; }
+.application.jj2-document.jj2-item-sheet .activities-element .activity-name { grid-column: 1; grid-row: 1; display: flex; align-items: center; gap: 8px; min-width: 0; }
+.application.jj2-document.jj2-item-sheet .activities-element .activity-name .title { color: var(--jj2-paper); font: 700 13px/1.1 JJ2Condensed, sans-serif; overflow-wrap: anywhere; }
+.application.jj2-document.jj2-item-sheet .activities-element .activity-name .subtitle { color: var(--jj2-purple); font: 400 9px/1.1 JJ2Condensed, sans-serif; }
+.application.jj2-document.jj2-item-sheet .activities-element .item-image { --icon-size: 24px; flex: none; width: 24px; height: 24px; border: 1px solid #a67bda66; border-radius: 0; background: #100d17; }
+.application.jj2-document.jj2-item-sheet .activities-element .activity-controls { grid-column: 2; grid-row: 1; display: flex; justify-content: flex-end; gap: 4px; width: auto; }
+.application.jj2-document.jj2-item-sheet .activities-element .activity-controls button { display: grid; place-items: center; width: 22px; height: 23px; min-height: 0; padding: 3px; border: 1px solid #ffffff1a; background: #100d17; border-radius: 0; color: var(--jj2-purple); }
+.application.jj2-document.jj2-item-sheet .activities-element .activity-controls button:hover { border-color: var(--jj2-purple); color: var(--jj2-paper); }
+.application.jj2-document.jj2-item-sheet .activities-element .item-row > .item-uses { grid-column: 1 / -1; grid-row: 3; justify-self: start; }
+.application.jj2-document.jj2-item-sheet .activities-element :is(.jj-pa-cost-field, .jj-resource-cost-field) { display: flex; flex-wrap: nowrap; justify-content: flex-start; align-items: center; gap: 4px; width: 100%; min-width: 0; padding-top: 5px; border-top: 1px solid #ffffff12; }
+.application.jj2-document.jj2-item-sheet .activities-element .jj-pa-cost-field { grid-column: 1; grid-row: 2; }
+.application.jj2-document.jj2-item-sheet .activities-element .jj-resource-cost-field { grid-column: 2; grid-row: 2; }
+.application.jj2-document.jj2-item-sheet :is(.jj-pa-cost-field, .jj-resource-cost-field)::before { display: block; flex: 0 0 auto; color: var(--jj2-muted); font: 700 9px/1 JJ2Condensed, sans-serif; }
+.application.jj2-document.jj2-item-sheet .jj-pa-cost-field::before { content: 'PA'; }
+.application.jj2-document.jj2-item-sheet .jj-resource-cost-field::before { content: 'Recurso'; }
+.application.jj2-document.jj2-item-sheet .activities-element :is(.jj-pa-amount, .jj-res-amount, .jj-pa-pool, .jj-res-select) { height: 24px; min-height: 24px; padding: 1px 3px; border-radius: 0; border-color: #a67bda44; font-size: 10px; }
+.application.jj2-document.jj2-item-sheet .activities-element .jj-pa-amount { flex: 0 0 34px; width: 34px; }
+.application.jj2-document.jj2-item-sheet .activities-element .jj-res-amount { flex: 0 0 30px; width: 30px; }
+.application.jj2-document.jj2-item-sheet .jj-resource-cost-field .jj-res-select { flex: 1; width: auto; max-width: none; min-width: 0; }
+.application.jj2-document.jj2-item-sheet .jj-pa-pool { color: transparent; padding: 0; }
+.application.jj2-document.jj2-item-sheet .jj-pool-abbr { color: var(--jj2-purple); }
+.application.jj2-document.jj2-item-sheet .jj-pa-clear { display: grid; place-items: center; width: 24px; height: 27px; padding: 3px; border-radius: 0; background: #e4776810; border-color: #e4776866; color: #e47768; }
+.application.jj2-document.jj2-item-sheet .jj-pa-clear svg { width: 13px; height: 13px; }
+/* The PA group stays left; the resource group shares the right edge of the header controls. */
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .activities-element .item-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 6px 8px; padding: 6px 8px; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .activities-element .item-row > .activity-controls { position: static; inset: auto; justify-self: end; display: flex; align-items: center; justify-content: flex-end; width: auto; min-width: 0; height: 26px; padding: 0; margin: 0; gap: 4px; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .activities-element .activity-controls > button { position: static; inset: auto; box-sizing: border-box; display: grid; place-items: center; justify-content: center; flex: 0 0 24px; width: 24px; height: 24px; min-height: 24px; padding: 3px; margin: 0; line-height: 1; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .activities-element .activity-controls > button svg { display: block; width: 14px; height: 14px; margin: 0; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .activities-element .item-row > :is(.jj-pa-cost-field, .jj-resource-cost-field) { box-sizing: border-box; display: grid; grid-template-columns: 40px minmax(0, 1fr) 32px; align-items: center; justify-content: stretch; width: 100%; min-width: 0; min-height: 38px; gap: 6px; padding: 6px 7px; margin: 0; border: 1px solid #a67bda33; background: #100d1780; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .activities-element .item-row > .jj-pa-cost-field { justify-self: start; width: min(100%, 180px); grid-template-columns: 18px minmax(0, 1fr) 32px; gap: 8px; padding: 6px 8px; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .activities-element .item-row > .jj-pa-cost-field:has(.jj-pa-clear) { grid-template-columns: 18px minmax(0, 1fr) 32px 24px; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .activities-element .item-row > .jj-resource-cost-field { justify-self: end; width: min(100%, 176px); }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .activities-element :is(.jj-pa-cost-field, .jj-resource-cost-field)::before { align-self: center; min-width: 0; margin: 0; color: var(--jj2-purple); font: 700 9px/1 JJ2Condensed, sans-serif; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .activities-element :is(.jj-pa-amount, .jj-res-select, .jj-res-amount, .jj-pa-pool, .jj-pa-clear) { box-sizing: border-box; width: 100%; min-width: 0; max-width: none; height: 24px; min-height: 24px; margin: 0; padding: 1px 3px; border-radius: 0; font-size: 11px; line-height: 22px; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .activities-element :is(.jj-pa-amount, .jj-res-amount) { text-align: center; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .activities-element .jj-pool-wrap { position: relative; display: block; min-width: 0; width: 32px; height: 24px; margin: 0; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet .activities-element .jj-pa-clear { display: grid; place-items: center; padding: 3px; line-height: 1; }
+.jj2-document .create-child { color: var(--jj2-ink); background: var(--jj2-gold); border-color: var(--jj2-gold); border-radius: 0; box-shadow: 2px 2px 0 #08080b; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet.tab-activities .window-content > .create-child { position: relative; inset: auto; display: grid; place-items: center; align-self: flex-end; flex: none; box-sizing: border-box; width: 28px; height: 28px; min-height: 28px; padding: 0; margin: 4px 0 0; line-height: 1; }
+.application.dnd5e2.sheet.item.jj2-document.jj2-item-sheet.tab-activities .create-child > svg { display: block; width: 16px; height: 16px; margin: 0; transform: none; }
+.jj2-document .jj2-document-masthead { display: flex; align-items: center; gap: 9px; min-height: 50px; padding: 10px 12px; border-left: 3px solid var(--jj2-purple); border-bottom: 1px solid #a67bda55; background: linear-gradient(115deg, #a67bda24 0 60%, transparent 60%), #19151f; }
+.jj2-document .jj2-document-masthead h2 { margin: 0; border: 0; color: var(--jj2-paper); font: italic 700 22px/1 JJ2Condensed, sans-serif; text-transform: uppercase; }
+.jj2-document .jj2-document-masthead svg { color: var(--jj2-purple); width: 22px; height: 22px; }
+.jj2-activity-create .window-content > [data-application-part='content'] { display: flex; flex-direction: column; gap: 10px; }
+.application.jj2-document.jj2-activity-create input.document-name { height: 36px; color: var(--jj2-paper); font: italic 700 20px/1 JJ2Condensed, sans-serif; }
+.application.jj2-activity-create ol.card { display: grid; gap: 6px; max-height: min(58vh, 540px); padding: 0 4px 0 0; margin: 0; border: 0; border-radius: 0; background: none; box-shadow: none; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--jj2-purple) transparent; }
+.jj2-activity-create ol.card > li { padding: 0; border: 0; }
+.jj2-activity-create ol.card label { display: grid; grid-template-columns: 34px minmax(0, 1fr) 18px; align-items: center; gap: 10px; min-height: 46px; padding: 8px 10px; border: 1px solid #a67bda44; border-left: 3px solid #a67bda66; background: repeating-linear-gradient(155deg, transparent 0 14px, #ffffff04 14px 15px), #19151f; cursor: pointer; }
+.jj2-activity-create ol.card label > svg { width: 26px; height: 26px; color: var(--jj2-purple); }
+.jj2-activity-create ol.card label > span { color: var(--jj2-paper); font: 700 15px/1 JJ2Condensed, sans-serif; }
+.jj2-activity-create ol.card label:has(input:checked) { border-color: #efbf5199; border-left-color: var(--jj2-gold); background-color: #30271f; }
+.jj2-activity-create ol.card label:has(input:checked) > svg { color: var(--jj2-gold); }
+.jj2-activity-create ol.card label:focus-within { outline: 2px solid var(--jj2-gold); outline-offset: -2px; }
+.application.jj2-document footer.form-footer { gap: 8px; padding-top: 10px; border-top: 1px solid #a67bda33; }
+.application.jj2-document footer.form-footer button { min-height: 34px; padding: 7px 10px; border: 1px solid #a67bda66; border-radius: 0; background: #a67bda; color: #101015; box-shadow: none; font: 700 12px/1 JJ2Condensed, sans-serif; }
+.jj2-activity-choice .window-content menu { display: grid; gap: 8px; margin: 0; padding: 0; }
+.application.jj2-activity-choice [data-action='choose'] { display: flex; align-items: center; gap: 11px; min-height: 59px; width: 100%; padding: 9px 12px; border: 1px solid #a67bda55; border-left: 3px solid var(--jj2-purple); border-radius: 0; background: repeating-linear-gradient(155deg, transparent 0 14px, #ffffff04 14px 15px), #19151f; color: var(--jj2-paper); box-shadow: none; }
+.jj2-activity-choice [data-action='choose'] .icon { flex: none; display: grid; place-items: center; width: 34px; height: 36px; border: 1px solid #a67bda66; background: #100d17; }
+.jj2-activity-choice [data-action='choose'] .icon :is(img, dnd5e-icon) { width: 28px; height: 28px; }
+.jj2-activity-choice [data-action='choose'] .name { flex: 1; min-width: 0; text-align: left; font: 700 16px/1.1 JJ2Condensed, sans-serif; }
+.jj2-activity-choice .jj2-choice-chevron { color: var(--jj2-purple); }
+.jj2-activity-choice [data-action='choose']:hover { border-color: var(--jj2-gold); background-color: #282031; }
+.jj2-activity-choice .control-hint { margin-top: 12px; color: var(--jj2-muted); font: 400 11px/1.4 JJ2Condensed, sans-serif; }
+
+/* 2.0 refinement: a fixed limit, current pools and an optional additional PA bonus. */
+.jj2-energy-generation .jj2-generation-content { display: flex; flex-direction: column; gap: 13px; }
+.jj2-energy-generation .jj2-generation-heading { display: flex; align-items: center; gap: 10px; padding: 12px 10px; border-left: 3px solid var(--jj2-purple); border-bottom: 1px solid #a67bda55; background: linear-gradient(115deg, #a67bda24 0 65%, transparent 65%), #19151f; }
+.jj2-energy-generation .jj2-generation-heading > span { display: grid; place-items: center; flex: none; width: 34px; height: 38px; border: 1px solid #a67bda66; background: #100d17; color: var(--jj2-purple); clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
+.jj2-energy-generation .jj2-generation-heading svg { width: 23px; height: 23px; }
+.jj2-energy-generation .jj2-generation-heading h2 { margin: 0; border: 0; color: var(--jj2-paper); font: italic 700 23px/1 JJ2Condensed, sans-serif; text-transform: uppercase; }
+.jj2-energy-generation .jj2-generation-heading p { margin: 5px 0 0; color: var(--jj2-muted); font: 400 11px/1.2 JJ2Condensed, sans-serif; }
+.jj2-energy-generation .jj2-generation-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+.jj2-energy-generation .jj2-generation-metrics > div { display: flex; flex-direction: column; align-items: center; gap: 7px; min-width: 0; padding: 10px 5px; border: 1px solid #a67bda44; border-top: 2px solid var(--jj2-purple); background: repeating-linear-gradient(155deg, transparent 0 12px, #ffffff03 12px 13px), #19151f; }
+.jj2-energy-generation .jj2-generation-metrics > div:last-child { border-top-color: var(--jj2-gold); }
+.jj2-energy-generation .jj2-generation-metrics > div > span { color: var(--jj2-muted); font: 700 9px/1 JJ2Condensed, sans-serif; letter-spacing: .3px; text-transform: uppercase; }
+.jj2-energy-generation .jj2-generation-metrics strong { display: flex; align-items: center; gap: 4px; color: var(--jj2-paper); font: italic 700 26px/1 JJ2Condensed, sans-serif; font-variant-numeric: tabular-nums; }
+.jj2-energy-generation .jj2-generation-metrics small { color: var(--jj2-purple); font: 700 9px/1 JJ2Condensed, sans-serif; }
+.jj2-energy-generation .jj2-generation-metrics > div:last-child small { color: var(--jj2-gold); }
+.application.jj2-document.jj2-energy-generation .jj2-generation-bonus { margin: 0; border-left-color: var(--jj2-gold); border-color: #efbf5155; background: linear-gradient(115deg, #efbf510d, transparent 65%), #19151f; }
+.application.jj2-document.jj2-energy-generation .jj2-generation-bonus legend { display: inline-flex; align-items: center; gap: 5px; color: var(--jj2-gold); font: italic 700 13px/1 JJ2Condensed, sans-serif; }
+.jj2-energy-generation .jj2-generation-bonus legend svg { width: 14px; height: 14px; }
+.jj2-energy-generation .jj2-generation-bonus .form-group { display: flex; align-items: center; justify-content: space-between; margin: 3px 0 8px; gap: 10px; }
+.jj2-energy-generation .jj2-generation-bonus .form-fields { flex: 0 0 72px; }
+.application.jj2-document.jj2-energy-generation input[name='flatBonus'] { height: 37px; padding: 3px; border-color: #efbf5166; background: #efbf5108; color: var(--jj2-paper); font: 700 23px/1 JJ2Condensed, sans-serif; text-align: center; }
+.jj2-energy-generation .jj2-generation-bonus p { margin: 0; color: var(--jj2-muted); font: 400 11px/1.4 JJ2Condensed, sans-serif; }
+.jj2-energy-generation .jj2-generation-note { display: flex; align-items: center; gap: 6px; margin: 0; color: var(--jj2-muted); font: 400 10px/1.3 JJ2Condensed, sans-serif; }
+.jj2-energy-generation .jj2-generation-note svg { flex: none; width: 13px; height: 13px; color: var(--jj2-purple); }
+.application.jj2-document.jj2-energy-generation footer.form-footer button:is([name='skip'], [data-action='skip']) { background: #17131f; color: var(--jj2-muted); border-color: #ffffff26; }
+
+/* Abas da activity: pílulas compactas alinhadas à esquerda (3 abas não
+   esticam pela largura toda) */
+.application.dnd5e2.jj2-document.jj2-activity-sheet nav.tabs .item { flex: 0 1 auto; min-width: 96px; max-width: 170px; padding-inline: 14px; }
+
+.application.dnd5e2.jj2-document.jj2-activity-sheet:not(.minimized) > .window-header .window-icon { display: none; }
+.application.dnd5e2.jj2-document.jj2-activity-sheet:not(.minimized) > .window-header .window-title { margin-inline-start: 4px; }
+
+/* Defensive preparation and native d20 prompts share the sheet's ink and paper language. */
+.jj2-defensive-burst .jj2-defense-panel { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.jj2-defensive-burst .jj2-defense-heading { display: flex; align-items: center; gap: 13px; padding: 14px; border-left: 3px solid var(--jj2-purple); border-bottom: 1px solid #a67bda66; background: linear-gradient(116deg,#a67bda26 0 58%,transparent 58%), #1c1625; }
+.jj2-defensive-burst .jj2-defense-heading > span { display: grid; place-items: center; flex: 0 0 44px; height: 48px; color: var(--jj2-purple); border: 1px solid #a67bda66; background: #100d17; transform: rotate(-4deg); }
+.jj2-defensive-burst .jj2-defense-heading svg { width: 30px; height: 30px; transform: rotate(4deg); }
+.jj2-defensive-burst .jj2-defense-heading small { display: block; color: var(--jj2-muted); font: 400 11px/1.3 JJ2Condensed, sans-serif; margin-bottom: 5px; }
+.jj2-defensive-burst .jj2-defense-heading h2 { margin: 0; padding: 0; border: 0; color: var(--jj2-paper); font: italic 700 25px/1.05 JJ2Condensed, sans-serif; text-transform: uppercase; }
+.jj2-defensive-burst .jj2-defense-resources { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.jj2-defensive-burst .jj2-defense-resources > div { padding: 10px 12px; border-left: 2px solid var(--jj2-gold); background: #201928; }
+.jj2-defensive-burst .jj2-defense-resources > div:last-child { border-left-color: var(--jj2-purple); }
+.jj2-defensive-burst .jj2-defense-resources span { display: block; color: var(--jj2-muted); font: 400 11px/1.3 JJ2Condensed, sans-serif; }
+.jj2-defensive-burst .jj2-defense-resources strong { display: block; margin-top: 5px; color: var(--jj2-paper); font: 700 27px/1 JJ2Condensed, sans-serif; }
+.jj2-defensive-burst .jj2-defense-resources strong small { color: var(--jj2-muted); font: 400 13px/1 JJ2Condensed, sans-serif; }
+.jj2-defensive-burst .jj2-defense-intro { margin: 0; color: var(--jj2-muted); font: 400 12px/1.5 JJ2Condensed, sans-serif; }
+.jj2-defensive-burst .jj2-defense-intro strong { color: var(--jj2-paper); }
+.jj2-defensive-burst .jj2-defense-choice { display: flex; flex-direction: column; align-items: center; gap: 9px; padding: 14px; border: 1px solid #a67bda44; background: repeating-linear-gradient(155deg,transparent 0 18px,#ffffff04 18px 19px),#18121f; }
+.jj2-defensive-burst .jj2-defense-choice > label { font: italic 700 16px/1 JJ2Condensed, sans-serif; text-transform: uppercase; }
+.jj2-defensive-burst .jj2-defense-choice > small { color: var(--jj2-muted); font: 400 11px/1.3 JJ2Condensed, sans-serif; }
+.jj2-defensive-burst .jj2-defense-counter { display: flex; flex-direction: row; align-items: center; gap: 14px; }
+.jj2-defensive-burst .jj2-defense-counter > button { display: grid; place-items: center; width: 30px; height: 34px; padding: 5px; background: #261c30; border: 1px solid #a67bda66; color: var(--jj2-purple); }
+.jj2-defensive-burst .jj2-defense-counter > button svg { width: 17px; height: 17px; }
+.jj2-defensive-burst .jj2-defense-counter > div { display: flex; align-items: baseline; gap: 7px; }
+.application.jj2-defensive-burst .jj2-defense-counter input[type='number'] { width: 60px; height: 58px; min-height: 58px; padding: 0; border: 0; border-bottom: 2px solid var(--jj2-purple); background: #2c2038; color: var(--jj2-paper); font: 700 34px/58px JJ2Condensed, sans-serif; text-align: center; appearance: textfield; }
+.jj2-defensive-burst .jj2-defense-counter input::-webkit-inner-spin-button, .jj2-defensive-burst .jj2-defense-counter input::-webkit-outer-spin-button { appearance: none; margin: 0; }
+.jj2-defensive-burst .jj2-defense-counter > div > span { color: var(--jj2-purple); font: 700 19px/1 JJ2Condensed, sans-serif; }
+.jj2-defensive-burst .jj2-defense-summary { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; padding: 10px 0; border-top: 1px solid #a67bda44; }
+.jj2-defensive-burst .jj2-defense-summary > span { color: var(--jj2-muted); font: 400 11px/1.3 JJ2Condensed, sans-serif; text-align: center; }
+.jj2-defensive-burst .jj2-defense-summary strong { display: block; margin-top: 4px; color: var(--jj2-paper); font: 700 20px/1 JJ2Condensed, sans-serif; }
+.jj2-defensive-burst .form-footer { display: flex; gap: 8px; align-items: stretch; }
+.jj2-defensive-burst .form-footer button { flex: 1 1 0; min-width: 0; white-space: normal; }
+.jj2-defensive-burst .form-footer button:not([autofocus]) { background: #211829!important; color: var(--jj2-muted)!important; border-color: #a67bda55!important; }
+.application.jj2-roll-dialog .window-header { border-bottom: 2px solid #a67bda70; background: linear-gradient(116deg,#a67bda23 0 55%,transparent 55%),#17131f; }
+.application.jj2-roll-dialog .rolls { display: flex; flex-direction: column; gap: 15px; padding: 13px; margin: 0; border: 1px solid #a67bda55; border-left: 3px solid var(--jj2-purple); background: linear-gradient(116deg,#a67bda13 0 44%,transparent 44%),repeating-linear-gradient(155deg,transparent 0 18px,#ffffff04 18px 19px),#19141f; }
+.jj2-roll-dialog .rolls :is(.dice,.formulas) { margin: 0; padding: 0; list-style: none; }
+.jj2-roll-dialog .rolls .dice { display: flex; justify-content: center; gap: 13px; }
+.jj2-roll-dialog .rolls .dice > li { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.jj2-roll-dialog .rolls .dice img { width: 58px; height: 64px; object-fit: contain; filter: none; border: 0; border-radius: 0; }
+.jj2-roll-dialog .rolls .dice .label { padding: 3px 9px; color: var(--jj2-gold); background: #302334; font: 700 12px/1 JJ2Condensed, sans-serif; }
+.jj2-roll-dialog .formula-line { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 9px; margin-bottom: 9px; border-bottom: 1px solid #a67bda44; }
+.jj2-roll-dialog .formula-line .formula { color: var(--jj2-paper); font: 700 16px/1.2 JJ2Condensed, sans-serif; overflow-wrap: anywhere; }
+.jj2-roll-dialog .formula-line .label { color: var(--jj2-muted); font: 400 11px/1.2 JJ2Condensed, sans-serif; }
+.application.jj2-roll-dialog .rolls input { min-height: 34px; width: 100%; }
+.application.jj2-roll-dialog fieldset { margin: 0; padding: 12px; }
+.application.jj2-roll-dialog .form-group { display: flex; align-items: center; gap: 8px; margin-block: 6px; }
+.application.jj2-roll-dialog fieldset .form-group > label { flex: 0 0 95px; }
+.application.jj2-roll-dialog .form-group .form-fields { flex: 1 1 0; min-width: 0; }
+.application.jj2-roll-dialog .form-group select { flex: 1 1 0; min-width: 0; width: 100%; }
+.application.jj2-roll-dialog .dialog-buttons { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+.application.jj2-roll-dialog .dialog-buttons button { padding: 9px 5px; font-size: 13px; white-space: normal; }
+.application.jj2-roll-dialog .dialog-buttons button:not([data-action='normal']) { color: var(--jj2-purple); background: #261c31; border-color: #a67bda66; }
+.jj2-roll-dialog .jj2-test-counters { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+.jj2-roll-dialog .jj2-test-counters .jj2-counter-controls { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 7px; }
+.jj2-roll-dialog .jj2-test-counters .jj2-counter > label { font-size: 14px; }
+.jj2-roll-dialog .jj2-test-counters .jj2-counter > small { font: 400 11px/1.3 JJ2Condensed,sans-serif; color: var(--jj2-muted); }
+.jj2-roll-dialog .jj2-test-advantage-note { margin: 0; text-align: center; color: var(--jj2-muted); font: 400 12px/1.3 JJ2Condensed,sans-serif; }
+.jj2-roll-dialog .jj2-test-advantage-note strong { color: var(--jj2-gold); margin-left: 5px; }
+.jj2-roll-dialog .jj2-test-panel .formula-line { margin-bottom: 0; padding-bottom: 0; border: 0; }
+.jj2-roll-dialog .jj2-test-breakdown { padding: 12px 8px; border-top: 1px solid #a67bda55; }
+.jj2-roll-dialog .jj2-test-bonuses { display: grid; grid-template-columns: repeat(auto-fit,minmax(76px,1fr)); gap: 12px 8px; }
+.jj2-roll-dialog .jj2-test-bonuses > div { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 0; text-align: center; }
+.application.jj2-roll-dialog .jj2-test-seal { box-sizing: border-box; display: grid; place-items: center; width: 64px; height: 60px; min-height: 60px; margin: 0; padding: 3px; border: 1px solid #a67bda88; border-bottom: 3px solid var(--jj2-purple); background: #a67bda10; color: var(--jj2-paper); font: 700 27px/1 JJ2Condensed,sans-serif; text-align: center; clip-path: polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px); }
+.application.jj2-roll-dialog .jj2-test-bonus { border-color: #efbf5188; border-bottom-color: var(--jj2-gold); background: #efbf5110; }
+.application.jj2-roll-dialog .jj2-test-extra { font-size: 17px; overflow-wrap: anywhere; }
+.application.dnd5e2.jj2-document.jj2-roll-dialog input.jj2-test-bonus[type='text'] { font-size: 27px; line-height: 1; }
+.application.dnd5e2.jj2-document.jj2-roll-dialog .rolls .dice { margin: 0; }
+.application.dnd5e2.jj2-document.jj2-roll-dialog .rolls .dice .label { width: auto; margin: 0; padding: 3px 9px; color: var(--jj2-gold); background: #302334; }
+.application.dnd5e2.jj2-document.jj2-roll-dialog .formula-line .formula { font: 700 16px/1.2 JJ2Condensed, sans-serif; }
+.jj2-roll-dialog .jj2-test-bonuses strong { color: var(--jj2-paper); font: italic 700 12px/1.2 JJ2Condensed,sans-serif; text-transform: uppercase; }
+.jj2-roll-dialog .jj2-test-bonuses small { color: var(--jj2-muted); font: 400 11px/1.3 JJ2Condensed,sans-serif; overflow-wrap: anywhere; }
+.application.jj2-roll-dialog .dialog-buttons:has(button:only-child) { grid-template-columns: 1fr; }
+
+/* Diálogo de ataque: respiro entre o header da janela e o painel hero
+   (o título do conteúdo quase encostava no título da janela) */
+.application.dnd5e2.jj2-document.jj2-attack-dialog .window-content { padding-top: 18px; }
+.application.dnd5e2.jj2-document.jj2-attack-dialog .jj2-activation-panel { margin-top: 2px; }
+
+/* Checkbox dentro do campo de ativação ocupa a linha inteira (não quebra
+   em 3 linhas espremido na coluna do rótulo) */
+.jj2-document .jj2-activation-field > .jj2-check { grid-column: 1 / -1; display: flex; align-items: center; gap: 6px; white-space: nowrap; font: 700 10px/1.2 JJ2Condensed, sans-serif; color: var(--jj2-muted); text-transform: none; }
+.jj2-document .jj2-activation-field > .jj2-check input { margin: 0; }
+
+/* Stepper de selos: horizontal e com sinais visíveis (não usar os botões
+   redondos do hero, que somem no tamanho pequeno) */
+.jj2-document .jj2-activation-field .jj2-counter-selos { flex-direction: row; gap: 6px; width: 100%; }
+.jj2-document .jj2-activation-field .jj2-counter-selos > button { flex: none; display: grid; place-items: center; width: 30px; height: 34px; padding: 0; margin: 0; border: 1px solid var(--jj2-purple); background: #19151f; color: var(--jj2-paper); font: 800 16px/1 JJ2Condensed, sans-serif; cursor: pointer; box-shadow: 2px 2px 0 #08080bc9; }
+.jj2-document .jj2-activation-field .jj2-counter-selos > button:hover { border-color: var(--jj2-gold); color: var(--jj2-gold); }
+.jj2-document .jj2-activation-field .jj2-counter-selos > input { flex: none; width: 52px; height: 34px; padding: 0; border: 0; border-bottom: 2px solid var(--jj2-gold); background: #19151f; color: var(--jj2-paper); font: 700 18px/34px JJ2Condensed, sans-serif; text-align: center; appearance: textfield; }
+.jj2-document .jj2-activation-field .jj2-counter-selos > input::-webkit-inner-spin-button { appearance: none; }
+.jj2-document .jj2-activation-field .jj2-selos-titulo { grid-column: 1 / -1; }
+.jj2-document .jj2-activation-field .jj2-selos-usos { flex: none; color: var(--jj2-gold); font: 700 11px/1 JJ2Condensed, sans-serif; }

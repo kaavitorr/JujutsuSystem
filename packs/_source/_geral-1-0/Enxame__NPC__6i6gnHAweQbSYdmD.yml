@@ -1,0 +1,75 @@
+_id: 6i6gnHAweQbSYdmD
+name: Enxame (NPC)
+type: feat
+img: icons/creatures/invertebrates/wasp-swarm-movement.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 2400000
+flags:
+  scene-packer:
+    hash: 603733a9949c0f16805ae0b7195d41499b5c5cec
+    sourceId: Item.6i6gnHAweQbSYdmD
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Enxame (–): </strong>O enxame pode ocupar o espaço de outra
+      criatura e vice versa, e o enxame pode se mover através de qualquer
+      abertura grande o suficiente para um inseto Miúdo. O enxame não pode
+      recuperar Pontos de Vida ou ganhar Pontos de Vida temporários.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: enxame-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.GZHprZY1bqnzyvdF
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910527
+  modifiedTime: 1776624910564
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!6i6gnHAweQbSYdmD'

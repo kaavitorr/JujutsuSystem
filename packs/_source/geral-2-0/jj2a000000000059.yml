@@ -1,0 +1,21 @@
+_id: jj2a000000000059
+_key: '!items!jj2a000000000059'
+name: Canalização Amplificadora
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: canalizacao-amplificadora
+  description:
+    value: <p>A canalização de energia é um ramo extremamente comum das habilidades de especialização no treino do corpo que permite te dar controle geral sobre a energia amaldiçoada e a utilizar para lutar.</p><p>Você aprendeu a utilizar a energia amaldiçoada para aprimorar certas ações que você pode realizar dentro e fora de combate. Você recebe acesso a seguinte habilidade:</p><h4>Canalizar Energia</h4><p>Ao ativar essa habilidade, você pode escolher aumentar seu deslocamento ou sua velocidade de pulo de forma explosiva. Você pode escolher uma das seguintes opções:</p><ul><li><strong>Movimento:</strong> Você aumenta seu deslocamento em 4 metros e mais 2 metros por PA gasto.</li><li><strong>Pulo:</strong> Você aumenta sua altura de pulo em 4 metros e mais 2 metros por PA gasto.</li></ul><p>Você pode ativar as duas simultaneamente com mesmo custo de ativação, mas o aumento adicional de altura e deslocamento deve ser individual.</p><p><strong>4 PA</strong> · <strong>Duração:</strong> Instantâneo · <strong>Alcance:</strong> Pessoal · <strong>Ações:</strong> ⬢ · <strong>Requisito:</strong> Reação</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Canalização de Energia
+      requisitos: []
+folder: jj2f000000000011
+ownership:
+  default: 0
+effects: []
+sort: 0

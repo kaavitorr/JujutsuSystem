@@ -1,0 +1,82 @@
+folder: GfLIKHXQLpg1w4DW
+name: Manipulação Defensiva
+type: feat
+img: icons/magic/lightning/bolt-strike-forked-blue.webp
+system:
+  description:
+    value: >-
+      <p>A partir do <strong>10º nível de Especialista</strong>, você aprendeu a
+      ativar suas habilidades de se deslocar no espaço com tanta velocidade que
+      você é capaz de mitigar parte do dano que você sofre durante um combate.
+      Desde que tenha se teletransportado durante seu turno, você recebe
+      resistência a dano Contundente, Cortante e Perfurante até o início do seu
+      turno seguinte.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881624
+  modifiedTime: 1776921031441
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: CNfMQoaesqluq8TG
+sort: 475000
+_key: '!items!CNfMQoaesqluq8TG'

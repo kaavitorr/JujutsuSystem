@@ -1,0 +1,95 @@
+<section class="tab {{tab.cssClass}} feitico-tab jj2-feitico" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+  <header class="jj2-feitico-heading">
+    <span class="jj2-feitico-emblem">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="str"}}</span>
+    <div class="feitico-name-field">
+      <label for="{{partId}}-feitico-name">Feitiço Inato</label>
+      <input id="{{partId}}-feitico-name" type="text" class="feitico-name-input" name="flags.jujutsu-system.feiticoName" value="{{feitico.name}}" placeholder="Nome do Feitiço">
+    </div>
+    <div class="feitico-molde-actions">
+      <button type="button" class="feitico-save-template-btn" data-action="feitico-import-json" data-tooltip="Importar um molde de Feitiço em JSON">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="import"}}<span>Importar JSON</span></button>
+      <button type="button" class="feitico-save-template-btn" data-action="feitico-save-template" data-tooltip="Salvar as manifestações e técnicas como um molde">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="save"}}<span>Salvar Molde</span></button>
+    </div>
+  </header>
+
+  <div class="feitico-rank-panel">
+    <div class="feitico-rank-current">
+      <span class="feitico-rank-label">Evolução do Feitiço</span>
+      <strong class="feitico-rank-value">{{feitico.proficiencia.label}}</strong>
+      <span class="feitico-rank-primary">Nível {{feitico.nivel}}</span>
+    </div>
+    <div class="feitico-rank-track">
+      {{#each feitico.tiers as |tier|}}
+      <div class="feitico-rank-node {{#if tier.isCurrent}}current{{/if}} {{#unless tier.reqMet}}locked{{/unless}}" data-tooltip="{{tier.requirementText}}">
+        <span class="feitico-rank-node-reqs">Nv {{tier.mainReq}}</span><span class="feitico-rank-node-name">{{tier.label}}</span>
+        {{#if tier.ability}}<span class="feitico-rank-ability">{{#if tier.abilityMet}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="check"}}Aprendida{{else}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="lock"}}Habilidade{{/if}}</span>{{/if}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  {{#*inline "jj2FeiticoTechnique"}}
+  <div class="feitico-tecnica-chip {{#if blocked}}blocked{{/if}}" data-item-id="{{id}}" draggable="true" {{#if blocked}}data-tooltip="A manifestação não atende aos requisitos de nível"{{/if}}>
+    <img src="{{img}}" alt="{{name}}">
+    <div class="jj2-feitico-technique-title"><span class="feitico-tecnica-chip-name">{{name}}</span><small>{{#if grau}}Grau {{grau}}{{else}}Auxiliar{{/if}}</small></div>
+    {{#if blocked}}<span class="jj2-feitico-lock" aria-label="Bloqueada">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="lock"}}</span>{{/if}}
+    <div class="feitico-tecnica-chip-actions">
+      <button type="button" data-action="feitico-roll" data-item-id="{{id}}" data-tooltip="Usar técnica" aria-label="Usar técnica">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="dice"}}</button>
+      <button type="button" data-action="feitico-edit" data-item-id="{{id}}" data-tooltip="Editar técnica" aria-label="Editar técnica">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="edit"}}</button>
+      <button type="button" data-action="feitico-unassign-tecnica" data-item-id="{{id}}" data-tooltip="Remover do slot" aria-label="Remover técnica do slot">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="close"}}</button>
+    </div>
+  </div>
+  {{/inline}}
+
+  <div class="feitico-slots">
+    {{#each feitico.slots as |slot|}}
+    <article class="feitico-slot-card {{#if slot.blocked}}blocked{{/if}} {{#if (or slot.manifestacao slot.hasTecnicas)}}is-filled{{/if}}" data-feitico-slot="{{slot.id}}">
+      <header class="feitico-slot-label-row">
+        <h3 class="feitico-slot-label">{{slot.label}}</h3>
+        {{#if slot.blocked}}<span class="feitico-blocked-badge" data-tooltip="{{slot.blockedReason}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="lock"}}<span>Bloqueada</span></span>{{/if}}
+      </header>
+
+      {{#if slot.manifestacao}}
+      <div class="feitico-manif-row {{#if slot.manifestacao.blocked}}blocked{{/if}}" data-item-id="{{slot.manifestacao.id}}" draggable="true" data-action="feitico-display-card" data-tooltip="{{#if slot.blocked}}{{slot.blockedReason}}{{else}}Enviar para o chat{{/if}}">
+        <div class="feitico-manif-portrait {{#if @root.feitico.isEditMode}}is-editable{{/if}}" {{#if @root.feitico.isEditMode}}data-action="feitico-change-image" data-item-id="{{slot.manifestacao.id}}" data-tooltip="Trocar imagem"{{/if}}>
+          <img src="{{slot.manifestacao.img}}" alt="{{slot.manifestacao.name}}">
+          {{#if @root.feitico.isEditMode}}<span class="feitico-manif-portrait-edit">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="image"}}</span>{{/if}}
+        </div>
+        <div class="feitico-manif-info"><strong class="feitico-manif-name">{{slot.manifestacao.name}}</strong>{{#if slot.manifestacao.subtitle}}<span class="feitico-manif-sub">{{slot.manifestacao.subtitle}}</span>{{/if}}</div>
+        <div class="feitico-manif-actions">
+          <button type="button" class="feitico-action" data-action="feitico-roll" data-item-id="{{slot.manifestacao.id}}" data-tooltip="Usar manifestação" aria-label="Usar manifestação">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="dice"}}</button>
+          <button type="button" class="feitico-action" data-action="feitico-edit" data-item-id="{{slot.manifestacao.id}}" data-tooltip="Editar manifestação" aria-label="Editar manifestação">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="edit"}}</button>
+          <button type="button" class="feitico-action feitico-action-danger" data-action="feitico-unassign-manif" data-slot="{{slot.id}}" data-tooltip="Remover do slot" aria-label="Remover manifestação do slot">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="close"}}</button>
+        </div>
+      </div>
+      <div class="feitico-req-chips">
+        {{#each slot.requirements as |req|}}
+        <div class="feitico-req-chip {{#if req.met}}met{{else}}unmet{{/if}}">
+          <span class="feitico-req-chip-status" data-tooltip="Nível atual: {{req.currentLevel}}">{{#if req.met}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="check"}}{{else}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="lock"}}{{/if}}</span>
+          <span class="feitico-req-chip-maestria">Nível</span>
+          <input type="number" class="feitico-req-level" min="1" max="20" value="{{req.level}}" data-feitico-req="level" data-item-id="{{req.manifestacaoId}}" data-index="{{req.index}}" aria-label="Nível mínimo exigido">
+          <button type="button" class="feitico-req-chip-remove" data-action="feitico-req-remove" data-item-id="{{req.manifestacaoId}}" data-index="{{req.index}}" aria-label="Remover requisito">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="delete"}}</button>
+        </div>
+        {{/each}}
+        {{#if slot.canAddReq}}<button type="button" class="feitico-req-add-chip" data-action="feitico-req-add" data-item-id="{{slot.manifestacao.id}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}<span>Requisito</span></button>{{/if}}
+      </div>
+      {{else}}
+      <div class="feitico-manif-empty feitico-drop-zone" data-feitico-drop="manif">
+        {{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="str"}}
+        <span>Arraste uma manifestação para este espaço</span>
+        <button type="button" class="feitico-manif-create-btn" data-action="feitico-create-manif" data-slot="{{slot.id}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}<span>Criar Manifestação</span></button>
+      </div>
+      {{/if}}
+
+      <div class="feitico-tecnicas-row feitico-tecnicas-split feitico-drop-zone" data-feitico-drop="tecnica">
+        <div class="jj2-feitico-techniques-heading"><span class="feitico-tecnicas-label">{{slot.tecnicasLabel}}</span><button type="button" class="feitico-tecnica-add-chip" data-action="feitico-create-tecnica" data-slot="{{slot.id}}" data-tooltip="Criar técnica" aria-label="Criar técnica">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}</button></div>
+        {{#if slot.hasTecnicas}}
+        <div class="feitico-tecnicas-cols">
+          <div class="feitico-tecnicas-col feitico-tecnicas-col-grau">{{#each slot.tecnicasGrau}}{{> jj2FeiticoTechnique}}{{/each}}</div>
+          {{#if slot.tecnicasAux}}<div class="feitico-tecnicas-col feitico-tecnicas-col-aux">{{#each slot.tecnicasAux}}{{> jj2FeiticoTechnique}}{{/each}}</div>{{/if}}
+        </div>
+        {{else}}<span class="feitico-tecnicas-empty-hint">Arraste uma técnica ou use o botão + para criar.</span>{{/if}}
+      </div>
+    </article>
+    {{/each}}
+  </div>
+</section>

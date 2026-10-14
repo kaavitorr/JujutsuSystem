@@ -1,0 +1,22 @@
+name: Habilidades NPCS
+type: Item
+sorting: a
+sort: 50000
+color: '#2d4e9a'
+flags:
+  scene-packer:
+    hash: 3d2b6e186824eb3d80d5a040a9b6ffaa9f6d4bc2
+_id: LVzVKYAvuAHFakez
+folder: Zh6nXJyphmH4TF72
+description: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910214
+  modifiedTime: 1776624910214
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!LVzVKYAvuAHFakez'

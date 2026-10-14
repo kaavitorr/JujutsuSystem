@@ -1,0 +1,103 @@
+_id: uTWCCXDyYkdzPnu8
+name: Liberação de Energia Positiva
+type: feat
+img: icons/magic/holy/projectiles-blades-salvo-yellow.webp
+effects: []
+folder: 6Lp7GKcjjdPyxHoV
+sort: 96875
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: bbcea919a585803b01c8bb77c3520029c30b2d6e
+    sourceId: Item.HVmOUVjiOQ72R3mp
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: >-
+      <p class="TextoPadro">A partir do <strong>15º nível de
+      Estrategista</strong>, você pode escolher uma criatura a até 30 metros de
+      distância (sem ser você) e usar uma ação bônus para suprir o corpo dela
+      com energia de forma constante, ajudando-o a manter o pico do poder.
+      Enquanto essa criatura se mantiver dentro do alcance, ela pode adicionar o
+      seu modificador de Sabedoria em todas as Salvaguardas que ela
+      realizar.</p><p class="TextoPadro">Esse efeito se encerra caso a criatura
+      saia do seu alcance.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: mestre-conjurador
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.7HvBfgLKiSz0y9c2
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911395
+  modifiedTime: 1776906108047
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!uTWCCXDyYkdzPnu8'

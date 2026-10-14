@@ -1,0 +1,74 @@
+_id: L31tWKbiTcCwOCTq
+name: Escalada Aracnídea (NPC)
+type: feat
+img: icons/creatures/invertebrates/bug-cross-green.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 2600000
+flags:
+  scene-packer:
+    hash: cb3d1c60e0d45fa130d23da481e5758bca296d38
+    sourceId: Item.L31tWKbiTcCwOCTq
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Escalada Aracnídea (–): </strong>A criatura pode escalar
+      superfícies difíceis, incluindo andar de cabeça para baixo em tetos, sem
+      precisar realizar um Teste de Habilidade.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: escalada-aracnidea-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.8G59aAjeuCTBHd0k
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910539
+  modifiedTime: 1776624910569
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!L31tWKbiTcCwOCTq'

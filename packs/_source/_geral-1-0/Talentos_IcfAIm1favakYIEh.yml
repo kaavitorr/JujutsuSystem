@@ -1,0 +1,22 @@
+name: Talentos
+sorting: a
+folder: iW3EPRWBV2gxNGYS
+type: Item
+_id: IcfAIm1favakYIEh
+sort: 200000
+color: '#c37b37'
+flags:
+  scene-packer:
+    hash: 0fe2595dd3a082e4d366b2f9cc571d4c5530fe57
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624901879
+  modifiedTime: 1776624901879
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+description: ''
+_key: '!folders!IcfAIm1favakYIEh'

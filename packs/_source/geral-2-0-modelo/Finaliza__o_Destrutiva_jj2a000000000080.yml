@@ -1,0 +1,42 @@
+_id: jj2a000000000080
+name: Finalização Destrutiva
+type: feat
+img: icons/magic/earth/explosion-lava-stone-red.webp
+system:
+  identifier: finalizacao-destrutiva
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Realização</em></p><p>Ao consumir 6
+      Pontos de Ação [⬢⬢⬢⬢⬢⬢] e 15 PE, você assume uma posição de ataque antes
+      de desferir um golpe devastador com sua arma, liberando uma onda em um
+      Cone de 100 metros.</p><p>Todas as criaturas dentro da área que forem
+      atingidas pela sua rolagem de acerto sofrem 1d10 de dano para cada ponto
+      de ND que possuírem abaixo do seu nível de personagem.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Ofensivo
+      requisitos:
+        - Realização
+folder: jj2f000000000013
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791815064745
+  modifiedTime: 1791815064745
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000080'

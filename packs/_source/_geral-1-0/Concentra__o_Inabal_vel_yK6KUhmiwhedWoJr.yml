@@ -1,0 +1,87 @@
+name: Concentração Inabalável
+type: feat
+img: icons/magic/symbols/circle-ouroboros.webp
+effects: []
+folder: TOc92NuiE5uyXD8M
+sort: 500000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 4bfa73177a98a68fba9d4555809e0742d30ef1e9
+    sourceId: Item.56za1y6eXu2k49Rg
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Você aumenta sua capacidade mental, fazendo com que
+      você receba as seguintes características:</p><ul><li><p><em>Sua primeira
+      Salvaguarda para manter a concentração tem sucesso
+      automático;</em></p></li><li><p><em>Sua segunda Salvaguarda para manter a
+      concentração recebe +5;</em></p></li><li><p><em>Você pode manter duas
+      técnicas ou habilidades menores de concentração ao mesmo
+      tempo;</em></p></li><li><p><em>A partir do 6º nível de personagem, você
+      sempre terá vantagem para manter sua
+      concentração;</em></p></li><li><p><em>A partir do 12º nível de personagem,
+      a CD da Salvaguarda para manter a concentração não poderá passar de
+      30.</em></p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: concentracao-inabalavel
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.uMNWzaM7WqfTGRaL
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624882970
+  modifiedTime: 1776959371564
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: yK6KUhmiwhedWoJr
+_key: '!items!yK6KUhmiwhedWoJr'

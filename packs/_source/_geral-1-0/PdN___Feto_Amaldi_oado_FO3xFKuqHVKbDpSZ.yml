@@ -1,0 +1,73 @@
+name: PdN - Feto Amaldiçoado
+type: feat
+img: systems/jujutsu-system/assets/Origens/Choso_Cursed_Clash.webp
+effects: []
+folder: SkcL0ylAJiRyvOc5
+flags:
+  scene-packer:
+    hash: b2c0a9ff04059b074b42b2017ee2b2ebcd921974
+    sourceId: Item.SyTIP4RJOOJrjcTG
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <ul><li><p>Recebe 30 Pontos de Vida;</p></li><li><p>Ao sofrer dano
+      corpo-a-corpo na vida, causa um número de d4 na criatura atacante igual o
+      bônus de proficiência;</p></li><li><p>Recebe a habilidade “Energia
+      Reversa”.</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: transmorfo
+  activities: {}
+  advancement: {}
+  enchant: {}
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1782450727940
+  modifiedTime: 1782450732773
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  371UX0Acl9j9oJ0Q: 3
+_id: FO3xFKuqHVKbDpSZ
+sort: 300000
+_key: '!items!FO3xFKuqHVKbDpSZ'

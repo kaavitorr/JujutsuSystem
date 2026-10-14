@@ -1,0 +1,23 @@
+_id: jj2a000000000100
+_key: '!items!jj2a000000000100'
+name: Deus da Lâmina
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: deus-da-lamina
+  description:
+    value: <p><em><strong>Requisito:</strong> Sentinela; Lâmina Partida</em></p><p>Sua maestria com seu Domínio chegou a tal nível que você se torna mais rápido, resistente e eficiente dentro dele. Você recebe acesso as seguintes características:</p><ul><li>Ao criar um domínio com restrição de movimento, você recebe 2 Pontos de Ação [⬢⬢] adicionais no início de cada um de seus turnos e reduz o custo de PA de todas as técnicas em 2 PA.</li><li>Ao criar um domínio sem restrição de movimento, você recebe 1 Ponto de Ação [⬢] adicional no início de cada um de seus turnos e reduz o custo de PA de todas as técnicas em 1 PA.</li></ul>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Novo Estilo das Sombras
+      requisitos:
+        - Sentinela
+        - Lâmina Partida
+folder: jj2f000000000015
+ownership:
+  default: 0
+effects: []
+sort: 0

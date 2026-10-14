@@ -1,0 +1,41 @@
+_id: jj2a000000000085
+name: Regeneração Acelerada
+type: feat
+img: icons/magic/life/heart-area-circle-red-green.webp
+system:
+  identifier: regeneracao-acelerada
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Reflexo Superior</em></p><p>Enquanto em
+      combate, você recupera Pontos de Vida igual ao seu valor de Constituição.
+      Esse efeito se repete no início de cada um de seus turnos. Esse efeito se
+      encerra caso você caia a 0 Pontos de Vida.</p><p>Fora de combate, você
+      recupera 1 PV a cada 6 segundos.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Defensivo
+      requisitos:
+        - Reflexo Superior
+folder: jj2f000000000014
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791815104240
+  modifiedTime: 1791815104240
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000085'

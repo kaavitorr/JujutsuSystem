@@ -1,0 +1,109 @@
+name: Vazio de Energia
+type: feat
+img: icons/skills/melee/weapons-crossed-swords-black-gray.webp
+effects: []
+folder: hdxMXLzxHykD3XKe
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  core:
+    sheetClass: dnd5e.Tidy5eItemSheet
+  cf: {}
+  scene-packer:
+    hash: 4421795f9ea46015f83fd936ccd7244ce8ff35db
+    sourceId: Item.IAvr2aSWM3Q6dHxC
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: >-
+      <p>Devido a sua restrição, você recebeu certos benefícios gerais que
+      ajudam você a se sobressair em combate. Você recebe as seguintes
+      características:</p><ul><li><p>Você é imune ao efeito de acerto garantido
+      das Expansões de Domínios e similares;</p></li><li><p>Você é imune a
+      habilidade de "Sentir Maldição" da habilidade de Manipulação de
+      Energia;</p></li><li><p>Você pode passar livremente em expansões de
+      domínio ou barreiras, se movendo livremente;</p></li><li><p>Você sempre
+      possui uma progressão de proficiência "Mestre" em Testes de Atributo de
+      Atletismo e Coordenação;</p></li><li><p>Você recebe 4 + seu atributo de
+      Constituição em Pontos de Estamina (PE) que são recuperados no início de
+      cada um de seus turnos. A partir do 10º nível, sua base se torna 8 +
+      atributo no lugar do original.</p></li></ul><p>Você não pode se beneficiar
+      de características de manipulação de Energia ou Habilidades de
+      Especialização de Feitiço Inato, Técnicas de Barreira e Técnicas de
+      Reversão.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-aprimorador
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791817350911
+  modifiedTime: 1791817366915
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_id: zovA9Xo6BxkGtvyj
+sort: 100000
+_key: '!items!zovA9Xo6BxkGtvyj'

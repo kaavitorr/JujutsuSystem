@@ -1,0 +1,22 @@
+name: Ações Bônus
+sorting: a
+folder: 9HObc0XIMJNrJaWH
+type: Item
+_id: jdWFNRN02y93Lsfe
+description: ''
+sort: 0
+color: '#2d849a'
+flags:
+  scene-packer:
+    hash: 0bebcdc9fd70a75fc3444b036ecda08b9dc69c18
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910214
+  modifiedTime: 1776624910214
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!jdWFNRN02y93Lsfe'

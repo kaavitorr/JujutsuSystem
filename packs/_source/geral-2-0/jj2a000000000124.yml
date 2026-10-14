@@ -1,0 +1,22 @@
+_id: jj2a000000000124
+_key: '!items!jj2a000000000124'
+name: Fortalecendo Domínio
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: fortalecendo-dominio
+  description:
+    value: <p><em><strong>Requisito:</strong> Domínio Incompleto ou Superior</em></p><p>Ao adquirir essa habilidade, você faz com que sua expansão receba 300 Pontos de Vida no interior dela e metade no exterior. Além disso, sua expansão recebe as seguintes características, podendo muda-las toda vez que ativar a expansão:</p><ul><li>O dano de suas técnicas dentro da expansão aumenta em 1 passo (d8 &gt; d10);</li><li>Suas técnicas de dano recebem 2 dados de dano adicionais dentro da expansão;</li><li>O CD das suas condições dentro da expansão aumenta em +2.</li></ul>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Domínio e Anti-Domínio
+      caminho: Técnicas de Expansão de Domínio
+      requisitos:
+        - Domínio Incompleto ou Superior
+folder: jj2f000000000020
+ownership:
+  default: 0
+effects: []
+sort: 0

@@ -1,0 +1,22 @@
+_id: jj2a000000000106
+_key: '!items!jj2a000000000106'
+name: Sede de Sangue
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: sede-de-sangue
+  description:
+    value: <p><em><strong>Requisito:</strong> Expandir Energia</em></p><p>Você aprendeu a canalizar sua presença de forma a manifestar sua sede de sangue de maneira quase tangível. Ao gastar 3 Pontos de Ação [⬢⬢⬢] e 4 PA, você pode expandir sua energia amaldiçoada em uma área de 10 metros ao seu redor, emitindo um nível de opressão tão intenso que todas as criaturas na área devem realizar uma Salvaguarda de Presença.</p><p>Em caso de falha, elas sofrem 3d6 + seu atributo de Presença em Pontos de Dano Psíquico e recebem a condição “Exposto” até o fim do próximo turno delas.</p><p>Seu dano aumenta em 1d6 para cada ND acima da criatura que você possuir.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Ressonância da Alma
+      requisitos:
+        - Expandir Energia
+folder: jj2f000000000016
+ownership:
+  default: 0
+effects: []
+sort: 0

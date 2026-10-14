@@ -1,0 +1,39 @@
+_id: jj2a000000000082
+name: Corpo Endurecido
+type: feat
+img: icons/magic/control/buff-strength-muscle-damage-red.webp
+system:
+  identifier: corpo-endurecido
+  description:
+    value: >-
+      <p>Seu corpo se tornou extremamente resistente a todos os tipos de feridas
+      debilitantes, dessa forma, você não acumula Pontos de Ferida por acertos
+      críticos ou outros meios, os recebendo apenas ao sofrer dano com 0 Pontos
+      de Vida.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Defensivo
+      requisitos: []
+folder: jj2f000000000014
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791815080269
+  modifiedTime: 1791815080269
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000082'

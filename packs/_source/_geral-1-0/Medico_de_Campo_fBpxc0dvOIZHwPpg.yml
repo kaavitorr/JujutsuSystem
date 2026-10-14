@@ -1,0 +1,97 @@
+folder: pJFTz3T8ddDTtVRG
+name: Medico de Campo
+type: subclass
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Caminhos/Shoko_Ieiri_Phantom_Parade.webp
+system:
+  description:
+    value: "<table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>MEDICO DE CAMPO</strong></span></p></td></tr></tbody></table><p class=\"MsoNormal\">Médicos de Campo são estrategistas especializados em curar seus aliados, seja após o combate ou durante com utilização fina de energia reversa, assim como tem habilidade suficiente com ela para manterem a própria vida em meio ao caos do campo de batalha.</p><table border=\"1\" style=\"margin-left:7.1pt;border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt\" class=\"MsoTableGrid\"><tbody><tr style=\"mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes\"><td><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>PECULIARIDADES DO MÉDICO DE CAMPO</strong></span></p><p class=\"MsoNormal\">Os médicos de campo são criaturas com conhecimento natural de energia reversa desde o início, permitindo que eles possam curar a si mesmos ou as outras criaturas, mas isso traz um preço. Ao pagar esse caminho, a criatura não pode receber Feitiços Inatos ou Herdados que causem dano direto na sua base ou extensão, assim como não pode ter efeitos de dano indireto seja empurrão com colisão ou através de condições, mas são livres para ter qualquer efeito de controle.</p></td></tr></tbody></table><p></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>MANIPULAÇÃO DE BARREIRA</strong></span></p><hr><p class=\"MsoNormal\">A partir do <strong>2º nível de Especialista</strong>, você tem a utilização de energia reversa como uma segunda natureza para você, permitindo o seu uso desde o início. Você recebe acesso as seguintes características:</p><ul><li><p><em>Você recebe a habilidade de manipulação “Energia Reversa” do Capítulo 6;</em></p></li><li><p><em>Você recebe a habilidade de manipulação “Energia Flexível” e pode usar uma ação bônus, ação de poder ou ação para curar os outros usando energia reversa no mesmo turno que se curou.</em></p></li></ul><p></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>POÇO DE ENERGIA REVERSA</strong></span></p><hr><p class=\"TextoPadro\">A partir do <strong>6º nível de Especialista</strong>, você aprende a guardar uma grande quantidade de energia reversa em seu corpo que pode ser utilizado para curar uma criatura. Ao fim de cada descanso longo, você recebe um valor igual a 20 vezes o seu nível de personagem. A qualquer momento, você pode tocar uma criatura e curar qualquer valor de vida dela até o limite que você possui de cura disponível.</p><p class=\"MsoNormal\">Ao realizar um descanso curto, você pode rolar dados de energia amaldiçoada e recuperar seu poço de energia reversa no lugar da sua energia amaldiçoada, podendo dividir os dados da forma como desejar.</p><p></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>VINCULO POSITIVO</strong></span></p><hr><p class=\"MsoNormal\">A partir do <strong>10º nível de Especialista</strong>, ao usar uma ação de poder, você pode se vincular a até 3 criaturas diferentes a até 9 metros de distância e ativar sua habilidade “Regeneração Constante”, curando essas criaturas em vez de si mesmo. Nesse caso, o limite total de cura passa a ser igual a 30 vezes o seu nível, em vez das 9 vezes padrão.</p><p class=\"MsoNormal\">A cura deve ser dividida entre os alvos. Se você escolher 3 criaturas, cada uma recebe uma quantidade de cura igual ao seu nível de personagem. Se escolher 2 criaturas, uma delas recebe o dobro do seu nível, e a outra, uma vez o seu nível. Caso escolha apenas 1 criatura, ela recebe o triplo do seu nível.</p><p class=\"MsoNormal\">Você pode escolher a si mesmo como um dos alvos da cura.</p><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>REVERSÃO SUPREMA</strong></span></p><hr><p class=\"TextoPadro\">A partir do 14º nível de Estrategista, você aprendeu técnicas de reversão e controle de energia amaldiçoada tão miraculosas que elas têm efeitos que só seriam possíveis normalmente ao utilizar energia reversa em si mesmo. Você recebe as seguintes características:</p><ul><li><p>Seu dado de “Energia Reversa” aumenta em 2 passos, indo de d4 para d8;</p></li><li><p>Você pode utilizar a técnica “Energia Reversa Avançada” em outras criaturas com o dobro do custo;</p></li><li><p>Enquanto você estiver com a “Regeneração Constante” ativada em si mesmo, você é imune a dano crítico sem ser de Fulgor Negro.</p></li></ul>"
+    chat: ''
+  source:
+    rules: '2014'
+    revision: 1
+  identifier: medico-de-campo
+  classIdentifier: estrategista
+  advancement:
+    A3Hba6m7qzcoxorS:
+      type: ItemGrant
+      _id: A3Hba6m7qzcoxorS
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.TbAogBXrd2g8sQtW
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 2
+      title: ''
+      hint: ''
+      flags: {}
+    lhDw2TwDppmaBHPY:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.KOLOo1e8GcHAc3Rc
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 6
+      _id: lhDw2TwDppmaBHPY
+      title: ''
+      hint: ''
+      flags: {}
+    2VSAI7UZOnBTr0tY:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Q6bTTRTJXQ46aL8w
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 10
+      title: ''
+      hint: ''
+      _id: 2VSAI7UZOnBTr0tY
+      flags: {}
+    oG9r8yxTXvxawGvg:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.on50Qh1ULNMjD6yy
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 14
+      title: ''
+      hint: ''
+      _id: oG9r8yxTXvxawGvg
+      flags: {}
+  spellcasting:
+    progression: none
+    ability: ''
+    preparation:
+      formula: ''
+effects: []
+sort: 556250
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 97cfef4f56a9a1c7b59795d7ffd802f2f54f7bcd
+  core: {}
+_stats:
+  compendiumSource: Item.5DNdPVt1SNlAA1LD
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881644
+  modifiedTime: 1776972828979
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: fBpxc0dvOIZHwPpg
+_key: '!items!fBpxc0dvOIZHwPpg'

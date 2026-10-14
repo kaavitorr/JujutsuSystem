@@ -1,0 +1,68 @@
+folder: vG1tvdXvcpq70Tb5
+name: Aparência Inofensiva
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Por algum motivo você não parece perigoso. Talvez
+      pareça muito pequeno, muito fraco, uma menininha segurando um pirulito.
+      Você escolhe o motivo.</p><p class="MsoNormal">Além de outros benefícios,
+      como não levantar suspeitas. Possuir este talento também ajuda em
+      combates, pegando oponentes desprevenidos. O truque não funciona com
+      ninguém que já tenha visto você lutar, e não engana duas vezes a mesma
+      pessoa.</p><p class="MsoBodyText"><strong>Característica:</strong> Você
+      recebe + 5 na primeira jogada de ataque ou técnica contra uma criatura que
+      não desconfie de você. Além disso, você possui – 2 em Testes de Atributo
+      de Presença (Intimidação).</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: mestre-de-toxinas
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: 1eb388146a466cfd07894d7cc6cee0548537acc4
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902140
+  modifiedTime: 1776913382129
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: bva5epdYxzThtP6M
+sort: 200000
+_key: '!items!bva5epdYxzThtP6M'

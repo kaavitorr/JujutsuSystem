@@ -1,0 +1,48 @@
+_id: jj2a000000000123
+name: Expansão de Domínio
+type: feat
+img: icons/magic/unholy/barrier-shield-glowing-pink.webp
+system:
+  identifier: expansao-de-dominio
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> 10º nível de personagem; Barreira
+      Vazia</em></p><p>Você consegue formar uma expansão de domínio completa,
+      fechando sua barreira e prendendo todas as criaturas dentro do seu
+      interior. Uma expansão de domínio com barreira possui as seguintes
+      características:</p><ul><li>Você ativa os efeitos Inescapável, Fatal e
+      Irresistível;</li><li>Nenhuma criatura pode entrar ou sair da área do seu
+      domínio.</li></ul><p>Uma vez por dia, ao expandir um domínio completo
+      durante uma batalha com risco de morte, você pode rolar duas vezes o d20.
+      Em um resultado de 20 natural nos dois dados, você alcança a Expansão sem
+      Barreiras antes da hora e sem consumir uma escolha de habilidade de
+      especialização.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Domínio e Anti-Domínio
+      caminho: Técnicas de Expansão de Domínio
+      requisitos:
+        - 10º nível de personagem
+        - Barreira Vazia
+folder: jj2f000000000020
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814546017
+  modifiedTime: 1791814546017
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000123'

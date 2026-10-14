@@ -1,0 +1,97 @@
+folder: TV6O078oM544Leij
+name: Punho Ardente
+type: feat
+img: icons/magic/control/buff-flight-wings-runes-blue.webp
+system:
+  description:
+    value: >-
+      <p>Seus golpes desarmados são brutais e você consegue transformar
+      praticamente qualquer parte do seu corpo em uma arma contra seus
+      oponentes. Você recebe acesso as seguintes
+      características:</p><ul><li><p><strong>Golpe Brutal:</strong> Sempre que
+      você causar dano máximo ou um acerto crítico em uma criatura, você pode
+      realizar um ataque adicional com custo de ação [⬢] reduzido em
+      1.</p></li><li><p><strong>Interceptar:</strong> Quando uma criatura
+      realizar uma jogada de ataque (Comum ou de Técnica) contra você e errar,
+      você pode gastar duas ações [⬢⬢] como Reação para interceptar o golpe e
+      atira-la por cima do seu ombro, arremessando-a contra o chão e impondo a
+      condição "Caído" se ela falhar em uma Salvaguarda de Agilidade. Se ela
+      receber a condição dessa forma, ele recebe a condição "Estremecido" se
+      tentar levantar antes do fim do turno.</p></li><li><p><strong>Mãos
+      Letais:</strong> Suas jogadas de ataque (Comum) corpo-a-corpo passam a
+      receber os mesmos benefícios de uma arma marcial. Dessa forma, você pode
+      escolher qualquer propriedade de uma arma marcial para seus ataques,
+      podendo mudar essa escolha toda vez que sobe de
+      nível.</p></li><li><p><strong>Corpo Forjado:</strong> Você recebe
+      resistência +5 a danos do tipo Contundente, Cortante e
+      Perfurante.</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-emissor
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: d8a632d7930b501d57e292fcb3875f3aa448cd29
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791817210313
+  modifiedTime: 1791817240084
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_id: 97pr5olYsfxVyIcj
+sort: 100000
+_key: '!items!97pr5olYsfxVyIcj'

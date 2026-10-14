@@ -1,0 +1,97 @@
+folder: pJFTz3T8ddDTtVRG
+name: Feitiço Reverso
+type: subclass
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Caminhos/Yuta_Okkotsu_29.webp
+system:
+  description:
+    value: "<table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>FEITICEIRO REVERSO</strong></span></p></td></tr></tbody></table><p class=\"MsoNormal\">Feiticeiros Reversos se especializam na utilização de energia reversa para causar dano em maldições e curar a si mesmos, assim como são especialistas em reversão de feitiços. Sendo essa uma habilidade natural deles proveniente do seu conhecimento instintivo de energia amaldiçoada.</p><p style=\"margin:0cm 0.15pt 0.0001pt 7.1pt;text-align:justify\"></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>REVERSÃO INSTINTIVA</strong></span></p><hr><p class=\"MsoNormal\">A partir do 2º nível de Especialista, você aprendeu a utilizar energia reversa de forma instintiva para causar dano em criaturas inimigas. Embora você não a controle com maestria suficiente para se curar, ela acaba sendo imbuída em cada um de seus golpes. Você recebe as seguintes características:</p><ul><li><p><em>A utilizar “Explosão Ofensiva” em uma maldição, você causa 2d4 de dano para cada PA usado;</em></p></li><li><p><em>Toda vez que você errar uma jogada de ataque (Comum), você causa dano em um Espírito Amaldiçoado igual ao seu modificador do atributo principal. Caso você erre uma técnica ou feitiço, você causa seu Modificador de Principal + seu nível de Estrategista, até um valor máximo de 20 de dano.</em></p></li></ul><p style=\"margin-right:0.15pt\" class=\"TextoPadro\"></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>REVERSÃO CONTROLA</strong></span></p><hr><p class=\"TextoPadro\">A partir do 6º nível de Especialista, você aprende a utilizar energia reversa de forma consciente, podendo até utiliza-la ao seu favor durante um combate ou para auxiliar seus companheiros. Você recebe acesso as seguintes características:</p><ul><li><p><em>Você aprende a habilidade de manipulação “Energia Reversa”;</em></p></li><li><p><em>Ao usar uma ação bônus, você envolve seu corpo com energia reversa, podendo gastar uma quantidade de PA igual ao número de dados de cura de Energia Reversa que deseja gerar, conforme a habilidade de manipulação — porém, sem utilizá-los para se curar.</em></p><p><em>Até o início do seu próximo turno, sempre que você ou uma criatura (inimiga ou aliada) a até 21 metros realizar uma jogada de ataque (Comum ou de Técnica), você pode rolar qualquer quantidade desses dados armazenados e adicionar ou subtrair o resultado da rolagem.</em></p></li></ul><p class=\"TextoPadro\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>CONVERSÃO DISRUPTIVA</strong></span></p><hr><p class=\"MsoNormal\">A partir do <strong>10º nível de Especialista,</strong> você aprendeu a utilizar energia reversa para interferir com os feitiços de criaturas inimigas. Ao atingir uma criatura com uma habilidade afetada pelo “Reversão de Feitiço”, ela deve realizar uma Salvaguarda de Constituição com sua CD. Em caso de falha, todas as técnicas com duração maior que “Instantâneo” são canceladas, a menos que elas utilizem Reversão de Feitiço ou Energia Reversa para funcionar.</p><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>ESPECIALISTA EM REVERSÃO</strong></span></p><hr><p class=\"TextoPadro\">A partir do 14º nível de Estrategista, você aprendeu a controlar energia reversa com tanta maestria que você pode facilmente utilizar reversão de feitiço. Você recebe as seguintes características:</p><ul><li><p><em>Seu dado de “Energia Reversa” aumenta em 1 passo, indo de d4 para d6;</em></p></li><li><p><em>Sua “Regeneração Constante” passa a ter limite de 15 vezes o nível e você cura 3 vezes o nível por vez, resetando a cada vez que você ativar o Fulgor Negro com sucesso;</em></p></li><li><p><em>Você recebe 3 vezes o “Reversão de Feitiço” sem consumir Pontos de Maldição, mas ele só pode ser utilizado para aumentar o dano ou reduzir um custo de um feitiço já existente e transforma-lo em energia positiva sem alterar sua natureza, igual a forma alternativa da reversão de feitiço.</em></p></li></ul>"
+    chat: ''
+  source:
+    rules: '2014'
+    revision: 1
+  identifier: feitico-reverso
+  classIdentifier: estrategista
+  advancement:
+    LUzdeLdBsIp0OudT:
+      type: ItemGrant
+      _id: LUzdeLdBsIp0OudT
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.OFBppFhfvN8liQDD
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 2
+      title: ''
+      hint: ''
+      flags: {}
+    k4TE6289zJmHMeNR:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.v9OOFX0CswJdtzue
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 6
+      title: ''
+      hint: ''
+      _id: k4TE6289zJmHMeNR
+      flags: {}
+    qxa08azlxpv8nmvO:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.LGLH4WG6ujU9DV3W
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 10
+      title: ''
+      hint: ''
+      _id: qxa08azlxpv8nmvO
+      flags: {}
+    tfcn8ZeKmSQEPN8X:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.IXB7Rw4RoJYFnABa
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 14
+      title: ''
+      hint: ''
+      _id: tfcn8ZeKmSQEPN8X
+      flags: {}
+  spellcasting:
+    progression: none
+    ability: ''
+    preparation:
+      formula: ''
+effects: []
+sort: 500000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: d365dbc2afc14fdf812c4243d14d7e009402de88
+  core: {}
+_stats:
+  compendiumSource: Item.5DNdPVt1SNlAA1LD
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881636
+  modifiedTime: 1776972796363
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: QxnRpu0nMP9Dvlqz
+_key: '!items!QxnRpu0nMP9Dvlqz'

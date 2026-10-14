@@ -1,0 +1,76 @@
+_id: lnzLFBtShY4HO6NW
+name: Soltar Tinta (NPC)
+type: feat
+img: icons/magic/unholy/projectile-flame-white-purple.webp
+effects: []
+folder: I4nmFeOf3cr9gQWb
+sort: 1100000
+flags:
+  scene-packer:
+    hash: 3b1f97767cba4e382f8b079d2b7b1b6b7c4d01e8
+    sourceId: Item.lnzLFBtShY4HO6NW
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Soltar Tinta (–): </strong>A criatura pode usar uma ação para
+      soltar sua tinta em um cone de 6 metros, todo alvo dentro da área, que
+      utilize seus olhos para enxergar, deve fazer um Teste de Resistência de
+      Destreza para não receber a condição “Cego” até que use uma ação para
+      limpar a tinta ou seja coberto com água corrente.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: soltar-tinta-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.NGwzzmO6pYVtrU51
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910557
+  modifiedTime: 1776624910576
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!lnzLFBtShY4HO6NW'

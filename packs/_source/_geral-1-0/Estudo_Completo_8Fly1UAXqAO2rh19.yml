@@ -1,0 +1,97 @@
+folder: dX9XlTQArgwL00FB
+name: Estudo Completo
+type: feat
+img: icons/sundries/books/book-open-turquoise.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Você sempre está aprendendo novas habilidades, seja
+      algo que permita exercer sua força melhor ou apenas um conhecimento que
+      você acha que está faltando.</p><p
+      class="MsoBodyText"><strong>Característica:</strong> Escolha uma perícia
+      sem ser de <strong>“Controle de Energia”</strong> e recebe proficiência
+      nela. Esse talento pode ser adquirido várias vezes.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: alvo-marcado
+  activities: {}
+  advancement:
+    M4pr8HNsnOx9qGs2:
+      type: Trait
+      _id: M4pr8HNsnOx9qGs2
+      configuration:
+        allowReplacements: false
+        choices:
+          - count: 1
+            pool:
+              - skills:acr
+              - skills:ath
+              - skills:prf
+              - skills:dec
+              - skills:arc
+              - skills:ste
+              - skills:his
+              - skills:itm
+              - skills:ins
+              - skills:inv
+              - skills:rel
+              - skills:nat
+              - skills:prc
+              - skills:per
+              - skills:slt
+              - skills:med
+              - skills:ani
+              - skills:sur
+              - skills:luc
+        grants: []
+        mode: default
+      flags: {}
+      level: 0
+      hint: ''
+      title: ''
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: 68bd6da6a692d9e060df0b6a0d841529b2c53996
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902121
+  modifiedTime: 1776630862217
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+_id: 8Fly1UAXqAO2rh19
+sort: 100000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_key: '!items!8Fly1UAXqAO2rh19'

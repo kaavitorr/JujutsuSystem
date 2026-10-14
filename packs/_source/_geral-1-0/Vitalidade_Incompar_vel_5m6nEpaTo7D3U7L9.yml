@@ -1,0 +1,102 @@
+folder: oyMKXoGXx5VqrPCH
+name: Vitalidade Incomparável
+type: feat
+img: icons/commodities/treasure/token-engraved-red-glowing.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">O uso constante do seu sangue para utilização de
+      feitiços assim como sua capacidade de consumo e recuperação fez com que os
+      membros do clã tivessem uma vitalidade vibrante.</p><p
+      class="MsoListParagraph"><strong>Característica:</strong> Você recebe 2
+      Pontos de Atributo Constituição e seu máximo para ele se torna 22.</p>
+    chat: ''
+  source:
+    custom: LdJ Capítulo 6
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: Humano (Kurta)
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: habilidade-inata
+  activities: {}
+  advancement:
+    mvLtXGgo29N7GlWY:
+      type: AbilityScoreImprovement
+      _id: mvLtXGgo29N7GlWY
+      configuration:
+        cap: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 2
+          int: 0
+          wis: 0
+          cha: 0
+        locked: []
+        points: 0
+        recommendation: null
+        max: null
+      flags: {}
+      level: 0
+      hint: ''
+      value: {}
+      title: ''
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: 563b5cf623b9a3e07e9fcac334b3f05d8de835ed
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776962747819
+  modifiedTime: 1776962747854
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: 5m6nEpaTo7D3U7L9
+sort: 100000
+_key: '!items!5m6nEpaTo7D3U7L9'

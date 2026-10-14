@@ -1,0 +1,23 @@
+_id: jj2a000000000067
+_key: '!items!jj2a000000000067'
+name: Acúmulo de Fulgor
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: acumulo-de-fulgor
+  description:
+    value: <p><em><strong>Requisito:</strong> Fulgor Certeiro; Não possuir feitiço inato</em></p><p>Toda vez que você acerta um fulgor, sua margem aumenta em 1 até o fim do encontro, mas esse benefício só se mantém enquanto você tiver em zona. Sua margem máxima é de 12-20.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Canalização de Energia
+      requisitos:
+        - Fulgor Certeiro
+        - Não possuir feitiço inato
+folder: jj2f000000000011
+ownership:
+  default: 0
+effects: []
+sort: 0

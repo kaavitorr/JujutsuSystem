@@ -1,0 +1,95 @@
+name: Começo Lento
+type: feat
+img: icons/magic/symbols/rune-sigil-red-orange.webp
+effects: []
+folder: TOc92NuiE5uyXD8M
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: b1844078ac1a2a01123b05c45b645e75b86cd0da
+    sourceId: Item.1ANEXdoQbwef6e4a
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: "<p class=\"MsoNormal\">Você não consegue explodir com seu potencial de uma vez durante o início de uma luta, mas vai acumulando seu momento conforme ela avança. Toda rolagem de dados de dano, cura ou dados de redução que seja acima da média, se torna a média e você gera menos Pontos de Energia Amaldiçoada (PA) por rodada em um valor igual seu nível de personagem. A partir da 5º rodada de combate, você remove os limitadores acima e passa a gerar 50% a mais de PA no início de cada um de seus turnos (do padrão). Além disso, você recebe 2 dados de dano em todas as suas técnicas e feitiços, mas seu dano total não pode ser maior que o máximo possível dos dados padrões (esse máximo leva em conta qualquer adicional que aumente dados de dano como Explosão Ofensiva e similares, fazendo eles serem contados como dano base). Esse efeito dura até o fim do encontro.</p><p class=\"MsoNormal\">\_\_\_\_\_\_\_\_\_\_\_\_ Você ignora as restrições e ativa diretamente os benefícios caso seu inimigo seja uma criatura que você já enfrentou anteriormente e tenha uma rixa, desde que você esteja o enfrentando sozinho.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: vitalidade-exuberante
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.uMNWzaM7WqfTGRaL
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624882958
+  modifiedTime: 1776959568338
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: fKBsvfBVThJQo3OV
+sort: 400000
+_key: '!items!fKBsvfBVThJQo3OV'

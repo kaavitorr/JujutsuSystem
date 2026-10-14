@@ -1,0 +1,77 @@
+_id: GabiVxciSR7eHIhL
+name: Carapaça Reflexiva (NPC)
+type: feat
+img: icons/creatures/invertebrates/snail-movement-green.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 1500000
+flags:
+  scene-packer:
+    hash: e3d1552642173922fa37ad778e1f5332581cf19b
+    sourceId: Item.GabiVxciSR7eHIhL
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Carapaça Reflexiva (Aumenta em 25% o PV efetivo da
+      criatura):</strong> Sempre que a criatura for alvo de projéteis que
+      requeiram uma jogada de ataque à distância, role um d6. Entre 1 e 5, a
+      criatura não é afetada. Em um 6, a criatura não é afetada e o ataque é
+      refletido de volta no atacante como se ele tivesse sido originado da
+      criatura, transformando o atacante no alvo.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: carapaca-reflexiva-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.iLdvUhwsyQASJn9I
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910536
+  modifiedTime: 1776624910567
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!GabiVxciSR7eHIhL'

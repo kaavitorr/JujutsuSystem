@@ -1,0 +1,150 @@
+folder: onrz3qUGUndiIaUB
+name: Feitiço Inato
+type: race
+img: systems/jujutsu-system/assets/Origens/Nobara_Kugisaki_29898.webp
+system:
+  description:
+    value: "<p><strong>Ajuste de Atributo:</strong> +4 Pontos de Atributo para distribuir entre todos os 6 atributos.</p><p><strong>Vida Base:</strong> 10 Pontos de Vida.</p><p><strong>Tamanho:</strong> 1,50 a 2,00 metros (pequeno, médio).</p><p><strong>Peso:</strong> Normalmente, entre 65 kg e 300 kg.</p><p><strong>Deslocamento:</strong> 9 metros.</p><p><strong>Nado:</strong> 4,5 metros.</p><p>\_</p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ESPÉCIA</strong></span></p></td></tr></tbody></table><p>Essas características acompanham a existência do personagem, são representações da sua origem, sendo uma parte essencial de como ele vê o mundo e de como o mundo olha pra ele.</p><p></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM</strong></span></p><hr><p><strong style=\"mso-bidi-font-weight:normal\">Feitiço Único: </strong><span style=\"mso-bidi-font-weight:bold\">Você nasceu com um feitiço que foi despertado muito cedo, permitindo que você pudesse se familiarizar com ele, você recebe as seguintes características:</span></p><ul><li><p><em>Você recebe 3 Pontos de Maldição que devem ser usados para completar instantaneamente um Treinamento de Energia Amaldiçoada do Capítulo 6.5 na criação do personagem.</em></p></li><li><p><em>Você recebe a habilidade de manipulação “Despertar Habilidade” do Capítulo 6.3;</em></p></li><li><p><em>Uma vez por descanso curto ou longo, você pode reduzir o custo final do seu Feitiço Inato pela metade (arredondado para baixo)</em></p></li></ul><p class=\"TextoPadro\"><strong>Evolução Rápida:</strong> Você recebe 2 Pontos de Maldição adicionais toda vez que subir de nível. Além disso, a cada 25 Pontos de Treinamento Investidos, você recebe 20 Pontos de Energia Amaldiçoada (PA) adicionais.</p><p style=\"tab-stops:467.8pt\" class=\"TextoPadro\"><strong style=\"mso-bidi-font-weight:normal\">Talento de Origem: </strong>No <strong style=\"mso-bidi-font-weight:normal\">3º nível</strong>, você recebe um talento de origem de acordo com o <strong style=\"mso-bidi-font-weight:normal\">Capítulo 6</strong>.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  advancement:
+    thrtYH4KG74MbuZ9:
+      type: AbilityScoreImprovement
+      _id: thrtYH4KG74MbuZ9
+      configuration:
+        points: 4
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 4
+        locked: []
+        recommendation: null
+        max: null
+      value:
+        type: asi
+      level: 0
+      flags: {}
+      hint: ''
+      name: ''
+      img: null
+    rEJzDVRlCiq4jyq7:
+      type: Size
+      _id: rEJzDVRlCiq4jyq7
+      configuration:
+        sizes:
+          - med
+      level: 0
+      value: {}
+      flags: {}
+      hint: ''
+      name: ''
+      img: null
+    pWi09QUI278nzGY8:
+      type: Trait
+      configuration:
+        grants:
+          - languages:standard:common
+        mode: default
+        allowReplacements: false
+        choices: []
+      _id: pWi09QUI278nzGY8
+      level: 0
+      value:
+        chosen: []
+      flags: {}
+      hint: ''
+    4RXJIfXI8J2WfgL2:
+      _id: 4RXJIfXI8J2WfgL2
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.JrW8QBYrVPG9nzwZ
+            optional: false
+            sort: 0
+        optional: false
+        spell: null
+        sorting: m
+      value: {}
+      level: 0
+      flags: {}
+      hint: ''
+      name: Pontos de Vida
+      img: null
+    8aPE0FrMa7fh4qox:
+      type: ItemChoice
+      configuration:
+        choices:
+          '3':
+            count: 1
+            replacement: false
+        allowDrops: true
+        type: null
+        pool:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.JeC6KoI3H47ldIvt
+            sort: 0
+          - uuid: Compendium.jujutsu-compendium.geral.Item.IHkbJQILPKbQABJg
+            sort: 0
+          - uuid: Compendium.jujutsu-compendium.geral.Item.LIxVfMsvsX0L1Pmu
+            sort: 0
+        spell: null
+        restriction:
+          list: []
+          school: []
+        sorting: a
+      value:
+        added: {}
+        replaced: {}
+      hint: <p>Escolha um Talento de Espécie</p>
+      _id: 8aPE0FrMa7fh4qox
+      flags: {}
+      name: Talentos de Origem
+  movement:
+    units: m
+    hover: false
+    ignoredDifficultTerrain: []
+    speeds:
+      walk: '9'
+      burrow: ''
+      climb: ''
+      fly: ''
+      swim: '4.5'
+  senses:
+    units: m
+    special: ''
+    ranges:
+      darkvision: null
+      blindsight: null
+      tremorsense: null
+      truesight: null
+  type:
+    value: humanoid
+    custom: ''
+    subtype: ''
+  identifier: feitico-inato
+effects: []
+flags:
+  scene-packer:
+    hash: 67eee98e596c8e15d667f2c4fc3cc39d4c880220
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816812258
+  modifiedTime: 1791816812258
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: tPwqpsSJcJKkuVPg
+sort: 50000
+_key: '!items!tPwqpsSJcJKkuVPg'

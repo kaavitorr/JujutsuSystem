@@ -1,0 +1,25 @@
+<section class="jj2-resistances" aria-label="Resistências a dano">
+  <header class="jj2-resistances-heading">
+    <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m12 2 8 4v6c0 5-8 10-8 10S4 17 4 12V6l8-4Z"/><path d="m8 12 3 3 5-6"/></svg>Resistências</h2>
+  </header>
+  <div class="jj2-resistance-grid">
+    {{#each jj2.resistances}}
+    <div class="jj2-resistance-row {{#if @root.editable}}editing {{baseState}}{{else}}{{state}}{{/if}}" data-damage-type="{{key}}" style="--res-fill:{{#if @root.editable}}{{baseBarPercent}}{{else}}{{barPercent}}{{/if}}%">
+      <div class="jj2-resistance-name">
+        <h3>{{label}}</h3>
+        {{#unless @root.editable}}{{#if immune}}<span class="jj2-resistance-immunity-mark" title="Imune a {{label}}" aria-label="Imune a {{label}}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m12 2 8 4v6c0 5-8 10-8 10S4 17 4 12V6l8-4Z"/><path d="m8 12 3 3 5-6"/></svg></span>{{/if}}{{/unless}}
+      </div>
+      <div class="jj2-resistance-meter" title="{{label}}: {{displayValue}}{{#if immune}} · Imune{{/if}}{{#if modified}} · Valor base: {{baseValue}}{{/if}}">
+        <span class="jj2-resistance-half jj2-resistance-left" aria-hidden="true"><span class="jj2-resistance-fill"></span></span>
+        <div class="jj2-resistance-center" {{#unless @root.editable}}role="img" aria-label="Resistência a {{label}}: {{displayValue}}{{#if immune}} · Imune{{/if}}"{{/unless}}>
+          <svg class="jj2-resistance-hex" viewBox="0 0 48 36" aria-hidden="true"><path d="M24 1 45 9.5v17L24 35 3 26.5v-17Z"/><text class="jj2-resistance-value" x="24" y="18" text-anchor="middle" dominant-baseline="central">{{#if @root.editable}}{{#if baseImmune}}∞{{else}}{{baseValue}}{{/if}}{{else}}{{#if immune}}∞{{else}}{{displayValue}}{{/if}}{{/if}}</text></svg>
+          {{#if @root.editable}}<input type="number" name="{{valuePath}}" value="{{baseValue}}" step="1" data-dtype="Number" aria-label="Resistência a {{label}}" title="Positivo: resistência. Negativo: vulnerabilidade.{{#if modified}} Com efeitos: {{displayValue}}{{/if}}">{{/if}}
+        </div>
+        <span class="jj2-resistance-half jj2-resistance-right" aria-hidden="true"><span class="jj2-resistance-fill"></span></span>
+      </div>
+      {{#if @root.editable}}<label class="jj2-resistance-immunity" title="Imunidade a {{label}}"><input type="checkbox" name="{{immunePath}}" {{checked baseImmune}} aria-label="Imunidade a {{label}}"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2.5 6 2.2 2.2 4.8-4.8"/></svg><span>Imune</span></label>{{/if}}
+    </div>
+    {{/each}}
+  </div>
+  {{#if owner}}<details class="jj2-resistance-keys"><summary>Chaves para automação</summary><p>Valores positivos reduzem o dano; negativos aumentam até o dobro do original. Imunidade anula o dano. Use o valor numérico em efeitos; para imunidade, use verdadeiro ou falso.</p><dl>{{#each jj2.resistances}}<div><dt>{{label}}</dt><dd><code>{{valuePath}}</code><code>{{immunePath}}</code></dd></div>{{/each}}</dl></details>{{/if}}
+</section>

@@ -1,0 +1,42 @@
+_id: jj2a000000000041
+name: Explosão de Velocidade
+type: feat
+img: icons/skills/movement/ball-spinning-blue.webp
+system:
+  identifier: explosao-de-velocidade
+  description:
+    value: >-
+      <p>O corpo de guerreiro é o ramo das habilidades de especialização no
+      treino do corpo e sincronia dele com sua energia amaldiçoada, caso você
+      possua. Suas habilidades podem ser adquiridas tanto por Restringidos
+      quanto outros Estilos de Combate.</p><p>Você recebe 5 Pontos de Potencial
+      (PP) que podem ser usados para reduzir o custo de Pontos de Ações das suas
+      técnicas. Esses PP são recuperados no início de cada encontro e não
+      desaparecem.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Corpo de Guerreiro
+      requisitos: []
+folder: jj2f000000000009
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816306772
+  modifiedTime: 1791816306772
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000041'

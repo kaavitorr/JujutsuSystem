@@ -1,0 +1,66 @@
+folder: vG1tvdXvcpq70Tb5
+name: Trabalho em Equipe
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>Você aprendeu a tomar toda oportunidade para si, podendo usar da mínima
+      distração de seus inimigos para ganhar vantagem sobre eles com
+      combate.</p><p><strong>Característica:</strong> Caso você possua uma
+      criatura aliada no lado oposto, a 1,5 metros da criatura inimiga que você
+      está enfrentando, sua primeira jogada de ataque no turno é realizada com
+      vantagem.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: trabalho-em-equipe
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 4400000
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  MhGXeDSlt2zUqR0J: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: da6344ba15360838a91f4cd9d473cc05746b7cfe
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: Item.pIaAt98DZBQngnAh
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902140
+  modifiedTime: 1776913404817
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: ajDH8V2kPLjp8BYf
+_key: '!items!ajDH8V2kPLjp8BYf'

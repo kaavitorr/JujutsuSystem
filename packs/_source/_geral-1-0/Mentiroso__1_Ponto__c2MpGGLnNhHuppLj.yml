@@ -1,0 +1,122 @@
+_id: c2MpGGLnNhHuppLj
+name: Mentiroso (1 Ponto)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects:
+  - _id: vqiHN8jnsRzXK5jD
+    disabled: false
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    origin: Item.kth2TgCzwyluy4Ma
+    transfer: true
+    flags:
+      core:
+        statusId: ''
+      dae:
+        stackable: none
+        durationExpression: ''
+        specialDuration: []
+        transfer: true
+    tint: '#ffffff'
+    name: Mentiroso
+    description: ''
+    statuses: []
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 5.3.2
+      createdTime: 1776624902140
+      modifiedTime: 1776624902140
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+      exportSource: null
+    img: icons/svg/aura.svg
+    type: base
+    system:
+      changes:
+        - key: system.skills.dec.bonuses.check
+          value: -2
+          priority: 20
+          type: add
+          phase: initial
+    sort: 0
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!c2MpGGLnNhHuppLj.vqiHN8jnsRzXK5jD'
+folder: ImFD309NSdjSZUT5
+sort: 1400000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: be59016c8d41128a4f183eeb0e3cd4f7f1e311bb
+    sourceId: Item.9EUgNfg7fCL7UEHi
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: "<p>Você sempre tenta se sobressair com suas mentiras, sempre que tiver a oportunidade de parecer melhor do que você realmente é, não há hesitação, mesmo que faça com que um oponente mais poderoso se interesse em tirar sua vida. Chega a mentir tanto que começa a ser desacreditado.</p><p>\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Você recebe -2 em Testes de Atributo de Espírito (Enganação).</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: mentiroso-2-pontos
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.WondSQvil4K9gJon
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902140
+  modifiedTime: 1776624902173
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!c2MpGGLnNhHuppLj'

@@ -1,0 +1,81 @@
+name: Rosto Debochado (1 Ponto)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects: []
+folder: ImFD309NSdjSZUT5
+sort: 1900000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 5798008e9ce217334a7a55a1fdb231d929df3053
+    sourceId: Item.OpfFcRq1vdaK1oNR
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p>Sua cara incita o ódio e parece que sempre está fazendo graça às custas
+      de todo mundo. Sempre que um combate se iniciar, quando não fizer
+      diferença para as criaturas inimigas qual alvo escolher, elas sempre
+      escolherão você.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: rosto-debochado-1-ponto
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.aB3ADBzD6BnUocDF
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902135
+  modifiedTime: 1776624902170
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: StsL6nqH8uH1TvgA
+_key: '!items!StsL6nqH8uH1TvgA'

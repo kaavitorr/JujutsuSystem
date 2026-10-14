@@ -1,0 +1,22 @@
+name: Talentos e Defeitos
+type: Item
+sorting: m
+sort: 400000
+color: '#436470'
+flags:
+  scene-packer:
+    hash: 9e6a070c99e81365c22dc6cc7a0de627b95ef872
+_id: iW3EPRWBV2gxNGYS
+folder: null
+description: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624901878
+  modifiedTime: 1776924287384
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!iW3EPRWBV2gxNGYS'

@@ -1,0 +1,20 @@
+_id: jj2f000000000008
+type: Item
+name: Proezas Físicas
+folder: 1roC0BlA1sepbPGH
+color: '#c05040'
+sorting: m
+description: ''
+sort: 500000
+flags: {}
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814498699
+  modifiedTime: 1791814498699
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!jj2f000000000008'

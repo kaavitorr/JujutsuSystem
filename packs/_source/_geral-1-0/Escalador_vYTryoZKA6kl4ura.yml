@@ -1,0 +1,64 @@
+folder: vG1tvdXvcpq70Tb5
+name: Escalador
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>Uma grande parte da sua vida foi passada subindo em arvores, montanhas
+      ou até prédios na grande cidade, fazendo com que você recebesse uma
+      agilidade normal para subir na maioria das
+      superfícies.</p><p><strong>Característica:</strong> Você recebe
+      deslocamento de escalada igual seu deslocamento padrão. Não é possível
+      subir superfícies completamente lisas.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: acumulo-de-aura
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: 6b85b670ff5c5a4231bcd240e88280d5f52e8790
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902159
+  modifiedTime: 1776913393009
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: vYTryoZKA6kl4ura
+sort: 2000000
+_key: '!items!vYTryoZKA6kl4ura'

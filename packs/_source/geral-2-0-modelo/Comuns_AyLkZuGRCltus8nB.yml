@@ -1,0 +1,20 @@
+type: Item
+folder: 3HFDvIqmDvyl05Qc
+name: Comuns
+color: null
+sorting: m
+_id: AyLkZuGRCltus8nB
+description: ''
+sort: 0
+flags: {}
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791829183898
+  modifiedTime: 1791829183898
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!AyLkZuGRCltus8nB'

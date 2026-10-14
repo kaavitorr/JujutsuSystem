@@ -1,0 +1,82 @@
+folder: vG1tvdXvcpq70Tb5
+name: Musicista
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>Você aprendeu a tocar diversos instrumentos musicais e pode encantar as
+      pessoas com sua música, sua habilidade pode manifestar sons incríveis e
+      melódicos.</p><p><strong>Característica:</strong> Você ganha proficiência
+      com instrumentos musicais e recebe + 1 em Testes de Atributo de Presença
+      contra quem ouviu sua música. Esse efeito dura por 10 minutos.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: articulacoes-de-borracha
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: dcfcfb82c1fa8e69fa619734d23ca06b59607de7
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902124
+  modifiedTime: 1776913396700
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: CQ5A81X2Oo6Mki8P
+sort: 2800000
+_key: '!items!CQ5A81X2Oo6Mki8P'

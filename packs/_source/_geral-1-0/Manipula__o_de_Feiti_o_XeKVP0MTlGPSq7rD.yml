@@ -1,0 +1,58 @@
+folder: lWpMtihZm1il8I4V
+name: Manipulação de Feitiço
+type: feat
+_id: XeKVP0MTlGPSq7rD
+img: icons/magic/light/explosion-beam-impact-silhouette.webp
+system:
+  description:
+    value: "<p>A partir do <strong>3º nível Especialista</strong>, você adquire a habilidade de manipular seus próprios feitiços para adaptá-las às suas necessidades, usando a energia excedente delas para beneficiar suas habilidades. Toda vez que você executar um feitiço ou técnica de manipulação, seja por si mesmo ou por um Shikigami, você recebe 2 Dados de Técnica, definidos por um d6.</p><p class=\"MsoNormal\">A qualquer momento durante seu turno, você pode utilizar os dados de técnica para ativar um dos seguintes efeitos:</p><ul><li><p><strong>Aprimoramento:</strong> Você pode gastar quantos dados de técnica quiser para aumentar o dano da técnica pelo resultado da rolagem dos dados, mas deve usa-los antes de saber se ela acertou ou errou.</p></li><li><p><strong>Regenerar Maldição:</strong> Você pode gastar quantos dados de técnica desejar e curar um Shikigami pelo mesmo valor do resultado dos dados.</p></li><li><p><strong>Ativação Secundária:</strong> Você pode gastar quantos dados de técnica desejar para reduzir o custo da sua técnica pelo mesmo valor de dados consumidos.</p></li></ul><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\">Você pode ter um máximo de dados de técnica igual a 1 + seu bônus de proficiência.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: surto-de-aura
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 512500
+ownership:
+  default: 0
+  MhGXeDSlt2zUqR0J: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 8747493522d6b1dc71e316422457190090882289
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911388
+  modifiedTime: 1776903705552
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!XeKVP0MTlGPSq7rD'

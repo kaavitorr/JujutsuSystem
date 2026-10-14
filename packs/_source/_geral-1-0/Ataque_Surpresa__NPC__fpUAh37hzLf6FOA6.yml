@@ -1,0 +1,75 @@
+_id: fpUAh37hzLf6FOA6
+name: Ataque Surpresa (NPC)
+type: feat
+img: icons/creatures/magical/humanoid-silhouette-dashing-blue.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 700000
+flags:
+  scene-packer:
+    hash: 8ed6c6f23fe7c8e4d04969c4c61b761b58a61391
+    sourceId: Item.fpUAh37hzLf6FOA6
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Ataque Surpresa (Aumenta o dano efetivo da criatura na primeira
+      rodada):</strong> Se a criatura surpreender um alvo e atingi-lo com uma
+      jogada de ataque durante a primeira rodada do encontro, o alvo sofre dano
+      extra nesse ataque.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: ataque-surpresa-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.J65APOyq0evh1pVl
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910553
+  modifiedTime: 1776624910574
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!fpUAh37hzLf6FOA6'

@@ -1,0 +1,62 @@
+folder: vG1tvdXvcpq70Tb5
+name: Armadura de Musculos
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Você treina o seu corpo diariamente e está mais do
+      preparado para receber golpes.</p><p
+      class="MsoBodyText"><strong>Característica:</strong> Você transforma seu
+      atributo principal em Força.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: ataque-de-oportunidade
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: 5e93304325663bb8fe7077e705dbe4ba7b0fe1dc
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902116
+  modifiedTime: 1776913382717
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: 0XPCGOxGdkWcR2Vo
+sort: 300000
+_key: '!items!0XPCGOxGdkWcR2Vo'

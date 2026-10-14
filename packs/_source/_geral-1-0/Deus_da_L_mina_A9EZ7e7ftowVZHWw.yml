@@ -1,0 +1,90 @@
+folder: QwYh3uEF10z8gSGn
+name: Deus da Lâmina
+type: feat
+img: icons/skills/melee/sword-stuck-glowing-pink.webp
+system:
+  description:
+    value: >-
+      <p>A partir do <strong>19º nível</strong> <strong>de Sentinela</strong>,
+      você superou o que se julgava possível para um usuário do Novo Estilo das
+      Sombras, conseguindo ultrapassar até mesmo seu criador em questão de
+      maestria. Você recebe acesso as seguintes
+      características:</p><ul><li><p><em>Você não consome mais reações para
+      ativar o “Yuzuki”, mas ainda paga seu custo;</em></p></li><li><p><em>Você
+      pode utilizar técnicas de 3º grau ou menor de Sentinela sem consumir
+      PA;</em></p></li><li><p><em>Você recebe uma jogada de ataque (Comum)
+      adicional na característica Ataque Extra;</em></p></li><li><p><em>Você não
+      pode receber desvantagem em rolagens de acerto e pode utilizar “Hazy Moon”
+      de mãos vazias e sem custo;</em></p></li><li><p><em>Você gera naturalmente
+      3 vezes o seu nível em Pontos de Energia Amaldiçoada
+      (PA)</em>.</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-emissor
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: d8a632d7930b501d57e292fcb3875f3aa448cd29
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1782435510932
+  modifiedTime: 1782435511782
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: A9EZ7e7ftowVZHWw
+sort: 900000
+_key: '!items!A9EZ7e7ftowVZHWw'

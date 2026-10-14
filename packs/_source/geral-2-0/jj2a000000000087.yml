@@ -1,0 +1,22 @@
+_id: jj2a000000000087
+_key: '!items!jj2a000000000087'
+name: Impulso Físico (Defensivo)
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: impulso-fisico-defensivo
+  description:
+    value: <p><em><strong>Requisito:</strong> Corpo Rígido</em></p><p>Seus sentidos físicos e percepção são tão aguçados que você consegue detectar flutuações e pontos de apoio no espaço que apenas feiticeiros extremamente poderosos conseguiriam sentir. Você consegue usar seu movimento adicional, ao usar Pontos de Ação [⬢] em pleno ar, mas esse efeito não se aplica a sua movimentação livre, precisando sempre consumir Pontos de Ação.</p><p>Se utilizados dessa forma, você pode se manter no ar até o início do seu próximo turno.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Defensivo
+      requisitos:
+        - Corpo Rígido
+folder: jj2f000000000014
+ownership:
+  default: 0
+effects: []
+sort: 0

@@ -1,0 +1,22 @@
+_id: jj2a000000000046
+_key: '!items!jj2a000000000046'
+name: Ataque Potencializado
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: ataque-potencializado
+  description:
+    value: <p><em><strong>Requisito:</strong> Entrada Impactante</em></p><p>Você aprendeu a atacar os pontos fracos dos inimigos de maneira eficiente, aumentando a quantidade de dano que você causa normalmente. Suas jogadas de ataque (Comuns) causam 1d4 de dano adicional.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Corpo de Guerreiro
+      requisitos:
+        - Entrada Impactante
+folder: jj2f000000000009
+ownership:
+  default: 0
+effects: []
+sort: 0

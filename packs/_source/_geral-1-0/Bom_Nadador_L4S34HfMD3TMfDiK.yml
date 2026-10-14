@@ -1,0 +1,112 @@
+folder: vG1tvdXvcpq70Tb5
+name: Bom Nadador
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">O personagem é capaz de realizar manobras e mudar a
+      velocidade livremente, sem perder o controle do corpo dentro d’água.</p><p
+      class="MsoNormal"><strong>Característica:</strong> Seu deslocamento de
+      nado se torna igual seu deslocamento padrão e você não recebe penalidade
+      de criaturas não aquáticas.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: bom-nadador
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects:
+  - name: Bom Nadador
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.L4S34HfMD3TMfDiK
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    transfer: true
+    disabled: false
+    _id: PQKxgHRBCloY0neK
+    description: ''
+    statuses: []
+    flags:
+      dae:
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+        disableCondition: ''
+      dnd5e:
+        riders:
+          statuses: []
+      core:
+        overlay: false
+    tint: '#ffffff'
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 5.3.2
+      createdTime: 1776624902130
+      modifiedTime: 1776624902130
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+      exportSource: null
+    img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+    type: base
+    system:
+      changes: []
+    sort: 0
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!L4S34HfMD3TMfDiK.PQKxgHRBCloY0neK'
+sort: 1100000
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  MhGXeDSlt2zUqR0J: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 074e478eccf6fc9b30c0a881753b0a1a3d69acfa
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: Item.pIaAt98DZBQngnAh
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902130
+  modifiedTime: 1776913387942
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: L4S34HfMD3TMfDiK
+_key: '!items!L4S34HfMD3TMfDiK'

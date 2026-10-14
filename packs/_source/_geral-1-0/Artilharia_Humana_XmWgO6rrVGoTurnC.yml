@@ -1,0 +1,89 @@
+folder: 4Y1roiDtwfsWjAv6
+name: Artilharia Humana
+type: feat
+img: icons/skills/ranged/blast-energy-plating-orange.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">A partir do <strong>14º nível de
+      Especialista,</strong> você consegue executar seus feitiços com ainda mais
+      velocidade, assim como gerar uma quantidade de energia bem maior durante o
+      combate. Você recebe acesso as seguintes
+      características:</p><ul><li><p><em>No início de cada um de seus turnos,
+      você pode sacrificar 5 Pontos de Vida para gerar energia adicional igual
+      seu nível;</em></p></li><li><p><em>Ao usar o <strong>Movimentos
+      Empoderados</strong>, você pode sacrificar a ação para receber uma ação de
+      poder adicional;</em></p></li><li><p><em>Sua característica
+      <strong>Movimentos Empoderados</strong> te concede uma ação bônus
+      adicional sem precisar sacrificar sua ação, mas ela só pode ser utilizada
+      para causar dano, seja por ataques comuns, jogadas de ataque (de Técnica)
+      ou técnicas em área.</em></p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881641
+  modifiedTime: 1776922091273
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: XmWgO6rrVGoTurnC
+sort: 87500
+_key: '!items!XmWgO6rrVGoTurnC'

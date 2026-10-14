@@ -1,0 +1,88 @@
+folder: Vm4HPrhmj0g7AJef
+name: Vinculo Inquebrável
+type: feat
+img: icons/magic/defensive/armor-green-hex.webp
+system:
+  description:
+    value: >-
+      <p class="TextoPadro">A partir do 14º nível de Especialista, você é ligado
+      a todas as criaturas que você controla pela sua energia amaldiçoada,
+      permitindo que você possa controlar melhor o combate que as envolva. Você
+      recebe as seguintes características:</p><p>Até 3 vezes por descanso longo,
+      quando você sofrer qualquer quantia de dano, você pode transferi-la para
+      uma das criaturas que você controla a até 12 metros. Caso o dano exceda os
+      pontos de vida da criatura, você recebe o excedente. Esse efeito não pode
+      ser negado de nenhuma forma.</p><p>Quando você for perder o controle de
+      uma ou mais criaturas que você controla ou elas forem destruídas
+      simultaneamente, você pode negar a destruição dela e recuperar metade dos
+      Pontos de Vida dela. Essa característica pode ser utilizada uma vez por
+      descanso longo.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881650
+  modifiedTime: 1776922420632
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: sGnH2EEJT9b7rZt8
+sort: 100000
+_key: '!items!sGnH2EEJT9b7rZt8'

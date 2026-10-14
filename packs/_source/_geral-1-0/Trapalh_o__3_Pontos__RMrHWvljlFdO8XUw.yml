@@ -1,0 +1,77 @@
+_id: RMrHWvljlFdO8XUw
+name: Trapalhão (3 Pontos)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects: []
+folder: xaOZscxiXFUTyHS5
+sort: 2500000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: f7a12d9b35eff4b442587cf4ef380b8b24497697
+    sourceId: Item.JimQhuf6AXBEDM9d
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: "<p>Sempre que você se move, sai esbarrando em tudo pela sua frente ou tropeça no nada, não consegue carregar qualquer coisa sem que tudo acabe no chão.</p><p>\_\_\_\_\_\_\_\_\_\_\_ Ao realizar uma falha crítica em uma jogada de ataque, você não só erra o golpe como também desencadeia um dos seguintes efeitos, de acordo com o Mestre:</p><ul><li><p>Acerta a si mesmo ou um aliado próximo, causando até 5 pontos de dano na criatura;</p></li><li><p>Deixa a arma cair no chão;</p></li><li><p>Tropeça e recebe a condição “Caído”.</p></li></ul>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: trapalhao-2-pontos
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.vx0m9u4qZ7g74O3w
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902134
+  modifiedTime: 1776624902170
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!RMrHWvljlFdO8XUw'

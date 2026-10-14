@@ -1,0 +1,74 @@
+name: Espada e Escudo
+type: feat
+img: icons/magic/fire/flame-burning-fist-strike.webp
+effects: []
+folder: G1M8tPdHa94Qiodb
+flags:
+  scene-packer:
+    hash: cbbddbed523a70f6d08229a351a28d03d29b2c88
+    sourceId: Item.bG1X2tsRQxEkiGmz
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  dnd5e: {}
+system:
+  description:
+    value: >-
+      <p><strong>Espada e Escudo:</strong> A criatura recebe as habilidades de
+      manipulação de “Explosão Ofensiva” e “Explosão Defensiva” do Capítulo 6 do
+      livro do Jogador.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aspecto--ren-pratica-ofensiva
+  activities: {}
+  advancement: {}
+  enchant: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624910553
+  modifiedTime: 1782450190515
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+_id: fJN2v0Gzw8sa3ImJ
+sort: 500000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_key: '!items!fJN2v0Gzw8sa3ImJ'

@@ -1,0 +1,63 @@
+folder: vG1tvdXvcpq70Tb5
+name: Beleza Natural
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>O personagem nasceu com uma beleza chamativa. Mesmo sem o devido
+      preparo, ele já é bonito suficiente para chamar atenção e conquistar
+      olhares.</p><p><strong>Característica:</strong> Você reduz em 1 o seu
+      nível de preconceito ou recebe +2 em Testes de Atributo de Presença
+      (Persuasão).</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: corpo-marcial
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: ccf8f92a185eb8a940430b19b75b07ae5a8ea0ad
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902146
+  modifiedTime: 1776913387053
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: gefdu4YHs1PfzAbO
+sort: 900000
+_key: '!items!gefdu4YHs1PfzAbO'

@@ -1,0 +1,71 @@
+_id: OLDsmE2oWyfhMb4L
+name: Andar em Teias (NPC)
+type: feat
+img: icons/creatures/invertebrates/spider-web-red.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 300000
+flags:
+  scene-packer:
+    hash: 00029023454476a94fc3900148e61917d0944f3b
+    sourceId: Item.OLDsmE2oWyfhMb4L
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: "<p>\_A criatura ignora as restrições de movimentos causadas por teias.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: andar-em-teias-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.zrfKdQRiNd1L6DIr
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910540
+  modifiedTime: 1776624910569
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!OLDsmE2oWyfhMb4L'

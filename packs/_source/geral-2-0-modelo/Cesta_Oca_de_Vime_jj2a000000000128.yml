@@ -1,0 +1,46 @@
+_id: jj2a000000000128
+name: Cesta Oca de Vime
+type: feat
+img: icons/magic/unholy/orb-glowing-purple.webp
+system:
+  identifier: cesta-oca-de-vime
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> 4º nível ou superior</em></p><p>Uma
+      técnica anti-domínio que toma a forma de um escudo que parece de linhas
+      interligadas como uma cesta. Serve como uma medida poderosa contra outros
+      domínios. Pode ser ativada como resposta a ativação de um
+      domínio.</p><p>Enquanto ela estiver ativa, você anula os Inescapável,
+      Fatal e Irresistível de um domínio sobre o usuário e todo dano recebido
+      que tiver origem de um domínio é reduzido pela metade.</p><p>Além disso,
+      você não pode utilizar as mãos para mais nada e consome 6 Pontos de
+      Energia Amaldiçoada (PA) na ativação e no início de cada um de seus
+      turnos.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Domínio e Anti-Domínio
+      caminho: Técnicas Anti-Domínio
+      requisitos:
+        - 4º nível ou superior
+folder: jj2f000000000021
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814604144
+  modifiedTime: 1791814604144
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000128'

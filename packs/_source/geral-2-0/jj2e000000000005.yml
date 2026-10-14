@@ -1,0 +1,111 @@
+_id: jj2e000000000005
+_key: '!items!jj2e000000000005'
+name: Estrategista
+type: class
+img: systems/jujutsu-system/icons/svg/items/class.svg
+system:
+  identifier: estrategista
+  levels: 1
+  description:
+    value: |
+
+      <h1>ESTRATEGISTA</h1>
+      <h3>Pontos de Vida</h3>
+      <p><strong>Vida Base:</strong> 4 por nível de personagem.<br><strong>Vida por Ponto de Constituição:</strong> 4 por ponto.</p>
+      <h3>Energia Amaldiçoada</h3>
+      <p><strong>Energia Base:</strong> 15 por nível de personagem.</p>
+      <h3>Proficiências</h3>
+      <ul>
+        <li><strong>Equipamentos:</strong> Recebe 2 Pontos de Proficiência entre qualquer tipo de arma.</li>
+        <li><strong>Salvaguarda:</strong> Recebe 2 Pontos de Proficiência para distribuir entre as Salvaguardas.</li>
+        <li><strong>Perícias:</strong> Escolha 5 Pontos de Proficiência para distribuir entre as Perícias.</li>
+      </ul>
+      <h3>Informações Gerais</h3>
+      <ul>
+        <li><strong>Atributo Principal:</strong> Sabedoria.</li>
+        <li><strong>Habilidades de Especialização:</strong> Você recebe 1 habilidade de "Feitiço Inato".</li>
+        <li><strong>Equipamentos:</strong> Uma arma cortante, especial ou ¥ 3.000 e; ¥ 8.000.</li>
+      </ul>
+      <h2>Características de Combate</h2>
+      <h3>Amaldiçoado com Conhecimento</h3>
+      <p>Você tem uma facilidade maior para aprender qualquer coisa relacionada a energia amaldiçoada e seu controle sobre ela avança a passos largos. Você recebe as seguintes características:</p>
+      <ul>
+        <li>Sempre que você rolar 1 no resultado do d20, você pode rolar novamente e usar o novo resultado;</li>
+        <li>Você pode criar barreiras usando da sua reserva Total de Energia sem consumir do seu limite de Refinamento;</li>
+      </ul>
+      <p>Além disso, você também deve escolher uma entre as duas especializações:</p>
+      <h4>Mestre de Barreiras</h4>
+      <p>Você se especializou no uso de barreiras para lutar e ajudar seus companheiros, você recebe 3 habilidades de Especialização de Barreira e suas barreiras recebem 2 Pontos de Vida adicionais por PA gasto para cria-las.</p>
+      <h4>Médico de Campo</h4>
+      <p>Você desbloqueia instantaneamente a Energia Reversa e recebe 1 Habilidade de Especialização dela, mas todas as suas técnicas de dano de Feitiços passam a custar 1 Ponto de Ação [⬢] adicional.<br>Além disso, você dobra o limite de Pontos de Energia Reversa que pode ter de 30 para 60.</p>
+
+      <hr>
+      <h2>Regras Gerais do Estilo de Combate</h2>
+      <h3>Estilos de Combate</h3>
+      <table>
+        <thead><tr><th>Categoria</th><th>Pontos de Vida</th><th>Atributo Principal</th></tr></thead>
+        <tbody>
+          <tr><td>Restringido</td><td>7</td><td>Força ou Agilidade</td></tr>
+          <tr><td>Lutador</td><td>7</td><td>Força ou Agilidade</td></tr>
+          <tr><td>Sentinela</td><td>6</td><td>Agilidade</td></tr>
+          <tr><td>Especialista</td><td>5</td><td>Intelecto</td></tr>
+          <tr><td>Estrategista</td><td>4</td><td>Sabedoria</td></tr>
+        </tbody>
+      </table>
+      <h3>Salvaguardas</h3>
+      <p>Cada categoria concede proficiência em Salvaguardas, permitindo que o jogador receba duas opções. Ao escolher sua categoria, você ganha proficiência permanentemente nos atributos listados ao realizar uma rolagem de Salvaguarda dele.</p>
+      <h3>Pontos de Vida</h3>
+      <p>Pontos de vida representam a vitalidade do personagem, refletindo sua saúde física e a quantidade de ferimentos presentes. Um personagem com poucos pontos de vida está gravemente ferido, com órgãos perfurados ou até mesmo membros decepados. Por outro lado, um personagem com todos os pontos de vida está com boa saúde e totalmente recuperado.</p>
+      <p>Cada Estilo de Combate concede um valor base de Pontos de Vida, esse valor é recebido em adicional a cada vez que um personagem sobe de nível ou aumenta seu valor de Constituição.</p>
+      <h3>Pontos de Proficiência</h3>
+      <p>Você recebe <strong>1 Ponto de Proficiência</strong> toda vez que sobe de nível de personagem, permitindo que você aumente sua proficiência em um conjunto de armas ou em uma perícia específica.</p>
+      <h3>Lança e Escudo</h3>
+      <p>Você aprendeu a utilizar sua energia amaldiçoada para aumentar a quantidade de dano de seus ataques assim como reduzir dos golpes inimigos. Você recebe acesso as seguintes características:</p>
+      <ul>
+        <li><strong>Explosão Ofensiva:</strong> Ao realizar uma jogada de ataque (Comum ou de Técnica), você pode gastar 1 PA para adicionar 1d4 de dano adicional, até um máximo igual a metade do seu nível de personagem, arredondado para baixo.</li>
+        <li><strong>Explosão Defensiva:</strong> Você pode gastar 1 PA para reduzir 1d4 do próximo dano sofrido até um máximo igual a metade do seu nível de personagem, arredondado para baixo.</li>
+      </ul>
+      <h3>Habilidades de Especialização</h3>
+      <p>A cada nível par, você recebe 2 habilidades de especialização do Capítulo 6. Existem 4 categorias de especializações. Sendo elas Técnica Inata, Físico Treinado, Técnicas de Barreira e Técnica de Reversão.</p>
+      <p>Um personagem deve seguir a progressão de cada especialização para avançar como Feiticeiro.</p>
+      <h3>Calculando a Classe de Resistência e o Dano</h3>
+      <p>Primeiro, determine o atributo principal do seu personagem, definido pelo seu Estilo de Combate. Em seguida, utilize as regras abaixo.</p>
+      <p><strong>Classe de Resistência</strong> — Quando você não estiver vestindo qualquer armadura ou proteção, sua Classe de Resistência é igual a:</p>
+      <p><em>10 + (atributo principal + atributo de agilidade + atributo de constituição) / 3</em></p>
+      <p>Quando o resultado da Classe de Resistência terminar em uma fração, você deve arredonda-lo para baixo.</p>
+      <p><strong>Dano Padrão</strong> — Seu dano padrão é 1d4, a menos que uma habilidade altere esse dado base. O dano de um personagem aumenta em um passo a cada 4 níveis de personagem, até um máximo de d12.</p>
+      <p><em>Passos de Dano: 1d4 → 1d6 → 1d8 → 1d10 → 1d12.</em></p>
+      <p>O dado de dano principal não pode ultrapassar 1d12, salvo quando uma habilidade especificar o contrário.</p>
+      <h3>Tabela de Nível de Maestria</h3>
+      <table>
+        <thead><tr><th>Nível</th><th>Feiticeiro</th><th>Evolução do Feitiço</th><th>Nível</th><th>Feiticeiro</th><th>Evolução do Feitiço</th></tr></thead>
+        <tbody>
+          <tr><td>1º</td><td>4º Grau</td><td>Feitiço Básico</td><td>11º</td><td>—</td><td>—</td></tr>
+          <tr><td>2º</td><td>—</td><td>—</td><td>12º</td><td>Especial</td><td>—</td></tr>
+          <tr><td>3º</td><td>—</td><td>—</td><td>13º</td><td>—</td><td>—</td></tr>
+          <tr><td>4º</td><td>3º Grau</td><td>Feitiço Estendido</td><td>14º</td><td>—</td><td>—</td></tr>
+          <tr><td>5º</td><td>—</td><td>—</td><td>15º</td><td>—</td><td>—</td></tr>
+          <tr><td>6º</td><td>—</td><td>—</td><td>16º</td><td>—</td><td>Expansão sem Barreiras</td></tr>
+          <tr><td>7º</td><td>2º Grau</td><td>—</td><td>17º</td><td>—</td><td>—</td></tr>
+          <tr><td>8º</td><td>—</td><td>Feitiço Máximo</td><td>18º</td><td>—</td><td>—</td></tr>
+          <tr><td>9º</td><td>—</td><td>—</td><td>19º</td><td>—</td><td>—</td></tr>
+          <tr><td>10º</td><td>1º Grau</td><td>Expansão de Domínio</td><td>20º</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    chat: ''
+flags:
+  jujutsu-system:
+    legacy2:
+      vidaBase: 4
+      energiaBase: 15
+      atributoPrincipal: wis
+      espIniciais: 1
+      proficiencias:
+        armas: 2
+        salvaguardas: 2
+        pericias: 5
+ownership:
+  default: 0
+effects: []
+folder: null
+sort: 0

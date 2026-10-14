@@ -1,0 +1,42 @@
+_id: jj2a000000000013
+name: Vínculo Amaldiçoado
+type: feat
+img: icons/magic/water/projectile-ice-snowball.webp
+system:
+  identifier: vinculo-amaldicoado
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Trabalho em Equipe</em></p><p>Sua
+      manipulação de energia amaldiçoada através do seu Shikigami é grandemente
+      aprimorada. Você passa a poder usar características, técnicas e
+      habilidades através do seu Shikigami naturalmente. Assim como transferir
+      ações para ele para ativação de habilidades que ele possua, que necessitem
+      de mais de um Ponto de Ação [⬢].</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Invocador de Shikigami
+      requisitos:
+        - Trabalho em Equipe
+folder: jj2f000000000003
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814831740
+  modifiedTime: 1791814831740
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000013'

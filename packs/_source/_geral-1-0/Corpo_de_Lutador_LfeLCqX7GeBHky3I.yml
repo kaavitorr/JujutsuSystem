@@ -1,0 +1,291 @@
+name: Corpo de Lutador
+type: feat
+img: icons/magic/symbols/rune-sigil-horned-white-purple.webp
+effects: []
+folder: TOc92NuiE5uyXD8M
+sort: 800000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: cf3d29e295c366ecbbd180f5cc2c232a83a6677e
+    sourceId: Item.56za1y6eXu2k49Rg
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p>Seu corpo já passou por severos treinos físicos, o que lhe garante uma
+      força física superior aos demais e as seguintes características são
+      recebidas:</p><ul><li><p><strong>Ataque Aprimorado:</strong> Seu ataque
+      desarmado corpo-a-corpo aumenta conforme o seu nível, de acordo com a
+      tabela “Ataque Desarmado”.</p><table class="MsoTableGrid" border="1"
+      style="margin-left:12.5pt;border-collapse:collapse;border:none;mso-border-alt:solid
+      windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm
+      5.4pt"><tbody><tr style="mso-yfti-irow:0;mso-yfti-firstrow:yes"><td
+      colspan="4" style="width:467.8pt;border:solid white
+      1.0pt;mso-border-themecolor:background1;mso-border-alt:solid white
+      .5pt;mso-border-themecolor:background1;background:#023027;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif"><strong style="color:white">ATAQUE
+      DESARMADO</strong></span></p></td></tr><tr style="mso-yfti-irow:1"><td
+      style="width:92.6pt;border:solid white
+      1.0pt;mso-border-themecolor:background1;border-top:none;mso-border-top-alt:solid
+      white .5pt;mso-border-top-themecolor:background1;mso-border-alt:solid
+      white
+      .5pt;mso-border-themecolor:background1;background:#023027;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif"><strong style="color:white">Nível</strong></span></p></td><td
+      style="width:149.25pt;border-top:none;border-left:none;border-bottom:solid
+      white 1.0pt;mso-border-bottom-themecolor:background1;border-right:solid
+      white
+      1.0pt;mso-border-right-themecolor:background1;mso-border-top-alt:solid
+      white .5pt;mso-border-top-themecolor:background1;mso-border-left-alt:solid
+      white .5pt;mso-border-left-themecolor:background1;mso-border-alt:solid
+      white
+      .5pt;mso-border-themecolor:background1;background:#023027;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif"><strong style="color:white">Ataque
+      Desarmado</strong></span></p></td><td
+      style="width:96.5pt;border-top:none;border-left:none;border-bottom:solid
+      white 1.0pt;mso-border-bottom-themecolor:background1;border-right:solid
+      white
+      1.0pt;mso-border-right-themecolor:background1;mso-border-top-alt:solid
+      white .5pt;mso-border-top-themecolor:background1;mso-border-left-alt:solid
+      white .5pt;mso-border-left-themecolor:background1;mso-border-alt:solid
+      white
+      .5pt;mso-border-themecolor:background1;background:#023027;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif"><strong style="color:white">Nível</strong></span></p></td><td
+      style="width:129.45pt;border-top:none;border-left:none;border-bottom:solid
+      white 1.0pt;mso-border-bottom-themecolor:background1;border-right:solid
+      white
+      1.0pt;mso-border-right-themecolor:background1;mso-border-top-alt:solid
+      white .5pt;mso-border-top-themecolor:background1;mso-border-left-alt:solid
+      white .5pt;mso-border-left-themecolor:background1;mso-border-alt:solid
+      white
+      .5pt;mso-border-themecolor:background1;background:#023027;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif"><strong style="color:white">Ataque
+      Desarmado</strong></span></p></td></tr><tr style="mso-yfti-irow:2"><td
+      style="width:92.6pt;border:solid white
+      1.0pt;mso-border-themecolor:background1;border-top:none;mso-border-top-alt:solid
+      white .5pt;mso-border-top-themecolor:background1;mso-border-alt:solid
+      white
+      .5pt;mso-border-themecolor:background1;background:#023027;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif"><strong style="color:white">1º ao
+      5º</strong></span></p></td><td
+      style="width:149.25pt;border-top:none;border-left:none;border-bottom:solid
+      white 1.0pt;mso-border-bottom-themecolor:background1;border-right:solid
+      white
+      1.0pt;mso-border-right-themecolor:background1;mso-border-top-alt:solid
+      white .5pt;mso-border-top-themecolor:background1;mso-border-left-alt:solid
+      white .5pt;mso-border-left-themecolor:background1;mso-border-alt:solid
+      white
+      .5pt;mso-border-themecolor:background1;background:#DAFEF7;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif">1d4</span></p></td><td
+      style="width:96.5pt;border-top:none;border-left:none;border-bottom:solid
+      white 1.0pt;mso-border-bottom-themecolor:background1;border-right:solid
+      white
+      1.0pt;mso-border-right-themecolor:background1;mso-border-top-alt:solid
+      white .5pt;mso-border-top-themecolor:background1;mso-border-left-alt:solid
+      white .5pt;mso-border-left-themecolor:background1;mso-border-alt:solid
+      white
+      .5pt;mso-border-themecolor:background1;background:#023027;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif"><strong style="color:white">16º ao
+      20º</strong></span></p></td><td
+      style="width:129.45pt;border-top:none;border-left:none;border-bottom:solid
+      white 1.0pt;mso-border-bottom-themecolor:background1;border-right:solid
+      white
+      1.0pt;mso-border-right-themecolor:background1;mso-border-top-alt:solid
+      white .5pt;mso-border-top-themecolor:background1;mso-border-left-alt:solid
+      white .5pt;mso-border-left-themecolor:background1;mso-border-alt:solid
+      white
+      .5pt;mso-border-themecolor:background1;background:#DAFEF7;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif">1d10</span></p></td></tr><tr style="mso-yfti-irow:3"><td
+      style="width:92.6pt;border:solid white
+      1.0pt;mso-border-themecolor:background1;border-top:none;mso-border-top-alt:solid
+      white .5pt;mso-border-top-themecolor:background1;mso-border-alt:solid
+      white
+      .5pt;mso-border-themecolor:background1;background:#023027;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif"><strong style="color:white">6º ao
+      10º</strong></span></p></td><td
+      style="width:149.25pt;border-top:none;border-left:none;border-bottom:solid
+      white 1.0pt;mso-border-bottom-themecolor:background1;border-right:solid
+      white
+      1.0pt;mso-border-right-themecolor:background1;mso-border-top-alt:solid
+      white .5pt;mso-border-top-themecolor:background1;mso-border-left-alt:solid
+      white .5pt;mso-border-left-themecolor:background1;mso-border-alt:solid
+      white
+      .5pt;mso-border-themecolor:background1;background:#08DEB5;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif">1d6</span></p></td><td
+      style="width:96.5pt;border-top:none;border-left:none;border-bottom:solid
+      white 1.0pt;mso-border-bottom-themecolor:background1;border-right:solid
+      white
+      1.0pt;mso-border-right-themecolor:background1;mso-border-top-alt:solid
+      white .5pt;mso-border-top-themecolor:background1;mso-border-left-alt:solid
+      white .5pt;mso-border-left-themecolor:background1;mso-border-alt:solid
+      white
+      .5pt;mso-border-themecolor:background1;background:#023027;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif"><strong style="color:white">21º ao
+      25º</strong></span></p></td><td
+      style="width:129.45pt;border-top:none;border-left:none;border-bottom:solid
+      white 1.0pt;mso-border-bottom-themecolor:background1;border-right:solid
+      white
+      1.0pt;mso-border-right-themecolor:background1;mso-border-top-alt:solid
+      white .5pt;mso-border-top-themecolor:background1;mso-border-left-alt:solid
+      white .5pt;mso-border-left-themecolor:background1;mso-border-alt:solid
+      white
+      .5pt;mso-border-themecolor:background1;background:#08DEB5;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif">2d6</span></p></td></tr><tr
+      style="mso-yfti-irow:4;mso-yfti-lastrow:yes"><td
+      style="width:92.6pt;border:solid white
+      1.0pt;mso-border-themecolor:background1;border-top:none;mso-border-top-alt:solid
+      white .5pt;mso-border-top-themecolor:background1;mso-border-alt:solid
+      white
+      .5pt;mso-border-themecolor:background1;background:#023027;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif"><strong style="color:white">11º ao
+      15º</strong></span></p></td><td
+      style="width:149.25pt;border-top:none;border-left:none;border-bottom:solid
+      white 1.0pt;mso-border-bottom-themecolor:background1;border-right:solid
+      white
+      1.0pt;mso-border-right-themecolor:background1;mso-border-top-alt:solid
+      white .5pt;mso-border-top-themecolor:background1;mso-border-left-alt:solid
+      white .5pt;mso-border-left-themecolor:background1;mso-border-alt:solid
+      white
+      .5pt;mso-border-themecolor:background1;background:#DAFEF7;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif">1d8</span></p></td><td
+      style="width:96.5pt;border-top:none;border-left:none;border-bottom:solid
+      white 1.0pt;mso-border-bottom-themecolor:background1;border-right:solid
+      white
+      1.0pt;mso-border-right-themecolor:background1;mso-border-top-alt:solid
+      white .5pt;mso-border-top-themecolor:background1;mso-border-left-alt:solid
+      white .5pt;mso-border-left-themecolor:background1;mso-border-alt:solid
+      white
+      .5pt;mso-border-themecolor:background1;background:#023027;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif"><strong style="color:white">26º ao
+      30º</strong></span></p></td><td
+      style="width:129.45pt;border-top:none;border-left:none;border-bottom:solid
+      white 1.0pt;mso-border-bottom-themecolor:background1;border-right:solid
+      white
+      1.0pt;mso-border-right-themecolor:background1;mso-border-top-alt:solid
+      white .5pt;mso-border-top-themecolor:background1;mso-border-left-alt:solid
+      white .5pt;mso-border-left-themecolor:background1;mso-border-alt:solid
+      white
+      .5pt;mso-border-themecolor:background1;background:#DAFEF7;padding:0cm
+      5.4pt 0cm 5.4pt"><p class="MsoBodyText"
+      style="margin-top:.15pt;line-height:102%;tab-stops:7.1pt
+      467.8pt;text-align:center"><span style="font-family:'Chaparral
+      Pro',serif">2d10</span></p></td></tr></tbody></table></li><li><p><strong>Defesa
+      Avançada:</strong> Quando você não estiver vestindo qualquer armadura ou
+      proteção, sua CR será 10 + seu modificador principal + seu modificador de
+      Constituição (arredondado para baixo).</p><p>Alternativamente, você pode
+      escolher o Modificador de Constituição como primário e usar metade do
+      modificador principal, tornando-os como atributo secundários.</p><p>Usando
+      esta característica, ao considerar o bônus de CR do seu Atributo de
+      Constituição, só é possível adicionar à sua CR um valor igual à metade do
+      seu nível, arredondado para baixo.</p><p>Por exemplo, no 7º nível,
+      independentemente do valor do modificador de Constituição, o bônus máximo
+      que ele poderá adicionar à sua CR será de +3.</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: corpo-de-lutador
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.uMNWzaM7WqfTGRaL
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624882950
+  modifiedTime: 1776624882975
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: LfeLCqX7GeBHky3I
+_key: '!items!LfeLCqX7GeBHky3I'

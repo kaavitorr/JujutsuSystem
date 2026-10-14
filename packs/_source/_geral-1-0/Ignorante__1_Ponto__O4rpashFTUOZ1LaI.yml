@@ -1,0 +1,77 @@
+_id: O4rpashFTUOZ1LaI
+name: Ignorante (1 Ponto)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects: []
+folder: ImFD309NSdjSZUT5
+sort: 900000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 8e22fa8a8deb97e99f5d201ea15622a35174c611
+    sourceId: Item.TihqvYKo9LwCKBKD
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: "<p>Você acha que já possui quase todo o conhecimento necessário para atingir seus objetivos e, precisa apenas continuar seguindo seu caminho atual até o fim, vendo todo resto apenas como perca de tempo.</p><p>\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Você não consegue abandonar sua classe hunter atual para focar em nenhuma outra em nenhum momento do jogo.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: ignorante-1-ponto
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.ZUiyeGWkxGEXgKBl
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902132
+  modifiedTime: 1776624902169
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!O4rpashFTUOZ1LaI'

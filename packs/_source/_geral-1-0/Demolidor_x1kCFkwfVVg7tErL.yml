@@ -1,0 +1,20 @@
+type: Item
+folder: 8GbHEgID6Y7u3DHc
+name: Demolidor
+color: null
+sorting: m
+_id: x1kCFkwfVVg7tErL
+description: ''
+sort: 250000
+flags: {}
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776918438119
+  modifiedTime: 1776970550056
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!x1kCFkwfVVg7tErL'

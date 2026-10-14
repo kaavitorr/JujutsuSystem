@@ -1,0 +1,22 @@
+_id: jj2a000000000032
+_key: '!items!jj2a000000000032'
+name: Conceder Regras
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: conceder-regras
+  description:
+    value: <p>As técnicas de barreiras permitem que o usuário modifique suas barreiras para diversos propósitos.</p><p><em><strong>Requisito:</strong> Véu</em></p><p>Ao aprender essa habilidade, você se torna capaz de adicionar regras e efeitos de todas as suas barreiras, de acordo com as regras do Manual de Feitiços.</p><p>Você pode manter até 2 regras preparadas, que são consumidas quando você cria uma barreira com elas.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Técnicas de Barreira
+      caminho: Técnicas de Barreiras
+      requisitos:
+        - Véu
+folder: jj2f000000000007
+ownership:
+  default: 0
+effects: []
+sort: 0

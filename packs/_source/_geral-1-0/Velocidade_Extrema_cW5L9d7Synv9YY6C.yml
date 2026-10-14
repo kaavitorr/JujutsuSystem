@@ -1,0 +1,107 @@
+_id: cW5L9d7Synv9YY6C
+name: Velocidade Extrema
+type: feat
+img: icons/skills/movement/feet-winged-boots-brown.webp
+effects: []
+folder: V7LPPawJA1q5iJPU
+sort: 125000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+      context: Cura
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: f7986b2559ebbbd041ae8550113fbac80702216e
+    sourceId: Item.b42uRFTq72jy3kwx
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickOther:
+      context: ''
+      value: true
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midi-qol:
+    effectActivation: false
+    rollAttackPerTarget: default
+    itemCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    rollOther: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    noConcentrationCheck: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  dnd5e: {}
+system:
+  description:
+    value: "<p><span>A partir do <strong>15º nível de Restringido</strong>, você se tornou tão rápido que seus movimentos parecem até miragens, até para criaturas de alto nível. Você recebe as seguintes características:</span></p><ul><li><p><span><em>Você recebe uma ação bônus adicional, que só pode ser usada em efeitos, técnicas ou habilidades diferentes;</em></span></p></li><li><p><span><em>Você recebe uma reação adicional, que só pode ser usada em efeitos, técnicas ou habilidades diferentes;</em></span></p></li><li><p><em>Você pode usar seu deslocamento para se mover instantaneamente para qualquer lugar que você tenha deslocamento para alcançar, ignorando qualquer tipo de reação que seria gerada pelo seu movimento. Você desaparece da sua localização atual e aparece no seu destino final.</em></p></li></ul><p class=\"MsoNormal\"><span style=\"font-size:6pt;font-family:'Chaparral Pro', serif\"><em>\_</em></span></p><p class=\"MsoNormal\">As ações recebidas são renovadas no início de cada um de seus turnos.</p>"
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    recovery: []
+    spent: 0
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  activities: {}
+  identifier: vitalidade-transbordante
+  enchant: {}
+  advancement: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.1RCeXzsI5HTaepGi
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911389
+  modifiedTime: 1776631672710
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!cW5L9d7Synv9YY6C'

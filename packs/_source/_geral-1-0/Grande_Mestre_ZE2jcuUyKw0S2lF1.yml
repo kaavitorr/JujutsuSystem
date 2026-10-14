@@ -1,0 +1,76 @@
+folder: udJ0kfznjzJEChhq
+name: Grande Mestre
+type: feat
+img: icons/magic/unholy/orb-rays-blue.webp
+system:
+  description:
+    value: "<p class=\"TextoPadro\">A partir do <strong>14º nível de Estrategista</strong>, você aprendeu a utilizar as Barreiras Bon com maestria, permitindo que você crie barreiras praticamente indestrutíveis desde que elas possuam regras aceitáveis:</p><ul><li><p><em>Suas barreiras Bon são indestrutíveis se possuírem regras que permitam a saída intacta do alvo;</em></p></li><li><p><em>Suas Barreiras Bon só podem ser destruídas a força por outro Grande Mestre Especialista se elas cumprirem a regra 1;</em></p></li><li><p><em>Suas Barreiras Vazias ou inferiores tem os Pontos de Vida finais multiplicados por 5. Não afeta o Ativação Versátil.</em></p></li></ul><p class=\"TextoPadro\">\_</p><p class=\"TextoPadro\">Além disso, uma vez por descanso curto ou longo, você pode usar uma ação de poder e 10 Pontos de Energia Amaldiçoada (PA) por rodada para criar uma Barreira Bon de 4,5 metros de raio ao seu redor com 1.500 Pontos de Vida e 35 de CR por 1 minuto. Enquanto ela existir, você fica imune a qualquer dano externo.</p><p class=\"TextoPadro\">Enquanto essa barreira existir, você e outras criaturas dentro dela não podem afetar criaturas do lado de fora com técnicas ou feitiços e vice-versa.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881641
+  modifiedTime: 1776923664315
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: ZE2jcuUyKw0S2lF1
+sort: 200000
+_key: '!items!ZE2jcuUyKw0S2lF1'

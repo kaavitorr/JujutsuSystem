@@ -1,0 +1,77 @@
+_id: 1s6rneKa27RQs5s9
+name: Fedor (NPC)
+type: feat
+img: icons/creatures/mammals/rodent-rat-diseaed-gray.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 3100000
+flags:
+  scene-packer:
+    hash: 48bd9af4757e6eccb4f6b77d7f627cc3fd77056c
+    sourceId: Item.1s6rneKa27RQs5s9
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Fedor (Aumenta a CR efetiva da criatura em 1):
+      </strong>Qualquer alvo que comece seu turno a até 1,5 metro da criatura
+      deve ser bem sucedido em um Teste de Resistência de Constituição ou
+      receberá a condição “Envenenado” até o início do próximo turno dele. Se
+      obtiver sucesso na resistência, o alvo fica imune ao seu fedor por 24
+      horas.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: fedor-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.QcIyIO13FUI3wfBK
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910524
+  modifiedTime: 1776624910563
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!1s6rneKa27RQs5s9'

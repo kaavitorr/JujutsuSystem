@@ -1,0 +1,108 @@
+<section class="tab {{ tab.cssClass }} feitico-tab feitico-template-tab" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
+
+  <p class="feitico-template-hint">Configure as manifestações e técnicas deste Molde. Ao instalar em uma ficha,
+    todos os itens abaixo serão copiados para o personagem.</p>
+
+  <div class="feitico-slots">
+  {{#each feitico.slots as |slot|}}
+  <div class="feitico-slot-card {{#if (or slot.manifestacao slot.hasTecnicas)}}is-filled{{/if}}" data-feitico-slot="{{ slot.id }}">
+
+    <div class="feitico-slot-label-row">
+      <span class="feitico-slot-label">{{ slot.label }}</span>
+    </div>
+
+    {{#if slot.manifestacao}}
+    <div class="feitico-manif-row" data-item-id="{{ slot.manifestacao.id }}" draggable="true">
+      <div class="feitico-manif-portrait">
+        <img src="{{ slot.manifestacao.img }}" alt="{{ slot.manifestacao.name }}" />
+      </div>
+      <div class="feitico-manif-info">
+        <div class="feitico-manif-name">{{ slot.manifestacao.name }}</div>
+        {{#if slot.manifestacao.subtitle}}<div class="feitico-manif-sub">{{ slot.manifestacao.subtitle }}</div>{{/if}}
+      </div>
+      <div class="feitico-manif-actions">
+        <a class="feitico-action" data-action="feiticoEdit" data-item-id="{{ slot.manifestacao.id }}"
+           data-tooltip="Editar">
+          <i class="fas fa-edit" inert></i>
+        </a>
+        <a class="feitico-action feitico-action-danger" data-action="feiticoRemove"
+           data-item-id="{{ slot.manifestacao.id }}" data-tooltip="Remover">
+          <i class="fas fa-trash" inert></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="feitico-req-chips">
+      {{#each slot.requirements as |req|}}
+      <div class="feitico-req-chip" style="--cat-color: #e3b53c;">
+        <span class="feitico-req-chip-maestria">Maestria</span>
+        <span class="feitico-req-chip-sep">Nv</span>
+        <input type="number" class="feitico-req-level" min="1" max="7" value="{{ req.level }}"
+               data-feitico-req="level"
+               data-item-id="{{ req.manifestacaoId }}" data-index="{{ req.index }}"
+               data-tooltip="Nível de Maestria mínimo exigido" />
+        <a class="feitico-req-chip-remove" data-action="feiticoReqRemove"
+           data-item-id="{{ req.manifestacaoId }}" data-index="{{ req.index }}"
+           data-tooltip="Remover requisito">
+          <i class="fas fa-trash" inert></i>
+        </a>
+      </div>
+      {{/each}}
+      {{#if slot.canAddReq}}
+      <a class="feitico-req-add-chip" data-action="feiticoReqAdd" data-item-id="{{ slot.manifestacao.id }}"
+         data-tooltip="Adicionar requisito de Maestria (máx. 6)">
+        <i class="fas fa-plus" inert></i><span>Requisito</span>
+      </a>
+      {{/if}}
+    </div>
+
+    {{else}}
+    <div class="feitico-manif-empty feitico-drop-zone" data-feitico-drop="manif">
+      <i class="fas fa-hand-fist" inert></i>
+      <span>Arraste uma técnica aqui ou clique no botão abaixo</span>
+      <button type="button" class="feitico-manif-create-btn" data-action="feiticoCreateManif" data-slot="{{ slot.id }}">
+        <i class="fas fa-plus" inert></i>
+        <span>Criar Manifestação</span>
+      </button>
+    </div>
+    {{/if}}
+
+    <div class="feitico-tecnicas-row feitico-tecnicas-split feitico-drop-zone" data-feitico-drop="tecnica">
+      <span class="feitico-tecnicas-label">{{ slot.tecnicasLabel }}</span>
+
+      {{!-- Chip de técnica (partial inline). --}}
+      {{#*inline "feiticoMoldeTecChip"}}
+      <div class="feitico-tecnica-chip" data-item-id="{{ id }}" draggable="true">
+        <img src="{{ img }}" alt="{{ name }}" />
+        <span class="feitico-tecnica-chip-name">{{ name }}</span>
+        <div class="feitico-tecnica-chip-actions">
+          <a data-action="feiticoEdit" data-item-id="{{ id }}" data-tooltip="Editar"><i class="fas fa-edit" inert></i></a>
+          <a data-action="feiticoRemove" data-item-id="{{ id }}" data-tooltip="Remover"><i class="fas fa-trash" inert></i></a>
+        </div>
+      </div>
+      {{/inline}}
+
+      {{#if slot.hasTecnicas}}
+      <div class="feitico-tecnicas-cols">
+        <div class="feitico-tecnicas-col feitico-tecnicas-col-grau">
+          {{#each slot.tecnicasGrau as |tec|}}{{> feiticoMoldeTecChip tec}}{{/each}}
+        </div>
+        <div class="feitico-tecnicas-col feitico-tecnicas-col-aux">
+          {{#each slot.tecnicasAux as |tec|}}{{> feiticoMoldeTecChip tec}}{{/each}}
+        </div>
+      </div>
+      {{else}}
+      <span class="feitico-tecnicas-empty-hint">Arraste uma técnica ou clique no +</span>
+      {{/if}}
+
+      <a class="feitico-tecnica-add-chip" data-action="feiticoCreateTecnica" data-slot="{{ slot.id }}"
+         data-tooltip="Criar técnica">
+        <i class="fas fa-plus" inert></i>
+      </a>
+    </div>
+
+  </div>
+  {{/each}}
+  </div>
+
+</section>

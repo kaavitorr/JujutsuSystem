@@ -1,0 +1,22 @@
+_id: jj2a000000000099
+_key: '!items!jj2a000000000099'
+name: Lâmina Partida
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: lamina-partida
+  description:
+    value: <p><em><strong>Requisito:</strong> Troca Arriscada</em></p><p>Uma vez por encontro, se o seu domínio for quebrado, você pode gastar 20 PA da sua reserva total para criar outro de forma instantânea e tão veloz que anula qualquer efeito de uma expansão antes que ele consiga te afetar.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Novo Estilo das Sombras
+      requisitos:
+        - Troca Arriscada
+folder: jj2f000000000015
+ownership:
+  default: 0
+effects: []
+sort: 0

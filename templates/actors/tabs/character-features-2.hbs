@@ -1,0 +1,7 @@
+<section class="tab {{ tab.cssClass }} jj2-page jj2-features" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
+  <div class="jj2-page-heading jj2-manga-heading jj2-features-heading">
+    <h2>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="tree" }}Características</h2>
+    <button type="button" class="jj2-action primary {{#if owner}}always-interactive{{/if}}" data-action="jj2SkillTree" {{ disabled (not owner) }}>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="tree" }}Abrir skill tree</button>
+  </div>
+  {{> "systems/jujutsu-system/templates/inventory/inventory.hbs" }}
+</section>

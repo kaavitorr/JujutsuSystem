@@ -1,0 +1,66 @@
+folder: vG1tvdXvcpq70Tb5
+name: Botânico
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Você é um grande conhecedor de plantas, e aprendeu a
+      utiliza-las de diversas formas possíveis para ajudar seu corpo a manter um
+      estado otimizado.</p><p
+      class="MsoBodyText"><strong>Característica:</strong> Você recebe +2 em
+      Testes de Atributo e Salvaguardas relacionados a plantas. Adicionalmente,
+      você pode utilizar ¥ 10.000 em ervas e/ou plantas para estabilizar uma
+      criatura caída e recuperar 1d10 Pontos de Vida dela. Essa característica
+      pode ser utilizada uma vez por dia por criatura.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: alvo-marcado
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: ba64831e68dad90b14a14703c4cc590a915cadfe
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902150
+  modifiedTime: 1776913388394
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: jrqGxj4hXB45vVxR
+sort: 1200000
+_key: '!items!jrqGxj4hXB45vVxR'

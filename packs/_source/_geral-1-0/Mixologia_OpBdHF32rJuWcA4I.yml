@@ -1,0 +1,65 @@
+folder: vG1tvdXvcpq70Tb5
+name: Mixologia
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>Você aprendeu a criar drinques de forma perfeita que permitem certos
+      benefícios para os que consomem. Desde que você passe no teste de preparo.
+      Exclusivo da origem Bartender.</p><p><strong>Característica:</strong> Você
+      recebe proficiência em Kit de Mixologia. Ao preparar um drink, você pode
+      escolher preparar um normal ou um especial dando efeitos adicionais de
+      acordo com a Tabela de Bebidas, gastando o valor referente aos
+      ingredientes necessários.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: bom-nadador
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: 485dfc91c7af19e89e31162d7e3e9062a34c6ae4
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902133
+  modifiedTime: 1776913396250
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: OpBdHF32rJuWcA4I
+sort: 2700000
+_key: '!items!OpBdHF32rJuWcA4I'

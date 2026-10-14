@@ -1,0 +1,76 @@
+folder: udJ0kfznjzJEChhq
+name: Manipulação de Barreira
+type: feat
+img: icons/magic/defensive/shield-hex-gold.webp
+system:
+  description:
+    value: "<p class=\"MsoNormal\"><span>A partir do <strong>2º nível de Especialista</strong>, você aprendeu a utilizar barreiras como quem manipula a própria energia amaldiçoada, adquirindo uma incrível facilidade em sua execução. Você recebe as seguintes características:</span></p><ul><li><p><span><em>Você demora apenas um dia para adicionar cada efeito/regra a uma barreira e pode manter duas preparadas por vez;</em></span></p></li><li><p><span><em>Você recebe a habilidade de Manipulação – “<strong>Cortina (Véu)”</strong> do <strong>Capítulo 6 </strong>e pode cria-la com uma ação bônus;</em></span></p></li><li><p><span><em>A partir do <strong>6º nível</strong>, você recebe a habilidade – <strong>“Barreira Vazia”</strong>, recebendo <strong>“Barreira Pura”</strong> no <strong>10º nível</strong> e <strong>“Barreira Bon”</strong> no <strong>14º nível de Especialista</strong>.</em></span></p></li></ul><p style=\"margin-right:0.15pt\" class=\"TextoPadro\"><span style=\"font-size:7pt;font-family:''\">\_</span></p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.367'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881637
+  modifiedTime: 1788212724118
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: SPDBTPy0L34qv3qP
+sort: -150000
+_key: '!items!SPDBTPy0L34qv3qP'

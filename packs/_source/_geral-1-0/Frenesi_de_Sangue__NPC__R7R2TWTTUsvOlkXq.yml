@@ -1,0 +1,80 @@
+_id: R7R2TWTTUsvOlkXq
+name: Frenesi de Sangue (NPC)
+type: feat
+img: icons/skills/wounds/blood-cells-vessel-red.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 3300000
+flags:
+  scene-packer:
+    hash: 1ddfcd678ce1b8889ef6ff064083c06db5a8bacc
+    sourceId: Item.R7R2TWTTUsvOlkXq
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p><strong>Frenesi de Sangue (Aumenta o bônus de ataque efetivo da
+      criatura em 4): </strong>A criatura tem vantagem nas jogadas de ataque
+      corpo-a-corpo contra qualquer criatura que não esteja com todos os seus
+      Pontos de Vida.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: frenesi-de-sangue-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.UpH4QXJEJOAhp4F7
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910542
+  modifiedTime: 1776624910569
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!R7R2TWTTUsvOlkXq'

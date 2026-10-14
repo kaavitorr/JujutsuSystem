@@ -1,0 +1,99 @@
+folder: pJFTz3T8ddDTtVRG
+name: Punho Divergente
+type: subclass
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Caminhos/Yuji_Itadori_2998.webp
+system:
+  description:
+    value: "<table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>PUNHO DIVERGENTE</strong></span></p></td></tr></tbody></table><p class=\"MsoNormal\">O punho divergente é aquele que foca na arte do combate desarmado usando uma técnica específica de manipulação de energia para fazer com que seu dano atinja duas vezes seu inimigo.</p><p style=\"margin-top:0cm;margin-right:.15pt;margin-bottom:.0001pt;margin-left:7.1pt;text-justify:inter-ideograph;tab-stops:7.1pt 467.8pt;text-align:justify\"></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>IMPACTO DUPLO</strong></span></p><hr><p class=\"MsoNormal\">A partir do 2º nível de Lutador, você aprende a controlar sua energia amaldiçoada de forma a maximizar o dano causado no seu alvo. Você recebe acesso as seguintes características:</p><p><strong>Castigo de Ferro:</strong> Quando você ou uma criatura aliada a até 1,5 metros de você sofrer uma jogada de ataque (comum), você pode usar sua reação para realizar uma jogada de ataque (comum) corpo a corpo antes que o ataque seja concluído. Se acertar, o ataque causa dano Contundente em um valor igual 5 + o seu nível de Lutador e interrompe o ataque inimigo.</p><p class=\"TextoPadro\">A partir do 10º nível, você não utiliza mais reação para esse efeito, mas pode utiliza-lo apenas uma vez por rodada.</p><p><strong>Energia Atrasada:</strong> Você pode escolher ter -3 de acerto ao realizar uma jogada de ataque (Comum) para fazer com que sua energia amaldiçoada dê um pequeno atraso, acertando o alvo uma segunda vez logo após seu golpe, liberando dois impactos distintos. Caso você role um resultado no dado de 15 ou mais e acerte o alvo, você causa novamente o dano do seu primeiro ataque, até um máximo de dano igual a 4 vezes o seu nível de personagem.</p><p>Dispersão de Energia: Toda vez que você ativar o efeito do Energia Atrasada com sucesso, você pode escolher receber dois dos seguintes efeitos:</p><ul><li><p class=\"MsoListParagraph\">Você reduz o próximo dano sofrido em 6 Pontos de Dano;</p></li><li><p class=\"MsoListParagraph\">Você impõe desvantagem na próxima rolagem de acerto contra você;</p></li><li><p class=\"MsoListParagraph\">Você recebe vantagem na sua próxima Salvaguarda de Agilidade até o início do seu próximo turno;</p></li><li><p class=\"MsoListParagraph\">Suas jogadas de ataque (Comuns e de Técnica) recebem 1d4 de dano adicional até o início do seu próximo turno.</p></li></ul><p class=\"TextoPadro\">Alternativamente, você pode escolher consumir 2 Pontos de Energia Amaldiçoada (PA) para receber os efeitos acima sem precisar ativar a característica “Energia Atrasada”.</p><p class=\"TextoPadro\">A partir do 10º nível, você recebe os 4 benefícios ao ativar o “Dispersão de Energia”.</p><p style=\"margin-right:.15pt;tab-stops:7.1pt 467.8pt;mso-layout-grid-align:none\" class=\"TextoPadro\"><span style=\"font-size:7.0pt;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-bidi-font-family:ChaparralPro-Regular;font-family:''\">\_</span></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>SEDENTO</strong></span></p><hr><p class=\"TextoPadro\">A partir do <strong>6º nível de Lutador</strong>, no seu turno, você pode fazer uma ação adicional ou ação poderosa adicional (Para Feitiços ou Técnicas de até 10 PA de custo final, sem contar “Explosão Ofensiva”.). Essa característica não poderá ser usada novamente até o término de um descanso curto ou longo.</p><p class=\"TextoPadro\">No 10º nível de Lutador, você pode usar até 2 vezes, mas apenas 1 vez por rodada; no 15º nível de Lutador, você pode usar até 3 vezes, mas apenas 1 vez por rodada, recuperando todos os seus usos ao término de um descanso longo.</p><p style=\"text-indent:1.0cm;tab-stops:467.8pt\" class=\"TextoPadro\"><span style=\"font-size:7pt\">\_</span></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>IMPACTO CONCUSSIVO</strong></span></p><hr><p class=\"MsoNormal\">A partir do 10º nível de Lutador, você faz com que seus golpes com “Energia Atrasada” se tornem ainda mais potentes. Você não precisa mais sacrificar seu acerto para usar a característica e, uma vez por rodada, quando você acertar um crítico com “Energia Atrasada”, a criatura deve realizar uma Salvaguarda de Constituição para não receber a condição “Estremecido” até o fim do próximo turno dela.</p><p class=\"MsoNormal\">Adicionalmente, seu resultado no dado para ativar a característica se torna 14 ou maior e seu limite de dano muda para 5 vezes o seu nível de personagem.</p><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>CONVERSÃO INSTINTIVA</strong></span></p><hr><p class=\"TextoPadro\">A partir do <strong>14º nível de Lutador</strong>, seu corpo transborda de energia amaldiçoada que permite que você acabe formando um estoque de energia reversa em seu corpo que é formada instintivamente. Você gera Pontos de Energia Amaldiçoada (PA) adicionais por rodada igual ao seu nível de personagem.</p><p class=\"TextoPadro\">Adicionalmente, você pode usar uma ação bônus para curar 8d8 + seu modificador de Constituição em Pontos de Vida. Você pode utilizar essa característica um número de vezes igual seu modificador de Constituição, recuperando seu uso ao fim de um descanso longo.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  identifier: punho-divergente
+  classIdentifier: lutador
+  advancement:
+    WNbxqGM6rAhrvSok:
+      type: ItemGrant
+      _id: WNbxqGM6rAhrvSok
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.IDshEXXccvQBq8Ug
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 2
+      title: ''
+      hint: ''
+      flags: {}
+    Xz6GGeXsLRsDr0fF:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.DtjwfWtrMTurUQyq
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 6
+      title: ''
+      hint: ''
+      _id: Xz6GGeXsLRsDr0fF
+      flags: {}
+    RPmnW8afvyXm7LPV:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.nFh6q1E4HowYLTgp
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 10
+      title: ''
+      hint: ''
+      _id: RPmnW8afvyXm7LPV
+      flags: {}
+    aqWntK8Smy3rqIkD:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.d4NFz8ES8ho1eIUT
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 14
+      title: ''
+      hint: ''
+      _id: aqWntK8Smy3rqIkD
+      flags: {}
+  spellcasting:
+    progression: none
+    ability: ''
+    preparation:
+      formula: ''
+effects: []
+sort: 200000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 9dfc1924c171589a0348c0fed024b694513c08a8
+  core:
+    sheetClass: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624881621
+  modifiedTime: 1782438954203
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: 5DNdPVt1SNlAA1LD
+_key: '!items!5DNdPVt1SNlAA1LD'

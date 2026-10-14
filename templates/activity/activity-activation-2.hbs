@@ -1,0 +1,9 @@
+<section class="jj2-activation-panel">
+  <header class="jj2-activation-hero">
+    <div class="jj2-activation-art"><img src="{{jj2.image}}" alt="{{jj2.title}}"></div>
+    <div><span class="jj2-activation-kicker">{{#if jj2.isAttack}}Preparar ataque{{else}}Ativar técnica{{/if}}</span>
+      <h2>{{jj2.title}}</h2><span class="jj2-activation-subtitle">{{jj2.subtitle}}</span></div>
+    {{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="weapons"}}
+  </header>
+  {{> "systems/jujutsu-system/templates/activity/parts/activation-controls-2.hbs"}}
+</section>

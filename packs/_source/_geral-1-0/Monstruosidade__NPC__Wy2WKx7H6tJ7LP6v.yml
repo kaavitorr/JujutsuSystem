@@ -1,0 +1,90 @@
+name: Monstruosidade (NPC)
+type: feat
+img: icons/creatures/unholy/demon-fire-horned-clawed.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 4200000
+flags:
+  scene-packer:
+    hash: ba040d94e2cee29d40474d1061d28e3e1ace499d
+    sourceId: Item.2mIYoQumbR4g620V
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: <p>Essa criatura não sofre dano dobrado de ataques com Nen.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: monstruosidade-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.0lsXF0zG7tNZVsKP
+  duplicateSource: Item.2mIYoQumbR4g620V
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910547
+  modifiedTime: 1776624910571
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: Wy2WKx7H6tJ7LP6v
+_key: '!items!Wy2WKx7H6tJ7LP6v'

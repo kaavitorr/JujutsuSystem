@@ -1,0 +1,77 @@
+folder: QwYh3uEF10z8gSGn
+name: Domínio Simples
+type: feat
+img: icons/magic/air/wind-vortex-swirl-blue.webp
+system:
+  description:
+    value: "<p>A partir do <strong>1º nível de Sentinela</strong>, você aprende a utilização do Domínio Simples, permitindo que você possa criar um domínio ao seu redor de acordo com as regras do Capítulo 3.4 do Manual de Feitiços. Ao usar uma ação bônus, você expande o domínio em uma área de emanação de 4,5 metros de raio, gastando 2 PA no processo. Enquanto ele estiver criado, você recebe as seguintes características enquanto não se mover:</p><ul><li><p><em>Seu alcance de “Toque” se torna 4,5 metros, sendo toda área dentro do domínio;</em></p></li><li><p><em>Você recebe uma reação adicional em cada um de seus turnos enquanto ele estiver ativo;</em></p></li><li><p><em>Você recebe imunidade aos efeitos de acerto automático da “Expansão de Domínio”;</em></p></li><li><p><em>Você recebe +3 de acerto em rolagens de ataque dentro da área.</em></p></li></ul><p style=\"margin:0cm 0.15pt 0.0001pt 7.1pt;text-align:justify\" class=\"MsoNormal\"><span style=\"font-size:10pt;font-family:'Chaparral Pro', serif\">\_</span></p><p class=\"MsoBodyText\">Essa habilidade se encerra caso você queira ou se mova voluntariamente para qualquer direção, mas não se encerra se o movimento for feito como consequência de uma técnica do Novo Estilo das Sombras.</p><p class=\"MsoBodyText\">Seu Domínio Simples consome 2 PA no início de cada um de seus turnos para ser mantido.</p><p style=\"margin:0cm 5.4pt 0.0001pt 7.1pt;text-align:justify\"></p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-emissor
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: d8a632d7930b501d57e292fcb3875f3aa448cd29
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1782435294582
+  modifiedTime: 1782435294636
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: 0MXPGMkCj8lLi2VQ
+sort: 100000
+_key: '!items!0MXPGMkCj8lLi2VQ'

@@ -1,0 +1,22 @@
+_id: jj2a000000000073
+_key: '!items!jj2a000000000073'
+name: Aquecimento
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: aquecimento
+  description:
+    value: <p><em><strong>Requisito:</strong> 4 Habilidades do Existência Aprimorada - Ofensivo</em></p><p>Você pode se preparar antes de realizar um ataque, permitindo que você desencadeie um efeito muito mais poderoso que o normal. Ao sacrificar qualquer número de ações [⬢] enquanto mantém sua Concentração, você pode executar uma técnica no turno seguinte podendo escolher um dos seguintes efeitos:</p><ul><li><strong>Dano (Técnica):</strong> Pode sacrificar uma ação [⬢] para aumentar em 2 dados ou duas ações [⬢⬢] para 4 dados.</li><li><strong>CD:</strong> Pode sacrificar uma ação [⬢] para aumentar em +2 ou duas ações [⬢⬢] para +4.</li><li><strong>Acerto:</strong> Pode sacrificar uma ação [⬢] para aumentar +2 ou duas ações [⬢⬢] para +4.</li></ul><p>Ao sacrificar mais de duas ações, você pode escolher pegar mais de um efeito diferente.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Ofensivo
+      requisitos:
+        - 4 Habilidades do Existência Aprimorada - Ofensivo
+folder: jj2f000000000013
+ownership:
+  default: 0
+effects: []
+sort: 0

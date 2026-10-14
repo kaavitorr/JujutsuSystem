@@ -1,0 +1,209 @@
+name: Adamantine Body
+type: spell
+img: icons/magic/defensive/shield-hex-purple.webp
+effects: []
+folder: ApZlM6LJ8J1r0Aj9
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickVersatile:
+      value: false
+      altValue: false
+    quickOther:
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      value: true
+      altValue: true
+    quickAttack:
+      value: true
+      altValue: true
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+      altValue:
+        '0': true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: f1662da2bb778492e42251e8822a6f2da857b297
+    sourceId: Item.a5cm3m20C3vusMKP
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+    quickOther:
+      context: ''
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+    quickAttack:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+system:
+  description:
+    value: "<p>Ao ativar essa técnica, você endurece todos os músculos do corpo criando uma defesa absoluta. Toda vez que você receber um dano superior a 20 enquanto essa técnica estiver ativa, você pode consumir 5 Pontos de Vigor do seu Vigor Total para reduzir o dano a 20.</p><hr><p>\_<strong>Duração:</strong>\_Até 1 minuto</p><p><strong>Alcance:</strong>\_Pessoal</p><p><strong>Requisito:</strong>\_Ação de Poder</p><p><strong>Custo:</strong> 15 PA</p>"
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  activation:
+    type: action
+    condition: ''
+    value: 1
+  duration:
+    value: '1'
+    units: minute
+    expiry: null
+  target:
+    affects:
+      choice: false
+      type: ''
+    template:
+      units: m
+      contiguous: false
+      stationary: false
+      type: ''
+      count: ''
+      size: '30'
+      width: '4.5'
+  range:
+    units: touch
+    special: ''
+  uses:
+    max: ''
+    recovery: []
+    spent: 0
+  ability: ''
+  level: 0
+  school: trs
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  properties: []
+  activities:
+    KSudgPY7g3jOAwHZ:
+      type: utility
+      _id: KSudgPY7g3jOAwHZ
+      img: ''
+      sort: 0
+      activation:
+        type: action
+        override: false
+      consumption:
+        scaling:
+          allowed: false
+        spellSlot: true
+        targets:
+          - type: attribute
+            target: energy.generated
+            value: '15'
+            scaling:
+              mode: ''
+              formula: ''
+      description:
+        chatFlavor: ''
+        value: ''
+      duration:
+        units: inst
+        concentration: false
+        override: false
+        expiry: null
+      effects: []
+      flags: {}
+      range:
+        units: self
+        override: false
+      target:
+        template:
+          contiguous: false
+          stationary: false
+          units: m
+        affects:
+          choice: false
+        override: false
+        prompt: true
+      uses:
+        spent: 0
+        recovery: []
+        max: ''
+      visibility:
+        level:
+          min: null
+          max: null
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+      roll:
+        prompt: false
+        visible: false
+        formula: ''
+        name: ''
+      name: ''
+      behaviors: []
+      jjScale:
+        enabled: false
+        cost: 1
+        maxPA: 0
+      constantCost:
+        enabled: false
+        pool: generated
+        concentration: false
+  identifier: muscle-barrier
+  method: spell
+  prepared: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791829184041
+  modifiedTime: 1791829184041
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: gsFWA7I4So2FQdp6
+sort: 500000
+_key: '!items!gsFWA7I4So2FQdp6'

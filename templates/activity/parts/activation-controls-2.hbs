@@ -1,0 +1,93 @@
+<div class="jj2-activation-controls">
+  {{#if jj2.abilityOptions.length}}
+  <div class="jj2-activation-field"><label for="{{rootId}}-ability">Atributo de ataque</label>
+    <select id="{{rootId}}-ability" name="legacy2.ability">{{selectOptions jj2.abilityOptions selected=jj2.ability valueAttr="value" labelAttr="label"}}</select></div>
+  {{/if}}
+  {{#if jj2.attackModeOptions.length}}
+  <div class="jj2-activation-field"><label for="{{rootId}}-mode">Modo de ataque</label>
+    <select id="{{rootId}}-mode" name="legacy2.attackMode">{{selectOptions jj2.attackModeOptions selected=jj2.attackMode valueAttr="value" labelAttr="label"}}</select></div>
+  {{/if}}
+  {{#if jj2.ammunitionOptions.length}}
+  <div class="jj2-activation-field"><label for="{{rootId}}-ammo">Munição</label>
+    <select id="{{rootId}}-ammo" name="legacy2.ammunition">{{selectOptions jj2.ammunitionOptions selected=jj2.ammunition valueAttr="value" labelAttr="label"}}</select></div>
+  {{/if}}
+  {{#if jj2.showGestures}}
+  <div class="jj2-activation-field jj2-gesture"><label for="{{rootId}}-gesture">Gestos <small>· ordem {{jj2.ordem}}</small></label>
+    <select id="{{rootId}}-gesture" name="legacy2.gesture">
+      {{#each jj2.gestureOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+    </select>
+    {{#if jj2.gestoPreview}}<p>{{jj2.gestoPreview}}</p>{{/if}}
+    {{#unless jj2.gestosInfo.possuidos.length}}{{#unless jj2.gestoPreview}}<p>Gesto nativo da técnica. Gestos exigem as habilidades de Manipulação de Técnica.</p>{{/unless}}{{/unless}}
+    {{#if jj2.gesto}}
+    <label class="jj2-check"><input type="checkbox" name="legacy2.condicao" {{#if jj2.condicao}}checked{{/if}}> A técnica tem condição (riders custam PA extra)</label>
+    {{/if}}
+  </div>
+  {{/if}}
+  {{#if jj2.selosInfo.max}}
+  <div class="jj2-activation-field jj2-selos"><label class="jj2-selos-titulo" for="{{rootId}}-selos">Selos de Mão</label>
+    <div class="jj2-counter jj2-counter-selos">
+      <span class="jj2-selos-usos">{{jj2.selosInfo.atuais}}/{{jj2.selosInfo.max}} usos</span>
+      <button type="button" class="jj2-selo-menos" data-action="jj2StepCounter" data-step="-1" aria-label="Menos selos">&minus;</button>
+      <input id="{{rootId}}-selos" name="legacy2.selos" type="number" value="{{jj2.selos}}" min="0" max="{{jj2.selosInfo.porVez}}" step="1" aria-label="Selos a gastar">
+      <button type="button" class="jj2-selo-mais" data-action="jj2StepCounter" data-step="1" aria-label="Mais selos">&plus;</button>
+    </div>
+    <p>Cada selo reduz o custo da técnica em 1 Ação (mínimo 1).{{#if jj2.selosInfo.complexo}} Selos Complexos: até 2 selos (−2 Ações).{{/if}}{{#if jj2.selosInfo.manipulacao}} Com Manipulação de Selos é possível não gastar usos, pagando com deslocamento.{{/if}}</p>
+    {{#if jj2.selosInfo.manipulacao}}
+    <label class="jj2-check"><input type="checkbox" name="legacy2.manipulacao" {{#if jj2.manipulacao}}checked{{/if}}> Pagar com deslocamento (não gasta usos)</label>
+    {{/if}}
+  </div>
+  {{/if}}
+  {{#if jj2.masteryOptions.length}}
+  <div class="jj2-activation-field"><label for="{{rootId}}-mastery">Maestria da arma</label>
+    <select id="{{rootId}}-mastery" name="legacy2.mastery">{{selectOptions jj2.masteryOptions selected=jj2.mastery valueAttr="value" labelAttr="label"}}</select></div>
+  {{/if}}
+  {{#if jj2.recarga}}
+  <div class="jj2-activation-field jj2-recarga"><label>Recarga</label>
+    <div class="jj2-recarga-linha"><span class="jj2-recarga-estado {{#if jj2.recarga.carregada}}carregada{{else}}descarregada{{/if}}">{{#if jj2.recarga.carregada}}Carregada{{else}}Descarregada — +1 ⬢ nas ações{{/if}}</span>
+    {{#unless jj2.recarga.carregada}}<label class="jj2-check"><input type="checkbox" name="legacy2.recarregar" {{#if jj2.recarregar}}checked{{/if}}> Recarregar agora</label>{{/unless}}</div>
+  </div>
+  {{/if}}
+  <div class="jj2-advantage-counters">
+    <div class="jj2-counter jj2-counter-boon">
+      <label for="{{rootId}}-boons">Vantagens</label>
+      <div class="jj2-counter-value"><button type="button" data-action="jj2StepCounter" data-step="-1" aria-label="Diminuir vantagens"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+        <input id="{{rootId}}-boons" name="legacy2.vantagens" type="number" value="{{jj2.vantagens}}" min="0" max="{{jj2.maxAdvantages}}" step="1" aria-label="Quantidade de vantagens">
+        <button type="button" data-action="jj2StepCounter" data-step="1" aria-label="Aumentar vantagens">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}</button></div>
+      <span>+2 por vantagem</span>
+    </div>
+    <div class="jj2-counter jj2-counter-bane">
+      <label for="{{rootId}}-banes">Desvantagens</label>
+      <div class="jj2-counter-value"><button type="button" data-action="jj2StepCounter" data-step="-1" aria-label="Diminuir desvantagens"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+        <input id="{{rootId}}-banes" name="legacy2.desvantagens" type="number" value="{{jj2.desvantagens}}" min="0" max="{{jj2.maxAdvantages}}" step="1" aria-label="Quantidade de desvantagens">
+        <button type="button" data-action="jj2StepCounter" data-step="1" aria-label="Aumentar desvantagens">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}</button></div>
+      <span>−2 por desvantagem</span>
+    </div>
+  </div>
+  <div class="jj2-advantage-result"><span>Modificador de acerto</span><strong>{{dnd5e-formatModifier jj2.advantageBonus}}</strong></div>
+  {{#if jj2.flanking}}<p class="jj2-activation-note">Inclui {{jj2.flanking}} vantagem(ns) de flanqueamento calculadas pelo posicionamento.</p>{{/if}}
+  <div class="jj2-activation-field jj2-dano-extra"><label for="{{rootId}}-dano-extra">Dano adicional</label>
+    <input type="text" id="{{rootId}}-dano-extra" name="legacy2.danoAdicional" value="{{jj2.danoAdicional}}"
+           placeholder="ex.: 2d6+3" aria-label="Dados de dano adicionais" autocomplete="off">
+    <p>Fórmula livre somada ao dano do ataque (ex.: 2d6+3, 1d12[fogo]).</p></div>
+  {{#if jj2.scaleConfig.available}}
+  <div class="jj2-activation-field"><label for="{{rootId}}-scale">Escala de {{#if jj2.physicalImpulse}}Estamina{{else}}Energia{{/if}}</label>
+    <input type="number" id="{{rootId}}-scale" name="legacy2.scale" value="{{jj2.scale}}" min="0" max="{{jj2.scaleConfig.maxIncrementos}}" step="1">
+    <p>Incrementos de {{jj2.scaleConfig.formula}} · {{jj2.scaleConfig.cost}} {{jj2.burstUnit}} por incremento</p></div>
+  {{/if}}
+  {{#if jj2.canBurst}}
+  <section class="jj2-burst">
+    <div class="jj2-burst-heading">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="energy"}}<h3>{{jj2.burstTitle}}</h3><span>{{jj2.burstFormula}}</span></div>
+    <div class="jj2-counter"><label for="{{rootId}}-burst">{{jj2.burstUnit}} a gastar</label>
+      <div class="jj2-counter-value"><button type="button" data-action="jj2StepCounter" data-step="-1" aria-label="Diminuir {{jj2.burstUnit}} de {{jj2.burstTitle}}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+        <input id="{{rootId}}-burst" name="legacy2.pa" type="number" value="{{jj2.pa}}" min="0" max="{{jj2.burstMax}}" step="1" aria-label="{{jj2.burstUnit}} de {{jj2.burstTitle}}">
+        <button type="button" data-action="jj2StepCounter" data-step="1" aria-label="Aumentar {{jj2.burstUnit}} de {{jj2.burstTitle}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}</button></div>
+    </div>
+    <p>{{#if jj2.physicalImpulse}}1 PE = 2d4 de dano · Limite: <b>{{jj2.burstLimit}} PE</b><br>Estamina disponível: <b>{{jj2.availablePA}} PE</b>{{else}}1 PA = 1d4 de dano · Limite: <b>{{jj2.burstLimit}}d4</b><br>Energia refinada disponível: <b>{{jj2.availablePA}} PA</b>{{/if}}</p>
+  </section>
+  {{/if}}
+  <div class="jj2-activation-breakdown">
+    <div><span class="jj2-stat-seal">{{jj2.abilityValue}}</span><strong>Atributo</strong><small>{{jj2.abilityLabel}}</small></div>
+    <div><input class="jj2-stat-seal" type="number" id="{{rootId}}-bonus" name="legacy2.bonus" value="{{jj2.bonus}}" step="1" aria-label="Bônus adicional"><label for="{{rootId}}-bonus">Bônus</label><small title="A base é aplicada automaticamente. O campo acima adiciona um bônus situacional.">Base aplicada: {{jj2.bonusLabel}}</small></div>
+    <div><span class="jj2-stat-seal">{{jj2.skillValueLabel}}</span><strong>Perícia</strong><small>Proficiência</small></div>
+  </div>
+</div>

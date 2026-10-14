@@ -1,0 +1,42 @@
+_id: jj2a000000000074
+name: Destruidor de Exércitos
+type: feat
+img: icons/skills/melee/strike-blade-hooked-orange-blue.webp
+system:
+  identifier: destruidor-de-exercitos
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Aquecimento</em></p><p>Sempre que
+      realizar um ataque Comum ou de técnica, você pode gastar 2 Pontos de Ação
+      [⬢⬢] adicionais e 2 PE para transformar o ataque em uma estrondosa pressão
+      de ar, fazendo com que ele atinja todas as criaturas em um Cone de 25
+      metros.</p><p>Caso utilize esse efeito em uma técnica, ela perde 1 passo
+      de dano e causa 1 dado de dano a menos.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Ofensivo
+      requisitos:
+        - Aquecimento
+folder: jj2f000000000013
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814989665
+  modifiedTime: 1791814989665
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000074'

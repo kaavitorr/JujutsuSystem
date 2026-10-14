@@ -1,0 +1,63 @@
+folder: vG1tvdXvcpq70Tb5
+name: Imunidade
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>Seu corpo resiste naturalmente aos microrganismos que provocam doenças.
+      Você nunca pegará uma doença ou infecção “naturalmente”. Se você for
+      inoculado à força, seu corpo fará o possível para expulsar os agentes o
+      mais rápido possível.</p><p><strong>Característica:</strong> Você recebe +
+      2 em Salvaguardas de Constituição contra doenças.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: acumulo-de-aura
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: 6b85b670ff5c5a4231bcd240e88280d5f52e8790
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902129
+  modifiedTime: 1776913394375
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: KhSlw4AIhzDSJt0L
+sort: 2300000
+_key: '!items!KhSlw4AIhzDSJt0L'

@@ -1,0 +1,21 @@
+_id: jj2a000000000062
+_key: '!items!jj2a000000000062'
+name: Manipulação Precisa
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: manipulacao-precisa
+  description:
+    value: <p>Você aprendeu a comprimir sua energia amaldiçoada em seus golpes, fazendo com que ela passe mais facilmente a defesa das criaturas inimigas. Você recebe +3 de acerto em todas as suas rolagens de acerto.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Canalização de Energia
+      requisitos: []
+folder: jj2f000000000011
+ownership:
+  default: 0
+effects: []
+sort: 0

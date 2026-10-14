@@ -1,0 +1,22 @@
+_id: jj2a000000000091
+_key: '!items!jj2a000000000091'
+name: Constituição Perfeita
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: constituicao-perfeita
+  description:
+    value: <p><em><strong>Requisito:</strong> Corpo Fechado</em></p><p>Você pode usar seu deslocamento para alcançar instantaneamente qualquer ponto que esteja dentro da distância que poderia percorrer normalmente, ignorando quaisquer reações que seriam desencadeadas pelo seu movimento.</p><p>Caso se mova 5 metros ou mais dessa forma antes de realizar um ataque, esse ataque é feito com 2 vantagens.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Defensivo
+      requisitos:
+        - Corpo Fechado
+folder: jj2f000000000014
+ownership:
+  default: 0
+effects: []
+sort: 0

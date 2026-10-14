@@ -1,0 +1,50 @@
+MENTAIS|Condições relacionadas à mente da criatura.
+jj-alucinado|Alucinado|fas fa-brain|ND −2 para características ligadas ao ND. Ataca qualquer criatura próxima, inimiga ou não.|TpWxYhdphv2t6ju2
+jj-amedrontado|Amedrontado|fas fa-person-running|Usa todas as ações para se afastar da fonte do medo até 30 m; desvantagem para atacá-la.|7uoeQCgUQqYB3BHc
+jj-apaixonado|Apaixonado|fas fa-heart|3 desvantagens para atacar o alvo da paixão e em interações sociais com ele; receio de atacá-lo.|qzPfOlEQkkPGLVtU
+jj-enfeiticado|Enfeitiçado|fas fa-wand-sparkles|Não ataca quem o enfeitiçou nem o alveja. Quem enfeitiçou tem vantagem social.|TRCsuSIH7akPftYE
+DEFESAS|Condições relacionadas à defesa do personagem.
+jj-enfurecido|Enfurecido|fas fa-fire-flame-curved|CR −2 e só pode gastar PA com ataques.|zHe7ghSbtRlEXsjb
+jj-exposto|Exposto|fas fa-shield-halved|Classe de Resistência −2.|FNhBRcO2D1UkPQkq
+jj-inconsciente|Inconsciente|fas fa-moon|Incapacitado; CR 0. Não contribui nem ajuda aliados.|9bkl5hVlhmL5dqj1
+PERCEPÇÃO|Condições relacionadas à percepção do personagem.
+jj-cego|Cego|fas fa-eye-slash|Sem percepção visual. Falha em testes que exijam ver. Ataques com desvantagem; sofre vantagem.|ynw3U5rbGI7OEIYu
+jj-desatento|Desatento|fas fa-circle-question|Iniciativa 1 e sem Reações. Remove-se no início do próprio turno.|jLNT8yCazygi6ArT
+jj-invisivel|Invisível|fas fa-ghost|Invisível sem técnicas especiais; área de escuridão densa para se esconder. Ataques com vantagem; sofre desvantagem.|lvxeCwhwEDZHAtii
+jj-surdo|Surdo|fas fa-ear-deaf|Sem percepção auditiva e imune a ações auditivas.|4ltRSh6qh1J8L740
+jj-silenciado|Silenciado|fas fa-volume-xmark|Não fala nem lança encantamentos.|Ye8ha3SyDWUKWLVB
+AÇÕES|Condições relacionadas aos Pontos de Ação do personagem.
+jj-atordoado|Atordoado|fas fa-stars|−4 Pontos de Ação. Deslocamento 3 m. Falha em For e Agi. Ataques têm vantagem.|oqZQ2ajKLMQLIUE9
+jj-bebado|Bêbado|fas fa-beer-mug-empty|Desvantagem em Testes e Salvaguardas de Agilidade. Sem ações com Reação. Encerra com Salv. CON.|ucEuHySKUtbpHHVE
+jj-concussao|Concussão|fas fa-circle-exclamation|−2 Pontos de Ação. Desvantagem em testes e Salvaguardas de Agilidade.|rXIVqoktPZpDzkeu
+jj-desorientado|Desorientado|fas fa-arrows-spin|Consome 1 PA adicional em ações que usam PA.|v3an1hjrqSTIVYRF
+jj-incapacitado|Incapacitado|fas fa-circle-xmark|−2 Pontos de Ação. Consome 1 PA adicional em ações e técnicas com Reação.|t2FWlx8UCukoyPAY
+jj-sonolento|Sonolento|fas fa-bed|−1 Ponto de Ação. Desvantagem em Salv. Agi e Sab. Máx. 1 ataque ou técnica de dano.|DPzjW24I9zyTVGDm
+jj-paralisado|Paralisado|fas fa-person-rays|Sem ações; fala pausadamente. Considerado Incapacitado; CR reduzido à metade.|MKTqTCse3i4q65UW
+FÍSICAS|Condições relacionadas a estados físicos.
+jj-agarrado|Agarrado|fas fa-hand-grab|Deslocamento 0. Escapa com Teste Resistido de Atletismo. Movimentar custa o dobro.|jKsdLPwcUG1UCPPV
+jj-desidratado|Desidratado|fas fa-droplet-slash|Deslocamento ÷2. 1 nível de exaustão por hora e −1 Ponto de Ação no turno. Encerra com 500 ml de água.|ta87A3Hi6qKbcfby
+jj-empoderado|Empoderado|fas fa-fist-raised|Ataques corpo-a-corpo +1 passo. Não perde PA ao errar técnica. Imune a terreno difícil.|j7PBrhnyA6S16YdE
+jj-energia-esgotada|Energia Esgotada|fas fa-battery-empty|Não pode usar habilidades ou técnicas. Também está Letárgico.|dzLhwYGLXaSph2NZ
+jj-exausto|Exausto|fas fa-tired|−2 em rolagens d20 e −1,5 m de deslocamento. Efeito Colateral reduz só 2 PA/nível. Máx. 3 por condições.|1NYdKYXZYPT3fXCH
+jj-hipotermico|Hipotérmico|fas fa-temperature-low|1 desvantagem em Salvaguardas e Testes de Agilidade e em jogadas de ataque. Trata com Medicina CD 10 ou Sobrevivência CD 17.|nhSU998IvHDrIhpZ
+jj-sufocado|Sufocado|fas fa-lungs-virus|Sem palavras e desvantagem em Salv. Agi. Após 1 + mod. CON turnos, Teste CON CD 10 (+2/turno) ou desmaia.|nhSU998IvHDrIhpZ
+MOVIMENTO|Condições relacionadas ao deslocamento do personagem.
+jj-acelerado|Acelerado|fas fa-forward-fast|+2 Pontos de Ação (máx. 8) e +10 m de deslocamento. Custo dobra com duração prolongada.|wsnVHxfuvmLPXb9q
+jj-caido|Caído|fas fa-person-falling|Só rasteja (1 m extra por metro). Desvantagem em ataques e ataques a distância contra ele têm... Encerra levantando com 1 Ação.|oY0bnrEa1qpajUGM
+jj-estremecido|Estremecido|fas fa-person-trembling|Desvantagem em ataques, sem concentração e deslocamento custa 1,5 m extra.|aVZzLjrVJCW8jOOK
+jj-impedido|Impedido|fas fa-ban|Sem ações com movimento; 1 desvantagem em ataques. Escapa com Atletismo na CD de remoção (12 + For ou 17 fixo).|KsXjzgsk9ue34GfF
+jj-lento|Lento|fas fa-person-walking-with-cane|−10 m de deslocamento no turno e 1 m extra de custo por metro.|3EJ9bs9STptwXPb9
+jj-voando|Voando|fas fa-dove|Movimento de voo igual ao padrão. Só pode ser alvejado a distância ou por voadores.|5BLuQfwPZzgkG3l9
+jj-letargico|Letárgico|fas fa-person-walking|Deslocamento ÷2 e dano de ataques ÷2 (exceto armas de fogo).|5BLuQfwPZzgkG3l9
+jj-pesado|Pesado|fas fa-weight-hanging|Deslocamento ÷2 e desvantagem em ataques corpo-a-corpo.|0VeVeEoqu054mdYO
+DANO|Condições de dano por rodadas; remove-se com a ação Remover (Medicina na CD da criatura).
+jj-envenenado|Envenenado|fas fa-skull-crossbones|Dano de Veneno por turno igual ao atributo principal do atacante; 3 rodadas (reaplicar reseta).|Jo4UFzxrCkhqYl6z
+jj-chocado|Chocado|fas fa-bolt|Dano Elétrico por turno igual a metade do atributo do atacante; 3 rodadas (reaplicar reseta).|O9bIMRDLcbXMoISd
+jj-congelando|Congelando|fas fa-snowflake|Fica Lento e sofre dano de Frio por turno igual ao atributo do atacante; 1 rodada (reaplicar reseta).|LC4qkxossoQ8t251
+jj-confuso|Confuso|fas fa-shuffle|Fica Desorientado e sofre dano Psíquico por turno igual a metade do atributo do atacante; 2 rodadas (reaplicar reseta).|lw5SnygMLJslduBm
+jj-corroendo|Corroendo|fas fa-flask|Dano Ácido por turno igual ao atributo do atacante; 3 rodadas (reaplicar reseta).|UzBrqJokBl2KW2ad
+jj-em-chamas|Em Chamas|fas fa-fire|Dano de Fogo por turno igual ao atributo do atacante; 3 rodadas (reaplicar reseta).|JMQbj2yVH6MTmg2Y
+jj-entropia|Entropia|fas fa-hurricane|Fica Amedrontado e sofre dano de Alma por turno igual a metade do atributo do atacante; 2 rodadas (reaplicar reseta).|wf5oTX2apWqYSqFE
+jj-irradiado|Irradiado|fas fa-radiation|Dano de Energia por turno igual ao atributo do atacante; 3 rodadas (reaplicar reseta).|3rylfx81bY4xBoWS
+jj-sangramento|Sangramento|fas fa-droplet|Dano Perfurante ou Cortante por turno igual ao atributo do atacante; 3 rodadas (reaplicar reseta).|0zArqMLjD3Zq1MTa

@@ -1,0 +1,66 @@
+folder: vG1tvdXvcpq70Tb5
+name: Alvo Marcado
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Após saber o nome completo, idade, gênero e aparência
+      verdadeira de uma criatura, você é capaz de marca-la como seu alvo,
+      permitindo que você a rastreie mais facilmente.</p><p
+      class="MsoListParagraph"><strong>Característica:</strong> Recebe vantagem
+      em Testes de Atributo para rastrear seu alvo, isso inclui em testes para
+      conversar com criaturas para conseguir informações sobre ele.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: alvo-marcado
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 100000
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  MhGXeDSlt2zUqR0J: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 68bd6da6a692d9e060df0b6a0d841529b2c53996
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: Item.pIaAt98DZBQngnAh
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902121
+  modifiedTime: 1776913381466
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: 8Hj19qiJfaPZGTsA
+_key: '!items!8Hj19qiJfaPZGTsA'

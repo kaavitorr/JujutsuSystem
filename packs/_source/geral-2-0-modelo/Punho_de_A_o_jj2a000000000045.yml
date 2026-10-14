@@ -1,0 +1,42 @@
+_id: jj2a000000000045
+name: Punho de Aço
+type: feat
+img: icons/skills/melee/unarmed-punch-fist-yellow-red.webp
+system:
+  identifier: punho-de-aco
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Entrada Impactante</em></p><p>Você
+      treinou seus golpes a ponto de aprender a extrair o máximo de potencial de
+      cada ataque. O dano base dos seus ataques desarmados se torna d8. Caso seu
+      dano natural já seja d8 ou superior, ele aumenta em um passo de dano, até
+      o máximo de d12.</p><p>Se seu dano natural já for d12, você recebe +1 de
+      dano em vez de aumentar o dado.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Corpo de Guerreiro
+      requisitos:
+        - Entrada Impactante
+folder: jj2f000000000009
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816326491
+  modifiedTime: 1791816326491
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000045'

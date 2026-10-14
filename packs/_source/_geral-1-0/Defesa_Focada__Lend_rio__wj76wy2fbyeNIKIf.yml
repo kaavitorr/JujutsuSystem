@@ -1,0 +1,140 @@
+name: Defesa Focada (Lendário)
+type: feat
+img: icons/magic/defensive/shield-barrier-glowing-blue.webp
+effects: []
+folder: Df2mM1kDzniTsvOe
+sort: 0
+flags:
+  scene-packer:
+    hash: afb54f766cb13654ea53098fdfbab0517e679956
+    sourceId: Item.V3vvznApbWueVhq2
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+system:
+  description:
+    value: >-
+      <p>A criatura recebe uma CR de 30, que vai sendo reduzida em -3 para cada
+      inimigo que não esteja com a condição “Incapacitada” a até 6 metros da
+      criatura (pode ser estipulado um valor mínimo que não poderá ser reduzido,
+      como 18 ou 19 de CR).</p>
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    recovery: []
+    spent: 0
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  activities:
+    dnd5eactivity000:
+      _id: dnd5eactivity000
+      type: utility
+      activation:
+        type: special
+        value: 1
+        condition: ''
+        override: false
+      consumption:
+        targets: []
+        scaling:
+          allowed: false
+          max: ''
+        spellSlot: true
+      description:
+        chatFlavor: ''
+      duration:
+        concentration: false
+        value: ''
+        units: inst
+        special: ''
+        override: false
+      effects: []
+      range:
+        units: self
+        special: ''
+        override: false
+      target:
+        template:
+          count: ''
+          contiguous: false
+          type: ''
+          size: ''
+          width: ''
+          height: ''
+          units: ft
+          stationary: false
+        affects:
+          count: ''
+          type: ''
+          choice: false
+          special: ''
+        prompt: true
+        override: false
+      uses:
+        spent: 0
+        max: ''
+        recovery: []
+      roll:
+        formula: ''
+        name: ''
+        prompt: false
+        visible: false
+      sort: 0
+      img: null
+      flags: {}
+      visibility:
+        level: {}
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+  identifier: defesa-focada-lendario
+  enchant: {}
+  advancement: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.eGlSYtpggfWFhwPK
+  duplicateSource: Item.V3vvznApbWueVhq2
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910562
+  modifiedTime: 1776624910578
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: wj76wy2fbyeNIKIf
+_key: '!items!wj76wy2fbyeNIKIf'

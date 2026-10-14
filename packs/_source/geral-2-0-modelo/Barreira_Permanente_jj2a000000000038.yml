@@ -1,0 +1,41 @@
+_id: jj2a000000000038
+name: Barreira Permanente
+type: feat
+img: icons/magic/lightning/barrier-shield-crackling-orb-pink.webp
+system:
+  identifier: barreira-permanente
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Barreira Adaptativa e Barreira
+      Pura</em></p><p>Ao criar uma barreira, você pode consumir 50 Pontos de
+      Energia máxima para torna-la permanente, fazendo com que ela se mantenha
+      ativa enquanto ela tiver Pontos de Vida ou você estiver vivo.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Técnicas de Barreira
+      caminho: Técnicas de Barreiras
+      requisitos:
+        - Barreira Adaptativa
+        - Barreira Pura
+folder: jj2f000000000007
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816778232
+  modifiedTime: 1791816778232
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000038'

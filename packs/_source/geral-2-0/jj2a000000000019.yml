@@ -1,0 +1,24 @@
+_id: jj2a000000000019
+_key: '!items!jj2a000000000019'
+name: 'Gestos: Flecha e Linha'
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: gestos-flecha-e-linha
+  description:
+    value: |-
+      <p>Você aprende gestos que permitem modificar livremente seus feitiços, mudando sua área de efeito a certo custo. Ao gastar um Ponto de Ação [⬢] e uma quantidade de PA igual a ordem da habilidade (Básico – 1 PA | Estendido – 2 PA | Máximo – 3 PA), você pode modificar o alcance da sua técnica para uma das seguintes:</p><ul><li><strong>Flecha:</strong> Você foca em uma criatura dentro do alcance, atirando na criatura com uma jogada de ataque. O dano da técnica se torna d8.</li><li><strong>Linha:</strong> Você faz sua técnica acertar uma linha de 1,5 metros de largura, onde todas as criaturas devem realizar uma Salvaguarda de Agilidade. Sofrendo todo dano se falhar ou metade se obtiverem sucesso, mas o dano se torna d8.</li></ul>
+      <table><thead><tr><th>Ordem</th><th>Flecha</th><th>Linha</th></tr></thead><tbody><tr><td>Básico</td><td>15 metros</td><td>15 metros</td></tr><tr><td>Estendido</td><td>25 metros</td><td>25 metros</td></tr><tr><td>Máximo</td><td>35 metros</td><td>35 metros</td></tr></tbody></table>
+      <p>Caso a técnica modificada seja “Flecha” e tenha uma condição, você paga 1 PA adicional para modifica-la para o modelo de “Linha”.<br>Os gestos só funcionam em técnicas que causam dano e/ou condições negativas.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Manipulação de Técnica
+      requisitos: []
+folder: jj2f000000000004
+ownership:
+  default: 0
+effects: []
+sort: 0

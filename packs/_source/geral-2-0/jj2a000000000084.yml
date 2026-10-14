@@ -1,0 +1,22 @@
+_id: jj2a000000000084
+_key: '!items!jj2a000000000084'
+name: Reflexo Superior
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: reflexo-superior
+  description:
+    value: <p><em><strong>Requisito:</strong> Resistência Superior</em></p><p>Você utiliza de seus reflexos aprimorados para desviar com mais facilidade dos ataques inimigos. Você recebe Classe de Resistência igual a metade do seu atributo de Intelecto, arredondado para baixo.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Defensivo
+      requisitos:
+        - Resistência Superior
+folder: jj2f000000000014
+ownership:
+  default: 0
+effects: []
+sort: 0

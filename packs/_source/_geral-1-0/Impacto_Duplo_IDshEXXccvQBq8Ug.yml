@@ -1,0 +1,308 @@
+folder: O4vZB1Y13nCQQ3LJ
+name: Impacto Duplo
+type: feat
+img: icons/skills/melee/unarmed-punch-fist-white.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">A partir do 2º nível de Lutador, você aprende a
+      controlar sua energia amaldiçoada de forma a maximizar o dano causado no
+      seu alvo. Você recebe acesso as seguintes
+      características:</p><p><strong>Castigo de Ferro:</strong> Quando você ou
+      uma criatura aliada a até 1,5 metros de você sofrer uma jogada de ataque
+      (comum), você pode usar sua reação para realizar uma jogada de ataque
+      (comum) corpo a corpo antes que o ataque seja concluído. Se acertar, o
+      ataque causa dano Contundente em um valor igual 5 + o seu nível de Lutador
+      e interrompe o ataque inimigo.</p><p class="TextoPadro">A partir do 10º
+      nível, você não utiliza mais reação para esse efeito, mas pode utiliza-lo
+      apenas uma vez por rodada.</p><p><strong>Energia Atrasada:</strong> Você
+      pode escolher ter -3 de acerto ao realizar uma jogada de ataque (Comum)
+      para fazer com que sua energia amaldiçoada dê um pequeno atraso, acertando
+      o alvo uma segunda vez logo após seu golpe, liberando dois impactos
+      distintos. Caso você role um resultado no dado de 15 ou mais e acerte o
+      alvo, você causa novamente o dano do seu primeiro ataque, até um máximo de
+      dano igual a 4 vezes o seu nível de personagem.</p><p>Dispersão de
+      Energia: Toda vez que você ativar o efeito do Energia Atrasada com
+      sucesso, você pode escolher receber dois dos seguintes
+      efeitos:</p><ul><li><p class="MsoListParagraph">Você reduz o próximo dano
+      sofrido em 6 Pontos de Dano;</p></li><li><p class="MsoListParagraph">Você
+      impõe desvantagem na próxima rolagem de acerto contra você;</p></li><li><p
+      class="MsoListParagraph">Você recebe vantagem na sua próxima Salvaguarda
+      de Agilidade até o início do seu próximo turno;</p></li><li><p
+      class="MsoListParagraph">Suas jogadas de ataque (Comuns e de Técnica)
+      recebem 1d4 de dano adicional até o início do seu próximo
+      turno.</p></li></ul><p class="TextoPadro">Alternativamente, você pode
+      escolher consumir 2 Pontos de Energia Amaldiçoada (PA) para receber os
+      efeitos acima sem precisar ativar a característica “Energia
+      Atrasada”.</p><p class="TextoPadro">A partir do 10º nível, você recebe os
+      4 benefícios ao ativar o “Dispersão de Energia”.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects:
+  - name: Fisico Profano (Mov + 3)
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.IDshEXXccvQBq8Ug
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: true
+    img: icons/magic/control/buff-strength-muscle-damage-red.webp
+    type: base
+    system:
+      changes:
+        - key: system.attributes.movement.walk
+          value: '+3'
+          priority: 20
+          type: add
+          phase: initial
+    description: ''
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    sort: 0
+    flags:
+      dnd5e:
+        riders:
+          statuses: []
+      dae:
+        disableCondition: ''
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+      core:
+        overlay: false
+    _stats:
+      compendiumSource: Actor.wEkpwVoTmN9eIoBA.Item.E0Edmr5K6gpioxWV.ActiveEffect.YGWinLctDExoRPwO
+      duplicateSource: null
+      exportSource: null
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 5.3.2
+      createdTime: 1776624881631
+      modifiedTime: 1776624881631
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+    _id: QSvLguMCnriSCGYx
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!IDshEXXccvQBq8Ug.QSvLguMCnriSCGYx'
+  - name: Fisico Profano (Save + 1)
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.IDshEXXccvQBq8Ug
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: true
+    img: icons/magic/control/buff-strength-muscle-damage-red.webp
+    type: base
+    system:
+      changes:
+        - key: system.abilities.str.bonuses.save
+          value: '+1'
+          priority: 20
+          type: add
+          phase: initial
+        - key: system.abilities.dex.bonuses.save
+          value: '+1'
+          priority: 20
+          type: add
+          phase: initial
+    description: ''
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    sort: 0
+    flags:
+      dnd5e:
+        riders:
+          statuses: []
+      dae:
+        disableCondition: ''
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+      core:
+        overlay: false
+    _stats:
+      compendiumSource: Actor.wEkpwVoTmN9eIoBA.Item.E0Edmr5K6gpioxWV.ActiveEffect.BkQ5wTkwkuVOpJ9b
+      duplicateSource: null
+      exportSource: null
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 5.3.2
+      createdTime: 1776624881631
+      modifiedTime: 1776624881631
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+    _id: u4x8n24pNDQ6DCHp
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!IDshEXXccvQBq8Ug.u4x8n24pNDQ6DCHp'
+  - name: Fisico Profano (Str + 2)
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.IDshEXXccvQBq8Ug
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: true
+    img: icons/magic/control/buff-strength-muscle-damage-red.webp
+    _id: Lc4MzmdgqGRmQDNE
+    type: base
+    system:
+      changes:
+        - key: system.abilities.str.bonuses.check
+          value: '+2'
+          priority: 20
+          type: add
+          phase: initial
+    description: ''
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    sort: 0
+    flags:
+      dnd5e:
+        riders:
+          statuses: []
+      dae:
+        disableCondition: ''
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+      core:
+        overlay: false
+    _stats:
+      compendiumSource: Actor.wEkpwVoTmN9eIoBA.Item.E0Edmr5K6gpioxWV.ActiveEffect.qQhZUog1GWGe7RVH
+      duplicateSource: null
+      exportSource: null
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 5.3.2
+      createdTime: 1776624881631
+      modifiedTime: 1776624881631
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!IDshEXXccvQBq8Ug.Lc4MzmdgqGRmQDNE'
+  - name: Fisico Profano (Agi + 2)
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.IDshEXXccvQBq8Ug
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: true
+    img: icons/magic/control/buff-strength-muscle-damage-red.webp
+    type: base
+    system:
+      changes:
+        - key: system.abilities.dex.bonuses.check
+          value: '+2'
+          priority: 20
+          type: add
+          phase: initial
+    description: ''
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    sort: 0
+    flags:
+      dnd5e:
+        riders:
+          statuses: []
+      dae:
+        disableCondition: ''
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+      core:
+        overlay: false
+    _stats:
+      compendiumSource: Actor.wEkpwVoTmN9eIoBA.Item.E0Edmr5K6gpioxWV.ActiveEffect.VvDKq2cAn7IVDuLK
+      duplicateSource: null
+      exportSource: null
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 5.3.2
+      createdTime: 1776624881631
+      modifiedTime: 1776624881631
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+    _id: DDShacKo8aG6it8Y
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!IDshEXXccvQBq8Ug.DDShacKo8aG6it8Y'
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881631
+  modifiedTime: 1776917473205
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: IDshEXXccvQBq8Ug
+sort: 0
+_key: '!items!IDshEXXccvQBq8Ug'

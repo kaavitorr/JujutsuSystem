@@ -1,0 +1,22 @@
+name: Energia Amaldiçoada
+sorting: a
+folder: Zh6nXJyphmH4TF72
+type: Item
+_id: A016Ya5NrTpIpIrs
+description: ''
+sort: 0
+color: '#2d4e9a'
+flags:
+  scene-packer:
+    hash: d5ca91644a141f03454efa918c33d1f153b0c01f
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910215
+  modifiedTime: 1782448988563
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_key: '!folders!A016Ya5NrTpIpIrs'

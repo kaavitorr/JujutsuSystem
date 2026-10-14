@@ -1,0 +1,22 @@
+name: Restringido
+type: Item
+sorting: m
+sort: 2000000
+color: '#000000'
+flags:
+  scene-packer:
+    hash: b7d578f76f07e0ca015c6c07a4bcfe26de44b6ed
+_id: Bma02dPBIVyl5Vrj
+folder: 2zCe7mg0RaExAqyz
+description: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791829183898
+  modifiedTime: 1791829183898
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!Bma02dPBIVyl5Vrj'

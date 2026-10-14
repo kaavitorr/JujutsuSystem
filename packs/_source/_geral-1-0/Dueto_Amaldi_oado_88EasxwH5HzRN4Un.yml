@@ -1,0 +1,97 @@
+folder: pJFTz3T8ddDTtVRG
+name: Dueto Amaldiçoado
+type: subclass
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Caminhos/Yuta_Okkotsu_2923.webp
+system:
+  description:
+    value: "<table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>DUETO AMALDIÇOADO</strong></span></p></td></tr></tbody></table><p class=\"MsoNormal\">O punho divergente é aquele que foca na arte do combate desarmado usando uma técnica específica de manipulação de energia para fazer com que seu dano atinja duas vezes seu inimigo.</p><table border=\"1\" style=\"margin-left:7.1pt;border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt\" class=\"MsoTableGrid\"><tbody><tr style=\"mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;height:46.05pt\"><td><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>PECULIARIDADES DO DUETO AMALDIÇOADO</strong></span></p><p class=\"MsoNormal\">Um Dueto Amaldiçoado é especializado em combates de 2 contra 1 ou 2 contra 2, utilizando Shikigamis poderosos.</p><p class=\"MsoNormal\">Ao adquirir essa habilidade, você pode vincular até 3 Shikigamis a ela. No entanto, apenas um deles pode estar conjurado por vez durante o combate para que os benefícios desta habilidade sejam aplicados.</p><p class=\"MsoNormal\">Além disso, caso um Shikigami vinculado receba um benefício que já possua por outras fontes (exceto bônus cumulativos), você deve escolher um dos seguintes efeitos:</p><ul><li><p>Converter o benefício em Pontos de Vida adicionais, na proporção de 1 PA para 10 Pontos de Vida;</p></li><li><p>Ou reduzir o custo de conjuração do Shikigami na mesma proporção (mínimo 1).</p></li></ul><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\">Essa escolha deve ser feita sempre que a situação ocorrer.</p></td></tr></tbody></table><p style=\"margin:0cm 0.15pt 0.0001pt 7.1pt;text-align:justify\"></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>SINCRONIA PERFEITA</strong></span></p><hr><p class=\"MsoNormal\"><span style=\"mso-bidi-font-size:10.0pt\">A partir do <strong>2º nível de Especialista</strong>, </span>você aprendeu a lutar sempre com o auxílio de seu Shikigami. Enquanto ele estiver no lado oposto da criatura que você está atacando, você e ela recebem 1d4 de dano adicional em suas jogadas de ataque (Comuns e de Técnica) contra essa criatura.</p><p style=\"text-indent:35.45pt;tab-stops:467.8pt\" class=\"TextoPadro\"><span style=\"mso-bidi-font-size:10.0pt;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-bidi-font-family:ChaparralPro-Regular\">Adicionalmente, enquanto o Shikigami estiver conjurado, você e ele recebem +1 de acerto.</span></p><p style=\"margin-right:0.15pt\" class=\"TextoPadro\"><span style=\"font-size:7pt;font-family:''\">\_</span></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>MOVIMENTOS ERRÁTICOS</strong></span></p><hr><p class=\"MsoNormal\">A partir do <strong>6º nível de Especialista,</strong> você e seu Shikigami estão constantemente se movendo e trocando de posição durante o combate. Dessa forma, sempre que você ou ele forem alvos de uma rolagem de dano, e o outro estiver a até 9 metros de distância, vocês podem trocar de posição, redirecionando o alvo do dano de um para o outro e trocando de posições no processo através de impulsos de alta velocidade.</p><p class=\"MsoNormal\">Ao utilizar essa característica com um Shikigami, você não pode invoca-lo novamente por pelo menos 3 rodadas caso ele seja destruído como consequência da transferência de dano.</p><p class=\"MsoNormal\">Você pode realizar a troca pelo menos uma vez por rodada de cada criatura.</p><p style=\"text-indent:1cm\" class=\"TextoPadro\"><span style=\"font-size:7pt\">\_</span></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>VINCULO PROFUNDO</strong></span></p><hr><p class=\"MsoNormal\">A partir do <strong>10º nível de Especialista</strong>, você pode compartilhar certos benefícios com seu Shikigami que seriam impossíveis de outra forma, permitindo que ele possa utilizar todas as suas habilidades e técnicas de manipulação de energia amaldiçoada de forma individual, mas ainda usa da sua Energia Amaldiçoada.</p><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>REI DAS MALDIÇÕES</strong></span></p><hr><p class=\"TextoPadro\">A partir do <strong>14º nível de Especialista</strong>, seu Shikigami se tornou tão poderoso que ele é capaz de agir de forma quase que totalmente independente. Ele recebe as seguintes características:</p><ul><li><p><em>Ele recebe duas jogadas de ataque (Comuns) e 1 Ação de Poder Individual;</em></p></li><li><p><em>Ele passa a gerar a própria energia amaldiçoada na mesma quantidade que você, mas ela é retirada do seu PA Total;</em></p></li><li><p><em>O Shikigami pode continuar agindo e lutando mesmo que você caia inconsciente a 0 Pontos de Vida.</em></p></li></ul>"
+    chat: ''
+  source:
+    rules: '2014'
+    revision: 1
+  identifier: dueto-amaldicoado
+  classIdentifier: especialista
+  advancement:
+    lElIiFFdNUqFlsUs:
+      type: ItemGrant
+      _id: lElIiFFdNUqFlsUs
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.VRyxJ2eGKNYFQYgG
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 2
+      title: ''
+      hint: ''
+      flags: {}
+    atFXg6XMdqFD1pT8:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.F5cWh8cyTRPsQLP0
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 6
+      title: ''
+      hint: ''
+      _id: atFXg6XMdqFD1pT8
+      flags: {}
+    KE54tn5jk1sfR4vO:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4AutIZpAGeeZEz53
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 10
+      title: ''
+      hint: ''
+      _id: KE54tn5jk1sfR4vO
+      flags: {}
+    coVd3LbHUspCrGYE:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.HjrAqKEuVqPcxBcl
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 14
+      title: ''
+      hint: ''
+      _id: coVd3LbHUspCrGYE
+      flags: {}
+  spellcasting:
+    progression: none
+    ability: ''
+    preparation:
+      formula: ''
+effects: []
+sort: 375000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 2b2ea68dcf2aed4fa32e9cf050d3bdd37e1c024b
+  core: {}
+_stats:
+  compendiumSource: Item.5DNdPVt1SNlAA1LD
+  duplicateSource: Item.1DlMKHRFDaxnS7jq
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624881622
+  modifiedTime: 1782439201989
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: 88EasxwH5HzRN4Un
+_key: '!items!88EasxwH5HzRN4Un'

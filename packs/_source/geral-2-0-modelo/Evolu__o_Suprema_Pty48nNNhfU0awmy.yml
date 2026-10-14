@@ -1,0 +1,109 @@
+name: Evolução Suprema
+type: feat
+img: icons/magic/holy/angel-winged-humanoid-blue.webp
+effects: []
+folder: hdxMXLzxHykD3XKe
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: a80e3c2febc8372e7029d9d13b6e9f82b645b97e
+    sourceId: Item.07mMzpqnSXMd5SoJ
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: >-
+      <p>Seu físico evoluiu, te dando um metabolismo extremamente acelerado e um
+      vigor extremo. Você recebe acesso as seguintes
+      características:</p><ul><li><p><strong>Gênio Marcial:</strong> Você possui
+      uma capacidade extraordinária para desenvolver técnicas e habilidades que
+      auxiliam em combate. A qualquer momento, você pode consumir 5 PT para
+      criar uma nova técnica de até 7º grau, seguindo as regras de criação de
+      técnicas comuns apresentadas no Manual de Feitiços. Não existe um limite
+      de quantas técnicas adicionais você pode criar, desde que você consuma os
+      Pontos de Treinamento necessários.</p></li><li><p><strong>Metabolismo
+      Extremo:</strong> Seu descanso longo se torna de 2 horas e seu curto de 5
+      minutos.</p></li><li><p><strong>Impulso Físico:</strong> Você pode gastar
+      1 PE para aumentar seu dano em 2d4 o diminuir o dano sofrido no mesmo
+      valor, até um máximo de PE igual metade do seu nível de personagem
+      (arredondado para cima).</p></li><li><p><strong>Sentidos
+      Extremos:</strong> Você recebe Sentido Verdadeiro em uma área de 36 metros
+      ao seu redor.</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: mestre-aprimorador
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791817376993
+  modifiedTime: 1791817411687
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_id: Pty48nNNhfU0awmy
+sort: 0
+_key: '!items!Pty48nNNhfU0awmy'

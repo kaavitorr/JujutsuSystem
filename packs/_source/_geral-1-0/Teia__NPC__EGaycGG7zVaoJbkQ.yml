@@ -1,0 +1,80 @@
+_id: EGaycGG7zVaoJbkQ
+name: Teia (NPC)
+type: feat
+img: icons/creatures/webs/web-spider-pink.webp
+effects: []
+folder: I4nmFeOf3cr9gQWb
+sort: 1200000
+flags:
+  scene-packer:
+    hash: f6e956f5e250d5f6fb2064e3c0e403fa4eba6de1
+    sourceId: Item.EGaycGG7zVaoJbkQ
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Teia (Aumenta a CR efetiva da criatura em 1): </strong>Ataque à
+      Distância com Arma (distância 9/18 metros) contra um alvo Grande ou menor.
+      Caso acerte, o alvo recebe a condição “Impedido” pela teia. Com uma ação,
+      o alvo impedido pode realizar um Teste de Habilidade de Força, escapando
+      da teia se for bem sucedido. O efeito termina se a teia for destruída. A
+      teia tem CR 10, 5 pontos de vida, resistência a dano de Concussão e
+      imunidade a dano Psíquico e de Veneno. Se o resultado for 5 ou 6, a
+      criatura recupera o uso desta característica. Essa característica também
+      se recarrega quando a criatura termina um descanso curto ou longo.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: teia-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.9r3R5SI7AlwApMr3
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910535
+  modifiedTime: 1776624910567
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!EGaycGG7zVaoJbkQ'

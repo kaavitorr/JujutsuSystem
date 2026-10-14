@@ -1,0 +1,22 @@
+name: Talentos Especiais
+sorting: a
+folder: iW3EPRWBV2gxNGYS
+type: Item
+_id: Cop25p3gGjyKoZK7
+description: ''
+sort: 100000
+color: '#ee6363'
+flags:
+  scene-packer:
+    hash: 574dd6d9c6951c1ed9ae28adbb27fbf95352d5d7
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624901878
+  modifiedTime: 1776624901878
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!Cop25p3gGjyKoZK7'

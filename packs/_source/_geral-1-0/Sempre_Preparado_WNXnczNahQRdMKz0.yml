@@ -1,0 +1,96 @@
+name: Sempre Preparado
+type: feat
+img: icons/magic/symbols/squares-3d-green.webp
+effects: []
+folder: TOc92NuiE5uyXD8M
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 5ffd75ce332aee7ff41cffc281d79f44614ed86d
+    sourceId: Item.56za1y6eXu2k49Rg
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Você gosta de ter uma contingência para cada plano —
+      até mesmo quando sai para tomar um sorvete, já possui uma alternativa caso
+      a sorveteria esteja fechada.</p><p class="MsoNormal">No início de cada
+      dia, você pode gastar 1 hora preparando planos (A, B, C ou até D) para
+      diferentes situações. Ao fazer isso, role 3d20 e anote os
+      resultados.</p><p class="MsoNormal">Sempre que realizar uma rolagem de
+      d20, você pode optar por manter o resultado obtido ou substituí-lo por um
+      dos valores anotados. Cada resultado só pode ser utilizado uma vez e é
+      consumido após o uso.</p><p class="MsoNormal">Você não pode utilizar esses
+      dados nas seguintes condições:</p><ul><li><p>Se for surpreendido no início
+      de um combate; </p></li><li><p>Se estiver indo para um local sobre o qual
+      não possui nenhuma informação; </p></li><li><p>Se não tiver gasto 1 hora
+      no início do dia para preparar seus planos. </p></li></ul><p></p><p
+      class="MsoNormal">Fora dessas situações, considera-se que você sempre tem
+      um plano.</p>
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    recovery:
+      - period: lr
+        type: recoverAll
+    spent: 0
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  activities: {}
+  identifier: sortudo
+  enchant: {}
+  advancement: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624882953
+  modifiedTime: 1776960086338
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+_id: WNXnczNahQRdMKz0
+sort: 1650000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_key: '!items!WNXnczNahQRdMKz0'

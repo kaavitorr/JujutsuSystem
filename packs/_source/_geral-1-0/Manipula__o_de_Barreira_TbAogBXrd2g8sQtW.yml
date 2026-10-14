@@ -1,0 +1,84 @@
+folder: VwqGTy4yPJgfmdwx
+name: Manipulação de Barreira
+type: feat
+img: icons/magic/defensive/shield-hex-gold.webp
+system:
+  description:
+    value: >-
+      <p class="TextoPadro">A partir do 2º nível de Estrategista, você tem a
+      utilização de energia reversa como uma segunda natureza para você,
+      permitindo o seu uso desde o início. Você recebe acesso as seguintes
+      características:</p><ul><li><p><em>Você recebe a habilidade de manipulação
+      “Energia Reversa” do Capítulo 6;</em></p></li><li><p><em>Você recebe a
+      habilidade de manipulação “Energia Flexível” e pode usar uma ação bônus,
+      ação de poder ou ação para curar os outros usando energia reversa no mesmo
+      turno que se curou.</em></p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.367'
+  systemId: jujutsu-system
+  systemVersion: 1.0.10
+  createdTime: 1776624881637
+  modifiedTime: 1788212778996
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: TbAogBXrd2g8sQtW
+sort: 100000
+_key: '!items!TbAogBXrd2g8sQtW'

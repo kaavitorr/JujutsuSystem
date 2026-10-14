@@ -1,0 +1,22 @@
+_id: jj2a000000000016
+_key: '!items!jj2a000000000016'
+name: Refinamento Duplo
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: refinamento-duplo
+  description:
+    value: <p><em><strong>Requisito:</strong> Aprimoramento de Espírito</em></p><p>Você pode escolher um Shikigami afetado pelo “Aprimoramento de Espírito”, onde ele passa ter metade do seu limite individual de Energia Amaldiçoada do seu valor de refinamento, sem precisar usar do seu.</p><p><em>Por exemplo, se seu valor de refinamento é de 10 por rodada, ele pode usar 5 sem consumir dos seus Pontos de Energia Amaldiçoada (PA).</em></p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Invocador de Shikigami
+      requisitos:
+        - Aprimoramento de Espírito
+folder: jj2f000000000003
+ownership:
+  default: 0
+effects: []
+sort: 0

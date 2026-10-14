@@ -1,0 +1,89 @@
+folder: x1kCFkwfVVg7tErL
+name: Remoção de Limitador
+type: feat
+img: icons/magic/light/orbs-firefly-hand-yellow.webp
+system:
+  description:
+    value: >-
+      <p class="TextoPadro">A partir do <strong>14º nível de Lutador</strong>,
+      seu corpo transborda de energia amaldiçoada que permite que você acabe
+      formando um estoque de energia reversa em seu corpo que é formada
+      instintivamente. Você gera Pontos de Energia Amaldiçoada (PA) adicionais
+      por rodada igual ao seu nível de personagem.</p><p
+      class="TextoPadro">Adicionalmente, você pode usar uma ação bônus para
+      receber 1d4 adicional em suas rolagens de acerto pelo próximo minuto
+      (também afeta a rolagem secundária para ativar o fulgor), aumentando seu
+      resultado final da rolagem pelo resultado do d4. Você também pode, em um
+      resultado de 4, aumentar o resultado do seu DADO em 1. Se isso ocorrer e o
+      resultado da rolagem do dado entrar na margem de um crítico, ela passa a
+      ser considerada um.</p><p class="TextoPadro">Você recupera essa
+      característica ao fim de um descanso longo.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881640
+  modifiedTime: 1776918842565
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: W8yRKm0aXuMg66sz
+sort: 200000
+_key: '!items!W8yRKm0aXuMg66sz'

@@ -1,0 +1,77 @@
+_id: 5ObeXTxz3m0rKYkP
+name: Compulsivo (3 Pontos)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects: []
+folder: xaOZscxiXFUTyHS5
+sort: 400000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: d59454889444912841c3997cd81d769b04d3055e
+    sourceId: Item.s5x9RJIhGN20bT1U
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: "<p>Existe algo que você precisa fazer constantemente e que lhe traz alguma gratificação emocional, normalmente um alívio de ansiedade e/ou angústia. São hábitos mal adaptativos que já foram executados inúmeras vezes e acontecem quase automaticamente. É comum que haja um \"gatilho\" ou situações que tragam sua compulsão à tona.</p><p>\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Se ignorar uma vez sua compulsão, você não consegue usar ações bônus até que a faça novamente. Você recebe -2 em Testes de Atributo de Sabedoria (Investigação).</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: compulsivo-2-pontos
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.Zz8NLUtsp7wYrEr4
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902121
+  modifiedTime: 1776624902164
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!5ObeXTxz3m0rKYkP'

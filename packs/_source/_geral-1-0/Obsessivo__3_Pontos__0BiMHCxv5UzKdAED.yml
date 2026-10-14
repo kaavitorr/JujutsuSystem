@@ -1,0 +1,124 @@
+_id: 0BiMHCxv5UzKdAED
+name: Obsessivo (3 Pontos)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects:
+  - _id: y2eolnsvvrITmY8X
+    disabled: false
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    origin: Item.93sdO0pOxjWSpFEf
+    transfer: true
+    flags:
+      core:
+        statusId: ''
+      dae:
+        stackable: none
+        durationExpression: ''
+        specialDuration: []
+        transfer: true
+        selfTarget: false
+        selfTargetAlways: false
+    tint: '#ffffff'
+    name: Obsessivo
+    description: ''
+    statuses: []
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 5.3.2
+      createdTime: 1776624902115
+      modifiedTime: 1776624902115
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+      exportSource: null
+    img: icons/magic/death/undead-ghosts-trio-blue.webp
+    type: base
+    system:
+      changes:
+        - key: system.skills.ins.bonuses.check
+          value: -2
+          priority: 20
+          type: add
+          phase: initial
+    sort: 0
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!0BiMHCxv5UzKdAED.y2eolnsvvrITmY8X'
+folder: xaOZscxiXFUTyHS5
+sort: 1700000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 4a214c78796c446ed592cd10214261ce09bd4954
+    sourceId: Item.ymcBYecIxgbqcRun
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: "<p>Obsessão por algo material. Os jogadores que possuírem esse defeito terão na avaliação de suas aventuras uma análise interpretativa, na qual será avaliada as tentativas de se aproximar ou sustentar sua obsessão.</p><p>\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Caso você tenha ignorado sua obsessão, todos os seus Testes de Atributo sofrem -1 de penalidade até que você volte a alimentar sua obsessão. Você recebe -2 em Testes de Atributo de Espírito (Intuição).</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: obsessivo-2-pontos
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.93sdO0pOxjWSpFEf
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902115
+  modifiedTime: 1776624902160
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!0BiMHCxv5UzKdAED'

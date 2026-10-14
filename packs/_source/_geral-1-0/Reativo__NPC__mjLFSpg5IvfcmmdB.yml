@@ -1,0 +1,73 @@
+_id: mjLFSpg5IvfcmmdB
+name: Reativo (NPC)
+type: feat
+img: icons/skills/melee/maneuver-sword-katana-yellow.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 4600000
+flags:
+  scene-packer:
+    hash: 606406b09ba2828afe9222adc56e2f68a1eff760
+    sourceId: Item.mjLFSpg5IvfcmmdB
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Reativo (–):</strong> A criatura pode realizar uma reação em
+      cada turno em um combate.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: reativo-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.bhGTwVroVvWS1Xgm
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910557
+  modifiedTime: 1776624910576
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!mjLFSpg5IvfcmmdB'

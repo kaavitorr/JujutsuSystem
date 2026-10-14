@@ -1,0 +1,65 @@
+folder: vG1tvdXvcpq70Tb5
+name: Resistência a Venenos
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>Em algum momento de sua vida, o personagem foi exposto a venenos
+      perigosos e se recuperou, criando anticorpos para combatê-lo. Graças a
+      isso, ele possui uma resistência maior a venenos, porém não é totalmente
+      imune, podendo apresentar sintomas reduzidos ou parciais para venenos
+      fortes.</p><p><strong>Característica:</strong> Você recebe vantagem em
+      Salvaguardas contra dano e condições causadas por veneno. Caso você já
+      possua vantagem por outra fonte, você recebe +5 no lugar.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: rastreador
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: 498dfcaa0fbaeb6fd2b44e836678461c0babbfe0
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902155
+  modifiedTime: 1776913401434
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: qeOcNGu2ske9fHL8
+sort: 3800000
+_key: '!items!qeOcNGu2ske9fHL8'

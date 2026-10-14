@@ -1,0 +1,85 @@
+folder: QHnKuzqoZOPMCTvB
+name: Aumento de Energia
+type: feat
+img: icons/commodities/treasure/token-engraved-red-glowing.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Sua habilidade em consumir objetos amaldiçoados e
+      conter sua energia faz com que você possa crescer sem a necessidade de
+      treinamentos muito intensos.</p><p
+      class="MsoNormal"><strong>Característica:</strong> Caso você já tenha
+      consumido seus 2 objetos amaldiçoados para receber novos feitiços inatos
+      ou herdados, cada objeto novo irá aumentar sua Energia Amaldiçoada máxima
+      por 5 vezes o grau daquele objeto. Esse efeito não funciona com
+      “Ferramentas Amaldiçoadas”, apenas com objetos que você tenha a capacidade
+      física de engolir por inteiro.</p>
+    chat: ''
+  source:
+    custom: LdJ Capítulo 6
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: Livro do Jogador
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: habilidade-inata
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: 563b5cf623b9a3e07e9fcac334b3f05d8de835ed
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776962919245
+  modifiedTime: 1776962919281
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: 71hXoRfNrkSf17CE
+sort: 100000
+_key: '!items!71hXoRfNrkSf17CE'

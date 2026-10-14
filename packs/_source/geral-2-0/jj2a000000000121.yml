@@ -1,0 +1,22 @@
+_id: jj2a000000000121
+_key: '!items!jj2a000000000121'
+name: Domínio Incompleto
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: dominio-incompleto
+  description:
+    value: <p><em><strong>Requisito:</strong> 6º nível de personagem</em></p><p>A partir do 5º nível de personagem, você pode tentar expandir seu domínio incompleto, permitindo que você receba os benefícios não relacionados a acerto garantido do seu domínio.</p><p>Uma vez por descanso longo, durante uma luta com risco de morte, ao expandir seu domínio incompleto, desde que você possua a “Barreira Vazia”, você pode tentar fechar sua barreira com uma rolagem de d20. Em um resultado de 20 natural, você libera automaticamente a “Expansão de Domínio” sem precisar gastar um espaço de escolha de habilidade de Especialização e ignorando seus requisitos.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Domínio e Anti-Domínio
+      caminho: Técnicas de Expansão de Domínio
+      requisitos:
+        - 6º nível de personagem
+folder: jj2f000000000020
+ownership:
+  default: 0
+effects: []
+sort: 0

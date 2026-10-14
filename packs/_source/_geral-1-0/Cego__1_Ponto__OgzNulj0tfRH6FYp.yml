@@ -1,0 +1,77 @@
+_id: OgzNulj0tfRH6FYp
+name: Cego (1 Ponto)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects: []
+folder: ImFD309NSdjSZUT5
+sort: 2900000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 0d0cb6d3b895901aedc97cdc19836970c13a7319
+    sourceId: Item.TINRyG8w8w38KRcg
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: "<p>Você não enxerga. O personagem compensa a perda da visão, tornando-se mais sensível aos outros estímulos sensoriais. Mas as imagens e as pistas visuais lhes passam desapercebidas.</p><p>\_\_\_\_\_\_\_\_\_\_   As ações que envolvam a coordenação visual e manual são muito difíceis de serem realizadas, sobretudo nas situações tensas. Você recebe desvantagem em Testes de Atributo e Salvaguarda relacionados à visão.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: cego-3-pontos
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.rDonSWvGFao26Ann
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902133
+  modifiedTime: 1776624902169
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!OgzNulj0tfRH6FYp'

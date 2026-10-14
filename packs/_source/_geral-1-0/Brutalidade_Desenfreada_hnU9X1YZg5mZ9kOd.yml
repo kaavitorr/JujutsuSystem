@@ -1,0 +1,97 @@
+folder: x1kCFkwfVVg7tErL
+name: Brutalidade Desenfreada
+type: feat
+img: icons/magic/control/debuff-chains-red.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">A partir do 2º nível de Lutador, você utiliza seu
+      controle de energia amaldiçoada para aumentar a velocidade e força de seus
+      golpes de forma precisa, aumentando sua capacidade geral de combate. Você
+      recebe acesso as seguintes
+      características:</p><ul><li><p><strong>Reativo</strong>: Quando você
+      sofrer qualquer quantidade de dano de uma criatura dentro do seu alcance,
+      você pode realizar um contra-ataque contra o alvo com uma jogada de ataque
+      (Comum), causando 2d4 de dano físico a ele no fim do turno da criatura
+      para cada rolagem de dano individual que ela causou contra você.</p><p
+      class="TextoPadro">A partir do 10º nível, você passa a causar 4d4 de dano
+      no lugar de 2d4.</p></li><li><p><strong>Golpe Devastador:</strong> Sempre
+      que você causar um acerto crítico em uma criatura inimiga, você causa dano
+      adicional igual seu nível de personagem e a criatura deve realizar uma
+      Salvaguarda de Constituição para não perder uma ação bônus e um ataque da
+      característica “Ataque Extra”, se ela tiver mais de um
+      ataque.</p></li><li><p><strong>Ataque Veloz:</strong> Quando você realizar
+      uma jogada de ataque (Comum ou de Técnica), você pode usar uma ação bônus
+      para realizar uma jogada de ataque (Comum) adicional.</p><p
+      class="TextoPadro">Enquanto dentro da sua expansão de domínio, você não
+      precisa utilizar uma ação bônus para esse efeito, mas apenas pode realizar
+      um ataque dessa forma por rodada.</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881645
+  modifiedTime: 1776918533497
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: hnU9X1YZg5mZ9kOd
+sort: 50000
+_key: '!items!hnU9X1YZg5mZ9kOd'

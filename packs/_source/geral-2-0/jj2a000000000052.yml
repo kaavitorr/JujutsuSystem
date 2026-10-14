@@ -1,0 +1,22 @@
+_id: jj2a000000000052
+_key: '!items!jj2a000000000052'
+name: Castigo de Ferro
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: castigo-de-ferro
+  description:
+    value: <p><em><strong>Requisito:</strong> Energia Atrasada</em></p><p>Quando você ou uma criatura aliada a até 1,5 metros de distância for alvo de uma rolagem de acerto de uma criatura dentro do seu alcance, você pode como Reação, realizar uma jogada de ataque (Comum) contra ela que causa seu dano normal.</p><p>Ao atingir a criatura, ela deve realizar uma Salvaguarda de Constituição para não ter a ação interrompida e perder as ações e recursos utilizados nela.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Punho Divergente
+      requisitos:
+        - Energia Atrasada
+folder: jj2f000000000010
+ownership:
+  default: 0
+effects: []
+sort: 0

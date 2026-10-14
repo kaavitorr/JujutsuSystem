@@ -1,0 +1,224 @@
+name: Heaven Split
+type: spell
+img: icons/magic/sonic/projectile-shock-wave-blue.webp
+effects: []
+folder: AWDdu9KCy1KeXLsN
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickVersatile:
+      value: false
+      altValue: false
+    quickOther:
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      value: true
+      altValue: true
+    quickAttack:
+      value: true
+      altValue: true
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+      altValue:
+        '0': true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: f1662da2bb778492e42251e8822a6f2da857b297
+    sourceId: Item.a5cm3m20C3vusMKP
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+    quickOther:
+      context: ''
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+    quickAttack:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+system:
+  description:
+    value: "<p>Você avança em linha reta enquanto corta tudo em seu caminho com sua arma. Todas as criaturas na linha da técnica devem realizar uma Salvaguarda de [[/save @attributes.dex.mod]]. Sofrendo todo dano se falharem ou metade se obtiverem sucesso.</p><p>\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Ao ativar essa técnica, você aparece no fim do alcance dela.</p><hr><p>\_<strong>Duração:</strong>\_Instantâneo</p><p><strong>Alcance:</strong>\_Até 30 metros de Linha por 4,5 metros de Largura</p><p><strong>Requisito:</strong>\_Ação de Poder</p><p><strong>Dano:</strong> [[/damage 12d6 slashing]]</p><p><strong>Custo:</strong> 12 PA</p>"
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  activation:
+    type: action
+    condition: ''
+    value: 1
+  duration:
+    value: ''
+    units: inst
+    expiry: null
+  target:
+    affects:
+      choice: false
+      type: ''
+    template:
+      units: m
+      contiguous: false
+      stationary: false
+      type: line
+      count: ''
+      size: '30'
+      width: '4.5'
+  range:
+    units: self
+    special: ''
+  uses:
+    max: ''
+    recovery: []
+    spent: 0
+  ability: ''
+  level: 6
+  school: trs
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  properties: []
+  activities:
+    Fhw5CjlbKwwgeJCc:
+      type: save
+      _id: Fhw5CjlbKwwgeJCc
+      img: ''
+      sort: 0
+      activation:
+        type: action
+        override: false
+      consumption:
+        scaling:
+          allowed: false
+        spellSlot: true
+        targets:
+          - type: attribute
+            value: '12'
+            target: energy.generated
+            scaling: {}
+      description:
+        chatFlavor: ''
+        value: ''
+      duration:
+        units: inst
+        concentration: false
+        override: false
+        expiry: null
+      effects: []
+      flags: {}
+      range:
+        units: self
+        override: false
+      target:
+        template:
+          contiguous: false
+          stationary: false
+          units: m
+        affects:
+          choice: false
+        override: false
+        prompt: true
+      uses:
+        spent: 0
+        recovery: []
+        max: ''
+      visibility:
+        level:
+          min: null
+          max: null
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+      damage:
+        onSave: none
+        parts:
+          - custom:
+              enabled: false
+              formula: ''
+            number: 12
+            denomination: 6
+            bonus: ''
+            types:
+              - slashing
+            scaling:
+              mode: ''
+              number: 1
+            modifiers: []
+      save:
+        ability:
+          - dex
+        dc:
+          calculation: spellcasting
+          formula: ''
+        visible: true
+      name: ''
+      behaviors: []
+      jjScale:
+        enabled: false
+        cost: 1
+        maxPA: 0
+      constantCost:
+        enabled: false
+        pool: generated
+        concentration: false
+  identifier: muscle-barrier
+  method: spell
+  prepared: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791829184040
+  modifiedTime: 1791829184040
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: e8hUMhOQWHKESQ1p
+sort: 600000
+_key: '!items!e8hUMhOQWHKESQ1p'

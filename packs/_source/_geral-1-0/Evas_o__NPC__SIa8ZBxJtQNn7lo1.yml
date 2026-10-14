@@ -1,0 +1,76 @@
+_id: SIa8ZBxJtQNn7lo1
+name: Evasão (NPC)
+type: feat
+img: icons/skills/movement/arrow-down-pink.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 2900000
+flags:
+  scene-packer:
+    hash: 81c574841d519f95c8b8cfaa4f1aeec096f75b9a
+    sourceId: Item.SIa8ZBxJtQNn7lo1
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Evasão (Aumenta a CR efetiva da criatura em 2):</strong> Se a
+      criatura for alvo de um efeito que permita que ela realize um Teste de
+      Resistência para sofrer apenas metade do dano, ela não recebe nenhum dano
+      se for bem sucedida no Teste de Resistência e recebe apenas metade do dano
+      se fracassar.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: evasao-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.QU7KQfigpptZBYYd
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910543
+  modifiedTime: 1776624910570
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!SIa8ZBxJtQNn7lo1'

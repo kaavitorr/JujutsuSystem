@@ -1,0 +1,40 @@
+<section class="tab {{ tab.cssClass }} jj2-page jj2-personalization" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
+  <header class="jj2-page-heading jj2-manga-heading"><h2>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="personalization" }}Personalização</h2></header>
+  <div class="jj2-intensive-training">
+    <div class="jj2-training-title"><span class="jj2-training-emblem">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="str" }}</span><strong>Treinamento Intenso</strong></div>
+    <div class="jj2-training-bonuses">
+      <span class="jj2-training-energy" title="{{ jj2.intensiveTraining.maxEnergy }} treino(s) de energia máxima"><small>Energia máx.</small><strong>+{{ jj2.intensiveTraining.energyBonus }}</strong>{{#if owner}}{{#if jj2.intensiveTraining.maxEnergy}}<button type="button" class="jj2-config always-interactive" data-action="undoIntensiveTraining" data-field="maxEnergy" aria-label="Desfazer um treino de energia máxima">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="close" }}</button>{{/if}}{{/if}}</span>
+      <span class="jj2-training-refinement" title="{{ jj2.intensiveTraining.generatedEnergy }} treino(s) de refinamento"><small>Refinamento</small><strong>+{{ jj2.intensiveTraining.generatedEnergy }}</strong>{{#if owner}}{{#if jj2.intensiveTraining.generatedEnergy}}<button type="button" class="jj2-config always-interactive" data-action="undoIntensiveTraining" data-field="generatedEnergy" aria-label="Desfazer um treino de refinamento">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="close" }}</button>{{/if}}{{/if}}</span>
+    </div>
+    <button type="button" class="jj2-action {{#if owner}}always-interactive{{/if}}" data-action="intensiveTraining" {{ disabled (not owner) }}>Treinar{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="collapse" }}</button>
+  </div>
+  <section class="jj2-physical-panel" aria-label="Dados físicos">
+    <h3>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="cha" }}Dados Físicos</h3>
+    <div class="jj2-physical-fields">
+      {{#each characteristics}}<label><span>{{ label }}</span>{{#if @root.editable}}<input type="text" name="{{ name }}" value="{{ source }}" aria-label="{{ label }}">{{else}}<span class="jj2-physical-value">{{#if value}}{{ value }}{{else}}—{{/if}}</span>{{/if}}</label>{{/each}}
+    </div>
+  </section>
+  <{{ elements.inventory }} class="inventory-element jj2-customization-inventory">
+    <div class="items-list jj2-customization-sections">
+      {{#each customizationSections}}
+      <section class="jj2-customization-panel" data-jj2-customization="{{ id }}" aria-label="{{ label }}">
+        <header class="jj2-customization-heading"><h3>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=icon }}{{ label }}</h3><div class="jj2-customization-count" aria-label="{{ count }} {{ label }}{{#if max}}, limite de {{ max }}{{/if}}"><strong>{{ count }}</strong>{{#if max}}<span>/ {{ max }}</span>{{/if}}</div>{{#if @root.owner}}<button type="button" class="jj2-action always-interactive" data-action="jj2CustomizationAdd" data-category="{{ id }}" aria-label="Adicionar {{ label }}" {{ disabled (not canAdd) }}>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add" }}Adicionar</button>{{/if}}</header>
+        {{#if items.length}}
+        <ol class="jj2-customization-items item-list unlist">
+          {{#each items as |item|}}{{#dnd5e-itemContext item as |ctx|}}
+          <li class="item jj2-customization-item collapsible {{#unless ctx.isExpanded}}collapsed{{/unless}}" data-item-id="{{ item.id }}" data-uuid="{{ item.uuid }}" data-entry-id="{{ item.id }}" data-item-name="{{ item.name }}">
+            <div class="item-row draggable jj2-customization-row">
+              <button type="button" class="jj2-customization-name item-tooltip always-interactive" data-action="showDocument" aria-label="Abrir {{ item.name }}"><img class="item-image" src="{{ item.img }}" alt=""><strong>{{ item.name }}</strong></button>
+              <div class="jj2-customization-controls"><button type="button" class="item-action jj2-toggle-expand always-interactive" data-action="toggleExpand" aria-label="Expandir descrição de {{ item.name }}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="collapse" }}</button>{{#if @root.editable}}<button type="button" class="item-action always-interactive" data-action="edit" aria-label="Editar {{ item.name }}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="personalization" }}</button><button type="button" class="item-action always-interactive" data-action="delete" aria-label="Remover {{ item.name }}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="close" }}</button>{{/if}}</div>
+            </div>
+            {{#if ctx.activities.length}}<div class="jj2-customization-activities">{{#each ctx.activities}}<button type="button" class="activity-row item-action {{#if @root.owner}}always-interactive{{/if}}" data-action="activity-use" data-activity-id="{{ _id }}" data-uuid="{{ uuid }}" {{ disabled (not @root.owner) }}>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="energy" }}{{ name }}</button>{{/each}}</div>{{/if}}
+            <div class="item-description collapsible-content"><div class="wrapper">{{#if ctx.isExpanded}}{{> "dnd5e.item-summary" ctx.expanded }}{{/if}}</div></div>
+          </li>
+          {{/dnd5e-itemContext}}{{/each}}
+        </ol>
+        {{else}}<div class="jj2-customization-empty">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=icon }}<span>Nenhum item adicionado.</span>{{#if @root.owner}}<small>Arraste uma característica para cá ou use Adicionar.</small>{{/if}}</div>{{/if}}
+      </section>
+      {{/each}}
+    </div>
+  </{{ elements.inventory }}>
+</section>

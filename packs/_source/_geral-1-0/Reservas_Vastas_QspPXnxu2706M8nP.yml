@@ -1,0 +1,129 @@
+folder: 8DrMqv5pnmcNpafr
+name: Reservas Vastas
+type: feat
+img: icons/commodities/treasure/token-engraved-red-glowing.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Os membros do clã gojo costumam ter uma quantidade
+      muito elevada de Energia Amaldiçoada, permitindo que eles possam utilizar
+      técnicas avançadas com mais facilidade.</p><p
+      class="MsoNormal"><strong>Requisito:</strong> Não possuir os Seis
+      Olhos.</p><p class="MsoListParagraph">Característica: Você recebe 2 Pontos
+      de Energia amaldiçoada adicionais por nível de personagem. Adicionalmente,
+      toda vez que você receber um efeito de aumento de energia amaldiçoada
+      máxima sem ser por aumento de nível, você recebe 1 PA máximo
+      adicional.</p>
+    chat: ''
+  source:
+    custom: LdJ Capítulo 6
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: Livro do Jogador
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: controle-ocular
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects:
+  - name: Reservas Vastas
+    img: icons/commodities/treasure/token-engraved-red-glowing.webp
+    origin: Compendium.jujutsu-compendium.geral.Item.QspPXnxu2706M8nP
+    type: base
+    _id: XRCY0DLl5KINUkty
+    system:
+      changes:
+        - key: system.energy.bonuses.overall
+          type: add
+          value: + 2 * @details.level
+          phase: initial
+          priority: null
+    disabled: false
+    start: null
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    description: ''
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    showIcon: 1
+    folder: null
+    sort: 0
+    flags:
+      JujutsuLegacy:
+        riders:
+          statuses: []
+    _stats:
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 1.0.2
+      createdTime: 1777066415050
+      modifiedTime: 1777066436824
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+      compendiumSource: null
+      duplicateSource: null
+      exportSource: null
+    _key: '!items.effects!QspPXnxu2706M8nP.XRCY0DLl5KINUkty'
+sort: 0
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  MhGXeDSlt2zUqR0J: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: a0a52ac2838a2908b2c3c2871bcb783b4449ecb6
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  compendiumSource: Item.pIaAt98DZBQngnAh
+  duplicateSource: Item.yHdtWpdSUqQPLNAQ
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902134
+  modifiedTime: 1776962642642
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: QspPXnxu2706M8nP
+_key: '!items!QspPXnxu2706M8nP'

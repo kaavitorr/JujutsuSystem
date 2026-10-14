@@ -1,0 +1,80 @@
+_id: ocCMKMgPsJRq0GWT
+name: Implacável (NPC)
+type: feat
+img: icons/magic/unholy/silhouette-robe-evil-power.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 3500000
+flags:
+  scene-packer:
+    hash: 91b80f4e3f8960a4d8a106dfe2150d5bb7665560
+    sourceId: Item.ocCMKMgPsJRq0GWT
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p><strong>Implacável (–): </strong>Se a criatura sofrer algum dano, que
+      poderia reduzi-lo a 0 Pontos de Vida, ela é reduzida a 1 Ponto de Vida, ao
+      invés. Está característica recarrega logo após um descanso curto ou
+      longo.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: implacavel-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.wmDdBD5ZZz79vtQg
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910558
+  modifiedTime: 1776624910576
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!ocCMKMgPsJRq0GWT'

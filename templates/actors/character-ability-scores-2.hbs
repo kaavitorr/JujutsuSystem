@@ -1,0 +1,13 @@
+<section class="jj2-attributes" aria-label="Atributos">
+  {{#each jj2.abilities}}<div class="jj2-ability {{#if principal}}principal{{/if}}" data-ability="{{ key }}">
+    <a class="jj2-ability-heading {{ @root.rollableClass }}" data-action="roll" data-type="ability" aria-label="Rolar {{ label }}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=key }}{{ abbr }}</a>
+    {{#if @root.editable}}<input type="number" name="system.abilities.{{ key }}.value" value="{{ value }}" min="1" max="12" data-dtype="Number" aria-label="{{ label }}">{{else}}<strong>{{ value }}</strong>{{/if}}
+    <span class="jj2-ability-label">{{ label }}</span>
+  </div>{{/each}}
+  {{#with jj2.atributos}}<div class="jj2-atributos-total {{#if excesso}}excesso{{/if}}"
+       data-tooltip="Soma dos atributos ÷ orçamento. Orçamento = 20 + 1 por nível a partir do 2º. Acima do orçamento: algo errado na distribuição.">
+    <span class="jj2-budget-heading">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="budget" }}Orçamento</span>
+    <div class="jj2-budget-value" aria-label="{{ soma }} de {{ orcamento }} pontos de atributos"><strong>{{ soma }}</strong><span>/</span><small>{{ orcamento }}</small></div>
+    <div class="jj2-budget-meter" role="progressbar" aria-label="Orçamento de atributos utilizado" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ pct }}" style="--budget-pct: {{ pct }}%;"><span></span></div>
+  </div>{{/with}}
+</section>

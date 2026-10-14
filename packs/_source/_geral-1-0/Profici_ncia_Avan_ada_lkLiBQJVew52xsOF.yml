@@ -1,0 +1,148 @@
+_id: lkLiBQJVew52xsOF
+name: Proficiência Avançada
+type: feat
+img: icons/skills/melee/swords-parry-block-blue.webp
+effects:
+  - _id: L79vawmrOzjM27Vo
+    disabled: true
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    origin: Item.oLTuxE4ZBpf9sD0k
+    transfer: true
+    flags:
+      core:
+        statusId: ''
+      dae:
+        stackable: none
+        durationExpression: ''
+        specialDuration: []
+        transfer: true
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        showIcon: false
+    tint: '#ffffff'
+    name: Defesa Ofensiva
+    description: ''
+    statuses: []
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 5.3.2
+      createdTime: 1776624882965
+      modifiedTime: 1776624882965
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+      exportSource: null
+    img: icons/skills/melee/swords-parry-block-blue.webp
+    type: base
+    system:
+      changes:
+        - key: system.attributes.ac.formula
+          value: 10 + @abilities.dex.mod + floor(@prof/2
+          priority: 20
+          type: override
+          phase: initial
+    sort: 0
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!lkLiBQJVew52xsOF.L79vawmrOzjM27Vo'
+folder: TOc92NuiE5uyXD8M
+sort: 1400000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 5b91d88c3e576618151b90861e300b932e4997a3
+    sourceId: Item.YDkWJVlzktwOiTw6
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p>Você possui uma grande maestria utilizando uma arma específica, dessa
+      forma você recebe as seguintes características:</p><p><strong>Arma
+      Favorita:</strong> A cada vez que você subir de nível, você pode escolher
+      uma arma que você é proficiente e transformar em sua arma favorita. Dessa
+      forma você pode utilizar seu modificador de principal para acerto e dano.
+      ]</p><p><strong>Defesa Ofensiva:</strong> Você pode substituir o
+      modificador de Agilidade pelo modificador de atributo principal, escolhido
+      na sua categoria. Desde que não esteja se beneficiando de outra Habilidade
+      Básica defensiva (como Defesa Avançada). Você recebe as seguintes
+      características:</p><ul><li><p><strong>Em Guarda:</strong> Acrescente a CR
+      metade da sua proficiência, arredondada para
+      baixo.</p></li><li><p><strong>Aparar:</strong> Ao ser alvo de uma jogada
+      de ataque (Comum ou de Técnica), você pode usar sua reação e acrescentar
+      toda sua proficiência, ao invés da metade, para tentar se defender da
+      jogada de ataque. Para tanto, você deve poder ver o
+      atacante.</p></li><li><p><strong>Guarda Aprimorada:</strong> Ao chegar no
+      5º nível de personagem, é adicionado um bônus na CR de + 1. No 10º nível
+      de personagem o bônus se torna +3 e novamente +5 a partir do 20º
+      nível.</p></li><li><p><strong>Aparar Aprimorado:</strong> Ao chegar no 7º
+      nível de personagem, você pode escolher se beneficiar da característica
+      “Aparar” sem usar uma reação, mas apenas uma vez por rodada. Você pode
+      utilizar essa característica dessa forma por até 3 vezes, recuperando
+      todos os usos após realizar um descanso curto ou longo.</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: proficiencia-avancada
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.oLTuxE4ZBpf9sD0k
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624882965
+  modifiedTime: 1776624882977
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!lkLiBQJVew52xsOF'

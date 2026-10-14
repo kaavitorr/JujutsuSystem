@@ -1,0 +1,49 @@
+_id: jj2a000000000012
+name: Formação de Horda
+type: feat
+img: icons/magic/water/water-elemental-blue-teeth.webp
+system:
+  identifier: formacao-de-horda
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Trabalho em Equipe</em></p><p>Você pode
+      fundir dois ou mais Shikigamis de mesmo grau que você controla em uma
+      única ficha, formando uma criatura mais poderosa. Você soma os Pontos de
+      Vida e adiciona as seguintes características:</p><ul><li><strong>Grau
+      4:</strong> Adiciona +1 de CR até um máximo de 20 e +1 dado de dano até um
+      máximo de 2d12+5;</li><li><strong>Grau 3:</strong> Adiciona +1 de CR até
+      um máximo de 23 e +1 dado de dano até um máximo de
+      3d12+5;</li><li><strong>Grau 2:</strong> Adiciona +1 de CR até um máximo
+      de 25 e +1 dado de dano até um máximo de 4d12+5;</li><li><strong>Grau
+      1:</strong> Adiciona +1 de CR até um máximo de 27 e +1 dado de dano até um
+      máximo de 5d12+5;</li><li><strong>Grau Especial:</strong> Adiciona +1 de
+      CR até um máximo de 30 e +1 dado de dano até um máximo de
+      5d12+12.</li></ul>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Invocador de Shikigami
+      requisitos:
+        - Trabalho em Equipe
+folder: jj2f000000000003
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814824711
+  modifiedTime: 1791814824711
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000012'

@@ -1,0 +1,39 @@
+_id: jj2a000000000050
+name: Ataque Cruel
+type: feat
+img: icons/skills/melee/strike-blade-scimitar-blue-red.webp
+system:
+  identifier: ataque-cruel
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Ira do Berserker</em></p><p>Você
+      aumenta a margem de acerto crítico excedente dos seus ataques (Comuns) em
+      1 Ponto (10 &gt; 9).</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Corpo de Guerreiro
+      requisitos:
+        - Ira do Berserker
+folder: jj2f000000000009
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816374391
+  modifiedTime: 1791816374391
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000050'

@@ -1,0 +1,76 @@
+_id: UdjMaOaut6sxDlIP
+name: Presença de Líder (NPC)
+type: feat
+img: icons/magic/control/control-influence-crown-gold.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 4500000
+flags:
+  scene-packer:
+    hash: 71328dd0e4d74d1bcd99e9f1ca50cdd81fb795bf
+    sourceId: Item.UdjMaOaut6sxDlIP
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Presença de Líder (–): </strong>Todo os aliados, que possa ver
+      a criatura e estejam a até 9 metros dela, quando realizarem uma jogada de
+      acerto ou Teste de Resistência, podem adicionar 1d8 às suas jogadas. Um
+      aliado pode se beneficiar de apenas uma Presença de Líder ao mesmo tempo.
+      Esse efeito termina se a criatura estiver “Incapacitada”.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: presenca-de-lider-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.F3mzAvD4YDdNypfc
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910545
+  modifiedTime: 1776624910571
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!UdjMaOaut6sxDlIP'

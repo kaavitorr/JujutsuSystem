@@ -1,0 +1,107 @@
+_id: 78cxyX8UyNxsQbPX
+name: Existência Aprimorada
+type: feat
+img: icons/magic/control/buff-flight-wings-runes-purple-orange.webp
+effects: []
+folder: V7LPPawJA1q5iJPU
+sort: 68750
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 31cfedbd895b454d26ba8bc939ea4af0b741463e
+    sourceId: Item.AgTdbT4PAHlafda5
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: >-
+      <p>A partir do <strong>11º nível de Restringido</strong>, você treinou seu
+      corpo a tal nível que sua restrição celestial passou a lhe conceder uma
+      resistência absurda a todas as maldições, assim como energia amaldiçoada e
+      seus efeitos. Você recebe as seguintes
+      características:</p><ul><li><p><em>Você recebe resistência a todos os
+      tipos de dano;</em></p></li><li><p><em>Você recebe vantagem em
+      Salvaguardas contra qualquer efeito/condição causada por Energia
+      Amaldiçoada ou reversa;</em></p></li><li><p><em>No início de cada
+      encontro, você recebe 60 Pontos de Armadura com as regras do “Foco
+      Defensivo” do Capítulo 6;</em></p></li><li><p><em>Toda vez que você sofrer
+      dano crítico, você pode escolher receber 1 nível de exaustão para nega-lo,
+      sofrendo apenas o dano normal do ataque.</em></p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: natureza-aprimoradora
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.XGDPJoYWSWlArwwd
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911381
+  modifiedTime: 1776631606785
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!78cxyX8UyNxsQbPX'

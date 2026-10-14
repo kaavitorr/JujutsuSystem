@@ -1,0 +1,20 @@
+type: Item
+folder: 8GbHEgID6Y7u3DHc
+name: Mestre do Fulgor
+color: null
+sorting: m
+_id: Xd1Fj6fhI8LVub4q
+description: ''
+sort: 500000
+flags: {}
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776917896824
+  modifiedTime: 1776970547454
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!Xd1Fj6fhI8LVub4q'

@@ -1,0 +1,76 @@
+name: Zona
+type: feat
+img: icons/magic/symbols/runes-star-pentagon-orange.webp
+effects: []
+folder: TOc92NuiE5uyXD8M
+sort: 2400000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 246cf97711c317d713629cbfb1d6768d01d4d769
+    sourceId: Item.56za1y6eXu2k49Rg
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: "<p>Você pode entrar em um estado de concentração absoluto onde você exerce sua força com o máximo de eficiência possível. Ao utilizar uma ação bônus, você pode escolher um dos 3 efeitos para se beneficiar:</p><ul><li><p><strong>Brutalidade Transbordante:</strong> Sua próxima técnica causa 3 dados de dano adicionais e recebe margem de acerto crítico 18-20. Além disso seu dano mínimo não pode ser menor que a metade.</p></li><li><p><strong>Jogando Seguro:</strong> Durante 1 minuto, você pode optar por converter qualquer dano causado que seja inferior à metade do dano total possível em exatamente metade desse valor.\_</p></li><li><p><strong>Defesa Inquebrável:</strong> Dentro de um minuto, você pode escolher uma única técnica de cura ou redução de dano e curar ou reduzir o valor máximo possível dos dados. Caso seja uma técnica que se renova toda rodada, você só maximiza o dado da primeira rolagem.</p></li></ul><p>\_</p><p>Você não pode ativar essa habilidade básica novamente até o fim de um descanso longo.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: zona
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.uMNWzaM7WqfTGRaL
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624882957
+  modifiedTime: 1776624882976
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: b1CtPJ60TJKVhhdc
+_key: '!items!b1CtPJ60TJKVhhdc'

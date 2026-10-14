@@ -1,0 +1,86 @@
+folder: vG1tvdXvcpq70Tb5
+name: Articulações de Borracha
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Você realizou um treino doloroso para poder mover
+      quase que livremente suas articulações, permitindo que você possa sair das
+      mais difíceis amarras ou correntes.</p><p
+      class="MsoListParagraph"><strong>Característica:</strong> Enquanto estiver
+      preso em algemas, correntes, redes ou similares, você pode realizar um
+      Teste de Atributo de Agilidade (Prestidigitação) CD 18 para se
+      libertar.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: articulacoes-de-borracha
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 400000
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  MhGXeDSlt2zUqR0J: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 4fdc742695921875d445d1940d3cfb317db330fe
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  compendiumSource: Item.pIaAt98DZBQngnAh
+  duplicateSource: Item.pIaAt98DZBQngnAh
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902120
+  modifiedTime: 1776913383241
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: 4vLQ7n8G6rrhE1xx
+_key: '!items!4vLQ7n8G6rrhE1xx'

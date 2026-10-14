@@ -1,0 +1,41 @@
+_id: jj2a000000000005
+name: Encantamento Veloz
+type: feat
+img: icons/magic/symbols/rune-sigil-white-pink.webp
+system:
+  identifier: encantamento-veloz
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Encantamentos</em></p><p>Uma vez por
+      descanso curto ou longo, você pode reduzir o tempo para realizar um
+      encantamento em 1 rodada, fazendo com que um Verso Simples se torne
+      instantâneo e um Mediano possa ser finalizado no início do seu próximo
+      turno, dando uma redução de mesma proporção em um Verso Complexo.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Selos e Encantamentos
+      requisitos:
+        - Encantamentos
+folder: jj2f000000000002
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814758515
+  modifiedTime: 1791814758515
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000005'

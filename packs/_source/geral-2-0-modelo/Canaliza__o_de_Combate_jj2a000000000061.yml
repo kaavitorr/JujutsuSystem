@@ -1,0 +1,53 @@
+_id: jj2a000000000061
+name: Canalização de Combate
+type: feat
+img: icons/magic/light/beam-impact-deflect-teal.webp
+system:
+  identifier: canalizacao-de-combate
+  description:
+    value: >-
+      <p>Você recebe acesso as seguintes habilidades:</p><h4>Explosão de
+      Energia</h4><p>Você envolve seus membros ou arma em energia amaldiçoada e
+      desfere um golpe potencializado contra a criatura inimiga, causando o dano
+      da técnica.<br>A partir do 5º nível de personagem, você pode gastar 1 PA
+      para aumentar 1d8 de dano adicional, mas o número de dados de dano finais
+      não pode ser superior ao seu nível de personagem.</p><p><strong>4
+      PA</strong> · <strong>Duração:</strong> Instantâneo ·
+      <strong>Alcance:</strong> Pessoal · <strong>Requisito:</strong> Nenhum ·
+      <strong>Ações:</strong> ⬢⬢⬢ · <strong>Dano:</strong> 4d8 de dano
+      Contundente, Cortante ou Perfurante</p><h4>Defesa Sólida</h4><p>Ao ser
+      alvo de uma jogada de ataque (Comum ou de Técnica), você pode envolver seu
+      corpo com uma camada grossa de energia amaldiçoada para se proteger,
+      reduzindo 4d8 de dano.<br>A partir do 5º nível de personagem, você pode
+      gastar 1 PA para aumentar 1d8 de dano adicional, mas o número de dados de
+      redução finais, não pode ser superior ao seu nível de
+      personagem.</p><p><strong>4 PA</strong> · <strong>Duração:</strong>
+      Instantâneo · <strong>Alcance:</strong> Pessoal · <strong>Ações:</strong>
+      ⬢⬢ · <strong>Requisito:</strong> Reação</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Canalização de Energia
+      requisitos: []
+folder: jj2f000000000011
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816471692
+  modifiedTime: 1791816471692
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000061'

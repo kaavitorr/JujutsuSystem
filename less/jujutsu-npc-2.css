@@ -1,0 +1,62 @@
+/* NPC-specific additions to the shared, approved player composition. */
+.dnd5e2.sheet.actor.npc.jj2-npc .sheet-header .portrait:not(.token) { border:0; border-radius:0; }
+.dnd5e2.sheet.actor.npc.jj2-npc .sheet-header .portrait > :is(img,video) { box-sizing:border-box; width:100%; height:100%; padding:12px; border:0; border-radius:0; box-shadow:none; object-fit:contain; object-position:center; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-hero { height:240px; min-height:240px; max-height:240px; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-hero.jj2-npc-has-profiles { height:272px; min-height:272px; max-height:272px; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-hero-identity { padding:12px 0; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-nameplate .document-name { font-size:32px; line-height:1.12; overflow-wrap:anywhere; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-nameplate.jj2-npc-name-long .document-name { font-size:24px; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-nameplate h1.document-name { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:3; line-clamp:3; max-height:3.36em; overflow:hidden; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-nameplate input.document-name { min-width:0; height:36px; }
+.dnd5e2.sheet.actor.npc.jj2-npc:not(.minimized)::before { display:none; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-npc-attributes { grid-template-columns:repeat(6,minmax(0,1fr)); }
+.jj2-npc .jj2-header-meta { display:flex; flex-wrap:wrap; gap:5px; }
+.jj2-npc .jj2-header-meta .jj2-npc-category { background:var(--jj2-gold); }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-npc-profile-tags { display:flex; flex:1 1 100%; align-items:center; gap:5px; min-width:0; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-npc-profile-tag { display:flex; align-items:center; flex:0 1 auto; min-width:0; max-width:calc((100% - 5px)/2); border:1px solid #a67bda70; border-left:3px solid var(--jj2-purple); background:#17101ecc; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-npc-profile-tag[data-profile-type=archetype] { border-color:#efbf5170; border-left-color:var(--jj2-gold); }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-profile-open { display:flex; align-items:center; gap:6px; min-width:0; min-height:24px; height:auto; padding:4px 7px; margin:0; border:0; border-radius:0; background:transparent; color:var(--jj2-paper); text-align:left; line-height:1; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-profile-open small { flex:none; color:var(--jj2-purple); font:700 9px/1 JJ2Condensed,sans-serif; text-transform:uppercase; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-npc-profile-tag[data-profile-type=archetype] small { color:var(--jj2-gold); }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-profile-open b { min-width:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; font:700 11px/1.2 JJ2Condensed,sans-serif; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-profile-open:hover { background:#a67bda20; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-profile-remove { display:grid; place-items:center; flex:none; width:22px; height:22px; min-height:0; padding:4px; margin:0; border:0; border-left:1px solid #ffffff20; border-radius:0; background:transparent; color:var(--jj2-muted); }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-profile-remove svg { width:12px; height:12px; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-profile-remove:hover { color:var(--jj2-paper); background:#a67bda30; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-npc-classification > .jj2-npc-fields { grid-template-columns:minmax(0,1fr); }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-level-number input { width:50px; height:40px; padding:0; border:0; background:none; color:var(--jj2-paper); font:700 30px/1 JJ2Condensed,sans-serif; text-align:center; }
+.dnd5e2.sheet.actor.npc.jj2-npc .jj2-npc-sidebar > .sidebar { display:block; width:auto; min-width:0; height:auto; padding:0; margin:0; border:0; background:none; }
+.jj2-npc-sidebar .pills-group { padding:10px 0; margin:0; border:0; border-bottom:1px solid #ffffff18; background:none; }
+.jj2-npc-sidebar .pills-group h3 { justify-content:flex-start; gap:5px; margin:0 0 7px; padding:0; border:0; color:var(--jj2-paper); font:700 11px/1.2 JJ2Condensed,sans-serif; }
+.jj2-npc-sidebar .pills-group :is(.pill,.pill-sm) { height:auto; padding:3px 5px; border-radius:0; border:1px solid #a67bda50; background:#100d17; color:var(--jj2-paper); font:400 11px/1.3 JJ2Condensed,sans-serif; white-space:normal; }
+.jj2-npc-sidebar .jj-expdef-sidebar-btn { border:1px solid #a67bda88!important; border-radius:0!important; background:#a67bda15!important; color:var(--jj2-purple)!important; font:700 11px JJ2Condensed,sans-serif!important; }
+.jj2-npc-fields { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.jj2-npc-fields label,.jj2-npc-temp-fields label { display:flex; flex-direction:column; gap:5px; min-width:0; font:700 11px/1.3 JJ2Condensed,sans-serif; }
+.jj2-npc-fields :is(select,input),.jj2-npc-temp-fields input { width:100%; min-width:0; height:28px; font:400 12px JJ2Condensed,sans-serif; }
+.jj2-npc select option { background:var(--jj2-ink); color:var(--jj2-paper); }
+.jj2-npc-profile { display:flex; flex-wrap:wrap; gap:7px; }
+.jj2-npc-profile span { padding:5px 9px; border:1px solid #a67bda50; background:#a67bda12; font:700 12px JJ2Condensed,sans-serif; }
+.jj2-npc-note { margin:9px 0 0; color:var(--jj2-muted); font:400 11px/1.4 JJ2Condensed,sans-serif; }
+.jj2-npc .jj2-combat-metrics { margin-bottom:12px; }
+.jj2-npc-styles { margin-top:10px; }
+.jj2-npc-styles img { width:24px; height:24px; object-fit:contain; border:0; }
+.jj2-npc .jj2-npc-armor .jj2-resource { --resource-color:#8198bf; }
+.jj2-npc-temp-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:12px; }
+.jj2-npc .jj2-rank-line input { width:36px; height:24px; padding:0; text-align:center; }
+.jj2-npc .jj2-npc-legendary .jj2-npc-fields { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.jj2-npc-legendary-inputs { display:flex; align-items:center; gap:6px; }
+.jj2-npc-legendary-inputs > span { color:var(--jj2-muted); }
+.jj2-npc-legendary-group { display:flex; flex-direction:column; gap:7px; font:700 11px JJ2Condensed,sans-serif; }
+.jj2-npc-legendary-group small { color:var(--jj2-muted); font-weight:400; }
+.jj2-npc .jj2-npc-legendary .pips { display:flex; gap:5px; }
+.jj2-npc .jj2-npc-legendary .pip { display:grid; place-items:center; width:25px; height:25px; padding:3px; border:1px solid #efbf5150; border-radius:0; background:#100d17; color:var(--jj2-muted); }
+.jj2-npc .jj2-npc-legendary .pip.filled { background:var(--jj2-gold); color:var(--jj2-ink); }
+.jj2-npc-native-details { margin-top:10px; border-top:1px solid #ffffff20; padding-top:8px; }
+.jj2-npc-native-details summary { cursor:pointer; color:var(--jj2-muted); font:700 11px JJ2Condensed,sans-serif; }
+.jj2-npc-native-details .jj2-npc-fields { margin-top:10px; }
+.jj2-npc .jj2-npc-temp-fields input[type=checkbox] { width:18px; height:18px; }
+.jj2-npc-lair { display:flex; align-items:center; gap:8px; margin-top:12px; font:700 11px JJ2Condensed,sans-serif; }
+.jj2-npc .tab[data-tab='biography'] > :is(.top,.middle,.bottom),.jj2-npc .tab[data-tab='specialTraits'] fieldset { padding:12px; border:1px solid #ffffff25; border-left:3px solid var(--jj2-purple); border-radius:0; background:var(--jj2-raised); }
+.jj2-npc .tab[data-tab='biography'] :is(h3,.editor-content) { color:var(--jj2-paper); }
+.jj2-npc .tab[data-tab='biography'] .middle,.jj2-npc .tab[data-tab='biography'] .bottom { margin-top:12px; }
+@container (max-width:480px) { .jj2-npc-fields { grid-template-columns:minmax(0,1fr); } }

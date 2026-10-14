@@ -1,0 +1,41 @@
+_id: jj2a000000000007
+name: Concentração Inabalável
+type: feat
+img: icons/magic/symbols/cog-shield-white-blue.webp
+system:
+  identifier: concentracao-inabalavel
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Manipulação de Selos</em></p><p>Você é
+      capaz de continuar recitando independentemente de quantidade de dano que
+      receba, sendo extremamente difícil interromper um de seus encantamentos.
+      Você não possui mais “Concentração” durante um encantamento, podendo ser
+      interrompido apenas se te deixarem mudo.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Selos e Encantamentos
+      requisitos:
+        - Manipulação de Selos
+folder: jj2f000000000002
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814768738
+  modifiedTime: 1791814773133
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000007'

@@ -1,0 +1,3 @@
+<nav class="jj2-tabs-nav tabs" data-group="primary" aria-label="Abas da ficha">
+  {{#each tabs}}<button type="button" class="item always-interactive {{#if active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="{{ id }}" data-label="{{ label }}" data-tooltip="{{ label }}" aria-label="{{ label }}" aria-pressed="{{#if active}}true{{else}}false{{/if}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=icon }}<span>{{ label }}</span></button>{{/each}}
+</nav>

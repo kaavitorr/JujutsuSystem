@@ -1,0 +1,13 @@
+<section class="tab activity-{{ tab.id }} {{ tab.cssClass }}" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
+    {{#if appliedEffects}}{{> "systems/jujutsu-system/templates/activity/parts/activity-effects.hbs" }}{{/if}}
+    <fieldset>
+        <legend>Redução de Dano</legend>
+        {{ formField fields.reduction.fields.formula value=source.reduction.formula }}
+        <p class="hint">
+            Fórmula do escudo de redução — pode ser dado ou valor fixo (ex: <code>2d6+3</code> ou <code>5</code>).
+            Ao usar, você confirma/ajusta este valor e escolhe se vale para um único ataque ou até o início do próximo turno.
+        </p>
+    </fieldset>
+    {{> "systems/jujutsu-system/templates/activity/parts/jj-scale.hbs" }}
+    {{> "systems/jujutsu-system/templates/activity/parts/constant-cost.hbs" }}
+</section>

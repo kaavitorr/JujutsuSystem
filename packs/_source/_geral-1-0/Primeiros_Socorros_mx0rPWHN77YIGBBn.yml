@@ -1,0 +1,217 @@
+_id: mx0rPWHN77YIGBBn
+name: Primeiros Socorros
+type: feat
+img: icons/magic/life/cross-worn-green.webp
+effects: []
+folder: TOc92NuiE5uyXD8M
+sort: 1300000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      value: true
+      altValue: true
+    quickDamage:
+      context:
+        '0': ''
+        '1': Nível 8
+        '2': Nível 14
+      value:
+        '0': true
+        '1': true
+        '2': true
+      altValue:
+        '0': true
+        '1': true
+        '2': true
+    quickCharges:
+      value:
+        use: true
+      altValue:
+        use: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 0c3904b043b817af32b3d9d6ecac866368b7c340
+    sourceId: Item.usaKAFSpGn7xtJ2d
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDamage:
+      context:
+        '0': PV temporários
+      value:
+        '0': true
+        '1': true
+        '2': true
+    quickOther:
+      context: ''
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+    consumeUses:
+      value: true
+  midi-qol:
+    effectActivation: false
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    rollOther: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+system:
+  description:
+    value: >-
+      <p>Você pode usar conhecimentos básicos em medicina para tratar criaturas,
+      que tenham perdido mais que metade dos seus Pontos de Vida totais. Ao usar
+      uma ação bônus, recupera 6 Pontos de Vida para cada nível de personagem da
+      criatura e garante 3d10 Pontos de Vida temporários, que duram até o
+      término de um descanso longo ou recupera 4 Pontos de Vitalidade (PVE). As
+      condições <strong>“Envenenado”, “Letárgico”, “Queimado”,
+      “Sangramento”</strong> e <strong>“Sonolento”</strong> são encerradas na
+      criatura tratada com essa característica.</p><p>Caso a criatura perca os
+      PV temporários, sem que tenha terminado um descanso longo, ela recebe um
+      dano com o mesmo valor dos PV temporários recebidos.</p><p>Essa
+      característica sempre consome 1 kit de primeiros socorros, quando usada,
+      podendo ser usada uma vez em cada criatura e só surte efeito novamente
+      após a criatura terminar um descanso longo.</p><p>Alternativamente, você
+      pode usar essa característica para tratar apenas as condições citadas
+      acima, quantas vezes quiser.</p>
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  cover: null
+  crewed: false
+  uses:
+    max: '1'
+    recovery:
+      - period: sr
+        type: recoverAll
+    spent: 0
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  activities:
+    dnd5eactivity000:
+      _id: dnd5eactivity000
+      type: heal
+      activation:
+        type: action
+        value: 1
+        condition: ''
+        override: false
+      consumption:
+        targets:
+          - type: material
+            value: '1'
+            target: ''
+            scaling: {}
+        scaling:
+          allowed: false
+          max: ''
+        spellSlot: true
+      description:
+        chatFlavor: ''
+      duration:
+        concentration: false
+        value: ''
+        units: inst
+        special: ''
+        override: false
+      effects: []
+      range:
+        units: self
+        special: ''
+        override: false
+      target:
+        template:
+          count: ''
+          contiguous: false
+          type: ''
+          size: ''
+          width: ''
+          height: ''
+          units: ft
+          stationary: false
+        affects:
+          count: ''
+          type: ''
+          choice: false
+          special: ''
+        prompt: true
+        override: false
+      uses:
+        spent: 0
+        max: ''
+        recovery: []
+      healing:
+        number: 3
+        denomination: 10
+        bonus: ''
+        types:
+          - healing
+        custom:
+          enabled: true
+          formula: '@details.level * 6'
+        scaling:
+          mode: whole
+          number: null
+          formula: ''
+      sort: 0
+      name: ''
+      img: ''
+      flags: {}
+      visibility:
+        level: {}
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+  identifier: primeiros-socorros
+  enchant: {}
+  advancement: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Item.EOy0NNlWkP3JuSvv
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624882967
+  modifiedTime: 1776624882978
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!mx0rPWHN77YIGBBn'

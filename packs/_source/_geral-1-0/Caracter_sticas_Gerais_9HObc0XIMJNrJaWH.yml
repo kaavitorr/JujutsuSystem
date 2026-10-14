@@ -1,0 +1,22 @@
+name: Características Gerais
+type: Item
+sorting: a
+sort: 200000
+color: '#2d4e9a'
+flags:
+  scene-packer:
+    hash: fcb60a629119cbc6439b0fc785f7130f87029110
+_id: 9HObc0XIMJNrJaWH
+folder: Zh6nXJyphmH4TF72
+description: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910214
+  modifiedTime: 1776624910214
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!9HObc0XIMJNrJaWH'

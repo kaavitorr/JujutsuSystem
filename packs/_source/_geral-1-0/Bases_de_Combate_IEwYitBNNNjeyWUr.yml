@@ -1,0 +1,58 @@
+folder: TH5zgkPcMDGwUXiB
+name: Bases de Combate
+type: feat
+img: icons/magic/symbols/rune-sigil-green.webp
+system:
+  description:
+    value: "<p style=\"text-align:justify\">A partir do 3º nível de Lutador, sua natureza agressiva e seu porte físico vigoroso lhe concedem os seguintes benefícios:</p><ul><li><p><strong>Mãos Letais:</strong> Suas jogadas de ataque (comum) corpo a corpo desarmado passam a receber os mesmos benefícios de uma arma marcial. Dessa forma, você pode escolher qualquer uma de suas propriedades para esses ataques. Essa escolha pode ser refeita sempre que você adquirir um novo nível de Lutador.</p></li><li><p><strong>Truque Sujo:</strong> Jogadas de ataque (comum) com resultado 1 no d20 são considerados acertos críticos.</p></li><li><p><strong>Ippon Seoi:</strong> Ao atingir uma criatura com uma jogada de ataque (Comum), você pode escolher diminuir seu dano pela metade para agarra-la na altura do peito e atira-la por cima do seu ombro. A criatura deve realizar uma Salvaguarda de Agilidade para não sofrer a condição “Caído”.</p><p class=\"MsoListParagraph\">Se a criatura já estiver agarrada, você pode usar uma ação bônus ou ação de poder para ativar essa característica sem precisar realizar uma rolagem de acerto.</p></li><li><p><strong>Golpe Esmagador:</strong> Ao realizar uma jogada de ataque (Comum) corpo a corpo contra uma criatura sob a condição “Caído”, você recebe +5 de acerto.</p></li></ul><p style=\"text-align:justify\">\_</p><p style=\"text-align:justify\">Além disso, você também pode realizar os seguintes feitos, uma quantidade de vezes igual ao seu bônus de Proficiência e você recupera todos os seus usos ao término de um descanso curto ou longo.</p><ul><li><p>Ignorar o acerto crítico de uma criatura contra você e receber o dano normal da jogada, no lugar;</p></li><li><p>Ignora resistências ou invulnerabilidades de um alvo que acertou com uma jogada de ataque (comum ou Técnicas);</p></li><li><p>Ignorar a falha de uma jogada de ataque (comum) corpo a corpo que você faça e jogar novamente.</p></li></ul>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: controlador
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 103125
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: e4475b4b026c5ede9fc2bbd7601088d268800703
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: Item.vHvW6ieAn85ATeoo
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911384
+  modifiedTime: 1776903443517
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: IEwYitBNNNjeyWUr
+_key: '!items!IEwYitBNNNjeyWUr'

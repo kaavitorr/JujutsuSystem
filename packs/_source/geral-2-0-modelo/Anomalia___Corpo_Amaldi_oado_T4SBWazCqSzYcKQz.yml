@@ -1,0 +1,150 @@
+folder: onrz3qUGUndiIaUB
+name: Anomalia - Corpo Amaldiçoado
+type: race
+img: systems/jujutsu-system/assets/Origens/Panda_Cursed_Clash.webp
+system:
+  description:
+    value: "<p style=\"text-align:center\"><span><span style=\"font-size:38px\"><strong>CORPO AMALDIÇOADO</strong></span></span></p><p style=\"margin-bottom:.0001pt;text-justify:inter-ideograph;line-height:normal;mso-layout-grid-align:none;text-autospace:none;text-align:justify\"><span style=\"font-family:'Chaparral Pro, serif'\">\_</span></p><p><strong>Ajuste de Atributo:</strong> +4 Pontos de Atributo para distribuir entre todos os 6 atributos.</p><p><strong>Vida Base:</strong> 10 Pontos de Vida.</p><p><strong>Tamanho:</strong> 1,50 a 2,00 metros (pequeno, médio).</p><p><strong>Peso:</strong> Normalmente, entre 45 kg e 200 kg.</p><p><strong>Deslocamento:</strong> 9 metros.</p><p><strong>Nado:</strong> 4,5 metros.</p><p>\_</p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ESPÉCIA</strong></span></p></td></tr></tbody></table><p>Essas características acompanham a existência do personagem, são representações da sua origem, sendo uma parte essencial de como ele vê o mundo e de como o mundo olha pra ele.</p><p style=\"margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:7.1pt;text-justify:inter-ideograph;tab-stops:7.1pt 345.55pt 467.8pt 522.85pt;text-align:justify\"></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM - RESTRIÇÃO CELESTIAL</strong></span></p><hr><ul><li><p><strong>Talento de Origem: </strong>No <strong>3º nível</strong>, você recebe um talento de origem de acordo com o <strong>Capítulo 6</strong>.\_</p></li><li><p><em>Você recebe 2 Traços Animais Comuns e 1 Específico.</em></p></li><li><p><em>Você pode sacrificar 20 Pontos de Energia Amaldiçoada (PE) máxima para criar um núcleo adicional. Você pode escolher uma <strong>técnica inata</strong> para seu núcleo ao cria-lo, não podendo ter mais de 3 núcleos (contando seu original). A técnica do original pode ir até a Expansão de Domínio, mas as dos núcleos adicionais não podem ir além de <strong>Tecnica Base.</strong></em></p><p><em>Você pode usar uma ação bônus para trocar entre núcleos, mas ficar em um núcleo que não seja seu original, consome 2 Pontos de Energia Amaldiçoada na troca e no início de cada um de seus turnos.</em></p></li></ul><p></p><p><span style=\"font-size:large\"><strong>DESVANTAGENS DA VARIANTE</strong></span></p><hr><ul><li><p><strong>Constituição Dividida: </strong>Devido a sua natureza única, a partir do momento que você criar um núcleo adicional, você perde uma quantidade de Pontos de Vida igual a duas vezes o seu nível de personagem. Essa redução é feita apenas para o núcleo principal.<span style=\"font:7.0pt 'Times New Roman'\">\_\_\_\_\_ </span>\_<span style=\"font-size:5pt\"><em>\_</em></span></p></li></ul><p></p><table><tbody><tr style=\"mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes\"><td><p class=\"TextoPadro\"><span style=\"font-size:large\"><strong>REGRAS DOS NÚCLEOS ADICIONAIS</strong></span></p><p class=\"MsoNormal\">Cada núcleo é considerado uma alma diferente dentro de um mesmo corpo, o que também significa que cada um deles possui sua própria resistência e durabilidade. Cada núcleo pode ter sua própria ficha, com uma classe própria, mas sempre terá uma quantidade de Pontos de Vida igual a 10 vezes o seu nível de personagem. Cada núcleo também pode possuir um feitiço básico, de acordo com as regras do Manual de Feitiços.</p><p class=\"MsoNormal\">\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Quando um núcleo chega a 0 Pontos de Vida, ele fica dormente até que você realize um descanso curto ou longo. Ao realizar um descanso curto, você pode escolher gastar dados de vida para recuperar Pontos de Vida de um núcleo específico.</p><p class=\"MsoNormal\">\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Com exceção da classe, todas as outras informações das fichas adicionais são iguais as da original.</p></td></tr></tbody></table>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  advancement:
+    thrtYH4KG74MbuZ9:
+      type: AbilityScoreImprovement
+      _id: thrtYH4KG74MbuZ9
+      configuration:
+        points: 4
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 4
+        locked: []
+        recommendation: null
+        max: null
+      value:
+        type: asi
+      level: 0
+      flags: {}
+      hint: ''
+      name: ''
+      img: null
+    rEJzDVRlCiq4jyq7:
+      type: Size
+      _id: rEJzDVRlCiq4jyq7
+      configuration:
+        sizes:
+          - sm
+          - med
+          - lg
+      level: 0
+      value: {}
+      flags: {}
+      hint: ''
+      name: ''
+      img: null
+    pWi09QUI278nzGY8:
+      type: Trait
+      configuration:
+        grants:
+          - languages:standard:common
+        mode: default
+        allowReplacements: false
+        choices: []
+      _id: pWi09QUI278nzGY8
+      level: 0
+      value:
+        chosen: []
+      flags: {}
+      hint: ''
+    4RXJIfXI8J2WfgL2:
+      _id: 4RXJIfXI8J2WfgL2
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.uMGKQdJTMaVm8vOG
+            optional: false
+            sort: 0
+        optional: false
+        spell: null
+        sorting: m
+      value: {}
+      level: 0
+      flags: {}
+      hint: ''
+      name: Pontos de Vida
+      img: null
+    8aPE0FrMa7fh4qox:
+      type: ItemChoice
+      configuration:
+        choices:
+          '3':
+            count: 1
+            replacement: false
+        allowDrops: true
+        type: null
+        pool:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.E1eAibDKwZOiHRJ7
+            sort: 0
+          - uuid: Compendium.jujutsu-compendium.geral.Item.NIBhZGd8MzpPWn1C
+            sort: 0
+        spell: null
+        restriction:
+          list: []
+          school: []
+        sorting: a
+      value:
+        added: {}
+        replaced: {}
+      hint: <p>Escolha um Talento de Espécie</p>
+      _id: 8aPE0FrMa7fh4qox
+      flags: {}
+      name: Talentos de Origem
+  movement:
+    units: m
+    hover: false
+    ignoredDifficultTerrain: []
+    speeds:
+      walk: '9'
+      burrow: ''
+      climb: ''
+      fly: ''
+      swim: '4.5'
+  senses:
+    units: m
+    special: ''
+    ranges:
+      darkvision: null
+      blindsight: null
+      tremorsense: null
+      truesight: null
+  type:
+    value: humanoid
+    custom: ''
+    subtype: ''
+  identifier: corpo-amaldicoado
+effects: []
+flags:
+  scene-packer:
+    hash: 67eee98e596c8e15d667f2c4fc3cc39d4c880220
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816812243
+  modifiedTime: 1791816812243
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: T4SBWazCqSzYcKQz
+sort: 150000
+_key: '!items!T4SBWazCqSzYcKQz'

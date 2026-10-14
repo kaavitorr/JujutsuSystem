@@ -1,0 +1,20 @@
+type: Item
+folder: mtDR7e9B9wll3UIy
+name: Especialista
+color: null
+sorting: a
+_id: ssWukUy3TvgNGeYg
+description: ''
+sort: 0
+flags: {}
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816845024
+  modifiedTime: 1791816845024
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!ssWukUy3TvgNGeYg'

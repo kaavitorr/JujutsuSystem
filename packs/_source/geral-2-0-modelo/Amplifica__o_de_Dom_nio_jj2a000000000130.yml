@@ -1,0 +1,49 @@
+_id: jj2a000000000130
+name: Amplificação de Domínio
+type: feat
+img: icons/magic/light/explosion-star-teal-purple.webp
+system:
+  identifier: amplificacao-de-dominio
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Deve possuir uma Expansão de Domínio
+      Completa</em></p><p>Uma técnica de anti-domínio que envolve seu corpo com
+      um domínio vazio de energia amaldiçoada que pode absorver qualquer efeito
+      de domínio ou Feitiço Inato da criatura inimiga. Possui as seguintes
+      características:</p><ul><li>Você cancela o Inescapável, Fatal e
+      Irresistível de uma expansão de domínio contra o próprio
+      usuário;</li><li>Você pode escolher ignorar efeitos de defesa e
+      invulnerabilidades de feitiços;</li><li>Você sofre 1 dado de dano
+      adicional de todo ataque feito sem o uso de Feitiços Inatos;</li><li>Você
+      não pode utilizar seu Feitiço Inato enquanto a amplificação estiver
+      ativa.</li></ul><p>Você consome 8 Pontos de Energia Amaldiçoada (PA) na
+      ativação e no início de cada um de seus turnos para manter esse feitiço
+      anti-domínio ativo.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Domínio e Anti-Domínio
+      caminho: Técnicas Anti-Domínio
+      requisitos:
+        - Deve possuir uma Expansão de Domínio Completa
+folder: jj2f000000000021
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814624454
+  modifiedTime: 1791814624454
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000130'

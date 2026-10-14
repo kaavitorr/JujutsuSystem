@@ -1,0 +1,85 @@
+_id: jj2e000000000003
+name: Sentinela
+type: class
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Sentinela.jpg
+system:
+  identifier: sentinela
+  levels: 1
+  description:
+    value: >-
+      <p style="text-align:center"><span
+      style="font-size:x-large"><strong>SENTINELA</strong></span></p><p><span
+      style="font-size:large"><strong>Pontos de
+      Vida</strong></span></p><p><strong>Vida Base:</strong> 6 por nível de
+      personagem.</p><p><strong>Vida por Ponto de Constituição:</strong> 6 por
+      ponto.</p><p></p><p><span style="font-size:large"><strong>Energia
+      Amaldiçoada</strong></span></p><p><strong>Energia Base:</strong> 10 por
+      nível de personagem.</p><p></p><p><span
+      style="font-size:large"><strong>Proficiências</strong></span></p><ul><li><p><strong>Equipamentos:</strong>
+      Recebe 3 Pontos de Proficiência entre qualquer tipo de
+      arma.</p></li><li><p><strong>Salvaguarda:</strong> Recebe 3 Pontos de
+      Proficiência para distribuir entre as
+      Salvaguardas.</p></li><li><p><strong>Perícias:</strong> Escolha 5 Pontos
+      de Proficiência para distribuir entre as
+      Perícias.</p></li></ul><p></p><p><span
+      style="font-size:large"><strong>Informações
+      Gerais</strong></span></p><ul><li><p><strong>Atributo Principal:</strong>
+      Agilidade.</p></li><li><p><strong>Habilidades de Especialização:</strong>
+      Você recebe 2 habilidade de "Novo Estilo das
+      Sombras".</p></li><li><p><strong>Equipamentos:</strong> Você recebe uma
+      ferramenta amaldiçoada de 4º grau e; ¥ 5.000.</p></li></ul><p></p><p
+      style="text-align:center"><span
+      style="font-size:x-large"><strong>Características de
+      Combate</strong></span></p><hr><table><tbody><tr><td><p><span
+      style="font-size:large"><strong>Peculiaridades do
+      Sentinela</strong></span></p><p>Os Sentinelas são peritos na utilização do
+      Novo Estilo das Sombras, sendo aqueles que refinaram sua manipulação de
+      Energia Amaldiçoada ao limite para compensar a ausência de um feitiço
+      inato.</p><p>Devido a essa peculiaridade, um Sentinela deve dedicar todo o
+      seu tempo ao domínio de suas habilidades. Como resultado, mesmo que possua
+      um feitiço inato, ele é incapaz de utilizá-lo em
+      combate.</p></td></tr></tbody></table><p><span
+      style="font-size:large"><strong>Domínio do
+      Sentinela</strong></span></p><p>Pela falta de um feitiço amaldiçoado, você
+      focou totalmente na capacidade de utilizar energia amaldiçoada e em
+      técnicas anti-domínio. Você recebe acesso as seguintes
+      características:</p><ul><li><p><strong>Aprendizado Focado:</strong> Você
+      recebe uma habilidade de Especialização adicional e uma nova no 4º, 8º,
+      12º, 16º e 20º nível de personagem.</p></li><li><p><strong>Forma
+      Dominada:</strong> Você pode aprender a habilidade <strong>"Domínio
+      Simples"</strong> das técnicas de Domínio e
+      Anti-Domínio.</p></li></ul><p>Além disso, você recebe as seguintes
+      características dentro do "Domínio Simples":</p><ul><li><p>Até duas vezes
+      por rodada, você pode realizar uma jogada de ataque (Comum) como Reação,
+      tendo seu custo de ação reduzido em 1 Ponto de Ação [⬢]. O gatilho pode
+      ser um Ponto de Ação da criatura dentro do seu alcance;</p></li><li><p>Ao
+      realizar uma jogada de ataque (Comum ou de Técnica), você ignora até 10
+      Pontos de Resistência do inimigo.</p></li></ul>
+    chat: ''
+flags:
+  jujutsu-system:
+    legacy2:
+      vidaBase: 6
+      energiaBase: 10
+      atributoPrincipal: dex
+      espIniciais: 2
+      proficiencias:
+        armas: 3
+        salvaguardas: 3
+        pericias: 5
+ownership:
+  default: 0
+effects: []
+folder: duEiLT0m9eoDwk8O
+sort: 112500
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814443544
+  modifiedTime: 1791817548284
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2e000000000003'

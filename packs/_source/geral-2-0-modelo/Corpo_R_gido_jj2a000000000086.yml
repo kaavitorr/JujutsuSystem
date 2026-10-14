@@ -1,0 +1,42 @@
+_id: jj2a000000000086
+name: Corpo Rígido
+type: feat
+img: icons/magic/defensive/shield-barrier-deflect-gold.webp
+system:
+  identifier: corpo-rigido
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Regeneração Acelerada</em></p><p>Até 3
+      vezes por encontro, ao ser atingido por uma jogada de ataque Comum, você
+      pode, como Reação, gastar 1 Ponto de Ação [⬢] e 2 Pontos de Estamina (PE)
+      para negar todo o dano que sofreria com esse ataque.</p><p>Você deve
+      decidir usar essa habilidade antes de saber o resultado da rolagem de
+      dano.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Defensivo
+      requisitos:
+        - Regeneração Acelerada
+folder: jj2f000000000014
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791815111199
+  modifiedTime: 1791815111199
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000086'

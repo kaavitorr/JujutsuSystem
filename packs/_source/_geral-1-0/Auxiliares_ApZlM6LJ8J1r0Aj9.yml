@@ -1,0 +1,20 @@
+type: Item
+folder: Bma02dPBIVyl5Vrj
+name: Auxiliares
+color: null
+sorting: m
+_id: ApZlM6LJ8J1r0Aj9
+description: ''
+sort: 0
+flags: {}
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776976135436
+  modifiedTime: 1776976139470
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!ApZlM6LJ8J1r0Aj9'

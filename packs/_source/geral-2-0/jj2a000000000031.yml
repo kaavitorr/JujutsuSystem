@@ -1,0 +1,22 @@
+_id: jj2a000000000031
+_key: '!items!jj2a000000000031'
+name: Barreira Bon
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: barreira-bon
+  description:
+    value: <p><em><strong>Requisito:</strong> Barreira Pura</em></p><p>Você se torna capaz de criar o tipo mais poderoso de todos de barreira, chamado de Barreira Bon. Ela possui as seguintes características:</p><ul><li>Ela possui o dobro dos Pontos de Vida padrão das barreiras e ganha 5 PV por PA gasto;</li><li>Ela possui metade do alcance padrão das barreiras, arredondado para baixo, e ganha 1 metro por PA gasto.</li><li>Ela não permite a entrada ou saída de criaturas, assim como bloqueia a visão nos seus limites.</li></ul>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Técnicas de Barreira
+      caminho: Barreiras
+      requisitos:
+        - Barreira Pura
+folder: jj2f000000000006
+ownership:
+  default: 0
+effects: []
+sort: 0

@@ -1,0 +1,55 @@
+folder: SkcL0ylAJiRyvOc5
+name: PdN - Corpo Amaldiçoado
+type: feat
+_id: YDq0M36vGRqy6s3z
+img: systems/jujutsu-system/assets/Origens/Panda_Cursed_Clash.webp
+system:
+  description:
+    value: >-
+      <ul><li><p>Você recebe até 3 traços animais comuns e até 5
+      específicos.</p></li><li><p>A criatura se torna proficiente e adiciona
+      metade do bônus de proficiência (arredondado para baixo) em Salvaguardas e
+      Testes de Atributo de Força ou Agilidade.</p></li></ul>
+    chat: ''
+  source:
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  requirements: ''
+  identifier: fagogenese
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 100000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: daab22e6beec72e06a85b5563dd6372f84e9f478
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624910549
+  modifiedTime: 1782450647351
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_key: '!items!YDq0M36vGRqy6s3z'

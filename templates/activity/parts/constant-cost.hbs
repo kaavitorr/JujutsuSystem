@@ -1,0 +1,32 @@
+<fieldset>
+    <legend>
+        <label class="checkbox">
+            {{ formInput fields.constantCost.fields.enabled
+                         value=(or source.constantCost.enabled (or source.constantCost.value source.constantCost.concentration))
+                         input=@root.inputs.createCheckboxInput }}
+            Custo Constante / Concentração <i class="fas fa-circle-notch" inert></i>
+        </label>
+    </legend>
+
+    {{#if (or source.constantCost.enabled (or source.constantCost.value source.constantCost.concentration))}}
+    <div class="form-group">
+        <label>Concentração</label>
+        <div class="form-fields">
+            {{ formInput fields.constantCost.fields.concentration value=source.constantCost.concentration
+                         input=@root.inputs.createCheckboxInput }}
+        </div>
+        <p class="hint">Liga ao <strong>usar</strong> a técnica (2 PA/turno); desative pelo HUD de combate. O Custo Constante abaixo, se houver, <strong>sobrepõe</strong> a concentração.</p>
+    </div>
+
+    <div class="form-group">
+        <label>Custo Constante</label>
+        <div class="form-fields">
+            {{ formInput fields.constantCost.fields.value value=source.constantCost.value
+                         placeholder="ex.: @details.level ou 5" }}
+            <label style="flex:0 0 auto; align-self:center; white-space:nowrap; margin:0 .35rem;">Energia</label>
+            {{ formInput fields.constantCost.fields.pool value=source.constantCost.pool }}
+        </div>
+        <p class="hint">Fórmula ou valor fixo de PA drenado no início de cada turno enquanto a técnica estiver ativa. Vazio = usa só a concentração.</p>
+    </div>
+    {{/if}}
+</fieldset>

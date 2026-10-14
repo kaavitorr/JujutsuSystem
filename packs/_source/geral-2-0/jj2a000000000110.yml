@@ -1,0 +1,21 @@
+_id: jj2a000000000110
+_key: '!items!jj2a000000000110'
+name: Energia Reversa
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: energia-reversa
+  description:
+    value: <p>No fim de cada descanso longo, um personagem pode escolher converter uma grande quantidade de Energia Amaldiçoada em Energia reversa, armazenando-a em seu corpo. Para cada 3 Pontos de Energia Amaldiçoada gastos, ele recebe 1 Ponto de Energia Reversa (PER), até um máximo igual a 30 Pontos.</p><p>A partir desse momento, o personagem pode gastar 1 Ponto de Energia Reversa para curar uma quantidade de Pontos de Vida e de Feridas igual ao seu valor de atributo de Constituição por rodada, podendo gastar até um total de até 3 PER de uma única vez.</p><p>Ativar essa forma de cura não consome ações e pode ser ativada como Reação fora do seu turno usando um Ponto de Ação [⬢], consumindo até seu limite de Pontos de Energia Reversa.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Energia Reversa
+      caminho: Técnica de Energia Reversa
+      requisitos: []
+folder: jj2f000000000018
+ownership:
+  default: 0
+effects: []
+sort: 0

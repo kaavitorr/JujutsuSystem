@@ -1,0 +1,22 @@
+name: Habilidades Básicas (HB)
+sorting: a
+folder: gpiuGQQptpbYBAnm
+type: Item
+_id: TOc92NuiE5uyXD8M
+sort: 100000
+color: null
+flags:
+  scene-packer:
+    hash: 0819f8430c2bdf003dd65b33d3f17de6ced45a8d
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624882759
+  modifiedTime: 1776624882759
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+description: ''
+_key: '!folders!TOc92NuiE5uyXD8M'

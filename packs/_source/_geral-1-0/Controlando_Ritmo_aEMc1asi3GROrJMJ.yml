@@ -1,0 +1,84 @@
+folder: Ae6h1X3fm2Sv6iWS
+name: Controlando Ritmo
+type: feat
+img: icons/skills/melee/maneuver-sword-katana-yellow.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">A partir do <strong>6º nível de Lutador</strong>,
+      quando você for alvo de uma jogada de ataque (Comum ou de Técnica) de uma
+      criatura inimiga, você pode escolher ser atingido automaticamente de forma
+      controlada para receber +10 em sua próxima rolagem de acerto. Se você
+      causar um acerto crítico nessa rolagem de acerto, você recebe 1 dado de
+      dano adicional ao resultado final.</p><p class="MsoNormal">Forçar um
+      acerto automático em si mesmo dessa forma nega qualquer crítico normal que
+      você sofreria sem ser de 20 natural, mas a criatura ainda rola para tentar
+      ativar um Fulgor Negro.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776919973872
+  modifiedTime: 1776919978500
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: aEMc1asi3GROrJMJ
+sort: 200000
+_key: '!items!aEMc1asi3GROrJMJ'

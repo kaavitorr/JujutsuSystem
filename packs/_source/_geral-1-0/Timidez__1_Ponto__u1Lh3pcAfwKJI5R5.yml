@@ -1,0 +1,124 @@
+_id: u1Lh3pcAfwKJI5R5
+name: Timidez (1 Ponto)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects:
+  - _id: 1J6eL5GUeLEzzkFn
+    disabled: false
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    origin: Item.Sf2dW2qGwCGBFkfV
+    transfer: true
+    flags:
+      core:
+        statusId: ''
+      dae:
+        stackable: none
+        durationExpression: ''
+        specialDuration: []
+        transfer: true
+        selfTarget: false
+        selfTargetAlways: false
+    tint: '#ffffff'
+    name: Timidez
+    description: ''
+    statuses: []
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 5.3.2
+      createdTime: 1776624902157
+      modifiedTime: 1776624902157
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+      exportSource: null
+    img: icons/magic/death/undead-ghosts-trio-blue.webp
+    type: base
+    system:
+      changes:
+        - key: system.skills.prf.bonuses.check
+          value: -2
+          priority: 20
+          type: add
+          phase: initial
+    sort: 0
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!u1Lh3pcAfwKJI5R5.1J6eL5GUeLEzzkFn'
+folder: ImFD309NSdjSZUT5
+sort: 2500000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 7fba98384fd5ffd5516f0f255d0329189341c307
+    sourceId: Item.TmM81btygva0sWu7
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: "<p>Você sente uma dificuldade enorme em lidar com pessoas, mesmo que você seja amigo delas, e tenta evitar situações sociais sempre que possível.</p><p>\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Você recebe -2 em Testes de Atributo de Presença (Atuação).</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: timidez-1-ponto
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.Sf2dW2qGwCGBFkfV
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902157
+  modifiedTime: 1776624902179
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!u1Lh3pcAfwKJI5R5'

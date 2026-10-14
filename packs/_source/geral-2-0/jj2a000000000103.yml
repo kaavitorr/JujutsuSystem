@@ -1,0 +1,22 @@
+_id: jj2a000000000103
+_key: '!items!jj2a000000000103'
+name: Leitura Perfeita
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: leitura-perfeita
+  description:
+    value: <p><em><strong>Requisito:</strong> Fonte de Poder</em></p><p>Você aprendeu a ler e influenciar a energia amaldiçoada das criaturas inimigas através da sua própria intenção, transformando o combate em uma dança de pura maestria ao criar fintas tão perfeitas que enganam totalmente o adversário.</p><p>Você recebe um bônus na sua Classe de Resistência igual à metade do seu atributo de Presença, arredondado para baixo.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Ressonância da Alma
+      requisitos:
+        - Fonte de Poder
+folder: jj2f000000000016
+ownership:
+  default: 0
+effects: []
+sort: 0

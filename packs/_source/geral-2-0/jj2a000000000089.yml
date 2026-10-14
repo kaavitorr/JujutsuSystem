@@ -1,0 +1,22 @@
+_id: jj2a000000000089
+_key: '!items!jj2a000000000089'
+name: Corpo Fechado
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: corpo-fechado
+  description:
+    value: <p><em><strong>Requisito:</strong> Regeneração Superior</em></p><p>Você recebe Pontos de Proficiência em Salvaguardas suficientes para elevar até a progressão “Especialista” todas as Salvaguardas que estiverem abaixo desse nível.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Defensivo
+      requisitos:
+        - Impulso Físico (Defensivo)
+folder: jj2f000000000014
+ownership:
+  default: 0
+effects: []
+sort: 0

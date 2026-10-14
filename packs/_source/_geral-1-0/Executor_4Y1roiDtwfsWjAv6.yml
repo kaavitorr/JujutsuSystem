@@ -1,0 +1,20 @@
+type: Item
+folder: 8GbHEgID6Y7u3DHc
+name: Executor
+color: null
+sorting: m
+_id: 4Y1roiDtwfsWjAv6
+description: ''
+sort: 1100000
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  modifiedTime: 1776970547454
+  createdTime: 1776624881432
+_key: '!folders!4Y1roiDtwfsWjAv6'

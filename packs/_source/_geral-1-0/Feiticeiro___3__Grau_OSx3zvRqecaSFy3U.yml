@@ -1,0 +1,137 @@
+folder: A016Ya5NrTpIpIrs
+name: Feiticeiro - 3º Grau
+type: feat
+img: icons/magic/light/hand-sparks-smoke-teal.webp
+system:
+  description:
+    value: >-
+      <p class="Default">São aqueles que dominaram o básico e parte do avançado
+      da Energia Amaldiçoada com certo nível de proficiência, aumentando o ND
+      efetivo do PdN em 3. Eles recebem as seguintes
+      características:</p><ul><li><p>Aumenta a Classe de Dificuldade em
+      +2;</p></li><li><p>Detecta energia amaldiçoada em um raio de 18 metros,
+      tendo +4 em percepção para encontrar essas criaturas em
+      furtividade;</p></li><li><p>Recebe 40 Pontos de Armadura e resistência a
+      todos os tipos de dano enquanto eles não acabarem;</p></li><li><p>Recebe
+      2d4 de dano extra em todas as jogadas de ataque que
+      realizar.</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  requirements: ''
+  identifier: 3-intermediario
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects:
+  - name: 3º Grau
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.OSx3zvRqecaSFy3U
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: false
+    flags:
+      dnd5e:
+        riders:
+          statuses: []
+      dae:
+        disableCondition: ''
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+      core:
+        overlay: false
+      JujutsuLegacy:
+        riders:
+          statuses: []
+    img: icons/magic/light/hand-sparks-smoke-teal.webp
+    _id: qO8qBTEeuUHD5BMX
+    type: base
+    system:
+      changes:
+        - key: system.attributes.hp.tempmax
+          type: add
+          value: '+40'
+          phase: initial
+          priority: 20
+        - key: system.skills.ste.bonuses.check
+          type: add
+          value: '+4'
+          phase: initial
+          priority: 20
+        - key: system.bonuses.spell.dc
+          type: add
+          value: '+2'
+          phase: initial
+          priority: 20
+        - key: system.bonuses.mwak.damage
+          type: add
+          value: +2d4
+          phase: initial
+          priority: null
+        - key: system.bonuses.rwak.damage
+          type: add
+          value: +2d4
+          phase: initial
+          priority: null
+    description: ''
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    sort: 0
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '14.364'
+      systemId: jujutsu-system
+      systemVersion: 1.0.6
+      createdTime: 1776624910541
+      modifiedTime: 1782449438195
+      lastModifiedBy: 371UX0Acl9j9oJ0Q
+      exportSource: null
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!OSx3zvRqecaSFy3U.qO8qBTEeuUHD5BMX'
+sort: 0
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  rsr5e:
+    quickFooter:
+      value: true
+  scene-packer:
+    hash: 2e9e23b403e6930ec1039efe9205e312063df036
+_stats:
+  compendiumSource: null
+  duplicateSource: Item.EATeWrwAvS6XHGlQ
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624910541
+  modifiedTime: 1782449025696
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_id: OSx3zvRqecaSFy3U
+_key: '!items!OSx3zvRqecaSFy3U'

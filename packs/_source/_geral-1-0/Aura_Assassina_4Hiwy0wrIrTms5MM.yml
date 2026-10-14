@@ -1,0 +1,67 @@
+folder: vG1tvdXvcpq70Tb5
+name: Aura Assassina
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Você emana uma presença intimidadora, que não tem
+      nada a ver com sua aparência física, seja por já ter matado incontáveis
+      pessoas ou talvez por possuir uma grande fúria contida dentro de si.</p><p
+      class="MsoBodyText"><strong>Característica:</strong> Sempre que uma
+      criatura hostil faça qualquer ação contra você, como uma jogada de ataque
+      ou tentar te enganar, ela deve fazer uma Salvaguarda de Presença CD 15, se
+      falhar, ela recebe desvantagem na primeira jogada de dados. Essa
+      característica funciona uma vez contra cada criatura dentro de um
+      encontro.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: conhecimento-avancado
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: 09ca0422b0336de77ab4860dc11e5476703aa119
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902119
+  modifiedTime: 1776913385574
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: 4Hiwy0wrIrTms5MM
+sort: 600000
+_key: '!items!4Hiwy0wrIrTms5MM'

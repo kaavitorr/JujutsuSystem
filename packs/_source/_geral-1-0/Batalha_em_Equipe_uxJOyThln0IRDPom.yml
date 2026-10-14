@@ -1,0 +1,84 @@
+folder: Vm4HPrhmj0g7AJef
+name: Batalha em Equipe
+type: feat
+img: icons/magic/fire/blast-jet-stream-embers-red.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal"><span>A partir do <strong>2º nível de
+      Especialista</strong>, </span>você aprendeu a lutar em conjunto com outras
+      criaturas para fazer melhor uso de suas habilidades. Enquanto tiver outra
+      criatura aliada a até 3 metros do seu alvo, você recebe 1d4 de dano
+      adicional em suas jogadas de ataque contra a criatura.</p><p
+      style="text-indent:35.45pt" class="TextoPadro"><span>Além disso, qualquer
+      Shikigami que você venha a controlar, recebe 25 Pontos de Vida adicionais
+      quando for conjurado.</span></p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881650
+  modifiedTime: 1776922369713
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: uxJOyThln0IRDPom
+sort: 200000
+_key: '!items!uxJOyThln0IRDPom'

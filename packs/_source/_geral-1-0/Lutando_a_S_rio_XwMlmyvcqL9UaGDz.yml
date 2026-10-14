@@ -1,0 +1,75 @@
+folder: Ae6h1X3fm2Sv6iWS
+name: Lutando a Sério
+type: feat
+img: icons/magic/holy/angel-wings-gray.webp
+system:
+  description:
+    value: "<p class=\"MsoNormal\">A partir do <strong>14º nível de Lutador</strong>, você aprendeu a explodir com seu potencial em momentos de importância dentro de um combate. Ao usar uma ação bônus, você libera uma quantidade enorme de energia amaldiçoada e recebe as seguintes características pelo próximo minuto:</p><ul><li><p><em>Você gera energia amaldiçoada adicional igual seu nível de personagem;</em></p></li><li><p><em>Você causa 2d4 de dano adicional em todas as suas jogadas de ataque (Comuns e de Técnica);</em></p></li><li><p><em>Suas jogadas de ataque (Comuns e de Técnica) ignoram resistências e invulnerabilidades de criaturas inimigas.</em></p></li></ul><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\">Você pode ativar essa característica 3 vezes, recuperando seus usos ao fim de um descanso longo.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776920083196
+  modifiedTime: 1776920083238
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: XwMlmyvcqL9UaGDz
+sort: 400000
+_key: '!items!XwMlmyvcqL9UaGDz'

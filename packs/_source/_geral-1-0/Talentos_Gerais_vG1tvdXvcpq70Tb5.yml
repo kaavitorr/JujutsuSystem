@@ -1,0 +1,20 @@
+type: Item
+folder: IcfAIm1favakYIEh
+name: Talentos Gerais
+color: null
+sorting: a
+_id: vG1tvdXvcpq70Tb5
+description: ''
+sort: 0
+flags: {}
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776630515253
+  modifiedTime: 1776630515253
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!vG1tvdXvcpq70Tb5'

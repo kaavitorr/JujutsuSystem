@@ -1,0 +1,62 @@
+folder: TH5zgkPcMDGwUXiB
+name: Caminho do Lutador
+type: feat
+img: icons/magic/symbols/runes-carved-stone-red.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">A partir do <strong>2º nível de Lutador</strong>,
+      você pode definir a natureza das suas habilidades, permitindo que você
+      possa escolher entre Punho Divergente, Mestre do Fulgor, Demolidor ou
+      Mestre das Armas. Você pode ver as características desse caminho no fim
+      desse Estilo de Combate.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: emissao-inteligente
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 81250
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 1f2bf28984f4678e2b435bc70e0b838c4d09844e
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911395
+  modifiedTime: 1776903392370
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: vHvW6ieAn85ATeoo
+_key: '!items!vHvW6ieAn85ATeoo'

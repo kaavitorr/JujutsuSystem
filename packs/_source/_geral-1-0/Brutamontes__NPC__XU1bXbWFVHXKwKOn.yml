@@ -1,0 +1,75 @@
+_id: XU1bXbWFVHXKwKOn
+name: Brutamontes (NPC)
+type: feat
+img: icons/creatures/unholy/demon-fire-horned-winged-roar.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 1200000
+flags:
+  scene-packer:
+    hash: ef987fb79c7ab88ec78c27f11c29039bdacf350c
+    sourceId: Item.XU1bXbWFVHXKwKOn
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Brutamontes (Aumenta o dano efetivo por rodada da
+      criatura):</strong> Um ataque corpo-a-corpo com arma/desarmado causa um ou
+      dois dados extras de dano quando a criatura atinge com ela (incluso no
+      ataque).</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: brutamontes-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.8fkNACspiqV7cTMm
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910547
+  modifiedTime: 1776624910572
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!XU1bXbWFVHXKwKOn'

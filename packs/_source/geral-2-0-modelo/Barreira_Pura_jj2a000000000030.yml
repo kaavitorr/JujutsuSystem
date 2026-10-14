@@ -1,0 +1,43 @@
+_id: jj2a000000000030
+name: Barreira Pura
+type: feat
+img: icons/magic/defensive/shield-barrier-blades-teal.webp
+system:
+  identifier: barreira-pura
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Barreira Vazia</em></p><p>Você se torna
+      capaz de criar um tipo de barreira chamado de Barreira Pura. Ela possui as
+      seguintes características:</p><ul><li>Ela possui o dobro dos Pontos de
+      Vida padrão das barreiras e ganha 3 PV por PA gasto;</li><li>Ela possui
+      metade do alcance padrão das barreiras, arredondado para baixo, e ganha 1
+      metro por PA gasto;</li><li>Ela não permite a entrada ou saída de
+      criaturas, assim como bloqueia a visão nos seus limites.</li></ul>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Técnicas de Barreira
+      caminho: Barreiras
+      requisitos:
+        - Barreira Vazia
+folder: jj2f000000000006
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816710299
+  modifiedTime: 1791816719491
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000030'

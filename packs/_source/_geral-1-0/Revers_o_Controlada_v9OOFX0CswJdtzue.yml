@@ -1,0 +1,89 @@
+folder: 5QKH5QmtmCPmcaAg
+name: Reversão Controlada
+type: feat
+img: icons/skills/melee/maneuver-daggers-paired-orange.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">A partir do 6º nível de Especialista, você aprende a
+      utilizar energia reversa de forma consciente, podendo até utiliza-la ao
+      seu favor durante um combate ou para auxiliar seus companheiros. Você
+      recebe acesso as seguintes características:</p><ul><li><p><em>Você aprende
+      a habilidade de manipulação “Energia Reversa”;</em></p></li><li><p><em>Ao
+      usar uma ação bônus, você envolve seu corpo com energia reversa, podendo
+      gastar uma quantidade de PA igual ao número de dados de cura de Energia
+      Reversa que deseja gerar, conforme a habilidade de manipulação — porém,
+      sem utilizá-los para se curar.</em></p><p><em>Até o início do seu próximo
+      turno, sempre que você ou uma criatura (inimiga ou aliada) a até 21 metros
+      realizar uma jogada de ataque (Comum ou de Técnica), você pode rolar
+      qualquer quantidade desses dados armazenados e adicionar ou subtrair o
+      resultado da rolagem.</em></p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881651
+  modifiedTime: 1776922941342
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: v9OOFX0CswJdtzue
+sort: 200000
+_key: '!items!v9OOFX0CswJdtzue'

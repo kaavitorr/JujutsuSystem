@@ -1,0 +1,97 @@
+folder: pJFTz3T8ddDTtVRG
+name: Marionetista
+type: subclass
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Caminhos/Suguru_Geto_29_Cursed_Clash.webp
+system:
+  description:
+    value: "<table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>MARIONETISTA</strong></span></p></td></tr></tbody></table><p class=\"MsoNormal\">Os marionetistas são focados na utilização de shikigamis para lutarem no seu lugar. Apesar de conseguirem aprimorar seus corpos com energia amaldiçoadas, suas características são ainda menos eficientes na utilização de combate direto sem seus Shikigamis.</p><p style=\"margin:0cm 0.15pt 0.0001pt 7.1pt;text-align:justify\"></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>BATALHA EM EQUIPE</strong></span></p><hr><p class=\"MsoNormal\"><span style=\"mso-bidi-font-size:10.0pt\">A partir do <strong>2º nível de Especialista</strong>, </span>você aprendeu a lutar em conjunto com outras criaturas para fazer melhor uso de suas habilidades. Enquanto tiver outra criatura aliada a até 3 metros do seu alvo, você recebe 1d4 de dano adicional em suas jogadas de ataque contra a criatura.</p><p style=\"text-indent:35.45pt;tab-stops:467.8pt\" class=\"TextoPadro\"><span style=\"mso-bidi-font-size:10.0pt;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-bidi-font-family:ChaparralPro-Regular\">Além disso, qualquer Shikigami que você venha a controlar, recebe 25 Pontos de Vida adicionais quando for conjurado.</span></p><p style=\"margin-right:0.15pt\" class=\"TextoPadro\"><span style=\"font-size:7pt;font-family:''\">\_</span></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>CALCULO PERFEITO</strong></span></p><hr><p class=\"TextoPadro\">A partir do <strong>6º nível de Especialista</strong>, você pode rolar 5 vezes seu d20 no fim de cada descanso longo que se passe de um dia para o outro. A qualquer momento após isso, quando você ou uma criatura qualquer realizar uma rolagem no d20, você pode substituir a rolagem do dado dela por uma das que você tem disponíveis. Após usar aquela rolagem, ela é consumida e não pode ser utilizada novamente.</p><p class=\"MsoNormal\">Cada criatura inimiga só pode ter duas rolagens substituídas em um mesmo encontro.</p><p style=\"text-indent:1cm\" class=\"TextoPadro\"><span style=\"font-size:7pt\">\_</span></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>HORDA</strong></span></p><hr><p class=\"MsoNormal\">A partir do <strong>10º nível de Especialista</strong>, você pode juntar dois ou mais shikigamis de mesmo grau que você controla em uma única ficha, formando uma criatura mais poderosa. Você soma os Pontos de Vida e adiciona as seguintes características:</p><ul><li><p><strong>Grau 4:</strong> Adiciona +1 de CR até um máximo de 20 e +1 dado de dano até um máximo de 2d12+5;</p></li><li><p><strong>Grau 3:</strong> Adiciona +1 de CR até um máximo de 23 e +1 dado de dano até um máximo de 3d12+5;</p></li><li><p><strong>Grau 2:</strong> Adiciona +1 de CR até um máximo de 25 e +1 dado de dano até um máximo de 4d12+5;</p></li><li><p><strong>Grau 1:</strong> Adiciona +1 de CR até um máximo de 27 e +1 dado de dano até um máximo de 5d12+5;</p></li><li><p><strong>Grau Especial:</strong> Adiciona +1 de CR até um máximo de 30 e +1 dado de dano até um máximo de 5d12+12.</p></li></ul><p class=\"MsoListParagraph\">\_</p><p class=\"MsoNormal\">Adicionalmente, todas as hordas recebem +1 em Testes de Atributo de Força a cada membro que estiver compondo a horda.</p><p class=\"MsoNormal\">Toda vez que a criatura a horda perder Pontos de Vida equivalente a criatura com o menor Ponto de Vida, aquela criatura é destruída, diminuindo os atributos da horda.</p><p class=\"MsoNormal\">Caso seu feitiço seja sobre invocar diversos shikigamis, você sempre usa o <strong>Grau 3</strong> como guia.</p><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>VINCULO INQUEBRÁVEL</strong></span></p><hr><p class=\"TextoPadro\">A partir do <strong>14º nível de Especialista</strong>, você é ligado a todas as criaturas que você controla pela sua energia amaldiçoada, permitindo que você possa controlar melhor o combate que as envolva. Você recebe as seguintes características:</p><p>Até 3 vezes por descanso longo, quando você sofrer qualquer quantia de dano, você pode transferi-la para uma das criaturas que você controla a até 12 metros. Caso o dano exceda os pontos de vida da criatura, você recebe o excedente. Esse efeito não pode ser negado de nenhuma forma.</p><p>Quando você for perder o controle de uma ou mais criaturas que você controla ou elas forem destruídas simultaneamente, você pode negar a destruição dela e recuperar metade dos Pontos de Vida dela. Essa característica pode ser utilizada uma vez por descanso longo.</p>"
+    chat: ''
+  source:
+    rules: '2014'
+    revision: 1
+  identifier: marionetista
+  classIdentifier: especialista
+  advancement:
+    zGUOlMSYK8qUZx0n:
+      type: ItemGrant
+      _id: zGUOlMSYK8qUZx0n
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.uxJOyThln0IRDPom
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 2
+      title: ''
+      hint: ''
+      flags: {}
+    1eSKKU7hcaTuSQCW:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.rcKKknnpVnR4XQ4q
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 6
+      title: ''
+      hint: ''
+      _id: 1eSKKU7hcaTuSQCW
+      flags: {}
+    d3e0Mp9ZrYZJm8pg:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.jNz9UN6UwLokE1z6
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 10
+      title: ''
+      hint: ''
+      _id: d3e0Mp9ZrYZJm8pg
+      flags: {}
+    4t2NWGtzMWEiIzx5:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.sGnH2EEJT9b7rZt8
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 14
+      title: ''
+      hint: ''
+      _id: 4t2NWGtzMWEiIzx5
+      flags: {}
+  spellcasting:
+    progression: none
+    ability: ''
+    preparation:
+      formula: ''
+effects: []
+sort: 450000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: a2e4b33f10a521cb5096885ce18e66ce1bb95b91
+  core: {}
+_stats:
+  compendiumSource: Item.5DNdPVt1SNlAA1LD
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624881628
+  modifiedTime: 1782439374236
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: H4Zrhs8lCL8xvO4I
+_key: '!items!H4Zrhs8lCL8xvO4I'

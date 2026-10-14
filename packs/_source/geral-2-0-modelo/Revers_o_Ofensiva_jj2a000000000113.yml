@@ -1,0 +1,41 @@
+_id: jj2a000000000113
+name: Reversão Ofensiva
+type: feat
+img: icons/magic/life/heart-broken-red.webp
+system:
+  identifier: reversao-ofensiva
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Energia Reversa</em></p><p>Você se
+      torna capaz de utilizar técnicas e habilidades ofensivas usando energia
+      reversa, permitindo que você cause dano extra em maldições. Quando você
+      causar dano em um espírito amaldiçoado dessa forma, você causa 2 dados de
+      dano adicionais a ela.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Energia Reversa
+      caminho: Técnica de Energia Reversa
+      requisitos:
+        - Energia Reversa
+folder: jj2f000000000018
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814652814
+  modifiedTime: 1791814652814
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000113'

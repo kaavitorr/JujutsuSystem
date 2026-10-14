@@ -1,0 +1,135 @@
+_id: GlPMA5hmc5gKRHow
+name: PdN - Estrategista
+type: feat
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Estrategista-icon.png
+effects:
+  - name: Estrategista
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.GlPMA5hmc5gKRHow
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: false
+    img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Estrategista-icon.png
+    _id: iSifJn2XGVVvNpdM
+    type: base
+    system:
+      changes:
+        - key: system.attributes.ac.armor
+          type: add
+          value: '+1'
+          phase: initial
+          priority: 20
+        - key: system.attributes.hp.max
+          type: add
+          value: '+30'
+          phase: initial
+          priority: null
+    description: ''
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    sort: 0
+    flags:
+      dnd5e:
+        riders:
+          statuses: []
+      dae:
+        disableCondition: ''
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+      core:
+        overlay: false
+      JujutsuLegacy:
+        riders:
+          statuses: []
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      exportSource: null
+      coreVersion: '14.364'
+      systemId: jujutsu-system
+      systemVersion: 1.0.6
+      createdTime: 1776624910536
+      modifiedTime: 1782449970647
+      lastModifiedBy: 371UX0Acl9j9oJ0Q
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!GlPMA5hmc5gKRHow.iSifJn2XGVVvNpdM'
+folder: bep1QbqDytG1F90j
+sort: 300000
+flags:
+  scene-packer:
+    hash: f78abeef19824b8692f9fa081ab248d91d71ec9e
+    sourceId: Item.GlPMA5hmc5gKRHow
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p class="Default">Estrategista: Escolha entre os caminhos “Feiticeiro
+      Reverso”, “Mestre de Barreiras” e “Médico de Campo” do Estrategista. Além
+      disso, ele recebe as seguintes características
+      adicionais:</p><ul><li><p>Recebe +1 de Classe de
+      Resistência;</p></li><li><p>Recebe 30 Pontos de Vida;</p></li><li><p>No
+      início de cada um dos turnos dele, recupera um valor de Pontos de Vida
+      igual o próprio ND.</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aspecto--adaptacao-veloz
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.MY58UBzEaCF3R6Gv
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624910536
+  modifiedTime: 1782450076758
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_key: '!items!GlPMA5hmc5gKRHow'

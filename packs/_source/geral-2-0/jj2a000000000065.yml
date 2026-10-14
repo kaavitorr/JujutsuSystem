@@ -1,0 +1,22 @@
+_id: jj2a000000000065
+_key: '!items!jj2a000000000065'
+name: Abençoado Pelas Faíscas Negras
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: abencoado-pelas-faiscas-negras
+  description:
+    value: <p><em><strong>Requisito:</strong> 5 habilidades de especialização de Canalização de Energia</em></p><p>Você adquire a capacidade de alcançar o Fulgor Negro com mais facilidade que os demais. Você recebe acesso às seguintes características:</p><ul><li>Quando você entra em estado de Zona, ele se mantém por 3 rodadas consecutivas;</li><li>Caso você não possua habilidades de especialização de “Feitiço Inato”, você recebe 1 Ponto de Fulgor. Você pode utilizar esse ponto para garantir que seu próximo ataque bem-sucedido irá ativar um Fulgor Negro.</li></ul>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Canalização de Energia
+      requisitos:
+        - 5 habilidades de especialização de Canalização de Energia
+folder: jj2f000000000011
+ownership:
+  default: 0
+effects: []
+sort: 0

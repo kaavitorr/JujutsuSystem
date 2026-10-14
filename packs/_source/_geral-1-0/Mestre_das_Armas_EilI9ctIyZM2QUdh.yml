@@ -1,0 +1,97 @@
+folder: pJFTz3T8ddDTtVRG
+name: Mestre das Armas
+type: subclass
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Caminhos/Kento_Nanami_Cursed_Clash.webp
+system:
+  description:
+    value: "<table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>MESTRE DAS ARMAS</strong></span></p></td></tr></tbody></table><p class=\"MsoNormal\">Os mestres das armas são aqueles que aprenderam a usar de forma efetiva as ferramentas amaldiçoadas enquanto lutam, utilizando das habilidades delas para causar o máximo de dano possível ou até complementar o próprio feitiço.</p><p>\_</p><p><span style=\"font-size:large\"><strong>PERITO EM ARMAS</strong></span></p><hr><p>Enquanto estiver utilizando uma “Ferramenta Amaldiçoada”, você recebe as seguintes características:</p><ul><li><p><strong>Reserva de Energia:</strong> Você pode colocar até 10 Pontos de Energia Amaldiçoada (PA) em sua “Ferramenta Amaldiçoada”. A qualquer momento, ao executar um feitiço básico, estendido ou máximo através dela, você pode gastar até 2 PA armazenados na arma para reduzir o custo do feitiço pelo mesmo valor.</p></li><li><p><strong>Arma Preferida:</strong> Enquanto estiver utilizando uma “Ferramenta Amaldiçoada”, você pode mudar seu dano para 2d6 e receber +1 de acerto em rolagens com ela. Adicionalmente, toda rodada, você pode escolher um de seus ataques (Comuns ou de Técnica) que teria desvantagem ou penalidade no acerto por meios externos e negar esses dois, rolando normalmente.</p></li><li><p><strong>Golpe Brutal:</strong> Sempre que derrotar uma criatura com uma jogada de ataque (Comum ou de Técnica) usando uma “Ferramenta Amaldiçoada”, você pode se mover até 9 metros e realizar um novo ataque (Comum) contra uma outra criatura, causando 1 dado de dano adicional nesse ataque. A cada vez que você matar ou derrotar uma criatura no combate, tirando a primeira vez, os dados adicionais aumentam em 2 até um máximo de 6 dados.</p><p class=\"TextoPadro\">Caso você esteja lutando contra apenas uma criatura, você pode, uma vez por rodada, consumir 3 PA para causar 2d8 de dano adicional em uma jogada de ataque (Comum ou de Técnica).</p></li></ul><p>\_</p><p><span style=\"font-size:large\"><strong>CONTROLANDO RITMO</strong></span></p><hr><p>A partir do <strong>6º nível de Lutador,</strong> quando você for alvo de uma jogada de ataque (Comum ou de Técnica) de uma criatura inimiga, você pode escolher ser atingido automaticamente de forma controlada para receber +10 em sua próxima rolagem de acerto. Se você causar um acerto crítico nessa rolagem de acerto, você recebe 1 dado de dano adicional ao resultado final.</p><p class=\"MsoNormal\">Forçar um acerto automático em si mesmo dessa forma nega qualquer crítico normal que você sofreria sem ser de 20 natural, mas a criatura ainda rola para tentar ativar um Fulgor Negro.</p><p>\_</p><p><span style=\"font-size:large\"><strong>ENTRADA IMPACTANTE</strong></span></p><hr><p>A partir do <strong>10º nível de Lutador</strong>, ao iniciar um combate, você se torna o primeiro na ordem de iniciativa e pode avançar contra uma criatura a até o dobro do seu deslocamento, podendo usar disparada para deslocamento adicional, desferindo um ataque (Comum ou de Técnica) com sua Ferramenta Amaldiçoada.</p><p class=\"MsoNormal\">Se a criatura for atingida, ela passa a ocupar a última posição na ordem de iniciativa. Caso o ataque seja um acerto crítico, ela recebe a condição <strong>“Atordoado”,</strong> sem a necessidade de realizar uma Salvaguarda.</p><p class=\"MsoNormal\">Esse efeito também se aplica caso você entre no combate de forma tardia<span style=\"font-size:10.0pt;font-family:'Chaparral Pro',serif\">.</span></p><p>\_</p><p><span style=\"font-size:large\"><strong>ENTRADA IMPACTANTE</strong></span></p><hr><p>A partir do <strong>14º nível de Lutador</strong>, você aprendeu a explodir com seu potencial em momentos de importância dentro de um combate. Ao usar uma ação bônus, você libera uma quantidade enorme de energia amaldiçoada e recebe as seguintes características pelo próximo minuto:</p><ul><li><p>Você gera energia amaldiçoada adicional igual seu nível de personagem;</p></li><li><p>Você causa 2d4 de dano adicional em todas as suas jogadas de ataque (Comuns e de Técnica);</p></li><li><p>Suas jogadas de ataque (Comuns e de Técnica) ignoram resistências e invulnerabilidades de criaturas inimigas.</p></li></ul><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\">Você pode ativar essa característica 3 vezes, recuperando seus usos ao fim de um descanso longo.</p>"
+    chat: ''
+  source:
+    rules: '2014'
+    revision: 1
+  identifier: mestre-das-armas
+  classIdentifier: lutador
+  advancement:
+    3GQtteZ9k37GIWFU:
+      type: ItemGrant
+      _id: 3GQtteZ9k37GIWFU
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4axEdP67HeAPwOL3
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 2
+      title: ''
+      hint: ''
+      flags: {}
+    udyKO8hgSKORYZXB:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.aEMc1asi3GROrJMJ
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 6
+      title: ''
+      hint: ''
+      _id: udyKO8hgSKORYZXB
+      flags: {}
+    Tj8dhb8pm8jyu3ZZ:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.3k0LHIdXzmN9ELGa
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 10
+      title: ''
+      hint: ''
+      _id: Tj8dhb8pm8jyu3ZZ
+      flags: {}
+    l1MiNKnT1duWb5jO:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.XwMlmyvcqL9UaGDz
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 14
+      title: ''
+      hint: ''
+      _id: l1MiNKnT1duWb5jO
+      flags: {}
+  spellcasting:
+    progression: none
+    ability: ''
+    preparation:
+      formula: ''
+effects: []
+sort: 300000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 73df2584213b1e6e12842c5a40a3ee5746233a8e
+  core: {}
+_stats:
+  compendiumSource: Item.5DNdPVt1SNlAA1LD
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881626
+  modifiedTime: 1776972722705
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: EilI9ctIyZM2QUdh
+_key: '!items!EilI9ctIyZM2QUdh'

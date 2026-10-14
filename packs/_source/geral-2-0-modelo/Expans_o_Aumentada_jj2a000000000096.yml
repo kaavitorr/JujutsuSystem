@@ -1,0 +1,39 @@
+_id: jj2a000000000096
+name: Expansão Aumentada
+type: feat
+img: icons/magic/water/barrier-ice-shield.webp
+system:
+  identifier: expansao-aumentada
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Domínio da Proteção</em></p><p>Você se
+      torna capaz de aumentar a área efetiva do seu domínio em 5 metros de raio
+      adicionais.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Novo Estilo das Sombras
+      requisitos:
+        - Domínio da Proteção
+folder: jj2f000000000015
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816144652
+  modifiedTime: 1791816147183
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000096'

@@ -1,0 +1,37 @@
+<section class="flexcol">
+    <div class="note info">
+        {{ localize (ifThen isGroup "DND5E.REST.Short.Hint.Group" "DND5E.REST.Short.Hint.Normal") }}
+    </div>
+
+    {{> "dnd5e.formlist" formSections }}
+
+    {{#if hitDice}}
+    {{> "systems/jujutsu-system/templates/actors/rest/parts/hit-dice.hbs" }}
+    {{/if}}
+
+    {{#if energyDice.canRoll}}
+    <fieldset>
+        <legend>Cursed Energy Dice</legend>
+        <div class="form-fields">
+            <select name="energyDenom">
+                {{#each energyDice.options}}
+                <option value="{{ value }}">{{ label }}</option>
+                {{/each}}
+            </select>
+            <button type="button" class="dice-button" data-action="rollEnergyDie" data-tooltip
+                    aria-label="Roll Energy Die">
+                <i class="fa-solid fa-dice-d20" inert></i>
+            </button>
+        </div>
+        {{ formField autoEnergyRoll name="autoEnergyED" value=config.autoEnergyED input=inputs.createCheckboxInput rootId=partId }}
+    </fieldset>
+    {{else if energyDice}}
+    <div class="note warn">
+        Sem Cursed Energy Dice disponíveis.
+    </div>
+    {{/if}}
+
+    {{#if request}}
+    {{> "systems/jujutsu-system/templates/actors/rest/parts/rest-request.hbs" }}
+    {{/if}}
+</section>

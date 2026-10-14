@@ -1,0 +1,161 @@
+name: Dificuldade Inefável
+type: feat
+img: icons/magic/symbols/rune-sigil-hook-white-red.webp
+effects:
+  - origin: Item.xL27COxWdlxR6Stj
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: false
+    name: Dificuldade Inefável
+    img: icons/magic/symbols/rune-sigil-hook-white-red.webp
+    _id: 0rIbAxDYFuqXFkWR
+    type: base
+    system:
+      changes:
+        - key: system.bonuses.spell.dc
+          type: add
+          value: +
+          phase: initial
+          priority: null
+    description: >-
+      <p><span style="font-size:large"><strong>Código do Attribute Key:</strong>
+      system.energy.bonuses.overall</span></p><p><span
+      style="font-size:large"><strong>Type:</strong> Add</span></p><p><span
+      style="font-size:large"><strong>Value:</strong></span></p><p><span
+      style="font-size:large">@scale.lutador.dificuldade</span></p><p><span
+      style="font-size:large">@scale.especialista.dificuldade</span></p><p><span
+      style="font-size:large">@scale.estrategista.dificuldade</span></p><p><span
+      style="font-size:large">@scale.restringido.dificuldade</span></p>
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    sort: 0
+    flags:
+      dae:
+        disableCondition: ''
+        disableIncapacitated: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+      core:
+        overlay: false
+      JujutsuLegacy:
+        riders:
+          statuses: []
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 1.0.2
+      createdTime: 1776624882969
+      modifiedTime: 1777134317141
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+      exportSource: null
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!xL27COxWdlxR6Stj.0rIbAxDYFuqXFkWR'
+folder: TOc92NuiE5uyXD8M
+sort: 900000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 52b4538678bb3c65edf4034bbef5e5fd9cc37754
+    sourceId: Item.56za1y6eXu2k49Rg
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Ao desempenhar suas habilidades, você sempre consegue
+      surpreender seus alvos. Quando uma técnica, feitiço ou característica sua
+      impor uma Salvaguarda qualquer, você adiciona mais metade do seu bônus de
+      proficiência nas Classes de Dificuldade (arredondado para baixo), além do
+      possível bônus de proficiência já aplicado. Esse bônus não soma com
+      efeitos similares.</p><p>A partir do 5º nível do seu personagem, é
+      adicionado + 1 às suas CDs. No 10º nível, aumenta para +2 e novamente para
+      +3 no 15º nível.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: dificuldade-inefavel
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.uMNWzaM7WqfTGRaL
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624882969
+  modifiedTime: 1776959402948
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: xL27COxWdlxR6Stj
+_key: '!items!xL27COxWdlxR6Stj'

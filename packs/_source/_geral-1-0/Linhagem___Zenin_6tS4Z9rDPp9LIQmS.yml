@@ -1,0 +1,140 @@
+folder: onrz3qUGUndiIaUB
+name: Linhagem - Zenin
+type: race
+img: systems/jujutsu-system/assets/Origens/Megumi_Fushiguro_Cursed_Clash.webp
+system:
+  description:
+    value: "<p><strong>Ajuste de Atributo:</strong> +4 Pontos de Atributo para distribuir entre todos os 6 atributos.</p><p><strong>Vida Base:</strong> 10 Pontos de Vida.</p><p><strong>Tamanho:</strong> 1,50 a 2,00 metros (pequeno, médio).</p><p><strong>Peso:</strong> Normalmente, entre 45 kg e 200 kg.</p><p><strong>Deslocamento:</strong> 9 metros.</p><p><strong>Nado:</strong> 4,5 metros.</p><p>\_</p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ESPÉCIA</strong></span></p></td></tr></tbody></table><p>Essas características acompanham a existência do personagem, são representações da sua origem, sendo uma parte essencial de como ele vê o mundo e de como o mundo olha pra ele.</p><p style=\"margin:0.5pt 0cm 0.0001pt 7.1pt;text-align:justify\"></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM - ZENIN</strong></span></p><hr><ul><li><p><strong>Talento de Origem: </strong>No <strong>3º nível</strong>, você recebe um talento de origem de acordo com o <strong>Capítulo 6</strong>.\_</p></li><li><p><strong>Técnica Herdada: </strong>Como um membro da linhagem do Clã Zenin, você deve escolher entre ter acesso as técnicas herdadas das <strong>“10 Sombras”</strong> ou <strong>“Projeção”</strong>.</p></li><li><p><strong>Encarando a Morte: </strong>Você é capaz de explodir com um poder incomparável em momentos de necessidade. Ao cair a 1/3 dos Pontos de Vida ou menos, você passa a gerar Pontos de Energia Amaldiçoada (PA) adicionais iguais seu bônus de proficiência.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>DESVANTAGENS DA VARIANTE</strong></span></p><hr><ul><li><p><strong>Linhagem de Supremacistas:</strong> Seu clã acredita no poder acima de tudo, e isso lhe causa empecilhos quando você decide não seguir a agenda deles. Enquanto você se recusar a se tornar um pau-mandado do Clã Zenin, um assassino aparecerá todo mês para tentar matar um de seus companheiros. Essa desvantagem pode ser anulada por meios políticos mais à frente durante a aventura.</p></li></ul>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  advancement:
+    thrtYH4KG74MbuZ9:
+      type: AbilityScoreImprovement
+      _id: thrtYH4KG74MbuZ9
+      configuration:
+        points: 4
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 4
+        locked: []
+        recommendation: null
+        max: null
+      value:
+        type: asi
+      level: 0
+      title: ''
+      icon: null
+      flags: {}
+      hint: ''
+    rEJzDVRlCiq4jyq7:
+      type: Size
+      _id: rEJzDVRlCiq4jyq7
+      configuration:
+        sizes:
+          - med
+      level: 0
+      title: ''
+      icon: null
+      value: {}
+      flags: {}
+      hint: ''
+    pWi09QUI278nzGY8:
+      type: Trait
+      configuration:
+        grants:
+          - languages:standard:common
+        mode: default
+        allowReplacements: false
+        choices: []
+      _id: pWi09QUI278nzGY8
+      level: 0
+      value:
+        chosen: []
+      flags: {}
+      hint: ''
+    4RXJIfXI8J2WfgL2:
+      _id: 4RXJIfXI8J2WfgL2
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.JrW8QBYrVPG9nzwZ
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 0
+      title: Pontos de Vida
+      icon: null
+      flags: {}
+      hint: ''
+    8aPE0FrMa7fh4qox:
+      type: ItemChoice
+      configuration:
+        choices:
+          '3':
+            count: 1
+            replacement: false
+        allowDrops: true
+        type: null
+        pool:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.o4QtAPyv10xCw220
+        spell: null
+        restriction:
+          list: []
+      value:
+        added: {}
+        replaced: {}
+      title: Talentos de Origem
+      hint: <p>Escolha um Talento de Espécie</p>
+      _id: 8aPE0FrMa7fh4qox
+      flags: {}
+  movement:
+    swim: '4.5'
+    walk: '9'
+    units: m
+    hover: false
+    ignoredDifficultTerrain: []
+    burrow: ''
+    climb: ''
+    fly: ''
+  senses:
+    units: m
+    special: ''
+    ranges:
+      darkvision: null
+      blindsight: null
+      tremorsense: null
+      truesight: null
+  type:
+    value: humanoid
+    custom: ''
+    subtype: ''
+  identifier: zenin
+effects: []
+flags:
+  scene-packer:
+    hash: 67eee98e596c8e15d667f2c4fc3cc39d4c880220
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 1.0.4
+  createdTime: 1776914787081
+  modifiedTime: 1778003523115
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: 6tS4Z9rDPp9LIQmS
+sort: 400000
+_key: '!items!6tS4Z9rDPp9LIQmS'

@@ -1,0 +1,40 @@
+_id: jj2a000000000011
+name: Fortalecer Invocação
+type: feat
+img: icons/magic/unholy/hand-light-pink.webp
+system:
+  identifier: fortalecer-invocacao
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Trabalho em Equipe</em></p><p>Você
+      aprende a criar Shikigamis mais robustos que o normal, permitindo um maior
+      poder defensivo para eles. Seus Shikigamis recebem 20 Pontos de Vida
+      adicionais.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Invocador de Shikigami
+      requisitos:
+        - Trabalho em Equipe
+folder: jj2f000000000003
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814809972
+  modifiedTime: 1791814809972
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000011'

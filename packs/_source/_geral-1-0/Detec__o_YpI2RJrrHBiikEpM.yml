@@ -1,0 +1,92 @@
+name: Detecção
+type: feat
+img: icons/creatures/eyes/icy-cluster-blue.webp
+effects: []
+folder: uS2gx1xTr6SoRtWP
+sort: 0
+flags:
+  scene-packer:
+    hash: e3e97bf2f1605b281e538e1fd9b50edfa07d5640
+    sourceId: Item.FxEBCoN8MgBLHwF0
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p><strong>Detecção:</strong> Você recebe a habilidade de Manipulação –
+      “Sentir Maldição” do Capítulo 6.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: aspecto--en-expansao
+  activities: {}
+  advancement:
+    y00NNbFUGdlCZwqV:
+      type: ItemGrant
+      _id: y00NNbFUGdlCZwqV
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-system.tecnicas-manipulacao.Item.PcJHkYnXbAIGRllF
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 0
+      hint: ''
+      title: ''
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.uiLHzLtUwYNeTKyj
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624910550
+  modifiedTime: 1782450374172
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_id: YpI2RJrrHBiikEpM
+_key: '!items!YpI2RJrrHBiikEpM'

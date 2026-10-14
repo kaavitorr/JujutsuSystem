@@ -1,0 +1,22 @@
+_id: jj2a000000000083
+_key: '!items!jj2a000000000083'
+name: Resistência Superior
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: resistencia-superior
+  description:
+    value: <p><em><strong>Requisito:</strong> Corpo Endurecido</em></p><p>Você recebe 2 Pontos de Resistência a todos os tipos de dano. No início de cada um de seus turnos, você recebe 2 Pontos de Resistência adicionais até um máximo igual seu nível de personagem.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Defensivo
+      requisitos:
+        - Corpo Endurecido
+folder: jj2f000000000014
+ownership:
+  default: 0
+effects: []
+sort: 0

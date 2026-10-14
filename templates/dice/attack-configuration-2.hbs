@@ -1,0 +1,12 @@
+<section class="jj2-activation-panel">
+  <header class="jj2-activation-hero">
+    <div class="jj2-activation-art"><img src="{{jj2.image}}" alt="{{jj2.title}}"></div>
+    <div><span class="jj2-activation-kicker">Preparar ataque</span><h2>{{jj2.title}}</h2>{{#if jj2.subtitle}}{{#unless (eq jj2.subtitle jj2.title)}}<span class="jj2-activation-subtitle">{{jj2.subtitle}}</span>{{/unless}}{{/if}}</div>
+    {{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="weapons"}}
+  </header>
+  {{> "systems/jujutsu-system/templates/activity/parts/activation-controls-2.hbs"}}
+  <div class="jj2-attack-formula">
+    <svg viewBox="0 0 40 44" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="m20 2 18 10v20L20 42 2 32V12Z M20 2 8 30h24ZM2 12l18 5 18-5M20 42V30"/></svg>
+    <div><span>Rolagem de acerto</span>{{#each rolls}}<strong>{{roll.formula}}</strong>{{/each}}</div>
+  </div>
+</section>

@@ -1,0 +1,51 @@
+_id: jj2a000000000063
+name: Foco Múltiplo
+type: feat
+img: icons/magic/light/projectile-smoke-yellow.webp
+system:
+  identifier: foco-multiplo
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Canalização Amplificadora e Canalização
+      de Combate</em></p><p>Seu controle sobre a energia amaldiçoada cresce de
+      forma exponencial, aumentando sua capacidade de causar ou resistir a
+      danos.</p><ul><li><strong>Foco Ofensivo:</strong> Suas jogadas de ataque
+      (Comuns) recebem 1d4 de dano adicional;</li><li><strong>Foco
+      Defensivo:</strong> Você envolve seu corpo com uma camada extra de energia
+      amaldiçoada, criando 20 Pontos de Armadura. Esses pontos funcionam da
+      mesma forma que os Pontos de Vida Temporários, com as seguintes
+      diferenças:</li></ul><ul><li>Podem coexistir com PV
+      temporários;</li><li>Sempre são consumidos antes dos PV
+      temporários;</li><li>Duram apenas até o fim do
+      encontro.</li></ul><p>Enquanto esses Pontos de Energia existirem, você
+      reduz todo dano sofrido pela metade (mínimo 1). Essa redução é sempre
+      aplicada por último.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Canalização de Energia
+      requisitos:
+        - Canalização Amplificadora
+        - Canalização de Combate
+folder: jj2f000000000011
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816496154
+  modifiedTime: 1791816496154
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000063'

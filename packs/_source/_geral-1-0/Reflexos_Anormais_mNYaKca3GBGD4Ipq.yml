@@ -1,0 +1,87 @@
+folder: Sihz9XvsasQMkzkD
+name: Reflexos Anormais
+type: feat
+img: icons/commodities/treasure/token-engraved-red-glowing.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Sua restrição te deu reflexos extremos que podem ser
+      utilizados livremente durante o combate, permitindo que você se mantenha
+      vivo mesmo nas piores situações.</p><p
+      class="MsoListParagraph"><strong>Característica:</strong> Você recebe 1
+      Reação extra no início de cada encontro. A qualquer momento, você pode
+      consumir essa reação para ativar uma característica, técnica ou habilidade
+      que utilize uma reação. Após isso, ela é gasta e você deve esperar um novo
+      encontro para receber uma nova.</p>
+    chat: ''
+  source:
+    custom: LdJ Capítulo 6
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: Formiga-Quimera
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: forca-superior
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: -100000
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  MhGXeDSlt2zUqR0J: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: f03db751353bb41f96ca77b72f1ac62a6c4a516c
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  compendiumSource: Item.pIaAt98DZBQngnAh
+  duplicateSource: Item.sk7mBM0pII8LGdfq
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902151
+  modifiedTime: 1776631019788
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: mNYaKca3GBGD4Ipq
+_key: '!items!mNYaKca3GBGD4Ipq'

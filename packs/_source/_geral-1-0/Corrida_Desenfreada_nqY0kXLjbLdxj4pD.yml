@@ -1,0 +1,109 @@
+name: Corrida Desenfreada
+type: feat
+img: icons/skills/movement/figure-running-gray.webp
+effects: []
+folder: TOc92NuiE5uyXD8M
+sort: 700000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 4702d5bf49907cbbe9210da023f736a0f100e243
+    sourceId: Item.56za1y6eXu2k49Rg
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Quando você tiver uma criatura hostil à 1,5 metros de
+      você, você pode usar uma ação bônus e recuar até o dobro do seu
+      deslocamento normal, desde que você não tenha feito uma jogada de ataque
+      no seu turno ou causado qualquer tipo de dano, ficando impedido de causar
+      danos após o recuo.</p><p class="MsoNormal">No próximo turno, após ter
+      executado essa característica, você pode executar um feitiço de ataque de
+      até 12 dados de dano (sem explosão ofensiva) ou técnica de 4º grau ou
+      menor pela metade do custo de Pontos de Energia Amaldiçoada (PA) que são
+      retirados da sua energia total. Caso a técnica ou feitiço cause menos da
+      metade do dano possível ou não provoque nenhum efeito, não haverá consumo
+      de PA. O deslocamento feito durante essa característica não provoca
+      reações, como a característica “Ataque de Oportunidade”.</p><p>Essa
+      característica pode ser usada até 3 vezes e você recupera todos os seus
+      usos ao término de um descanso longo.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: corrida-desenfreada
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.uMNWzaM7WqfTGRaL
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624882968
+  modifiedTime: 1776959392014
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: nqY0kXLjbLdxj4pD
+_key: '!items!nqY0kXLjbLdxj4pD'

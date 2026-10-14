@@ -1,0 +1,73 @@
+_id: log3EagVS1c72liH
+name: Faro Aguçado (NPC)
+type: feat
+img: icons/creatures/mammals/rodent-rat-green.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 3000000
+flags:
+  scene-packer:
+    hash: 4f170f9d58e337e7f0d67bac3f191e76d58bdd66
+    sourceId: Item.log3EagVS1c72liH
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Faro Aguçado (–): </strong>A criatura tem vantagem em Testes de
+      Habilidade de Espírito (Percepção) relacionados ao olfato.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: faro-agucado-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.Wa2MfFnyTCTMWWNH
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910557
+  modifiedTime: 1776624910576
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!log3EagVS1c72liH'

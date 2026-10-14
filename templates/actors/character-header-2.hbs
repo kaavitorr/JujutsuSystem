@@ -1,0 +1,10 @@
+<header class="sheet-header jj2-header">
+  <div class="jj2-brand">Jujutsu Legacy <strong>2.0</strong></div>
+  <div class="jj2-nameplate">
+    {{#if editable}}<input type="text" name="name" class="document-name" value="{{ actor._source.name }}" aria-label="Nome do personagem">
+    {{else}}<h1 class="document-name">{{ actor.name }}</h1>{{/if}}
+  </div>
+  <div class="jj2-header-meta"><span>{{#if jj2.estiloNome}}{{ jj2.estiloNome }}{{else}}Estilo de Combate{{/if}}</span><span>Principal: {{ jj2.principalLabel }}</span></div>
+  <div class="jj2-level" aria-label="Nível {{ system.details.level }}"><strong>{{ system.details.level }}</strong><span>Nível</span></div>
+  {{#if showRests}}<div class="jj2-rests">{{#each CONFIG.restTypes}}<button type="button" data-action="rest" data-type="{{ @key }}" class="jj2-action always-interactive" aria-label="{{ localize label }}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="rest" }}{{ localize label }}</button>{{/each}}</div>{{/if}}
+</header>

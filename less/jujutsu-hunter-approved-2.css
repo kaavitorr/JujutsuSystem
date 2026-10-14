@@ -1,0 +1,893 @@
+/* Approved Hunter composition, scoped to the Jujutsu 2.0 character sheet. */
+@font-face { font-family: JJ2Condensed; src: url('../fonts/roboto-condensed/RobotoCondensed-Regular.woff2') format('woff2'); font-weight: 400; }
+@font-face { font-family: JJ2Condensed; src: url('../fonts/roboto-condensed/RobotoCondensed-Bold.woff2') format('woff2'); font-weight: 700; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura {
+  --jj2-ink: #101015; --jj2-raised: #1b1b23; --jj2-paper: #f3eee3;
+  --jj2-muted: #aaa7b4; --jj2-purple: #a67bda; --jj2-gold: #efbf51;
+  --color-text-primary: var(--jj2-paper); --color-text-secondary: var(--jj2-muted);
+  --color-text-dark-primary: var(--jj2-paper); --color-text-dark-secondary: var(--jj2-muted);
+  --dnd5e-color-gold: var(--jj2-gold); min-width: 700px;
+  color: var(--jj2-paper); font-family: JJ2Condensed, sans-serif;
+}
+.jj2-ruptura .jj2-icon { width: 18px; height: 18px; flex-shrink: 0; vertical-align: middle; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .window-content {
+  display: flex; flex-direction: column; gap: 14px; padding: 14px; overflow: hidden;
+  background: radial-gradient(#ffffff09 .7px, transparent .8px) 0 0 / 5px 5px, var(--jj2-ink);
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .window-content::before { display: none; }
+.jj2-ruptura button { color: inherit; cursor: pointer; }
+.jj2-ruptura .window-content button:not(.icon) { font: inherit; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura button,
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura button > span { text-transform: none; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .window-header .mode-slider { flex: none; margin: 0 6px 0 0; align-self: center; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .window-header .jj2-window-control:not([hidden]) { display: flex; align-items: center; justify-content: center; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .window-header .jj2-window-control::before,
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .window-header .jj2-window-control::after { content: none !important; }
+.jj2-ruptura .jj2-window-icon { width: 14px; height: 14px; pointer-events: none; }
+.jj2-ruptura button:disabled { cursor: default; opacity: .55; }
+.jj2-ruptura a { color: inherit; }
+.jj2-ruptura input, .jj2-ruptura select { color: var(--jj2-paper); background: #ffffff08; border: 1px solid #ffffff20; border-radius: 0; }
+.jj2-ruptura input:focus, .jj2-ruptura select:focus { outline: 1px solid var(--jj2-purple); box-shadow: none; }
+.jj2-ruptura button:focus-visible, .jj2-ruptura a:focus-visible { outline: 2px solid var(--jj2-gold); outline-offset: 2px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-hero {
+  position: relative; flex: none; display: grid;
+  grid-template-columns: 180px minmax(0, 1fr) 52px; align-items: center; gap: 16px;
+  min-height: 224px; padding: 0 14px 0 0; border: 0; border-bottom: 3px solid var(--jj2-paper);
+  background: repeating-linear-gradient(154deg, transparent 0 13px, #ffffff06 13px 14px), #19181f;
+  overflow: hidden; border-radius: 0;
+}
+.jj2-ruptura .jj2-hero::before { content: ''; position: absolute; z-index: 0; top: -30%; bottom: -30%; left: 58%; width: 105px; background: #78519c; transform: skew(-28deg); opacity: .5; pointer-events: none; }
+/* Keep portrait controls above the transparent native window drag area. */
+.jj2-ruptura .jj2-hero-art { align-self: stretch; position: relative; z-index: 2; background: repeating-linear-gradient(155deg, transparent 0 14px, #ffffff04 14px 15px), radial-gradient(ellipse at 50% 30%, #59406f70, transparent 75%), #14121b; }
+.jj2-ruptura :is(.jj2-hero-identity, .jj2-hero-actions) { position: relative; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-portrait { width: 100%; height: 100%; border: 0; border-radius: 0; background: none; margin: 0; position: absolute; inset: 0; }
+.jj2-ruptura .jj2-portrait img, .jj2-ruptura .jj2-portrait video { width: 100%; height: 100%; object-fit: cover; object-position: top center; border: 0; border-radius: 0; }
+.jj2-ruptura .jj2-portrait.token img { object-fit: contain; }
+.jj2-ruptura .jj2-portrait-toggle { position: absolute; z-index: 1; top: 8px; right: 8px; bottom: auto; left: auto; display: grid; place-items: center; width: 38px; height: 24px; padding: 0; margin: 0; cursor: pointer; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-portrait-toggle input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; padding: 0; opacity: 0; cursor: pointer; }
+.jj2-ruptura .jj2-portrait-toggle input::before, .jj2-ruptura .jj2-portrait-toggle input::after { content: none !important; }
+.jj2-ruptura .jj2-portrait-switch { position: relative; display: block; width: 34px; height: 20px; box-sizing: border-box; border: 1px solid #f3eee37a; border-radius: 20px; background: #101015e8; box-shadow: 0 1px 3px #0008; pointer-events: none; }
+.jj2-ruptura .jj2-portrait-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: var(--jj2-paper); }
+.jj2-ruptura .jj2-portrait-toggle input:checked + .jj2-portrait-switch { border-color: var(--jj2-purple); background: var(--jj2-purple); }
+.jj2-ruptura .jj2-portrait-toggle input:checked + .jj2-portrait-switch::after { transform: translateX(14px); }
+.jj2-ruptura .jj2-portrait-toggle input:focus-visible + .jj2-portrait-switch { outline: 2px solid var(--jj2-gold); outline-offset: 2px; }
+.jj2-ruptura .jj2-hero-identity { min-width: 0; padding: 18px 0; }
+.jj2-ruptura .jj2-eyebrow { display: inline-block; color: var(--jj2-ink); background: var(--jj2-gold); padding: 3px 10px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.jj2-ruptura .jj2-nameplate { margin: 6px 0 3px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-nameplate .document-name { margin: 0; padding: 0; border: 0; width: 100%; height: auto; background: none; color: var(--jj2-paper); font: bold clamp(28px, 3.7vw, 48px)/1.05 'Palatino Linotype', Georgia, serif; text-shadow: none; }
+.jj2-ruptura .jj2-header-meta { margin: 0 0 16px; font-weight: 700; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+.jj2-ruptura .jj2-header-meta > span { display: inline-block; background: var(--jj2-purple); color: var(--jj2-ink); padding: 3px 10px; }
+.jj2-ruptura .jj2-hero-actions { align-self: start; display: flex; flex-direction: column; align-items: center; gap: 10px; padding-top: 14px; }
+.jj2-ruptura .jj2-rests { display: flex; gap: 3px; }
+.jj2-ruptura .jj2-rests button { background: none; border: 0; padding: 3px; width: 25px; height: 25px; }
+.jj2-ruptura .jj2-level { position: relative; isolation: isolate; display: flex; align-items: center; justify-content: center; width: 56px; min-width: 56px; height: 56px; padding: 0 0 6px; box-sizing: border-box; border: 1px solid #a67bdaaa; border-radius: 50%; background: repeating-linear-gradient(155deg, transparent 0 7px, #ffffff07 7px 8px), var(--jj2-ink); box-shadow: 2px 3px 0 #08080bc9; text-align: center; }
+.jj2-ruptura .jj2-level::before { content: ''; position: absolute; z-index: -1; inset: 5px; border: 1px solid #f3eee329; border-radius: 50%; background: linear-gradient(135deg, transparent 0 32%, #a67bda33 32% 48%, transparent 48%); pointer-events: none; }
+.jj2-ruptura .jj2-level-seal { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 72px; height: 72px; max-width: none; max-height: none; color: var(--jj2-gold); pointer-events: none; }
+.jj2-ruptura .jj2-level-seal-energy { stroke: var(--jj2-purple); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-level-number { position: absolute; inset: 0; display: grid; place-items: center; padding: 0; margin: 0; text-align: center; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-level-number > strong { position: static; display: block; box-sizing: border-box; width: 100%; padding: 0; margin: 0; transform: none; text-align: center; color: var(--jj2-paper); font: 700 34px/1 JJ2Condensed, sans-serif; font-variant-numeric: tabular-nums; letter-spacing: 0; text-shadow: 1px 1px 0 #08080b; }
+.jj2-ruptura .jj2-level span { position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%) rotate(-4deg); display: block; box-sizing: border-box; width: 44px; height: 17px; padding: 0; border: 1px solid var(--jj2-ink); border-radius: 12px; background: var(--jj2-gold); color: var(--jj2-ink); box-shadow: 1px 2px 0 #08080b; font: 700 10px/15px JJ2Condensed, sans-serif; letter-spacing: 1px; text-transform: uppercase; }
+.jj2-ruptura .jj2-hero-resources { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; margin-right: -12px; }
+.jj2-ruptura .jj2-header-bars { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; min-width: 0; }
+.jj2-ruptura .jj2-header-bars .jj2-meter, .jj2-ruptura .jj2-stamina-bars .jj2-meter { height: 10px; }
+.jj2-ruptura .jj2-header-emblems { display: flex; align-items: center; justify-content: end; gap: 12px; }
+.jj2-ruptura .jj2-resource-stack { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.jj2-ruptura .jj2-hero-resources.jj2-stamina-resources { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; }
+.jj2-ruptura .jj2-stamina-bars { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; min-width: 0; }
+.jj2-ruptura .jj2-stamina-bars [data-resource='actions'] { grid-column: 1; }
+.jj2-ruptura .jj2-stamina-emblem { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.jj2-ruptura .jj2-resource { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 3px 2px; min-width: 0; --resource-color: #e54042; }
+.jj2-ruptura .jj2-resource[data-resource='energy'], .jj2-ruptura .jj2-refinement-meter { --resource-color: var(--jj2-purple); }
+.jj2-ruptura .jj2-resource[data-resource='actions'] { --resource-color: var(--jj2-gold); }
+.jj2-ruptura .jj2-resource-heading { display: flex; align-items: center; gap: 3px; min-width: 0; }
+.jj2-ruptura .jj2-resource-heading label { font-size: 10px; font-weight: 700; text-transform: uppercase; line-height: 1; }
+.jj2-ruptura .jj2-config { width: 20px; height: 20px; min-width: 20px; padding: 2px; border: 0; background: none; color: var(--jj2-muted); line-height: 1; box-shadow: none; }
+.jj2-ruptura .jj2-config svg { width: 14px; height: 14px; }
+.jj2-ruptura .jj2-config:hover { color: var(--jj2-gold); }
+.jj2-ruptura .jj2-resource-values { display: flex; align-items: center; justify-content: end; font-size: 10px; font-weight: 700; }
+.jj2-ruptura .jj2-resource-values input { width: 28px; height: 20px; padding: 0 1px; text-align: center; border: 0; background: transparent; font: inherit; }
+.jj2-ruptura .jj2-resource-values > span { white-space: nowrap; }
+.jj2-ruptura input[type=number] { appearance: textfield; }
+.jj2-ruptura input[type=number]::-webkit-inner-spin-button { appearance: none; }
+.jj2-ruptura .jj2-meter { height: 14px; grid-column: 1 / -1; border: 1px solid #ffffff27; background: #08080dc9; transform: skew(-12deg); overflow: hidden; }
+.jj2-ruptura .jj2-meter > span { display: block; height: 100%; background: var(--resource-color, var(--jj2-purple)); }
+.jj2-ruptura .jj2-refinement-meter .jj2-meter { height: 8px; }
+.jj2-ruptura .jj2-refinement-meter > div:first-child { display: flex; justify-content: space-between; gap: 3px; font-size: 10px; line-height: 20px; }
+.jj2-ruptura .jj2-refinement-meter > div:first-child > span { text-transform: uppercase; }
+.jj2-ruptura .jj2-resource[data-resource='actions'] { background: linear-gradient(115deg, #efbf5112, transparent 65%); }
+.jj2-ruptura .jj2-resource[data-resource='actions'] .jj2-resource-heading label { color: var(--jj2-gold); letter-spacing: .3px; }
+.jj2-ruptura .jj2-resource[data-resource='actions'] .jj2-config { color: var(--jj2-gold); }
+.jj2-ruptura .jj2-resource[data-resource='actions'] .jj2-resource-values { gap: 0; color: var(--jj2-paper); font-size: 11px; font-variant-numeric: tabular-nums; }
+.jj2-ruptura .jj2-resource[data-resource='actions'] .jj2-resource-values input { width: 22px; background: transparent; color: inherit; font-size: inherit; font-weight: 700; clip-path: none; box-shadow: none; }
+.jj2-ruptura .jj2-action-pips { grid-column: 1 / -1; height: 14px; display: flex; gap: 3px; transform: skew(-12deg); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-action-pips button { flex: 1; display: grid; place-items: center; min-width: 0; width: auto; height: 14px; margin: 0; padding: 0; background: repeating-linear-gradient(135deg, #efbf5109 0 1px, transparent 1px 6px), #08080dc9; border: 1px solid #efbf5159; border-radius: 0; box-shadow: inset 0 1px 0 #ffffff20; color: #efbf5173; clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-action-pips button.filled { background: linear-gradient(180deg, #ffffff30 0 25%, transparent 25%), repeating-linear-gradient(135deg, #10101518 0 1px, transparent 1px 6px), var(--jj2-gold); border-color: var(--jj2-gold); color: var(--jj2-ink); }
+.jj2-ruptura .jj2-action-pips button .jj2-icon { width: 10px; height: 10px; transform: skew(12deg); pointer-events: none; }
+.jj2-ruptura .jj2-action-pips button:not(:disabled):hover { filter: brightness(1.2); }
+.jj2-ruptura .jj2-action-pips button:focus-visible { box-shadow: inset 0 0 0 1px var(--jj2-ink), inset 0 0 0 2px var(--jj2-paper); }
+.jj2-ruptura .jj2-action-pips button:disabled { opacity: 1; }
+.jj2-ruptura .jj2-resource-sigil { display: flex; flex-direction: column-reverse; align-items: center; align-self: center; justify-self: end; width: 56px; height: 76px; margin: 0; }
+.jj2-ruptura .jj2-resource-sigil .jj2-resource-heading label { font-size: 8px; }
+.jj2-ruptura .jj2-resource-sigil .jj2-resource-values { position: relative; width: 56px; height: 65px; justify-content: center; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-aura-sigil { position: absolute; top: -6px; left: 50%; right: auto; bottom: auto; transform: translateX(-50%); width: 64px; height: 70px; max-width: none; max-height: none; object-fit: contain; border: 0; pointer-events: none; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-refine-sigil { position: absolute; top: -6px; left: 50%; transform: translateX(-50%); width: 64px; min-width: 0; height: 70px; margin: 0; padding: 0; border: 0; background: none; border-radius: 0; box-shadow: none; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-refine-sigil .jj2-aura-sigil { inset: 0; width: 100%; height: 100%; transform: none; }
+.jj2-ruptura .jj2-refine-sigil:disabled { opacity: 1; }
+.jj2-ruptura .jj2-refine-sigil:not(:disabled):hover { filter: brightness(1.15); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-resource-sigil .jj2-resource-values input { position: absolute; z-index: 1; left: 50%; top: 60%; transform: translate(-50%, -50%); box-sizing: border-box; width: 38px; height: 24px; margin: 0; padding: 0; color: #fff; font-size: 17px; line-height: 24px; text-align: center; text-shadow: 0 1px 2px #000; }
+.dnd5e2.sheet.actor.character.jj2-ruptura .jj2-stamina-emblem .jj2-resource-values input { color: var(--jj2-ink); text-shadow: none; }
+.jj2-ruptura .jj2-resource-sigil .jj2-resource-values > span, .jj2-ruptura .jj2-resource-sigil .jj2-meter { display: none; }
+.jj2-ruptura .jj2-resource-sigil:is([data-resource='refinement'],[data-resource='stamina']) { width: 64px; height: 86px; gap: 2px; }
+.jj2-ruptura .jj2-resource-sigil:is([data-resource='refinement'],[data-resource='stamina']) .jj2-resource-heading label { color: var(--jj2-paper); font-size: 9px; }
+.jj2-ruptura .jj2-resource-sigil:is([data-resource='refinement'],[data-resource='stamina']) .jj2-resource-values { width: 64px; height: 75px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura :is([data-resource='refinement'],[data-resource='stamina']) .jj2-refine-sigil { width: 72px; height: 78px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura :is([data-resource='refinement'],[data-resource='stamina']) .jj2-resource-values input { top: 56%; font-size: 18px; }
+/* Diagonally cut action seals after Refinada/Estamina, framing a dark circular center. */
+.jj2-ruptura .jj2-action-ring { flex: none; display: flex; flex-direction: column; align-items: center; width: 76px; gap: 0; color: var(--jj2-purple); }
+.jj2-ruptura .jj2-action-dial { position: relative; width: 76px; height: 76px; isolation: isolate; }
+.jj2-ruptura .jj2-action-core { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.jj2-ruptura .jj2-action-core-halo { stroke: #bba0d388; stroke-width: .9; stroke-linecap: round; }
+.jj2-ruptura .jj2-action-core-disc { fill: #1b1522; stroke: var(--jj2-action-aura, var(--jj2-purple)); stroke-width: 1.2; }
+.jj2-ruptura .jj2-action-core-flourish { stroke: #c7a1e5; stroke-width: 1.5; stroke-linecap: round; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-action-segment { position: absolute; inset: 0; width: 100%; min-width: 0; height: 100%; margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; opacity: 1; }
+.jj2-ruptura .jj2-action-segment svg { display: block; width: 100%; height: 100%; pointer-events: none; }
+.jj2-ruptura .jj2-action-segment path { stroke-linecap: butt; stroke-linejoin: miter; }
+.jj2-ruptura .jj2-action-segment .jj2-action-band-rim { fill: #160e2080; stroke: #160e20b3; stroke-width: calc(var(--jj2-action-stroke, 7.5) / 5); }
+.jj2-ruptura .jj2-action-segment .jj2-action-band { fill: #4e3b5d; stroke: #fff; stroke-width: .7; }
+.jj2-ruptura .jj2-action-segment.filled .jj2-action-band { fill: var(--jj2-purple); }
+.jj2-ruptura .jj2-action-segment:not(:disabled):hover .jj2-action-band { fill: #b891df; }
+.jj2-ruptura .jj2-action-segment:focus-visible { outline: none; }
+.jj2-ruptura .jj2-action-segment:focus-visible .jj2-action-band-rim { stroke: var(--jj2-paper); stroke-width: calc(var(--jj2-action-stroke, 7.5) / 5 + 1); }
+.jj2-ruptura .jj2-action-total { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 36px; display: flex; flex-direction: column; align-items: center; gap: 0; color: var(--jj2-paper); pointer-events: none; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-action-total input { pointer-events: auto; width: 32px; min-width: 0; height: 22px; margin: 0; padding: 0; border: 0; border-radius: 0; background: none; color: var(--jj2-paper); font: 700 20px/22px JJ2Condensed,sans-serif; text-align: center; font-variant-numeric: tabular-nums; box-shadow: none; text-shadow: none; }
+.jj2-ruptura .jj2-action-total span { color: #bca6cf; font: 700 9px/11px JJ2Condensed,sans-serif; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-action-restore { width: auto; min-width: 0; height: 14px; margin: 0; padding: 0; border: 0; border-radius: 0; background: none; color: var(--jj2-paper); box-shadow: none; font: 700 9px/14px JJ2Condensed,sans-serif; text-transform: uppercase; white-space: nowrap; }
+.jj2-ruptura .jj2-action-restore:disabled { opacity: 1; }
+.jj2-ruptura .jj2-action-restore:not(:disabled):hover { color: var(--jj2-purple); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .sheet-body { flex: 1; min-height: 0; padding: 0; overflow: hidden; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .main-content { display: grid !important; grid-template-columns: 155px minmax(0, 1fr) 46px; grid-template-rows: 83px minmax(0, 1fr); gap: 12px; padding: 0; height: 100%; min-height: 0; container-type: inline-size; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-sidebar { grid-column: 1; grid-row: 1 / 3; width: auto; margin: 0; padding: 26px 10px 10px; overflow-y: auto; border: 0; border-left: 3px solid var(--jj2-purple); border-radius: 0; background: repeating-linear-gradient(155deg, transparent 0 13px, #ffffff04 13px 14px), var(--jj2-raised); position: relative; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .sidebar-collapser { position: absolute; z-index: 1; top: 2px; left: auto; right: 0; background: none; border: 0; width: 20px; min-width: 0; max-width: 20px; height: 23px; padding: 3px; margin: 0; transform: none; color: var(--jj2-purple); }
+.jj2-ruptura .jj2-sidebar h2 { display: flex; align-items: center; gap: 7px; font: bold 11px JJ2Condensed, sans-serif; text-transform: uppercase; border: 0; margin: 0 0 9px; color: var(--jj2-paper); }
+.jj2-ruptura .jj2-shortcut { width: 100%; display: flex; align-items: center; gap: 7px; border: 0; border-bottom: 1px solid #ffffff15; background: transparent; text-align: left; min-height: 38px; padding: 5px 0; font-size: 11px; }
+.jj2-ruptura .jj2-shortcut > svg { width: 16px; color: var(--jj2-purple); }
+.jj2-ruptura .jj2-shortcut span { flex: 1; }
+.jj2-ruptura .jj2-shortcut small { color: var(--jj2-muted); font-size: 9px; }
+.jj2-ruptura .jj2-shortcut-gold > svg, .jj2-ruptura .jj2-shortcut.active small { color: var(--jj2-gold); }
+.jj2-ruptura .jj2-shortcut:hover, .jj2-ruptura .jj2-favorite-name:hover { background: #ffffff07; }
+.jj2-ruptura .jj2-favorites { margin-top: 24px; }
+.jj2-ruptura .jj2-favorites ul { padding: 0; margin: 0; list-style: none; }
+.jj2-ruptura .jj2-favorites li { display: flex; align-items: center; border-bottom: 1px solid #ffffff15; }
+.jj2-ruptura .jj2-favorite-name { display: flex; align-items: center; gap: 7px; flex: 1; min-width: 0; border: 0; background: none; padding: 8px 0; text-align: left; }
+.jj2-ruptura .jj2-favorite-name img { width: 25px; height: 25px; object-fit: cover; border: 0; }
+.jj2-ruptura .jj2-favorite-name > span { min-width: 0; display: flex; flex-direction: column; font-size: 11px; }
+.jj2-ruptura .jj2-favorite-name small { font-size: 9px; color: var(--jj2-muted); }
+.jj2-ruptura .jj2-favorites-empty { color: var(--jj2-muted); font-size: 11px; line-height: 1.5; padding: 7px 0; }
+.jj2-ruptura .jj2-sidebar-footer { display: flex; justify-content: space-between; gap: 6px; padding-top: 25px; color: var(--jj2-muted); font-size: 10px; text-transform: uppercase; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura.sidebar-collapsed .main-content { grid-template-columns: 23px minmax(0, 1fr) 46px; transition: none; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura.sidebar-collapsed .jj2-sidebar { width: auto !important; min-width: 0; margin: 0 !important; padding: 0; transition: none; }
+.jj2-ruptura.sidebar-collapsed .jj2-sidebar > :not(.sidebar-collapser) { display: none; }
+.jj2-ruptura.sidebar-collapsed .sidebar-collapser svg { transform: rotate(180deg); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-attributes { grid-column: 2 / 4; grid-row: 1; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 7px; margin: 0; padding: 0; }
+.jj2-ruptura .jj2-ability { --ability-accent: var(--jj2-purple); display: grid; grid-template-rows: 23px minmax(0, 1fr) 20px; align-items: center; min-width: 0; box-sizing: border-box; background: linear-gradient(125deg, #a67bda13, transparent 65%), repeating-linear-gradient(155deg, transparent 0 13px, #ffffff04 13px 14px), #17141f; border: 1px solid #a67bda66; border-top: 3px solid var(--ability-accent); clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px)); }
+.jj2-ruptura .jj2-ability.principal { --ability-accent: var(--jj2-gold); border-color: #efbf5166; border-top-color: var(--ability-accent); background: linear-gradient(125deg, #efbf5112, transparent 65%), repeating-linear-gradient(155deg, transparent 0 13px, #ffffff04 13px 14px), #17141f; }
+.jj2-ruptura .jj2-ability-heading { display: flex; align-items: center; justify-content: center; gap: 5px; min-height: 22px; padding: 0 3px; color: var(--ability-accent); font: 700 10px/1 JJ2Condensed, sans-serif; letter-spacing: .6px; }
+.jj2-ruptura .jj2-ability-heading svg { flex: none; width: 16px; height: 16px; }
+.jj2-ruptura .jj2-ability > strong, .jj2-ruptura .jj2-ability > input { box-sizing: border-box; width: 100%; margin: 0; font: 700 32px/1 JJ2Condensed, sans-serif; color: var(--jj2-paper); text-align: center; text-shadow: 0 2px 2px #08080b; }
+.jj2-ruptura .jj2-ability > strong { display: flex; align-items: center; justify-content: center; height: 35px; }
+.jj2-ruptura .jj2-ability > input { height: 35px; padding: 0; border: 0; background: none; }
+.jj2-ruptura .jj2-ability-label { display: flex; align-items: center; justify-content: center; box-sizing: border-box; width: 100%; height: 20px; padding: 2px 1px; border-top: 1px solid #a67bda38; background: #0c0a1280; color: var(--jj2-muted); font: 700 9px/1 JJ2Condensed, sans-serif; letter-spacing: .2px; }
+.jj2-ruptura .jj2-ability.principal .jj2-ability-label { border-top-color: #efbf5138; color: var(--jj2-gold); }
+.jj2-ruptura .jj2-ability:focus-within { box-shadow: inset 0 0 0 1px var(--ability-accent); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body { grid-column: 2; grid-row: 2; display: block; min-height: 0; min-width: 0; height: 100%; padding: 0; overflow: hidden; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body > .tab { padding: 0 6px 12px 0; margin: 0; height: 100%; overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: var(--jj2-purple) transparent; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body > .tab:not(.active) { display: none !important; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body > .jj2-page.active { display: block; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-tabs-nav { grid-column: 3; grid-row: 2; position: relative; inset: auto; z-index: 1; display: flex; flex-direction: column; align-self: start; width: 46px; margin: 0; padding: 0; border: 0; gap: 7px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-tabs-nav > .item { display: flex; align-items: center; justify-content: center; position: relative; width: 46px; height: 43px; padding: 0; border: 1px solid #ffffff29; border-radius: 0; background: var(--jj2-raised); color: var(--jj2-paper); transform: skewY(-7deg); box-shadow: none; }
+.jj2-ruptura .jj2-tabs-nav > .item svg { transform: skewY(7deg); width: 20px; height: 20px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-tabs-nav > .item.active { border-color: var(--jj2-purple); background: var(--jj2-purple); color: var(--jj2-ink); }
+.jj2-ruptura .jj2-tabs-nav > .item.active::before { content: ''; position: absolute; left: -5px; top: 8px; bottom: 8px; width: 3px; background: var(--jj2-gold); }
+.jj2-ruptura .jj2-tabs-nav > .item > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.jj2-ruptura .jj2-combat-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: stretch; gap: 9px; margin-bottom: 4px; }
+.jj2-ruptura .jj2-combat-metrics > .jj2-metric { --metric-accent: var(--jj2-purple); position: relative; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 0; min-width: 0; min-height: 98px; margin: 0; padding: 24px 0 0; border: 1px solid var(--metric-accent); border-radius: 0; background: linear-gradient(128deg, #a67bda17 0 46%, transparent 46%), repeating-linear-gradient(155deg, transparent 0 12px, #ffffff04 12px 13px), #17141f; box-shadow: inset 0 0 0 3px #101015, inset 0 0 0 4px #ffffff0d; clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 9px 100%, 0 calc(100% - 9px)); }
+.jj2-ruptura .jj2-combat-metrics > :is(.jj2-metric-movement, .jj2-engagement) { --metric-accent: var(--jj2-gold); background: linear-gradient(128deg, #efbf5115 0 46%, transparent 46%), repeating-linear-gradient(155deg, transparent 0 12px, #ffffff04 12px 13px), #19171e; }
+.jj2-ruptura .jj2-metric::before { content: ''; position: absolute; top: 0; left: 0; width: 34px; height: 3px; background: var(--metric-accent); pointer-events: none; }
+.jj2-ruptura .jj2-metric > svg { position: absolute; top: 8px; left: 10px; width: 18px; height: 18px; color: var(--metric-accent); pointer-events: none; }
+.jj2-ruptura .jj2-metric > strong, .jj2-ruptura .jj2-engagement > input { position: relative; box-sizing: border-box; display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%; height: 43px; padding: 0; margin: 0; color: var(--jj2-paper); font: italic 700 34px/1 JJ2Condensed, sans-serif; font-variant-numeric: tabular-nums; text-align: center; white-space: nowrap; text-shadow: 2px 2px 0 #08080b; }
+.jj2-ruptura .jj2-metric > strong .sign { font: inherit; }
+.jj2-ruptura .jj2-metric > strong small { margin-left: 5px; color: var(--metric-accent); font: 700 11px/1 JJ2Condensed, sans-serif; text-shadow: none; align-self: center; }
+.jj2-ruptura .jj2-combat-metrics .jj2-engagement > input { width: calc(100% - 24px); border: 0; border-bottom: 1px solid #efbf5155; border-radius: 0; background: #efbf5108; box-shadow: none; }
+.jj2-ruptura .jj2-metric > .jj2-metric-label { box-sizing: border-box; display: flex; align-items: center; justify-content: center; width: 100%; min-height: 28px; padding: 5px 6px; border-top: 1px solid #ffffff1a; background: #0c0a12bb; color: var(--metric-accent); font: 700 9px/1.15 JJ2Condensed, sans-serif; letter-spacing: .15px; text-transform: uppercase; text-align: center; }
+.jj2-ruptura .jj2-combat-metrics .jj2-config { position: absolute; top: 5px; right: 6px; display: grid; place-items: center; width: 22px; height: 22px; padding: 3px; color: var(--jj2-muted); background: #101015a0; border: 1px solid #ffffff1a; border-radius: 0; }
+.jj2-ruptura .jj2-combat-metrics .jj2-config:hover { color: var(--metric-accent); border-color: var(--metric-accent); }
+.jj2-ruptura .jj2-combat-metrics > button.jj2-metric:not(:disabled):hover { border-color: var(--jj2-paper); background-color: #272031; }
+.jj2-ruptura .jj2-combat-metrics > button.jj2-metric:focus-visible, .jj2-ruptura .jj2-metric:focus-within { box-shadow: inset 0 0 0 2px var(--metric-accent), inset 0 0 0 4px #101015; }
+.jj2-ruptura .jj2-black-flash { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 12px 0; padding: 9px 12px; border-left: 3px solid var(--jj2-gold); background: repeating-linear-gradient(155deg, transparent 0 14px, #ffffff06 14px 15px), var(--jj2-raised); }
+.jj2-ruptura .jj2-black-flash > span { display: flex; align-items: center; gap: 7px; color: var(--jj2-gold); font-size: 12px; text-transform: uppercase; font-weight: 700; }
+.jj2-ruptura .jj2-action { border: 1px solid #ffffff38; background: #101015b3; padding: 5px 9px; font-size: 10px; }
+.jj2-ruptura .jj2-action.active { color: var(--jj2-gold); border-color: var(--jj2-gold); }
+.jj2-ruptura .jj2-panel { margin-bottom: 12px; padding: 12px; background: repeating-linear-gradient(155deg, transparent 0 14px, #ffffff03 14px 15px), var(--jj2-raised); border: 1px solid #ffffff18; border-top: 2px solid var(--jj2-purple); }
+.jj2-ruptura .jj2-panel > h2 { display: flex; justify-content: center; align-items: center; gap: 7px; font: bold 12px JJ2Condensed, sans-serif; letter-spacing: 1px; text-transform: uppercase; color: var(--jj2-paper); border: 0; margin: 0 0 12px; }
+.jj2-ruptura .jj2-panel > h2 svg { width: 15px; height: 15px; }
+.jj2-ruptura .jj2-panel ul { list-style: none; margin: 0; padding: 0; }
+.jj2-ruptura .jj2-saves > ul, .jj2-ruptura .jj2-weapons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 18px; }
+.jj2-ruptura .jj2-rank-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px; min-height: 42px; padding: 5px 0; border-bottom: 1px solid #ffffff12; }
+.jj2-ruptura .jj2-rank-name { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.jj2-ruptura .jj2-rank-name > svg { width: 15px; height: 15px; }
+.jj2-ruptura .jj2-rank-line { display: flex; align-items: center; gap: 7px; }
+.jj2-ruptura .jj2-rank-line > strong { min-width: 27px; padding: 4px; background: #eee8dc; color: var(--jj2-ink); font-size: 13px; text-align: center; }
+.jj2-ruptura .jj2-rank-row > small { display: none; }
+.jj2-ruptura .jj2-saves-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 12px; margin-bottom: 8px; }
+.jj2-ruptura .jj2-panel.jj2-saves { border-left: 3px solid var(--jj2-purple); border-top: 1px solid #f3eee34d; border-right-color: #f3eee333; border-bottom-color: #f3eee333; padding: 12px 14px 6px; box-shadow: 3px 3px 0 #08080ba0; }
+.jj2-ruptura .jj2-saves .jj2-saves-heading { padding-bottom: 10px; margin-bottom: 4px; border-bottom: 1px solid #a67bda38; }
+.jj2-ruptura .jj2-saves-heading h2 { display: flex; align-items: center; gap: 7px; margin: 0; border: 0; font: italic 700 13px JJ2Condensed, sans-serif; letter-spacing: .5px; text-transform: uppercase; color: var(--jj2-paper); }
+.jj2-ruptura .jj2-saves-heading h2 svg { width: 15px; height: 15px; }
+.jj2-ruptura .jj2-saves .jj2-saves-heading h2 svg { color: var(--jj2-purple); width: 18px; height: 18px; }
+.jj2-ruptura .jj2-proficiency-points { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--jj2-muted); }
+.jj2-ruptura .jj2-proficiency-points output { display: grid; place-items: center; min-width: 28px; height: 24px; padding-inline: 4px; background: var(--jj2-purple); color: var(--jj2-ink); font-size: 14px; font-weight: 700; }
+.jj2-ruptura .jj2-proficiency-points small { font-size: inherit; }
+.jj2-ruptura .jj2-saves .jj2-proficiency-points { gap: 7px; font-size: 10px; }
+.jj2-ruptura .jj2-saves .jj2-proficiency-points output { min-width: 30px; height: 26px; font-size: 15px; clip-path: polygon(15% 0, 100% 0, 100% 82%, 85% 100%, 0 100%, 0 18%); }
+.jj2-ruptura .jj2-saves .jj2-rank-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; margin: 0; min-height: 42px; }
+.jj2-ruptura .jj2-saves .jj2-rank-name { min-width: 0; line-height: 16px; }
+.jj2-ruptura .jj2-saves .jj2-rank-line > strong { display: inline-flex; flex-direction: row; align-items: center; justify-content: center; flex-shrink: 0; gap: 1px; position: relative; isolation: isolate; box-sizing: border-box; width: 36px; min-width: 36px; height: 26px; padding: 0 3px; line-height: 1; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--jj2-ink); background: var(--jj2-purple); border: 0; box-shadow: none; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); filter: drop-shadow(2px 2px 0 #08080b80); }
+.jj2-ruptura .jj2-saves .jj2-rank-line > strong::before { content: ''; position: absolute; z-index: -1; inset: 1px; background: repeating-linear-gradient(145deg, transparent 0 5px, #7151950a 5px 6px), var(--jj2-paper); clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); pointer-events: none; }
+.jj2-ruptura .jj2-saves .jj2-rank-line > strong::after { content: ''; position: absolute; right: 3px; bottom: 3px; width: 7px; height: 1px; background: #715195; transform: rotate(-45deg); pointer-events: none; }
+.jj2-ruptura .jj2-saves .jj2-rank-line > strong .sign { display: inline; font: inherit; line-height: inherit; color: inherit; }
+.jj2-ruptura .jj2-saves .jj2-dots { gap: 0; }
+.jj2-ruptura .jj2-dots { display: flex; align-items: center; }
+.jj2-ruptura .jj2-dot { display: flex; align-items: center; justify-content: center; width: 15px; height: 22px; min-width: 15px; margin: 0; padding: 0; background: none; border: 0; box-shadow: none; }
+.jj2-ruptura .jj2-dot:disabled { opacity: 1; }
+.jj2-ruptura .jj2-dot > span { display: block; width: 9px; height: 9px; border: 1px solid #c9bfd7; border-radius: 50%; background: transparent; }
+.jj2-ruptura .jj2-dot.filled > span { background: var(--jj2-purple); border-color: var(--jj2-purple); }
+.jj2-ruptura .jj2-dot.selected > span { box-shadow: 0 0 0 1px var(--jj2-ink), 0 0 0 2px var(--jj2-gold); }
+.jj2-ruptura .jj2-identity-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 12px 0; }
+.jj2-ruptura .jj2-identity-card { display: flex; align-items: center; position: relative; gap: 9px; min-height: 77px; padding: 9px; border: 1px solid #ffffff1c; border-left: 3px solid var(--jj2-purple); background: repeating-linear-gradient(155deg, transparent 0 13px, #ffffff04 13px 14px), var(--jj2-raised); text-align: left; }
+.jj2-ruptura .jj2-identity-card:nth-child(2n) { border-left-color: var(--jj2-gold); }
+.jj2-ruptura .jj2-identity-icon { display: flex; justify-content: center; align-items: center; flex-shrink: 0; width: 38px; height: 42px; border: 1px solid #ffffff2a; color: var(--jj2-purple); }
+.jj2-ruptura .jj2-identity-icon svg { width: 25px; height: 25px; }
+.jj2-ruptura .jj2-origin-card .jj2-identity-icon img { width: 32px; height: 32px; object-fit: cover; border: 1px solid #a67bda66; border-radius: 0; }
+.jj2-ruptura .jj2-origin-card .jj2-origin-content { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; min-width: 0; }
+.jj2-ruptura .jj2-origin-card .jj2-origin-content strong { overflow-wrap: anywhere; }
+.jj2-ruptura .jj2-identity-card > div, .jj2-ruptura .jj2-identity-card > span:last-child { display: flex; flex-direction: column; align-items: start; gap: 5px; min-width: 0; }
+.jj2-ruptura .jj2-identity-card strong { font-size: 13px; text-transform: uppercase; }
+.jj2-ruptura .jj2-identity-card > div > span, .jj2-ruptura .jj2-identity-card > span > span { font-size: 9px; background: var(--jj2-purple); color: var(--jj2-ink); padding: 2px 5px; }
+.jj2-ruptura .jj2-identity-card .jj2-config { position: absolute; right: 2px; top: 2px; }
+.jj2-ruptura .jj2-identity-card select { max-width: 100%; height: 22px; font-size: 10px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-main-style { margin: 0; padding: 0; min-width: 0; align-items: stretch; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-main-style > .class { flex: 1; width: 100%; min-width: 0; min-height: 77px; height: auto; box-sizing: border-box; padding: 10px; gap: 8px; }
+.jj2-ruptura .jj2-main-style .name-stacked { min-width: 0; flex: 1; }
+.jj2-ruptura .jj2-main-style .name-stacked .title { font: 700 14px JJ2Condensed, sans-serif; color: var(--jj2-paper); }
+.jj2-ruptura .jj2-main-style .name-stacked .subtitle { font: 10px JJ2Condensed, sans-serif; color: var(--jj2-purple); }
+.jj2-ruptura .jj2-main-style .level { flex: none; min-width: 32px; padding: 3px; font-weight: 700; text-align: center; }
+.jj2-ruptura .jj2-main-style .level-selector { width: 100%; min-width: 0; height: 24px; padding: 0; border: 0; background: none; text-align: center; }
+.jj2-ruptura .jj2-main-style .name-stacked > select { max-width: 100%; height: 22px; font-size: 10px; }
+.jj2-ruptura .jj2-skill-groups { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.jj2-ruptura .jj2-skill-group { min-width: 0; }
+.jj2-ruptura .jj2-skill-group h3 { font: bold 11px JJ2Condensed, sans-serif; text-transform: uppercase; color: var(--jj2-purple); border: 0; margin: 0 0 6px; }
+.jj2-ruptura .jj2-skill-group ul { list-style: none; margin: 0; padding: 0; }
+.jj2-ruptura .jj2-skill-ability { font-size: 9px; color: var(--jj2-muted); }
+.jj2-ruptura .jj2-skills .jj2-skill-group { margin-bottom: 0; padding: 10px 12px 8px; }
+.jj2-ruptura .jj2-skills .jj2-skill-group-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 36px; margin: -1px 0 7px; padding: 6px 9px; border-bottom: 1px solid #a67bda66; background: linear-gradient(115deg, #a67bda25 0 42%, transparent 42%), #10101780; }
+.jj2-ruptura .jj2-skills .jj2-skill-group h3 { display: flex; align-items: center; gap: 8px; width: auto; margin: 0; padding: 0; background: none; color: var(--jj2-paper); text-align: left; font: italic 700 16px/1 JJ2Condensed, sans-serif; letter-spacing: .5px; }
+.jj2-ruptura .jj2-skill-group-heading h3 svg { width: 18px; height: 18px; color: var(--jj2-purple); }
+.jj2-ruptura .jj2-skill-group-heading > span { color: var(--jj2-muted); font-size: 8px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; text-align: right; }
+.jj2-ruptura .jj2-skills .jj2-skill-groups { gap: 16px; margin-top: 0; }
+.jj2-ruptura .jj2-skills .jj2-weapons-panel { margin-top: 22px; }
+.jj2-ruptura .jj2-skills .jj2-weapons { display: block; }
+.jj2-ruptura .jj2-skills .jj2-proficiency-row { box-sizing: border-box; display: grid; grid-template-columns: 32px minmax(130px, 1fr) 40px minmax(120px, 1.15fr); gap: 10px; min-height: 53px; padding: 8px 6px; margin: 0; border-bottom: 1px solid #ffffff0f; }
+.jj2-ruptura .jj2-skills .jj2-proficiency-row:nth-child(odd) { background: linear-gradient(100deg, #a67bda08, transparent 75%); }
+.jj2-ruptura .jj2-skills .jj2-proficiency-row:last-child { border-bottom: 0; }
+.jj2-ruptura .jj2-proficiency-icon { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; color: var(--jj2-purple); background: #100d18; border: 1px solid #a67bda66; clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
+.jj2-ruptura .jj2-proficiency-icon svg { width: 20px; height: 20px; }
+.jj2-ruptura .jj2-proficiency-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.jj2-ruptura .jj2-proficiency-info > a, .jj2-ruptura .jj2-proficiency-info > strong { font-size: 14px; font-weight: 700; line-height: 1.15; }
+.jj2-ruptura .jj2-proficiency-info > div { display: flex; gap: 5px; font-size: 10px; color: var(--jj2-muted); }
+.jj2-ruptura .jj2-proficiency-info > div > span { border: 1px solid #ffffff22; padding: 2px 5px; border-radius: 0; font: 700 8px/1.1 JJ2Condensed, sans-serif; text-transform: uppercase; background: #ffffff04; }
+.jj2-ruptura .jj2-proficiency-info > div > .jj2-skill-ability { color: var(--jj2-purple); border-color: #a67bda38; background: #a67bda0a; }
+.jj2-ruptura .jj2-proficiency-row:has(.jj2-dot.filled) .jj2-proficiency-info > div > span:first-child { color: var(--jj2-purple); border-color: #a67bda66; background: #a67bda15; }
+.jj2-ruptura .jj2-proficiency-bonus { display: inline-flex; flex-direction: row; align-items: center; justify-content: center; gap: 1px; position: relative; isolation: isolate; box-sizing: border-box; flex-shrink: 0; height: 32px; padding: 0 3px; font-size: 14px; line-height: 1; white-space: nowrap; font-variant-numeric: tabular-nums; background: linear-gradient(145deg, #d0b7ee, var(--jj2-purple) 45%, #674686); color: var(--jj2-paper); text-shadow: 0 1px 2px #000a; clip-path: polygon(18% 0, 82% 0, 100% 50%, 82% 100%, 18% 100%, 0 50%); filter: drop-shadow(2px 2px 0 #08080bc9); }
+.jj2-ruptura .jj2-proficiency-bonus::before { content: ''; position: absolute; z-index: -1; inset: 1.5px; background: linear-gradient(130deg, #a67bda1f, transparent 65%), repeating-linear-gradient(145deg, transparent 0 5px, #ffffff05 5px 6px), #15101e; clip-path: polygon(18% 0, 82% 0, 100% 50%, 82% 100%, 18% 100%, 0 50%); pointer-events: none; }
+.jj2-ruptura .jj2-proficiency-bonus::after { content: ''; position: absolute; bottom: 4px; left: 50%; width: 8px; height: 1px; transform: translateX(-50%); background: var(--jj2-purple); opacity: .75; pointer-events: none; }
+.jj2-ruptura .jj2-proficiency-bonus .sign { font: inherit; line-height: inherit; color: inherit; }
+.jj2-ruptura .jj2-proficiency-progress { min-width: 0; padding: 0 3px; background: #0d0b142e; border-bottom: 1px solid #a67bda18; }
+.jj2-ruptura .jj2-proficiency-progress .jj2-dots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; }
+.jj2-ruptura .jj2-proficiency-progress .jj2-dot { position: relative; width: 100%; height: 32px; }
+.jj2-ruptura .jj2-proficiency-progress .jj2-dot::before { content: ''; position: absolute; height: 1px; left: 0; right: 0; background: #ffffff25; }
+.jj2-ruptura .jj2-proficiency-progress .jj2-dot > span { position: relative; width: 11px; height: 11px; border-width: 1px; border-color: #c9bfd7a8; background: #17131f; }
+.jj2-ruptura .jj2-proficiency-progress .jj2-dot.filled > span, .jj2-ruptura .jj2-proficiency-progress .jj2-dot.filled::before { background: var(--jj2-purple); }
+.jj2-ruptura .jj2-proficiency-progress .jj2-dot.filled > span { border-color: var(--jj2-purple); }
+.jj2-ruptura .jj2-proficiency-progress .jj2-dot.selected > span { box-shadow: 0 0 0 2px #17131f, 0 0 0 3px var(--jj2-gold); }
+.jj2-ruptura .jj2-proficiency-progress .jj2-dot:not(:disabled):hover { background: #a67bda12; }
+.jj2-ruptura .jj2-rank-legend { display: flex; flex-wrap: wrap; gap: 10px; padding: 7px 0; font-size: 10px; color: var(--jj2-muted); }
+.jj2-ruptura .jj2-rank-legend > span { display: flex; align-items: center; gap: 4px; }
+.jj2-ruptura .jj2-rank-legend i { display: inline-block; width: 6px; height: 6px; border-radius: 50%; border: 1px solid var(--jj2-purple); }
+.jj2-ruptura .jj2-page-heading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 7px; margin: 0 0 14px; }
+.jj2-ruptura .jj2-page-heading h2 { font: bold 21px Georgia, serif; border: 0; margin: 0; }
+.jj2-ruptura .jj2-page-heading > span { font-size: 11px; color: var(--jj2-muted); }
+.jj2-ruptura .jj2-manga-heading { min-height: 58px; box-sizing: border-box; padding: 10px 12px; margin-bottom: 18px; border: 1px solid #f3eee34d; border-left: 3px solid var(--jj2-purple); background: linear-gradient(115deg, #a67bda24 0 34%, transparent 34%), repeating-linear-gradient(155deg, transparent 0 16px, #ffffff04 16px 17px), var(--jj2-raised); box-shadow: 3px 3px 0 #08080bc9; }
+.jj2-ruptura .jj2-manga-heading h2 { display: flex; align-items: center; gap: 9px; color: var(--jj2-paper); font: italic 700 22px/1 JJ2Condensed, sans-serif; letter-spacing: .5px; text-transform: uppercase; }
+.jj2-ruptura .jj2-manga-heading h2 svg { width: 21px; height: 21px; color: var(--jj2-purple); }
+
+/* Summary resource cards: actor counters and native activity controls stay separate. */
+/* Native training modal uses the same ink, paper and violet accents as the sheet. */
+.application.jj2-training-dialog { --jj2-ink: #101015; --jj2-paper: #f3eee3; --jj2-purple: #a67bda; --jj2-gold: #efbf51; --jj2-muted: #aaa7b4; color: var(--jj2-paper); font-family: JJ2Condensed, sans-serif; background: var(--jj2-ink); border: 1px solid #a67bda80; border-radius: 0; box-shadow: 5px 5px 0 #050509cc; max-width: calc(100vw - 32px); }
+.application.jj2-training-dialog .window-header { background: #17131f; border-bottom: 1px solid #a67bda44; }
+.jj2-training-dialog .window-title { color: var(--jj2-paper); font: 700 12px/1 JJ2Condensed, sans-serif; letter-spacing: .6px; text-transform: uppercase; }
+.application.jj2-training-dialog .window-content { padding: 14px; color: var(--jj2-paper); background: repeating-linear-gradient(155deg, transparent 0 18px, #ffffff03 18px 19px), var(--jj2-ink); }
+.jj2-training-dialog .jj2-training-masthead { display: grid; grid-template-columns: 36px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 12px 10px; border-left: 3px solid var(--jj2-purple); border-bottom: 1px solid #a67bda66; background: linear-gradient(115deg, #a67bda22 0 64%, transparent 64%), #19151f; }
+.jj2-training-dialog .jj2-training-emblem { display: grid; place-items: center; width: 34px; height: 38px; color: var(--jj2-purple); border: 1px solid #a67bda55; background: #101015; clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
+.jj2-training-dialog .jj2-training-emblem svg { width: 23px; height: 23px; }
+.jj2-training-dialog .jj2-training-masthead h2 { margin: 0; border: 0; color: var(--jj2-paper); font: italic 700 22px/1 JJ2Condensed, sans-serif; text-transform: uppercase; }
+.jj2-training-dialog .jj2-training-masthead p { margin: 5px 0 0; color: var(--jj2-purple); font-size: 10px; letter-spacing: .4px; }
+.jj2-training-dialog .jj2-training-duration { padding: 5px 7px; color: var(--jj2-ink); background: var(--jj2-gold); font-size: 10px; font-weight: 700; text-transform: uppercase; clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); }
+.jj2-training-dialog .jj2-training-intro { margin: 13px 0 9px; color: var(--jj2-muted); font-size: 12px; }
+.jj2-training-dialog .jj2-training-choices { display: flex; flex-direction: column; gap: 10px; }
+.jj2-training-dialog .jj2-training-choice { position: relative; display: grid; grid-template-columns: 19px minmax(0, 1fr) 38px; align-items: center; gap: 10px; padding: 13px 11px; border: 1px solid #f3eee32b; border-left: 3px solid #a67bda66; background: repeating-linear-gradient(155deg, transparent 0 16px, #ffffff04 16px 17px), #1b1822; box-shadow: 3px 3px 0 #08080ba0; cursor: pointer; }
+.jj2-training-dialog .jj2-training-choice:hover:not(.at-limit) { border-color: #a67bdaaa; }
+.jj2-training-dialog .jj2-training-choice:has(input:checked) { border-color: var(--jj2-purple); background-color: #282034; }
+.jj2-training-dialog .jj2-training-choice.at-limit { opacity: .45; cursor: not-allowed; }
+.jj2-training-dialog .jj2-training-choice input { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; padding: 0; margin: 0; opacity: 0; }
+.jj2-training-dialog .jj2-training-radio { display: grid; place-items: center; width: 18px; height: 18px; border: 1px solid var(--jj2-purple); background: #101015; border-radius: 50%; pointer-events: none; }
+.jj2-training-dialog .jj2-training-radio svg { width: 12px; height: 12px; color: var(--jj2-ink); opacity: 0; }
+.jj2-training-dialog input:checked + .jj2-training-radio { background: var(--jj2-purple); box-shadow: 0 0 0 2px #101015, 0 0 0 3px #a67bda44; }
+.jj2-training-dialog input:checked + .jj2-training-radio svg { opacity: 1; }
+.jj2-training-dialog input:focus-visible + .jj2-training-radio { outline: 2px solid var(--jj2-gold); outline-offset: 3px; }
+.jj2-training-dialog .jj2-training-choice-info { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.jj2-training-dialog .jj2-training-choice-info > strong { color: var(--jj2-paper); font: italic 700 16px/1.1 JJ2Condensed, sans-serif; text-transform: uppercase; }
+.jj2-training-dialog .jj2-training-choice-info > span { color: var(--jj2-muted); font-size: 10px; }
+.jj2-training-dialog .jj2-training-stats { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; margin-top: 3px; }
+.jj2-training-dialog .jj2-training-stats > span { display: inline-flex; align-items: center; gap: 5px; padding: 3px 5px; background: #10101580; color: var(--jj2-muted); border: 1px solid #ffffff0d; font-size: 10px; }
+.jj2-training-dialog .jj2-training-stats b { color: var(--jj2-paper); font-size: 12px; white-space: nowrap; }
+.jj2-training-dialog .jj2-training-stats svg { width: 13px; height: 13px; color: var(--jj2-purple); }
+.jj2-training-dialog .jj2-training-stats small { color: var(--jj2-purple); font-size: 9px; }
+.jj2-training-dialog .jj2-training-stats .jj2-training-limit { color: var(--jj2-gold); }
+.jj2-training-dialog .jj2-training-gain { display: flex; align-items: center; justify-content: center; min-height: 35px; padding: 3px; color: var(--jj2-purple); border: 1px solid #a67bda80; background: #100d17; font: 700 19px/1 JJ2Condensed, sans-serif; clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
+.jj2-training-dialog .jj2-training-note { display: flex; align-items: flex-start; gap: 7px; padding: 10px 0 0; margin-top: 11px; border-top: 1px solid #a67bda22; color: var(--jj2-muted); font-size: 10px; line-height: 1.4; }
+.jj2-training-dialog .jj2-training-note svg { flex: none; width: 15px; height: 15px; color: var(--jj2-purple); }
+.jj2-training-dialog .jj2-training-note strong { color: var(--jj2-paper); }
+.jj2-training-dialog footer.form-footer { gap: 9px; padding-top: 10px; border-top: 1px solid #a67bda22; }
+.jj2-training-dialog footer.form-footer button { min-height: 34px; padding: 7px 10px; border: 1px solid #a67bda66; border-radius: 0; color: var(--jj2-paper); background: #17131f; font: 700 12px/1.1 JJ2Condensed, sans-serif; box-shadow: none; }
+.jj2-training-dialog footer.form-footer button.default { color: var(--jj2-ink); background: var(--jj2-purple); border-color: var(--jj2-purple); }
+.jj2-training-dialog footer.form-footer button:hover { filter: brightness(1.12); }
+
+.jj2-ruptura .jj2-intensive-training { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 10px 12px; padding: 12px; margin-bottom: 14px; border: 1px solid #a67bda66; border-left: 3px solid var(--jj2-purple); background: linear-gradient(115deg, #a67bda18 0 48%, transparent 48%), repeating-linear-gradient(155deg, transparent 0 16px, #ffffff04 16px 17px), #17141f; box-shadow: 3px 3px 0 #08080bb0; }
+.jj2-ruptura .jj2-training-title { grid-column: 1; grid-row: 1; display: flex; align-items: center; gap: 9px; min-width: 0; color: var(--jj2-paper); }
+.jj2-ruptura .jj2-training-title > strong { font: italic 700 16px/1.1 JJ2Condensed, sans-serif; text-transform: uppercase; }
+.jj2-ruptura .jj2-training-title .jj2-training-emblem { display: grid; place-items: center; flex: none; width: 29px; height: 32px; color: var(--jj2-purple); background: #100d17; border: 1px solid #a67bda77; clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
+.jj2-ruptura .jj2-training-title svg { width: 19px; height: 19px; }
+.jj2-ruptura .jj2-training-bonuses { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+.jj2-ruptura .jj2-training-bonuses > span { --training-accent: var(--jj2-purple); display: flex; align-items: center; gap: 7px; min-width: 0; min-height: 39px; padding: 5px 9px; border: 1px solid #ffffff1a; border-left: 2px solid var(--training-accent); background: #100d17b3; white-space: nowrap; }
+.jj2-ruptura .jj2-training-bonuses > .jj2-training-refinement { --training-accent: var(--jj2-gold); }
+.jj2-ruptura .jj2-training-bonuses small { flex: 1; min-width: 0; color: var(--jj2-muted); font: 700 10px/1.1 JJ2Condensed, sans-serif; }
+.jj2-ruptura .jj2-training-bonuses strong { color: var(--training-accent); font: italic 700 23px/1 JJ2Condensed, sans-serif; font-variant-numeric: tabular-nums; }
+.jj2-ruptura .jj2-training-bonuses .jj2-config { position: static; flex: none; display: grid; place-items: center; width: 20px; height: 20px; padding: 3px; border: 1px solid #ffffff1a; border-radius: 0; color: var(--jj2-muted); background: #08080c66; }
+.jj2-ruptura .jj2-training-bonuses .jj2-config:hover { border-color: var(--training-accent); color: var(--training-accent); }
+.jj2-ruptura .jj2-training-bonuses .jj2-config svg { width: 12px; height: 12px; }
+.jj2-ruptura .jj2-intensive-training > .jj2-action { grid-column: 2; grid-row: 1; display: flex; align-items: center; justify-content: center; gap: 7px; min-height: 31px; padding: 6px 10px; color: var(--jj2-ink); background: var(--jj2-gold); border: 1px solid var(--jj2-gold); border-radius: 0; font: 700 11px/1 JJ2Condensed, sans-serif; text-transform: uppercase; clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
+.jj2-ruptura .jj2-intensive-training > .jj2-action svg { width: 13px; height: 13px; transform: rotate(180deg); }
+.jj2-ruptura .jj2-intensive-training > .jj2-action:not(:disabled):hover { background: #ffcf62; border-color: #ffcf62; }
+.jj2-ruptura .jj2-intensive-training > .jj2-action:disabled { opacity: .45; cursor: default; }
+.jj2-ruptura .jj2-intensive-training :is(button, .jj2-config):focus-visible { outline: 2px solid var(--jj2-paper); outline-offset: 2px; }
+.jj2-ruptura .jj2-extra-resources { margin-top: 14px; }
+.jj2-ruptura .jj2-extras-heading { margin-bottom: 12px; min-height: 48px; }
+.jj2-ruptura .jj2-extras-heading h2 { font-size: 20px; }
+.jj2-ruptura .jj2-extras-heading .jj2-action { display: flex; align-items: center; gap: 5px; margin-left: auto; font-size: 10px; }
+.jj2-ruptura .jj2-extra-resource-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.jj2-ruptura .jj2-extra-card { --resource-accent: var(--jj2-purple); display: flex; flex-direction: column; position: relative; min-width: 0; padding: 12px; border: 1px solid #ffffff32; border-left: 3px solid var(--resource-accent); background: linear-gradient(128deg, #a67bda0a 0 48%, transparent 48%), repeating-linear-gradient(155deg, transparent 0 18px, #ffffff04 18px 19px), var(--jj2-raised); box-shadow: 3px 3px 0 #08080bb0; }
+.jj2-ruptura .jj2-extra-card > header { display: flex; align-items: center; gap: 8px; min-height: 30px; }
+.jj2-ruptura .jj2-extra-card-icon { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border: 1px solid #ffffff28; color: var(--resource-accent); background: #0d0c12; transform: skew(-5deg); }
+.jj2-ruptura .jj2-extra-card-icon svg { width: 20px; height: 20px; transform: skew(5deg); }
+.jj2-ruptura .jj2-extra-card h3 { flex: 1; min-width: 0; margin: 0; border: 0; color: var(--jj2-paper); font: italic 700 15px/1.15 JJ2Condensed, sans-serif; text-transform: uppercase; overflow-wrap: anywhere; }
+.jj2-ruptura .jj2-extra-card .jj2-config { position: static; flex: none; width: 24px; height: 24px; padding: 3px; color: var(--jj2-muted); }
+.jj2-ruptura .jj2-extra-counter { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 13px 0 8px; }
+.jj2-ruptura .jj2-extra-counter > label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--resource-accent); }
+.jj2-ruptura .jj2-extra-counter > div { display: flex; align-items: center; gap: 6px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-extra-counter input { box-sizing: border-box; height: 34px; width: 58px; margin: 0; padding: 2px; border: 1px solid #a67bda55; background: #a67bda18; color: var(--jj2-paper); text-align: center; font: 700 22px/1 JJ2Condensed, sans-serif; }
+.jj2-ruptura .jj2-extra-counter > div > span { font-size: 12px; font-weight: 700; color: var(--jj2-muted); }
+.jj2-ruptura .jj2-extra-meter { height: 7px; flex: none; border: 1px solid #ffffff24; background: #08080c; transform: skew(-12deg); overflow: hidden; }
+.jj2-ruptura .jj2-extra-meter > span { display: block; height: 100%; background: repeating-linear-gradient(105deg, transparent 0 14px, #08080c55 14px 16px), var(--resource-accent); }
+.jj2-ruptura .jj2-extra-activity { margin: 10px 0; color: var(--jj2-muted); font-size: 10px; line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.jj2-ruptura .jj2-extra-card > footer { display: flex; align-items: center; gap: 8px; margin-top: auto; }
+.jj2-ruptura .jj2-extra-card > footer .jj2-action { display: flex; flex: 1; align-items: center; justify-content: center; gap: 6px; min-height: 30px; padding: 5px 8px; border-color: var(--resource-accent); font-size: 10px; }
+.jj2-ruptura .jj2-extra-card > footer .jj2-action svg { width: 15px; height: 15px; }
+.jj2-ruptura .jj2-extra-fulgor { --resource-accent: var(--jj2-gold); background: repeating-linear-gradient(155deg, transparent 0 18px, #ffffff04 18px 19px), var(--jj2-raised); }
+.jj2-ruptura .jj2-extra-fulgor.active { box-shadow: 3px 3px 0 #08080bb0, inset 0 0 28px #efc15412; }
+.jj2-ruptura .jj2-fulgor-status { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px 10px; min-height: 42px; margin: 12px 0 2px; }
+.jj2-ruptura .jj2-fulgor-status strong { color: var(--jj2-gold); font: italic 700 23px/1 JJ2Condensed, sans-serif; text-transform: uppercase; }
+.jj2-ruptura .jj2-fulgor-status span { font-size: 9px; text-transform: uppercase; color: var(--jj2-muted); }
+.jj2-ruptura .jj2-features-heading .jj2-action { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 34px; padding: 7px 10px; border: 1px solid var(--jj2-purple); background: var(--jj2-purple); color: var(--jj2-ink); font: 700 11px JJ2Condensed, sans-serif; text-transform: uppercase; }
+.jj2-ruptura .jj2-features-heading .jj2-action svg { width: 16px; height: 16px; }
+.jj2-ruptura .jj2-features-heading .jj2-action:not(:disabled):hover { background: var(--jj2-paper); border-color: var(--jj2-paper); }
+.jj2-ruptura .jj2-skills-points { display: flex; align-items: center; gap: 10px; }
+.jj2-ruptura .jj2-skills-points-count { display: flex; align-items: center; gap: 6px; font-variant-numeric: tabular-nums; }
+.jj2-ruptura .jj2-skills-points-count output { display: grid; place-items: center; min-width: 36px; height: 34px; padding-inline: 9px; background: var(--jj2-paper); color: var(--jj2-ink); font: 700 25px/1 JJ2Condensed, sans-serif; clip-path: polygon(6px 0, calc(100% - 6px) 0, 100% 50%, calc(100% - 6px) 100%, 6px 100%, 0 50%); }
+.jj2-ruptura .jj2-skills-points-count > span { color: var(--jj2-muted); font-size: 14px; font-weight: 700; }
+.jj2-ruptura .jj2-skills-points-caption { display: flex; flex-direction: column; gap: 3px; }
+.jj2-ruptura .jj2-skills-points-caption strong { color: var(--jj2-purple); font-size: 10px; letter-spacing: .5px; text-transform: uppercase; }
+.jj2-ruptura .jj2-skills-points-caption > span { color: var(--jj2-paper); font-size: 10px; }
+.jj2-ruptura .jj2-builder-entry { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--jj2-raised); padding: 12px; margin-bottom: 12px; border-left: 3px solid var(--jj2-purple); }
+.jj2-ruptura .jj2-builder-entry p { font-size: 12px; color: var(--jj2-muted); margin: 5px 0 0; }
+.jj2-ruptura .jj2-training-config { padding: 12px; background: var(--jj2-raised); font-size: 12px; }
+.jj2-ruptura .jj2-training-config label { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.jj2-ruptura .jj2-training-config input { width: 65px; }
+.jj2-ruptura .tab-body .items-section, .jj2-ruptura .tab-body .items-header { background-color: var(--jj2-raised); color: var(--jj2-paper); }
+.jj2-ruptura .tab-body .item-row, .jj2-ruptura .tab-body .item-name { color: var(--jj2-paper); }
+.jj2-ruptura .tab-body .jj-cond-header { background: #684789; }
+.jj2-ruptura .tab-body .jj-cond-item { background: #1b1b23; color: var(--jj2-paper); border-color: #ffffff20; }
+.jj2-ruptura .tab-body .editor, .jj2-ruptura .tab-body prose-mirror { color: var(--jj2-paper); background: #1b1b23; }
+
+/* Shared manga panels: style the native sections without changing their layout or actions. */
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body :is(
+  .items-section, .jj2-panel, .spellcasting.card, .encumbrance.card,
+  .jj2-builder-entry, .jj2-training-config, .jj2-identity-card,
+  .textbox, .jj-conditions-section, .classes .pill-lg,
+  item-list-controls search, .filter-element search, .attunement,
+  .tab[data-tab='biography'] > .bottom
+) {
+  --dnd5e-inventory-border: 1px solid #f3eee34d;
+  --item-control-color: #b7a9c5;
+  --item-control-interactive-color: var(--jj2-paper);
+  --item-control-active-color: var(--jj2-gold);
+  background-color: #18181f !important;
+  background-image: repeating-linear-gradient(155deg, transparent 0 16px, #ffffff04 16px 17px) !important;
+  border: 1px solid #f3eee34d !important;
+  border-left: 3px solid var(--jj2-purple) !important;
+  border-radius: 0 !important;
+  box-shadow: 3px 3px 0 #08080bc9 !important;
+  color: var(--jj2-paper);
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .items-section {
+  margin-bottom: 16px;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body :is(
+  .items-section > .items-header, .items-section > header,
+  .spellcasting.card > .header, .jj-cond-header
+) {
+  background: linear-gradient(125deg, #a67bda29 0 35%, transparent 35%), #101015;
+  border: 0;
+  border-bottom: 1px solid #a67bda9c;
+  border-radius: 0;
+  color: var(--jj2-paper);
+  padding-block: 8px;
+  text-shadow: none;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body :is(
+  .items-header > h3, .items-section > header > h3,
+  .spellcasting.card > .header > h3, .textbox > h3,
+  .jj2-panel > h2, .jj2-skill-group > h3,
+  .tab[data-tab='biography'] > .bottom > h3
+) {
+  font-family: JJ2Condensed, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: .5px;
+  color: var(--jj2-paper);
+  text-shadow: none;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .items-header > h3 {
+  margin: 0;
+  padding-left: 10px;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .items-header .item-header {
+  color: #d2c7dd;
+  font-family: JJ2Condensed, sans-serif;
+  font-size: 10px;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .items-section .item-list > .item {
+  border-bottom: 1px solid #ffffff14;
+  border-radius: 0;
+  background: transparent;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .items-section .item-list > .item:last-child {
+  border-bottom: 0;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .items-section .item-row:hover {
+  background: #a67bda10;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .items-section .item-name .title {
+  color: var(--jj2-paper);
+  font-family: JJ2Condensed, sans-serif;
+  font-weight: 700;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .items-section .name-stacked .subtitle {
+  color: #b5a8c4;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .items-section .item-image {
+  border: 1px solid #f3eee330;
+  border-radius: 0;
+  box-shadow: none;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .item-description > .wrapper {
+  background: #10101580;
+  color: var(--jj2-paper);
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .jj-collapse-icon {
+  color: var(--jj2-purple);
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body :is(.textbox, .tab[data-tab='biography'] > .bottom) {
+  padding: 10px;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body :is(.textbox, .tab[data-tab='biography'] > .bottom) > h3 {
+  margin-top: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #a67bda80;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .textbox textarea {
+  color: var(--jj2-paper);
+  background: #10101580;
+  border: 1px solid #ffffff20;
+  border-radius: 0;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body :is(.editor, prose-mirror) {
+  border-radius: 0;
+  --color-text-primary: var(--jj2-paper);
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .jj-conditions-section {
+  margin-block: 12px;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .jj-cond-grid {
+  padding: 10px;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .jj-cond-header > span {
+  color: var(--jj2-paper);
+  font: italic 700 13px JJ2Condensed, sans-serif;
+  letter-spacing: .5px;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .jj-cond-item {
+  border-radius: 0;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .classes .pill-lg .level {
+  color: var(--jj2-paper) !important;
+  background: #101015 !important;
+  border-color: #a67bda80 !important;
+  border-radius: 0 !important;
+  text-shadow: none !important;
+}
+
+/* Inventory utilities use the same panel treatment as the item sections. */
+/* Personalização keeps physical actor fields and native feature documents. */
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .jj2-personalization { display: none; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .jj2-personalization.active { display: block; }
+.jj2-ruptura .jj2-physical-panel,
+.jj2-ruptura .jj2-customization-panel { margin-bottom: 14px; padding: 12px; border: 1px solid #f3eee340; border-left: 3px solid var(--jj2-purple); background: repeating-linear-gradient(155deg, transparent 0 16px, #ffffff04 16px 17px), var(--jj2-raised); box-shadow: 3px 3px 0 #08080bc9; }
+.jj2-ruptura .jj2-physical-panel > h3,
+.jj2-ruptura .jj2-customization-heading > h3 { display: flex; align-items: center; gap: 8px; margin: 0; border: 0; color: var(--jj2-paper); font: italic 700 16px/1.1 JJ2Condensed, sans-serif; text-transform: uppercase; letter-spacing: .5px; }
+.jj2-ruptura .jj2-physical-panel > h3 { padding-bottom: 10px; margin-bottom: 12px; border-bottom: 1px solid #a67bda38; }
+.jj2-ruptura .jj2-physical-panel > h3 svg,
+.jj2-ruptura .jj2-customization-heading > h3 svg { flex: none; width: 19px; height: 19px; color: var(--jj2-purple); }
+.jj2-ruptura .jj2-physical-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 14px; }
+.jj2-ruptura .jj2-physical-fields > label { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.jj2-ruptura .jj2-physical-fields > label > span:first-child { color: var(--jj2-purple); font: 700 9px/1 JJ2Condensed, sans-serif; letter-spacing: .6px; text-transform: uppercase; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-physical-fields input,
+.jj2-ruptura .jj2-physical-value { display: block; width: 100%; box-sizing: border-box; min-height: 30px; margin: 0; padding: 6px 8px; border: 1px solid #a67bda38; border-bottom: 2px solid #a67bda66; background: #0d0b15a0; color: var(--jj2-paper); font-size: 12px; line-height: 1.3; border-radius: 0; overflow-wrap: anywhere; }
+.jj2-ruptura .jj2-customization-heading { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: -1px 0 9px; padding-bottom: 10px; border-bottom: 1px solid #a67bda38; }
+.jj2-ruptura .jj2-customization-heading > h3 { flex: 1; }
+.jj2-ruptura .jj2-customization-count { display: flex; align-items: center; gap: 4px; min-width: 29px; justify-content: center; padding: 4px 8px; color: var(--jj2-ink); background: var(--jj2-purple); clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
+.jj2-ruptura .jj2-customization-count strong { font: 700 17px/1 JJ2Condensed, sans-serif; }
+.jj2-ruptura .jj2-customization-count span { font: 700 10px/1 JJ2Condensed, sans-serif; }
+.jj2-ruptura .jj2-customization-heading .jj2-action { display: flex; align-items: center; justify-content: center; gap: 5px; min-height: 28px; padding: 4px 8px; border-color: #a67bda66; font-size: 9px; }
+.jj2-ruptura .jj2-customization-heading .jj2-action svg { width: 13px; height: 13px; }
+.jj2-ruptura .jj2-customization-items { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.jj2-ruptura .jj2-customization-item { padding: 7px 8px; border: 1px solid #ffffff18; background: linear-gradient(110deg, #a67bda08, transparent 80%), #10101566; }
+.jj2-ruptura .jj2-customization-row { display: flex; align-items: center; gap: 10px; padding: 0; min-height: 34px; }
+.jj2-ruptura .jj2-customization-name { display: flex; flex: 1; align-items: center; gap: 10px; min-width: 0; margin: 0; padding: 0; border: 0; background: none; text-align: left; }
+.jj2-ruptura .jj2-customization-name img { flex: none; width: 32px; height: 32px; border: 1px solid #a67bda55; border-radius: 0; object-fit: cover; }
+.jj2-ruptura .jj2-customization-name strong { color: var(--jj2-paper); font-size: 13px; line-height: 1.2; overflow-wrap: anywhere; }
+.jj2-ruptura .jj2-customization-controls { display: flex; gap: 4px; }
+.jj2-ruptura .jj2-customization-controls button { display: grid; place-items: center; width: 25px; height: 25px; padding: 3px; border: 1px solid #ffffff22; color: var(--jj2-muted); background: #0c0a1280; }
+.jj2-ruptura .jj2-customization-controls svg { width: 15px; height: 15px; }
+.jj2-ruptura .jj2-customization-controls .jj2-toggle-expand svg { transform: rotate(-90deg); }
+.jj2-ruptura .jj2-customization-item.collapsed .jj2-toggle-expand svg { transform: rotate(180deg); }
+.jj2-ruptura .jj2-customization-item .item-description { color: var(--jj2-paper); font-size: 12px; line-height: 1.5; }
+.jj2-ruptura .jj2-customization-item .item-summary { padding-top: 10px; margin-top: 8px; border-top: 1px solid #a67bda22; }
+.jj2-ruptura .jj2-customization-activities { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 0 42px; }
+.jj2-ruptura .jj2-customization-activities button { display: flex; align-items: center; gap: 5px; width: auto; min-height: 26px; padding: 4px 7px; border: 1px solid #a67bda44; color: var(--jj2-paper); background: #a67bda10; font-size: 10px; }
+.jj2-ruptura .jj2-customization-activities svg { width: 13px; height: 13px; color: var(--jj2-purple); }
+.jj2-ruptura .jj2-customization-empty { display: grid; justify-items: center; gap: 6px; padding: 16px 10px; color: var(--jj2-muted); font-size: 11px; border: 1px dashed #a67bda2b; background: #10101555; text-align: center; }
+.jj2-ruptura .jj2-customization-empty svg { width: 22px; height: 22px; color: var(--jj2-purple); opacity: .65; }
+.jj2-ruptura .jj2-customization-empty small { font-size: 9px; opacity: .8; }
+@container (max-width: 650px) { .jj2-ruptura .jj2-physical-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Identity panels keep native item, level and skill-tree controls. */
+.jj2-ruptura .jj2-identity-grid { --identity-accent: var(--jj2-purple); gap: 12px; align-items: stretch; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .jj2-identity-grid :is(.jj2-main-style > .class, .jj2-origin-card, .jj2-identity-style) { position: relative; isolation: isolate; box-sizing: border-box; min-height: 92px; padding: 13px 11px; gap: 9px; overflow: hidden; background-color: #17161e !important; background-image: linear-gradient(122deg, #a67bda15 0 28%, transparent 28% 70%, #ffffff04 70%), repeating-linear-gradient(155deg, transparent 0 16px, #ffffff04 16px 17px) !important; border: 1px solid #f3eee340 !important; border-left: 3px solid var(--identity-accent) !important; border-top: 2px solid var(--identity-accent) !important; box-shadow: 3px 3px 0 #08080bc9 !important; }
+.jj2-ruptura .jj2-identity-grid .jj2-origin-card { --identity-accent: var(--jj2-gold); display: grid; grid-template-columns: 44px minmax(0, 1fr) 12px; }
+.dnd5e2.sheet.actor.character.jj2-ruptura .tab-body .jj2-identity-grid :is(.jj2-main-style > .class, .jj2-origin-card, .jj2-identity-style) { min-height:64px; padding-block:6px; }
+.jj2-ruptura .jj2-identity-grid :is(.jj2-main-style > .class, .jj2-origin-card, .jj2-identity-style)::after { content: ''; position: absolute; right: 5px; bottom: 5px; width: 9px; height: 9px; border-right: 1px solid var(--identity-accent); border-bottom: 1px solid var(--identity-accent); opacity: .6; pointer-events: none; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .jj2-main-style > .class { display: grid; grid-template-columns: 44px minmax(0, 1fr) 42px 22px; }
+.jj2-ruptura .jj2-main-style .underlay { opacity: .07; border: 0; max-width: none; pointer-events: none; }
+.jj2-ruptura .jj2-identity-grid :is(.icons, .jj2-identity-icon) { position: relative; display: grid; place-items: center; box-sizing: border-box; flex: none; width: 44px; height: 48px; border: 1px solid var(--identity-accent); background: #09090e; box-shadow: 2px 2px 0 #08080b; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-main-style .icons > img,
+.jj2-ruptura .jj2-origin-card .jj2-identity-icon img { width: 36px; height: 40px; object-fit: cover; border: 0; border-radius: 0; }
+.jj2-ruptura .jj2-main-style .icons > .controls { pointer-events: none; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-main-style .icons > .controls > .item-control { position: absolute; inset: -5px -5px auto auto; display: grid; place-items: center; width: 16px; height: 16px; background: #151018; border: 1px solid #cb7787; color: #ee9ba9; pointer-events: auto; }
+.jj2-ruptura .jj2-main-style .icons > .controls svg { width: 11px; height: 11px; }
+.jj2-ruptura .jj2-main-style .name-stacked { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.jj2-ruptura .jj2-main-style .name-stacked .title,
+.jj2-ruptura .jj2-origin-card .jj2-origin-content strong { color: var(--jj2-paper); font: italic 700 16px/1.1 JJ2Condensed, sans-serif; text-transform: uppercase; overflow-wrap: anywhere; }
+.jj2-ruptura .jj2-main-style .name-stacked .subtitle,
+.jj2-ruptura .jj2-origin-card .jj2-origin-content > span { display: inline-block; padding: 3px 6px; color: var(--jj2-ink); background: var(--identity-accent); font: 700 8px/1.15 JJ2Condensed, sans-serif; letter-spacing: .5px; text-transform: uppercase; clip-path: polygon(0 0, 100% 0, calc(100% - 4px) 100%, 0 100%); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .jj2-identity-grid .jj2-main-style .level { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; width: 42px; min-width: 42px; min-height: 44px; padding: 5px 2px; border: 1px solid var(--jj2-purple) !important; background: #100d17 !important; clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-main-style .level > :is(span, select) { width: 100%; height: 22px; padding: 0; line-height: 1; color: var(--jj2-paper); font: 700 19px/1 JJ2Condensed, sans-serif; text-align: center; text-shadow: none; }
+.jj2-ruptura .jj2-main-style .level > small { color: var(--jj2-purple); font: 700 7px/1 JJ2Condensed, sans-serif; letter-spacing: .8px; text-transform: uppercase; }
+.jj2-ruptura .jj2-main-style .jj2-config { width: 22px; height: 30px; padding: 3px; color: var(--jj2-purple); border: 1px solid #a67bda38; background: #a67bda0a; }
+.jj2-ruptura .jj2-main-style .jj2-config:hover { color: var(--jj2-paper); border-color: var(--jj2-purple); }
+.jj2-ruptura .jj2-origin-card .jj2-identity-open { display: grid; place-items: center; width: 12px; color: var(--identity-accent); opacity: .65; }
+.jj2-ruptura .jj2-origin-card .jj2-identity-open svg { width: 13px; height: 13px; transform: rotate(180deg); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .jj2-identity-grid .jj2-origin-card:hover { border-color: var(--identity-accent) !important; }
+
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .encumbrance .meter {
+  border-radius: 0;
+  border-bottom: 1px solid #a67bda80;
+  background-color: #101015;
+  color: var(--jj2-paper);
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .encumbrance .meter .label {
+  color: var(--jj2-paper);
+  font-family: JJ2Condensed, sans-serif;
+  font-size: 12px;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .encumbrance .info {
+  background: #18181f;
+  border-radius: 0;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .encumbrance .info > div {
+  border-color: #f3eee326;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .encumbrance .info .label {
+  color: #c7b9d5;
+  font: 700 9px JJ2Condensed, sans-serif;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .encumbrance .info .value {
+  color: var(--jj2-paper);
+  font: 700 18px Georgia, serif;
+  text-shadow: none;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body section.currency {
+  flex-wrap: wrap;
+  padding-block: 5px;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body section.currency :is(input[type='text'], button:not(.split-control)) {
+  box-sizing: border-box;
+  min-height: 32px;
+  background: repeating-linear-gradient(155deg, transparent 0 16px, #ffffff04 16px 17px), #18181f;
+  color: var(--jj2-paper);
+  border: 1px solid #f3eee34d;
+  border-left: 3px solid var(--jj2-gold);
+  border-radius: 0;
+  box-shadow: 2px 2px 0 #08080bc9;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body section.currency input.jj-yen-input {
+  padding: 6px 8px 6px 24px;
+  color: var(--jj2-paper);
+  font-family: JJ2Condensed, sans-serif;
+  font-weight: 700;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .jj-yen-symbol {
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+  color: var(--jj2-gold);
+  font-size: 16px;
+  filter: none;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body item-list-controls {
+  min-width: 0;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body :is(item-list-controls, .filter-element) search {
+  --filter-control-color: #b7a9c5;
+  --filter-control-active-color: var(--jj2-gold);
+  min-height: 38px;
+  box-sizing: border-box;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body :is(item-list-controls, .filter-element) search > input[type='text'] {
+  min-width: 0;
+  color: var(--jj2-paper);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  font: 12px JJ2Condensed, sans-serif;
+  box-shadow: none;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body :is(item-list-controls, .filter-element) search::before {
+  color: var(--jj2-purple);
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body :is(item-list-controls, .filter-element) search:focus-within {
+  border-color: var(--jj2-purple) !important;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .filter-control:focus-visible {
+  outline: 2px solid var(--jj2-gold);
+  outline-offset: -2px;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .attunement {
+  font-family: JJ2Condensed, sans-serif;
+  flex-shrink: 0;
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .attunement .max {
+  color: var(--jj2-paper);
+}
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .attunement :is(.config-button, .fa-sun) {
+  color: var(--jj2-purple);
+}
+@container (max-width: 670px) {
+  .jj2-ruptura .jj2-skills .jj2-proficiency-row { grid-template-columns: 26px minmax(110px, 1fr) 32px minmax(105px, 1.3fr); gap: 7px; }
+  .jj2-ruptura .jj2-proficiency-icon { width: 25px; height: 25px; }
+}
+@container (max-width: 710px) {
+  .jj2-ruptura .jj2-saves > ul, .jj2-ruptura .jj2-weapons { grid-template-columns: 1fr; }
+}
+@media (max-width: 950px) {
+  .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-hero { grid-template-columns: 150px minmax(0, 1fr) 46px; gap: 12px; }
+  .jj2-ruptura .jj2-hero-resources { grid-template-columns: minmax(80px, 1fr) minmax(100px, 1.1fr) 76px; }
+  .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .main-content { grid-template-columns: 130px minmax(0, 1fr) 42px; }
+  .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-tabs-nav, .jj2-ruptura .jj2-tabs-nav > .item { width: 42px; }
+}
+
+/* The budget is a distribution gauge, visually distinct from the six attributes. */
+.jj2-ruptura .jj2-atributos-total { --budget-accent: var(--jj2-gold); position: relative; box-sizing: border-box; display: grid; grid-template-rows: 23px minmax(0, 1fr) 11px; align-items: center; min-width: 0; padding: 0 7px 8px; color: var(--jj2-paper); border: 1px solid var(--budget-accent); background: repeating-linear-gradient(155deg, transparent 0 10px, #efbf5106 10px 11px), #131016; box-shadow: inset 0 0 0 3px #131016, inset 0 0 0 4px #efbf5133; clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); }
+.jj2-ruptura .jj2-budget-heading { display: flex; align-items: center; justify-content: center; gap: 4px; min-width: 0; color: var(--budget-accent); font: 700 8px/1 JJ2Condensed, sans-serif; letter-spacing: .1px; text-transform: uppercase; }
+.jj2-ruptura .jj2-budget-heading svg { width: 13px; height: 13px; }
+.jj2-ruptura .jj2-budget-value { display: flex; align-items: center; justify-content: center; gap: 4px; min-width: 0; min-height: 34px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.jj2-ruptura .jj2-budget-value strong { color: var(--budget-accent); font: italic 700 27px/1 JJ2Condensed, sans-serif; text-shadow: 2px 2px 0 #000; }
+.jj2-ruptura .jj2-budget-value > span { color: var(--jj2-muted); font: 400 18px/1 JJ2Condensed, sans-serif; }
+.jj2-ruptura .jj2-budget-value small { color: var(--jj2-paper); font: 700 12px/1 JJ2Condensed, sans-serif; }
+.jj2-ruptura .jj2-budget-meter { box-sizing: border-box; height: 7px; padding: 1px; border: 1px solid #ffffff29; background: #09080c; overflow: hidden; transform: skewX(-12deg); }
+.jj2-ruptura .jj2-budget-meter > span { display: block; width: var(--budget-pct); height: 100%; background: repeating-linear-gradient(90deg, transparent 0 9px, #101015bb 9px 10px), var(--budget-accent); }
+.jj2-ruptura .jj2-atributos-total.excesso { --budget-accent: #e47768; box-shadow: inset 0 0 0 3px #131016, inset 0 0 0 4px #e4776833; }
+
+/* Native effects and the Jujutsu condition palette share the manga composition. */
+.jj2-ruptura .jj2-effects-heading { min-height: 54px; margin-bottom: 12px; }
+.jj2-ruptura .jj2-effects-heading h2 { font-size: 22px; }
+.jj2-ruptura .jj2-effects-heading output { display: flex; align-items: center; gap: 7px; margin-left: auto; padding: 5px 10px; color: var(--jj2-paper); background: #100d17; border: 1px solid #a67bda66; font: 700 22px/1 JJ2Condensed, sans-serif; clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
+.jj2-ruptura .jj2-effects-heading output small { color: var(--jj2-purple); font: 700 10px/1 JJ2Condensed, sans-serif; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .effects-element { display: block; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page item-list-controls { display: block; margin-bottom: 14px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .items-section > .items-header,
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-header { min-height: 44px; margin: 0; padding: 9px 12px; background: linear-gradient(115deg, #a67bda2b 0 55%, transparent 55%), #100d17 !important; border-bottom: 1px solid #a67bda66 !important; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .items-header > h3,
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-header strong { margin: 0; padding: 0; color: var(--jj2-paper) !important; font: italic 700 16px/1.1 JJ2Condensed, sans-serif !important; letter-spacing: .3px !important; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .items-section { overflow: hidden; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .item-row { display: flex; align-items: center; min-height: 54px; padding: 7px 10px; gap: 8px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .item-list > .item:nth-child(even) { background: #a67bda05; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .item-row > .effect-name { display: flex; align-items: center; flex: 1; min-width: 0; gap: 9px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .effect-name .name-stacked { min-width: 0; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .effect-name .title { font-size: 14px; overflow-wrap: anywhere; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .item-image { flex: none; width: 34px; height: 34px; border: 1px solid #a67bda66; background: #100d17; clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .effect-detail { flex: 0 1 130px; width: 130px; min-width: 50px; color: var(--jj2-muted); font: 400 11px/1.3 JJ2Condensed, sans-serif; text-align: right; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .effect-source { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .effect-source a { color: var(--jj2-purple); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .effect-controls { display: flex; align-items: center; justify-content: flex-end; flex: 0 0 104px; width: 104px; gap: 3px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .effect-controls button { display: grid; place-items: center; flex: none; width: 23px; height: 25px; margin: 0; padding: 3px; border: 1px solid #ffffff1a; border-radius: 0; background: #100d1780; color: var(--jj2-muted); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .effect-controls svg { width: 15px; height: 15px; pointer-events: none; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .effect-controls button.active { color: var(--jj2-gold); border-color: #efbf5166; background: #efbf5110; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .effect-controls button:hover { color: var(--jj2-paper); border-color: var(--jj2-purple); background: #a67bda20; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .effect-controls [data-action='delete']:hover { color: #e47768; border-color: #e47768; }
+.jj2-ruptura .jj2-effects-page .collapsible > .item-row [data-action='toggleExpand'] svg { transform: rotate(-90deg); }
+.jj2-ruptura .jj2-effects-page .collapsible.collapsed > .item-row [data-action='toggleExpand'] svg { transform: rotate(180deg); }
+.jj2-ruptura .jj2-effects-page .duration.pill { border-color: #a67bda44; color: var(--jj2-purple); background: #100d17; font-size: 10px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page [data-effect-type='inactive'] .item-row { color: var(--jj2-muted); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .collapsible:not(.collapsed) > .item-description > .wrapper { padding: 8px 12px; border-top: 1px solid #a67bda22; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-conditions-section { padding: 0; margin: 14px 0; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-header > span { display: flex; align-items: center; gap: 8px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-header > span > svg { width: 19px; height: 19px; color: var(--jj2-purple) !important; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-custom-btn { display: flex; align-items: center; gap: 5px; min-height: 27px; margin: 0; padding: 4px 7px; border: 1px solid #efbf5166; border-radius: 0; background: #efbf5110; color: var(--jj2-gold) !important; font: 700 10px/1 JJ2Condensed, sans-serif !important; letter-spacing: 0 !important; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-custom-btn svg { width: 14px; height: 14px; color: inherit !important; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 12px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-item { display: flex; align-items: center; justify-content: flex-start; gap: 6px; box-sizing: border-box; min-width: 0; min-height: 36px; margin: 0; padding: 6px 7px; border: 1px solid #a67bda38; border-radius: 0; background: #100d1799; color: #c9bfd4; text-align: left; clip-path: polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px)); transition: none; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-item > svg { flex: none; width: 16px; height: 16px; color: var(--jj2-purple); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-item > span { min-width: 0; color: inherit; font: 700 11px/1.15 JJ2Condensed, sans-serif; letter-spacing: 0; white-space: normal; overflow: visible; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-item > .jj2-condition-state { display: none; flex: none; margin-left: auto; }
+.jj2-ruptura .jj2-effects-page .jj2-condition-state svg { display: block; width: 12px; height: 12px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-item:not(:disabled):hover { background: #a67bda18; border-color: var(--jj2-purple); color: var(--jj2-paper); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-item.active { border-color: #efbf5199; background: linear-gradient(115deg, #efbf5128, #efbf5110); color: var(--jj2-gold); box-shadow: inset 2px 0 0 var(--jj2-gold); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-item.active > svg { color: var(--jj2-gold); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-item.active > .jj2-condition-state { display: block; }
+.jj2-ruptura .jj2-effects-page .jj-cond-item:disabled, .jj2-ruptura .jj2-effects-page .jj-cond-custom-btn:disabled { opacity: .7; cursor: default; }
+.jj2-ruptura .jj2-effects-page :is(.jj-cond-item, .jj-cond-custom-btn, .effect-controls button):focus-visible { outline: 2px solid var(--jj2-gold); outline-offset: -2px; }
+
+/* ── Condições 2.0: grupos por categoria (Mentais, Defesas, Percepção…) ── */
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-grupo + .jj-cond-grupo { border-top: 1px solid #a67bda26; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-grupo-titulo { display: flex; align-items: center; gap: 8px; margin: 0; padding: 10px 12px 0; color: var(--jj2-gold); font: italic 700 13px/1.2 JJ2Condensed, sans-serif; letter-spacing: 1.2px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-grupo-titulo::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, #efbf5140, transparent); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-effects-page .jj-cond-grupo .jj-cond-grid { padding-top: 6px; padding-bottom: 10px; }
+
+/* ── Ações do painel lateral (referência de custo em PA) ─────────────────── */
+.jj2-ruptura .jj2-shortcut.jj2-action-info { cursor: help; }
+.jj2-ruptura .jj2-shortcut.jj2-action-info small { flex: none; padding: 2px 5px; border: 1px solid #efbf515c; background: #efbf5110; color: var(--jj2-gold); font: 700 9px/1 JJ2Condensed, sans-serif; letter-spacing: .3px; }
+.jj2-ruptura .jj2-shortcut.jj2-action-info small { font-size: 12px; min-width: 34px; text-align: center; padding: 2px 4px; }
+
+/* ── Card destacado: Explosão Defensiva (entre Ações e Favoritos) ─────────── */
+.jj2-ruptura .jj2-ed-card { margin: 16px 0 0; padding: 9px; border: 1px solid #a67bda59; background: linear-gradient(115deg, #a67bda1f 0 48%, transparent 48%), repeating-linear-gradient(155deg, transparent 0 16px, #ffffff04 16px 17px), #17121f; box-shadow: 3px 3px 0 #08080bb0; }
+.jj2-ruptura .jj2-ed-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; width: 100%; min-height: 84px; margin: 0; padding: 9px 6px; border: 1px solid #efbf5140; background: #100d17; text-align: center; cursor: pointer; clip-path: polygon(7px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 7px); }
+.jj2-ruptura .jj2-ed-btn:not(:disabled):hover { border-color: var(--jj2-gold); background: #efbf5112; }
+.jj2-ruptura .jj2-ed-btn:disabled { opacity: .55; cursor: default; }
+.jj2-ruptura .jj2-ed-btn:focus-visible { outline: 2px solid var(--jj2-gold); outline-offset: -2px; }
+.jj2-ruptura .jj2-ed-head { display: flex; align-items: center; justify-content: center; gap: 6px; max-width: 100%; }
+.jj2-ruptura .jj2-ed-head svg { flex: none; width: 15px; height: 15px; color: var(--jj2-purple); }
+.jj2-ruptura .jj2-ed-btn:not(:disabled):hover .jj2-ed-head svg { color: var(--jj2-gold); }
+.jj2-ruptura .jj2-ed-head strong { min-width: 0; font: italic 700 12px/1.15 JJ2Condensed, sans-serif; text-transform: uppercase; letter-spacing: .3px; color: var(--jj2-paper); }
+.jj2-ruptura .jj2-ed-dice { font: italic 700 26px/1 JJ2Condensed, sans-serif; font-variant-numeric: tabular-nums; color: var(--jj2-gold); text-shadow: 0 0 12px #efbf5140; }
+.jj2-ruptura .jj2-ed-cost { color: var(--jj2-muted); font: 700 9px/1 JJ2Condensed, sans-serif; letter-spacing: .4px; text-transform: uppercase; }
+
+
+/* ── Recarga (arma descarregada custa +1 ⬢ nas ações) ─────────────────────── */
+.jj2-recarga-linha { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.jj2-recarga-estado { font: 700 11px/1.2 JJ2Condensed, sans-serif; letter-spacing: .3px; }
+.jj2-recarga-estado.carregada { color: #8fd08f; }
+.jj2-recarga-estado.descarregada { color: var(--jj2-gold, #efbf51); }
+.jj2-recarga-linha .jj2-check { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: #c9bfd4; margin: 0; }
+
+/* ── Favoritos: só nome + ícone (o card completo fica no hover) ───────────── */
+.jj2-ruptura .jj2-favorite-name strong { text-transform: none; letter-spacing: 0; font-weight: 700; font-size: 11.5px; color: #c9bfd4; }
+.jj2-ruptura .jj2-favorite-name:hover strong { color: var(--jj2-paper, #e8e2f0); }
+
+/* ── Reversa / Seis Olhos: reservas, efeitos e comandos em painéis de mangá ── */
+.jj2-ruptura .jj2-extra-card.jj2-special-resource { gap: 8px; padding: 12px; border: 1px solid #a67bda40; border-left: 3px solid var(--resource-accent); background: linear-gradient(135deg, #a67bda09 0 46%, transparent 46%), repeating-linear-gradient(155deg, transparent 0 22px, #ffffff03 22px 23px), #131019; }
+.jj2-ruptura .jj2-special-resource::before { content: ''; position: absolute; top: -1px; left: 0; width: 46%; height: 2px; background: var(--resource-accent); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%); pointer-events: none; }
+.jj2-ruptura .jj2-special-resource::after { content: ''; position: absolute; top: -1px; right: -1px; width: 12px; height: 12px; background: linear-gradient(45deg, transparent 0 46%, var(--resource-accent) 47% 52%, #101015 53%); pointer-events: none; }
+.jj2-ruptura .jj2-special-resource.jj2-energia-reversa { --resource-accent: var(--jj2-gold); }
+.jj2-ruptura .jj2-special-resource > header { gap: 7px; min-height: 27px; padding-bottom: 7px; border-bottom: 1px solid #ffffff0f; }
+.jj2-ruptura .jj2-special-resource .jj2-extra-card-icon { width: 25px; height: 25px; border: 0; border-bottom: 1px solid var(--resource-accent); background: #ffffff04; }
+.jj2-ruptura .jj2-special-resource .jj2-extra-card-icon svg { width: 17px; height: 17px; }
+.jj2-ruptura .jj2-special-resource h3 { font-size: 14px; }
+.jj2-ruptura .jj2-er-balance { display: flex; align-items: baseline; gap: 6px; min-width: 0; }
+.jj2-ruptura .jj2-er-balance > strong { display: flex; align-items: baseline; gap: 5px; color: var(--jj2-gold); font: italic 700 36px/1 JJ2Condensed, sans-serif; font-variant-numeric: tabular-nums; }
+.jj2-ruptura .jj2-er-balance > strong small { font: 700 17px/1 JJ2Condensed, sans-serif; color: #b9acc8; }
+.jj2-ruptura .jj2-er-balance > span { color: var(--jj2-gold); font: 700 11px/1 JJ2Condensed, sans-serif; }
+.jj2-ruptura .jj2-er-balance > div { display: grid; gap: 3px; margin-left: auto; color: var(--jj2-muted); font: 500 10px/1.1 JJ2Condensed, sans-serif; text-align: right; }
+.jj2-ruptura .jj2-er-balance > div strong { padding: 3px 4px; color: var(--jj2-paper); background: #ffffff06; font-weight: 600; }
+.jj2-ruptura .jj2-special-meter { height: 4px; overflow: hidden; background: #ffffff08; transform: skew(-16deg); }
+.jj2-ruptura .jj2-special-meter > span { display: block; height: 100%; background: repeating-linear-gradient(90deg, transparent 0 26px, #131019 26px 28px), var(--jj2-gold); }
+.jj2-ruptura .jj2-er-round { display: flex; align-items: center; gap: 7px; color: var(--jj2-muted); font: 500 10px/1.2 JJ2Condensed, sans-serif; }
+.jj2-ruptura .jj2-er-round > div { display: flex; gap: 3px; margin-left: auto; }
+.jj2-ruptura .jj2-er-round i { width: 5px; height: 8px; background: #a67bda22; border: 1px solid #a67bda66; transform: skew(-15deg); }
+.jj2-ruptura .jj2-er-round i.used { background: var(--jj2-purple); }
+.jj2-ruptura .jj2-er-round strong { padding: 2px 4px; color: #d0c4de; background: #a67bda12; font-weight: 600; white-space: nowrap; }
+.jj2-ruptura .window-content .jj2-special-resource .jj2-special-btn { display: flex; align-items: center; justify-content: center; gap: 6px; min-width: 0; height: auto; min-height: 31px; margin: 0; padding: 6px 7px; border: 1px solid #a67bda52; border-radius: 0; background: #21192e; color: var(--jj2-paper); font: 600 11px/1.15 JJ2Condensed, sans-serif; text-transform: none; letter-spacing: 0; white-space: normal; box-shadow: none; transition: background-color .12s, border-color .12s; cursor: pointer; }
+.jj2-ruptura .jj2-special-btn > svg { flex: none; width: 15px; height: 15px; color: var(--jj2-purple); }
+.jj2-ruptura .jj2-special-btn > span { min-width: 0; font: inherit; text-transform: none; }
+.jj2-ruptura .jj2-special-btn > b { flex: none; font: 700 10px/1 JJ2Condensed, sans-serif; color: var(--jj2-gold); white-space: nowrap; }
+.jj2-ruptura .window-content .jj2-special-resource .jj2-special-btn:not(:disabled):hover { border-color: var(--jj2-purple); background: #342342; }
+.jj2-ruptura .jj2-special-resource .jj2-special-btn:focus-visible { outline: 2px solid var(--jj2-paper); outline-offset: 2px; }
+.jj2-ruptura .jj2-special-resource .jj2-special-btn:disabled { opacity: .42; cursor: default; }
+.jj2-ruptura .window-content .jj2-special-resource .jj2-er-recover { justify-content: flex-start; border: 1px solid #ffdc8d; background: var(--jj2-gold); color: var(--jj2-ink); padding: 8px; min-height: 34px; font-weight: 700; clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%); }
+.jj2-ruptura .window-content .jj2-special-resource .jj2-er-recover:not(:disabled):hover { background: #ffda7d; border-color: #ffda7d; }
+.jj2-ruptura .jj2-er-recover > svg { color: var(--jj2-ink); }
+.jj2-ruptura .jj2-er-recover > b { margin-left: auto; color: var(--jj2-ink); }
+.jj2-ruptura .jj2-extra-card > .jj2-special-footer { display: grid; gap: 6px; align-items: stretch; margin-top: 0; padding-top: 0; }
+.jj2-ruptura .jj2-er-uses { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.jj2-ruptura .window-content .jj2-special-resource .jj2-er-uses .jj2-special-btn { flex-direction: column; gap: 4px; min-height: 44px; text-align: center; background: #21192e; border-color: #a67bda66; }
+.jj2-ruptura .window-content .jj2-special-resource .jj2-er-uses .jj2-special-btn[data-pontos="1"] { background: #332443; }
+.jj2-ruptura .jj2-er-uses .jj2-special-btn > span { font-size: 12px; }
+.jj2-ruptura .jj2-seis-state { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 42px; }
+.jj2-ruptura .jj2-seis-state > div { display: grid; gap: 5px; min-width: 0; }
+.jj2-ruptura .jj2-seis-state strong { color: var(--jj2-paper); font: italic 700 27px/1 JJ2Condensed, sans-serif; }
+.jj2-ruptura .jj2-seis-state > div > span { color: var(--jj2-muted); font: 500 10px/1.1 JJ2Condensed, sans-serif; }
+.jj2-ruptura .jj2-seis-emblem { position: relative; display: grid; place-items: center; flex: none; width: 42px; height: 38px; border: 1px solid #a67bda45; background: #a67bda09; color: var(--jj2-purple); transform: skew(-8deg); }
+.jj2-ruptura .jj2-seis-emblem::after { content: ''; position: absolute; inset: 3px; border: 1px solid #a67bda18; }
+.jj2-ruptura .jj2-seis-emblem svg { width: 29px; height: 29px; transform: skew(8deg); }
+.jj2-ruptura .jj2-seis-olhos[data-mode="full"] .jj2-seis-emblem { border-color: #a67bda8c; background: #a67bda17; }
+.jj2-ruptura .jj2-seis-bonuses { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding-block: 6px; border-block: 1px solid #a67bda28; }
+.jj2-ruptura .jj2-seis-bonuses > div { display: grid; gap: 4px; justify-items: center; min-width: 0; }
+.jj2-ruptura .jj2-seis-bonuses > div + div { border-left: 1px solid #a67bda28; }
+.jj2-ruptura .jj2-seis-bonuses dt { color: var(--jj2-muted); font: 500 10px/1 JJ2Condensed, sans-serif; }
+.jj2-ruptura .jj2-seis-bonuses dd { display: flex; align-items: baseline; gap: 3px; margin: 0; color: var(--jj2-paper); font: 700 20px/1 JJ2Condensed, sans-serif; }
+.jj2-ruptura .jj2-seis-bonuses dd small { color: var(--jj2-purple); font-size: 10px; }
+.jj2-ruptura .jj2-seis-modes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; }
+.jj2-ruptura .window-content .jj2-special-resource .jj2-seis-modes .jj2-special-btn { min-height: 34px; padding-inline: 6px; background: #0e0b15; font-size: 12px; }
+.jj2-ruptura .window-content .jj2-special-resource .jj2-seis-modes .jj2-special-btn[aria-pressed="true"] { opacity: 1; border-color: var(--jj2-purple); color: var(--jj2-ink); background: var(--jj2-purple); }
+.jj2-ruptura .jj2-seis-tools .jj2-special-btn > span { flex: 1; text-align: left; }
+.jj2-ruptura .jj2-special-hint { display: flex; align-items: center; min-height: 31px; color: var(--jj2-muted); font: 500 11px/1.2 JJ2Condensed, sans-serif; }
+.jj2-ruptura .jj2-seis-reading { color: var(--jj2-purple); font: 600 10px/1 JJ2Condensed, sans-serif; }
+.jj2-er-recovery-dialog .jj2-er-recovery-form { display: grid; gap: 12px; }
+.jj2-er-recovery-dialog .jj2-er-recovery-form p { margin: 0; }
+.jj2-er-recovery-dialog .jj2-er-quantity { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.jj2-er-recovery-dialog .jj2-er-quantity input { width: 70px; height: 38px; text-align: center; font-size: 20px; }
+.jj2-er-recovery-dialog .jj2-er-conversion { display: flex; align-items: center; justify-content: center; gap: 18px; padding: 12px; border-block: 1px solid #a67bda44; background: #a67bda10; }
+.jj2-er-recovery-dialog .jj2-er-conversion strong { color: #efbf51; font: italic 700 24px/1 JJ2Condensed, sans-serif; }
+.jj2-er-recovery-dialog .jj2-er-conversion > span { color: #c9a7ef; font-size: 22px; }
+.application.dnd5e2.jj2-er-recovery-dialog :is(.dialog-buttons, .form-footer) button { text-transform: none; font-family: JJ2Condensed, sans-serif; }
+@media (prefers-reduced-motion: reduce) { .jj2-ruptura .window-content .jj2-special-resource .jj2-special-btn { transition: none; } }

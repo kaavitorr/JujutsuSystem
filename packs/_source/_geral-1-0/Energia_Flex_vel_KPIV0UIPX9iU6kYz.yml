@@ -1,0 +1,78 @@
+name: Energia Flexível
+type: feat
+img: icons/magic/light/explosion-impact-purple.webp
+effects: []
+folder: IK3bRk9nxj1Jq8mP
+sort: 200000
+flags:
+  scene-packer:
+    hash: d307b1fdca8c3dc4b743fc2cca82ea0ed56e371f
+    sourceId: Item.FxEBCoN8MgBLHwF0
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p>Você recebe a habilidade de Manipulação – “Energia Flexível” do
+      Capítulo 6.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: aspecto--ryu-fluxo
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.uiLHzLtUwYNeTKyj
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624910539
+  modifiedTime: 1782450481945
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_id: KPIV0UIPX9iU6kYz
+_key: '!items!KPIV0UIPX9iU6kYz'

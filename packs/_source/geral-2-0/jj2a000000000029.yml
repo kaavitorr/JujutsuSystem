@@ -1,0 +1,22 @@
+_id: jj2a000000000029
+_key: '!items!jj2a000000000029'
+name: Barreira Vazia
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: barreira-vazia
+  description:
+    value: <p><em><strong>Requisito:</strong> Véu</em></p><p>Você se torna capaz de criar um tipo de barreira bem versátil chamado de Barreira Vazia, podendo manipular o interior da barreira quase que livremente. Ela possui as seguintes características:</p><ul><li>Ela possui a metade dos Pontos de Vida padrão das barreiras e os recebidos por PA gasto;</li><li>Ela possui metade do alcance padrão das barreiras e os recebidos por PA gasto;</li><li>Ela não permite a entrada ou saída de criaturas, assim como bloqueia a visão nos seus limites.</li></ul>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Técnicas de Barreira
+      caminho: Barreiras
+      requisitos:
+        - Véu
+folder: jj2f000000000006
+ownership:
+  default: 0
+effects: []
+sort: 0

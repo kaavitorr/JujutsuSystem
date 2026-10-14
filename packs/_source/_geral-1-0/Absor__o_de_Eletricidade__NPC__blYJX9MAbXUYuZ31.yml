@@ -1,0 +1,74 @@
+_id: blYJX9MAbXUYuZ31
+name: Absorção de Eletricidade (NPC)
+type: feat
+img: icons/creatures/magical/spirit-undead-ghost-blue.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 100000
+flags:
+  scene-packer:
+    hash: fbde3e08865f517c72268dbfc891d37ce961dfef
+    sourceId: Item.blYJX9MAbXUYuZ31
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p>Sempre que a criatura for alvo de dano Elétrico, ela não sofrerá nenhum
+      dano e recuperará uma quantidade de Pontos de Vida igual ao dano Elétrico
+      recebido.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: absorcao-de-eletricidade-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.o5DEG0GCgjZZHdb6
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910552
+  modifiedTime: 1776624910574
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!blYJX9MAbXUYuZ31'

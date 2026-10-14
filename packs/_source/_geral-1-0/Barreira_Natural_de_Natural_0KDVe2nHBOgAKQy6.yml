@@ -1,0 +1,132 @@
+folder: Xd1Fj6fhI8LVub4q
+name: Barreira Natural de Natural
+type: feat
+img: icons/magic/light/explosion-star-glow-blue.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">A partir do <strong>10º nível de Lutador</strong>, as
+      faíscas negras passam a elevar seus níveis de energia amaldiçoada sempre
+      que você atinge seus 120%. Uma vez por encontro, ao entrar em Zona, você
+      recebe Pontos de Armadura iguais a 10 vezes o seu bônus de
+      proficiência.</p><p class="MsoNormal">Esses Pontos de Armadura funcionam
+      exatamente como o “Foco Defensivo”, podendo se somar a ele, inclusive
+      concedendo resistência a todos os tipos de dano.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects:
+  - name: Mente Genial
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.0KDVe2nHBOgAKQy6
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: false
+    img: icons/magic/control/mouth-smile-deception-purple.webp
+    _id: yBHX0wTy640WHm0A
+    type: base
+    system:
+      changes:
+        - key: system.abilities.wis.bonuses.check
+          value: '+2'
+          priority: 20
+          type: add
+          phase: initial
+    description: ''
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    sort: 0
+    flags:
+      dnd5e:
+        riders:
+          statuses: []
+      dae:
+        disableCondition: ''
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+      core:
+        overlay: false
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      exportSource: null
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 5.3.2
+      createdTime: 1776624881603
+      modifiedTime: 1776624881603
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!0KDVe2nHBOgAKQy6.yBHX0wTy640WHm0A'
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881603
+  modifiedTime: 1776918350344
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: 0KDVe2nHBOgAKQy6
+sort: 37500
+_key: '!items!0KDVe2nHBOgAKQy6'

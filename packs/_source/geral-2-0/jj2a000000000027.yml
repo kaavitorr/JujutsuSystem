@@ -1,0 +1,27 @@
+_id: jj2a000000000027
+_key: '!items!jj2a000000000027'
+name: Técnicas de Barreira — Visão Geral
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: tecnicas-de-barreira-visao-geral
+  description:
+    value: |-
+      <h2>Técnicas de Barreira</h2><p>As habilidades de especialização de Técnicas de Barreiras são habilidades que permitem tanto na criação de barreira quanto na adição de efeitos especiais a elas. É necessário saber técnicas de barreira para utilizar uma Expansão de Domínio.</p>
+      <p>Diferente das outras habilidades, as barreiras estão ligadas intimamente com suas técnicas, ao invés de serem divididas entre 2 caminhos diferentes.</p>
+      <p>Para ativar uma barreira, uma criatura deve usar 4 Pontos de Ação [⬢⬢⬢⬢] e reduzir seu deslocamento a 0, fazendo com que uma barreira se forme no início do turno seguinte do usuário. A barreira recebe as seguintes características padrões:</p>
+      <ul><li>Recebe 5 metros de raio por padrão;</li><li>Recebe 20 Pontos de Vida por padrão;</li><li>Ela tem duração padrão de 1 hora.</li></ul>
+      <p>Ela também possui as seguintes características adicionais:</p>
+      <ul><li><strong>Alcance:</strong> A barreira recebe 5 metros de raio para cada 2 PA consumidos na criação;</li><li><strong>Pontos de Vida:</strong> A barreira recebe 1 Ponto de Vida para cada PA consumido na criação.</li><li><strong>Selos:</strong> Os selos podem ser usados para diminuir o custo de ação das barreiras;</li><li><strong>Encantamentos:</strong> Encantamentos podem ser usados para aumentar os Pontos de Vida da barreira em 20%, 40% e 100% nos níveis Simples, Médios e Complexos respectivamente.</li></ul>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Técnicas de Barreira
+      caminho: null
+      requisitos: []
+folder: jj2f000000000005
+ownership:
+  default: 0
+effects: []
+sort: 0

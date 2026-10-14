@@ -1,0 +1,37 @@
+_id: jj2a000000000070
+name: Velocidade Anormal
+type: feat
+img: icons/magic/movement/trail-streak-zigzag-teal.webp
+system:
+  identifier: velocidade-anormal
+  description:
+    value: >-
+      <p>Ao adquirir essa habilidade, seu deslocamento se torna 15 metros por
+      rodada, aumentando para 20 metros a partir do 10º nível de personagem.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Ofensivo
+      requisitos: []
+folder: jj2f000000000013
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814963047
+  modifiedTime: 1791814963047
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000070'

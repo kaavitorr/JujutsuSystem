@@ -1,0 +1,94 @@
+name: Reforço de Vigor
+type: feat
+img: icons/skills/wounds/blood-cells-vessel-red-orange.webp
+effects: []
+folder: V7LPPawJA1q5iJPU
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  core:
+    sheetClass: dnd5e.Tidy5eItemSheet
+  cf: {}
+  scene-packer:
+    hash: 4421795f9ea46015f83fd936ccd7244ce8ff35db
+    sourceId: Item.IAvr2aSWM3Q6dHxC
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: "<p>A partir do <strong>5º nível de Restringido</strong>, você se torna capaz de liberar quantidades enormes de vitalidade do seu corpo. Você recebe acesso as seguintes características:</p><ul><li><p><em>Até 3 vezes por encontro, você pode escolher gerar Pontos de Vigor adicionais igual seu nível de restringido;</em></p></li><li><p><em>Você dobra seus dados de vida atuais, também dobrando os recebidos futuramente;</em></p></li><li><p><em>Você passa a recuperar 1 Ponto de Vida por segundo fora de combate e um valor igual seu nível de personagem no início de cada um de seus turnos, dentro dele. Essa cura sempre está ativa enquanto você não possuir mais de 4 níveis de exaustão e, ao cair a 0 Pontos de Vida, você estabiliza automaticamente e cura 1 de PV por segundo. </em></p><p class=\"MsoBodyText\"><em>Ao curar o equivalente a metade da sua vida, você levanta novamente, até lá você sofre falha em Salvaguarda de Morte ao sofrer dano de forma padrão.</em></p></li></ul><p class=\"MsoNormal\">\_</p><p class=\"TextoPadro\">A partir do <strong>10º nível de Restringido</strong>, você se torna imune a “Feridas Brutais” e “Ferimentos Persistentes” enquanto seus Pontos de Vida estiverem acima de 1/3 do total. Isso inclui desmembramento.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-aprimorador
+  activities: {}
+  advancement: {}
+  enchant: {}
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776630227312
+  modifiedTime: 1782439896603
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: gP2U0QQWiytZWTiN
+sort: 61719
+_key: '!items!gP2U0QQWiytZWTiN'

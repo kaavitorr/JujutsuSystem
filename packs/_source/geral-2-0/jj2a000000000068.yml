@@ -1,0 +1,21 @@
+_id: jj2a000000000068
+_key: '!items!jj2a000000000068'
+name: Habilidades Especiais — Visão Geral
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: habilidades-especiais-visao-geral
+  description:
+    value: <h2>Habilidades Especiais</h2><p>As habilidades de especialização especiais são habilidades limitadas ou fora da arvore de habilidades comum.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: null
+      requisitos: []
+folder: jj2f000000000012
+ownership:
+  default: 0
+effects: []
+sort: 0

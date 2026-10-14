@@ -1,0 +1,74 @@
+folder: vG1tvdXvcpq70Tb5
+name: Comandante
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p
+      style="margin-left:7.1pt;text-justify:inter-ideograph;mso-pagination:widow-orphan;tab-stops:7.1pt
+      460.7pt;mso-layout-grid-align:none;text-align:justify"><span
+      style="font-size:10.0pt;font-family:'Chaparral
+      Pro',serif;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-bidi-font-family:ChaparralPro-Regular">Você
+      está sempre orientando seus companheiros e os preparando mentalmente,
+      mesmo sem que eles percebam, porém, no menor sinal de ameaça, você
+      consegue organizá-los rapidamente, de maneira que todos consigam se
+      posicionar da melhor forma em um combate.</span></p><p
+      style="margin-left:7.1pt;text-justify:inter-ideograph;line-height:103%;tab-stops:7.1pt
+      460.7pt;text-align:justify"><span style="font-family:'Chaparral Pro,
+      serif'"><strong style="mso-bidi-font-weight:normal">Característica:
+      </strong></span><span
+      style="mso-bidi-font-weight:bold;font-family:'Chaparral Pro, serif'">Todas
+      as criaturas aliadas, com exceção de você, recebem +2 na
+      iniciativa.</span></p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: corpo-marcial
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: ccf8f92a185eb8a940430b19b75b07ae5a8ea0ad
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902151
+  modifiedTime: 1776913389250
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: nXYRnZGNuaoam45h
+sort: 1400000
+_key: '!items!nXYRnZGNuaoam45h'

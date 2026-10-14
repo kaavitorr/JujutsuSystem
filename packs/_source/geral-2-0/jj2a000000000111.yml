@@ -1,0 +1,22 @@
+_id: jj2a000000000111
+_key: '!items!jj2a000000000111'
+name: Regeneração de Feridas
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: regeneracao-de-feridas
+  description:
+    value: <p><em><strong>Requisito:</strong> Energia Reversa</em></p><p>Durante uma batalha, golpes muito poderosos podem decepar partes do corpo do usuário, cega-lo ou similar, forçando-o a utilizar Energia Reversa para se recuperar e continuar lutando. Quando isso ocorrer, o personagem pode gastar 2 PER para recuperar um membro ou órgão perdido, desde que ele esteja consciente.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Energia Reversa
+      caminho: Técnica de Energia Reversa
+      requisitos:
+        - Energia Reversa
+folder: jj2f000000000018
+ownership:
+  default: 0
+effects: []
+sort: 0

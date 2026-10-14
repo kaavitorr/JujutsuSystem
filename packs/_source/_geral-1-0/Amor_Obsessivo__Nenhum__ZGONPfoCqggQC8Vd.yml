@@ -1,0 +1,96 @@
+name: Amor Obsessivo (Nenhum)
+type: feat
+img: icons/magic/death/skull-energy-light-purple.webp
+effects: []
+folder: y7Cn34JISn9L1HL9
+sort: 100000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: a313e790f47c9c39eb73450c32f5e85f3cc7296e
+    sourceId: Item.AXvRrOTjKfVADj3y
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: "<p>Como um membro dos Zoldyck, você possui um membro da sua família que tem uma forte obsessão por você, derivada de um amor doentio. Ele deseja que você sempre fique sozinho no mundo com exceção da sua família e se torne um exemplo dentro dela.</p><p>\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Esse membro pode interferir de forma negativa com o seu grupo de tempos em tempos, causando o caos na tentativa de que você seja expulso do grupo e volte para a família, mas ele nunca irá matar alguém com as próprias mãos, pois o efeito pode ser contrário as expectativas.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: amor-obsessivo-nenhum
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.6hCyc9B7SekJ3Y4c
+  duplicateSource: Item.o2tXVlLqHkJ2AdYT
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902139
+  modifiedTime: 1776624902172
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: ZGONPfoCqggQC8Vd
+_key: '!items!ZGONPfoCqggQC8Vd'

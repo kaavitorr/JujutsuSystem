@@ -1,0 +1,84 @@
+folder: dwPv4mxgRfYyVnVI
+name: Rei das Maldições
+type: feat
+img: icons/magic/death/skull-flames-white-blue.webp
+system:
+  description:
+    value: >-
+      <p class="TextoPadro">A partir do <strong>14º nível de
+      Especialista</strong>, seu Shikigami se tornou tão poderoso que ele é
+      capaz de agir de forma quase que totalmente independente. Ele recebe as
+      seguintes características:</p><ul><li><p><em>Ele recebe duas jogadas de
+      ataque (Comuns) e 1 Ação de Poder Individual;</em></p></li><li><p><em>Ele
+      passa a gerar a própria energia amaldiçoada na mesma quantidade que você,
+      mas ela é retirada do seu PA Total;</em></p></li><li><p><em>O Shikigami
+      pode continuar agindo e lutando mesmo que você caia inconsciente a 0
+      Pontos de Vida.</em></p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776921305179
+  modifiedTime: 1776921305222
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: HjrAqKEuVqPcxBcl
+sort: 200000
+_key: '!items!HjrAqKEuVqPcxBcl'

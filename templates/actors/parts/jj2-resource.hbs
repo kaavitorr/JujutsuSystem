@@ -1,0 +1,13 @@
+<div class="jj2-resource {{#if sigil}}jj2-resource-sigil{{/if}}" data-resource="{{ id }}">
+  <div class="jj2-resource-heading"><label for="{{ @root.rootId }}-jj2-{{ id }}">{{#if icon}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=icon }}{{/if}}{{ label }}</label>
+    {{#if (and @root.editable configKey)}}<button type="button" class="jj2-config" data-action="showConfiguration" data-config="{{ configKey }}" aria-label="Configurar {{ label }}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="config" }}</button>{{/if}}
+    {{#if (and @root.owner action)}}<button type="button" class="jj2-config always-interactive" data-action="{{ action }}" aria-label="{{ actionLabel }}" data-tooltip="{{ actionLabel }}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="energy" }}</button>{{/if}}
+  </div>
+  <div class="jj2-resource-values">
+    {{#if sigil}}<button type="button" class="jj2-refine-sigil {{#if @root.owner}}always-interactive{{/if}}" data-action="jj2RefineEnergy" aria-label="{{#if sigilLabel}}{{sigilLabel}}{{else}}Refinar Energia{{/if}}" data-tooltip="{{#if sigilLabel}}{{sigilLabel}}{{else}}Refinar Energia{{/if}}" {{ disabled (not @root.owner) }}><img class="jj2-aura-sigil" src="{{#if sigilImage}}{{sigilImage}}{{else}}systems/jujutsu-system/assets/ficha/energia-amaldicoada-outline.webp{{/if}}" alt="" aria-hidden="true"></button>{{/if}}
+    <input id="{{ @root.rootId }}-jj2-{{ id }}" type="number" name="{{ path }}" value="{{ value }}" min="0" {{#unless unbounded}}max="{{ max }}"{{/unless}} data-dtype="Number" aria-label="{{ label }} atual" class="{{#if @root.owner}}always-interactive{{/if}}" {{ disabled (not @root.owner) }}><span>/ {{ max }}</span>
+  </div>
+  {{#if hint}}<small>{{ hint }}</small>{{/if}}
+  {{#unless pipsMode}}<div class="jj2-meter" role="meter" aria-label="{{ label }}" aria-valuemin="0" aria-valuenow="{{ value }}" aria-valuemax="{{ max }}"><span style="width:{{ pct }}%"></span></div>{{/unless}}
+  {{#if pipsMode}}<div class="jj2-action-pips" role="group" aria-label="Ajustar Pontos de Ação">{{#each pips}}<button type="button" class="{{#if filled}}filled{{/if}} {{#if @root.owner}}always-interactive{{/if}}" data-action="jj2ActionPip" data-value="{{ value }}" aria-label="Definir Pontos de Ação: {{ value }}" data-tooltip="Definir Pontos de Ação: {{ value }}" aria-pressed="{{#if filled}}true{{else}}false{{/if}}" {{ disabled (not @root.owner) }}>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="energy" }}</button>{{/each}}</div>{{/if}}
+</div>

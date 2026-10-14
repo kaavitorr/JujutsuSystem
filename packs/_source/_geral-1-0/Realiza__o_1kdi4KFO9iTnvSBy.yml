@@ -1,0 +1,109 @@
+name: Realização
+type: feat
+img: icons/magic/light/explosion-star-glow-silhouette.webp
+effects: []
+folder: V7LPPawJA1q5iJPU
+sort: 337500
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: b65d59256f240f2ce7a44795065a26aee57b56c7
+    sourceId: Item.07mMzpqnSXMd5SoJ
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: >-
+      <p>A partir do 19º nível de Restringido, você supera os limites do que
+      seria possível normalmente até para suas habilidades, atingindo um novo
+      patamar de poder. Você recebe acesso as seguintes
+      características:</p><ul><li><p><em>O dano de seus ataques com arma
+      amaldiçoada se torna 4d8 no lugar do
+      original;</em></p></li><li><p><em>Você recebe uma jogada de ataque (Comum)
+      adicional na característica Ataque Extra;</em></p></li><li><p><em>Você
+      recebe todos os benefícios do Mestre do Combate simultaneamente,
+      independentemente da arma utilizada;</em></p></li><li><p><em>Sua Classe de
+      Resistência se torna 30. Qualquer aumento externo, sem ser HB, pode
+      eleva-la até um máximo de 35;</em></p></li><li><p><em>Sua resistência a
+      dano do Existência Aprimorada passa a englobar dano do tipo “Verdadeiro”
+      independentemente da fonte, e suas resistências não podem ser ignoradas de
+      nenhuma forma.</em></p></li></ul><p></p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-absoluto
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.e6booTaoiv1TOOV8
+  duplicateSource: Item.OX7APnnOsC0Dp8Yx
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624911379
+  modifiedTime: 1782440027256
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: 1kdi4KFO9iTnvSBy
+_key: '!items!1kdi4KFO9iTnvSBy'

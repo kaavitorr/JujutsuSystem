@@ -1,0 +1,62 @@
+folder: vG1tvdXvcpq70Tb5
+name: Biólogo
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>Você tem um grande acumulo de conhecimento sobre diversos organismos,
+      tendo um foco maior em mamíferos, répteis, anfíbios, peixes e
+      similares.</p><p><strong>Característica:</strong> Ao olhar um animal
+      comum, exótico ou bestas mágicas, você pode realizar um Teste de Atributo
+      de Sabedoria (Percepção) CD 17 para identificar suas características.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: alvo-marcado
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: ba64831e68dad90b14a14703c4cc590a915cadfe
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776631256698
+  modifiedTime: 1776913387500
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: 37os1n1MC8Z9Tb0Z
+sort: 1000000
+_key: '!items!37os1n1MC8Z9Tb0Z'

@@ -1,0 +1,76 @@
+folder: Vm4HPrhmj0g7AJef
+name: Horda
+type: feat
+img: icons/magic/lightning/bolt-strike-explosion-yellow.webp
+system:
+  description:
+    value: "<p class=\"MsoNormal\">A partir do <strong>10º nível de Especialista</strong>, você pode juntar dois ou mais shikigamis de mesmo grau que você controla em uma única ficha, formando uma criatura mais poderosa. Você soma os Pontos de Vida e adiciona as seguintes características:</p><ul><li><p><strong>Grau 4:</strong> Adiciona +1 de CR até um máximo de 20 e +1 dado de dano até um máximo de 2d12+5;</p></li><li><p><strong>Grau 3:</strong> Adiciona +1 de CR até um máximo de 23 e +1 dado de dano até um máximo de 3d12+5;</p></li><li><p><strong>Grau 2:</strong> Adiciona +1 de CR até um máximo de 25 e +1 dado de dano até um máximo de 4d12+5;</p></li><li><p><strong>Grau 1:</strong> Adiciona +1 de CR até um máximo de 27 e +1 dado de dano até um máximo de 5d12+5;</p></li><li><p><strong>Grau Especial:</strong> Adiciona +1 de CR até um máximo de 30 e +1 dado de dano até um máximo de 5d12+12.</p></li></ul><p class=\"MsoListParagraph\">\_</p><p class=\"MsoNormal\">Adicionalmente, todas as hordas recebem +1 em Testes de Atributo de Força a cada membro que estiver compondo a horda.</p><p class=\"MsoNormal\">Toda vez que a criatura a horda perder Pontos de Vida equivalente a criatura com o menor Ponto de Vida, aquela criatura é destruída, diminuindo os atributos da horda.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881645
+  modifiedTime: 1776922396271
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: jNz9UN6UwLokE1z6
+sort: 400000
+_key: '!items!jNz9UN6UwLokE1z6'

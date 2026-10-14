@@ -1,0 +1,97 @@
+folder: pJFTz3T8ddDTtVRG
+name: Demolidor
+type: subclass
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Caminhos/Satoru_Gojo_Phantom_Parade.webp
+system:
+  description:
+    value: "<table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>DEMOLIDOR</strong></span></p></td></tr></tbody></table><p class=\"MsoNormal\">O demolidor é aquele que foca na arte do combate desarmado, tentando causar o máximo de dano possível enquanto ignora a própria defesa.</p><p></p><p><span style=\"font-size:large\"><strong>BRUTALIDADE DESENFREADA</strong></span></p><hr><p>A partir do <strong>2º nível de Lutador</strong>, você utiliza seu controle de energia amaldiçoada para aumentar a velocidade e força de seus golpes de forma precisa, aumentando sua capacidade geral de combate. Você recebe acesso as seguintes características:</p><ul><li><p><strong>Reativo:</strong> Quando você sofrer qualquer quantidade de dano de uma criatura dentro do seu alcance, você pode realizar um contra-ataque contra o alvo com uma jogada de ataque (Comum), causando 2d4 de dano físico a ele no fim do turno da criatura para cada rolagem de dano individual que ela causou contra você.</p><p class=\"TextoPadro\">A partir do 10º nível, você passa a causar 4d4 de dano no lugar de 2d4.</p></li><li><p><strong>Golpe Devastador:</strong> Sempre que você causar um acerto crítico em uma criatura inimiga, você causa dano adicional igual seu nível de personagem e a criatura deve realizar uma Salvaguarda de Constituição para não perder uma ação bônus e um ataque da característica “Ataque Extra”, se ela tiver mais de um ataque.</p></li><li><p><strong>Ataque Veloz:</strong> Quando você realizar uma jogada de ataque (Comum ou de Técnica), você pode usar uma ação bônus para realizar uma jogada de ataque (Comum) adicional.</p><p class=\"TextoPadro\">Enquanto dentro da sua expansão de domínio, você não precisa utilizar uma ação bônus para esse efeito, mas apenas pode realizar um ataque dessa forma por rodada.</p></li></ul><p>\_</p><p><span style=\"font-size:large\"><strong>BRUTALIDADE DESENFREADA</strong></span></p><hr><p><span style=\"mso-bidi-font-size:10.0pt;mso-fareast-language:EN-US\">A partir do <strong>6º nível de Lutador</strong>, </span>você pode utilizar a pressão do combate para acumular momento de forma a explodir com potencial em períodos específicos. A cada 6 Pontos de Dano que você receber em combate com uma criatura inimiga, você ganha 1 Ponto de Potencial. Você pode gastar Pontos de Potencial (PP) para ativar as seguintes características:</p><ul><li><p><strong>2 PP:</strong> Você recebe vantagem na sua próxima rolagem de acerto;</p></li><li><p><strong>5 PP:</strong> Você recebe acerto automático na sua próxima rolagem de acerto;</p></li><li><p><strong>1 ~ 5 PP:</strong> Você recebe +1 de acerto na sua próxima rolagem de acerto para cada PP gasto;</p></li><li><p><strong>1 ~ 5 PP:</strong> Você recebe 1 dado de dano na sua próxima técnica para cada PP gasto, mas esses dados não podem fazer seu dano ir acima do dano máximo possível sem a utilização deles.</p></li></ul><p class=\"TextoPadro\"></p><p class=\"TextoPadro\"><strong>Por exemplo:</strong> Se uma técnica causar 3d10 de dano, o dano máximo possível para ela é de 30.</p><p class=\"TextoPadro\">\_</p><p style=\"tab-stops:467.8pt\" class=\"TextoPadro\"><span style=\"mso-bidi-font-size:10.0pt\">Os Pontos de Potencial não têm limite de quantidade e desaparecem ao fim de um descanso longo, mas você pode manter um valor guardado ao fim dele igual seu nível de personagem.</span></p><p>\_</p><p><span style=\"font-size:large\"><strong>DESMEMBRAMENTO</strong></span></p><hr><p class=\"MsoNormal\">A partir do <strong>10º nível de Lutador</strong>, seu estilo de luta se tornou tão brutal e preciso que você consegue destruir parte do corpo da criatura inimiga em golpes certeiros. Toda vez que você realizar um acerto crítico no 20 (ou 19-20 se tiver aprimorado) ou ao ultrapassar a CR de uma criatura inimiga em 15 ou mais, causando dano Contundente, Cortante ou Perfurante; ou Verdadeiro transformado a partir de um dos danos físicos, a criatura deve realizar uma Salvaguarda de Constituição. Perdendo um membro aleatório em caso de falha. Em caso de ativação de Fulgor, o desmembramento ocorre automaticamente sem necessidade de uma Salvaguarda.</p><p class=\"MsoNormal\">A cada vez que você ativar esse efeito em uma mesma criatura dentro de um combate, a CD aumenta em +1 e você pode utilizar a tabela abaixo para ver os efeitos negativos dos desmembramentos.</p><img src=\"systems/jujutsu-system/assets/Tabelas/DEMOLIDRO.png\"><p></p><p>Uma criatura desmembrada recebe 2d6 de dano diretamente na vida dela no início de cada um dos turnos dela até ela recuperar o membro, sofrer 40 Pontos de Dano através do dano por turno do desmembramento ou se curar mais de 20 Pontos de Vida, o que ocorrer primeiro. Caso você não consiga causar desmembramento por alguma razão, você causa 4 dados de dano adicionais ao ataque.</p><p>\_</p><p><span style=\"font-size:large\"><strong>REMOÇÃO DE LIMITADOR</strong></span></p><hr><p>A partir do 14º nível de Lutador, seu corpo transborda de energia amaldiçoada que permite que você acabe formando um estoque de energia reversa em seu corpo que é formada instintivamente. Você gera Pontos de Energia Amaldiçoada (PA) adicionais por rodada <strong>igual ao seu nível de personagem.</strong></p><p class=\"TextoPadro\">Adicionalmente, você pode usar uma ação bônus para receber 1d4 adicional em suas rolagens de acerto pelo próximo minuto (também afeta a rolagem secundária para ativar o fulgor), aumentando seu resultado final da rolagem pelo resultado do d4. Você também pode, em um <strong>resultado de 4</strong>, aumentar o resultado do seu <strong>DADO em 1</strong>. Se isso ocorrer e o resultado da rolagem do dado entrar na margem de um crítico, ela passa a ser considerada um.</p><p class=\"TextoPadro\">Você recupera essa característica ao fim de um descanso longo.</p>"
+    chat: ''
+  source:
+    rules: '2014'
+    revision: 1
+  identifier: demolidor
+  classIdentifier: lutador
+  advancement:
+    D5sNyDqIXlxpW6DD:
+      type: ItemGrant
+      _id: D5sNyDqIXlxpW6DD
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.hnU9X1YZg5mZ9kOd
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 2
+      title: ''
+      hint: ''
+      flags: {}
+    pGWgDyIggW76IAHa:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.p47ZMostv44h2jiD
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 6
+      title: ''
+      hint: ''
+      _id: pGWgDyIggW76IAHa
+      flags: {}
+    rrWynWax1C2716Tr:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.uxiPgRucjJXNqeC6
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 10
+      title: ''
+      hint: ''
+      _id: rrWynWax1C2716Tr
+      flags: {}
+    ccIfjalhX9UzW2FO:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.W8yRKm0aXuMg66sz
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 14
+      title: ''
+      hint: ''
+      _id: ccIfjalhX9UzW2FO
+      flags: {}
+  spellcasting:
+    progression: none
+    ability: ''
+    preparation:
+      formula: ''
+effects: []
+sort: 275000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 5d9e1e9fd84e9b608d3693df9b61f74bb4787dc5
+  core: {}
+_stats:
+  compendiumSource: Item.5DNdPVt1SNlAA1LD
+  duplicateSource: Item.1Ea2tLIR8jwAmd6f
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624881624
+  modifiedTime: 1782439191695
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: CLYfdEUhEQfNeGO4
+_key: '!items!CLYfdEUhEQfNeGO4'

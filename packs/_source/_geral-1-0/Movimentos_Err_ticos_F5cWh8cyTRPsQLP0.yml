@@ -1,0 +1,87 @@
+folder: dwPv4mxgRfYyVnVI
+name: Movimentos Erráticos
+type: feat
+img: icons/magic/fire/explosion-flame-blue.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">A partir do <strong>6º nível de
+      Especialista,</strong> você e seu Shikigami estão constantemente se
+      movendo e trocando de posição durante o combate. Dessa forma, sempre que
+      você ou ele forem alvos de uma rolagem de dano, e o outro estiver a até 9
+      metros de distância, vocês podem trocar de posição, redirecionando o alvo
+      do dano de um para o outro e trocando de posições no processo através de
+      impulsos de alta velocidade.</p><p class="MsoNormal">Ao utilizar essa
+      característica com um Shikigami, você não pode invoca-lo novamente por
+      pelo menos 3 rodadas caso ele seja destruído como consequência da
+      transferência de dano.</p><p class="MsoNormal">Você pode realizar a troca
+      pelo menos uma vez por rodada de cada criatura.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624881627
+  modifiedTime: 1782439188701
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: F5cWh8cyTRPsQLP0
+sort: 50000
+_key: '!items!F5cWh8cyTRPsQLP0'

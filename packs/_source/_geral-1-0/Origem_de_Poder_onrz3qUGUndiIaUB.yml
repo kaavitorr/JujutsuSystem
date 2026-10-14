@@ -1,0 +1,24 @@
+name: Origem de Poder
+type: Item
+sorting: a
+sort: 200000
+color: '#242a51'
+flags:
+  core:
+    sourceId: Folder.onrz3qUGUndiIaUB
+  scene-packer:
+    hash: a85a4baa558cdc827fe074ac60104df091d5ea7f
+_id: onrz3qUGUndiIaUB
+folder: null
+description: ''
+_stats:
+  compendiumSource: Folder.onrz3qUGUndiIaUB
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624889109
+  modifiedTime: 1777058476389
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!onrz3qUGUndiIaUB'

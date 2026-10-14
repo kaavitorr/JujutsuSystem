@@ -1,0 +1,119 @@
+import HealSheet from "../../applications/activity/heal-sheet.mjs";
+import BaseHealActivityData from "../../data/activity/heal-data.mjs";
+import { maybePromptJJScale } from "../../applications/actor/jj/native-cards.mjs";
+import ActivityMixin from "./mixin.mjs";
+
+/**
+ * Activity for rolling healing.
+ */
+export default class HealActivity extends ActivityMixin(BaseHealActivityData) {
+  /* -------------------------------------------- */
+  /*  Model Configuration                         */
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  static LOCALIZATION_PREFIXES = [...super.LOCALIZATION_PREFIXES, "DND5E.HEAL"];
+
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  static metadata = Object.freeze(
+    foundry.utils.mergeObject(super.metadata, {
+      type: "heal",
+      img: "systems/jujutsu-system/icons/svg/activity/heal.svg",
+      title: "DND5E.HEAL.Title",
+      hint: "DND5E.HEAL.Hint",
+      sheetClass: HealSheet,
+      usage: {
+        actions: {
+          rollHealing: HealActivity.#rollHealing
+        }
+      }
+    }, { inplace: false })
+  );
+
+  /* -------------------------------------------- */
+  /*  Properties                                  */
+  /* -------------------------------------------- */
+
+  /** @override */
+  get damageFlavor() {
+    return _loc("DND5E.HEAL.HealingRoll");
+  }
+
+  /* -------------------------------------------- */
+  /*  Activation                                  */
+  /* -------------------------------------------- */
+
+  /** @override */
+  _usageChatButtons(message) {
+    if ( !this.healing.formula ) return super._usageChatButtons(message);
+    return [{
+      action: "rollHealing",
+      icon: "systems/jujutsu-system/icons/svg/damage/healing.svg",
+      label: { value: "DND5E.HEAL.HealingButton" }
+    }].concat(super._usageChatButtons(message));
+  }
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  async _triggerSubsequentActions(config, results) {
+    this.rollDamage({ event: config.event }, {}, { data: { system: { origin: results.message?.id } } });
+  }
+
+  /* -------------------------------------------- */
+  /*  Rolling                                     */
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  async rollDamage(config={}, dialog={}, message={}) {
+    // jujutsu: diálogo assíncrono de Energia/PA da técnica antes de rolar.
+    if ( await maybePromptJJScale(this) === false ) return null;
+
+    // Limite total de cura: bloqueia se o saldo acabou; senão a cura já sai
+    // capada ao saldo (via getDamageConfig) e registramos o consumo após rolar.
+    const lim = this.getHealLimit();
+    if ( lim.enabled && lim.remaining <= 0 ) {
+      ui.notifications.warn(`${this.item.name}: limite de cura esgotado — é preciso resetar para curar novamente.`);
+      return null;
+    }
+
+    const messageConfig = foundry.utils.mergeObject({
+      "data.type": "healing"
+    }, message);
+    // jjApplyHealCap: pede para o getDamageConfig capar a cura ao saldo na rolagem.
+    const rollConfig = lim.enabled ? { ...config, jjApplyHealCap: true } : config;
+    const rolls = await super.rollDamage(rollConfig, dialog, messageConfig);
+
+    if ( lim.enabled && rolls?.length && this.item.isOwner ) {
+      const curado = rolls.reduce((s, r) => s + (Number(r.total) || 0), 0);
+      if ( curado > 0 ) {
+        const novoSpent = Math.min(lim.max, lim.spent + curado);
+        await this.update({ "healLimit.spent": novoSpent });
+        const restante = Math.max(0, lim.max - novoSpent);
+        ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+          content: `💚 <b>${this.item.name}</b> — limite de cura: <b>${novoSpent}/${lim.max}</b> usado (${restante} restante).`
+        });
+      }
+    }
+
+    return rolls;
+  }
+
+  /* -------------------------------------------- */
+  /*  Event Listeners and Handlers                */
+  /* -------------------------------------------- */
+
+  /**
+   * Handle performing a healing roll.
+   * @this {HealActivity}
+   * @param {PointerEvent} event     Triggering click event.
+   * @param {HTMLElement} target     The capturing HTML element which defined a [data-action].
+   * @param {ChatMessage5e} message  Message associated with the activation.
+   */
+  static #rollHealing(event, target, message) {
+    this.rollDamage({ event }, {}, { data: { system: { targets: message.system.targets } } });
+  }
+}

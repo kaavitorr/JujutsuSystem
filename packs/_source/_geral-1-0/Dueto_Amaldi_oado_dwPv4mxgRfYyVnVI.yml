@@ -1,0 +1,20 @@
+type: Item
+folder: 8GbHEgID6Y7u3DHc
+name: Dueto Amaldiçoado
+color: null
+sorting: m
+_id: dwPv4mxgRfYyVnVI
+description: ''
+sort: 700000
+flags: {}
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776920968877
+  modifiedTime: 1776970547454
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!dwPv4mxgRfYyVnVI'

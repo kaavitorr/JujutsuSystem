@@ -1,0 +1,22 @@
+name: Características de Espécie
+sorting: a
+folder: Zh6nXJyphmH4TF72
+type: Item
+_id: SkcL0ylAJiRyvOc5
+description: ''
+sort: 0
+color: '#2d4e9a'
+flags:
+  scene-packer:
+    hash: 557ed5da05fb54603617033969dac04407cdacde
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910214
+  modifiedTime: 1776624910214
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!SkcL0ylAJiRyvOc5'

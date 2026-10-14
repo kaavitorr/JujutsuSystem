@@ -1,0 +1,36 @@
+{{!-- Activation --}}
+<div class="form-group split-group">
+    <label>{{ localize label }}</label>
+    <div class="form-fields">
+
+        {{#if jj2Acoes}}
+        {{!-- 2.0: custo = número de ações (consome Pontos de Ação); o tipo
+             interno permanece o que está gravado (padrão "action") — sem
+             input: um name="type" aqui colidiria com o tipo do documento --}}
+        {{ formField fields.value value=data.value label="Número de Ações" placeholder="0" localize=false
+                     hint=false classes="label-top" rootId=partId }}
+        {{!-- Reação (2.0): marca a técnica como reação (tipo nativo "reaction").
+             Checkbox sem name — grava por listener (colisão de name="type"). --}}
+        {{#if jj2ItemReacao}}
+        <label class="checkbox jj2-reakcao" data-tooltip="Marca a técnica como Reação (fora do seu turno). O custo em Pontos de Ação continua sendo o Número de Ações.">
+            <input type="checkbox" data-jj2-reakcao {{checked (eq data.type "reaction")}}>
+            <span>Reação</span>
+        </label>
+        {{/if}}
+        {{else}}
+        {{!-- Amount --}}
+        {{#if activation.scalar}}
+        {{ formField fields.value value=data.value label="DND5E.Amount" placeholder="—" localize=true hint=false
+                     classes="label-top" rootId=partId }}
+        {{/if}}
+
+        {{!-- Type --}}
+        {{ formField fields.type value=data.type label="DND5E.Cost" localize=true classes="label-top" hint=false
+                     options=activationTypes rootId=partId }}
+        {{/if}}
+    </div>
+
+    {{!-- Condition --}}
+    {{ formInput fields.condition value=data.condition input=inputs.createTextInput classes="full-width"
+                 placeholder=(localize "DND5E.ItemActivationCondition") rootId=partId }}
+</div>

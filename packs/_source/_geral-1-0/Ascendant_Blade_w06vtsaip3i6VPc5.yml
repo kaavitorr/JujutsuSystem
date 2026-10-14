@@ -1,0 +1,217 @@
+name: Ascendant Blade
+type: spell
+img: icons/skills/melee/strike-sword-gray.webp
+effects: []
+folder: AyLkZuGRCltus8nB
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickVersatile:
+      value: false
+      altValue: false
+    quickOther:
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      value: true
+      altValue: true
+    quickAttack:
+      value: true
+      altValue: true
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+      altValue:
+        '0': true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: f1662da2bb778492e42251e8822a6f2da857b297
+    sourceId: Item.a5cm3m20C3vusMKP
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+    quickOther:
+      context: ''
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+    quickAttack:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+system:
+  description:
+    value: "<p>Enquanto uma criatura estiver dentro do seu domínio simples, você pode desaparecer momentaneamente aparecendo agachado na frente da criatura enquanto levanta desferindo um corte extremamente veloz de baixo para cima que carrega tamanho poder que atira a criatura para o alto, sendo arremessada a 30 metros de altura.</p><p>\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Caso você acerte a criatura novamente com um ataque qualquer antes dela atingir o chão, você causa 1 dado de dano adicional nesse ataque.</p><hr><p>\_<strong>Duração:</strong>\_Instantâneo</p><p><strong>Alcance:</strong>\_Toque</p><p><strong>Requisito:</strong> Domínio Simples, Ação de Poder</p><p><strong>Dano:</strong> 6d10 de dano Cortante</p><p><strong>Custo:</strong> 8 PA</p>"
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  activation:
+    type: powerAction
+    condition: ''
+    value: 1
+  duration:
+    value: ''
+    units: inst
+  target:
+    affects:
+      choice: false
+      type: ''
+    template:
+      units: m
+      contiguous: false
+      stationary: false
+      type: ''
+      count: ''
+      size: '30'
+      width: '4.5'
+  range:
+    units: m
+    special: ''
+    value: '4.5'
+  uses:
+    max: ''
+    recovery: []
+    spent: 0
+  ability: ''
+  level: 2
+  school: trs
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  properties: []
+  activities:
+    kwi14SI7ueXbFxoF:
+      type: attack
+      _id: kwi14SI7ueXbFxoF
+      img: ''
+      sort: 0
+      activation:
+        type: action
+        override: false
+      consumption:
+        scaling:
+          allowed: false
+        spellSlot: true
+        targets:
+          - type: attribute
+            value: '8'
+            target: energy.generated
+            scaling:
+              mode: ''
+      description:
+        chatFlavor: ''
+      duration:
+        units: inst
+        concentration: false
+        override: false
+      effects: []
+      flags: {}
+      range:
+        units: self
+        override: false
+      target:
+        template:
+          contiguous: false
+          stationary: false
+          units: m
+        affects:
+          choice: false
+        override: false
+        prompt: true
+      uses:
+        spent: 0
+        recovery: []
+        max: ''
+      visibility:
+        level:
+          min: null
+          max: null
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+      attack:
+        critical:
+          threshold: null
+        flat: false
+        type:
+          value: ''
+          classification: ''
+        ability: ''
+        bonus: ''
+      damage:
+        critical:
+          bonus: ''
+        includeBase: true
+        parts:
+          - custom:
+              enabled: false
+              formula: ''
+            number: 6
+            denomination: 10
+            bonus: ''
+            types:
+              - slashing
+            scaling:
+              mode: ''
+              number: 1
+      name: ''
+  identifier: muscle-barrier
+  method: spell
+  prepared: 0
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776977737200
+  modifiedTime: 1782436369213
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: w06vtsaip3i6VPc5
+sort: 400000
+_key: '!items!w06vtsaip3i6VPc5'

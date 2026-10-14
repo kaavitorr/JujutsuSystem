@@ -1,0 +1,41 @@
+_id: jj2a000000000092
+name: Defesa Absoluta
+type: feat
+img: icons/magic/defensive/shield-barrier-glowing-triangle-orange.webp
+system:
+  identifier: defesa-absoluta
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> 26 habilidades de Especialização;
+      Constituição Perfeita</em></p><p>Você recebe imunidade a dano de criaturas
+      com Nível de Dificuldade igual ou inferior a metade do seu nível de
+      personagem.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Defensivo
+      requisitos:
+        - 26 habilidades de Especialização
+        - Constituição Perfeita
+folder: jj2f000000000014
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816101277
+  modifiedTime: 1791816101277
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000092'

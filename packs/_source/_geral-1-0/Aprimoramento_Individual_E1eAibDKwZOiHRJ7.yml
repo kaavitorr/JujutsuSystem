@@ -1,0 +1,89 @@
+folder: KnN8dKPxXEJmGoq3
+name: Aprimoramento Individual
+type: feat
+img: icons/commodities/treasure/token-engraved-red-glowing.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Você pode dar benefícios diferentes para diferentes
+      núcleos amaldiçoado, permitindo um aumento de força.</p><p
+      class="MsoNormal"><strong>Característica:</strong> Você pode escolher um
+      núcleo amaldiçoado, sem ser o original, para receber +2 de Força ou
+      Agilidade e um outro para receber +2 de Intelecto ou Sabedoria. Esses
+      atributos só valem quando você estiver usando aquele núcleo como
+      dominante.</p>
+    chat: ''
+  source:
+    custom: LdJ Capítulo 6
+    rules: '2014'
+    revision: 1
+    book: ''
+    page: ''
+    license: ''
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: Corpo Amaldiçoado
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: aprimoramento-individual
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 200000
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  MhGXeDSlt2zUqR0J: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 0a963d6d4476d701eef09dc58d10050d32772ead
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  compendiumSource: Item.pIaAt98DZBQngnAh
+  duplicateSource: Item.3orzL2124vWpF6bW
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624902126
+  modifiedTime: 1782448474153
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_id: E1eAibDKwZOiHRJ7
+_key: '!items!E1eAibDKwZOiHRJ7'

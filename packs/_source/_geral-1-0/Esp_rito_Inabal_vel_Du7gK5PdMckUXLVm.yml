@@ -1,0 +1,176 @@
+folder: TH5zgkPcMDGwUXiB
+name: Espírito Inabalável
+type: feat
+img: icons/magic/control/buff-flight-wings-runes-purple.webp
+system:
+  description:
+    value: >-
+      <p style="text-align:justify"><span>A partir do <strong>11º nível de
+      Lutador</strong>, </span>você consegue se manter em combate puramente com
+      seu espírito inabalável, secando até os últimos vestígios de energia para
+      continuar em combate. Você recebe resistência a todos os tipos de
+      dano.</p><p style="text-indent:49.6pt;text-align:justify">Adicionalmente,
+      se você cair a 0 Pontos de Vida e não morrer, você recupera metade dos
+      seus Pontos de Vida e pode continuar lutando. Essa característica não pode
+      ser usada novamente por 3 dias.</p>
+    chat: ''
+  source:
+    revision: 1
+    rules: '2014'
+  cover: null
+  crewed: false
+  uses:
+    max: '3'
+    recovery:
+      - period: lr
+        type: recoverAll
+    spent: 0
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  activities:
+    dnd5eactivity000:
+      _id: dnd5eactivity000
+      type: damage
+      activation:
+        type: bonus
+        value: 1
+        condition: ''
+        override: false
+      consumption:
+        targets:
+          - type: itemUses
+            target: ''
+            value: '1'
+            scaling:
+              mode: ''
+              formula: ''
+        scaling:
+          allowed: false
+          max: ''
+        spellSlot: true
+      description:
+        chatFlavor: ''
+      duration:
+        concentration: false
+        value: ''
+        units: inst
+        special: ''
+        override: false
+      effects: []
+      range:
+        units: self
+        special: ''
+        override: false
+      target:
+        template:
+          count: ''
+          contiguous: false
+          type: ''
+          size: ''
+          width: ''
+          height: ''
+          units: ft
+          stationary: false
+        affects:
+          count: ''
+          type: self
+          choice: false
+          special: ''
+        prompt: true
+        override: false
+      uses:
+        spent: 0
+        max: ''
+        recovery: []
+      damage:
+        critical:
+          allow: false
+          bonus: ''
+        parts:
+          - number: 2
+            denomination: 8
+            bonus: '@mod'
+            types: []
+            custom:
+              enabled: false
+              formula: ''
+            scaling:
+              mode: whole
+              number: null
+              formula: ''
+      sort: 0
+      img: null
+      flags: {}
+      visibility:
+        level: {}
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+  identifier: recuo-estrategico
+  enchant: {}
+  advancement: {}
+effects: []
+sort: 162500
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: 10a774bffcd617a78f268ca418045b9bfb84047d
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+    consumeUses:
+      value: true
+    quickOther:
+      context: ''
+    quickDamage:
+      context:
+        '0': Pontos de Aura
+      value:
+        '0': true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911382
+  modifiedTime: 1776903519095
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: Du7gK5PdMckUXLVm
+_key: '!items!Du7gK5PdMckUXLVm'

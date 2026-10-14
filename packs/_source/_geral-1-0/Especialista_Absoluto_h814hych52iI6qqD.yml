@@ -1,0 +1,102 @@
+folder: lWpMtihZm1il8I4V
+name: Especialista Absoluto
+type: feat
+img: icons/skills/social/diplomacy-peace-alliance.webp
+system:
+  description:
+    value: >-
+      <p>A partir do <strong>19º nível de Especialista</strong>, você atingiu os
+      limites da sua categoria, entrando em um nível de força que está na liga
+      de figuras lendárias. Você recebe as seguintes
+      características:</p><ul><li><p><strong>Preço Vital:</strong> Você pode
+      escolher consumir PA para ativar seus feitiços no lugar do seu requisito
+      de ações. Dessa forma, você pode escolher gastar 9 PA para ativar um
+      feitiço sem precisar gastar sua ação de poder e 3 PA para ativar um sem
+      precisar consumir uma ação bônus ou
+      reação.</p></li><li><p><strong>Essência do Especialista:</strong> Você
+      recebe um feitiço estendido adicional. Esse feitiço já vem naturalmente
+      com uma versão de reversão de feitiço</p></li><li><p><strong>Ação
+      Lendária:</strong> Você possui uma única ação lendária, que pode ser
+      ativada no fim do turno de uma criatura qualquer, você recupera sua ação
+      lendária no início de cada um de seus turnos. Você tem acesso as seguintes
+      opções:</p><ol><li><p class="MsoListParagraph"><strong>Movimento:</strong>
+      Você se move até metade do seu deslocamento máximo total.</p></li><li><p
+      class="MsoListParagraph"><strong>Ataque:</strong> Você realiza uma única
+      jogada de ataque (Comum) contra uma criatura dentro do seu
+      alcance.</p></li><li><p
+      class="MsoListParagraph"><strong>Detectar:</strong> Você pode realizar um
+      Teste de Atributo de Sabedoria (Percepção) para procurar por
+      algo.</p></li></ol></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: especialista-absoluto
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 900000
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: 9aee4199a9679113464dd10fb82853b6f5369305
+  core: {}
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  compendiumSource: Item.FaaHrg0kGoKhiS4X
+  duplicateSource: Item.84Z13os7myiAV3Lj
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911391
+  modifiedTime: 1776903815885
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: h814hych52iI6qqD
+_key: '!items!h814hych52iI6qqD'

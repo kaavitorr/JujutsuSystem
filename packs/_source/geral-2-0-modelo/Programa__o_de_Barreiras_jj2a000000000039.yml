@@ -1,0 +1,45 @@
+_id: jj2a000000000039
+name: Programação de Barreiras
+type: feat
+img: icons/magic/lightning/orb-ball-purple.webp
+system:
+  identifier: programacao-de-barreiras
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Barreira Permanente e Barreira
+      Bon</em></p><p>Você se torna capaz de criar barreiras Bon com até 10
+      regras específicas, assim como a criação de um autômato na forma de um
+      Shikigami para regular as regras do interior da barreira. Suas regras
+      devem ser justas para todos no interior dela, mas você recebe privilégios
+      de administrador no interior dela. Seus privilégios não permitem adicionar
+      regras que te colocam em uma vantagem de poder tangível sobre o resto das
+      criaturas no interior dela.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Técnicas de Barreira
+      caminho: Técnicas de Barreiras
+      requisitos:
+        - Barreira Permanente
+        - Barreira Bon
+folder: jj2f000000000007
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816782755
+  modifiedTime: 1791816782755
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000039'

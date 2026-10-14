@@ -1,0 +1,88 @@
+folder: 6Lp7GKcjjdPyxHoV
+name: Núcleo de Energia Reversa
+type: feat
+img: icons/magic/holy/angel-winged-humanoid-blue.webp
+system:
+  description:
+    value: >-
+      <p class="MsoBodyText">A partir do <strong>19º nível de
+      Estrategista</strong>, você se torna capaz de manter uma enorme reserva de
+      energia reversa dentro de seu corpo para utilizar quando necessário. No
+      fim de cada descanso longo, você recebe uma quantidade de Pontos de
+      Energia Reversa (PR) igual metade da sua Energia Amaldiçoada, que deve ser
+      utilizada apenas para utilizar efeitos e técnicas que utilizem energia
+      reversa sem consumir sua energia amaldiçoada padrão. Essa energia reversa
+      é gerada na mesma proporção que sua energia amaldiçoada.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: conjurador-absoluto
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 196875
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: 8715d1b59542fb7c722d1540fb74b272e26344de
+  core: {}
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  compendiumSource: Item.FaaHrg0kGoKhiS4X
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911383
+  modifiedTime: 1776906128968
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: GLBRQFbX77UDzvXq
+_key: '!items!GLBRQFbX77UDzvXq'

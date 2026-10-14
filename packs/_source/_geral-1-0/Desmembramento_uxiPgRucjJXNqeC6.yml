@@ -1,0 +1,95 @@
+folder: x1kCFkwfVVg7tErL
+name: Desmembramento
+type: feat
+img: icons/skills/melee/strike-sword-dagger-runes-red.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">A partir do <strong>10º nível de Lutador</strong>,
+      seu estilo de luta se tornou tão brutal e preciso que você consegue
+      destruir parte do corpo da criatura inimiga em golpes certeiros. Toda vez
+      que você realizar um acerto crítico no 20 (ou 19-20 se tiver aprimorado)
+      ou ao ultrapassar a CR de uma criatura inimiga em 15 ou mais, causando
+      dano Contundente, Cortante ou Perfurante; ou Verdadeiro transformado a
+      partir de um dos danos físicos, a criatura deve realizar uma Salvaguarda
+      de Constituição. Perdendo um membro aleatório em caso de falha. Em caso de
+      ativação de Fulgor, o desmembramento ocorre automaticamente sem
+      necessidade de uma Salvaguarda.</p><p class="MsoNormal">A cada vez que
+      você ativar esse efeito em uma mesma criatura dentro de um combate, a CD
+      aumenta em +1 e você pode utilizar a tabela abaixo para ver os efeitos
+      negativos dos desmembramentos.</p><img
+      src="systems/jujutsu-system/assets/Tabelas/DEMOLIDRO.png"><p></p><p>Uma
+      criatura desmembrada recebe 2d6 de dano diretamente na vida dela no início
+      de cada um dos turnos dela até ela recuperar o membro, sofrer 40 Pontos de
+      Dano através do dano por turno do desmembramento ou se curar mais de 20
+      Pontos de Vida, o que ocorrer primeiro. Caso você não consiga causar
+      desmembramento por alguma razão, você causa 4 dados de dano adicionais ao
+      ataque.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776918763709
+  modifiedTime: 1782439146430
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: uxiPgRucjJXNqeC6
+sort: 175000
+_key: '!items!uxiPgRucjJXNqeC6'

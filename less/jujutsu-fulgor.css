@@ -1,0 +1,428 @@
+/* ══════════════════════════════════════════════════════
+   JUJUTSU LEGACY — FULGOR NEGRO (sidebar)
+   Design espelhado do Seis Olhos, cores laranjas
+   ══════════════════════════════════════════════════════ */
+
+filigree-box.jj-fulgor-box {
+  --filigree-background-color: #1a1008;
+  --filigree-border-color: #603010;
+  --filigree-drop-shadow: drop-shadow(0 0 4px rgba(180, 80, 0, 0.35));
+  display: block;
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+
+/* ── Header ── */
+.jj-fulgor-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 8px 3px;
+  border: none;
+  margin: 0;
+}
+
+.jj-fulgor-header i {
+  font-size: 9px;
+  color: #a05020;
+  animation: jj-fulgor-pulse 2s ease-in-out infinite;
+}
+
+@keyframes jj-fulgor-pulse {
+  0%, 100% { text-shadow: 0 0 4px rgba(255,140,0,0.5); }
+  50%       { text-shadow: 0 0 10px rgba(255,140,0,1), 0 0 20px rgba(255,80,0,0.4); }
+}
+
+.jj-fulgor-header span {
+  color: #bbae99;
+  font-size: 9px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* ── Opções — duas caixas verticais ── */
+.jj-fulgor-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 3px 5px 4px;
+  gap: 4px;
+}
+
+.jj-fulgor-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 5px 4px;
+  background: #110a04;
+  border: 1px solid #2e1a08;
+  border-radius: 3px;
+  transition: all 140ms;
+}
+
+.jj-fulgor-option i {
+  font-size: 10px;
+  color: #3a2010;
+  transition: color 140ms;
+}
+
+.jj-fulgor-option-lbl {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4a3020;
+  transition: color 140ms;
+}
+
+.jj-fulgor-option input[type="number"] {
+  width: 34px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #3a2010;
+  color: #4a3020;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  padding: 1px 0;
+  -moz-appearance: textfield;
+  transition: color 140ms, border-color 140ms;
+}
+
+.jj-fulgor-option input[type="number"]::-webkit-inner-spin-button,
+.jj-fulgor-option input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.jj-fulgor-option input[type="number"]:focus {
+  outline: none;
+  border-bottom-color: #8a4010;
+  color: #cc6020;
+}
+
+.jj-fulgor-option:hover {
+  border-color: #5a2a10;
+}
+
+.jj-fulgor-option:hover i { color: #7a4020; }
+.jj-fulgor-option:hover .jj-fulgor-option-lbl { color: #8a5030; }
+.jj-fulgor-option:hover input[type="number"] { color: #aa6030; border-bottom-color: #7a4020; }
+
+/* ── Botão Zona ── */
+.jj-fulgor-zona-wrap {
+  padding: 0 5px 5px;
+}
+
+.jj-fulgor-zona-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 5px 4px;
+  width: 100%;
+  background: #110a04;
+  border: 1px solid #2e1a08;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4a3020;
+  cursor: pointer;
+  transition: all 140ms;
+}
+
+.jj-fulgor-zona-btn i {
+  font-size: 12px;
+  color: #3a2010;
+  transition: color 140ms;
+}
+
+.jj-fulgor-zona-btn:hover {
+  border-color: #5a2a10;
+  color: #8a5030;
+}
+
+.jj-fulgor-zona-btn:hover i { color: #7a4020; }
+
+.jj-fulgor-zona-btn.active {
+  background: #1e0e02;
+  border-color: #8a4010;
+  color: #cc7030;
+  animation: jj-zona-glow 2s ease-in-out infinite;
+}
+
+.jj-fulgor-zona-btn.active i { color: #aa5010; }
+
+@keyframes jj-zona-glow {
+  0%, 100% { box-shadow: inset 0 0 6px rgba(180,80,0,0.1); }
+  50%       { box-shadow: inset 0 0 12px rgba(200,100,0,0.25), 0 0 8px rgba(180,80,0,0.2); }
+}
+
+/* ══════════════════════════════════════════════════════
+   EXPLOSÃO DEFENSIVA + ENERGIA REVERSA (sidebar)
+   ══════════════════════════════════════════════════════ */
+
+/* Wrapper — 1 coluna normal, 2 colunas quando duo */
+.jj-habilidades-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  margin-top: 2px;
+  margin-bottom: 8px;
+}
+
+.jj-habilidades-row.jj-habilidades-duo {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ── Explosão Defensiva (azul) ── */
+filigree-box.jj-expdef-box {
+  --filigree-background-color: #06101a;
+  --filigree-border-color: #0e2a50;
+  --filigree-drop-shadow: drop-shadow(0 0 3px rgba(40, 80, 200, 0.25));
+  display: block;
+}
+
+.jj-expdef-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 8px 3px;
+  border: none;
+  margin: 0;
+}
+
+.jj-expdef-header i {
+  font-size: 9px;
+  color: #2a50a0;
+  animation: jj-expdef-pulse 2s ease-in-out infinite;
+}
+
+@keyframes jj-expdef-pulse {
+  0%, 100% { text-shadow: 0 0 4px rgba(40,80,220,0.3); }
+  50%       { text-shadow: 0 0 10px rgba(40,80,220,0.8), 0 0 18px rgba(30,60,180,0.3); }
+}
+
+.jj-expdef-header span {
+  color: #7090b0;
+  font-size: 9px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.jj-expdef-btn-wrap {
+  padding: 0 5px 5px;
+}
+
+.jj-expdef-trigger-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 4px;
+  width: 100%;
+  background: #040a10;
+  border: 1px solid #0a1a2a;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1a2840;
+  cursor: pointer;
+  transition: all 140ms;
+}
+
+.jj-expdef-trigger-btn i { font-size: 13px; color: #152030; transition: color 140ms; }
+.jj-expdef-trigger-btn:hover { border-color: #204070; color: #4060a0; }
+.jj-expdef-trigger-btn:hover i { color: #2a4070; }
+.jj-expdef-trigger-btn.active {
+  background: #020810;
+  border-color: #2050a0;
+  color: #4080d0;
+  animation: jj-expdef-glow 2s ease-in-out infinite;
+}
+.jj-expdef-trigger-btn.active i { color: #2860b0; }
+
+@keyframes jj-expdef-glow {
+  0%, 100% { box-shadow: inset 0 0 5px rgba(40,80,180,0.1); }
+  50%       { box-shadow: inset 0 0 10px rgba(40,80,200,0.2), 0 0 6px rgba(30,60,180,0.15); }
+}
+
+/* ── Energia Reversa (verde) ── */
+filigree-box.jj-enrev-box {
+  --filigree-background-color: #061210;
+  --filigree-border-color: #0e3020;
+  --filigree-drop-shadow: drop-shadow(0 0 3px rgba(30, 160, 80, 0.25));
+  display: block;
+}
+
+.jj-enrev-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 8px 3px;
+  border: none;
+  margin: 0;
+}
+
+.jj-enrev-header i {
+  font-size: 9px;
+  color: #1a7040;
+  animation: jj-enrev-pulse 2s ease-in-out infinite;
+}
+
+@keyframes jj-enrev-pulse {
+  0%, 100% { text-shadow: 0 0 4px rgba(30,160,80,0.3); }
+  50%       { text-shadow: 0 0 10px rgba(30,160,80,0.8), 0 0 18px rgba(20,120,60,0.3); }
+}
+
+.jj-enrev-header span {
+  color: #508070;
+  font-size: 9px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.jj-enrev-trigger-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 4px;
+  width: 100%;
+  background: #040a06;
+  border: 1px solid #0a1e12;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #152815;
+  cursor: pointer;
+  transition: all 140ms;
+}
+
+.jj-enrev-trigger-btn i { font-size: 13px; color: #102015; transition: color 140ms; }
+.jj-enrev-trigger-btn:hover { border-color: #1a5030; color: #30a060; }
+.jj-enrev-trigger-btn:hover i { color: #208040; }
+.jj-enrev-trigger-btn.active {
+  background: #020806;
+  border-color: #1a7040;
+  color: #30c060;
+  animation: jj-enrev-glow 2s ease-in-out infinite;
+}
+
+@keyframes jj-enrev-glow {
+  0%, 100% { box-shadow: inset 0 0 5px rgba(30,140,60,0.1); }
+  50%       { box-shadow: inset 0 0 10px rgba(30,160,70,0.2), 0 0 6px rgba(20,120,50,0.15); }
+}
+
+/* ── Expansão de Domínio (Maestria 7) ──────────────────────────────── */
+filigree-box.jj-dominio-box {
+  --filigree-background-color: #0a0614;
+  --filigree-border-color: #3a1a60;
+  --filigree-drop-shadow: drop-shadow(0 0 3px rgba(140, 60, 220, 0.25));
+  display: block;
+  margin-top: 6px;
+}
+
+.jj-dominio-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 8px 3px;
+  border: none;
+  margin: 0;
+}
+
+.jj-dominio-header i {
+  font-size: 9px;
+  color: #9050d0;
+  animation: jj-dominio-pulse 2s ease-in-out infinite;
+}
+
+@keyframes jj-dominio-pulse {
+  0%, 100% { text-shadow: 0 0 4px rgba(140,60,220,0.3); }
+  50%       { text-shadow: 0 0 10px rgba(150,70,230,0.8), 0 0 18px rgba(110,40,190,0.3); }
+}
+
+.jj-dominio-header span {
+  color: #a880c0;
+  font-size: 9px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.jj-dominio-btn-wrap {
+  padding: 0 5px 5px;
+}
+
+.jj-dominio-trigger-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 4px;
+  width: 100%;
+  background: #08040f;
+  border: 1px solid #1f1030;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2a1a40;
+  cursor: pointer;
+  transition: all 140ms;
+}
+
+.jj-dominio-trigger-btn i { font-size: 13px; color: #25153a; transition: color 140ms; }
+.jj-dominio-trigger-btn:hover { border-color: #4a2080; color: #9060c0; }
+.jj-dominio-trigger-btn:hover i { color: #7040a0; }
+.jj-dominio-trigger-btn.expandido {
+  background: #060210;
+  border-color: #5020a0;
+  color: #b070e0;
+  animation: jj-dominio-glow 2s ease-in-out infinite;
+}
+.jj-dominio-trigger-btn.expandido i { color: #9050d0; }
+
+@keyframes jj-dominio-glow {
+  0%, 100% { box-shadow: inset 0 0 5px rgba(120,50,200,0.1); }
+  50%       { box-shadow: inset 0 0 10px rgba(140,60,220,0.2), 0 0 6px rgba(110,40,190,0.15); }
+}
+
+/* ── Botão de ativar/desativar Foco Defensivo (fim da barra de Armadura) ──── */
+.jj-foco-def-btn {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  align-self: stretch;
+  background: #0c121a;
+  border: 1px solid #2a3a4a;
+  border-radius: 3px;
+  color: #5a6a7a;
+  cursor: pointer;
+  transition: all 140ms;
+}
+.jj-foco-def-btn i { font-size: 12px; transition: color 140ms; }
+.jj-foco-def-btn:hover { border-color: #4a6a8a; color: #8aa0b8; }
+.jj-foco-def-btn.active {
+  background: #0a1622;
+  border-color: #5a7a9a;
+  color: #9ab8d0;
+  box-shadow: inset 0 0 6px rgba(120,150,180,0.25);
+}
+.jj-foco-def-btn.active i { color: #b0c8de; }

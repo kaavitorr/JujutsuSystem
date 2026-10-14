@@ -1,0 +1,43 @@
+_id: jj2a000000000028
+name: Véu
+type: feat
+img: icons/magic/unholy/orb-swirling-teal.webp
+system:
+  identifier: veu
+  description:
+    value: >-
+      <p>Ao aprender as seguintes habilidades, você se especializa no uso dos
+      diversos tipos de barreiras.</p><p>Um véu de 5 metros de raio é criado a
+      volta de um local específico. Um véu comum possui as seguintes
+      características:</p><ul><li>Ele impede a visão de quem está fora olhar
+      para dentro e de quem está dentro olhar para fora;</li><li>Ele escurece
+      toda área, simulando a noite, atraindo Espíritos Amaldiçoados para fora
+      dos esconderijos;</li><li>Ele impede qualquer criatura de entrar ou sair
+      de seus limites.</li></ul>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Técnicas de Barreira
+      caminho: Barreiras
+      requisitos: []
+folder: jj2f000000000006
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816691692
+  modifiedTime: 1791816691692
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000028'

@@ -1,0 +1,33 @@
+_id: jj2a000000000001
+_key: '!items!jj2a000000000001'
+name: Feitiço Inato — Visão Geral
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: feitico-inato-visao-geral
+  description:
+    value: |-
+      <h2>Feitiço Inato</h2><p><em>As habilidades de especialização de Feitiço Inato são habilidades focadas em modificar o seu feitiço e energia amaldiçoada de forma a conseguir certos benefícios envolvidos diretamente relacionados a ele.</em></p>
+      <h3>Habilidades de Feitiço Inato</h3>
+      <table><thead><tr><th>Selos e Encantamentos</th><th>Invocador de Shikigami</th><th>Manipulação de Técnica</th></tr></thead><tbody>
+      <tr><td>Selos de Mão</td><td>Trabalho em Equipe</td><td>Execução Veloz</td></tr>
+      <tr><td>Selos Complexos</td><td>Fortalecer Invocação</td><td>Gestos: Flecha e Linha</td></tr>
+      <tr><td>Encantamentos</td><td>Formação de Horda</td><td>Manipulação Eficiente</td></tr>
+      <tr><td>Encantamento Veloz</td><td>Vínculo Amaldiçoado</td><td>Gestos: Cone e Leque</td></tr>
+      <tr><td>Manipulação de Selos</td><td>Transferência de Emergência</td><td>Gestos: Raio e Emanação</td></tr>
+      <tr><td>Concentração Inabalável</td><td>Aprimoramento de Espírito</td><td>Aprimorar Alcance</td></tr>
+      <tr><td>Ativação Dupla</td><td>Refinamento Duplo</td><td>Manipulação Rápida</td></tr>
+      <tr><td>Forma Dominada</td><td>Rei das Maldições</td><td>Canalização Máxima</td></tr>
+      </tbody></table>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: null
+      requisitos: []
+folder: jj2f000000000001
+ownership:
+  default: 0
+effects: []
+sort: 0

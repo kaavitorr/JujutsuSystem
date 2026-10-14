@@ -1,0 +1,75 @@
+_id: Uftz3LklsXreD5M7
+name: Investida (NPC)
+type: feat
+img: icons/creatures/abilities/dragon-breath-purple.webp
+effects: []
+folder: I4nmFeOf3cr9gQWb
+sort: 800000
+flags:
+  scene-packer:
+    hash: 2553ab09eace7c627ca8df0a9baad1c402a01fc2
+    sourceId: Item.Uftz3LklsXreD5M7
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Investida (Aumenta o dano efetivo da criatura na primeira
+      rodada): </strong>Se a criatura se mover por 3 metros ou mais em direção a
+      um alvo e realizar uma jogada de ataque corpo-a-corpo, o alvo sofre
+      [[/roll 2d6]] dano extra.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: investida-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.XgVj7ffzT74j6mZU
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910545
+  modifiedTime: 1776624910571
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!Uftz3LklsXreD5M7'

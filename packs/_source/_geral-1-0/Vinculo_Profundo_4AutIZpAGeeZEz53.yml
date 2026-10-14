@@ -1,0 +1,82 @@
+folder: dwPv4mxgRfYyVnVI
+name: Vinculo Profundo
+type: feat
+img: icons/magic/light/beam-rays-yellow.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">A partir do <strong>10º nível de
+      Especialista</strong>, você pode compartilhar certos benefícios com seu
+      Shikigami que seriam impossíveis de outra forma, permitindo que ele possa
+      utilizar todas as suas habilidades e técnicas de manipulação de energia
+      amaldiçoada de forma individual, mas ainda usa da sua Energia
+      Amaldiçoada.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881617
+  modifiedTime: 1776921273367
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: 4AutIZpAGeeZEz53
+sort: 100000
+_key: '!items!4AutIZpAGeeZEz53'

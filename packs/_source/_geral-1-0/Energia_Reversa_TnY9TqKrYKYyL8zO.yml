@@ -1,0 +1,100 @@
+name: Energia Reversa
+type: feat
+img: icons/magic/control/energy-stream-link-spiral-orange.webp
+effects: []
+folder: IK3bRk9nxj1Jq8mP
+sort: 400000
+flags:
+  scene-packer:
+    hash: 838747dba9c634964713f06d8808812b60eb5679
+    sourceId: Item.FxEBCoN8MgBLHwF0
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p>ocê recebe a habilidade de Manipulação – “Energia Reversa” do Capítulo
+      6.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: aspecto--ken-anulacao
+  activities: {}
+  advancement:
+    sWt5yaBhRtIaMZzp:
+      type: ItemGrant
+      _id: sWt5yaBhRtIaMZzp
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-system.tecnicas-manipulacao.Item.7QShyHeyS9swo4Vt
+            optional: false
+          - uuid: Compendium.jujutsu-system.tecnicas-manipulacao.Item.qoHNsoyELrJ4leot
+            optional: false
+        optional: false
+        spell:
+          ability: []
+          method: ''
+          uses:
+            max: ''
+            per: ''
+            requireSlot: false
+      value: {}
+      level: 0
+      flags: {}
+      hint: ''
+      title: ''
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.uiLHzLtUwYNeTKyj
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624910544
+  modifiedTime: 1782450418437
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_id: TnY9TqKrYKYyL8zO
+_key: '!items!TnY9TqKrYKYyL8zO'

@@ -1,0 +1,23 @@
+<div class="jj2-action-ring" data-resource="actions" style="--jj2-action-aura:url(#{{rootId}}-jj2-action-aura)">
+  <div class="jj2-action-dial" role="group" aria-label="Ajustar Pontos de Ação">
+    <svg class="jj2-action-core" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <defs><linearGradient id="{{rootId}}-jj2-action-aura" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#dbbaff"/><stop offset="48%" stop-color="#b38add"/><stop offset="100%" stop-color="#8055b0"/></linearGradient></defs>
+      <circle class="jj2-action-core-halo" cx="50" cy="50" r="30" stroke-dasharray="37 7 13 5" stroke-dashoffset="8"/>
+      <circle class="jj2-action-core-disc" cx="50" cy="50" r="26"/>
+      <path class="jj2-action-core-flourish" d="M44 18Q50 22 56 18M44 82Q50 78 56 82"/>
+    </svg>
+    {{#each jj2.actions.pips}}
+    <button type="button" class="jj2-action-segment {{#if filled}}filled{{/if}} {{#if @root.owner}}always-interactive{{/if}}" style="clip-path:{{ringClip}};--jj2-action-stroke:{{ringWidth}}" data-action="jj2ActionPip" data-value="{{value}}" aria-label="Ação {{n}} de {{@root.jj2.actions.max}}: definir {{value}} Pontos de Ação" data-tooltip="Definir Pontos de Ação: {{value}}" aria-pressed="{{#if filled}}true{{else}}false{{/if}}" {{disabled (not @root.owner)}}>
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <path class="jj2-action-band-rim" d="{{ringPath}}"/>
+        <path class="jj2-action-band" d="{{ringPath}}"/>
+      </svg>
+    </button>
+    {{/each}}
+    <div class="jj2-action-total">
+      <input id="{{rootId}}-jj2-actions" type="number" name="system.legacy2.actions.value" value="{{jj2.actions.value}}" min="0" max="{{jj2.actions.max}}" step="1" data-dtype="Number" aria-label="Pontos de Ação atuais" class="{{#if owner}}always-interactive{{/if}}" {{disabled (not owner)}}>
+      <span>/ {{jj2.actions.max}}</span>
+    </div>
+  </div>
+  <button type="button" class="jj2-action-restore {{#if owner}}always-interactive{{/if}}" data-action="jj2RestoreActions" data-tooltip="{{jj2.actions.restoreLabel}}" aria-label="{{jj2.actions.restoreLabel}}" {{disabled (not owner)}}>Ponto de Ação</button>
+</div>

@@ -1,0 +1,24 @@
+name: Estilos de Combate
+type: Item
+sorting: m
+sort: 700000
+color: '#2aa749'
+flags:
+  core:
+    sourceId: Folder.gpiuGQQptpbYBAnm
+  scene-packer:
+    hash: 4816cd0b6da9d6a4ac3a1be4ebfc172cdcd51ecf
+_id: gpiuGQQptpbYBAnm
+folder: null
+description: ''
+_stats:
+  compendiumSource: Folder.gpiuGQQptpbYBAnm
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624882759
+  modifiedTime: 1776924287384
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!gpiuGQQptpbYBAnm'

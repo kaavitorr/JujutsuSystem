@@ -1,0 +1,156 @@
+folder: onrz3qUGUndiIaUB
+name: Linhagem - Gojo
+type: race
+img: systems/jujutsu-system/assets/Origens/Satoru_Gojo_Cursed_Clash.webp
+system:
+  description:
+    value: "<p><strong>Ajuste de Atributo:</strong> +4 Pontos de Atributo para distribuir entre todos os 6 atributos.</p><p><strong>Vida Base:</strong> 10 Pontos de Vida.</p><p><strong>Tamanho:</strong> 1,50 a 2,00 metros (pequeno, médio).</p><p><strong>Peso:</strong> Normalmente, entre 45 kg e 200 kg.</p><p><strong>Deslocamento:</strong> 9 metros.</p><p><strong>Nado:</strong> 4,5 metros.</p><p>\_</p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ESPÉCIA</strong></span></p></td></tr></tbody></table><p>Essas características acompanham a existência do personagem, são representações da sua origem, sendo uma parte essencial de como ele vê o mundo e de como o mundo olha pra ele.</p><p style=\"margin:0.5pt 0cm 0.0001pt 7.1pt;text-align:justify\"></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM - GOJO</strong></span></p><hr><ul><li><p><strong>Talento de Origem: </strong>No <strong>3º nível</strong>, você recebe um talento de origem de acordo com o <strong>Capítulo 6</strong>.\_</p></li><li><p><strong>Técnica Herdada: </strong>Como um membro da linhagem do Clã Gojo, você recebe acesso a uma das técnicas herdadas mais poderosas da história, o <strong>“Ilimitado”</strong>.</p></li><li><p><strong>Seis Olhos: </strong>Após definir que essa será sua origem de poder, você se torna apto a adquirir os 6 olhos. Para tal, o Narrador pode definir quais regras ele irá usar da sua preferência ou apenas rolar 1d20. Em um resultado de 18 o maior, o personagem desperta esse poder.</p></li><li><p><strong>Poder da Linhagem: </strong>Desde que você <strong>não</strong> tenha rolado para os <strong>6 olhos</strong>, você pode sacrificar as duas características acima, recebendo 3 Pontos de Energia amaldiçoada (PA) adicional por nível de personagem. Além disso, toda vez que você completar um treinamento para aumentar sua energia amaldiçoada, você recebe 1 PA adicional.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>DESVANTAGENS DA VARIANTE</strong></span></p><hr><ul><li><p><strong>Sobrecarga Mental: </strong>Enquanto o usuário estiver com os seis olhos desvendados,<strong> recebe 2d8 de dano Psíquico</strong> ao desvenda-lo e no início de cada um de seus turnos em combate ou ao desvenda-lo e a cada minuto fora de combate. Além disso, caso você o utilize por mais de 2 rodadas seguidas, você recebe 1 nível de exaustão ao fim do encontro.</p></li><li><p><strong>Jogo Duplo:</strong> Caso você possua o <strong>“Poder da Linhagem”</strong>, você recebe uma maldição de grau<strong> “Severo”</strong> a sua escolha.</p></li></ul><p></p><table><tbody><tr style=\"mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes\"><td><p class=\"TextoPadro\"><span style=\"font-size:large\"><strong>SEIS OLHOS</strong></span></p><p class=\"MsoNormal\">Uma habilidade ocular extremamente rara no mundo, os seis olhos têm a habilidade de aumentar grandemente a percepção de seu usuário assim como ajuda-lo a refinar seu controle de Energia Amaldiçoada a níveis extremos. Um usuário dos seis olhos recebe as seguintes características:</p><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>PODER COMPLETO</strong></span></p><hr><p class=\"MsoNormal\">Enquanto estiver utilizando todas as habilidades dos seis olhos, você recebe as seguintes características:</p><ul><li><p>Você recebe +3 na sua Classe de Resistência, até um máximo de 35;</p></li><li><p>Você recebe +4 em suas rolagens de acerto de ataques (Comuns e de Técnica);</p></li><li><p>Você tem uma redução no custo de todas as suas habilidades e técnicas igual ao seu bônus de proficiência;</p></li><li><p>Você recebe um bônus em Testes de Sabedoria (Percepção), Intelecto (Feitiço) e Constituição (Controle de Energia) igual o dobro do seu bônus de proficiência;</p></li><li><p><strong>Análise de Fluxo:</strong> Quando uma criatura utilizar uma técnica inata ou herdada, você pode usar uma ação bônus no seu turno para analisar o fluxo de energia amaldiçoada dela, realizando um Teste de Atributo de Intelecto (Feitiço) CD 18 + ND da criatura. Em caso de sucesso, os feitiços dela não podem ter vantagem contra você e você não pode ter desvantagem em Salvaguardas contra seus efeitos.</p></li><li><p><strong>Leitura Completa:</strong> A partir do 8º nível de personagem, você consegue entender todo funcionamento e restrições de uma técnica inata apenas ao olha-la uma única vez.</p></li></ul><p class=\"TextoPadro\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>SELADO</strong>\_\_\_\_</span></p><hr><ul><li><p class=\"MsoNormal\">Ao usar uma ação bônus, o usuário pode vendar ou desvendar os seis olhos, se utilizando de faixas, óculos escuros ou similares. Quando ele estiver vendado, ele recebe as seguintes características:</p></li><li><p>Você recebe metade de todos os bônus numéricos dos seis olhos (arredondado para baixo);</p></li><li><p>Você perde acesso a habilidade – “Análise de Fluxo”.</p></li></ul></td></tr></tbody></table>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  advancement:
+    thrtYH4KG74MbuZ9:
+      type: AbilityScoreImprovement
+      _id: thrtYH4KG74MbuZ9
+      configuration:
+        points: 4
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 4
+        locked: []
+        recommendation: null
+        max: null
+      value:
+        type: asi
+      level: 0
+      title: ''
+      icon: null
+      flags: {}
+      hint: ''
+    rEJzDVRlCiq4jyq7:
+      type: Size
+      _id: rEJzDVRlCiq4jyq7
+      configuration:
+        sizes:
+          - med
+      level: 0
+      title: ''
+      icon: null
+      value: {}
+      flags: {}
+      hint: ''
+    pWi09QUI278nzGY8:
+      type: Trait
+      configuration:
+        grants:
+          - languages:standard:common
+        mode: default
+        allowReplacements: false
+        choices: []
+      _id: pWi09QUI278nzGY8
+      level: 0
+      value:
+        chosen: []
+      flags: {}
+      hint: ''
+    4RXJIfXI8J2WfgL2:
+      _id: 4RXJIfXI8J2WfgL2
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.JrW8QBYrVPG9nzwZ
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 0
+      title: Pontos de Vida
+      icon: null
+      flags: {}
+      hint: ''
+    8aPE0FrMa7fh4qox:
+      type: ItemChoice
+      configuration:
+        choices:
+          '3':
+            count: 1
+            replacement: false
+        allowDrops: true
+        type: null
+        pool:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.QspPXnxu2706M8nP
+        spell: null
+        restriction:
+          list: []
+      value:
+        added: {}
+        replaced: {}
+      title: Talentos de Origem
+      hint: <p>Escolha um Talento de Origem</p>
+      _id: 8aPE0FrMa7fh4qox
+      flags: {}
+    HZg6i8goKZOOT7B2:
+      type: ItemGrant
+      _id: HZg6i8goKZOOT7B2
+      configuration:
+        items:
+          - optional: true
+            uuid: Compendium.jujutsu-compendium.geral.Item.H3NQzS9ioMwybCCd
+          - optional: true
+            uuid: Compendium.jujutsu-compendium.geral.Item.kTJxk9JvrOMOfOMF
+        optional: true
+        spell: null
+      flags: {}
+      value: {}
+      level: 0
+      hint: ''
+      title: ''
+  movement:
+    swim: '4.5'
+    walk: '9'
+    units: m
+    hover: false
+    ignoredDifficultTerrain: []
+    burrow: ''
+    climb: ''
+    fly: ''
+  senses:
+    units: m
+    special: ''
+    ranges:
+      darkvision: null
+      blindsight: null
+      tremorsense: null
+      truesight: null
+  type:
+    value: humanoid
+    custom: ''
+    subtype: ''
+  identifier: gojo
+effects: []
+flags:
+  scene-packer:
+    hash: 67eee98e596c8e15d667f2c4fc3cc39d4c880220
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.8
+  createdTime: 1776914681782
+  modifiedTime: 1782699466781
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: jEqNlXpUdX4gMIN9
+sort: 300000
+_key: '!items!jEqNlXpUdX4gMIN9'

@@ -1,0 +1,182 @@
+folder: lWpMtihZm1il8I4V
+name: Ímpeto do Especialista
+type: feat
+img: icons/magic/lightning/bolt-strike-beam-yellow.webp
+system:
+  description:
+    value: >-
+      <p style="tab-stops:467.8pt;text-align:justify"><span
+      style="mso-bidi-font-size:10.0pt">A partir do <strong>15º nível de
+      Especialista</strong>, ao iniciar um encontro, você pode ativar
+      instantaneamente todos os seus feitiços básicos, estendidos e máximos, se
+      desejar, sem consumir ações — desde que não causem dano direto, condições
+      ou efeitos negativos em criaturas inimigas. Dessa forma, você não pode ser
+      pego de surpresa enquanto possuir essa habilidade. Caso você possua
+      <strong>“Pronto para a Batalha”</strong>, você pode substituí-lo por outra
+      habilidade.</span></p><p
+      style="text-indent:35.45pt;tab-stops:467.8pt;text-align:justify"><span
+      style="mso-bidi-font-size:10.0pt">Adicionalmente, durante o seu turno,
+      você pode rolar até <strong>2 Dados de Energia Amaldiçoada</strong> e
+      gerar o valor obtido como Energia Amaldiçoada adicional, sem reduzi-lo do
+      seu total atual. Nesse caso, modificadores não são aplicados ao resultado.
+      Você pode utilizar esse efeito uma vez por rodada, enquanto ainda possuir
+      Dados de Energia Amaldiçoada disponíveis.</span></p>
+    chat: ''
+  source:
+    revision: 1
+    rules: '2014'
+  cover: null
+  crewed: false
+  uses:
+    max: '3'
+    recovery:
+      - period: lr
+        type: recoverAll
+    spent: 0
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  activities:
+    dnd5eactivity000:
+      _id: dnd5eactivity000
+      type: damage
+      activation:
+        type: bonus
+        value: 1
+        condition: ''
+        override: false
+      consumption:
+        targets:
+          - type: itemUses
+            target: ''
+            value: '1'
+            scaling:
+              mode: ''
+              formula: ''
+        scaling:
+          allowed: false
+          max: ''
+        spellSlot: true
+      description:
+        chatFlavor: ''
+      duration:
+        concentration: false
+        value: ''
+        units: inst
+        special: ''
+        override: false
+      effects: []
+      range:
+        units: self
+        special: ''
+        override: false
+      target:
+        template:
+          count: ''
+          contiguous: false
+          type: ''
+          size: ''
+          width: ''
+          height: ''
+          units: ft
+          stationary: false
+        affects:
+          count: ''
+          type: self
+          choice: false
+          special: ''
+        prompt: true
+        override: false
+      uses:
+        spent: 0
+        max: ''
+        recovery: []
+      damage:
+        critical:
+          allow: false
+          bonus: ''
+        parts:
+          - number: 2
+            denomination: 8
+            bonus: '@mod'
+            types: []
+            custom:
+              enabled: false
+              formula: ''
+            scaling:
+              mode: whole
+              number: null
+              formula: ''
+      sort: 0
+      img: null
+      flags: {}
+      visibility:
+        level: {}
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+  identifier: recuo-estrategico
+  enchant: {}
+  advancement: {}
+effects: []
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: 10a774bffcd617a78f268ca418045b9bfb84047d
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+    consumeUses:
+      value: true
+    quickOther:
+      context: ''
+    quickDamage:
+      context:
+        '0': Pontos de Aura
+      value:
+        '0': true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776903779266
+  modifiedTime: 1776905874730
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: qbzWzdSinAV3EXLB
+sort: 850000
+_key: '!items!qbzWzdSinAV3EXLB'

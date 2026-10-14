@@ -1,0 +1,78 @@
+name: Reversão de Feitiço
+type: feat
+img: icons/magic/light/hand-sparks-glow-yellow.webp
+effects: []
+folder: IK3bRk9nxj1Jq8mP
+sort: 500000
+flags:
+  scene-packer:
+    hash: b1fe01a71665ea6eadaacea0722b23648c4bb00c
+    sourceId: Item.FxEBCoN8MgBLHwF0
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p>Você recebe a habilidade de Manipulação – “Reversão de Feitiço” do
+      Capítulo 6.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: aspecto--ko-temperamento-perfeito
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.uiLHzLtUwYNeTKyj
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624910560
+  modifiedTime: 1782450474464
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_id: teC3pboNY2U5U9aq
+_key: '!items!teC3pboNY2U5U9aq'

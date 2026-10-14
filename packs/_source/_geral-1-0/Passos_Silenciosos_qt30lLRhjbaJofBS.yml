@@ -1,0 +1,65 @@
+folder: vG1tvdXvcpq70Tb5
+name: Passos Silenciosos
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>Seus passos são quase inaudíveis, tornando extremamente difícil te
+      detectar enquanto você estiver te
+      movendo.</p><p><strong>Característica:</strong> Você não pode ser
+      percebido através do som enquanto estiver se movendo, a menos que o
+      terreno faça barulho naturalmente com seu movimento. Esse efeito não é
+      poderoso o suficiente para enganar uma habilidade sensorial de
+      audição.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: pulmao-de-aco
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: bcc9e5868d412fc4fb7d666b9a051cc859243220
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902156
+  modifiedTime: 1776913397642
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: qt30lLRhjbaJofBS
+sort: 3000000
+_key: '!items!qt30lLRhjbaJofBS'

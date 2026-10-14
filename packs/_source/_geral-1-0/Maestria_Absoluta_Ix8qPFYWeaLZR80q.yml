@@ -1,0 +1,85 @@
+folder: QwYh3uEF10z8gSGn
+name: Maestria Absoluta
+type: feat
+img: icons/skills/melee/sword-winged-holy-orange.webp
+system:
+  description:
+    value: >-
+      <p><span>A partir do <strong>14º nível de Sentinela</strong>, você deu um
+      novo significado ao seu domínio com a espada, impedindo que alguém
+      utilizasse o termo “Domínio dos Fracos” contra você.</span></p><p
+      style="text-indent:35.45pt" class="TextoPadro"><span>Você aprende a
+      técnica anti-domínio <strong>“Amplificação de Domínio”</strong> e pode
+      gastar 10 PA no início de cada um dos seus turnos para utilizá-la
+      simultaneamente ao seu domínio simples, imbuindo seus efeitos em toda a
+      área do domínio.</span></p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-emissor
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: d8a632d7930b501d57e292fcb3875f3aa448cd29
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1782435463618
+  modifiedTime: 1782435465090
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: Ix8qPFYWeaLZR80q
+sort: 700000
+_key: '!items!Ix8qPFYWeaLZR80q'

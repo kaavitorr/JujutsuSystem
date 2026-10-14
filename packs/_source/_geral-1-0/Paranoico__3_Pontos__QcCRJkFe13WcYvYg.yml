@@ -1,0 +1,83 @@
+_id: QcCRJkFe13WcYvYg
+name: Paranoico (3 Pontos)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects: []
+folder: xaOZscxiXFUTyHS5
+sort: 2000000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 3b4b218702ff19cc6e205a8c3fa75069e66e1dc7
+    sourceId: Item.sX93QHaQ9XJyuWgV
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p>Você não confia em ninguém, nem em seus amigos. Nunca pede e nem aceita
+      nenhuma ajuda, nem mesmo o tratamento de seus ferimentos. Não consegue
+      descansar ou dormir direito: mesmo que esteja em uma estalagem ou outro
+      lugar que parece ser totalmente seguro.</p><p>Você precisa de, no mínimo,
+      2 horas para se acalmar e achar que está tudo certo, para começar um
+      descanso curto ou longo.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: paranoico-1-pontos
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.jNyEQU69JACTw8Ph
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902134
+  modifiedTime: 1776624902170
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!QcCRJkFe13WcYvYg'

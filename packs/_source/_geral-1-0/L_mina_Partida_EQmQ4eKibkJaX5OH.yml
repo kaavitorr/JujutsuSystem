@@ -1,0 +1,85 @@
+folder: QwYh3uEF10z8gSGn
+name: Lâmina Partida
+type: feat
+img: icons/skills/melee/sword-damaged-broken-blue.webp
+system:
+  description:
+    value: >-
+      <p><span>A partir do <strong>11º nível de Sentinela</strong>, </span>você
+      se torna capaz de canalizar todo seu espírito mesmo diante de uma situação
+      de derrota iminente. Quando seu domínio simples quebrar, você pode formar
+      um novo imediatamente e, logo em seguida, realizar uma técnica que vai ser
+      considerada como um crítico automático. Essa técnica irá ignorar efeitos
+      de forçar o erro, acertando automaticamente o alvo.</p><p
+      style="text-indent:35.45pt" class="TextoPadro">Você não pode utilizar essa
+      característica novamente até o fim de um descanso longo.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-emissor
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: d8a632d7930b501d57e292fcb3875f3aa448cd29
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1782435444981
+  modifiedTime: 1782435446239
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: EQmQ4eKibkJaX5OH
+sort: 600000
+_key: '!items!EQmQ4eKibkJaX5OH'

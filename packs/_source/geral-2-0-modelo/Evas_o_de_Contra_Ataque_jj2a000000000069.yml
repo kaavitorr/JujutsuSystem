@@ -1,0 +1,44 @@
+_id: jj2a000000000069
+name: Evasão de Contra-Ataque
+type: feat
+img: icons/magic/movement/portal-vortex-orange.webp
+system:
+  identifier: evasao-de-contra-ataque
+  description:
+    value: >-
+      <p>A existência aprimorada - ofensiva é uma arvore de habilidades
+      específicas do Restringido, interagindo com seus Pontos de Estamina,
+      devido a isso, ela normalmente não pode ser adquirida por outras
+      criaturas. Essa arvore é voltada para parte ofensiva e de velocidade das
+      habilidades.</p><p>Uma vez no turno de cada criatura, quando uma criatura
+      errar uma jogada de ataque (Comum ou de Técnica) corpo-a-corpo que tenha
+      você como alvo, você pode, como Reação, realizar uma jogada de ataque
+      (Comum) contra a criatura com custo de Pontos de Ação [⬢] reduzido em 1,
+      mas você consome 1 PE por ataque.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Ofensivo
+      requisitos: []
+folder: jj2f000000000013
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814958991
+  modifiedTime: 1791814958991
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000069'

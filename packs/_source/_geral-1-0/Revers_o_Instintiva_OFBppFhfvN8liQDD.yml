@@ -1,0 +1,87 @@
+folder: 5QKH5QmtmCPmcaAg
+name: Reversão Instintiva
+type: feat
+img: icons/skills/melee/strike-chain-whip-blue.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">A partir do 2º nível de Especialista, você aprendeu a
+      utilizar energia reversa de forma instintiva para causar dano em criaturas
+      inimigas. Embora você não a controle com maestria suficiente para se
+      curar, ela acaba sendo imbuída em cada um de seus golpes. Você recebe as
+      seguintes características:</p><ul><li><p><em>A utilizar “Explosão
+      Ofensiva” em uma maldição, você causa 2d4 de dano para cada PA
+      usado;</em></p></li><li><p><em>Toda vez que você errar uma jogada de
+      ataque (Comum), você causa dano em um Espírito Amaldiçoado igual ao seu
+      modificador do atributo principal. Caso você erre uma técnica ou feitiço,
+      você causa seu Modificador de Principal + seu nível de Estrategista, até
+      um valor máximo de 20 de dano.</em></p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881634
+  modifiedTime: 1776922891368
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: OFBppFhfvN8liQDD
+sort: 100000
+_key: '!items!OFBppFhfvN8liQDD'

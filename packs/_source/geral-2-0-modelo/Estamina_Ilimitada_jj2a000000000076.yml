@@ -1,0 +1,40 @@
+_id: jj2a000000000076
+name: Estamina Ilimitada
+type: feat
+img: icons/magic/holy/projectiles-blades-salvo-yellow.webp
+system:
+  identifier: estamina-ilimitada
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Reflexo Marcial</em></p><p>Enquanto
+      estiver fora de combate, você recebe 10 metros de deslocamento adicionais
+      e pode se mover continuamente sem acumular Exaustão, pois sua estamina se
+      recupera mais rápido do que você consegue gastá-la.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Ofensivo
+      requisitos:
+        - Reflexo Marcial
+folder: jj2f000000000013
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791815012627
+  modifiedTime: 1791815012627
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000076'

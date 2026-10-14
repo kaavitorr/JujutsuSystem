@@ -1,0 +1,22 @@
+_id: jj2a000000000078
+_key: '!items!jj2a000000000078'
+name: Velocidade Descomunal
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: velocidade-descomunal
+  description:
+    value: <p><em><strong>Requisito:</strong> Movimento Instantâneo</em></p><p>Ao executar uma técnica corpo-a-corpo ou a distância, você pode escolher aparecer ao fim do alcance dela de forma instantânea na finalização da execução.<br>Para técnicas de “Toque”, você aparece ao lado do alvo, podendo se mover a uma distância igual a 10 no 1º grau e 5 metros adicionais para cada grau acima.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Ofensivo
+      requisitos:
+        - Movimento Instantâneo
+folder: jj2f000000000013
+ownership:
+  default: 0
+effects: []
+sort: 0

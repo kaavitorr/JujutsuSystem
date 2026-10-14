@@ -1,0 +1,77 @@
+folder: lWpMtihZm1il8I4V
+name: Movimentos Empoderados
+type: feat
+_id: biMzWiyUgG0Jhvoc
+img: icons/magic/light/hand-sparks-glow-yellow.webp
+system:
+  description:
+    value: "<p>A partir do <strong>11º nível de Especialista</strong>, você recebe uma ação adicional em cada turno, essa ação pode ser utilizada para as ações “Atacar” (Um ataque apenas), “Ajuda”, “Usar Objeto”, “Esconder”, “Disparada” ou “Esquiva” ou realizar um Teste de Atributo de Perícia.</p><p class=\"TextoPadro\">\_\_\_\_\_\_\_\_\_\_\_\_ Além disso, você pode sacrificar essa ação no início do seu turno, para receber uma ação bônus adicional até o fim do turno atual, mas ela não pode ser utilizada para usar feitiços ofensivos ou que causem condições.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: mestre-especialista
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 687500
+ownership:
+  default: 0
+  MhGXeDSlt2zUqR0J: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 020a24f740576b920ca8fcf78f254ff5e016cc9e
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911389
+  modifiedTime: 1776903803040
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!biMzWiyUgG0Jhvoc'

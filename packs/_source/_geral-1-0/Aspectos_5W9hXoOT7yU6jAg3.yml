@@ -1,0 +1,22 @@
+name: Aspectos
+type: Item
+sorting: a
+sort: 0
+color: '#582828'
+flags:
+  scene-packer:
+    hash: ceb166c180d53939d7aa298a63bd4751c11ecd11
+_id: 5W9hXoOT7yU6jAg3
+folder: 9HObc0XIMJNrJaWH
+description: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910214
+  modifiedTime: 1776624910214
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!5W9hXoOT7yU6jAg3'

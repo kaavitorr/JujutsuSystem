@@ -1,0 +1,44 @@
+_id: jj2a000000000126
+name: Expansão sem Barreiras
+type: feat
+img: icons/magic/symbols/runes-star-pentagon-blue.webp
+system:
+  identifier: expansao-sem-barreiras
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Domínio Completo; 16º nível de
+      personagem</em></p><p>Você forma uma expansão de domínio sem nenhuma
+      barreira levantada, mas com uma área de raio tremendamente expandida em
+      compensação. Uma expansão sem barreiras recebe as seguintes
+      características:</p><ul><li>A área da expansão é de 200 metros de
+      raio;</li><li>Você pode escolher fechar as barreiras ao cria-la, mas seu
+      alcance se torna 20 metros de raio.</li></ul>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Domínio e Anti-Domínio
+      caminho: Técnicas de Expansão de Domínio
+      requisitos:
+        - Domínio Completo
+        - 16º nível de personagem
+folder: jj2f000000000020
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814572370
+  modifiedTime: 1791814572370
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000126'

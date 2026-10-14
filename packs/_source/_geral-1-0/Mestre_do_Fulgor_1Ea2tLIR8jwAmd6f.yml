@@ -1,0 +1,97 @@
+folder: pJFTz3T8ddDTtVRG
+name: Mestre do Fulgor
+type: subclass
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Caminhos/Yuji_Itadori_294.webp
+system:
+  description:
+    value: "<table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>MESTRE DO FULGOR</strong></span></p></td></tr></tbody></table><p class=\"MsoNormal\">O Mestre do Fulgor é aquele vislumbrou os segredos do Fulgor Negro bem cedo em sua vida e focou toda sua energia em alcança-lo novamente.</p><table border=\"1\" style=\"margin-left:7.1pt;border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt\" class=\"MsoTableGrid\"><tbody><tr style=\"mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes\"><td><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>PECULIARIDADES DO MESTRE DO FULGOR</strong></span></p><p class=\"MsoNormal\">Os Mestres do Fulgor possuem uma grande capacidade de causar dano ao alcançar a ativação do Fulgor Negro, mas isso ocorre apenas porque concentram tudo na manipulação de energia amaldiçoada. Devido a essa peculiaridade, apenas aqueles que não possuem um feitiço podem seguir esse caminho.</p><p class=\"MsoNormal\">Caso você adquira um feitiço de alguma forma, será obrigado a escolher outro caminho de Lutador.</p></td></tr></tbody></table><p></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>ABENÇOADO PELAS FAISCAS NEGRAS</strong></span></p><hr><p class=\"MsoNormal\">A partir do 2º nível de Lutador, você adquire a capacidade de alcançar o Fulgor Negro com mais facilidade que os demais. Você recebe acesso às seguintes características:</p><ul><li><p>Você recebe o <strong>“Fulgor Negro”</strong>, conforme descrito no <strong>Capítulo 6;</strong></p></li><li><p>Você pode manter a Zona por 2 rodadas no lugar de uma ao atingir um Fulgor;</p></li><li><p>Você não precisa de uma segunda rolagem de 15–20 para ativar o “Fulgor Negro”, ativando-o em todo 20 natural — ou em valores menores, caso algo tenha afetado sua margem.</p></li></ul><p style=\"margin-right:0.15pt\" class=\"TextoPadro\"><span style=\"font-size:7pt;font-family:''\">\_</span></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>GOLPES CONSECUTIVOS</strong></span></p><hr><p class=\"TextoPadro\"><span>A partir do<strong> 6º nível de Lutador</strong>, você pode aproveitar a ativação de um Fulgor Negro para continuar sua investida contra as criaturas ao seu redor. Uma vez por rodada, ao ativar um Fulgor Negro, você recebe 2 jogadas de ataque (Comuns) adicionais.</span></p><p style=\"text-indent:1cm\" class=\"TextoPadro\"><span>Se uma criatura morrer como consequência do seu Fulgor, você recebe um turno extra ao final do turno atual, podendo novamente obter ataques adicionais nessa rodada. Esse efeito pode ser ativado até 3 vezes por encontro.</span></p><p style=\"text-indent:1cm\" class=\"TextoPadro\"><span style=\"font-size:7pt\">\_</span></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>BARREIRA NATURAL DE ENERGIA</strong></span></p><hr><p class=\"MsoNormal\">A partir do <strong>10º nível de Lutador</strong>, as faíscas negras passam a elevar seus níveis de energia amaldiçoada sempre que você atinge seus 120%. Uma vez por encontro, ao entrar em Zona, você recebe Pontos de Armadura iguais a 10 vezes o seu bônus de proficiência.</p><p class=\"MsoNormal\">Esses Pontos de Armadura funcionam exatamente como o “Foco Defensivo”, podendo se somar a ele, inclusive concedendo resistência a todos os tipos de dano.</p><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>CONVERSÃO INSTINTIVA</strong></span></p><hr><p class=\"MsoNormal\">A partir do <strong>14º nível de Lutador,</strong> seu nível de controle atinge tal grau que você passa a poder ativar um Fulgor quando desejar. Dessa forma, até 3 vezes por encontro, ao acertar uma rolagem de ataque, você pode optar por ativar automaticamente um Fulgor Negro.</p><p class=\"MsoNormal\">Você recupera todos os usos dessa característica ao final de um descanso longo.</p>"
+    chat: ''
+  source:
+    rules: '2014'
+    revision: 1
+  identifier: mestre-do-fulgor
+  classIdentifier: lutador
+  advancement:
+    23UtZMMGkK4b2CDl:
+      type: ItemGrant
+      _id: 23UtZMMGkK4b2CDl
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.v83wHk48EDHolcaX
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 2
+      title: ''
+      hint: ''
+      flags: {}
+    joQDaxffb4twEWDp:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.R8dtuVISulrBKbhS
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 6
+      title: ''
+      hint: ''
+      _id: joQDaxffb4twEWDp
+      flags: {}
+    sXc4uBZ9JYgKaPy9:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.0KDVe2nHBOgAKQy6
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 10
+      title: ''
+      hint: ''
+      _id: sXc4uBZ9JYgKaPy9
+      flags: {}
+    ONTzUNvjleKIeuUB:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.fxpYcgYt42bLVKR6
+            optional: false
+        optional: false
+        spell: null
+      value: {}
+      level: 14
+      title: ''
+      hint: ''
+      _id: ONTzUNvjleKIeuUB
+      flags: {}
+  spellcasting:
+    progression: none
+    ability: ''
+    preparation:
+      formula: ''
+effects: []
+sort: 250000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 89eeca274bce30387579f141f07a09dd91303277
+  core: {}
+_stats:
+  compendiumSource: Item.5DNdPVt1SNlAA1LD
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881611
+  modifiedTime: 1776972689024
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: 1Ea2tLIR8jwAmd6f
+_key: '!items!1Ea2tLIR8jwAmd6f'

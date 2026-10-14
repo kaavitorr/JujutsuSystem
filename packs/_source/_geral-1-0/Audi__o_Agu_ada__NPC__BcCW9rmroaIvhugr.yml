@@ -1,0 +1,73 @@
+_id: BcCW9rmroaIvhugr
+name: Audição Aguçada (NPC)
+type: feat
+img: icons/magic/sonic/bell-alarm-red-purple.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 900000
+flags:
+  scene-packer:
+    hash: 47a376d4e4bda0de75d91c0fcae4368b5bf924e5
+    sourceId: Item.BcCW9rmroaIvhugr
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p>A criatura tem vantagem em Testes de Habilidade de Espírito (Percepção)
+      relacionados à audição.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: audicao-agucada-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.QCxF9xuyk198CoEj
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910531
+  modifiedTime: 1776624910566
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!BcCW9rmroaIvhugr'

@@ -1,0 +1,139 @@
+folder: GfLIKHXQLpg1w4DW
+name: Dificuldade Crescente
+type: feat
+img: icons/magic/fire/flame-burning-earth-orange.webp
+system:
+  description:
+    value: >-
+      <p>A partir do <strong>14º nível de Especialista</strong>, toda vez que a
+      criatura tirar um resultado no dado de 5 ou menor em Salvaguarda sua, ou
+      você realizar um acerto crítico com técnica ou feitiço, você aumenta a CD
+      de técnicas e feitiços para tomar todo ou metade do dano em +2, ou o
+      acerto das suas técnicas ou feitiços em +2 respectivamente. Você pode
+      acumular um máximo de 32 de CD ou +10 de acerto.</p><p
+      class="MsoListParagraph">Além disso, ao executar uma técnica ou feitiço
+      com mais de 8 PA, você pode fazer com que o primeiro um terço dos dados
+      tenham resultado máximo.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects:
+  - name: Brutamontes
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.t3rmRk6bzqbjojD6
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: false
+    img: icons/magic/fire/flame-burning-earth-orange.webp
+    _id: x77DQMMlIkIVvLXD
+    type: base
+    system:
+      changes:
+        - key: system.bonuses.mwak.damage
+          value: +2d4
+          priority: 20
+          type: add
+          phase: initial
+        - key: system.bonuses.rwak.damage
+          value: +2d4
+          priority: 20
+          type: add
+          phase: initial
+    description: ''
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    sort: 0
+    flags:
+      dnd5e:
+        riders:
+          statuses: []
+      dae:
+        disableCondition: ''
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+      core:
+        overlay: false
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      exportSource: null
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 5.3.2
+      createdTime: 1776624881650
+      modifiedTime: 1776624881650
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!t3rmRk6bzqbjojD6.x77DQMMlIkIVvLXD'
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881650
+  modifiedTime: 1776921033226
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: t3rmRk6bzqbjojD6
+sort: 550000
+_key: '!items!t3rmRk6bzqbjojD6'

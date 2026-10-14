@@ -1,0 +1,85 @@
+folder: Xd1Fj6fhI8LVub4q
+name: Abençoado Pelas Faíscas Negras
+type: feat
+img: icons/magic/control/buff-flight-wings-runes-purple.webp
+system:
+  description:
+    value: >-
+      <p class="TextoPadro">A partir do 2º nível de Lutador, você adquire a
+      capacidade de alcançar o Fulgor Negro com mais facilidade que os demais.
+      Você recebe acesso às seguintes características:</p><ul><li><p>Você recebe
+      o <strong>“Fulgor Negro”</strong>, conforme descrito no <strong>Capítulo
+      6;</strong></p></li><li><p>Você pode manter a Zona por 2 rodadas no lugar
+      de uma ao atingir um Fulgor;</p></li><li><p>Você não precisa de uma
+      segunda rolagem de 15–20 para ativar o “Fulgor Negro”, ativando-o em todo
+      20 natural — ou em valores menores, caso algo tenha afetado sua
+      margem.</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881651
+  modifiedTime: 1776918359287
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: v83wHk48EDHolcaX
+sort: -62500
+_key: '!items!v83wHk48EDHolcaX'

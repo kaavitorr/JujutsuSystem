@@ -1,0 +1,60 @@
+folder: vG1tvdXvcpq70Tb5
+name: Chefe de Cozinha
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: "<p class=\"MsoNormal\">Você tem uma grande habilidade em cozinha, seja por ter passado muito tempo nela ou por ter trabalhado em restaurantes. E independentemente do motivo, suas comidas são deliciosas. Você recebe proficiência em Kit de Cozinha. \_</p><p class=\"MsoNormal\"><strong>Característica:</strong> A criatura que comer da sua comida recupera 2d6 Pontos de Energia Amaldiçoada ao fim de um descanso curto ou longo.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: chefe-de-cozinha
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 1300000
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  MhGXeDSlt2zUqR0J: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 1cdb30c0a19026f9224df72e4f5426d94e838d1c
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: Item.pIaAt98DZBQngnAh
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902125
+  modifiedTime: 1776913388824
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: Cej9rFPAZLCga4bT
+_key: '!items!Cej9rFPAZLCga4bT'

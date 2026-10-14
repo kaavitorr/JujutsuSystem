@@ -1,0 +1,74 @@
+_id: E75X8vLjEimlG7wd
+name: Camuflagem (NPC)
+type: feat
+img: icons/creatures/reptiles/chameleon-camouflage-green-brown.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 1400000
+flags:
+  scene-packer:
+    hash: d66766617ddd9df67e4a323884b0bb34cf0885b9
+    sourceId: Item.E75X8vLjEimlG7wd
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Camuflagem (–):</strong> A criatura tem vantagem em Testes de
+      Habilidade de Destreza (Furtividade), relacionados à sua pele ou pelugem,
+      para se esconder em um determinado ambiente.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: camuflagem-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.gCNCl9xnNVkicDDq
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910533
+  modifiedTime: 1776624910566
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!E75X8vLjEimlG7wd'

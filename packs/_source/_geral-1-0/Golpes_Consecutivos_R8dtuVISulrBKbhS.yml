@@ -1,0 +1,87 @@
+folder: Xd1Fj6fhI8LVub4q
+name: Golpes Consecutivos
+type: feat
+img: icons/magic/lightning/bolt-strike-hand-gray.webp
+system:
+  description:
+    value: >-
+      <p style="tab-stops:467.8pt" class="TextoPadro"><span
+      style="mso-bidi-font-size:10.0pt">A partir do<strong> 6º nível de
+      Lutador</strong>, você pode aproveitar a ativação de um Fulgor Negro para
+      continuar sua investida contra as criaturas ao seu redor. Uma vez por
+      rodada, ao ativar um Fulgor Negro, você recebe 2 jogadas de ataque
+      (Comuns) adicionais.</span></p><p
+      style="text-indent:1.0cm;tab-stops:467.8pt" class="TextoPadro"><span
+      style="mso-bidi-font-size:10.0pt">Se uma criatura morrer como consequência
+      do seu Fulgor, você recebe um turno extra ao final do turno atual, podendo
+      novamente obter ataques adicionais nessa rodada. Esse efeito pode ser
+      ativado até 3 vezes por encontro.</span></p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881637
+  modifiedTime: 1776918367226
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: R8dtuVISulrBKbhS
+sort: -12500
+_key: '!items!R8dtuVISulrBKbhS'

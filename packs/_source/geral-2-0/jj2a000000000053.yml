@@ -1,0 +1,22 @@
+_id: jj2a000000000053
+_key: '!items!jj2a000000000053'
+name: Dispersão de Energia
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: dispersao-de-energia
+  description:
+    value: <p><em><strong>Requisito:</strong> Castigo de Ferro</em></p><p>Toda vez que você ativar o efeito do Energia Atrasada com sucesso, você pode escolher receber dois dos seguintes efeitos:</p><ul><li>Você reduz o próximo dano sofrido em 2d4 Pontos de Dano;</li><li>Você impõe desvantagem na próxima rolagem de acerto contra você;</li><li>Você recebe 1 vantagem na sua próxima Salvaguarda de Agilidade até o início do seu próximo turno;</li><li>Suas jogadas de ataque (Comuns e de Técnica) recebem 1d4 de dano adicional até o início do seu próximo turno.</li></ul><p>Alternativamente, você pode escolher consumir 2 Pontos de Energia Amaldiçoada (PA) para receber os efeitos acima sem precisar ativar a característica “Energia Atrasada”.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Punho Divergente
+      requisitos:
+        - Castigo de Ferro
+folder: jj2f000000000010
+ownership:
+  default: 0
+effects: []
+sort: 0

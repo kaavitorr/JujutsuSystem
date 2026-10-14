@@ -1,0 +1,1513 @@
+{
+  "defeitos": [
+    {
+      "name": "Amnésia (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você simplesmente não consegue guardar informação por muito tempo, mesmo que sejam coisas bobas ou muito importantes. Pode até esquecer que perdeu um braço.</p><p>Você tem desvantagem em qualquer Teste de Atributo de Sabedoria para se lembrar de algo.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Cego (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você não enxerga. O personagem compensa a perda da visão, tornando-se mais sensível aos outros estímulos sensoriais. Mas as imagens e as pistas visuais lhes passam desapercebidas.</p><p>As ações que envolvam a coordenação visual e manual são muito difíceis de serem realizadas, sobretudo nas situações tensas. Você falha automaticamente em Testes relacionados a visão.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Cleptomaníaco (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você rouba coisas de que não precisa, não por seu valor, apenas por serem interessantes. Sempre que surgir a chance de roubar algo, você irá roubar. Um cleptomaníaco nunca devolve para os donos o produto de seus roubos, e lutará para evitar que isso aconteça.</p><p>Se ignorar sua vontade de roubar, você recebe -1 em todas as suas jogadas até que roube o objeto cobiçado (não cumulativo).</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Compulsivo (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Existe algo que você precisa fazer constantemente e que lhe traz alguma gratificação emocional, normalmente um alívio de ansiedade e/ou angústia. São hábitos mal adaptativos que já foram executados inúmeras vezes e acontecem quase automaticamente. É comum que haja um \"gatilho\" ou situações que tragam sua compulsão à tona. Se ignorar uma vez sua compulsão, você perde um Ponto de Ação [⬢] até que a faça novamente. Você recebe -2 em Testes de Atributo de Sabedoria (Investigação).</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Convencido (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Seu tópico de conversação favorito é você mesmo. Você sempre tenta levar todas as conversas para o tópico das suas conquistas e sucessos, e nunca falha em tentar receber o crédito por qualquer coisa com a qual esteja remotamente relacionado. Você não consegue evitar lembrar de seus feitos.</p><p>Você recebe -2 em Testes de Atributo de Atuação.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Depressivo (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você pode subitamente perder a motivação de viver ou de prosseguir em sua empreitada pelos seus sonhos, não há hora ou lugar para a tristeza profunda te atingir, podendo ser desde durante uma refeição e até no meio de uma batalha decisiva.</p><p>Sempre que houver um encontro contra inimigos, sua primeira jogada de ataque será feita com 6 desvantagens, mesmo que você possua vantagem para fazer o ataque.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Esfomeado (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você tem um estômago sem fundo, seja por ter passado fome em algum momento da sua vida ou por apenas ter nascido dessa forma.</p><p>Você necessita comer o dobro que uma pessoa normal para se manter no dia.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Falta de Sorte (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>A vida parece sempre querer rir da sua cara, não importa o quanto você tente e se prepare, alguma coisa sempre acaba dando errada.</p><p>Uma vez por dia, o Narrador pode transformar uma rolagem bem-sucedida em uma falha, essa rolagem pode ser sua ou de qualquer outro, desde que seja para atrapalhar sua vida.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Fantasioso (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você acredita ser alguém ou alguma coisa que não é, ou acha que pode fazer alguma coisa de que não é capaz. Fantasias são sustentadas pelas convicções do personagem, portanto não é uma boa ideia tentar o contrariar.</p><p>Sempre que alguém for contrário ou não acreditar na sua fantasia, você recebe a condição “Enfurecido” e ataca a criatura que discordou da sua fantasia.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Fúria Incontrolável (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Tudo é capaz de te irritar e provocar sua fúria, desde ataques que te causem dor até uma provocação infantil e que seja obviamente uma armadilha.</p><p>Você recebe 2 desvantagens em Salvaguardas contra Testes de Atributo de Sabedoria (Provocação) e não pode ser acalmado por Testes de Atributo.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Ignorante (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você acha que já possui quase todo o conhecimento necessário para atingir seus objetivos e, precisa apenas continuar seguindo seu caminho atual até o fim, vendo todo resto apenas como perca de tempo.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Ingênuo (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Talvez faltem alguns parafusos na sua cabeça, ou talvez você jamais tenha aprendido a separar a realidade da ficção. Não importa porque, você é extremamente vulnerável a mentiras sutis e meias-verdades.</p><p>Caso não seja algo muito absurdo, você recebe desvantagem em Testes de Atributo de Sabedoria (Intuição).</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Megalomaníaco (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você acredita ser invencível, imortal, alguém destinado a realizar um grande objetivo e acha que ninguém jamais conseguirá detê-lo. Você com frequência ignora perigos que poderiam matá-lo. Nunca recusa um desafio, nunca se rende, nunca foge e sempre luta até o fim.</p><p>Você recebe -2 em Testes de Atributo de Persuasão.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Mentiroso (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você sempre tenta se sobressair com suas mentiras, sempre que tiver a oportunidade de parecer melhor do que você realmente é, não há hesitação, mesmo que faça com que um oponente mais poderoso se interesse em tirar sua vida. Chega a mentir tanto que começa a ser desacreditado.</p><p>Você recebe -2 em Testes de Atributo de Enganação.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Orgulho Cego (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você é incapaz de ignorar provocações e insultos de qualquer tipo direcionados a você, seus companheiros ou entes queridos, independentemente do quão a situação seja inapropriada para isso, podendo partir para a violência caso fique muito irritado.</p><p>Você falha automaticamente em Salvaguardas contra Testes de Atributo de Provocação.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Olfato Ruim (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você não pode sentir o cheiro e o gosto de nada direito, o que pode colocar você em perigo (por exemplo, sentir o cheiro de algo queimando). Para você, todo tipo de comida tem o mesmo gosto. Exceto pela aparência, você não pode dizer se um alimento está estragado.</p><p>Você tem desvantagem em Testes de Atributo de Sabedoria (Percepção) relacionados ao olfato.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Retrucador (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você não fica quieto um segundo e tem que responder a tudo que as pessoas falam, muitas vezes fazendo pouco dos outros.</p><p>Você recebe -2 em Testes de Atributo de Presença (Persuasão).</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Ruim com Nomes (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você tem um sério problema com nomes, e vive trocando ou falando o nome das pessoas de forma errada, muitas vezes atraindo sua raiva.</p><p>Você recebe -1 em qualquer Teste de Atributo de Presença</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Sedutor Incorrigível (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você não consegue resistir a fazer tentativas casuais para seduzir qualquer um que encaixe em seus critérios de parceiro sexual, mesmo que você possa não querer ter um relacionamento sério (ou qualquer relacionamento). Porém isso não significa que você é um bom sedutor.</p><p>Enquanto estiver na presença de seu interesse amoroso, você não consegue se concentrar e todos os seus Testes de Atributo sofrem -1 de penalidade.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Senso de Direção Ruim (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você é tão ruim com senso de direção que pode se perder em um corredor sem portas ou janelas e não importa se seus amigos estiverem de olho em você, no primeiro deslize, você some da vista deles, como mágica.</p><p>Sempre que você não estiver em uma batalha e se deslocar de um lugar para o outro, andando ou correndo, você deve jogar um d6. Em um resultado 3 ou menor, você se perde e pode parar a até 500 metros de distância do ponto de partida. Caso você esteja acompanhado, você pode jogar o d6 duas vezes e escolher o resultado.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Sósia (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você é parecido com a descrição de outra pessoa, o que causa a confusão de identidades. Isso pode provocar inúmeras situações desagradáveis, ou mesmo perigosas, principalmente se o seu \"outro eu\" tiver péssima reputação ou estiver sendo procurado por algum crime.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Timidez (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você sente uma dificuldade enorme em lidar com pessoas, mesmo que você seja amigo delas, e tenta evitar situações sociais sempre que possível.</p><p>Você recebe 1 desvantagem em Testes de Atributo de Atuação.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Voz Fina (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você possui uma voz tão fina que chega a ser engraçada e não importa o quanto tente engrossar ou disfarçar e não importa o seu tamanho ou aparência, nada impede que quem ouça sua voz ache a engraçada.</p><p>Você tem desvantagem em Testes de Atributo de Presença (Intimidação), com criaturas que possam te ouvir.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Visão Ruim (1 Ponto)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (1 Ponto de Defeito)</strong></em></p><p>Você tem uma visão defeituosa devido a um problema incorrigível, por exemplo, ser caolho, míope ou enxergar mal por algum outro motivo, você pode usar óculos para corrigir, mas quando o deixa cair ou o perde, a dificuldade de enxergar é clara.</p><p>Você tem 1 desvantagem em Testes de Atributo relacionados à visão.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 1
+        }
+      }
+    },
+    {
+      "name": "Chantagem (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Alguém de grande influência tem um segredo seu, um objeto importante ou mantém como refém uma pessoa muito preciosa para você (deve ser previamente combinado com o Narrador).</p><p>De tempos em tempos, emissários dessa pessoa surgem para instruí-lo a cumprir demandas, as quais podem acarretar sérios perigos ou entrar em conflito com seus princípios.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Churriado (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Você tem muitos pontos positivos, mas a força física certamente não é uma delas, e por mais que você invista seu tempo em treinar seu corpo, para aumentar sua força física, o resultado vai acabar sendo só uma aparência melhor.</p><p>Você tem desvantagem em qualquer Testes de Atributo ou Salvaguarda de Força.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Curioso (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Você simplesmente é curioso demais em um assunto específico, sempre que algo te chama atenção sobre ele, você sente uma vontade incontrolável para descobrir tudo que pode sobre o assunto, muitas vezes deixando para trás o seu bom senso.</p><p>Caso você ignore esses mistérios você não consegue se concentrar em mais nada, recebe -1 em todos os Testes de Atributo.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Demente (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Sua inteligência e capacidade de aprendizado são reduzidas. Por conta disso, não consegue aprender nada sozinho. Seu limite para o atributo Sabedoria se torna 16 e nada pode aumenta-lo, nem mesmo feitiços Inatos.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Dependente (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Você se sente totalmente inseguro quando não tem seus companheiros para te ajudar ou proteger, pode ser por medo, insegurança ou por sempre querer se mostrar.</p><p>Enquanto não estiver com nenhum companheiro ou criatura que esteja cooperando contigo, dentro do seu raio de visão, você recebe -1 em todas as suas jogadas.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Dívida de Jogo (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Você deve uma quantia absurda de dinheiro a uma ou mais figuras extremamente poderosas e influentes. Trata-se de uma dívida tão elevada que talvez nunca consiga quitá-la. Além disso, qualquer tentativa de enganar ou despistar seus credores apenas aumenta a determinação deles em capturá-lo.</p><p>Uma vez por semana, em um dia predefinido pelo Narrador, um emissário aparecerá para cobrar 30d20 mil Iene (¥). Caso o pagamento não seja realizado, no início do dia seguinte você deverá fazer uma Salvaguarda de Sabedoria com CD igual ao seu nível + o número de semanas em atraso.</p><p>Se falhar nessa salvaguarda, independentemente de onde esteja, você nunca estará verdadeiramente seguro: o personagem é considerado perdido, podendo morrer por envenenamento, sabotagem ou sequestro, a critério do Narrador.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Dupla Personalidade (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Sua mente abriga duas personalidades distintas, com valores, comportamentos ou objetivos conflitantes. A troca entre elas pode ser sutil ou abrupta, mas nunca passa despercebida para quem convive com você por tempo suficiente.</p><p>No início de cada dia, ou sempre que você falhar em uma Salvaguarda de Presença CD 15 em uma situação de estresse intenso (humilhação, medo extremo, dor emocional, perigo iminente), o Narrador pode determinar qual personalidade assume o controle. Enquanto a personalidade secundária estiver ativa:</p><p>O Narrador pode impor decisões, falas ou atitudes coerentes com essa personalidade;</p><p>Você sofre desvantagem em Todas Perícias que for proficiente;</p><p>Você falha automaticamente em Salvaguardas de Sabedoria e Intelecto.</p><p>A personalidade original retorna automaticamente após um descanso longo ou quando um evento marcante ocorre (definido pelo Narrador).</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Falta de Higiene (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Você foge da água como se ela fosse um veneno. Sua aversão a banhos frequentes e à limpeza afeta como as pessoas te veem e suas interações.</p><p>Você falha automaticamente em Testes de Atributo de Persuasão e tem -10 em seu valor passivo.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Ganancioso (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Você realmente ama dinheiro, talvez, o motivo que lhe fez partir para se aventurar pelo mundo. Sempre que alguém falar de formas de ganhar quantidades consideráveis de dinheiro, por um pedido, uma missão ou revelando a localização de um tesouro escondido, você não consegue resistir, caso perca a oportunidade, você é acometido por uma grande depressão.</p><p>Caso se recuse a ganhar, perca dinheiro ou chances de enriquecer, você recebe -1 em todas as suas jogadas por 1d6 dias.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Hipocondríaco (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Quando qualquer pessoa fala de uma doença que você não conheça, mesmo se ela não existir, se você não passar em uma Salvaguarda de Constituição CD 16, logo após o próximo descanso longo, você começa a sentir os sintomas dessa doença por 1d4 dias.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Má Fama (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Você é infame. Talvez você tenha fracassado em alguma missão importante, foi derrotado ou humilhado publicamente, é um ex-criminoso tentando se reformar. Por algum motivo, ninguém acredita ou confia em você, além de terem grandes suspeitas sobre seus atos, seja de forma merecida ou não. Ao escolher este defeito, você pode definir uma alcunha inicial, com aprovação do Narrador.</p><p>Você recebe -2 em Testes de Atributo de Persuasão.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Medroso (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>O medo é seu companheiro constante, qualquer coisa possivelmente assustadora o impressiona e faz com que esbugalhe os olhos e grite, mesmo que você seja capaz de fazer o mesmo ou até superar ou que a criatura seja mais fraca que você.</p><p>Você é sempre o último nas ordens de iniciativa.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Monstruoso (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Sua aparência é repulsiva e assustadora. Você não pode sair pelas ruas como gente normal; as pessoas ficarão assustadas ou furiosas. Todos que possuem esta desvantagem, podem esconder sua monstruosidade com roupas adequadas.</p><p>Você ganha 1 nível (caso não tenha) ou aumenta 1 nível de preconceito.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Narcisista (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Você ama a si mesmo e está sempre cuidando da própria aparência com grande afinco. Sua aparência reflete no desempenho de suas performances, caso não esteja arrumado e se sentindo belo ou esteja sujo, mesmo as batalhas não serão travadas com grande vontade.</p><p>Quando você não está arrumado ou sujo, todos os seus Testes de Atributo de Sabedoria sofrem -1 de penalidade.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Obsessivo (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Obsessão por algo material. Os jogadores que possuírem esse defeito terão na avaliação de suas aventuras uma análise interpretativa, na qual será avaliada as tentativas de se aproximar ou sustentar sua obsessão.</p><p>Caso você tenha ignorado sua obsessão, todos os seus Testes de Atributo sofrem -1 de penalidade até que você volte a alimentar sua obsessão.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Paranoico (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Você não confia em ninguém, nem em seus amigos. Nunca pede e nem aceita nenhuma ajuda, nem mesmo o tratamento de seus ferimentos. Não consegue descansar ou dormir direito: mesmo que esteja em uma estalagem ou outro lugar que parece ser totalmente seguro.</p><p>Você precisa de, no mínimo, 2 horas para se acalmar e achar que está tudo certo, para começar um descanso curto ou longo.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Preguiçoso (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>No início de cada dia, role 1d4. O resultado indica a quantidade máxima de tarefas que você consegue realizar sem sofrer penalidades. Após exceder esse limite, seus Pontos de Energia Amaldiçoada (PA) atuais são reduzidos em 1/4 (arredondando para cima).</p><p>Esses são alguns exemplos de tarefas, mas o Narrador pode estipular outras:</p><p>Realizar atividades não relacionadas ao seu trabalho atual;</p><p>Participar de um encontro de combate;</p><p>Executar pedidos, ordens ou favores que não tenham partido de você.</p><p>Essa penalidade só pode ocorrer uma vez por dia e é redefinida ao final de um descanso longo.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Sinceridade Excessiva (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Você é incapaz de mentir, seja por valores morais ou simplesmente dificuldade em ocultar a verdade. E por mais que você se esforce para contar uma mentira, sempre será óbvio que não se trata da verdade.</p><p>Você tem desvantagem em Testes de Atributo de Presença (Enganação).</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Sonâmbulo (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Você pode começar a andar e falar enquanto dorme. Você pode até lutar e agir como se estivesse consciente, mas acorda se sofrer qualquer dano e não se lembra de nada que tenha acontecido enquanto estava sonâmbulo.</p><p>Ao final de cada descanso, você deve fazer um Teste de Constituição CD 15 para saber se conseguiu descansar. Em caso de falha, você não se beneficia de nenhuma característica de um descanso longo.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Suicida (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Você não dá valor à própria vida. Embora não tenha coragem para se matar, sempre procura oportunidades de morrer desafiando inimigos poderosos, correndo riscos desnecessários ou fazendo coisas de forma impensada.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Surdo (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Você é totalmente surdo, incapaz de ouvir qualquer som. Isso pode ter ocorrido por um acidente, um ferimento antigo ou você nasceu assim.</p><p>Você falha automaticamente em Testes de Atributo que dependam da audição.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Trapalhão (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Sempre que você se move, sai esbarrando em tudo pela sua frente ou tropeça no nada, não consegue carregar qualquer coisa sem que tudo acabe no chão.</p><p>Ao realizar uma falha crítica em uma jogada de ataque, você não só erra o golpe como também desencadeia um dos seguintes efeitos, de acordo com o Narrador:</p><p>Acerta a si mesmo ou um aliado próximo, causando até 5 pontos de dano na criatura;</p><p>Deixa a arma cair no chão;</p><p>Tropeça e recebe a condição “Caído”.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Vicio (3 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (3 Pontos de Defeito)</strong></em></p><p>Você é dependente de uma substância específica, como álcool, nicotina, açúcar, drogas, determinados alimentos ou compostos similares. Sempre que deixa de consumir essa substância, os efeitos da abstinência passam a se acumular da seguinte forma:</p><p>1 Dia Sem Consumo: você recebe desvantagem nas jogadas para determinar a iniciativa.</p><p>2 Dias Sem Consumo: você não recebe nenhum benefício ao finalizar descansos curtos.</p><p>A Partir do 3º Dia: para cada dia adicional sem consumir a substância, você perde 5 Pontos de Energia Amaldiçoada (PA) do seu valor máximo.</p><p>Os Pontos de Energia Amaldiçoada (PA) perdidos dessa forma só são recuperados após o término de um descanso longo, desde que o vício tenha sido satisfeito antes desse descanso.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 3
+        }
+      }
+    },
+    {
+      "name": "Consumidor Compulsivo (5 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (5 Pontos de Defeito)</strong></em></p><p>Você é impulsivo quando se trata de compras e gasta dinheiro de maneira descontrolada em itens que, muitas vezes, são inúteis ou prejudiciais.</p><p>Sempre que falarem em compras, você é o primeiro a se voluntariar a acompanhar a pessoa e ao entrar em uma loja ou mercado, você deve fazer uma Salvaguarda de Sabedoria CD 18 para evitar gastar 50% do dinheiro total que você possuir.</p><p>Se a loja não tiver produtos o suficiente para fazê-lo gastar 50%, você compra a loja.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 5
+        }
+      }
+    },
+    {
+      "name": "Distraído (5 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (5 Pontos de Defeito)</strong></em></p><p>Você tem dificuldade para se concentrar em alguma coisa. Consequentemente, seu personagem geralmente não possui o conhecimento necessário em várias situações.</p><p>Você recebe – 2 em Testes de Atributo de Sabedoria (Intuição e Percepção) e Intelecto (História e Investigação).</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 5
+        }
+      }
+    },
+    {
+      "name": "Doença Terminal (5 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (5 Pontos de Defeito)</strong></em></p><p>Você sofre de uma doença terrível e incurável, que consome lentamente sua vitalidade. No passado, você já foi muito mais forte do que é hoje, mas seu corpo está em constante declínio.</p><p>Sempre que você cair a 0 Pontos de Vida, perde permanentemente 1 ponto do atributo Constituição. Caso esse atributo chegue a 0, o personagem morre.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 5
+        }
+      }
+    },
+    {
+      "name": "Mediocre (5 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (5 Pontos de Defeito)</strong></em></p><p>Seu personagem não se destaca em nada do que faz, vivendo constantemente à sombra da mediocridade e sendo incapaz de brilhar nos momentos mais decisivos. Você nunca recebe os efeitos de acertos críticos em jogadas com o d20.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 5
+        }
+      }
+    },
+    {
+      "name": "Pacifista (5 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (5 Pontos de Defeito)</strong></em></p><p>Você adota uma postura pacifista em sua abordagem à vida, buscando solucionar conflitos por meio do diálogo e da compreensão. Evita o uso da violência sempre que possível, priorizando a paz e a harmonia em suas interações.</p><p>Você só consegue executar ações que possam causar dano quando um aliado estiver com menos de 50% de Pontos de Vida ou alguma criatura não combatente estiver com risco de vida. Quando sozinho, você sempre se rende ou busca o caminho da não violência.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 5
+        }
+      }
+    },
+    {
+      "name": "Sonolência (5 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (5 Pontos de Defeito)</strong></em></p><p>Por algum motivo, você está sempre com sono, não importa se dormiu normalmente no dia anterior ou se acabou de acordar.</p><p>No início de um encontro de combate, você deve rolar 1d6, e em um resultado 3 ou menor, você passa a primeira rodada do combate com a condição “Inconsciente”. Esse teste pode ser solicitado pelo Narrador em qualquer outro momento também.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 5
+        }
+      }
+    },
+    {
+      "name": "Viajante (5 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (5 Pontos de Defeito)</strong></em></p><p>Você não é bom com responsabilidades e não consegue ficar muito tempo no mesmo lugar, como se fazer isso tornasse sua vida insuportável. Você abandona pessoas com quem se importa sem olhar pra trás e recusa qualquer trabalho que o faça ficar preso em um lugar.</p><p>Caso você passe mais de 1 mês no mesmo lugar, com exceção estar treinando para atributos ou Pontos de Maldição, você recebe desvantagem e -1 em todas as rolagens que realizar.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 5
+        }
+      }
+    },
+    {
+      "name": "Trauma Profundo/Fobia (5 Pontos)",
+      "type": "feat",
+      "img": "icons/magic/death/undead-ghosts-trio-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Defeito (5 Pontos de Defeito)</strong></em></p><p>Em seu passado você passou por uma situação traumática irrecuperável, desde uma perda terrível, ter sofrido agressões ou qualquer evento negativamente marcante.</p><p>Toda vez que você se depara com uma situação semelhante ou possui um gatilho que traga suas memórias à tona, você é tomado por perturbações nítidas que pode te impedir de realizar ações ou comprometer sua concentração, devendo fazer uma Salvaguarda de Sabedoria CD 15, se passar no teste, você supera momentaneamente o trauma, se falhar, todos as suas jogadas com d20 sofrem -5 de penalidade. Após esse 1 minuto, você pode repetir o teste.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-flaws",
+          "defeitoPontos": 5
+        }
+      }
+    }
+  ],
+  "peculiaridades": [
+    {
+      "name": "Visões Fugazes",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você vê coisas que não deveria, como aparições que não existem e ilusões de terror.</p><p>Penalidade: Uma vez por interação ou 2 vezes por combate, o narrador pode impor falha em uma rolagem de acerto.</p><p>Bônus: Você recebe uma habilidade de especialização adicional.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Ferida Amaldiçoada",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você possui uma ferida que recebeu de uma maldição durante algum momento da sua infância que ressurge com poder assustador em momentos importantes.</p><p>Penalidade: No início de cada encontro, você deve rolar 1d20. Em um resultado de 10 ou menor, você é afetado pela sua maldição que te causa uma dor terrível durante o combate. Você recebe a condição “Incapacitado” por 3 rodadas do combate.</p><p>Após ser afetado por essa característica, ela não te afeta novamente até o fim do seu próximo descanso longo.</p><p>Benefício: Seus Pontos de Vida base aumentam em +1;</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Gêmeo Amaldiçoado",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Os gêmeos são sinais de mal agouro no mundo de Jujutsu. Devido ao seu destino e poderes compartilhados, eles costumam ser muito fracos ao invés de poderosos.</p><p>Até que um deles morra em prol do outro durante a narrativa, os dois são severamente penalizados.</p><p>Penalidade: Os gêmeos possuem a Energia Amaldiçoada Máxima e Refinamento divididas entre si, recebendo cada um, metade do total.</p><p>Benefícios: Caso um gêmeo morra em prol do outro, ele pode escolher levar consigo o corpo físico ou a energia. Se ele deixar a energia, a sua base aumenta em 5. Se levar a energia, você recebe 4 Pontos de Atributo e recebe a origem de poder Fisicamente Dotado e o Estilo de Combate de Restringido, podendo refazer sua ficha.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Físico Limitado",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você foi amaldiçoado com um físico frágil que nunca pode se igualar com o das outras pessoas, pegando doenças mais facilmente e tendo mais dificuldade em se recuperar ou resistir a lesões severas.</p><p>Penalidade: Seu limite de Constituição se torna 10 e você perde 1 Ponto de Vida Base.</p><p>Benefícios: Sua Energia Base aumenta em 2 Pontos e seu valor de Intelecto ou Sabedoria aumenta em 1.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Apetite Canibal",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você tem impulsos fortes por ingerir carne humana, mas deseja que ela seja preparada com maestria para conseguir saciar sua fome.</p><p>Penalidade: Se você não ingerir um banquete de carne humana (pelo menos 5 kg) pelo menos 1 vez por mês, você recebe -1 em todas as rolagens do d20 até que ela seja ingerida. Esse bônus vai se acumulando todo mês até que você seja saciado.</p><p>Essa maldição não acumula caso você esteja em uma condição que impossibilitaria você de saciar sua fome, como selado ou preso, parando apenas em -1.</p><p>Benefícios: Você recebe 1 Habilidade de Especialização de Proezas Físicas.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Corpo Exaurido",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você está sempre cansado — não por trabalhar demais, mas porque seu corpo nunca teve um nível alto de energia devido à maldição que o afeta.</p><p>Penalidade: Ao final de cada encontro, você deve realizar uma Salvaguarda de Constituição CD 18. Em caso de falha, você recebe 1 nível de exaustão.</p><p>A CD aumenta em +5 para cada encontro adicional que você participar antes de completar um descanso longo. Para cada descanso longo realizado antes de voltar a lutar, a CD é reduzida em −5, até um mínimo de 20.</p><p>Benefícios: Você recebe 2 Pontos de Proficiência e 1 de Energia Base adicional.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Pesadelos Terríveis",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Seu sono nunca é tranquilo e muitas vezes vem acompanhado de cenas horríveis de mortes das pessoas que você ama ou de lutas em que a vitória é impossível.</p><p>Penalidade: Ao fim de um descanso longo, você deve rolar 1d20. Em um resultado de 10 ou menor, você acorda com 1 nível de exaustão que não pode ser removido a menos que seja por um descanso longo bem sucedido.</p><p>Caso você falhe também no próximo descanso, você não remove a exaustão adquirida por essa característica e acumula uma adicional, até um máximo de 5 níveis.</p><p>Benefícios: Você recebe imunidade a condição “Amedrontado” e 4 Pontos de Proficiência em Intimidação.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Má Cicatrização",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Uma maldição em seu corpo afeta diretamente sua capacidade de cicatrizar e se curar.</p><p>Penalidade: Toda vez que você for curado de qualquer forma, você recebe uma das seguintes penalidades dependendo do tipo de cura recebida:</p><p>Você reduz 2 dados de dano da cura (mínimo 1);</p><p>Em um valor fixo, você sofre penalidade de metade do seu Atributo de Constituição (arredondado para cima);</p><p>Se você for curado diretamente metade ou o valor total da sua vida de uma vez, você reduz esse valor em 1/3.</p><p>Benefícios: Você aumenta sua vida e energia base em 1.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Tremores Involuntários",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Sua maldição afeta sua coordenação e controle motor em momentos de dificuldade.</p><p>Penalidade: Uma vez por rodada, ao sofrer um crítico, você recebe a condição “Estremecido” de forma automática até o fim do seu próximo turno. Esse efeito passa para criaturas controladas por você.</p><p>Benefício: Seu valor de refinamento aumenta em +2.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Presença Incômoda",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Sua presença causa desconforto nas pessoas ao redor, fazendo elas terem diversos tipos de reações diferentes quando te olham, como calafrios ou apenas medo.</p><p>Penalidade: Você tem 2 desvantagens em testes de interações sociais contra criaturas que possam te ver. Isso afeta seu valor passivo nesses testes.</p><p>Benefícios: Você recebe 2 vantagens em Testes de Atributo de Intimidação – que é imune a penalidade – e Sobrevivência.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Respiração Instável",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Sua maldição se concentra nos seus pulmões fazendo você não conseguir manter um fôlego estável de forma alguma.</p><p>Penalidade: Se você usar mais de 3 Pontos de Ação para deslocamento adicional no turno, você recebe 1 nível de exaustão até realizar um descanso curto ou longo. É possível acumular diversos níveis dessa forma.</p><p>Benefícios: Você aprendeu a utilizar seus recursos de forma muito eficiente. Você recebe uma vantagem contra todas as criaturas abaixo de você na iniciativa.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Azar Absurdo",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Pequenos azares te acompanham constantemente e são exacerbados pela sua maldição.</p><p>Penalidade: Sempre que você tirar 1 natural, algo absurdo irá ocorrer, mesmo que não faça sentido algum desde que seja para dificultar sua vida.</p><p>Essa característica te afeta mesmo que você possua algo que permita rolar novamente suas rolagens. Você poderá rolar novamente, mas ainda sofrerá as consequências dessa maldição pelo 1 natural.</p><p>Benefícios: Toda vez que você tirar um 20 natural, você recupera Energia Amaldiçoada Total em um valor igual seu atributo de Intelecto.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Lembrete Sombrio",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você amaldiçoou uma pessoa querida sem querer, causando um sofrimento tremendo a essa criatura. Saber disso causa um enorme tormento a sua mente, algo que acompanha você a cada segundo da sua vida.</p><p>Penalidade: Você recebe -1 em todas as rolagens no d20. Além disso, você pode sofrer gatilhos aleatórios toda vez que se lembrar da pessoa. Isso pode ocorrer sob as seguintes circunstâncias:</p><p>Você vê essa pessoa;</p><p>Você recebe notícias sobre a pessoa;</p><p>Encontra algo diretamente ligado a ela (objeto, memória forte, local importante);</p><p>É colocado em uma situação que relembra claramente do ocorrido (à critério do mestre).</p><p>Toda vez que esses casos ocorrerem, sua penalidade se torna -3 pelas próximas 4 horas.</p><p>Benefícios: Seu valor de Sabedoria aumenta em +1 e você recebe 2 Habilidades de Especialização adicionais.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Energia Destrutiva",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Sua energia amaldiçoada consegue ser maléfica até mesmo ao seu próprio corpo.</p><p>Penalidade: Sempre que utilizar uma técnica, você recebe dano diretamente na sua vida igual ao custo em PA dela.</p><p>Benefícios: Sua energia base aumenta em 3.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Voz Amaldiçoada",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Algo fala dentro da sua mente com sua própria voz, sussurrando seus pensamentos mais destrutivos.</p><p>Penalidade: A qualquer momento, o Narrador pode emitir ordens intrusivas que nunca serão ao seu favor. Você pode realizar uma Salvaguarda de Presença CD 13. Em caso de falha, você pode escolher entre executar a ação ou sofrer -3 em todas as rolagens no d20 até o fim do encontro ou pela próxima hora (afeta seus valores passivos de perícia).</p><p>A cada vez que você passar na Salvaguarda, você aumenta a CD da próxima em +1, resetando ao falhar.</p><p>Benefícios: No início de cada dia, você pode escolher rolar 1d20. A qualquer momento, você pode substituir uma rolagem sua ou de uma criatura qualquer a até 30 metros pelo resultado da rolagem.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Rastro Da Desgraça",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>As coisas simplesmente dão errado ao seu redor devido a sua maldição.</p><p>Penalidade: Sempre que você tirar 1 natural, você recebe uma condição aleatória de até 7 PA.</p><p>Benefícios: Sua margem de critico por excedente se torna 8 ao invés de 10.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Reflexo Amaldiçoado",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Nada que é ruim vem sozinho e sua maldição é a forma perfeita de representar isso.</p><p>Penalidade: Sempre que você falhar catastroficamente em realizar uma ação que esteja tentando fazer, como falhar por 10 ou mais em uma rolagem ou tirar 1 natural, o narrador recebe 1 Ponto de Reflexo Amaldiçoado. Esses pontos devem ser utilizados para forçar a falha de qualquer rolagem que com certeza irá piorar a vida do dono dessa maldição, seja de forma direta ou indiretamente.</p><p>Benefícios: Você recebe 1 Ponto de Vida Base e recebe 2 Habilidades de Especialização adicionais.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Sede De Sangue Imposta",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>As criaturas adoram o cheiro de seu sangue e não irão perder a oportunidade de tirar sua vida.</p><p>Penalidade: Sempre que você ficar com menos de 50% da sua vida, as criaturas irão automaticamente mudar o alvo para você até que esteja morto.</p><p>Benefícios: Você recebe 1 Ponto de Vida Base e 1 Ponto de Atributo de Presença.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Olhar Do Abismo",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você presenciou algo que mudou sua vida para a pior, fazendo com que você temesse tudo que esteja um pouquinho fora do seu alcance.</p><p>Penalidade: Sempre que você estiver de cara com uma criatura inimiga com ND maior que seu nível, você deve realizar uma Salvaguarda de Sabedoria CD 10, onde ela aumenta em +4 para cada ND que a criatura possuir acima do seu nível. Se você falhar, você recebe a condição “Amedrontado” contra ela por 1 minuto ou até sofrer dano e irá correr com tudo para o mais longe possível dela.</p><p>Enquanto estiver enfrentando essa criatura, você deve rolar 1d4 no início de cada turno. Em um resultado de 1 ou 2, você deve realizar a Salvaguarda novamente.</p><p>Você só pode ser amedrontado dessa forma até 3 vezes por descanso longo.</p><p>Benefício: Você recebe 3 Pontos de Proficiência e imunidade a condição “Atordoado”.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Maldição Descontrolada",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Sua maldição toma uma forma tangível de nível especial ligada a você e mata qualquer criatura que te ofenda de qualquer forma, mesmo que seja amigos durante uma brincadeira. Isso faz com que você se torne perigoso demais para as criaturas ao seu redor.</p><p>Essa maldição possui uma ficha de ND 17 e não pode ser morta enquanto você estiver vivo e volta a vida caso você seja revivido de alguma forma.</p><p>Penalidade: Se descobrirem as transgressões da sua maldição, você é considerado como um criminoso para a sociedade Jujutsu, podendo ser condenado a execução. Além disso, a maldição irá pedir algo macabro ou cruel para você pelo menos 1 vez a cada 3 dias. Se você recusar, você recebe a condição “Letárgico” por 24 horas.</p><p>Benefício: Você recebe 3 Pontos de Foco. A qualquer momento, você pode gastar 1 Ponto de Foco para negar uma condição qualquer recebida.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Corpo Frágil",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Seu corpo é tão frágil que ameaça se quebrar com a menor das pressões devido a uma maldição contida em seu corpo e o reforço da sua energia amaldiçoada é a única coisa que faz com que você possa funcionar como uma pessoa normal.</p><p>Penalidade: Ao sofrer uma rolagem de ataque (Comum), você sofre 1 dado de dano adicional e ao sofrer uma técnica, você recebe 1/3 dos dados totais sofridos (arredondado para cima) como dano adicional.</p><p>Benefício: Você aprendeu a lutar com um corpo quebrado. Você é imune aos efeitos de redução de Pontos de Ação das condições, embora ainda sofra todos os outros efeitos relacionados as condições.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Voto Vinculativo",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você firmou um voto com entidades extremamente poderosas — sejam líderes do mundo Jujutsu ou maldições de alto nível. Sua existência agora serve a eles.</p><p>Penalidade: Você não pode ferir, trair ou agir diretamente contra qualquer criatura com a qual tenha firmado o voto. Qualquer tentativa de fazê-lo resulta em morte imediata.</p><p>Se uma dessas entidades estiver em risco e você tiver conhecimento disso, você é obrigado a agir para protegê-la, dentro de suas capacidades.</p><p>Correntes de Servidão: Ordens diretas dessas entidades não podem ser recusadas sem resistência. Ao receber uma ordem que vá contra seus interesses diretos, faça uma Salvaguarda de Presença (CD 10). Em caso falha, você deve cumprir a ordem. Se obtiver sucesso, você recebe a condição “Letárgico” e -3 em todas as rolagens no d20 até que as ordens sejam cumpridas.</p><p>Seu voto só pode ser quebrado se todas as entidades envolvidas (mínimo 5) morrerem, mas você não pode ter nenhuma relação com a morte delas.</p><p>Benefício: Você desbloqueia sua Energia Reversa e recebe 3 Habilidades de Especialização dessa arvore.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Visão Deturpada Do Mundo",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Diversos acontecimentos desde a sua infância relacionado a maldições fez com que você criasse uma visão distorcida do mundo, ao culpar os não-feiticeiros pela existência das maldições, não sendo nem um pouco diferente delas.</p><p>Penalidade: Sempre que um não-feiticeiro tentar te impedir diretamente ou causar qualquer tipo de prejuízo ou empecilho a você, o Narrador pode pedir uma Salvaguarda de Sabedoria CD 12. Em caso de falha, você se torna violento e tenta neutralizar a criatura imediatamente.</p><p>A cada vez que você obtiver sucesso, a CD aumenta em +2 até o momento que você falhar, resetando os efeitos quando isso ocorrer.</p><p>Benefícios: Você pode escolher um feitiço específico de 3 com requisito de 4 ou mais Pontos de Ação. Reduza o custo de Pontos de Ação dele ou de uma habilidade menor dentro dele em 1 de forma permanente.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Destino Entrelaçado",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Seu destino está ligado a um espírito amaldiçoado de grau especial. Sua existência e a dela são uma só.</p><p>Penalidade: Você tem um vínculo de morte com a maldição, fazendo com que a morte dela ou a sua cause a morte do outro.</p><p>Segredo da Condenação: Você sabe a identidade e os poderes da maldição, mas toda vez que você tentar revela-la, você deve realizar uma Salvaguarda de Sabedoria CD 28. Em caso de falha, você perde metade dos seus Pontos de Vida e Energia máximos por 7 dias e não pode tentar revelar sobre ela durante esse período.</p><p>Se obtiver sucesso, você consegue falar sobre a maldição, mas recebe 2d8 de dano Psíquico por rodada enquanto estiver revelando algo sobre ela.</p><p>A maldição possui as mesmas limitações que você, não podendo revelar sobre você sem pagar o preço.</p><p>Benefícios: Você e a Maldição recebem um bônus de +2 nos Pontos de Vida e +5 nos Pontos de Energia Base.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Doença Sobrenatural",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você possui uma doença contraída a partir de uma maldição em algum momento no seu passado que faz com que você tenha momentos de inconsciência em ocasiões decisivas e importantes.</p><p>Penalidade: Ao causar um acerto crítico em uma rolagem de acerto, o ataque é interrompido e você recebe a condição “Inconsciente” até o fim do seu turno seguinte.</p><p>Essa penalidade te afeta apenas uma vez e reseta ao fim de cada descanso longo.</p><p>Benefícios: Você é imune a condições de “Dano”.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Caçador Sombrio",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Seu feitiço inato faz com que você emita uma energia muito específica, facilmente rastreável por uma maldição que anseia consumir sua existência.</p><p>Penalidade: Uma vez por dia, ao utilizar seu feitiço inato, você deve rolar 1d12. Em um resultado 1, você recebe uma Marca de Presa, indicando que a maldição de ND 17 percebeu sua presença.</p><p>Ao acumular 5 Marcas de Presa, a maldição descobre sua localização e surgirá em até 30 dias para caçá-lo e consumi-lo.</p><p>Além disso, a cada 2 níveis que você adquirir, o ND da maldição aumenta em +1.</p><p>Benefícios: Você aprendeu a controlar sua energia amaldiçoada de forma a quase não vazar vestígios, com medo de ser encontrado. Você recebe 2 Habilidades de Especialização de “Canalização de Energia”, 2 Pontos de Proficiência em Feitiçaria e 1 Ponto de Atributo em Intelecto.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    },
+    {
+      "name": "Desejo Sombrio",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "system": {
+        "description": {
+          "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Uma maldição em seu corpo faz com que você desenvolva desejos sombrios de tempos em tempos, precisando saciá-los para manter um certo nível de sanidade.</p><p>Penalidade: Ao final de cada sessão ou evento marcante na mesa, desde que ocorram em dias diferentes, role 1d6. Em um resultado de 4 ou mais, o Desejo Sombrio se manifesta.</p><p>O desejo sombrio é sempre algo moralmente condenável e, geralmente, configura um crime dentro da sociedade jujutsu. Você deve escolher três tipos de desejos sombrios: um leve, um moderado e um grave. Quando o desejo se manifestar, role 1d3 para determinar qual deles ocorrerá (ou d6 em mesas presenciais):</p><p>1 – Leve: Você irá manipular, trair ou causar sofrimento a um inocente ou aliado, conforme sua escolha.</p><p>2 – Moderado: Você irá ferir gravemente um inocente ou aliado ou; destruir algo importante.</p><p>3 – Grave: Você irá matar, sacrificar ou cometer um ato extremo punível com a morte pelas leis.</p><p>Você deve definir previamente uma única ação específica para cada um dos três níveis, que representarão seus desejos sombrios.</p><p>Falhar em cumprir seu desejo sombrio faz você ter -4 em todas as rolagens não relacionadas a cumpri-lo até que ele seja saciado.</p><p>Benefícios: Você recebe 2 Pontos Lendários para usar em modificadores.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-peculiarities"
+        }
+      }
+    }
+  ],
+  "modificadores": [
+    {
+      "name": "Reencarnação em Objeto Amaldiçoado",
+      "type": "feat",
+      "img": "icons/magic/symbols/circled-gem-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Você foi um feiticeiro do passado, transformado em um objeto amaldiçoado, e agora sua reencarnação depende de sorte e destino. Seu corpo foi dividido em 20 partes, que podem assumir qualquer forma, desde que sejam do tamanho “Miúdo”.</p><p>Você começa a aventura no 1º nível, habitando o corpo de um ser que ingeriu uma dessas partes. A cada fragmento recuperado e consumido, você sobe de nível. Caso outra criatura já tenha assimilado uma dessas partes, você pode matá-la para recuperá-la. Ao atingir o 20º nível, você passa a evoluir normalmente, caso a campanha avance para níveis épicos.</p><p><strong>Benefício Inerente: você sente partes do seu corpo dentro de 500 metros, desde que não esteja sendo protegida por nenhuma barreira.</strong></p><p>Custo: <strong>1 Ponto Lendário</strong>.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-legendary-modifiers",
+          "pontosLendarios": 1
+        }
+      }
+    },
+    {
+      "name": "Energia Amaldiçoada Variante",
+      "type": "feat",
+      "img": "icons/magic/symbols/circled-gem-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Sua energia amaldiçoada adotou as propriedades do seu feitiço, fazendo com que ela mudasse suas propriedades mesmo em momentos quando seu feitiço não está sendo utilizado. Você recebe uma das seguintes características dependendo do elemento que seu FEITIÇO INATO utiliza como base:</p><p><strong>Energia Venenosa</strong></p><p>Sua energia amaldiçoada é muito venenosa, fazendo com que o mero toque dela seja o suficiente para incapacitar pessoas comuns. Você recebe as seguintes características:</p><p>Você pode mudar seu dano de seus ataques (Comuns e de Técnica) para o tipo “Veneno”;</p><p>Ao atingir uma criatura, você causa +1 de dano de veneno contra ela. Esse dano se acumula em +1 para cada ataque que você atingir sem errá-la, até um máximo igual seu nível de personagem. Ao errar uma rolagem de acerto, esse bônus volta para 0.</p><p><strong>Toque Chocante</strong></p><p>Sua energia amaldiçoada se comporta exatamente igual eletricidade, não existindo bem uma diferenciação entre uma e outra. Você recebe as seguintes características:</p><p>Você pode mudar seu dano de seus ataques (Comuns e de Técnica) para o tipo “Elétrico”;</p><p>Ao atingir uma jogada de ataque (Comum) contra a criatura inimiga, você causa o resultado do seu dado de dano principal na vida dela mesmo que ela tenha reduzido seu dano a 0.</p><p><strong>Liberação de Calor</strong></p><p>Sua energia amaldiçoada é extremamente quente, incendiando tudo que toca. Você recebe as seguintes características:</p><p>Você pode mudar seu dano de seus ataques (Comuns e de Técnica) para o tipo “Fogo”;</p><p>Sempre que você causar um crítico por excedente, você impõe a condição “Em Chamas” na criatura inimiga se ela falhar em uma Salvaguarda de Constituição.</p><p><strong>Frio Absoluto</strong></p><p>Sua energia amaldiçoada é extremamente fria, congelando tudo que ela entrar em contato. Você recebe as seguintes características:</p><p>Você pode mudar seu dano de seus ataques (Comuns e de Técnica) para o tipo “Frio”;</p><p>Ao atingir uma criatura com uma rolagem de ataque, ela recebe 1 Acúmulo de Geada, reduzindo seu deslocamento em 1,5 metros. Ela remove 1 acúmulo no fim de cada um dos turnos dela ou se usar um Ponto de Ação para realizar um Teste de Atributo de Medicina CD 17 em si mesma para remover todos eles.</p><p><strong>Eco Trovejante</strong></p><p>Sua energia amaldiçoada vibra constantemente, fazendo com que seus ataques enviem ondas de choque ao seu redor. Você recebe as seguintes características:</p><p>Você pode substituir cada um de seus ataques por um ataque a distância de 12 metros ao enviar uma onda de choque contra a criatura. Se você utiliza ondas sonoras ou já tem um ataque a distância de efeito similar, o alcance aumenta em 9 metros adicionais. Você pode mudar seu dano de seus ataques (Comuns e de Técnica) para o tipo “Trovejante”.</p><p><strong>Contato Corrosivo</strong></p><p>Sua energia corrói tudo que toca, derretendo com uma incrível velocidade tudo que não for protegido por energia amaldiçoada. Você recebe as seguintes características:</p><p>Você pode mudar seu dano de seus ataques (Comuns e de Técnica) para o tipo “Ácido”;</p><p>Você reduz todo dano sofrido por armas em 2 Pontos de Dano e causa 2 de dano ácido adicional em criaturas de carne e osso. Além disso, você causa o dobro de dano em objetos e estruturas sem energia amaldiçoada.</p><p>Custo: <strong>2 Pontos Lendários</strong>.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-legendary-modifiers",
+          "pontosLendarios": 2
+        }
+      }
+    },
+    {
+      "name": "Redução de Penalidade – Seis Olhos",
+      "type": "feat",
+      "img": "icons/magic/symbols/circled-gem-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Reduz a penalidade dos Seis Olhos para 2d8 na liberação completa e depois apenas a cada 5 minutos de uso ao invés de a cada rodada. Ele também deixa de causar exaustão no usuário caso ele possua Energia Reversa.</p><p>Custo: <strong>3 Pontos Lendários</strong>.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-legendary-modifiers",
+          "pontosLendarios": 3
+        }
+      }
+    },
+    {
+      "name": "Conhecimento da Alma",
+      "type": "feat",
+      "img": "icons/magic/symbols/circled-gem-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Você tem um conhecimento instintivo da alma, permitindo que você possa protegê-la de efeitos extremamente prejudiciais de habilidades específicas, assim como te dá certos benefícios:</p><p>Você tem resistência 20 a dano da alma;</p><p>Você é capaz de acertar a alma de seres que só podem ser destruídos dessa forma;</p><p>Você consegue criar objetos amaldiçoados.</p><p>Custo: <strong>3 Pontos Lendários</strong>.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-legendary-modifiers",
+          "pontosLendarios": 3
+        }
+      }
+    },
+    {
+      "name": "Receptáculo Destinado",
+      "type": "feat",
+      "img": "icons/magic/symbols/circled-gem-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Você não nasceu de uma linhagem poderosa ou com habilidades sobrenaturais, mas possui um corpo físico assustador, capaz de rivalizar com as mais fracas das Restrições Celestiais, além de ter a capacidade de conter maldições em seu corpo com facilidade. Você recebe os seguintes benefícios:</p><p>Você recebe o benefício de “Conhecimento da Alma”;</p><p>Sua margem para acertar um Fulgor Negro muda para 19-20;</p><p>Você aprende automaticamente a habilidade “Abençoado pelas Faíscas Negras”, ignorando seus requisitos.</p><p><strong>Requisito: Origem — Receptáculo.</strong></p><p>Custo: <strong>5 Pontos Lendários</strong>.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-legendary-modifiers",
+          "pontosLendarios": 5
+        }
+      }
+    },
+    {
+      "name": "Estrutura Corporal Anômala",
+      "type": "feat",
+      "img": "icons/magic/symbols/circled-gem-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Seu corpo possui uma forma incomum e extremamente poderosa. Você possui quatro braços, quatro olhos e duas bocas, cada um contribuindo para sua superioridade em combate. Você recebe as seguintes características:</p><p>Você recebe imunidade a condição Surpreso;</p><p>Se tiver todos os membros, você pode usar “Ativação Máxima” sem sacrificar nenhum Ponto de Ação;</p><p>Você recebe 6 Selos adicionais, se tiver a habilidade de selos, e pode utilizá-los com suas mãos adicionais;</p><p>Você pode ativar outras habilidades do seu feitiço enquanto está recitando um encantamento.</p><p><strong>Dificuldade Inerente: você recebe preconceito “Severo”.</strong></p><p>Custo: <strong>6 Pontos Lendários</strong>.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-legendary-modifiers",
+          "pontosLendarios": 6
+        }
+      }
+    },
+    {
+      "name": "Seis Olhos",
+      "type": "feat",
+      "img": "icons/magic/symbols/circled-gem-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Você é descendente de Sugawara Michizane ou do primeiro portador dos Seis Olhos dentro da lore atual, o que permitiu que herdasse esse traço. Você recebe acesso aos “Seis Olhos” do Clã Gojo sem precisar de rolagem, desde que não pertença a outro clã, podendo, até mesmo, ser um Feiticeiro Inato.</p><p>Assim como no original, a capacidade de possuir esse benefício depende de não existir outro usuário dos Seis Olhos vivo no momento, então deve ser discutido com o Narrador.</p><p><strong>Benefício Inerente: ao pegar esse traço, você ainda está apto a pegar o “Poder da Linhagem” e o talento de origem do “Clã Gojo” caso tenha a origem de poder do clã.</strong></p><p>Custo: <strong>6 Pontos Lendários</strong>.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-legendary-modifiers",
+          "pontosLendarios": 6
+        }
+      }
+    },
+    {
+      "name": "Energia Colossal",
+      "type": "feat",
+      "img": "icons/magic/symbols/circled-gem-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Você possui uma quantidade imensa de energia amaldiçoada desde o seu nascimento, tornando a utilização de feitiços algo natural para você.</p><p>Sua quantidade de Energia Amaldiçoada passa a ser 30 vezes o seu nível de personagem, em vez dos 20 atuais, e você recebe 10 PA máximos pelo benefício “Evolução na Prática”, em vez dos 5 que recebe normalmente.</p><p>Custo: <strong>6 Pontos Lendários</strong>.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-legendary-modifiers",
+          "pontosLendarios": 6
+        }
+      }
+    }
+  ],
+  "penalidadesVariantes": [
+    {
+      "name": "Perde 3 dos seus Selos",
+      "type": "feat",
+      "img": "icons/magic/death/skull-energy-light-white.webp",
+      "system": {
+        "description": {
+          "value": "<p>Você perde 3 dos seus selos (precisa da habilidade).</p><p>Bônus: <strong>1 Ponto Lendário</strong>.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-variant-penalties"
+        }
+      }
+    },
+    {
+      "name": "Perde 2 Habilidades de Especialização",
+      "type": "feat",
+      "img": "icons/magic/death/skull-energy-light-white.webp",
+      "system": {
+        "description": {
+          "value": "<p>Você perde 2 Habilidades de Especialização.</p><p>Bônus: <strong>2 Pontos Lendários</strong>.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-variant-penalties"
+        }
+      }
+    },
+    {
+      "name": "Sacrifica os benefícios da origem",
+      "type": "feat",
+      "img": "icons/magic/death/skull-energy-light-white.webp",
+      "system": {
+        "description": {
+          "value": "<p>Sacrifica todos os benefícios da origem.</p><p>Bônus: <strong>2 Pontos Lendários</strong>.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-variant-penalties"
+        }
+      }
+    },
+    {
+      "name": "Perde 2 Pontos de Vida ou 4 de Energia Base",
+      "type": "feat",
+      "img": "icons/magic/death/skull-energy-light-white.webp",
+      "system": {
+        "description": {
+          "value": "<p>Você perde 2 Pontos de Vida ou 4 de Energia Base.</p><p>Bônus: <strong>2 Pontos Lendários</strong>.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-variant-penalties"
+        }
+      }
+    },
+    {
+      "name": "Perde 1 Ponto de Ação permanente",
+      "type": "feat",
+      "img": "icons/magic/death/skull-energy-light-white.webp",
+      "system": {
+        "description": {
+          "value": "<p>Perder um Ponto de Ação [⬢] permanentemente.</p><p>Bônus: <strong>2 Pontos Lendários</strong>.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-variant-penalties"
+        }
+      }
+    },
+    {
+      "name": "Vulnerabilidade 10 a danos físicos",
+      "type": "feat",
+      "img": "icons/magic/death/skull-energy-light-white.webp",
+      "system": {
+        "description": {
+          "value": "<p>Receber Vulnerabilidade 10 a danos físicos.</p><p>Bônus: <strong>3 Pontos Lendários</strong>.</p>"
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-variant-penalties"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+_id: jj2a000000000033
+_key: '!items!jj2a000000000033'
+name: Criar Catalisador
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: criar-catalisador
+  description:
+    value: <p><em><strong>Requisito:</strong> Conceder Regras</em></p><p>Você se torna capaz de criar um catalisador para suas barreiras, aumentando os Pontos de Vida delas em 50% e permitindo manter duas regras prontas para a barreira dentro de um catalisador. Você consome ¥ 4.000 para criar um e pode ter diversos criados por vez.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Técnicas de Barreira
+      caminho: Técnicas de Barreiras
+      requisitos:
+        - Conceder Regras
+folder: jj2f000000000007
+ownership:
+  default: 0
+effects: []
+sort: 0

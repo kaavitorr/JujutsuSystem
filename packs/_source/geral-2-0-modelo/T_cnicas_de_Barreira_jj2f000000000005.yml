@@ -1,0 +1,20 @@
+_id: jj2f000000000005
+type: Item
+name: Técnicas de Barreira
+folder: 1roC0BlA1sepbPGH
+color: '#4f8ad0'
+sorting: m
+description: ''
+sort: 600000
+flags: {}
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814500032
+  modifiedTime: 1791814500032
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!jj2f000000000005'

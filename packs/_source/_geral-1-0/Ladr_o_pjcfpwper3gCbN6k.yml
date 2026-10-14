@@ -1,0 +1,65 @@
+folder: vG1tvdXvcpq70Tb5
+name: Ladrão
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>O ladrão é aquele que consegue entrar em qualquer lugar, roubar
+      qualquer objeto e ainda sair sem ser percebido. Poucas
+      pessoas</p><p>conseguem agir de maneira tão
+      furtiva.</p><p><strong>Característica:</strong> Recebe vantagem em Testes
+      de Atributo de Agilidade (Prestidigitação) para tentar furtar um objeto
+      aleatório de uma criatura. Caso você falhe, você pode realizar um Teste de
+      Atributo de Agilidade (Furtividade) para tentar não ser notado.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: empunhadura-dupla
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: 8a83e2c5dface8478334e768c9d640fbf19cf682
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902155
+  modifiedTime: 1776913395301
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: pjcfpwper3gCbN6k
+sort: 2500000
+_key: '!items!pjcfpwper3gCbN6k'

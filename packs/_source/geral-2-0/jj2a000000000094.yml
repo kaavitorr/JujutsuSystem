@@ -1,0 +1,22 @@
+_id: jj2a000000000094
+_key: '!items!jj2a000000000094'
+name: Adepto das Sombras
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: adepto-das-sombras
+  description:
+    value: <p><em><strong>Requisito:</strong> Domínio Simples</em></p><p>Uma vez por turno, enquanto dentro do seu domínio, você pode, como uma Reação, 4 PA e gastar 1 Ponto de Ação [⬢] para negar um acerto crítico ou condição contra você.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Novo Estilo das Sombras
+      requisitos:
+        - Domínio Simples
+folder: jj2f000000000015
+ownership:
+  default: 0
+effects: []
+sort: 0

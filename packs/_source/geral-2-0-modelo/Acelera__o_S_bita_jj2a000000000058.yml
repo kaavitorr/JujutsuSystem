@@ -1,0 +1,44 @@
+_id: jj2a000000000058
+name: Aceleração Súbita
+type: feat
+img: icons/magic/movement/chevrons-down-yellow.webp
+system:
+  identifier: aceleracao-subita
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Ativação Aprimorada</em></p><p>Seus
+      golpes de energia atrasada te dão uma leve aceleração quando são ativados
+      com sucesso, fazendo com que você possa sumir de vista por um segundo e
+      acertar alvos a volta. Toda vez que você ativar o “Energia Atrasada”, você
+      se move em alta velocidade, acertando todas as criaturas a 5 metros do
+      alvo inicial do seu ataque gastando apenas 1 Ponto de Ação [⬢]
+      adicional.</p><p>Os Pontos de Ação usados para ativar essa característica
+      pode ser um dos recebidos pela Recuperação de Foco.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Punho Divergente
+      requisitos:
+        - Ativação Aprimorada
+folder: jj2f000000000010
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816447620
+  modifiedTime: 1791816447620
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000058'

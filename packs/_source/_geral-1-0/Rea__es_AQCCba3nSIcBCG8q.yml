@@ -1,0 +1,22 @@
+name: Reações
+type: Item
+sorting: a
+sort: 0
+color: '#582828'
+flags:
+  scene-packer:
+    hash: d68cf21ef01508ea01266578a847be370462d630
+_id: AQCCba3nSIcBCG8q
+folder: 9HObc0XIMJNrJaWH
+description: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910214
+  modifiedTime: 1776624910214
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!AQCCba3nSIcBCG8q'

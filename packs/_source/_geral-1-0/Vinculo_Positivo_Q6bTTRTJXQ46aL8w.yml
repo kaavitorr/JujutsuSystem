@@ -1,0 +1,88 @@
+folder: VwqGTy4yPJgfmdwx
+name: Vinculo Positivo
+type: feat
+img: icons/magic/defensive/armor-green-hex.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">A partir do <strong>10º nível de
+      Especialista</strong>, ao usar uma ação de poder, você pode se vincular a
+      até 3 criaturas diferentes a até 9 metros de distância e ativar sua
+      habilidade “Regeneração Constante”, curando essas criaturas em vez de si
+      mesmo. Nesse caso, o limite total de cura passa a ser igual a 30 vezes o
+      seu nível, em vez das 9 vezes padrão.</p><p class="MsoNormal">A cura deve
+      ser dividida entre os alvos. Se você escolher 3 criaturas, cada uma recebe
+      uma quantidade de cura igual ao seu nível de personagem. Se escolher 2
+      criaturas, uma delas recebe o dobro do seu nível, e a outra, uma vez o seu
+      nível. Caso escolha apenas 1 criatura, ela recebe o triplo do seu
+      nível.</p><p class="MsoNormal">Você pode escolher a si mesmo como um dos
+      alvos da cura.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.367'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881635
+  modifiedTime: 1788212750744
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: Q6bTTRTJXQ46aL8w
+sort: 300000
+_key: '!items!Q6bTTRTJXQ46aL8w'

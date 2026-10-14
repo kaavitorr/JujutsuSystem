@@ -1,0 +1,145 @@
+_id: vKcpNXo6DkWhCO06
+name: PdN - Lutador
+type: feat
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Lutador-icon.png
+effects:
+  - name: Lutador
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.vKcpNXo6DkWhCO06
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: false
+    img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Lutador-icon.png
+    _id: AliVlfHfwIHYUOdF
+    type: base
+    system:
+      changes:
+        - key: system.attributes.ac.armor
+          type: add
+          value: '+2'
+          phase: initial
+          priority: 20
+        - key: system.attributes.hp.max
+          type: add
+          value: '+20'
+          phase: initial
+          priority: 20
+        - key: system.bonuses.mwak.damage
+          type: add
+          value: +1d4
+          phase: initial
+          priority: null
+        - key: system.bonuses.rwak.damage
+          type: add
+          value: +1d4
+          phase: initial
+          priority: null
+    description: ''
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    sort: 0
+    flags:
+      dnd5e:
+        riders:
+          statuses: []
+      dae:
+        disableCondition: ''
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+      core:
+        overlay: false
+      JujutsuLegacy:
+        riders:
+          statuses: []
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      exportSource: null
+      coreVersion: '14.364'
+      systemId: jujutsu-system
+      systemVersion: 1.0.6
+      createdTime: 1776624910561
+      modifiedTime: 1782449810267
+      lastModifiedBy: 371UX0Acl9j9oJ0Q
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!vKcpNXo6DkWhCO06.AliVlfHfwIHYUOdF'
+folder: bep1QbqDytG1F90j
+sort: 100000
+flags:
+  scene-packer:
+    hash: 36b18ffaac1c0cb2b1e9641258f33c6ee01b1181
+    sourceId: Item.vKcpNXo6DkWhCO06
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p class="Default">Lutador: Escolha entre os caminhos “Punho Divergente”,
+      “Demolidor” e “Mestre das Armas” e “Mestre do Fulgor” do Lutador. Além
+      disso, ele recebe as seguintes características
+      adicionais:</p><ul><li><p>Recebe +2 de Classe de
+      Resistência;</p></li><li><p>Recebe + 20 Pontos de
+      Vida;</p></li><li><p>Seus ataques causam 1d4 de dano
+      adicional.</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aspecto--constituicao-aprimorada
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.uav2pcB30tMAG7Cy
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624910561
+  modifiedTime: 1782449835167
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_key: '!items!vKcpNXo6DkWhCO06'

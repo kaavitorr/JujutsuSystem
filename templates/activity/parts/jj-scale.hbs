@@ -1,0 +1,19 @@
+<fieldset class="jj-scale-fieldset">
+    <legend>
+        <label class="checkbox">
+            {{ formInput fields.jjScale.fields.enabled value=(or source.jjScale.enabled source.jjScale.formula)
+                         input=@root.inputs.createCheckboxInput }}
+            ⚡ Escala de Energia (JJ)
+        </label>
+    </legend>
+    {{#if (or source.jjScale.enabled source.jjScale.formula)}}
+    {{ formField fields.jjScale.fields.formula value=source.jjScale.formula placeholder="ex: 2d8 ou 5" }}
+    {{ formField fields.jjScale.fields.cost value=source.jjScale.cost }}
+    {{ formField fields.jjScale.fields.maxPA value=source.jjScale.maxPA }}
+    <p class="hint">
+        Ao rolar, um dropdown lista cada nível de PA gasto e o total resultante.
+        Cada <em>custo</em> em PA adiciona o <em>incremento</em>, até o limite de PA.
+        Não se aplica a jogadas de acerto. O pool (Gerada/Total) segue o consumo da atividade.
+    </p>
+    {{/if}}
+</fieldset>

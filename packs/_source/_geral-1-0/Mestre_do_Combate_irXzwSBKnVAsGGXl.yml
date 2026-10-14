@@ -1,0 +1,94 @@
+name: Mestre do Combate
+type: feat
+img: icons/skills/melee/weapons-crossed-swords-pink.webp
+effects: []
+folder: V7LPPawJA1q5iJPU
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  core:
+    sheetClass: dnd5e.Tidy5eItemSheet
+  cf: {}
+  scene-packer:
+    hash: 4421795f9ea46015f83fd936ccd7244ce8ff35db
+    sourceId: Item.IAvr2aSWM3Q6dHxC
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: "<p>A partir do <strong>3º nível de Restringido</strong>, você treinou o uso das armas para poder lutar de forma eficiente com o maior número de armas possíveis. Desde que você tenha proficiência em uma ferramenta amaldiçoada, você dobra os bônus numéricos da aba de características dela e pode escolher receber os seguintes benefícios enquanto estiver a utilizando:</p><p></p><p><span style=\"font-size:large\"><strong>MESTRE DA LÂMINA</strong></span></p><hr><p>Enquanto estiver utilizando armas cortantes, você recebe as seguintes características:</p><ul><li><p><strong>Corte Inevitável:</strong> Suas jogadas de ataque (Comuns e de Técnica) com arma cortante ignoram resistências e imunidades a dano Cortante.</p></li><li><p><strong>Ofensiva Brutal:</strong> Em caso de acerto crítico, você causa 2 dados de dano adicionais e você recebe +3 em suas rolagens de acerto até o fim do seu turno seguinte.</p></li><li><p><strong>Execução Veloz:</strong> Ao executar uma técnica com alcance diferente de “Toque”, você pode mudar seu dano para cortante e aparecer instantaneamente atrás da criatura com o golpe já executado. Se sua rolagem for um 20 natural, você ignora qualquer reação que a criatura tenha utilizado e ela perde a reação.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>PERITO EM ARMAS ESPECIAIS</strong></span></p><hr><p><span style=\"font-size:10pt;font-family:'Chaparral Pro', serif\">Enquanto estiver utilizando uma arma especial corpo-a-corpo, você recebe as seguintes características:</span></p><ul><li><p><strong>Ataque Certeiro: </strong>Ao errar duas jogadas de ataque (Comuns) ou uma técnica, você pode escolher ter acerto automático na sua próxima rolagem de acerto. Esse efeito se repete múltiplas vezes e só acumula enquanto você estiver utilizando uma arma especial.</p></li><li><p><strong>Proficiência Afiada</strong>: Ao executar uma técnica de dano, você causa 2 dados de dano adicionais, mas o dano não pode ultrapassar o máximo de dano que a técnica poderia causar sem esses dados. Esse efeito só funciona se você iniciou seu turno com uma arma especial em mãos.</p></li><li><p><strong>Golpe Veloz</strong>: Toda vez que uma criatura entrar ou sair do seu alcance, você pode realizar uma jogada de ataque (Comum), causando 4d4 + seu modificador principal em dano. Esse efeito funciona mesmo contra características que ignoram reações, não importa qual seja.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>MESTRE DOS PUNHOS</strong></span></p><hr><p>Enquanto estiver desarmado ou armas marciais, você recebe as seguintes características:</p><ul><li><p><strong>Defesa Impecável:</strong> Enquanto você não possuir nenhuma aliado a até 4,5 metros de distância, você pode escolher aplicar um dos seguintes efeitos nas jogadas de ataque corpo-a-corpo da criatura:</p><ol><li><p class=\"TextoPadro\">A criatura recebe -2 de acerto em todas as rolagens de acerto corpo-a-corpo;</p></li><li><p class=\"TextoPadro\">A criatura recebe desvantagem na primeira rolagem de acerto contra você de cada criatura;</p></li><li><p class=\"TextoPadro\">Toda vez que uma criatura te atacar, você pode devolver 1d8 de dano contra ela.</p></li></ol></li><li><p><strong>Postura Inquebrável:</strong> Toda vez que você receber um ataque corpo-a-corpo ou a distância, você reduz o dano sofrido em um valor igual seu bônus de proficiência.</p></li><li><p><strong>Desviar Golpe:</strong> Ao ser alvo de uma jogada de ataque (Comum ou de Técnica) corpo-a-corpo, você pode usar sua reação para desviar o ataque para outra criatura a até 3 metros dela. Se você desviar uma técnica, você deve consumir uma quantidade de Pontos de Vigor igual a quantidade de Energia Amaldiçoada usada pela técnica.</p></li></ul><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\">Você só pode se beneficiar de um conjunto de efeitos acima por rodada. Ao usar o conjunto de benefícios no turno, trocar para outro conjunto não concede os benefícios dele.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-aprimorador
+  activities: {}
+  advancement: {}
+  enchant: {}
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776630199477
+  modifiedTime: 1776630199568
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: irXzwSBKnVAsGGXl
+sort: 60938
+_key: '!items!irXzwSBKnVAsGGXl'

@@ -1,0 +1,59 @@
+folder: WqWlUGVSsgskGvFL
+name: ==========Defeitos==========
+type: feat
+img: Imagens%20Hunter/c49db123ff8757ed3562321bd9a12324.webp
+system:
+  description:
+    value: ''
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: defeitos
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 100000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: e992db9c5377116f5188afda4220a7fbce81ea2c
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: Item.ydab0he6w0SQavOh
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902143
+  modifiedTime: 1776624902174
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: eW9Cwt9Epkbspe95
+_key: '!items!eW9Cwt9Epkbspe95'

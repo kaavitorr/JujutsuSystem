@@ -1,0 +1,40 @@
+_id: jj2a000000000089
+name: Corpo Fechado
+type: feat
+img: icons/magic/defensive/shield-barrier-glowing-blue.webp
+system:
+  identifier: corpo-fechado
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Regeneração Superior</em></p><p>Você
+      recebe Pontos de Proficiência em Salvaguardas suficientes para elevar até
+      a progressão “Especialista” todas as Salvaguardas que estiverem abaixo
+      desse nível.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Defensivo
+      requisitos:
+        - Regeneração Superior
+folder: jj2f000000000014
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816081649
+  modifiedTime: 1791816081649
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000089'

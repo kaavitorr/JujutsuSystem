@@ -1,0 +1,22 @@
+_id: jj2a000000000055
+_key: '!items!jj2a000000000055'
+name: Vibração de Energia
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: vibracao-de-energia
+  description:
+    value: <p><em><strong>Requisito:</strong> Recuperação de Foco</em></p><p>Ao ativar o efeito do seu Punho Divergente junto de um crítico em uma criatura inimiga, você pode impor a condição Estremecido se ela falhar em uma Salvaguarda de Constituição.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Punho Divergente
+      requisitos:
+        - Recuperação de Foco
+folder: jj2f000000000010
+ownership:
+  default: 0
+effects: []
+sort: 0

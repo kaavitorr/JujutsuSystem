@@ -1,0 +1,100 @@
+folder: QwYh3uEF10z8gSGn
+name: Adepto das Sombras
+type: feat
+img: icons/magic/unholy/silhouette-robe-evil-glow.webp
+system:
+  description:
+    value: >-
+      <p>A partir do <strong>3º nível de Sentinela</strong>, você dominou o
+      estilo das sombras até um nível de maestria que te coloca entre membros
+      habilidades até mesmo na época de ouro do Jujutsu, permitindo que você
+      possa exterminar maldições e usuários de maldições com eficiência. Você
+      recebe as seguintes características enquanto estiver empunhando uma katana
+      ou similar:</p><ul><li><p><strong>Lâmina Imbatível:</strong> Uma vez por
+      turno, ao realizar um acerto crítico com katana ou similar, você pode
+      realizar uma jogada de ataque (Comum)
+      adicional.</p></li><li><p><strong>Fio Imbatível:</strong> Suas jogadas de
+      ataque (Comuns) com uma katana ou similar causam dano cortante extra igual
+      a metade do seu nível de Sentinela, arredondado para acima (máximo de
+      8).</p></li><li><p><strong>Lâmina Traiçoeira:</strong> Uma vez por turno,
+      ao acertar uma jogada de ataque (Comum ou de Técnica), você pode escolher
+      ignorar qualquer resistência ou invulnerabilidade a dano Cortante que a
+      criatura possua.</p></li><li><p><strong>Grande Maestria:</strong>
+      Independentemente da sua katana, você sempre possui d10 de dano ao
+      utiliza-la (prevalece o maior). A partir do 6º nível de Sentinela, seu
+      dano se torna d12.</p></li></ul><p class="MsoNormal"></p><p
+      class="MsoNormal">A partir do 6º nível de Sentinela, toda vez que você
+      tiver com seu domínio simples expandido, você reduz todo dano sofrido em
+      uma quantidade de dano igual seu bônus de proficiência.</p><p
+      class="MsoNormal">Adicionalmente, você pode utilizar a técnica “Hazy Moon”
+      dentro ou fora do seu turno sem consumir ações.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-emissor
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: d8a632d7930b501d57e292fcb3875f3aa448cd29
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1782435358338
+  modifiedTime: 1782435363093
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: 01t9C0sb16yhM2ZH
+sort: 300000
+_key: '!items!01t9C0sb16yhM2ZH'

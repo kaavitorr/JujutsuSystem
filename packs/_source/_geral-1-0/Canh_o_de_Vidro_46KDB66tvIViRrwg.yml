@@ -1,0 +1,90 @@
+folder: 4Y1roiDtwfsWjAv6
+name: Canhão de Vidro
+type: feat
+img: icons/skills/melee/strike-weapon-polearm-ice-blue.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">A partir do <strong>2º nível de
+      Especialista</strong>, sua energia amaldiçoada perde uma grande capacidade
+      defensiva em troca de uma versatilidade e ofensiva mais poderosa. Você
+      perde imediatamente 2 Pontos de Vida e; seu dado de vida do nível 2 e nos
+      níveis seguintes se torna d6. Adicionalmente, você também perde 1 Ponto de
+      Vida por nível de personagem. Em troca dessa restrição, você recebe as
+      seguintes características:</p><ul><li><p><em>Você recebe o dobro de dados
+      de energia amaldiçoada por nível de personagem inclusive do 1º
+      nível;</em></p></li><li><p><em>Você recebe acerto adicional em suas
+      jogadas de ataque (Comuns e de Técnica) igual seu bônus de
+      proficiência;</em></p></li><li><p><em>Suas jogadas de ataque (de Técnica)
+      e técnicas em área recebem 1 de dano adicional para cada dado usado na
+      rolagem, até um valor máximo igual seu nível de personagem. Por Exemplo: 3
+      dados = 3 de dano adicional.</em></p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881616
+  modifiedTime: 1776921855622
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: 46KDB66tvIViRrwg
+sort: 0
+_key: '!items!46KDB66tvIViRrwg'

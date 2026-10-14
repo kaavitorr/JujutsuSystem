@@ -1,0 +1,42 @@
+_id: jj2a000000000112
+name: Recuperando Reservas
+type: feat
+img: icons/magic/life/ankh-shadow-green.webp
+system:
+  identifier: recuperando-reservas
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Regeneração de Feridas</em></p><p>Em
+      diversos momentos da aventura, um jogador pode se ver esgotado de seus
+      Pontos de Energia Reversa. Quando isso ocorrer, ele pode gastar 2 PA para
+      recuperar 1d4 Pontos de Vida, até um número máximo igual seu valor de
+      atributo de Constituição.</p><p>Essa característica exige o uso de um
+      Ponto de Ação [⬢] para ser utilizada.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Energia Reversa
+      caminho: Técnica de Energia Reversa
+      requisitos:
+        - Regeneração de Feridas
+folder: jj2f000000000018
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814649651
+  modifiedTime: 1791814649651
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000112'

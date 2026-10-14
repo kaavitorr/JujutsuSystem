@@ -1,0 +1,39 @@
+_id: jj2a000000000042
+name: Passo Esguio
+type: feat
+img: icons/skills/movement/feet-winged-boots-blue.webp
+system:
+  identifier: passo-esguio
+  description:
+    value: >-
+      <p>Como uma Reação a um Ponto de Ação que tem você como alvo, você pode
+      gastar um Ponto de Ação [⬢] e 2 Pontos de Energia ou Vigor para se mover
+      até metade do alcance do seu deslocamento. Caso você saia para fora do
+      alcance da ação, ela é cancelada.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Corpo de Guerreiro
+      requisitos: []
+folder: jj2f000000000009
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816311585
+  modifiedTime: 1791816311585
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000042'

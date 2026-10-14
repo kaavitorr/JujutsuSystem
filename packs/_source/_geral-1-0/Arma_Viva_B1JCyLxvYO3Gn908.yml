@@ -1,0 +1,94 @@
+name: Arma Viva
+type: feat
+img: icons/skills/melee/maneuver-daggers-paired-orange.webp
+effects: []
+folder: V7LPPawJA1q5iJPU
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  core:
+    sheetClass: dnd5e.Tidy5eItemSheet
+  cf: {}
+  scene-packer:
+    hash: 4421795f9ea46015f83fd936ccd7244ce8ff35db
+    sourceId: Item.IAvr2aSWM3Q6dHxC
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: "<p>A partir do <strong>6º nível de Restringido</strong>, você aprendeu a continuar a luta independentemente do seu estado físico, resistindo a dor e mantendo uma ofensiva poderosa de forma constante. Você recebe as seguintes características:</p><ul><li><p><strong>Resistência Superior:</strong> Você recebe 1 Ponto de Redução de dano para todo dano sofrido. No início de cada um de seus turnos, você recebe 1 adicional, até um máximo igual seu nível de personagem.</p></li><li><p><strong>Impacto Inesperado:</strong> Ao usar uma ação bônus, você faz com que sua próxima jogada de ataque (Comum ou de Técnica) empurre uma criatura por 9 metros de distância ao falhar em uma Salvaguarda de Força. Se a criatura colidir com um objeto ou estrutura de 1,5 metros de raio ou maior, ela recebe 3d8 de dano Contundente adicional.</p><p class=\"TextoPadro\">A partir do 10º nível, você pode aplicar esse efeito em uma técnica de dano sem o uso de uma ação bônus, mas apenas uma vez por rodada.</p></li><li><p><strong>Ataque Brutal</strong>: Em uma jogada de ataque (Comum ou de Técnica) que resulte em um crítico, você causa dano adicional igual ao seu nível de personagem (arredondado para baixo).</p><p>A partir do <strong>10º nível</strong>, você recebe 1d6 de dano adicional em todos os seus ataques (Comuns).<span style=\"font-size:8pt;font-family:'Chaparral Pro', serif;color:black\"><em>\_</em></span></p></li></ul>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-aprimorador
+  activities: {}
+  advancement: {}
+  enchant: {}
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776630248513
+  modifiedTime: 1782440039306
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: B1JCyLxvYO3Gn908
+sort: 62110
+_key: '!items!B1JCyLxvYO3Gn908'

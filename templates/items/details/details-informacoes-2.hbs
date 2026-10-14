@@ -1,0 +1,26 @@
+<fieldset>
+    <legend>Informações Gerais</legend>
+
+    {{!-- Atributo Principal --}}
+    <div class="form-group">
+        <label>Atributo Principal</label>
+        <div class="form-fields">
+            <select name="flags.jujutsu-system.legacy2.atributoPrincipal">
+                {{#each @root.principais2 as |opt|}}
+                <option value="{{opt.value}}" {{#if opt.selected}}selected{{/if}}>{{opt.label}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <p class="hint">Atributo usado pela Classe de Resistência (10 + (principal + AGI + CON) / 3) e pelas CDs (10 + principal). Para o Restringido, escolha Força ou Agilidade conforme o personagem.</p>
+    </div>
+
+    {{!-- Habilidades de Especialização grátis --}}
+    <div class="form-group">
+        <label>Habilidades de Especialização (grátis iniciais)</label>
+        <div class="form-fields">
+            <input type="number" name="flags.jujutsu-system.legacy2.espIniciais"
+                   value="{{ legacy2.espIniciais }}" min="0" placeholder="0">
+        </div>
+        <p class="hint">Habilidades de especialização concedidas gratuitamente na criação (ex.: Lutador recebe 2 de Proeza Física; Restringido, 1).</p>
+    </div>
+</fieldset>

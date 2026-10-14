@@ -1,0 +1,33 @@
+_id: jj2a000000000119
+_key: '!items!jj2a000000000119'
+name: Domínio e Anti-Domínio — Visão Geral
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: dominio-e-anti-dominio-visao-geral
+  description:
+    value: |-
+      <h2>Domínio e Anti-Domínio</h2><p>As expansões de domínios são consideradas como o pináculo dos feitiços Jujutsu. Ele é considerado um feitiço de barreira onde o domínio inato do usuário é manifestado dentro de uma barreira infundida com o Feitiço Inato do usuário. Dentro da expansão de domínio, os feitiços do usuário são aprimorados e tem garantia de acerto em certas condições.</p>
+      <h3>Expandindo um Domínio</h3>
+      <p>Para conseguir expandir um domínio, você deve cumprir os seguintes requisitos, formando uma expansão com 20 metros de raio:</p>
+      <ul><li>Você deve consumir 5 Pontos de Ação [⬢⬢⬢⬢⬢] – podendo ser reduzido por selos;</li><li>Você deve falar o nome do seu domínio como encantamento ao cria-lo;</li><li>Você deve consumir 50 Pontos de Energia que saem da sua reserva total.</li></ul>
+      <h3>Efeitos dos Domínios</h3>
+      <ul><li><strong>Desgaste:</strong> No início de cada um dos turnos do usuário, a expansão consome 6 Pontos de Energia.</li><li><strong>Inescapável:</strong> Você tem acerto garantido em todas as técnicas do seu feitiço dentro do domínio.</li><li><strong>Fatal:</strong> Suas técnicas causam dano dobrado dentro da área da sua Expansão de Domínio;</li><li><strong>Irresistível:</strong> As criaturas falham automaticamente em Salvaguardas contra suas técnicas e efeitos do feitiço dentro do domínio.</li></ul>
+      <p>Os efeitos de Inescapável, Fatal e Irresistível são pausados enquanto uma expansão está em um Choque de Domínio e só existem em uma Expansão de Domínio Completo.</p>
+      <h3>Estatísticas de um Domínio</h3>
+      <table><thead><tr><th>Nome</th><th>Pontos de Vida</th><th>Classe de Resistência</th></tr></thead><tbody><tr><td>Domínio Incompleto</td><td>300 PV</td><td>18</td></tr><tr><td>Domínio Completo</td><td>500 PV</td><td>21</td></tr><tr><td>Domínio sem Barreiras</td><td>800 PV</td><td>24</td></tr></tbody></table>
+      <h3>Esgotamento</h3><p>Quando uma expansão é quebrada durante um choque ou após ser encerrada, o usuário tem seu feitiço inato esgotado, ficando indisponível para uso. Quando isso ocorre, são necessárias 5 rodadas para utilizar novamente seu feitiço inato e 10 minutos para recarregar sua expansão de domínio novamente.</p>
+      <h3>Choque de Domínios</h3><p>Durante um choque de domínios, os efeitos de Inescapável, Fatal e Irresistível são pausados. O choque é caracterizado por um Teste Resistido, onde no início do turno de cada participante é necessário rolar um d20, adicionando seu nível de personagem ou ND do PdN como bônus. A criatura vencedora causa 15 vezes a diferença da rolagem em Pontos de Dano ao domínio adversário. Exemplo: resultado 30 contra 20 — diferença 10, o domínio recebe 150 Pontos de Dano.</p>
+      <h3>Reforçando um Domínio</h3><p>Quando um domínio não for destruído instantaneamente, uma criatura pode utilizar um Ponto de Ação [⬢] e quanto de Energia Amaldiçoada gerada ela tiver disponível para restaurar as barreiras do domínio, recuperando 5 Pontos de Vida para cada PA consumido.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Domínio e Anti-Domínio
+      caminho: null
+      requisitos: []
+folder: jj2f000000000019
+ownership:
+  default: 0
+effects: []
+sort: 0

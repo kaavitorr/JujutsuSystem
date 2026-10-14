@@ -1,0 +1,67 @@
+folder: vG1tvdXvcpq70Tb5
+name: Pulmão de Aço
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>Seu personagem é capaz de prender a respiração por longos períodos de
+      tempo com uma única respiração. Essa não é apenas devido a respiração, mas
+      um conjunto de fatores que envolve reduzir seus batimentos cardíacos e uma
+      capacidade pulmonar fenomenal.</p><p><strong>Característica:</strong> Você
+      consegue prender sua respiração por um tempo igual a 15 minutos X seu
+      modificador de Constituição. Você não consegue prender por um tempo
+      superior a 2 horas (120 minutos).</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: pulmao-de-aco
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 3400000
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  MhGXeDSlt2zUqR0J: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 3649da889416ab9bb3d19d5bd8920e81ad3321f5
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: Item.pIaAt98DZBQngnAh
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902150
+  modifiedTime: 1776913399471
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: mDTLUIskoUZB9ZRP
+_key: '!items!mDTLUIskoUZB9ZRP'

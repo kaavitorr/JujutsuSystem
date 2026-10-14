@@ -1,0 +1,46 @@
+_id: jj2a000000000006
+name: Manipulação de Selos
+type: feat
+img: icons/magic/symbols/rune-sigil-red-orange.webp
+system:
+  identifier: manipulacao-de-selos
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Encantamento Veloz</em></p><p>Você
+      aprendeu a utilizar seus selos com tanta proficiência, que você pode
+      sacrificar seus usos limitados em troca de uma
+      penalidade.</p><ul><li><strong>Selos Simples:</strong> Ao sacrificar seu
+      deslocamento atual e todo bônus que receber até o fim do turno pela
+      metade, você pode fazer um selo simples sem consumir nenhum uso dos seus
+      selos.</li><li><strong>Selos Complexos:</strong> Ao reduzir seu
+      deslocamento a 0 e se negar qualquer bônus posterior de deslocamento, você
+      pode fazer um selo complexo sem consumir nenhum uso de seus
+      selos.</li></ul>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Selos e Encantamentos
+      requisitos:
+        - Encantamento Veloz
+folder: jj2f000000000002
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814762325
+  modifiedTime: 1791814762325
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000006'

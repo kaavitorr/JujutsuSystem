@@ -1,0 +1,109 @@
+name: Controle Absoluto
+type: feat
+img: icons/magic/air/air-smoke-casting.webp
+effects: []
+folder: TH5zgkPcMDGwUXiB
+sort: 175000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  core: {}
+  cf: {}
+  scene-packer:
+    hash: 5f1f58b74c3dae9af97ba40bd9099e26f313b3e3
+    sourceId: Item.yqRP1psPX6jB57B9
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: >-
+      <p style="text-align:justify">A partir do <strong>19º nível de
+      lutador</strong>, você transcende os limites de meros combatentes e atinge
+      um patamar que será passado adiante em lendas. Como resultado, você recebe
+      as seguintes características:</p><ul><li><p
+      style="text-align:justify"><strong>Golpe Potencializado:</strong> Suas
+      jogadas de ataque (Comuns) com margem 15-19 que não forem consideradas um
+      acerto crítico, causam o resultado máximo possível da rolagem dos
+      dados;</p></li><li><p style="text-align:justify"><strong>Ataque
+      Destruidor:</strong> Atingir uma criatura com ND 10 ou menor reduz os
+      Pontos de Vida dela a 0;</p></li><li><p
+      style="text-align:justify"><strong>Ataque Certeiro:</strong> Você acerta
+      automaticamente suas rolagens de ataque (Comuns e de Técnica) e rola
+      apenas para definir um acerto crítico e o efeito do “Golpe
+      Potencializado”.</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: mestre-emissor
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Item.nBhdZMeLJ1Ywa0lV
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911388
+  modifiedTime: 1776903592673
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: ankN2bI6SO627t2n
+_key: '!items!ankN2bI6SO627t2n'

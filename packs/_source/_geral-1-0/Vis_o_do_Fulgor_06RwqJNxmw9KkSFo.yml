@@ -1,0 +1,175 @@
+folder: TH5zgkPcMDGwUXiB
+name: Visão do Fulgor
+type: feat
+img: icons/magic/lightning/projectile-tendrils-red.webp
+system:
+  description:
+    value: >-
+      <p style="text-align:justify">A partir do <strong>15º nível de
+      Lutador</strong>, ao atingir o fulgor, você teve um vislumbre que te
+      causou um sentimento instintivo de como circular sua energia amaldiçoada
+      com perfeição. Desde que você já tenha ativado o Fulgor Negro antes, você
+      pode usar essa característica para que sua próxima rolagem de acerto
+      (Comum) ative seu Fulgor Negro de forma garantida, desde que ela acerte o
+      alvo, mas você não entra em zona.</p><p style="text-align:justify">Você
+      não pode utilizar essa característica novamente até o fim de um descanso
+      longo.</p>
+    chat: ''
+  source:
+    revision: 1
+    rules: '2014'
+  cover: null
+  crewed: false
+  uses:
+    max: '3'
+    recovery:
+      - period: lr
+        type: recoverAll
+    spent: 0
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  activities:
+    dnd5eactivity000:
+      _id: dnd5eactivity000
+      type: damage
+      activation:
+        type: bonus
+        value: 1
+        condition: ''
+        override: false
+      consumption:
+        targets:
+          - type: itemUses
+            target: ''
+            value: '1'
+            scaling:
+              mode: ''
+              formula: ''
+        scaling:
+          allowed: false
+          max: ''
+        spellSlot: true
+      description:
+        chatFlavor: ''
+      duration:
+        concentration: false
+        value: ''
+        units: inst
+        special: ''
+        override: false
+      effects: []
+      range:
+        units: self
+        special: ''
+        override: false
+      target:
+        template:
+          count: ''
+          contiguous: false
+          type: ''
+          size: ''
+          width: ''
+          height: ''
+          units: ft
+          stationary: false
+        affects:
+          count: ''
+          type: self
+          choice: false
+          special: ''
+        prompt: true
+        override: false
+      uses:
+        spent: 0
+        max: ''
+        recovery: []
+      damage:
+        critical:
+          allow: false
+          bonus: ''
+        parts:
+          - number: 2
+            denomination: 8
+            bonus: '@mod'
+            types: []
+            custom:
+              enabled: false
+              formula: ''
+            scaling:
+              mode: whole
+              number: null
+              formula: ''
+      sort: 0
+      img: null
+      flags: {}
+      visibility:
+        level: {}
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+  identifier: recuo-estrategico
+  enchant: {}
+  advancement: {}
+effects: []
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: 10a774bffcd617a78f268ca418045b9bfb84047d
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+    consumeUses:
+      value: true
+    quickOther:
+      context: ''
+    quickDamage:
+      context:
+        '0': Pontos de Aura
+      value:
+        '0': true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776903555170
+  modifiedTime: 1776903555217
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: 06RwqJNxmw9KkSFo
+sort: 168750
+_key: '!items!06RwqJNxmw9KkSFo'

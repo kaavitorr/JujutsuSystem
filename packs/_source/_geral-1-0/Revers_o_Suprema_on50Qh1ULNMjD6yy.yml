@@ -1,0 +1,140 @@
+folder: VwqGTy4yPJgfmdwx
+name: Reversão Suprema
+type: feat
+img: icons/magic/life/cross-beam-green.webp
+system:
+  description:
+    value: >-
+      <p class="TextoPadro">A partir do <strong>14º nível de
+      Estrategista</strong>, você aprendeu técnicas de reversão e controle de
+      energia amaldiçoada tão miraculosas que elas têm efeitos que só seriam
+      possíveis normalmente ao utilizar energia reversa em si mesmo. Você recebe
+      as seguintes características:</p><ul><li><p>Seu dado de “Energia Reversa”
+      aumenta em 2 passos, indo de d4 para d8;</p></li><li><p>Você pode utilizar
+      a técnica “Energia Reversa Avançada” em outras criaturas com o dobro do
+      custo;</p></li><li><p>Enquanto você estiver com a “Regeneração Constante”
+      ativada em si mesmo, você é imune a dano crítico sem ser de Fulgor
+      Negro.</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects:
+  - name: Armamento Divino
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.on50Qh1ULNMjD6yy
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: false
+    img: icons/skills/melee/sword-winged-holy-orange.webp
+    _id: I5J3AoOAFCyrxkYO
+    type: base
+    system:
+      changes:
+        - key: system.bonuses.mwak.damage
+          value: +2d4
+          priority: 20
+          type: add
+          phase: initial
+        - key: system.bonuses.rwak.damage
+          value: +2d4
+          priority: 20
+          type: add
+          phase: initial
+    description: ''
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    sort: 0
+    flags:
+      dnd5e:
+        riders:
+          statuses: []
+      dae:
+        disableCondition: ''
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+      core:
+        overlay: false
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      exportSource: null
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 5.3.2
+      createdTime: 1776624881648
+      modifiedTime: 1776624881648
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!on50Qh1ULNMjD6yy.I5J3AoOAFCyrxkYO'
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881648
+  modifiedTime: 1776924107754
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: on50Qh1ULNMjD6yy
+sort: 400000
+_key: '!items!on50Qh1ULNMjD6yy'

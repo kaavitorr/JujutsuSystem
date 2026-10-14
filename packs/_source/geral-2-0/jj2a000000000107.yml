@@ -1,0 +1,22 @@
+_id: jj2a000000000107
+_key: '!items!jj2a000000000107'
+name: Agressão da Alma
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: agressao-da-alma
+  description:
+    value: <p><em><strong>Requisito:</strong> Sede de Sangue</em></p><p>Você é capaz de atingir a alma das criaturas da mesma forma que atingiria seus corpos. Entretanto, essa capacidade só se manifesta quando você se encontra em um verdadeiro beco sem saída.</p><p>Enquanto essa condição estiver ativa, seus ataques podem causar dano normalmente a criaturas cujo corpo seja completamente imune a dano, independentemente de essa imunidade ser causada por um feitiço, habilidade ou qualquer outro efeito.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Ressonância da Alma
+      requisitos:
+        - Sede de Sangue
+folder: jj2f000000000016
+ownership:
+  default: 0
+effects: []
+sort: 0

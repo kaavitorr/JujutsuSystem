@@ -1,0 +1,150 @@
+folder: onrz3qUGUndiIaUB
+name: Imaculado
+type: race
+img: systems/jujutsu-system/assets/Origens/Kasumi_Miwa_Cursed_Clash.webp
+system:
+  description:
+    value: "<p>Ajuste de Atributo: +4 Pontos de Atributo para distribuir entre todos os 6 atributos.</p><p class=\"MsoNormal\">Pontos de Vida Base: 6 Pontos de Vida.</p><p class=\"MsoNormal\"><strong>Tamanho:</strong> Normalmente, entre 1,50 e 3,00 metros (Médio).</p><p class=\"MsoNormal\"><strong>Peso:</strong> Normalmente, entre 65 e 300 kg.</p><p class=\"MsoNormal\"><strong>Deslocamento:</strong> 9 metros.</p><p class=\"MsoNormal\"><strong>Nado:</strong> 4,5 metros.\_</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ORIGEM</strong></span></p></td></tr></tbody></table><p>Essas características acompanham a existência do personagem, são representações da sua origem, sendo uma parte essencial de como ele vê o mundo e de como o mundo olha pra ele.</p><p style=\"margin:0.5pt 0cm 0.0001pt 7.1pt;text-align:justify\"></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM</strong></span></p><hr><p><strong style=\"mso-bidi-font-weight:normal\">Controle Refinado:</strong><span style=\"mso-bidi-font-weight:bold\"> Você tem um controle exímio que te ajuda em diversos aspectos do combate. Você recebe acesso as seguintes características:</span></p><ul><li><p><span style=\"mso-bidi-font-weight:bold\"><em>Sua margem do </em></span><em><strong style=\"mso-bidi-font-weight:normal\">“Fulgor Negro”</strong></em><span style=\"mso-bidi-font-weight:bold\"><em> aumenta em 1 (20 &gt; 19-20);</em></span></p></li><li><p><span style=\"mso-bidi-font-weight:bold\"><em>Você recebe 6 </em></span><em><strong style=\"mso-bidi-font-weight:normal\">Pontos de Maldição</strong></em><span style=\"mso-bidi-font-weight:bold\"><em> e </em></span><em><strong style=\"mso-bidi-font-weight:normal\">2 Pontos de Maldição </strong></em><span style=\"mso-bidi-font-weight:bold\"><em>adicionais sempre que subir de nível;</em></span></p></li><li><p><span style=\"mso-bidi-font-weight:bold\"><em>O dano de suas técnicas do Novo Estilo das Sombras aumenta em 1 dado de dano. A partir do </em></span><em><strong style=\"mso-bidi-font-weight:normal\">5º nível de personagem</strong></em><span style=\"mso-bidi-font-weight:bold\"><em>, passa a ser de 2 dados adicionais, aumentando novamente para 3 dados no </em></span><em><strong style=\"mso-bidi-font-weight:normal\">12º nível de personagem</strong></em><span style=\"mso-bidi-font-weight:bold\"><em>.</em></span></p></li></ul><p style=\"tab-stops:467.8pt\" class=\"TextoPadro\"><strong style=\"mso-bidi-font-weight:normal\">Núcleo Reforçado: </strong>Toda vez que seus Pontos de Energia Amaldiçoada (PA) máximos aumentarem, seja por avanço de nível ou treinamento, você recebe 3 Pontos Adicionais.</p><p style=\"tab-stops:467.8pt\" class=\"TextoPadro\"><strong style=\"mso-bidi-font-weight:normal\">Foco Extremo: </strong><span style=\"mso-bidi-font-weight:bold\">Ao atingir o </span><strong style=\"mso-bidi-font-weight:normal\">5º nível</strong><span style=\"mso-bidi-font-weight:bold\"> no treinamento de Energia Amaldiçoada (</span><strong style=\"mso-bidi-font-weight:normal\">Capítulo 6.5</strong><span style=\"mso-bidi-font-weight:bold\">), você desperta o conjunto de habilidades do </span><strong style=\"mso-bidi-font-weight:normal\">“Novo Estilo das Sombras”</strong><span style=\"mso-bidi-font-weight:bold\">.</span></p><p style=\"tab-stops:467.8pt\" class=\"TextoPadro\"><strong style=\"mso-bidi-font-weight:normal\">Talento de Origem: </strong>No <strong style=\"mso-bidi-font-weight:normal\">3º nível</strong>, você recebe um talento de origem de acordo com o <strong style=\"mso-bidi-font-weight:normal\">Capítulo 6</strong>.</p><p></p><p><span style=\"font-size:large\"><strong>DESVANTAGENS DA VARIANTE</strong></span></p><hr><p><strong style=\"mso-bidi-font-weight:normal\">Quadro em Branco: </strong><span style=\"mso-bidi-font-weight:bold\">Você não nasceu com nenhum feitiço inato, podendo apenas depender de Ferramentas Amaldiçoadas e Manipulação de Energia Amaldiçoada para lutar. Você não pode aprender a habilidade de manipulação </span><em><strong style=\"mso-bidi-font-weight:normal\">Despertar Habilidade</strong></em><strong style=\"mso-bidi-font-weight:normal\">.</strong></p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  advancement:
+    thrtYH4KG74MbuZ9:
+      type: AbilityScoreImprovement
+      _id: thrtYH4KG74MbuZ9
+      configuration:
+        points: 4
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 4
+        locked: []
+        recommendation: null
+        max: null
+      value:
+        type: asi
+      level: 0
+      flags: {}
+      hint: ''
+      name: ''
+      img: null
+    rEJzDVRlCiq4jyq7:
+      type: Size
+      _id: rEJzDVRlCiq4jyq7
+      configuration:
+        sizes:
+          - med
+      level: 0
+      value: {}
+      flags: {}
+      hint: ''
+      name: ''
+      img: null
+    pWi09QUI278nzGY8:
+      type: Trait
+      configuration:
+        grants:
+          - languages:standard:common
+        mode: default
+        allowReplacements: false
+        choices: []
+      _id: pWi09QUI278nzGY8
+      level: 0
+      value:
+        chosen: []
+      flags: {}
+      hint: ''
+    4RXJIfXI8J2WfgL2:
+      _id: 4RXJIfXI8J2WfgL2
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.hunter-legacy-module.hl-geral.Item.uMGKQdJTMaVm8vOG
+            optional: false
+            sort: 0
+        optional: false
+        spell: null
+        sorting: m
+      value: {}
+      level: 0
+      flags: {}
+      hint: ''
+      name: Pontos de Vida
+      img: null
+    8aPE0FrMa7fh4qox:
+      type: ItemChoice
+      configuration:
+        choices:
+          '3':
+            count: 1
+            replacement: false
+        allowDrops: true
+        type: null
+        pool:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.JeC6KoI3H47ldIvt
+            sort: 0
+          - uuid: Compendium.jujutsu-compendium.geral.Item.IHkbJQILPKbQABJg
+            sort: 0
+          - uuid: Compendium.jujutsu-compendium.geral.Item.LIxVfMsvsX0L1Pmu
+            sort: 0
+        spell: null
+        restriction:
+          list: []
+          school: []
+        sorting: a
+      value:
+        added: {}
+        replaced: {}
+      hint: <p>Escolha um Talento de Espécie</p>
+      _id: 8aPE0FrMa7fh4qox
+      flags: {}
+      name: Talentos de Origem
+  movement:
+    units: m
+    hover: false
+    ignoredDifficultTerrain: []
+    speeds:
+      walk: '9'
+      burrow: ''
+      climb: ''
+      fly: ''
+      swim: '4.5'
+  senses:
+    units: m
+    special: ''
+    ranges:
+      darkvision: null
+      blindsight: null
+      tremorsense: null
+      truesight: null
+  type:
+    value: humanoid
+    custom: ''
+    subtype: ''
+  identifier: imaculado
+effects: []
+flags:
+  scene-packer:
+    hash: 67eee98e596c8e15d667f2c4fc3cc39d4c880220
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816812256
+  modifiedTime: 1791816812256
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: ktJGbevDfhFsZR0S
+sort: 137500
+_key: '!items!ktJGbevDfhFsZR0S'

@@ -1,0 +1,74 @@
+_id: pA2EckS22QrGnu4X
+name: Cabeça Dura (NPC)
+type: feat
+img: icons/creatures/mammals/beast-horned-scaled-glowing-orange.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 1300000
+flags:
+  scene-packer:
+    hash: 457d6ae0e2713c61e5eeafd315c1bb8fbee53043
+    sourceId: Item.pA2EckS22QrGnu4X
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Cabeça Dura (–):</strong> Ao ter que fazer um Teste de
+      Resistência para não receber a condição “Atordoado”, a criatura recebe
+      vantagem no teste.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: cabeca-dura-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.ekZLYFv4U4t7X26F
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910558
+  modifiedTime: 1776624910577
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!pA2EckS22QrGnu4X'

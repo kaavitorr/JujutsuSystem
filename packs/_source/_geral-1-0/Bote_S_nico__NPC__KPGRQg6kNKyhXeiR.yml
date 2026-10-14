@@ -1,0 +1,149 @@
+_id: KPGRQg6kNKyhXeiR
+name: Bote Sônico (NPC)
+type: feat
+img: icons/creatures/abilities/cougar-roar-rush-orange.webp
+effects: []
+folder: I4nmFeOf3cr9gQWb
+sort: 400000
+flags:
+  scene-packer:
+    hash: 1bd73f4912b40c02342299400db339ab37dadc14
+    sourceId: Item.KPGRQg6kNKyhXeiR
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+system:
+  description:
+    value: >-
+      <p><strong>Bote Sônico (Aumenta o dano efetivo da criatura na primeira
+      rodada): </strong>Se a criatura puder percorrer 6 metros ou mais, em uma
+      linha reta livre de obstáculos, em direção a um alvo, ela pode se lançar
+      em alta velocidade contra o alvo e atingi-lo com uma jogada de ataque
+      corpo-a-corpo, adicionando dano extra em seu ataque. O alvo deve ser bem
+      sucedido em um Teste de Resistência de Força para não cair no chão. O
+      movimento percorrido durante está habilidade não provoca ataque de
+      oportunidade.</p>
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    recovery: []
+    spent: 0
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  activities:
+    dnd5eactivity000:
+      _id: dnd5eactivity000
+      type: utility
+      activation:
+        type: action
+        value: 1
+        condition: ''
+        override: false
+      consumption:
+        targets: []
+        scaling:
+          allowed: false
+          max: ''
+        spellSlot: true
+      description:
+        chatFlavor: ''
+      duration:
+        concentration: false
+        value: ''
+        units: inst
+        special: ''
+        override: false
+      effects: []
+      range:
+        units: self
+        special: ''
+        override: false
+      target:
+        template:
+          count: ''
+          contiguous: false
+          type: ''
+          size: ''
+          width: ''
+          height: ''
+          units: ft
+          stationary: false
+        affects:
+          count: ''
+          type: ''
+          choice: false
+          special: ''
+        prompt: true
+        override: false
+      uses:
+        spent: 0
+        max: ''
+        recovery: []
+      roll:
+        formula: ''
+        name: ''
+        prompt: false
+        visible: false
+      sort: 0
+      img: null
+      flags: {}
+      visibility:
+        level: {}
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+  identifier: bote-sonico-npc
+  enchant: {}
+  advancement: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.93r24DZ2rQ6cok0y
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910538
+  modifiedTime: 1776624910568
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!KPGRQg6kNKyhXeiR'

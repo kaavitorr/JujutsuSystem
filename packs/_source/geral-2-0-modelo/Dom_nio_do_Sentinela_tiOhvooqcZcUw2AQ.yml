@@ -1,0 +1,92 @@
+folder: lERMbu4jDOJXp6C0
+name: Domínio do Sentinela
+type: feat
+img: icons/magic/air/wind-vortex-swirl-blue.webp
+system:
+  description:
+    value: >-
+      <p>Pela falta de um feitiço amaldiçoado, você focou totalmente na
+      capacidade de utilizar energia amaldiçoada e em técnicas anti-domínio.
+      Você recebe acesso as seguintes
+      características:</p><ul><li><p><strong>Aprendizado Focado:</strong> Você
+      recebe uma habilidade de Especialização adicional e uma nova no 4º, 8º,
+      12º, 16º e 20º nível de personagem.</p></li><li><p><strong>Forma
+      Dominada:</strong> Você pode aprender a habilidade <strong>"Domínio
+      Simples"</strong> das técnicas de Domínio e
+      Anti-Domínio.</p></li></ul><p>Além disso, você recebe as seguintes
+      características dentro do "Domínio Simples":</p><ul><li><p>Até duas vezes
+      por rodada, você pode realizar uma jogada de ataque (Comum) como Reação,
+      tendo seu custo de ação reduzido em 1 Ponto de Ação [⬢]. O gatilho pode
+      ser um Ponto de Ação da criatura dentro do seu alcance;</p></li><li><p>Ao
+      realizar uma jogada de ataque (Comum ou de Técnica), você ignora até 10
+      Pontos de Resistência do inimigo.</p></li></ul>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-emissor
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: d8a632d7930b501d57e292fcb3875f3aa448cd29
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791817461323
+  modifiedTime: 1791817526392
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: tiOhvooqcZcUw2AQ
+sort: 100000
+_key: '!items!tiOhvooqcZcUw2AQ'

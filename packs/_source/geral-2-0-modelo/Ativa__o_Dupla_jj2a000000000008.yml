@@ -1,0 +1,40 @@
+_id: jj2a000000000008
+name: Ativação Dupla
+type: feat
+img: icons/magic/unholy/projectiles-binary-pink.webp
+system:
+  identifier: ativacao-dupla
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Manipulação de Selos</em></p><p>Você é
+      capaz de ativar uma única técnica do seu feitiço por rodada enquanto
+      recita um encantamento, permitindo que você ainda possa usar seu feitiço
+      de forma limitada durante o encantamento.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Selos e Encantamentos
+      requisitos:
+        - Manipulação de Selos
+folder: jj2f000000000002
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814781519
+  modifiedTime: 1791814781519
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000008'

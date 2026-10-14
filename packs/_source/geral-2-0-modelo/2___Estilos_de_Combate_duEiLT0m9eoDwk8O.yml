@@ -1,0 +1,20 @@
+type: Item
+folder: null
+name: 2 - Estilos de Combate
+color: '#356f9c'
+sorting: a
+_id: duEiLT0m9eoDwk8O
+description: ''
+sort: 0
+flags: {}
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816825540
+  modifiedTime: 1791816829749
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!duEiLT0m9eoDwk8O'

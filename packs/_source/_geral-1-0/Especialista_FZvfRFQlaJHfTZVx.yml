@@ -1,0 +1,494 @@
+folder: gpiuGQQptpbYBAnm
+name: Especialista
+type: class
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Especialista-Icon.png
+system:
+  description:
+    value: "<p style=\"text-align:center\"><span style=\"font-size:38px\"><strong>ESPECIALISTA</strong></span></p><p style=\"margin-top:0cm;margin-right:-1.65pt;margin-bottom:.0001pt;margin-left:7.1pt;text-align:justify\"><span style=\"font-family:'Chaparral Pro, serif'\">\_</span></p><p><span style=\"font-size:large\"><strong>PONTOS DE VIDA</strong></span></p><p class=\"MsoNormal\"><strong>Dado de Vida:</strong> 1d8 por nível de Especialista.</p><p class=\"MsoNormal\"><strong>Pontos de Vida no 1º nível:</strong> 8 + seu modificador de Constituição.</p><p class=\"MsoNormal\"><strong>Média de Vida por nível:</strong> 5 + seu modificador de constituição por nível posterior.</p><p class=\"MsoNormal\"><strong>Pontos de Vida nos níveis seguintes:</strong> 1d8 + seu modificador de constituição por nível posterior.</p><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>PROFICIÊNCIAS</strong></span></p><p class=\"MsoNormal\"><strong>Equipamentos:</strong> 3 Armas a sua escolha;</p><p class=\"MsoNormal\"><strong>Salvaguarda:</strong> Intelecto e Constituição;</p><p class=\"MsoNormal\"><strong>Perícias:</strong> Escolha 3 perícias entre: Acrobacia, Atletismo, Feitiço, História, Intuição, Medicina, Percepção, Sobrenatural e Sobrevivência.</p><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>INFORMAÇÕES GERAIS</strong></span></p><p class=\"MsoBodyText\"><strong>Atributo Principal:</strong> Intelecto</p><p class=\"MsoNormal\"><strong>Habilidade Inata:</strong> Escolha entre “Corpo de Lutador” ou “Proficiência Avançada”.</p><p class=\"MsoNormal\"><strong>Talento:</strong> Escolha um entre qualquer talento que você possua os requisitos.</p><p class=\"MsoNormal\"><strong>Equipamentos:</strong> Uma arma cortante, especial ou $ 3.000 e; $ 8.000.</p><img src=\"systems/jujutsu-system/assets/Tabelas/Especialista.png\"><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CRIANDO UM ESPECIALISTA</strong></span></p></td></tr></tbody></table><p style=\"text-align:justify\">Para criar rapidamente um Especialista primeiro distribua seus atributos, colocando o mais alto em Intelecto. O segundo atributo mais alto deve ser Constituição. Escolha uma origem de poder de Anomalia – Corpo Amaldiçoado, Feto Amaldiçoado, Receptáculo ou; Feitiço Inato ou Linhagem Herdada e as habilidades básicas de Corpo de Lutador ou Proficiência Avançada, Dificuldade Inefável e Pronto para a Batalha.</p><p style=\"text-align:justify\">Após isso, foque em pegar talentos para aumentar suas perícias que serão importantes no início do jogo, principalmente em talentos que dão proficiência nas perícias: Acrobacia, Feitiço, Intuição, Percepção e Sobrenatural.</p><p style=\"margin-top:0cm;margin-right:-1.65pt;margin-bottom:.0001pt;margin-left:7.1pt;tab-stops:524.5pt;text-align:justify\"><span style=\"font-family:'Chaparral Pro, serif'\">\_</span></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm pt 0cm 0pt\" class=\"MsoTableGrid\"><tbody><tr style=\"mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes\"><td><p style=\"line-height:7pt;mso-line-height-rule:exactly;tab-stops:363.15pt;text-align:center\"><span style=\"font-size:large\"><strong>ACERTO E SALVAGUARDA</strong></span></p></td></tr></tbody></table><p>Você possui os seguintes modificadores para acerto de técnica ou feitiços e CD de Salvaguardas:</p><p class=\"MsoBodyText\"><strong>CD dos feitiços =</strong> 8 + bônus de proficiência + seu modificador de Intelecto.</p><p class=\"MsoBodyText\"><strong>Modificador dos feitiços =</strong> seu bônus de proficiência + seu modificador de Intelecto.</p><p style=\"margin-top:0cm;margin-right:-1.65pt;margin-bottom:.0001pt;margin-left:7.1pt;tab-stops:524.5pt;text-align:justify\"><span style=\"font-family:'Chaparral Pro, serif'\">\_</span></p><p style=\"text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DE COMBATE</strong></span></p><p>\_Como um manipulador, você recebe as seguintes características:<span style=\"font-family:'Chaparral Pro, serif'\">\_\_</span></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>PRINCÍPIOS DO COMBATE</strong></span></p></td></tr></tbody></table><p>A partir do <strong>1º nível de Especialista</strong>, você aprendeu todos os princípios básicos do combate para lutar apenas usando energia amaldiçoada, embora seu uso principal de batalha ainda seja seu feitiço. Você recebe acesso as seguintes características:</p><ul><li><p><strong>Ataques Estratégicos:</strong> Enquanto estiver com um aliado a até 3 metros de uma criatura inimiga, suas jogadas de ataque (de Técnica) recebem vantagem contra ela.</p></li><li><p><strong>Redirecionar: </strong>Quando você for alvo de uma jogada de ataque (Comum ou de Técnica), você pode usar sua reação e escolher uma criatura voluntária para receber dano em seu lugar. A criatura deve estar a até 3 metros e você deve ter deslocamento sobrando para se mover para trás dela.</p></li><li><p><strong>Ataque Punitivo:</strong> Quando você errar uma jogada de ataque (Comum ou de Técnica), você causa dano a criatura inimiga igual seu modificador principal.</p></li></ul><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\">A partir do <strong>6º níve</strong>l, você não precisa mais utilizar reação ao usar o “Redirecionar”, mas ele é limitado a uma vez por rodada.</p><p style=\"margin-top:0cm;margin-right:5.4pt;margin-bottom:.0001pt;margin-left:7.1pt;text-align:justify\"></p><p style=\"margin:0cm 5.4pt 0.0001pt 7.1pt;text-align:justify\"></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CAMINHO DO ESPECIALISTA</strong></span></p></td></tr></tbody></table><p>A partir do <strong>2º nível de Especialista</strong>, você pode definir a natureza das suas habilidades, permitindo que você possa escolher entre Combatente, Dueto Amaldiçoado, Executor e Marionetista. Você pode ver as características desse caminho no fim desse Estilo de Combate.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>MANIPULAÇÃO DE FEITIÇO</strong></span></p></td></tr></tbody></table><p>A partir do <strong>3º nível Especialista</strong>, você adquire a habilidade de manipular seus próprios feitiços para adaptá-las às suas necessidades, usando a energia excedente delas para beneficiar suas habilidades. Toda vez que você executar um feitiço ou técnica de manipulação, seja por si mesmo ou por um Shikigami, você recebe 2 Dados de Técnica, definidos por um d6.</p><p class=\"MsoNormal\">A qualquer momento durante seu turno, você pode utilizar os dados de técnica para ativar um dos seguintes efeitos:</p><ul><li><p><strong>Aprimoramento:</strong> Você pode gastar quantos dados de técnica quiser para aumentar o dano da técnica pelo resultado da rolagem dos dados, mas deve usa-los antes de saber se ela acertou ou errou.</p></li><li><p><strong>Regenerar Maldição:</strong> Você pode gastar quantos dados de técnica desejar e curar um Shikigami pelo mesmo valor do resultado dos dados.</p></li><li><p><strong>Ativação Secundária:</strong> Você pode gastar quantos dados de técnica desejar para reduzir o custo da sua técnica pelo mesmo valor de dados consumidos.</p></li></ul><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\">Você pode ter um máximo de dados de técnica igual a 1 + seu bônus de proficiência.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>AUMENTO NO VALOR DE ATRIBUTO</strong></span></p></td></tr></tbody></table><p>Quando você atinge o <strong>4º nível</strong> e novamente no <strong>8º, 12º, 16º</strong> e <strong>19º nível</strong>, você pode aumentar um valor de atributo, à sua escolha, em 2 ou você pode aumentar dois valores de atributo, à sua escolha, em 1. Como padrão, você não pode elevar um valor de atributo acima de 20 com esta característica.</p><p class=\"MsoBodyText\">A partir do <strong>12º nível</strong>, você pode elevar um valor de atributo até 22 com está característica. A partir do <strong>16º nível,</strong> você pode elevar um valor de atributo até 24 com está característica.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>ACÚMULO DE ENERGIA</strong></span></p></td></tr></tbody></table><p>A partir do <strong>5º nível de Especialista</strong>, você aprende a liberar uma quantidade enorme de energia amaldiçoada em um momento oportuno. No início do seu turno, você pode gerar um valor de Pontos de Energia Amaldiçoada (PA) adicional igual ao nível do seu personagem. Essa característica pode ser utilizada 3 vezes por encontro.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>ENERGIA INESGOTÁVEL</strong></span></p></td></tr></tbody></table><p>A partir do <strong>7º nível de Especialista</strong>, você aumenta sua capacidade de energia tremendamente, permitindo a ativação consecutiva de suas habilidades. Você recebe 10 vezes o seu nível em Pontos de Energia Amaldiçoada (PA) máxima, recebendo 10 adicional a cada vez que sobe de nível.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>POTENCIAL AMALDIÇOADO</strong></span></p></td></tr></tbody></table><p>A partir do <strong>9º nível de Especialista</strong>, você pode escolher entre receber 15 Pontos de Maldição ou 30 Pontos de Treinamento ou 50 PA máximos. Você recebe esse benefício novamente no <strong>13º e 17º nível</strong>.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>MOVIMENTOS EMPODERADOS</strong></span></p></td></tr></tbody></table><p><span style=\"mso-bidi-font-size:10.0pt\">A partir do <strong>11º nível de Especialista</strong>, você recebe uma ação adicional em cada turno. Essa ação pode ser usada para: <strong>Atacar</strong> (apenas um ataque), <strong>Ajudar</strong>, <strong>Usar Objeto</strong>, <strong>Esconder-se</strong>, <strong>Disparar</strong>, <strong>Esquivar-se</strong> ou realizar um Teste de Atributo de Perícia.</span></p><p class=\"TextoPadro\"><span style=\"mso-tab-count:1\">\_\_\_\_\_\_\_\_\_\_\_\_ </span><span style=\"mso-bidi-font-size:10.0pt\">Além disso, no início do seu turno, você pode sacrificar essa ação adicional para receber uma ação bônus extra até o final do turno atual. Essa ação bônus não pode ser utilizada para conjurar feitiços ofensivos ou que imponham condições.</span></p><p class=\"TextoPadro\"><span style=\"mso-tab-count:1\">\_\_\_\_\_\_\_\_\_\_\_\_ </span><span style=\"mso-bidi-font-size:10.0pt\">Adicionalmente, no início de cada encontro, você recebe 1 Ação de Poder adicional, que é consumida após o uso. Você passa a ter uma segunda Ação de Poder por encontro a partir do <strong>15º nível de Especialista</strong> e uma terceira a partir do <strong>18º nível</strong>.</span></p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>ÍMPETO DO ESPECIALISTA</strong></span></p></td></tr></tbody></table><p style=\"text-align:justify\"><span style=\"mso-bidi-font-size:10.0pt\">A partir do <strong>15º nível de Especialista</strong>, ao iniciar um encontro, você pode ativar instantaneamente todos os seus feitiços básicos, estendidos e máximos, se desejar, sem consumir ações — desde que não causem dano direto, condições ou efeitos negativos em criaturas inimigas. Dessa forma, você não pode ser pego de surpresa enquanto possuir essa habilidade. Caso você possua <strong>“Pronto para a Batalha”</strong>, você pode substituí-lo por outra habilidade.</span></p><p style=\"text-indent:35.45pt;tab-stops:467.8pt;text-align:justify\"><span style=\"mso-bidi-font-size:10.0pt\">Adicionalmente, durante o seu turno, você pode rolar até <strong>2 Dados de Energia Amaldiçoada</strong> e gerar o valor obtido como Energia Amaldiçoada adicional, sem reduzi-lo do seu total atual. Nesse caso, modificadores não são aplicados ao resultado. Você pode utilizar esse efeito uma vez por rodada, enquanto ainda possuir Dados de Energia Amaldiçoada disponíveis.</span></p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>MESTRE ESPECIALISTA</strong></span></p></td></tr></tbody></table><p>A partir do <strong>18º nível de Especialista</strong>, você pode distribuir livremente 6 pontos entre seus atributos, respeitando o limite máximo de 24 em cada um deles. Além disso, você pode escolher dois atributos para aplicar esses pontos até o valor máximo de 30.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>ESPECIALISTA ABSOLUTO</strong></span></p></td></tr></tbody></table><p>A partir do <strong>19º nível de Especialista</strong>, você atingiu os limites da sua categoria, entrando em um nível de força que está na liga de figuras lendárias. Você recebe as seguintes características:</p><ul><li><p><strong>Preço Vital:</strong> Você pode escolher consumir PA para ativar seus feitiços no lugar do seu requisito de ações. Dessa forma, você pode escolher gastar 9 PA para ativar um feitiço sem precisar gastar sua ação de poder e 3 PA para ativar um sem precisar consumir uma ação bônus ou reação.</p></li><li><p><strong>Essência do Especialista:</strong> Você recebe um feitiço estendido adicional. Esse feitiço já vem naturalmente com uma versão de reversão de feitiço</p></li><li><p><strong>Ação Lendária:</strong> Você possui uma única ação lendária, que pode ser ativada no fim do turno de uma criatura qualquer, você recupera sua ação lendária no início de cada um de seus turnos. Você tem acesso as seguintes opções:</p><ol><li><p class=\"MsoListParagraph\"><strong>Movimento:</strong> Você se move até metade do seu deslocamento máximo total.</p></li><li><p class=\"MsoListParagraph\"><strong>Ataque:</strong> Você realiza uma única jogada de ataque (Comum) contra uma criatura dentro do seu alcance.</p></li><li><p class=\"MsoListParagraph\"><strong>Detectar:</strong> Você pode realizar um Teste de Atributo de Sabedoria (Percepção) para procurar por algo.</p></li></ol><p></p></li></ul><p></p><p></p>"
+    chat: ''
+  source:
+    custom: Estilo de Combate (JL)
+    rules: '2014'
+    revision: 1
+    book: Livro do Jogador 1.0
+    page: '46'
+    license: ''
+  identifier: especialista
+  levels: 1
+  advancement:
+    CfmQt4sdBV8rYIa4:
+      _id: CfmQt4sdBV8rYIa4
+      type: HitPoints
+      configuration: {}
+      value: {}
+      flags: {}
+      hint: ''
+    D4JWRCGl7NfFQ1St:
+      _id: D4JWRCGl7NfFQ1St
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 4
+      title: ''
+      icon: null
+      flags: {}
+      hint: ''
+    2DZCzli2Nr0a3COK:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 8
+      title: ''
+      icon: null
+      _id: 2DZCzli2Nr0a3COK
+      flags: {}
+      hint: ''
+    A0ZOlJRZGPBJcFv1:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 12
+      title: ''
+      icon: null
+      _id: A0ZOlJRZGPBJcFv1
+      flags: {}
+      hint: ''
+    p8Wjox8iczkSTUql:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 16
+      title: ''
+      icon: null
+      _id: p8Wjox8iczkSTUql
+      flags: {}
+      hint: ''
+    MpB97kOh1ZpDcYgg:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 20
+      title: ''
+      icon: null
+      _id: MpB97kOh1ZpDcYgg
+      flags: {}
+      hint: ''
+    Pwtx1WGjthYd2xZi:
+      type: Trait
+      level: 1
+      configuration:
+        grants:
+          - saves:con
+          - saves:int
+        mode: default
+        allowReplacements: false
+        choices: []
+      value:
+        chosen:
+          - saves:wis
+          - saves:cha
+      _id: Pwtx1WGjthYd2xZi
+      title: ''
+      hint: ''
+      flags: {}
+    bSlbfZlDGmImFjpW:
+      _id: bSlbfZlDGmImFjpW
+      type: Trait
+      configuration:
+        mode: default
+        allowReplacements: false
+        grants: []
+        choices:
+          - count: 3
+            pool:
+              - skills:acr
+              - skills:ath
+              - skills:arc
+              - skills:ste
+              - skills:his
+              - skills:ins
+              - skills:rel
+              - skills:prc
+              - skills:ani
+              - skills:sur
+      level: 1
+      title: ''
+      icon: null
+      value:
+        chosen: []
+      flags: {}
+      hint: ''
+    tHWr6QLlzVLG05xG:
+      _id: tHWr6QLlzVLG05xG
+      type: ScaleValue
+      configuration:
+        identifier: dificuldade
+        type: string
+        distance:
+          units: ''
+        scale:
+          '1':
+            value: '1'
+          '5':
+            value: '2'
+          '9':
+            value: '3'
+          '10':
+            value: '4'
+          '15':
+            value: '5'
+          '17':
+            value: '6'
+      value: {}
+      title: Dificuldade Inefável
+      hint: <p>@scale.especialista.dificuldade</p>
+      flags: {}
+    O7ejRBE0ZOc8ZkZU:
+      _id: O7ejRBE0ZOc8ZkZU
+      type: ItemChoice
+      configuration:
+        choices:
+          '1':
+            count: 2
+            replacement: false
+          '2':
+            count: 1
+            replacement: false
+          '3':
+            count: 1
+            replacement: false
+        allowDrops: true
+        type: null
+        pool:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.fQEiotOxozaIn9Y3
+          - uuid: Compendium.jujutsu-compendium.geral.Item.wmEVc5Z1tlvnyhmI
+          - uuid: Compendium.jujutsu-compendium.geral.Item.cYNOBnXsF2DQbLp4
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Cg7GMea45zirlfmv
+          - uuid: Compendium.jujutsu-compendium.geral.Item.fKBsvfBVThJQo3OV
+          - uuid: Compendium.jujutsu-compendium.geral.Item.yK6KUhmiwhedWoJr
+          - uuid: Compendium.jujutsu-compendium.geral.Item.LfeLCqX7GeBHky3I
+          - uuid: Compendium.jujutsu-compendium.geral.Item.1WfsoBmRw2myPy6K
+          - uuid: Compendium.jujutsu-compendium.geral.Item.nqY0kXLjbLdxj4pD
+          - uuid: Compendium.jujutsu-compendium.geral.Item.xL27COxWdlxR6Stj
+          - uuid: Compendium.jujutsu-compendium.geral.Item.35F6OComd4fEqH0t
+          - uuid: Compendium.jujutsu-compendium.geral.Item.6y4aKtW9WO0zMUnZ
+          - uuid: Compendium.jujutsu-compendium.geral.Item.41PHgY9tpdzt0A9b
+          - uuid: Compendium.jujutsu-compendium.geral.Item.wNPjexjrgaUnkfch
+          - uuid: Compendium.jujutsu-compendium.geral.Item.vn7JIDj3L9ewgbQ8
+          - uuid: Compendium.jujutsu-compendium.geral.Item.t5Wfu7rP3PxQbz7h
+          - uuid: Compendium.jujutsu-compendium.geral.Item.mx0rPWHN77YIGBBn
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Ei9tWn7AyUysLG1j
+          - uuid: Compendium.jujutsu-compendium.geral.Item.lkLiBQJVew52xsOF
+          - uuid: Compendium.jujutsu-compendium.geral.Item.8RlTJZ5TdHba6SCZ
+          - uuid: Compendium.jujutsu-compendium.geral.Item.q9zRwIu676imWcTa
+          - uuid: Compendium.jujutsu-compendium.geral.Item.WjCQZh2jkRtAyb3u
+          - uuid: Compendium.jujutsu-compendium.geral.Item.WNXnczNahQRdMKz0
+          - uuid: Compendium.jujutsu-compendium.geral.Item.javwcPNBIaASRnF2
+          - uuid: Compendium.jujutsu-compendium.geral.Item.iy9L7AZLLWeVTepP
+          - uuid: Compendium.jujutsu-compendium.geral.Item.XhHkv3em6MFoe035
+          - uuid: Compendium.jujutsu-compendium.geral.Item.b1CtPJ60TJKVhhdc
+        spell: null
+        restriction:
+          list: []
+      value:
+        added: {}
+        replaced: {}
+      title: Habilidades Básicas
+      hint: ''
+      flags: {}
+    9rRfcq0QyI1e1RTp:
+      _id: 9rRfcq0QyI1e1RTp
+      type: ItemChoice
+      configuration:
+        choices:
+          '1':
+            count: 2
+            replacement: false
+          '3':
+            count: 1
+            replacement: false
+          '6':
+            count: 1
+            replacement: false
+          '9':
+            count: 1
+            replacement: false
+          '12':
+            count: 1
+            replacement: false
+          '15':
+            count: 1
+            replacement: false
+          '18':
+            count: 1
+            replacement: false
+        allowDrops: true
+        type: null
+        pool:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.8Hj19qiJfaPZGTsA
+          - uuid: Compendium.jujutsu-compendium.geral.Item.bva5epdYxzThtP6M
+          - uuid: Compendium.jujutsu-compendium.geral.Item.0XPCGOxGdkWcR2Vo
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4vLQ7n8G6rrhE1xx
+          - uuid: Compendium.jujutsu-compendium.geral.Item.PX684p6nV5rCcNdS
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4Hiwy0wrIrTms5MM
+          - uuid: Compendium.jujutsu-compendium.geral.Item.DrBpdedmyqnhM5df
+          - uuid: Compendium.jujutsu-compendium.geral.Item.2PhKSjK9qj9ZR6N7
+          - uuid: Compendium.jujutsu-compendium.geral.Item.gefdu4YHs1PfzAbO
+          - uuid: Compendium.jujutsu-compendium.geral.Item.37os1n1MC8Z9Tb0Z
+          - uuid: Compendium.jujutsu-compendium.geral.Item.L4S34HfMD3TMfDiK
+          - uuid: Compendium.jujutsu-compendium.geral.Item.jrqGxj4hXB45vVxR
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Cej9rFPAZLCga4bT
+          - uuid: Compendium.jujutsu-compendium.geral.Item.nXYRnZGNuaoam45h
+          - uuid: Compendium.jujutsu-compendium.geral.Item.XkZ9ajfGzxGXcHzO
+          - uuid: Compendium.jujutsu-compendium.geral.Item.QaXricyQqGncSfOs
+          - uuid: Compendium.jujutsu-compendium.geral.Item.XPSJ7haBC8du3TIm
+          - uuid: Compendium.jujutsu-compendium.geral.Item.tXDjrnCSmSN0anzs
+          - uuid: Compendium.jujutsu-compendium.geral.Item.27hODHpzlrfada74
+          - uuid: Compendium.jujutsu-compendium.geral.Item.vYTryoZKA6kl4ura
+          - uuid: Compendium.jujutsu-compendium.geral.Item.JjdXdRphZg6ixnEJ
+          - uuid: Compendium.jujutsu-compendium.geral.Item.iLAcZMqSs8gqfsUL
+          - uuid: Compendium.jujutsu-compendium.geral.Item.KhSlw4AIhzDSJt0L
+          - uuid: Compendium.jujutsu-compendium.geral.Item.GTpLN4dXVTQxEUGM
+          - uuid: Compendium.jujutsu-compendium.geral.Item.pjcfpwper3gCbN6k
+          - uuid: Compendium.jujutsu-compendium.geral.Item.H9TXciC0Ty7XK2z8
+          - uuid: Compendium.jujutsu-compendium.geral.Item.OpBdHF32rJuWcA4I
+          - uuid: Compendium.jujutsu-compendium.geral.Item.CQ5A81X2Oo6Mki8P
+          - uuid: Compendium.jujutsu-compendium.geral.Item.SuYYqkz57omrdkkL
+          - uuid: Compendium.jujutsu-compendium.geral.Item.qt30lLRhjbaJofBS
+          - uuid: Compendium.jujutsu-compendium.geral.Item.fy033ppmg7T4NROi
+          - uuid: Compendium.jujutsu-compendium.geral.Item.V9HGMLfMpofEyJDk
+          - uuid: Compendium.jujutsu-compendium.geral.Item.phjhzAtEriRqTfbj
+          - uuid: Compendium.jujutsu-compendium.geral.Item.mDTLUIskoUZB9ZRP
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4L6kFKQP5UFDxCsV
+          - uuid: Compendium.jujutsu-compendium.geral.Item.WKcWzfXwCPwKwDld
+          - uuid: Compendium.jujutsu-compendium.geral.Item.jH0ECBJlq0VCuPe9
+          - uuid: Compendium.jujutsu-compendium.geral.Item.qeOcNGu2ske9fHL8
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Bcfjw23FfpY3CrRs
+          - uuid: Compendium.jujutsu-compendium.geral.Item.a9jqktyNovVcoe2C
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4dfu8ht0CY1crbf6
+          - uuid: Compendium.jujutsu-compendium.geral.Item.ggNxaU8N5oQZm2ge
+          - uuid: Compendium.jujutsu-compendium.geral.Item.eZgER2916B2oEGYZ
+          - uuid: Compendium.jujutsu-compendium.geral.Item.ajDH8V2kPLjp8BYf
+          - uuid: Compendium.jujutsu-compendium.geral.Item.R4JNiv4iRt0TlEBF
+          - uuid: Compendium.jujutsu-compendium.geral.Item.8Fly1UAXqAO2rh19
+          - uuid: Compendium.jujutsu-compendium.geral.Item.JNOIRp3vD13sYdMH
+        spell: null
+        restriction:
+          list: []
+      value:
+        added: {}
+        replaced: {}
+      title: Talentos
+      hint: >-
+        <p>Escolha 1 Talento Simples se você não pegou um Aspecto Inato Escolha
+        1 Talento adicional se você for das variantes: Humano Normal ou Tribo
+        Gyudondond. Escolha 2 Talentos adicionais se você for das variantes:
+        Kurta ou Escória da Cidade Meteoro</p>
+      flags: {}
+    RMbLW81CuB83vw1S:
+      type: Subclass
+      title: Caminhos do Especialista
+      _id: RMbLW81CuB83vw1S
+      configuration: {}
+      value:
+        document: null
+        uuid: null
+      level: 2
+      hint: ''
+      flags: {}
+    US38xeoGt9Xzn7AX:
+      type: ItemGrant
+      _id: US38xeoGt9Xzn7AX
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.gl45jxLe68RN8yGV
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 1
+      hint: ''
+      title: ''
+    t9ZwgJH5Ww1U2Lst:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.XeKVP0MTlGPSq7rD
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 3
+      hint: ''
+      title: ''
+      _id: t9ZwgJH5Ww1U2Lst
+    pTPbrTvnIM7SYVHn:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.sIOWA3t1ikHxUWxI
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 5
+      hint: ''
+      title: ''
+      _id: pTPbrTvnIM7SYVHn
+    3F1P2JnziTZoAM2j:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.lImRsZuU1UsBLxYX
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 7
+      hint: ''
+      title: ''
+      _id: 3F1P2JnziTZoAM2j
+    lvOLnVhvQFZeyl8j:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.biMzWiyUgG0Jhvoc
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 11
+      hint: ''
+      title: ''
+      _id: lvOLnVhvQFZeyl8j
+    ugXBgSHrVAouNkfr:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.qbzWzdSinAV3EXLB
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 15
+      hint: ''
+      title: ''
+      _id: ugXBgSHrVAouNkfr
+    58cUxJnzi87VHP9D:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.h814hych52iI6qqD
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 19
+      hint: ''
+      title: ''
+      _id: 58cUxJnzi87VHP9D
+  spellcasting:
+    progression: full
+    ability: int
+    preparation:
+      formula: ''
+  wealth: ''
+  startingEquipment: []
+  hd:
+    denomination: d8
+    spent: 0
+    additional: ''
+  primaryAbility:
+    value: []
+    all: true
+  properties: []
+effects: []
+sort: 190625
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: b7b52be297422e7275420ee748ab0cd35c26be69
+  dnd5e: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 1.0.4
+  createdTime: 1776624882945
+  modifiedTime: 1777965402838
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: FZvfRFQlaJHfTZVx
+_key: '!items!FZvfRFQlaJHfTZVx'

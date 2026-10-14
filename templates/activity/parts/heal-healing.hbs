@@ -1,0 +1,6 @@
+<fieldset>
+    <legend>{{ localize "DND5E.HEAL.FIELDS.healing.label" }}</legend>
+    {{!-- canScale=false: escala nativa (spell level) oculta — substituída pela Escala de Energia (JJ) --}}
+    {{> "dnd5e.field-damage" fields=fields.healing.fields source=source.healing prefix="healing." heal=true
+        types=typeOptions canScale=false }}
+</fieldset>

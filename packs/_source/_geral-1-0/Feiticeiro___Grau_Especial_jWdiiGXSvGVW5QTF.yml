@@ -1,0 +1,157 @@
+folder: A016Ya5NrTpIpIrs
+name: Feiticeiro - Grau Especial
+type: feat
+img: icons/magic/light/beams-strike-blue.webp
+system:
+  description:
+    value: >-
+      <p>São aqueles que dominaram todos os princípios do nen com perfeição,
+      aumentando o ND efetivo do PdN em 8. Eles recebem as seguintes
+      características:</p><ul><li><p><em>Recebe + 15 em Testes de Atributo de
+      Furtividade enquanto em Zetsu;</em></p></li><li><p><em>Aumenta a Classe de
+      Dificuldade em +6;</em></p></li><li><p><em>Recebe 100 Pontos de
+      Vida;</em></p></li><li><p><em>Recebe 5d4 de dano extra em todas as jogadas
+      de ataque que realizar;</em></p></li><li><p><em>Sua margem de acerto
+      crítico se torna 18-20;</em></p></li><li><p><em>Sua Classe de Resistência
+      aumenta em +3;</em></p></li><li><p><em>Recebe resistência a todos os tipos
+      de dano.</em></p><p></p></li></ul><p>Essas características são um resumo
+      dos princípios, não precisando adiciona-los separadamente na ficha do NPC
+      a menos que seja citado, podendo apenas adicionar o “Nível Ultimato”.
+      Adicione todos os modificadores de atributo diretamente na ficha e
+      qualquer característica que utiliza ações ou tenha limite de uso como
+      parte dessa característica.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  requirements: ''
+  identifier: 8-ultimato
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects:
+  - name: Especial
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.jWdiiGXSvGVW5QTF
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: false
+    flags:
+      dnd5e:
+        riders:
+          statuses: []
+      dae:
+        disableCondition: ''
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+      core:
+        overlay: false
+      JujutsuLegacy:
+        riders:
+          statuses: []
+    img: icons/magic/light/beams-strike-blue.webp
+    _id: qO8qBTEeuUHD5BMX
+    type: base
+    system:
+      changes:
+        - key: system.attributes.hp.max
+          type: add
+          value: '+100'
+          phase: initial
+          priority: 20
+        - key: system.attributes.ac.bonus
+          type: add
+          value: '+3'
+          phase: initial
+          priority: 20
+        - key: system.traits.dr.all
+          type: custom
+          value: 'True'
+          phase: initial
+          priority: 20
+        - key: system.bonuses.mwak.damage
+          type: add
+          value: +4d4
+          phase: initial
+          priority: 20
+        - key: system.bonuses.rwak.damage
+          type: add
+          value: +4d4
+          phase: initial
+          priority: 20
+        - key: system.bonuses.spell.dc
+          type: add
+          value: '+6'
+          phase: initial
+          priority: 20
+        - key: system.bonuses.mwak.attack
+          type: add
+          value: '+5'
+          phase: initial
+          priority: null
+        - key: system.bonuses.rwak.attack
+          type: add
+          value: '+5'
+          phase: initial
+          priority: null
+    description: ''
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    sort: 0
+    _stats:
+      compendiumSource: Item.3TzUvuEACXFNl43j.ActiveEffect.qO8qBTEeuUHD5BMX
+      duplicateSource: null
+      coreVersion: '14.364'
+      systemId: jujutsu-system
+      systemVersion: 1.0.6
+      createdTime: 1776624910555
+      modifiedTime: 1782449554398
+      lastModifiedBy: 371UX0Acl9j9oJ0Q
+      exportSource: null
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!jWdiiGXSvGVW5QTF.qO8qBTEeuUHD5BMX'
+sort: 100000
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  rsr5e:
+    quickFooter:
+      value: true
+  scene-packer:
+    hash: 07ee1f5441b3f89d441aa9c3575f5f8b9ee59582
+_stats:
+  compendiumSource: Item.IxuYJz2t7xMlsyOa
+  duplicateSource: Item.YAtYQ2iJh3r8j7oo
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910555
+  modifiedTime: 1782449456168
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_id: jWdiiGXSvGVW5QTF
+_key: '!items!jWdiiGXSvGVW5QTF'

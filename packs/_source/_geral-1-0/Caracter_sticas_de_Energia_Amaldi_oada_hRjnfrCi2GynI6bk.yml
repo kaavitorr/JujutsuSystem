@@ -1,0 +1,22 @@
+name: Características de Energia Amaldiçoada
+type: Item
+sorting: m
+sort: 700000
+color: '#2d4e9a'
+flags:
+  scene-packer:
+    hash: 919e90d828ee0091e0da1734fddc45ce84a6caaa
+_id: hRjnfrCi2GynI6bk
+folder: Zh6nXJyphmH4TF72
+description: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910214
+  modifiedTime: 1782450575155
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_key: '!folders!hRjnfrCi2GynI6bk'

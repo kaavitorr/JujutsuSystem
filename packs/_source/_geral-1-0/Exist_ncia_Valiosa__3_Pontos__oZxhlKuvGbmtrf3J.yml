@@ -1,0 +1,77 @@
+name: Existência Valiosa (3 Pontos)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects: []
+folder: xaOZscxiXFUTyHS5
+sort: 1100000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: be829cf856f9380124ddbeec4e5c79eee497def1
+    sourceId: Item.lXkPbHBaF5zepLHF
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: "<p>Você possui alguma parte de seu corpo que é valiosa para colecionadores, fazendo com que existem vários trabalhos para caçá-lo. As pessoas não sabem exatamente a sua identidade, mas caso elas descubram, você não terá um minuto de paz.</p><p>\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Toda vez que você se expor, você deve rolar 1d12, em um resultado de 8 ou menor, um novo trabalho para caça-lo é liberado através do mercado negro.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: existencia-valiosa-3-pontos
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.4BfTTk851QhCPsZC
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902152
+  modifiedTime: 1776624902177
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: oZxhlKuvGbmtrf3J
+_key: '!items!oZxhlKuvGbmtrf3J'

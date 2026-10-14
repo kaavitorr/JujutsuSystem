@@ -1,0 +1,46 @@
+_id: jj2a000000000024
+name: Manipulação Rápida
+type: feat
+img: icons/magic/fire/flame-burning-hand-purple.webp
+system:
+  identifier: manipulacao-rapida
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Aprimorar Alcance</em></p><p>Você
+      dominou a habilidade de colocar votos em suas técnicas, permitindo
+      modifica-las no meio do combate, adicionando um efeito ao sacrificar
+      outro. Um voto é criado ao limitar uma face do seu feitiço para adicionar
+      uma outra característica compatível com ele. Por exemplo, você pode
+      reduzir 2 dados de dano para adicionar uma condição de até 2 PA a
+      ele.</p><p>Independente do efeito escolhido, você pode criar quantos votos
+      quiser junto do seu Narrador, mas só pode manter dois deles preparados até
+      o fim de cada descanso longo, podendo muda-los toda vez que você realizar
+      um novo descanso longo.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Manipulação de Técnica
+      requisitos:
+        - Aprimorar Alcance
+folder: jj2f000000000004
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814923234
+  modifiedTime: 1791814923234
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000024'

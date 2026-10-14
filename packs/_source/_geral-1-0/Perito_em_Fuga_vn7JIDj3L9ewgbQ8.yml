@@ -1,0 +1,149 @@
+name: Perito em Fuga
+type: feat
+img: icons/magic/symbols/cog-orange-red.webp
+effects:
+  - name: Perito em Fuga
+    origin: Compendium.hunter-legacy-module.hl-geral.Item.vn7JIDj3L9ewgbQ8
+    duration:
+      value: null
+      units: seconds
+      expiry: null
+      expired: false
+    disabled: false
+    img: icons/magic/symbols/cog-orange-red.webp
+    _id: FfGR1LlHm9GLR51V
+    type: base
+    system:
+      changes:
+        - key: system.attributes.movement.walk
+          value: 15
+          priority: 20
+          type: override
+          phase: initial
+    description: ''
+    tint: '#ffffff'
+    transfer: true
+    statuses: []
+    sort: 0
+    flags:
+      dnd5e:
+        riders:
+          statuses: []
+      dae:
+        disableCondition: ''
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        specialDuration: []
+      core:
+        overlay: false
+    _stats:
+      compendiumSource: Actor.B7PED5Qn8pZXv8FC.Item.YQRJnwnwzJes5QNz.ActiveEffect.MftS8uk5NItEPDox
+      duplicateSource: null
+      exportSource: null
+      coreVersion: '14.360'
+      systemId: jujutsu-system
+      systemVersion: 5.3.2
+      createdTime: 1776624882968
+      modifiedTime: 1776624882968
+      lastModifiedBy: vQ8cHNVhVHOdX3zY
+    start: null
+    showIcon: 1
+    folder: null
+    _key: '!items.effects!vn7JIDj3L9ewgbQ8.FfGR1LlHm9GLR51V'
+folder: TOc92NuiE5uyXD8M
+sort: 1100000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: a7e4a8629485d4574317bf32a6eee2c726e043e8
+    sourceId: Item.56za1y6eXu2k49Rg
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Você passou a maior parte da sua vida fugindo ou
+      correndo por aí, seja por esporte ou porque sua vida não foi nada fácil.
+      Você recebe 15 metros de deslocamento. Adicionalmente, você pode usar uma
+      ação bônus para dar “Disparada” ou “Esquiva”. Caso outra fonte te dê
+      deslocamento com limite de 15 ou maior, seu máximo se torna 21.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: maniaco-por-treino
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.uMNWzaM7WqfTGRaL
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624882968
+  modifiedTime: 1776959455128
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: vn7JIDj3L9ewgbQ8
+_key: '!items!vn7JIDj3L9ewgbQ8'

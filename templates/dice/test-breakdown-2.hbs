@@ -1,0 +1,10 @@
+<section class="jj2-test-breakdown" aria-label="Bônus da rolagem">
+  {{#each breakdowns}}
+  <div class="jj2-test-bonuses">
+    <div><output class="jj2-test-seal">{{abilityValue}}</output><strong>{{attributeLabel}}</strong><small>{{localize abilityLabel}}</small></div>
+    <div><input type="text" class="jj2-test-seal jj2-test-bonus" name="roll.{{index}}.situational" value="{{situational}}" aria-label="Bônus situacional" placeholder="0"><strong>Bônus</strong><small>Situacional</small></div>
+    {{#if hasRank}}<div><output class="jj2-test-seal">{{rankValueLabel}}</output><strong>{{rankLabel}}</strong>{{#if rankDetail}}<small>{{localize rankDetail}}</small>{{/if}}</div>{{/if}}
+    {{#each extras}}<div><output class="jj2-test-seal jj2-test-extra">{{value}}</output><strong>{{label}}</strong></div>{{/each}}
+  </div>
+  {{/each}}
+</section>

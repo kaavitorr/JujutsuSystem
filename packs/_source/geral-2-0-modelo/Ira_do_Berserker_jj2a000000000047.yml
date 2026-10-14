@@ -1,0 +1,41 @@
+_id: jj2a000000000047
+name: Ira do Berserker
+type: feat
+img: icons/skills/melee/strike-weapons-orange.webp
+system:
+  identifier: ira-do-berserker
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Ataque Potencializado</em></p><p>A cada
+      25 Pontos de Vida que você perder, você recebe +1 de dano adicional em
+      suas jogadas de ataque (Comuns e de Técnica) até um valor máximo efetivo
+      igual seu atributo principal. Você perde dano na mesma proporção ao perder
+      Pontos de Vida.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Corpo de Guerreiro
+      requisitos:
+        - Ataque Potencializado
+folder: jj2f000000000009
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816340746
+  modifiedTime: 1791816351036
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000047'

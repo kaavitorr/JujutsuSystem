@@ -1,0 +1,89 @@
+folder: GfLIKHXQLpg1w4DW
+name: Ativação Veloz
+type: feat
+img: icons/magic/light/beam-strike-orange-gold.webp
+system:
+  description:
+    value: >-
+      <p>A partir do <strong>6º nível de Especialista</strong>, você aprendeu a
+      ativar suas técnicas e feitiços com grande velocidade, movendo sua energia
+      por instinto para causar efeitos massivos durante um combate. Sempre que
+      você utilizar uma técnica de manipulação ou feitiço com uma ação de poder,
+      role um d20. Em um resultado de 11 ou maior, você pode, dentro de 3
+      rodadas, utilizar uma técnica, habilidade menor ou feitiço de custo
+      inferior que utilize ação de poder, mas você pode ativa-la usando uma ação
+      bônus no lugar.</p><p class="MsoNormal">Adicionalmente, suas técnicas,
+      feitiços e características com duração maior que 1 rodada não podem ser
+      interrompidas por técnicas, feitiços, características ou efeitos, a menos
+      que possuam “Concentração”. Caso alguma habilidade tenha um efeito
+      constante que force sua desativação, ela volta de onde parou após você se
+      livrar do efeito.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881613
+  modifiedTime: 1776921029643
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: 3ewupwxlpmZgC4d4
+sort: 450000
+_key: '!items!3ewupwxlpmZgC4d4'

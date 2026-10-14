@@ -1,0 +1,668 @@
+name: Sentinela
+type: class
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Sentinela.jpg
+effects: []
+folder: gpiuGQQptpbYBAnm
+flags:
+  cf: {}
+  core:
+    sheetClass: dnd5e.Tidy5eItemSheetQuadrone
+  scene-packer:
+    hash: 3bcdd1306eddc5ce5c92e3e9bacaa30248d5f957
+    sourceId: Item.aYlUpTY0J6XMH13M
+    defaultPermission: 3
+  dnd5e: {}
+system:
+  description:
+    value: "<p style=\"text-align:center\"><span style=\"font-size:38px\"><strong>SENTINELA</strong></span></p><p>\_</p><p><span style=\"font-size:large\"><strong>PONTOS DE VIDA</strong></span></p><p class=\"MsoNormal\">D<strong>ado de Vida:</strong> 1d10 por nível de Sentinela</p><p class=\"MsoNormal\"><strong>Pontos de Vida no 1º nível:</strong> 10 + seu modificador de Constituição.</p><p class=\"MsoNormal\"><strong>Média de Vida por nível:</strong> 6 + seu modificador de constituição por nível posterior.</p><p class=\"MsoNormal\"><strong>Pontos de Vida nos níveis seguintes:</strong> 1d10 + seu modificador de constituição por nível posterior.</p><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>PROFICIÊNCIAS</strong></span></p><p class=\"MsoNormal\"><strong>Equipamentos:</strong> Katanas e Similares.</p><p class=\"MsoNormal\"><strong>Salvaguarda:</strong> Agilidade, Constituição e Intelecto.</p><p class=\"MsoNormal\"><strong>Perícias:</strong> Escolha 5 perícias para receber proficiência.</p><p></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>INFORMAÇÕES GERAIS</strong></span></p><p class=\"MsoBodyText\"><strong>Atributo Principal:</strong> Força ou Agilidade (à sua escolha).</p><p class=\"MsoNormal\"><strong>Habilidade Inata:</strong> Escolha entre “Corpo de Lutador” ou “Superioridade Absoluta”.</p><p class=\"MsoNormal\"><strong>Talento:</strong> Escolha dois entre qualquer talento que você possua os requisitos.</p><p class=\"MsoNormal\"><strong>Equipamentos:</strong> Você recebe uma arma amaldiçoada de 4º grau, um par óculos ou lentes de contato que permite ver energia amaldiçoada e; $ 5.000.</p><p></p><img src=\"systems/jujutsu-system/assets/Tabelas/Sentinela.png\"><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CRIANDO UM ESPECIALISTA</strong></span></p></td></tr></tbody></table><p>Para criar rapidamente um Restringido, primeiro distribua seus atributos, colocando o mais alto em Força ou Agilidade, de acordo com sua escolha de atributo principal. O segundo atributo mais alto deve ser Constituição. Escolha a origem de poder de Restrição Celestial e as habilidades básicas de Corpo de Lutador, Retomar Fôlego e Poço de Estamina.</p><p class=\"MsoNormal\">Após isso, foque em pegar talentos para aumentar suas perícias que serão importantes no início do jogo, principalmente em talentos que dão proficiência nas perícias: Atletismo, Acrobacia, Percepção e Sobrevivência.</p><p style=\"margin:0cm -1.65pt 0.0001pt 7.1pt;text-align:justify\"><span style=\"font-family:'Chaparral Pro, serif'\">\_</span></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>ACERTO E SALVAGUARDA</strong></span></p></td></tr></tbody></table><p>Você possui os seguintes modificadores para acerto de técnica ou feitiços e CD de Salvaguardas:</p><p class=\"MsoBodyText\"><strong>CD das técnicas =</strong> 8 + bônus de proficiência + seu modificador de Força ou Agilidade.</p><p class=\"MsoBodyText\"><strong>Modificador da técnica =</strong> seu bônus de proficiência + seu modificador de Força ou Agilidade.</p><p style=\"margin:0cm -1.65pt 0.0001pt 7.1pt;text-align:justify\"><span style=\"font-family:'Chaparral Pro, serif'\">\_</span></p><p></p><p style=\"text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DE COMBATE</strong></span></p><p>\_Como um manipulador, você recebe as seguintes características:<span style=\"font-family:'Chaparral Pro, serif'\">\_</span><span style=\"font-size:20.0pt;mso-bidi-font-size:11.0pt;font-family:'Chaparral Pro',serif\"><strong style=\"mso-bidi-font-weight:normal\">\_</strong></span></p><table border=\"1\" style=\"margin-left:7.1pt;border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt\" class=\"MsoTableGrid\"><tbody><tr style=\"mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes\"><td><p class=\"MsoNormal\"><strong>PECULIARIDADES DO SENTINELA</strong></p><p class=\"MsoNormal\">Os Sentinelas são peritos na utilização do Novo Estilo das Sombras, sendo aqueles que refinaram sua manipulação de Energia Amaldiçoada ao limite para compensar a ausência de um feitiço inato.</p><p class=\"MsoNormal\">Devido a essa peculiaridade, um Sentinela deve dedicar todo o seu tempo ao domínio de suas habilidades. Como resultado, mesmo que possua um feitiço inato, ele é incapaz de utilizá-lo em combate.</p><p>Caso uma criatura que não seja um Imaculado ou um Receptáculo sem feitiço escolha o Estilo de Combate Sentinela, o custo de ativação e uso de seus feitiços é multiplicado por 5. Além disso, ela não pode adicionar modificadores de atributo, redução de custo, votos e nem bônus de proficiência a qualquer rolagem relacionada a esses feitiços.</p></td></tr></tbody></table><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>DOMÍNIO SIMPLES</strong></span></p></td></tr></tbody></table><p>A partir do <strong>1º nível de Sentinela</strong>, você aprende a utilização do Domínio Simples, permitindo que você possa criar um domínio ao seu redor de acordo com as regras do Capítulo 3.4 do Manual de Feitiços. Ao usar uma ação bônus, você expande o domínio em uma área de emanação de 4,5 metros de raio, gastando 2 PA no processo. Enquanto ele estiver criado, você recebe as seguintes características enquanto não se mover:</p><ul><li><p><em>Seu alcance de “Toque” se torna 4,5 metros, sendo toda área dentro do domínio;</em></p></li><li><p><em>Você recebe uma reação adicional em cada um de seus turnos enquanto ele estiver ativo;</em></p></li><li><p><em>Você recebe imunidade aos efeitos de acerto automático da “Expansão de Domínio”;</em></p></li><li><p><em>Você recebe +3 de acerto em rolagens de ataque dentro da área.</em></p></li></ul><p style=\"margin-top:0cm;margin-right:.15pt;margin-bottom:.0001pt;margin-left:7.1pt;text-justify:inter-ideograph;tab-stops:7.1pt 467.8pt;text-align:justify\" class=\"MsoNormal\"><span style=\"font-size:10.0pt;font-family:'Chaparral Pro',serif;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-bidi-font-family:ChaparralPro-Regular\">\_</span></p><p class=\"MsoBodyText\">Essa habilidade se encerra caso você queira ou se mova voluntariamente para qualquer direção, mas não se encerra se o movimento for feito como consequência de uma técnica do Novo Estilo das Sombras.</p><p class=\"MsoBodyText\">Seu Domínio Simples consome 2 PA no início de cada um de seus turnos para ser mantido.</p><p style=\"margin:0cm 5.4pt 0.0001pt 7.1pt;text-align:justify\"></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>DOMÍNIO VELOZ</strong></span></p></td></tr></tbody></table><p>A partir do <strong>2º nível de Sentinela</strong>, você se tornou tão adepto na criação de seu domínio que aprendeu a expandi-lo com uma velocidade surpreendente. Você passa a poder ativar seu domínio usando uma reação. Além disso, ao expandi-lo dessa forma, recebe os seguintes benefícios:</p><ul><li><p><em>Você pode pagar 2 PA para utilizar outra característica ou técnica que exija uma reação como parte da mesma reação;</em></p></li><li><p><em>Você pode realizar uma jogada de ataque (Comum) contra uma criatura ao seu alcance;</em></p></li><li><p><em>Você pode se mover até 4,5 metros antes que seu domínio se expanda completamente.</em></p></li></ul><p></p><p>Além disso, você recebe acesso às seguintes características, que podem ser utilizadas um número de vezes igual ao seu bônus de proficiência:</p><ul><li><p><em>Uma vez por expansão de domínio, você pode negar um acerto crítico;</em></p></li><li><p><em>Uma vez por expansão de domínio, você pode receber +5 em uma jogada de acerto;</em></p></li><li><p><em>Uma vez por expansão de domínio, você pode negar uma condição que receberia.</em></p></li></ul><p style=\"margin-top:0cm;margin-right:.15pt;margin-bottom:.0001pt;margin-left:7.1pt;text-justify:inter-ideograph;tab-stops:7.1pt 467.8pt;text-align:justify\" class=\"MsoNormal\"><span style=\"font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:'Chaparral Pro',serif;mso-fareast-language:PT-BR\">\_</span></p><p class=\"MsoNormal\">Sempre que expandir seu domínio simples, você pode escolher uma das características acima para utilizar. No entanto, o número total de usos dessas características não pode exceder seu bônus de proficiência.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>ADEPTO DAS SOMBRAS</strong></span></p></td></tr></tbody></table><p>A partir do 3º nível de Sentinela, você dominou o estilo das sombras até um nível de maestria que te coloca entre membros habilidades até mesmo na época de ouro do Jujutsu, permitindo que você possa exterminar maldições e usuários de maldições com eficiência. Você recebe as seguintes características enquanto estiver empunhando uma katana ou similar:</p><ul><li><p><strong>Lâmina Imbatível:</strong> Uma vez por turno, ao realizar um acerto crítico com katana ou similar, você pode realizar uma jogada de ataque (Comum) adicional.</p></li><li><p><strong>Fio Imbatível:</strong> Suas jogadas de ataque (Comuns) com uma katana ou similar causam dano cortante extra igual a metade do seu nível de Sentinela, arredondado para acima (máximo de 8).</p></li><li><p><strong>Lâmina Traiçoeira:</strong> Uma vez por turno, ao acertar uma jogada de ataque (Comum ou de Técnica), você pode escolher ignorar qualquer resistência ou invulnerabilidade a dano Cortante que a criatura possua.</p></li><li><p><strong>Grande Maestria:</strong> Independentemente da sua katana, você sempre possui d10 de dano ao utiliza-la (prevalece o maior). A partir do 6º nível de Sentinela, seu dano se torna d12.</p></li></ul><p class=\"MsoNormal\"></p><p class=\"MsoNormal\">A partir do 6º nível de Sentinela, toda vez que você tiver com seu domínio simples expandido, você reduz todo dano sofrido em uma quantidade de dano igual seu bônus de proficiência.</p><p class=\"MsoNormal\">Adicionalmente, você pode utilizar a técnica “Hazy Moon” dentro ou fora do seu turno sem consumir ações.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>AUMENTO NO VALOR DE ATRIBUTO</strong></span></p></td></tr></tbody></table><p>Quando você atinge o <strong>4º nível</strong> e novamente no <strong>8º, 12º, 16º</strong> e <strong>19º nível</strong>, você pode aumentar um valor de atributo, à sua escolha, em 2 ou você pode aumentar dois valores de atributo, à sua escolha, em 1. Como padrão, você não pode elevar um valor de atributo acima de 20 com esta característica.</p><p class=\"MsoBodyText\">A partir do <strong>12º nível</strong>, você pode elevar um valor de atributo até 22 com está característica. A partir do <strong>16º nível,</strong> você pode elevar um valor de atributo até 24 com está característica.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>ACÚMULO DE VIGOR</strong></span></p></td></tr></tbody></table><p>A partir do 5º nível de Sentinela, você aprende a liberar uma quantidade enorme de energia amaldiçoada em um momento oportuno. No início do seu turno, você pode gerar um valor de Pontos de Energia Amaldiçoada (PA) adicional igual ao nível do seu personagem. Essa característica pode ser utilizada 3 vezes por encontro.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>PROFICIÊNCIA ANTI-DOMÍNIO</strong></span></p></td></tr></tbody></table><p>A partir do <strong>6º nível de Sentinela</strong>, você aprendeu a manipular os efeitos do seu domínio simples para adaptá-lo às mais diversas situações. Enquanto seu domínio simples estiver ativo, você pode se mover até metade do seu deslocamento padrão e escolher uma das seguintes características sempre que o expandir:</p><ul><li><p><strong>Expansão Aumentada:</strong> Você dobra o alcance do seu domínio simples, assim como o alcance do seu “Toque”.</p></li><li><p><strong>Domínio da Proteção:</strong> Você reduz pela metade todo dano sofrido por feitiços (não cumulativo com resistência), sejam eles provenientes de ataques realizados contra você ou contra outras criaturas (à sua escolha) que estejam dentro do seu domínio simples.</p></li><li><p><strong>Ativação Econômica:</strong> Você reduz o alcance do seu domínio simples para 3 metros e não precisa pagar o custo em PA para ativá-lo nem para mantê-lo ativo.</p></li><li><p><strong>Muralha de Lâminas:</strong> Você pode sacrificar sua ação e todo seu movimento no seu turno para que sua Classe de Resistência aumente em +5, até um máximo de 30. Esse efeito dura até o início do seu turno seguinte.</p></li><li><p><strong>Troca Arriscada:</strong> Sempre que uma criatura errar um ataque contra você, você pode escolher ser atingido por ele automaticamente. Ao fazer isso, você recebe +3 de acerto na sua próxima rolagem de acerto. Se você forçou o acerto contra uma técnica, você recebe 3 dados de dano adicionais em sua próxima técnica.</p></li></ul><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\">A partir do 12º nível de Sentinela, todas as características acima permanecem ativas simultaneamente sempre que você expandir seu domínio simples.</p><p class=\"MsoNormal\"><span style=\"font-size:8.0pt;font-family:'Chaparral Pro',serif;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-bidi-font-family:'Chaparral Pro';color:black\"><em>\_</em></span></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>ATAQUE EXTRA</strong></span></p></td></tr></tbody></table><p>A partir do 7º nível de Sentinela, você pode atacar duas vezes, ao invés de uma, quando usar a ação “Atacar” durante o seu turno.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>POTENCIAL AMALDIÇOADO</strong></span></p></td></tr></tbody></table><p>A partir do <strong>9º nível de Sentinela</strong>, você pode escolher entre receber 15 Pontos de Maldição ou 30 Pontos de Treinamento ou 50 PA máximos. Você recebe esse benefício novamente no 13º e 17º nível.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>REAÇÃO ALUCINANTE</strong></span></p></td></tr></tbody></table><p>A partir do <strong>10º nível de Sentinela</strong>, você está sempre pronto para combate e raramente algo vai te pegar de surpresa. Quando um combate se iniciar, você é sempre o primeiro da iniciativa e pode realizar seu turno duas vezes seguidas.</p><p class=\"TextoPadro\">Adicionalmente, você é totalmente imune a condição “Surpreso” e passa automaticamente em Testes de Atributo de Sabedoria (Percepção) para detectar algo dentro do seu domínio simples.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>LÂMINA PARTIDA</strong></span></p></td></tr></tbody></table><p><span style=\"mso-bidi-font-size:10.0pt\">A partir do <strong>11º nível de Sentinela</strong>,</span><span style=\"mso-bidi-font-size:10.0pt;mso-bidi-font-family:'Times New Roman';mso-bidi-theme-font:minor-bidi\"> </span>você se torna capaz de canalizar todo seu espírito mesmo diante de uma situação de derrota iminente. Quando seu domínio simples quebrar, você pode formar um novo imediatamente e, logo em seguida, realizar uma técnica que vai ser considerada como um crítico automático. Essa técnica irá ignorar efeitos de forçar o erro, acertando automaticamente o alvo.</p><p style=\"text-indent:35.45pt;tab-stops:467.8pt\" class=\"TextoPadro\">Você não pode utilizar essa característica novamente até o fim de um descanso longo.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>MAESTRIA ABSOLUTA</strong></span></p></td></tr></tbody></table><p><span style=\"mso-bidi-font-size:10.0pt\">A partir do <strong>14º nível de Sentinela</strong>, você deu um novo significado ao seu domínio com a espada, impedindo que alguém utilizasse o termo “Domínio dos Fracos” contra você.</span></p><p style=\"text-indent:35.45pt;tab-stops:467.8pt\" class=\"TextoPadro\"><span style=\"mso-bidi-font-size:10.0pt\">Você aprende a técnica anti-domínio <strong>“Amplificação de Domínio”</strong> e pode gastar 10 PA no início de cada um dos seus turnos para utilizá-la simultaneamente ao seu domínio simples, imbuindo seus efeitos em toda a área do domínio.</span></p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>DOMÍNIO COMPLETO</strong></span></p></td></tr></tbody></table><p>A partir do <strong>15º nível de Sentinela</strong>, você se tornou tão habilidoso na utilização do seu domínio que ele deixa de impor limitações sobre seus movimentos. Enquanto seu domínio simples estiver ativo, você pode se mover livremente e não consome mais Pontos de Energia Amaldiçoada (PA) para ativá-lo ou mantê-lo ativo.</p><p class=\"MsoNormal\">Além disso, durante um choque de domínios, a quantidade de Pontos de Vida do seu domínio é duplicada, permitindo que ele resista por muito mais tempo.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>EVOLUÇÃO SUPREMA</strong></span></p></td></tr></tbody></table><p>A partir do <strong>18º nível de Sentinela</strong>, você pode distribuir livremente 6 pontos entre seus atributos, respeitando o limite máximo de 24 em cada um deles. Além disso, você pode escolher dois atributos para aplicar esses pontos até o valor máximo de 30.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>DEUS DA LÂMINA</strong></span></p></td></tr></tbody></table><p>A partir do <strong>19º nível</strong> <strong>de Sentinela</strong>, você superou o que se julgava possível para um usuário do Novo Estilo das Sombras, conseguindo ultrapassar até mesmo seu criador em questão de maestria. Você recebe acesso as seguintes características:</p><ul><li><p><em>Você não consome mais reações para ativar o “Yuzuki”, mas ainda paga seu custo;</em></p></li><li><p><em>Você pode utilizar técnicas de 3º grau ou menor de Sentinela sem consumir PA;</em></p></li><li><p><em>Você recebe uma jogada de ataque (Comum) adicional na característica Ataque Extra;</em></p></li><li><p><em>Você não pode receber desvantagem em rolagens de acerto e pode utilizar “Hazy Moon” de mãos vazias e sem custo;</em></p></li><li><p><em>Você gera naturalmente 3 vezes o seu nível em Pontos de Energia Amaldiçoada (PA)</em>.</p></li></ul><p></p>"
+    chat: ''
+  source:
+    custom: Estilo de Combate (JL)
+    rules: '2014'
+    revision: 1
+    book: Livro do Jogador 1.0
+    page: '33'
+    license: ''
+  identifier: sentinela
+  levels: 1
+  advancement:
+    IMoq25MSzfHb3msQ:
+      _id: IMoq25MSzfHb3msQ
+      type: HitPoints
+      configuration: {}
+      value: {}
+      flags: {}
+      hint: ''
+    PuLKwkCPgeCEJP7P:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 4
+      _id: PuLKwkCPgeCEJP7P
+      title: ''
+      icon: null
+      flags: {}
+      hint: ''
+    fdbxaETpLaFnyW6d:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 8
+      _id: fdbxaETpLaFnyW6d
+      title: ''
+      icon: null
+      flags: {}
+      hint: ''
+    HIz7R6xayJffkmwi:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 12
+      _id: HIz7R6xayJffkmwi
+      title: ''
+      icon: null
+      flags: {}
+      hint: ''
+    9kBgx2nxyTa6Hqjf:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 16
+      _id: 9kBgx2nxyTa6Hqjf
+      title: ''
+      icon: null
+      flags: {}
+      hint: ''
+    2LR4go8wOdGrbynu:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 2
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+      value:
+        type: asi
+      level: 20
+      _id: 2LR4go8wOdGrbynu
+      title: ''
+      icon: null
+      flags: {}
+      hint: ''
+    uHsPllOiffIosIpS:
+      type: Trait
+      level: 1
+      configuration:
+        grants:
+          - saves:dex
+          - saves:con
+          - saves:int
+        mode: default
+        allowReplacements: false
+        choices: []
+      value:
+        chosen:
+          - saves:int
+          - saves:cha
+      _id: uHsPllOiffIosIpS
+      flags: {}
+      hint: ''
+      title: ''
+    UzPpRS5bTrnZZtdb:
+      _id: UzPpRS5bTrnZZtdb
+      type: Trait
+      configuration:
+        mode: default
+        allowReplacements: false
+        grants: []
+        choices:
+          - count: 5
+            pool:
+              - skills:*
+      level: 1
+      title: ''
+      icon: null
+      value:
+        chosen: []
+      flags: {}
+      hint: ''
+    F4zPu7ZErtbUNa5G:
+      _id: F4zPu7ZErtbUNa5G
+      type: ScaleValue
+      configuration:
+        identifier: ''
+        type: string
+        distance:
+          units: ''
+        scale:
+          '1':
+            value: '1'
+          '5':
+            value: '2'
+          '9':
+            value: '3'
+          '10':
+            value: '4'
+          '15':
+            value: '5'
+          '17':
+            value: '6'
+      value: {}
+      title: Dificuldade Inefável
+      hint: <p>@scale.restringido.dificuldade</p>
+      flags: {}
+    9rRfcq0QyI1e1RTp:
+      _id: 9rRfcq0QyI1e1RTp
+      type: ItemChoice
+      configuration:
+        choices:
+          '1':
+            count: 2
+            replacement: false
+          '3':
+            count: 1
+            replacement: false
+          '6':
+            count: 1
+            replacement: false
+          '9':
+            count: 1
+            replacement: false
+          '12':
+            count: 1
+            replacement: false
+          '15':
+            count: 1
+            replacement: false
+          '17':
+            count: 1
+            replacement: false
+          '18':
+            count: 1
+            replacement: false
+        allowDrops: true
+        type: null
+        pool:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.PCMv2ROyNP67Q8K8
+          - uuid: Compendium.jujutsu-compendium.geral.Item.mNYaKca3GBGD4Ipq
+          - uuid: Compendium.jujutsu-compendium.geral.Item.sk7mBM0pII8LGdfq
+          - uuid: Compendium.jujutsu-compendium.geral.Item.8Fly1UAXqAO2rh19
+          - uuid: Compendium.jujutsu-compendium.geral.Item.JNOIRp3vD13sYdMH
+          - uuid: Compendium.jujutsu-compendium.geral.Item.8Hj19qiJfaPZGTsA
+          - uuid: Compendium.jujutsu-compendium.geral.Item.bva5epdYxzThtP6M
+          - uuid: Compendium.jujutsu-compendium.geral.Item.0XPCGOxGdkWcR2Vo
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4vLQ7n8G6rrhE1xx
+          - uuid: Compendium.jujutsu-compendium.geral.Item.PX684p6nV5rCcNdS
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4Hiwy0wrIrTms5MM
+          - uuid: Compendium.jujutsu-compendium.geral.Item.DrBpdedmyqnhM5df
+          - uuid: Compendium.jujutsu-compendium.geral.Item.2PhKSjK9qj9ZR6N7
+          - uuid: Compendium.jujutsu-compendium.geral.Item.gefdu4YHs1PfzAbO
+          - uuid: Compendium.jujutsu-compendium.geral.Item.L4S34HfMD3TMfDiK
+          - uuid: Compendium.jujutsu-compendium.geral.Item.jrqGxj4hXB45vVxR
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Cej9rFPAZLCga4bT
+          - uuid: Compendium.jujutsu-compendium.geral.Item.nXYRnZGNuaoam45h
+          - uuid: Compendium.jujutsu-compendium.geral.Item.XkZ9ajfGzxGXcHzO
+          - uuid: Compendium.jujutsu-compendium.geral.Item.QaXricyQqGncSfOs
+          - uuid: Compendium.jujutsu-compendium.geral.Item.XPSJ7haBC8du3TIm
+          - uuid: Compendium.jujutsu-compendium.geral.Item.tXDjrnCSmSN0anzs
+          - uuid: Compendium.jujutsu-compendium.geral.Item.27hODHpzlrfada74
+          - uuid: Compendium.jujutsu-compendium.geral.Item.vYTryoZKA6kl4ura
+          - uuid: Compendium.jujutsu-compendium.geral.Item.JjdXdRphZg6ixnEJ
+          - uuid: Compendium.jujutsu-compendium.geral.Item.iLAcZMqSs8gqfsUL
+          - uuid: Compendium.jujutsu-compendium.geral.Item.KhSlw4AIhzDSJt0L
+          - uuid: Compendium.jujutsu-compendium.geral.Item.GTpLN4dXVTQxEUGM
+          - uuid: Compendium.jujutsu-compendium.geral.Item.pjcfpwper3gCbN6k
+          - uuid: Compendium.jujutsu-compendium.geral.Item.H9TXciC0Ty7XK2z8
+          - uuid: Compendium.jujutsu-compendium.geral.Item.OpBdHF32rJuWcA4I
+          - uuid: Compendium.jujutsu-compendium.geral.Item.CQ5A81X2Oo6Mki8P
+          - uuid: Compendium.jujutsu-compendium.geral.Item.SuYYqkz57omrdkkL
+          - uuid: Compendium.jujutsu-compendium.geral.Item.qt30lLRhjbaJofBS
+          - uuid: Compendium.jujutsu-compendium.geral.Item.fy033ppmg7T4NROi
+          - uuid: Compendium.jujutsu-compendium.geral.Item.V9HGMLfMpofEyJDk
+          - uuid: Compendium.jujutsu-compendium.geral.Item.phjhzAtEriRqTfbj
+          - uuid: Compendium.jujutsu-compendium.geral.Item.mDTLUIskoUZB9ZRP
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4L6kFKQP5UFDxCsV
+          - uuid: Compendium.jujutsu-compendium.geral.Item.WKcWzfXwCPwKwDld
+          - uuid: Compendium.jujutsu-compendium.geral.Item.jH0ECBJlq0VCuPe9
+          - uuid: Compendium.jujutsu-compendium.geral.Item.qeOcNGu2ske9fHL8
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Bcfjw23FfpY3CrRs
+          - uuid: Compendium.jujutsu-compendium.geral.Item.a9jqktyNovVcoe2C
+          - uuid: Compendium.jujutsu-compendium.geral.Item.4dfu8ht0CY1crbf6
+          - uuid: Compendium.jujutsu-compendium.geral.Item.ggNxaU8N5oQZm2ge
+          - uuid: Compendium.jujutsu-compendium.geral.Item.eZgER2916B2oEGYZ
+          - uuid: Compendium.jujutsu-compendium.geral.Item.ajDH8V2kPLjp8BYf
+          - uuid: Compendium.jujutsu-compendium.geral.Item.R4JNiv4iRt0TlEBF
+          - uuid: Compendium.jujutsu-compendium.geral.Item.37os1n1MC8Z9Tb0Z
+        spell: null
+        restriction:
+          list: []
+      value:
+        added: {}
+        replaced: {}
+      title: Talentos
+      hint: >-
+        <p>Escolha 1 Talento Simples se você não pegou um Aspecto Inato Escolha
+        1 Talento adicional se você for das variantes: Humano Normal ou Tribo
+        Gyudondond. Escolha 2 Talentos adicionais se você for das variantes:
+        Kurta ou Escória da Cidade Meteoro</p>
+      flags: {}
+    kPsWDy3riOGFQcgU:
+      type: ItemGrant
+      _id: kPsWDy3riOGFQcgU
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.0MXPGMkCj8lLi2VQ
+            optional: false
+          - uuid: Compendium.jujutsu-compendium.geral.Item.a0EnvT0iw2hVTUrr
+            optional: false
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Ym1btsYF88SkB38v
+            optional: false
+        optional: false
+        spell:
+          ability:
+            - dex
+          method: ''
+          uses:
+            max: ''
+            per: ''
+            requireSlot: false
+      flags: {}
+      value: {}
+      level: 1
+      hint: ''
+      title: Característica de Sentinela
+    qBP1Xw1LEqIpkYnz:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.eTvwQ2GthiGizK2X
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 2
+      hint: ''
+      title: Característica de Sentinela
+      _id: qBP1Xw1LEqIpkYnz
+    yi3r8iY5e96VdzeJ:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.01t9C0sb16yhM2ZH
+            optional: false
+          - uuid: Compendium.jujutsu-compendium.geral.Item.EaSGEAoSO7dXtTqb
+            optional: false
+          - uuid: Compendium.jujutsu-compendium.geral.Item.MKAYMtZtCd6xmDVU
+            optional: false
+        optional: false
+        spell:
+          ability: []
+          method: ''
+          uses:
+            max: ''
+            per: ''
+            requireSlot: false
+      flags: {}
+      value: {}
+      level: 3
+      hint: ''
+      title: Característica de Sentinela
+      _id: yi3r8iY5e96VdzeJ
+    rsEZYyLOeF4Dfswl:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.yZHh10eoyzrkseo5
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 5
+      hint: ''
+      title: Característica de Sentinela
+      _id: rsEZYyLOeF4Dfswl
+    i6ZxhBOa511gbBoC:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Ocd8LGpKncjkJwzQ
+            optional: false
+          - uuid: Compendium.jujutsu-compendium.geral.Item.FYJlT8qU93EA8aLG
+            optional: false
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Vpz4E7rjrwTVXppX
+            optional: false
+        optional: false
+        spell:
+          ability: []
+          method: ''
+          uses:
+            max: ''
+            per: ''
+            requireSlot: false
+      flags: {}
+      value: {}
+      level: 6
+      hint: ''
+      title: Característica de Sentinela
+      _id: i6ZxhBOa511gbBoC
+    27Zh9JXJdm2mxvDr:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.OOKlVT6JCRPGnknK
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 10
+      hint: ''
+      title: Característica de Sentinela
+      _id: 27Zh9JXJdm2mxvDr
+    7Ae5kq3YvwAWFXqL:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.EQmQ4eKibkJaX5OH
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 11
+      hint: ''
+      title: Característica de Sentinela
+      _id: 7Ae5kq3YvwAWFXqL
+    JjcoN293vCTmaOlK:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Ix8qPFYWeaLZR80q
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 14
+      hint: ''
+      title: Característica de Sentinela
+      _id: JjcoN293vCTmaOlK
+    MhHyvVom9knj85jz:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.2bTYkmkLTHOdTpLv
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 15
+      hint: ''
+      title: Característica de Sentinela
+      _id: MhHyvVom9knj85jz
+    gFktfxIR9RKRUEaU:
+      type: AbilityScoreImprovement
+      configuration:
+        points: 6
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        cap: 2
+        locked: []
+        recommendation: null
+        max: null
+      value:
+        type: asi
+      level: 18
+      title: ''
+      icon: null
+      flags: {}
+      hint: ''
+      _id: gFktfxIR9RKRUEaU
+    Ga76ZNuRPXN0S1Q8:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.A9EZ7e7ftowVZHWw
+            optional: false
+        optional: false
+        spell: null
+      flags: {}
+      value: {}
+      level: 19
+      hint: ''
+      title: Característica de Sentinela
+      _id: Ga76ZNuRPXN0S1Q8
+    O7ejRBE0ZOc8ZkZU:
+      _id: O7ejRBE0ZOc8ZkZU
+      type: ItemChoice
+      configuration:
+        choices:
+          '1':
+            count: 2
+            replacement: false
+          '2':
+            count: 1
+            replacement: false
+          '3':
+            count: 1
+            replacement: false
+        allowDrops: true
+        type: null
+        pool:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.fQEiotOxozaIn9Y3
+          - uuid: Compendium.jujutsu-compendium.geral.Item.wmEVc5Z1tlvnyhmI
+          - uuid: Compendium.jujutsu-compendium.geral.Item.cYNOBnXsF2DQbLp4
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Cg7GMea45zirlfmv
+          - uuid: Compendium.jujutsu-compendium.geral.Item.fKBsvfBVThJQo3OV
+          - uuid: Compendium.jujutsu-compendium.geral.Item.yK6KUhmiwhedWoJr
+          - uuid: Compendium.jujutsu-compendium.geral.Item.LfeLCqX7GeBHky3I
+          - uuid: Compendium.jujutsu-compendium.geral.Item.1WfsoBmRw2myPy6K
+          - uuid: Compendium.jujutsu-compendium.geral.Item.nqY0kXLjbLdxj4pD
+          - uuid: Compendium.jujutsu-compendium.geral.Item.xL27COxWdlxR6Stj
+          - uuid: Compendium.jujutsu-compendium.geral.Item.35F6OComd4fEqH0t
+          - uuid: Compendium.jujutsu-compendium.geral.Item.6y4aKtW9WO0zMUnZ
+          - uuid: Compendium.jujutsu-compendium.geral.Item.41PHgY9tpdzt0A9b
+          - uuid: Compendium.jujutsu-compendium.geral.Item.wNPjexjrgaUnkfch
+          - uuid: Compendium.jujutsu-compendium.geral.Item.vn7JIDj3L9ewgbQ8
+          - uuid: Compendium.jujutsu-compendium.geral.Item.t5Wfu7rP3PxQbz7h
+          - uuid: Compendium.jujutsu-compendium.geral.Item.mx0rPWHN77YIGBBn
+          - uuid: Compendium.jujutsu-compendium.geral.Item.Ei9tWn7AyUysLG1j
+          - uuid: Compendium.jujutsu-compendium.geral.Item.lkLiBQJVew52xsOF
+          - uuid: Compendium.jujutsu-compendium.geral.Item.8RlTJZ5TdHba6SCZ
+          - uuid: Compendium.jujutsu-compendium.geral.Item.q9zRwIu676imWcTa
+          - uuid: Compendium.jujutsu-compendium.geral.Item.WjCQZh2jkRtAyb3u
+          - uuid: Compendium.jujutsu-compendium.geral.Item.WNXnczNahQRdMKz0
+          - uuid: Compendium.jujutsu-compendium.geral.Item.javwcPNBIaASRnF2
+          - uuid: Compendium.jujutsu-compendium.geral.Item.iy9L7AZLLWeVTepP
+          - uuid: Compendium.jujutsu-compendium.geral.Item.XhHkv3em6MFoe035
+          - uuid: Compendium.jujutsu-compendium.geral.Item.b1CtPJ60TJKVhhdc
+        spell: null
+        restriction:
+          list: []
+      value:
+        added: {}
+        replaced: {}
+      title: Habilidades Básicas
+      hint: ''
+      flags: {}
+    msEIA4V3dv61YcQ4:
+      type: ItemGrant
+      _id: msEIA4V3dv61YcQ4
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.w06vtsaip3i6VPc5
+            optional: false
+          - uuid: Compendium.jujutsu-compendium.geral.Item.uFxOxgqnR3S4BPiX
+            optional: false
+        optional: false
+        spell:
+          ability: []
+          method: ''
+          uses:
+            max: ''
+            per: ''
+            requireSlot: false
+      flags: {}
+      value: {}
+      level: 9
+      hint: ''
+      title: Técnicas
+    9bsq04vdo1entRm8:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.GpWmiVxGv1ZCg1l3
+            optional: false
+          - uuid: Compendium.jujutsu-compendium.geral.Item.5NEvyLd9c3sI2Hln
+            optional: false
+        optional: false
+        spell:
+          ability: []
+          method: ''
+          uses:
+            max: ''
+            per: ''
+            requireSlot: false
+          prepared: 0
+      flags: {}
+      value: {}
+      level: 12
+      hint: ''
+      title: Técnicas
+      _id: 9bsq04vdo1entRm8
+    SDsesWOa3Y4rqqwg:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.cvKcAZeCedBgq5GQ
+            optional: false
+        optional: false
+        spell:
+          ability: []
+          method: ''
+          uses:
+            max: ''
+            per: ''
+            requireSlot: false
+          prepared: 0
+      flags: {}
+      value: {}
+      level: 16
+      hint: ''
+      title: Técnicas
+      _id: SDsesWOa3Y4rqqwg
+    q39H8Kkf1zzJ1m27:
+      type: ItemGrant
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-compendium.geral.Item.mTsJ1p6Z7DoXJEo4
+            optional: false
+        optional: false
+        spell:
+          ability: []
+          method: ''
+          uses:
+            max: ''
+            per: ''
+            requireSlot: false
+          prepared: 0
+      flags: {}
+      value: {}
+      level: 20
+      hint: ''
+      title: Técnicas
+      _id: q39H8Kkf1zzJ1m27
+  spellcasting:
+    progression: full
+    ability: dex
+    preparation:
+      formula: ''
+  wealth: ''
+  startingEquipment: []
+  hd:
+    denomination: d10
+    spent: 0
+    additional: ''
+  primaryAbility:
+    value:
+      - str
+    all: true
+  properties: []
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1782436151306
+  modifiedTime: 1782436635814
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: d9OF2dv3wORSX0UF
+sort: 700000
+_key: '!items!d9OF2dv3wORSX0UF'

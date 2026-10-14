@@ -1,0 +1,67 @@
+folder: vG1tvdXvcpq70Tb5
+name: Saúde Perfeita
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>Você sempre mantém seu corpo em um estado próximo a perfeição, comendo
+      bem, se exercitando regularmente e cuidando de cada aspecto da sua saúde
+      sempre que pode.</p><p><strong>Característica:</strong> Sempre que rolar
+      um dado de vida ao subir de nível, você rola novamente qualquer resultado
+      de 3 ou menor.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: selvageria
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  MhGXeDSlt2zUqR0J: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 4e406c85ba2ca394067b6374700c2695dd50ec06
+    sourceId: Item.43Gn4b9j54q7LsaF
+    defaultPermission: 3
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: Item.pIaAt98DZBQngnAh
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902120
+  modifiedTime: 1776913402825
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: 4dfu8ht0CY1crbf6
+sort: 4100000
+_key: '!items!4dfu8ht0CY1crbf6'

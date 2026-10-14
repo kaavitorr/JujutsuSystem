@@ -1,0 +1,20 @@
+type: Item
+folder: Cop25p3gGjyKoZK7
+name: Zenin
+color: null
+sorting: a
+_id: XDuc1HIzjTOBgmzA
+description: ''
+sort: 0
+flags: {}
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776962783545
+  modifiedTime: 1776962783545
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!XDuc1HIzjTOBgmzA'

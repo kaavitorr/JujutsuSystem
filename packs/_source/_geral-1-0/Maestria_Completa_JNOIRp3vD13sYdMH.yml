@@ -1,0 +1,64 @@
+folder: dX9XlTQArgwL00FB
+name: Maestria Completa
+type: feat
+img: icons/sundries/books/book-tooled-eye-gold-red.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Você treinou ou estudou algo até a perfeição, fazendo
+      com que você dominasse um assunto específico a ponto de entende-lo
+      completamente.</p><p class="MsoNormal"><strong>Requisito:</strong>
+      Atributo da Perícia 18 ou maior, Ter Proficiência na Perícia</p><p
+      class="MsoNormal"><strong>Característica:</strong> Escolha uma perícia que
+      você já tenha proficiência, sem ser “Controle de Energia” e receba
+      maestria nela. Esse talento pode ser adquirido diversas vezes.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: alvo-marcado
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: 68bd6da6a692d9e060df0b6a0d841529b2c53996
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776630956132
+  modifiedTime: 1776630956216
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: JNOIRp3vD13sYdMH
+sort: 200000
+_key: '!items!JNOIRp3vD13sYdMH'

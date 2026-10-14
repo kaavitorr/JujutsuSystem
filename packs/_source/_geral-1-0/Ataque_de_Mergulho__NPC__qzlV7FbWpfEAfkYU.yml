@@ -1,0 +1,75 @@
+_id: qzlV7FbWpfEAfkYU
+name: Ataque de Mergulho (NPC)
+type: feat
+img: icons/creatures/birds/corvid-flying-wings-purple.webp
+effects: []
+folder: I4nmFeOf3cr9gQWb
+sort: 200000
+flags:
+  scene-packer:
+    hash: 5e27e69941bec53259fb1feeb4e4a0415df9979a
+    sourceId: Item.qzlV7FbWpfEAfkYU
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Ataque de Mergulho (Aumenta o dano efetivo da criatura na
+      primeira rodada): </strong>Se a criatura estiver voando e mergulhar, pelo
+      menos 6 metros, em linha reta e atingir um alvo com uma jogada de ataque
+      corpo-a-corpo, ela causa dano extra ao alvo.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: ataque-de-mergulho-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.0PkbsS16KH3HhXPc
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910559
+  modifiedTime: 1776624910577
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!qzlV7FbWpfEAfkYU'

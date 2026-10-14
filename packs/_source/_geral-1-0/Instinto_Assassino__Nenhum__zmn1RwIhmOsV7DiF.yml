@@ -1,0 +1,104 @@
+name: Instinto Assassino (Nenhum)
+type: feat
+img: icons/magic/death/skull-energy-light-purple.webp
+effects: []
+folder: y7Cn34JISn9L1HL9
+sort: 200000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: f08c2b64f97e82ca83efe6be509f4ae51479fe7c
+    sourceId: Item.AXvRrOTjKfVADj3y
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: >-
+      <p>Você cresceu em um ambiente onde matar não era diferente de uma ação
+      mundana, como fazer compras ou realizar tarefas domésticas. Para você, a
+      morte é algo comum e leviana e você não se importa de tirar a vida de
+      alguém e nem entende a ideologia ou a mente das pessoas que preferem
+      preservar a vida.</p><p>Você falha automaticamente em Testes para saber
+      como as criaturas estão se sentindo e quando não fizer diferença para
+      você, como essa criatura não possuir nada que você precise, você sempre
+      irá tirar a vida dela.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: instinto-assassino-nenhum
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.6hCyc9B7SekJ3Y4c
+  duplicateSource: Item.ZGONPfoCqggQC8Vd
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902160
+  modifiedTime: 1776624902181
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: zmn1RwIhmOsV7DiF
+_key: '!items!zmn1RwIhmOsV7DiF'

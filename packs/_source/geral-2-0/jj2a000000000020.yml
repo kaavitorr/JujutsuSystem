@@ -1,0 +1,22 @@
+_id: jj2a000000000020
+_key: '!items!jj2a000000000020'
+name: Manipulação Eficiente
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: manipulacao-eficiente
+  description:
+    value: '<p><em><strong>Requisito:</strong> Execução Veloz ou Gestos: Flecha e Linha</em></p><p>Ao executar uma técnica, você gastar um Ponto de Ação [⬢] adicional e 2 PA para ativar um dos seguintes efeitos:</p><ul><li>Você pode impor uma desvantagem em uma Salvaguarda contra a técnica;</li><li>Você pode receber uma vantagem na rolagem de acerto da técnica.</li></ul>'
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Manipulação de Técnica
+      requisitos:
+        - 'Execução Veloz ou Gestos: Flecha e Linha'
+folder: jj2f000000000004
+ownership:
+  default: 0
+effects: []
+sort: 0

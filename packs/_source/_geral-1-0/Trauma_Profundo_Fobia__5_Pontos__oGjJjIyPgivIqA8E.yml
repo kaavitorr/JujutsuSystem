@@ -1,0 +1,86 @@
+_id: oGjJjIyPgivIqA8E
+name: Trauma Profundo/Fobia (5 Pontos)
+type: feat
+img: icons/magic/death/undead-ghosts-trio-blue.webp
+effects: []
+folder: mTmB9L9Ikog43GoQ
+sort: 500000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: f07cc04a597e805823d8d2514dbae96723df5457
+    sourceId: Item.P8gRruPfv3Hp5bFf
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p>Em seu passado você passou por uma situação traumática irrecuperável,
+      desde uma perda terrível, ter sofrido agressões ou qualquer evento
+      negativamente marcante.</p><p>Toda vez que você se depara com uma situação
+      semelhante ou possui um gatilho que traga suas memórias à tona, você é
+      tomado por perturbações nítidas que pode te impedir de realizar ações ou
+      comprometer sua concentração, devendo fazer uma Salvaguarda de Espírito CD
+      17, se passar no teste, você supera momentaneamente o trauma, se falhar,
+      todos as suas jogadas com d20 sofrem -5 de penalidade. Após esse 1 minuto,
+      você pode repetir o teste.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: trauma-profundo-fobia-2-pontos
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 3
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.personalizacao.8PCgG6555avZ4FGd
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902151
+  modifiedTime: 1776624902177
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!oGjJjIyPgivIqA8E'

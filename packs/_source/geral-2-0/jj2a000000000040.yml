@@ -1,0 +1,21 @@
+_id: jj2a000000000040
+_key: '!items!jj2a000000000040'
+name: Proezas Físicas — Visão Geral
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: proezas-fisicas-visao-geral
+  description:
+    value: <h2>Proezas Físicas</h2><p>As habilidades de especialização de proezas físicas permitem que os personagens aprendam características que aumentem o poder físico direto do personagem, assim como dando novas habilidades de combate.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: null
+      requisitos: []
+folder: jj2f000000000008
+ownership:
+  default: 0
+effects: []
+sort: 0

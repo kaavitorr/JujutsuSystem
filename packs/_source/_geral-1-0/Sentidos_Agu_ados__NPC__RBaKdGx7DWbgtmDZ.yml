@@ -1,0 +1,79 @@
+_id: RBaKdGx7DWbgtmDZ
+name: Sentidos Aguçados (NPC)
+type: feat
+img: icons/magic/control/silhouette-aura-energy.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 5100000
+flags:
+  scene-packer:
+    hash: d0fa0aeb906901a4a01e308ce07a7c6c30e5f7d9
+    sourceId: Item.RBaKdGx7DWbgtmDZ
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+system:
+  description:
+    value: >-
+      <p><strong>Sentidos Aguçados (–):</strong> A criatura tem vantagem em
+      Testes de Habilidade de Espírito (Percepção) relacionados à audição, ao
+      olfato e à visão.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: sentidos-agucados-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.Zkv20cwFxF6rrUhj
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910542
+  modifiedTime: 1776624910569
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!RBaKdGx7DWbgtmDZ'

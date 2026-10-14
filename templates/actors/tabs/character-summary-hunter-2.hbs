@@ -1,0 +1,85 @@
+<section class="tab {{ tab.cssClass }} jj2-page jj2-summary" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
+  <div class="jj2-combat-metrics">
+    <div class="jj2-metric jj2-metric-resistance">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="con" }}<strong>{{ system.attributes.ac.value }}</strong><span class="jj2-metric-label">Classe de Resistência</span>{{#if editable}}<button type="button" class="jj2-config" data-action="showConfiguration" data-config="armorClass" aria-label="Configurar Classe de Resistência">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="config" }}</button>{{/if}}</div>
+    <div class="jj2-metric jj2-metric-movement">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="dex" }}<strong>{{ jj2.movement.value }} <small>{{ localize jj2.movement.unit }}</small></strong><span class="jj2-metric-label">Movimento</span>{{#if editable}}<button type="button" class="jj2-config" data-action="showConfiguration" data-config="movement" aria-label="Configurar Movimento">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="config" }}</button>{{/if}}</div>
+    <button type="button" class="jj2-metric jj2-metric-initiative {{ rollableClass }} {{#if owner}}always-interactive{{/if}}" data-action="roll" data-type="initiative" aria-label="Rolar Iniciativa" {{ disabled (not owner) }}>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="energy" }}<strong>{{ dnd5e-formatModifier system.attributes.init.total }}</strong><span class="jj2-metric-label">Iniciativa</span></button>
+    <div class="jj2-metric jj2-engagement">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="cha" }}{{#if editable}}<input type="number" name="system.legacy2.engagement" value="{{ jj2.engagementBase }}" min="0" step="1" data-dtype="Number" aria-label="Engajamento base">{{else}}<strong>{{ jj2.engagement }}</strong>{{/if}}<span class="jj2-metric-label">Engajamento</span></div>
+  </div>
+  <div class="jj2-panel jj2-saves"><div class="jj2-saves-heading"><h2>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="con" }}Salvaguardas</h2><div class="jj2-proficiency-points"><span>Pontos de Proficiência</span><output aria-label="Pontos de Proficiência restantes">{{ jj2.pontos.available }}</output><small>restantes</small></div></div><ul>
+    {{#each jj2.saves}}<li class="jj2-rank-row" data-key="{{ key }}" data-ability="{{ key }}"><div class="jj2-rank-name">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=key }}<a class="saving-throw {{ @root.rollableClass }}" data-action="roll" data-type="ability">{{ label }}</a></div><div class="jj2-rank-line">{{> "systems/jujutsu-system/templates/actors/parts/jj2-ranks.hbs" ctx="saves" }}<strong>{{ dnd5e-formatModifier total }}</strong></div><small>{{ rankLabel }}</small></li>{{/each}}
+  </ul></div>
+  <div class="jj2-identity-grid">
+    {{#if jj2.estiloItem}}
+    <section class="classes pills-lg jj2-main-style {{#if editable}}editing{{/if}}" aria-label="Estilo de Combate principal">
+      {{#with jj2.estiloItem as |cls|}}{{#dnd5e-itemContext cls as |ctx|}}
+      <div class="class pill-lg" data-item-id="{{ cls.id }}">
+        <img class="underlay" src="{{ cls.img }}" alt="" inert>
+        <div class="icons">
+          <img class="draggable gold-icon item-tooltip" src="{{ cls.img }}" alt="{{ cls.name }}" data-action="showDocument" data-uuid="{{ cls.uuid }}" data-item-id="{{ cls.id }}">
+          {{#if @root.editable}}<div class="controls"><a class="deletion-control item-control item-action" data-action="deleteDocument" data-uuid="{{ cls.uuid }}" data-item-id="{{ cls.id }}" data-tooltip="DND5E.ItemDelete" aria-label="{{ localize 'DND5E.ItemDelete' }}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="close" }}</a></div>{{/if}}
+        </div>
+        <div class="name-stacked"><div class="title">{{ cls.name }}</div><div class="subtitle">Estilo de Combate</div>
+          {{#if @root.jj2.escolhivel}}{{#if @root.editable}}<select name="system.legacy2.principalEscolhido" aria-label="Atributo principal">{{ selectOptions @root.jj2.principais selected=@root.jj2.principalEscolhido labelAttr="label" }}</select>{{else}}<small>{{ @root.jj2.principalLabel }}</small>{{/if}}{{/if}}
+        </div>
+        <div class="level">{{#if @root.editable}}<select class="level-selector" aria-label="Nível do Estilo de Combate">{{ selectOptions ctx.availableLevels selected=0 }}</select>{{else}}<span>{{ cls.system.levels }}</span>{{/if}}<small>Nível</small></div>
+        <button type="button" class="jj2-config {{#if @root.owner}}always-interactive{{/if}}" data-action="jj2SkillTree" aria-label="Abrir progressão do Estilo de Combate" {{ disabled (not @root.owner) }}>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="tree" }}</button>
+      </div>
+      {{/dnd5e-itemContext}}{{/with}}
+    </section>
+    {{else}}<div class="jj2-identity-card jj2-identity-style"><span class="jj2-identity-icon">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="str" }}</span><div><strong>Estilo de Combate</strong></div><button type="button" class="jj2-config {{#if owner}}always-interactive{{/if}}" data-action="jj2SkillTree" aria-label="Escolher Estilo de Combate" {{ disabled (not owner) }}>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="tree" }}</button></div>{{/if}}
+    {{#if jj2.species}}
+    <button type="button" class="jj2-identity-card jj2-origin-card draggable item-tooltip always-interactive" data-action="showDocument" data-item-id="{{ jj2.species.id }}" data-uuid="{{ jj2.species.uuid }}" aria-label="Abrir Origem de Poder: {{ jj2.species.name }}"><span class="jj2-identity-icon">{{#if jj2.species.img}}<img src="{{ jj2.species.img }}" alt="">{{else}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="cha" }}{{/if}}</span><span class="jj2-origin-content"><strong>{{ jj2.species.name }}</strong><span>Origem de Poder</span></span><span class="jj2-identity-open">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="collapse" }}</span></button>
+    {{else}}
+    <button type="button" class="jj2-identity-card jj2-origin-card {{#if owner}}always-interactive{{/if}}" data-action="findItem" data-item-type="race" aria-label="Adicionar Origem de Poder" {{ disabled (not owner) }}><span class="jj2-identity-icon">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="cha" }}</span><span class="jj2-origin-content"><strong>Adicionar Origem de Poder</strong><span>Espécie</span></span></button>
+    {{/if}}
+  </div>
+  {{> "systems/jujutsu-system/templates/actors/parts/jj2-resistances.hbs" }}
+  <section class="jj2-extra-resources" aria-label="Recursos Extras">
+    <header class="jj2-page-heading jj2-manga-heading jj2-extras-heading"><h2>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="energy" }}Recursos Extras</h2>{{#if owner}}<button type="button" class="jj2-action always-interactive" data-action="jj2ResourceConfig" aria-label="Adicionar recurso">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add" }}Adicionar</button>{{/if}}</header>
+    <div class="jj2-extra-resource-grid">
+      {{#if jj2.energiaReversa}}
+      <article class="jj2-extra-card jj2-special-resource jj2-energia-reversa">
+        <header><span class="jj2-extra-card-icon">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="heart" }}</span><h3>Energia Reversa</h3>{{#if owner}}<button type="button" class="jj2-config always-interactive" data-action="jj2ResourceConfig" data-resource-id="reverseEnergy" aria-label="Configurar Energia Reversa">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="config" }}</button>{{/if}}</header>
+        <div class="jj2-er-balance"><strong>{{ jj2.energiaReversa.value }}<small>/ {{ jj2.energiaReversa.max }}</small></strong><span>PER</span><div>Cura / PER<strong>{{ jj2.energiaReversa.con }} PV</strong><span>{{ jj2.energiaReversa.con }} ferimentos</span></div></div>
+        <div class="jj2-special-meter" role="meter" aria-label="Reserva de Energia Reversa" aria-valuemin="0" aria-valuenow="{{ jj2.energiaReversa.value }}" aria-valuemax="{{ jj2.energiaReversa.max }}"><span style="width:{{ jj2.energiaReversa.pct }}%"></span></div>
+        <div class="jj2-er-round" title="Limite de {{ jj2.energiaReversa.maximoRodada }} PER, renovado no início do seu turno"><span>{{#if jj2.energiaReversa.emCombate}}Uso desde seu turno{{else}}Limite em combate{{/if}}</span><div aria-hidden="true">{{#each jj2.energiaReversa.rodadaPontos}}<i class="{{#if usado}}used{{/if}}"></i>{{/each}}</div><strong>{{ jj2.energiaReversa.pontosNaRodada }} / {{ jj2.energiaReversa.maximoRodada }}</strong></div>
+        <button type="button" class="jj2-special-btn jj2-er-recover {{#if owner}}always-interactive{{/if}}" data-action="jj2ERRecuperar" title="Converter Energia Total em PER" {{ disabled (not (and owner jj2.energiaReversa.podeRecuperar)) }}>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="convert" }}<span>Recuperar</span><b>3 PA → 1 PER</b></button>
+        <footer class="jj2-special-footer jj2-er-uses">
+          <button type="button" class="jj2-special-btn {{#if owner}}always-interactive{{/if}}" data-action="jj2ERUsar" data-pontos="1" {{ disabled (not owner) }}><span>Curar</span><b>1 PER</b></button>
+          <button type="button" class="jj2-special-btn {{#if owner}}always-interactive{{/if}}" data-action="jj2ERUsar" data-pontos="2" {{ disabled (not owner) }}><span>Restaurar membro</span><b>2 PER</b></button>
+        </footer>
+      </article>
+      {{/if}}
+      {{#each jj2.extraResources}}{{#unless (eq id "reverseEnergy")}}
+      <article class="jj2-extra-card" data-resource-id="{{ id }}">
+        <header><span class="jj2-extra-card-icon">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=icon }}</span><h3>{{ label }}</h3>{{#if @root.owner}}<button type="button" class="jj2-config always-interactive" data-action="jj2ResourceConfig" data-resource-id="{{ id }}" aria-label="Configurar {{ label }}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="config" }}</button>{{/if}}</header>
+        <div class="jj2-extra-counter"><label for="{{ @root.rootId }}-extra-{{ id }}">{{ unit }}</label><div><input id="{{ @root.rootId }}-extra-{{ id }}" name="{{ path }}" type="number" value="{{ value }}" min="0" max="{{ max }}" step="1" data-dtype="Number" aria-label="{{ label }} atual" class="{{#if @root.owner}}always-interactive{{/if}}" {{ disabled (not @root.owner) }}><span>/ {{ max }}</span></div></div>
+        <div class="jj2-extra-meter" role="meter" aria-label="{{ label }}" aria-valuemin="0" aria-valuenow="{{ value }}" aria-valuemax="{{ max }}"><span style="width:{{ pct }}%"></span></div>
+        <p class="jj2-extra-activity" title="{{ activityLabel }}">{{ activityLabel }}</p>
+        <footer><button type="button" class="jj2-action {{#if @root.owner}}always-interactive{{/if}}" data-action="jj2ResourceUse" data-resource-id="{{ id }}" {{ disabled (not (and @root.owner canUse)) }}>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="energy" }}Ativar</button>{{#if (and @root.owner custom)}}<button type="button" class="jj2-config always-interactive" data-action="jj2ResourceDelete" data-resource-id="{{ id }}" aria-label="Remover {{ label }}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="close" }}</button>{{/if}}</footer>
+      </article>
+      {{/unless}}{{/each}}
+      <article class="jj2-extra-card jj2-extra-fulgor {{#if fulgorZona}}active{{/if}}">
+        <header><span class="jj2-extra-card-icon">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="fulgor" }}</span><h3>Fulgor Negro</h3></header>
+        <div class="jj2-fulgor-status"><strong>{{#if fulgorZona}}Na Zona{{else}}Inativo{{/if}}</strong><span>Estado de Fulgor</span></div>
+        <p class="jj2-extra-activity">{{#if fulgorZona}}A Zona está ativa.{{else}}Ative a Zona de Fulgor Negro.{{/if}}</p>
+        <footer><button type="button" class="jj2-action {{#if owner}}always-interactive{{/if}} {{#if fulgorZona}}active{{/if}}" data-action="jj2Zone" aria-pressed="{{#if fulgorZona}}true{{else}}false{{/if}}" {{ disabled (not owner) }}>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="fulgor" }}{{#if fulgorZona}}Desativar Zona{{else}}Ativar Zona{{/if}}</button></footer>
+      </article>
+      {{#if jj2.seisOlhos.tem}}
+      <article class="jj2-extra-card jj2-special-resource jj2-seis-olhos {{#if jj2.seisOlhos.modo}}active{{/if}}" data-mode="{{ jj2.seisOlhos.modo }}">
+        <header><span class="jj2-extra-card-icon">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="olhos" }}</span><h3 data-tooltip-direction="UP" data-tooltip-html="{{ jj2.seisOlhos.tooltip }}">Seis Olhos</h3></header>
+        <div class="jj2-seis-state"><div><strong>{{ jj2.seisOlhos.rotulo }}</strong><span>1 ação por transição</span></div><span class="jj2-seis-emblem" aria-hidden="true">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="olhos" }}</span></div>
+        <dl class="jj2-seis-bonuses"><div><dt>Resistência</dt><dd>+{{ jj2.seisOlhos.cr }}<small>CR</small></dd></div><div><dt>Acerto</dt><dd>+{{ jj2.seisOlhos.acerto }}</dd></div><div><dt>Custo</dt><dd>−{{ jj2.seisOlhos.custo }}<small>PA</small></dd></div></dl>
+        <div class="jj2-seis-modes" role="group" aria-label="Estado dos Seis Olhos">
+          <button type="button" class="jj2-special-btn {{#if owner}}always-interactive{{/if}}" data-action="jj2SeisOlhos" data-modo="sealed" aria-pressed="{{#if (eq jj2.seisOlhos.modo 'sealed')}}true{{else}}false{{/if}}" {{ disabled (or (not owner) (eq jj2.seisOlhos.modo 'sealed') (lt system.legacy2.actions.value 1)) }}><span>Vendado</span></button>
+          <button type="button" class="jj2-special-btn {{#if owner}}always-interactive{{/if}}" data-action="jj2SeisOlhos" data-modo="full" aria-pressed="{{#if (eq jj2.seisOlhos.modo 'full')}}true{{else}}false{{/if}}" {{ disabled (or (not owner) (eq jj2.seisOlhos.modo 'full') (lt system.legacy2.actions.value 1)) }}><span>Completo</span></button>
+        </div>
+        <footer class="jj2-special-footer jj2-seis-tools">
+          {{#if (eq jj2.seisOlhos.modo "full")}}<button type="button" class="jj2-special-btn {{#if owner}}always-interactive{{/if}}" data-action="jj2AnalisarFluxo" {{ disabled (or (not owner) (lt system.legacy2.actions.value 1)) }}>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="olhos" }}<span>Analisar fluxo</span><b>1 ação</b></button>{{else}}<span class="jj2-special-hint">Desvende para analisar o fluxo.</span>{{/if}}
+        </footer>
+        {{#if jj2.seisOlhos.leitura}}<small class="jj2-seis-reading">Leitura Completa ativa</small>{{/if}}
+      </article>
+      {{/if}}
+    </div>
+  </section>
+</section>

@@ -1,0 +1,110 @@
+_id: bUTcgVVqG6PfBtDD
+name: Fluxo
+type: feat
+img: icons/skills/targeting/crosshair-mark-rough-pink.webp
+effects: []
+folder: uS2gx1xTr6SoRtWP
+sort: 100000
+flags:
+  scene-packer:
+    hash: 13b94ffa31c56c0c8e44da6ce8ad97285419dcce
+    sourceId: Item.bUTcgVVqG6PfBtDD
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  dnd5e: {}
+system:
+  description:
+    value: >-
+      <p>Você recebe a habilidade “Foco Ofensivo” e “Foco Defensivo” do Capítulo
+      6.</p>
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    recovery: []
+    spent: 0
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  activities: {}
+  identifier: aspecto--in-ocultacao
+  enchant: {}
+  advancement:
+    dIQx3itNMVa23v2T:
+      type: ItemGrant
+      _id: dIQx3itNMVa23v2T
+      configuration:
+        items:
+          - uuid: Compendium.jujutsu-system.tecnicas-manipulacao.Item.n0nctH9rBuU1Jbe5
+            optional: false
+          - uuid: Compendium.jujutsu-system.tecnicas-manipulacao.Item.A2qy8oejgOgTQSr9
+            optional: false
+          - uuid: Compendium.jujutsu-system.tecnicas-manipulacao.Item.Uzm8MuO3G47clTSa
+            optional: false
+          - uuid: Compendium.jujutsu-system.tecnicas-manipulacao.Item.g5DTfElgdNdAQ2pT
+            optional: false
+          - uuid: Compendium.jujutsu-system.tecnicas-manipulacao.Item.9olKQqQ9Agjrj03p
+            optional: false
+          - uuid: Compendium.jujutsu-system.tecnicas-manipulacao.Item.MEgz8fsxVpzooTju
+            optional: false
+        optional: false
+        spell:
+          ability: []
+          method: ritual
+          uses:
+            max: ''
+            per: ''
+            requireSlot: false
+          prepared: 0
+      value: {}
+      level: 0
+      title: ''
+      hint: ''
+      flags: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.J4BMa4pMvU4gqDDH
+  duplicateSource: null
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624910552
+  modifiedTime: 1782450346926
+  lastModifiedBy: 371UX0Acl9j9oJ0Q
+  exportSource: null
+_key: '!items!bUTcgVVqG6PfBtDD'

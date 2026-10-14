@@ -1,0 +1,68 @@
+folder: vG1tvdXvcpq70Tb5
+name: Instinto Bestiais
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Talvez você tenha crescido em um local com culturas
+      tribais ou em meio aos animais, talvez tenha combatido muitas feras,
+      durante sua vida, ou só nasceu assim. O fato é que você se parece muito
+      com um animal, às vezes, e têm instintos de sobrevivência aflorados.</p><p
+      class="MsoListParagraph"><strong>Característica:</strong> Sempre que uma
+      criatura assumida como inimiga estiver no seu campo de visão, você pode
+      rolar um Teste de Atributo de Sabedoria (Intuição) CD 15 para saber se ele
+      é mais fraco, igualmente forte ou mais forte que você. Adicionalmente, se
+      uma criatura hostil estiver te olhando diretamente, você consegue sentir o
+      olhar, mas não sabe de onde ele está vindo.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: avaliacao
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: 092f4cf6ac6ec3d3e98d106f6909fc774581ac2d
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902126
+  modifiedTime: 1776913394844
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: GTpLN4dXVTQxEUGM
+sort: 2400000
+_key: '!items!GTpLN4dXVTQxEUGM'

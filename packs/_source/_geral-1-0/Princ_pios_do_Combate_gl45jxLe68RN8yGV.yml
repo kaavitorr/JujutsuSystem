@@ -1,0 +1,77 @@
+folder: lWpMtihZm1il8I4V
+name: Princípios do Combate
+type: feat
+_id: gl45jxLe68RN8yGV
+img: icons/magic/control/debuff-energy-hold-blue-yellow.webp
+system:
+  description:
+    value: "<p>A partir do <strong>1º nível de Especialista</strong>, você aprendeu todos os princípios básicos do combate para lutar apenas usando energia amaldiçoada, embora seu uso principal de batalha ainda seja seu feitiço. Você recebe acesso as seguintes características:</p><ul><li><p><strong>Ataques Estratégicos:</strong> Enquanto estiver com um aliado a até 3 metros de uma criatura inimiga, suas jogadas de ataque (de Técnica) recebem vantagem contra ela.</p></li><li><p><strong>Redirecionar: </strong>Quando você for alvo de uma jogada de ataque (Comum ou de Técnica), você pode usar sua reação e escolher uma criatura voluntária para receber dano em seu lugar. A criatura deve estar a até 3 metros e você deve ter deslocamento sobrando para se mover para trás dela.</p></li><li><p><strong>Ataque Punitivo:</strong> Quando você errar uma jogada de ataque (Comum ou de Técnica), você causa dano a criatura inimiga igual seu modificador principal.</p></li></ul><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\">A partir do <strong>6º níve</strong>l, você não precisa mais utilizar reação ao usar o “Redirecionar”, mas ele é limitado a uma vez por rodada.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-especialista
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 500000
+ownership:
+  default: 0
+  MhGXeDSlt2zUqR0J: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: ed1569a03e5cff3aef1395d45dd1d7858c837618
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911390
+  modifiedTime: 1776903652864
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!gl45jxLe68RN8yGV'

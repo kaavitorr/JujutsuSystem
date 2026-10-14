@@ -1,0 +1,14 @@
+<div class="item-detail effect-controls always-visible" data-column-id="controls">
+  {{#if isEffect}}
+  {{#if @root.editable}}
+  <button type="button" class="unbutton config-button effect-control item-control item-action" data-action="edit" data-tooltip aria-label="{{ localize 'DND5E.EFFECT.Action.EditEffect' }}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="edit" }}</button>
+  <button type="button" class="unbutton config-button effect-control item-control item-action" data-action="delete" data-tooltip aria-label="{{ localize 'DND5E.EFFECT.Action.DeleteEffect' }}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="delete" }}</button>
+  {{else if ctx.toggleable}}
+  <button type="button" class="unbutton config-button effect-control item-control item-action {{#unless ctx.disabled}}active{{/unless}}" data-action="toggle" data-tooltip aria-label="{{ localize (concat 'DND5E.EFFECT.Action.' (ifThen ctx.disabled 'Enable' 'Disable') 'Effect') }}">{{#if ctx.disabled}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="switch-off" }}{{else}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="switch-on" }}{{/if}}</button>
+  {{/if}}
+  <button type="button" class="unbutton config-button effect-control item-control item-action always-interactive" data-toggle-description data-action="toggleExpand" aria-label="{{ localize 'DND5E.ToggleDescription' }}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="collapse" }}</button>
+  <button type="button" class="unbutton config-button effect-control item-control always-interactive" data-context-menu aria-label="{{ localize 'DND5E.AdditionalControls' }}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="menu" }}</button>
+  {{else if isChange}}
+  <span class="application-status" aria-label="{{ localize (concat 'DND5E.EFFECT.Status.Change' (ifThen ctx.applied 'Active' 'Inactive')) }}">{{#if ctx.applied}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="check" }}{{else}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="close" }}{{/if}}</span>
+  {{/if}}
+</div>

@@ -1,0 +1,64 @@
+folder: vG1tvdXvcpq70Tb5
+name: Avaliação
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Você tem uma incrível habilidade para avaliar
+      artefatos valiosos e entender seu valor real de venda, permitindo que você
+      fature em qualquer lugar que possa conter esse tipo de item.</p><p
+      class="MsoNormal"><strong>Característica:</strong> Sabe ver o valor real
+      por trás de qualquer item ou artefato ao passar em um Teste de Atributo de
+      Sabedoria (Intuição) CD 16.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: alvo-marcado
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: ba64831e68dad90b14a14703c4cc590a915cadfe
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902125
+  modifiedTime: 1776913386132
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: DrBpdedmyqnhM5df
+sort: 700000
+_key: '!items!DrBpdedmyqnhM5df'

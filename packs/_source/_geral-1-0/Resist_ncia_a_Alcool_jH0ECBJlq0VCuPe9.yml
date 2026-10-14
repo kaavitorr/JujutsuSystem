@@ -1,0 +1,62 @@
+folder: vG1tvdXvcpq70Tb5
+name: Resistência a Alcool
+type: feat
+img: icons/commodities/treasure/puzzle-box-glowing-blue.webp
+system:
+  description:
+    value: >-
+      <p>Por algum motivo você adquiriu uma resistência maior ao álcool do que
+      pessoas normais, podendo resistir aos efeitos da
+      embriaguez.</p><p><strong>Característica:</strong> Você recebe vantagem em
+      Salvaguardas de Constituição contra a condição “Bêbado”.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: rastreador
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  scene-packer:
+    hash: 498dfcaa0fbaeb6fd2b44e836678461c0babbfe0
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902150
+  modifiedTime: 1776913400942
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: jH0ECBJlq0VCuPe9
+sort: 3700000
+_key: '!items!jH0ECBJlq0VCuPe9'

@@ -1,0 +1,40 @@
+_id: jj2a000000000083
+name: Resistência Superior
+type: feat
+img: icons/magic/control/buff-flight-wings-runes-purple.webp
+system:
+  identifier: resistencia-superior
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Corpo Endurecido</em></p><p>Você recebe
+      2 Pontos de Resistência a todos os tipos de dano. No início de cada um de
+      seus turnos, você recebe 2 Pontos de Resistência adicionais até um máximo
+      igual seu nível de personagem.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Defensivo
+      requisitos:
+        - Corpo Endurecido
+folder: jj2f000000000014
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791815086094
+  modifiedTime: 1791815086094
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000083'

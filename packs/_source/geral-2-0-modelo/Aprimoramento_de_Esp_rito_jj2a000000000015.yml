@@ -1,0 +1,42 @@
+_id: jj2a000000000015
+name: Aprimoramento de Espírito
+type: feat
+img: icons/magic/water/wave-water-explosion.webp
+system:
+  identifier: aprimoramento-de-espirito
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Transferência de
+      Emergência</em></p><p>Ao pegar essa característica, você aumenta o limite
+      de ações de um de seus Shikigami em duas ações [⬢⬢] adicionais, fazendo
+      ele ter 4 ações por rodada. Esse efeito só funciona até esse shikigami ser
+      destruído ou ter sua invocação cancelada e não funciona com cópias do
+      mesmo Shikigami.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Invocador de Shikigami
+      requisitos:
+        - Transferência de Emergência
+folder: jj2f000000000003
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814848565
+  modifiedTime: 1791814848565
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000015'

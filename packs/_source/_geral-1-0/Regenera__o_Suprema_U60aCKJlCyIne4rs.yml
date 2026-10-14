@@ -1,0 +1,101 @@
+name: Regeneração Suprema
+type: feat
+img: icons/magic/life/cross-beam-green.webp
+effects: []
+folder: V7LPPawJA1q5iJPU
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  core:
+    sheetClass: dnd5e.Tidy5eItemSheet
+  cf: {}
+  scene-packer:
+    hash: 4421795f9ea46015f83fd936ccd7244ce8ff35db
+    sourceId: Item.IAvr2aSWM3Q6dHxC
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: >-
+      <p>A partir do <strong>10º nível de Restringido</strong>, seu metabolismo
+      se tornou acelerado a tal nível que você consegue recuperar rapidamente
+      sua estamina, podendo exercer ainda mais poder em combate, assim como se
+      recuperando rapidamente de qualquer ferida.</p><p class="TextoPadro">Você
+      gera naturalmente 3 vezes o seu nível em Pontos de Vigor e, enquanto
+      estiver abaixo da metade dos seus Pontos de Vida, você recupera Pontos de
+      Vida adicionais igual seu nível de personagem.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-aprimorador
+  activities: {}
+  advancement: {}
+  enchant: {}
+_stats:
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776630296413
+  modifiedTime: 1776630301091
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: U60aCKJlCyIne4rs
+sort: 65430
+_key: '!items!U60aCKJlCyIne4rs'

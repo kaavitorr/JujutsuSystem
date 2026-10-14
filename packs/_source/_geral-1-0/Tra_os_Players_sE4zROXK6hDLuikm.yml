@@ -1,0 +1,24 @@
+name: Traços Players
+type: Item
+sorting: m
+sort: 800000
+color: '#862d2d'
+flags:
+  core:
+    sourceId: Folder.sE4zROXK6hDLuikm
+  scene-packer:
+    hash: 03548d8a00b7768508add38d5f0f17ba6643c344
+_id: sE4zROXK6hDLuikm
+folder: null
+description: ''
+_stats:
+  compendiumSource: Folder.sE4zROXK6hDLuikm
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911262
+  modifiedTime: 1776624911439
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!folders!sE4zROXK6hDLuikm'

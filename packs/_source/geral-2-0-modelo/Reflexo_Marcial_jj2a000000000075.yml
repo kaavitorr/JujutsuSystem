@@ -1,0 +1,40 @@
+_id: jj2a000000000075
+name: Reflexo Marcial
+type: feat
+img: icons/skills/melee/maneuver-daggers-paired-orange.webp
+system:
+  identifier: reflexo-marcial
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> 4 Habilidades do Existência Aprimorada
+      - Ofensivo</em></p><p>Ao fim de cada um de seus turnos, você pode consumir
+      3 Pontos de Estamina para receber um Ponto de Ação [⬢] adicional, até um
+      máximo de 2 Pontos de Ação [⬢⬢].</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Ofensivo
+      requisitos:
+        - 4 Habilidades do Existência Aprimorada - Ofensivo
+folder: jj2f000000000013
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814996559
+  modifiedTime: 1791814996559
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000075'

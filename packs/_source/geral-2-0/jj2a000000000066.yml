@@ -1,0 +1,22 @@
+_id: jj2a000000000066
+_key: '!items!jj2a000000000066'
+name: Fulgor Certeiro
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: fulgor-certeiro
+  description:
+    value: <p><em><strong>Requisito:</strong> Abençoado Pelas Faíscas Negras</em></p><p>Seu fulgor passa a ser ativado em toda rolagem de 20 natural, não precisando mais de uma segunda rolagem nem para a primeira ativação. Você também recebe um segundo Ponto de Fulgor.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Canalização de Energia
+      requisitos:
+        - Abençoado Pelas Faíscas Negras
+folder: jj2f000000000011
+ownership:
+  default: 0
+effects: []
+sort: 0

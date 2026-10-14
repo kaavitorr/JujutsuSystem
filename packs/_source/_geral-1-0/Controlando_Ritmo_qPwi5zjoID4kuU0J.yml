@@ -1,0 +1,76 @@
+folder: GfLIKHXQLpg1w4DW
+name: Controlando Ritmo
+type: feat
+img: icons/magic/light/explosion-star-glow-blue.webp
+system:
+  description:
+    value: "<p>A partir do <strong>2º nível de Especialista</strong>, seu corpo passa a emitir grandes quantidades de energia amaldiçoada, que você pode usar para aprimorar seus golpes e sua velocidade.</p><p class=\"TextoPadro\">Sempre que você errar uma jogada de ataque (Comum ou de Técnica), pode escolher um dos seguintes efeitos para a sua próxima ação:</p><ul><li><p>Receber +2 nas jogadas de acerto em um ataque (Comum ou de Técnica);</p></li><li><p>Ou aumentar em +2 a CD de uma técnica ou feitiço em área (apenas para o dano).</p></li></ul><p class=\"TextoPadro\">\_</p><p class=\"TextoPadro\">Além disso, sempre que utilizar a ação “Atacar”, você pode realizar uma jogada de ataque adicional. Por fim, sempre que obtiver um 1 natural em uma jogada de ataque, você pode rolá-la novamente.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881649
+  modifiedTime: 1776921027336
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: qPwi5zjoID4kuU0J
+sort: 400000
+_key: '!items!qPwi5zjoID4kuU0J'

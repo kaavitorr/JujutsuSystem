@@ -1,0 +1,97 @@
+_id: jj2e000000000001
+name: Restringido
+type: class
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Resrtingido.png
+system:
+  identifier: restringido
+  levels: 1
+  description:
+    value: >-
+      <p style="text-align:center"><span
+      style="font-size:x-large"><strong>RESTRINGIDO</strong></span></p><p><span
+      style="font-size:large"><strong>Pontos de
+      Vida</strong></span></p><p><strong>Vida Base:</strong> 7 por nível de
+      personagem.</p><p><strong>Vida por Ponto de Constituição:</strong> 7 por
+      ponto.</p><p></p><p><span
+      style="font-size:large"><strong>Proficiências</strong></span></p><ul><li><p><strong>Equipamentos:</strong>
+      Recebe 4 Pontos de Proficiência para distribuir como desejar entre as
+      armas</p></li><li><p><strong>Salvaguarda:</strong> Recebe 3 Pontos de
+      Proficiência para distribuir entre as
+      Salvaguardas.</p></li><li><p><strong>Perícias:</strong> Escolha 4 Pontos
+      de Proficiência para distribuir entre Perícias, sem ser
+      Feitiço.</p></li></ul><p></p><p><span
+      style="font-size:large"><strong>Informações
+      Gerais</strong></span></p><ul><li><p><strong>Atributo Principal:</strong>
+      Força ou Agilidade (à sua escolha).</p></li><li><p><strong>Habilidades de
+      Especialização:</strong> Você recebe 1 habilidade de "Proeza Física" que
+      você tenha os requisitos.</p></li><li><p><strong>Equipamentos:</strong>
+      Você recebe uma arma amaldiçoada de 4º grau, um par óculos ou lentes de
+      contato que permite ver energia amaldiçoada e; ¥
+      5.000.</p></li><li><p><strong>Arsenal Vazio:</strong> Você recebe um
+      Espírito com a habilidade "Inventário" que demora 9 níveis para amadurecer
+      e ser usado. Ele pode armazenar 10 ferramentas e não sofre dano ou pode
+      ser alvo enquanto estiver junto de seu corpo.</p></li></ul><p></p><p
+      style="text-align:center"><span
+      style="font-size:x-large"><strong>Características de
+      Combate</strong></span></p><hr><p><span
+      style="font-size:large"><strong>Vazio de
+      Energia</strong></span></p><p>Devido a sua restrição, você recebeu certos
+      benefícios gerais que ajudam você a se sobressair em combate. Você recebe
+      as seguintes características:</p><ul><li><p>Você é imune ao efeito de
+      acerto garantido das Expansões de Domínios e
+      similares;</p></li><li><p>Você é imune a habilidade de "Sentir Maldição"
+      da habilidade de Manipulação de Energia;</p></li><li><p>Você pode passar
+      livremente em expansões de domínio ou barreiras, se movendo
+      livremente;</p></li><li><p>Você sempre possui uma progressão de
+      proficiência "Mestre" em Testes de Atributo de Atletismo e
+      Coordenação;</p></li><li><p>Você recebe 4 + seu atributo de Constituição
+      em Pontos de Estamina (PE) que são recuperados no início de cada um de
+      seus turnos. A partir do 10º nível, sua base se torna 8 + atributo no
+      lugar do original.</p></li></ul><p>Você não pode se beneficiar de
+      características de manipulação de Energia ou Habilidades de Especialização
+      de Feitiço Inato, Técnicas de Barreira e Técnicas de
+      Reversão.</p><p></p><p><span style="font-size:large"><strong>Físico
+      Perfeito</strong></span></p><p>Seu físico evoluiu, te dando um metabolismo
+      extremamente acelerado e um vigor extremo. Você recebe acesso as seguintes
+      características:</p><ul><li><p><strong>Gênio Marcial:</strong> Você possui
+      uma capacidade extraordinária para desenvolver técnicas e habilidades que
+      auxiliam em combate. A qualquer momento, você pode consumir 5 PT para
+      criar uma nova técnica de até 7º grau, seguindo as regras de criação de
+      técnicas comuns apresentadas no Manual de Feitiços. Não existe um limite
+      de quantas técnicas adicionais você pode criar, desde que você consuma os
+      Pontos de Treinamento necessários.</p></li><li><p><strong>Metabolismo
+      Extremo:</strong> Seu descanso longo se torna de 2 horas e seu curto de 5
+      minutos.</p></li><li><p><strong>Impulso Físico:</strong> Você pode gastar
+      1 PE para aumentar seu dano em 2d4 o diminuir o dano sofrido no mesmo
+      valor, até um máximo igual metade do seu nível de personagem (arredondado
+      para cima).</p></li><li><p><strong>Sentidos Extremos:</strong> Você recebe
+      Sentido Verdadeiro em uma área de 36 metros ao seu redor.</p></li></ul>
+    chat: ''
+flags:
+  jujutsu-system:
+    legacy2:
+      vidaBase: 7
+      energiaBase: null
+      atributoPrincipal: str
+      principalEscolhivel: true
+      espIniciais: 1
+      proficiencias:
+        armas: 4
+        salvaguardas: 3
+        pericias: 4
+ownership:
+  default: 0
+effects: []
+folder: duEiLT0m9eoDwk8O
+sort: 125000
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814336747
+  modifiedTime: 1791817391301
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2e000000000001'

@@ -1,0 +1,25 @@
+_id: jj2a000000000022
+_key: '!items!jj2a000000000022'
+name: 'Gestos: Raio e Emanação'
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: gestos-raio-e-emanacao
+  description:
+    value: |-
+      <p><em><strong>Requisito:</strong> Gestos: Cone e Leque</em></p><p>Você aprende a utilizar os gestos de Raio e Emanação na ativação de suas técnicas, modificando seu alcance. Ao gastar um Ponto de Ação [⬢] e uma quantidade de PA igual a ordem da habilidade (Básico – 1 PA | Estendido – 2 PA | Máximo – 3 PA), você pode modificar o alcance da sua técnica para uma das seguintes:</p><ul><li><strong>Raio:</strong> Você atira sua técnica dentro do seu alcance de “Linha”, fazendo ela pegar em uma área do ponto de impacto. Todas as criaturas passam a ter que realizar uma Salvaguarda de Agilidade (ou a original). Sofrendo todo dano se falharem ou metade se obtiverem sucesso, mas o dano se torna d6.</li><li><strong>Emanação:</strong> Você faz sua técnica pegar em toda área ao seu redor. Todas as criaturas passam a ter que realizar uma Salvaguarda de Agilidade (ou a original). Sofrendo todo dano se falharem ou metade se obtiverem sucesso, mas o dano se torna d6.</li></ul>
+      <table><thead><tr><th>Ordem</th><th>Raio (metros)</th><th>Emanação</th></tr></thead><tbody><tr><td>Básico</td><td>15 de Linha e 5 de Raio</td><td>5 metros</td></tr><tr><td>Estendido</td><td>25 de Linha e 10 de Raio</td><td>10 metros</td></tr><tr><td>Máximo</td><td>35 de Linha e 15 de Raio</td><td>15 metros</td></tr></tbody></table>
+      <p>Caso a técnica modificada seja uma “Flecha” e tenha uma condição, você paga 3 PA adicionais para modifica-la para o modelo de Leque ou Cone. Os gestos só funcionam em técnicas que causam dano e/ou condições negativas.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Manipulação de Técnica
+      requisitos:
+        - 'Gestos: Cone e Leque'
+folder: jj2f000000000004
+ownership:
+  default: 0
+effects: []
+sort: 0

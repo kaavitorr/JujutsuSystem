@@ -1,0 +1,46 @@
+_id: jj2a000000000120
+name: Expansão Especial
+type: feat
+img: icons/magic/symbols/runes-star-blue.webp
+system:
+  identifier: expansao-especial
+  description:
+    value: >-
+      <p>Uma criatura primeiro deve ser capaz de expandir um domínio incompleto
+      para tentar dominar a versão de barreira fechada do seu domínio.</p><p>A
+      cada 5 habilidades de especialização que você adquirir, você recebe uma
+      escolha livre dentro de uma habilidade de domínio, podendo também usar
+      suas escolhas normais para adquirir
+      uma.</p><p><em><strong>Requisito:</strong> Feitiço com Expansão de Domínio
+      Especial</em></p><p>Você se torna capaz de utilizar uma expansão de
+      domínio como base para seu feitiço, fazendo com que ela seja bem mais
+      fácil de ser usada. Mas sua expansão nunca pode causar dano e seu acerto
+      garantido não pode ter relação ofensiva direta com o inimigo.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Domínio e Anti-Domínio
+      caminho: Técnicas de Expansão de Domínio
+      requisitos:
+        - Feitiço com Expansão de Domínio Especial
+folder: jj2f000000000020
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814523748
+  modifiedTime: 1791814523748
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000120'

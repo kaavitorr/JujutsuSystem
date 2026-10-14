@@ -1,0 +1,86 @@
+folder: VwqGTy4yPJgfmdwx
+name: Poço de Energia Reversa
+type: feat
+img: icons/magic/life/heart-area-circle-red-green.webp
+system:
+  description:
+    value: >-
+      <p class="TextoPadro">A partir do <strong>6º nível de
+      Especialista</strong>, você aprende a guardar uma grande quantidade de
+      energia reversa em seu corpo que pode ser utilizado para curar uma
+      criatura. Ao fim de cada descanso longo, você recebe um valor igual a 20
+      vezes o seu nível de personagem. A qualquer momento, você pode tocar uma
+      criatura e curar qualquer valor de vida dela até o limite que você possui
+      de cura disponível.</p><p class="MsoNormal">Ao realizar um descanso curto,
+      você pode rolar dados de energia amaldiçoada e recuperar seu poço de
+      energia reversa no lugar da sua energia amaldiçoada, podendo dividir os
+      dados da forma como desejar.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.367'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881632
+  modifiedTime: 1788212743681
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: KOLOo1e8GcHAc3Rc
+sort: 200000
+_key: '!items!KOLOo1e8GcHAc3Rc'

@@ -1,0 +1,50 @@
+_id: jj2a000000000051
+name: Energia Atrasada
+type: feat
+img: icons/magic/holy/prayer-hands-glowing-yellow.webp
+system:
+  identifier: energia-atrasada
+  description:
+    value: >-
+      <p>O punho divergente é um ramo das habilidades de especialização no
+      treino do corpo que permite atrasar propositalmente sua energia
+      amaldiçoada de forma a causar um impacto duplo em seus golpes. Assim como
+      outras habilidades de Energia Amaldiçoada, ela não pode ser adquirida por
+      um Restringido.</p><p>Você pode escolher ter até 5 desvantagens em sua
+      rolagem de ataque (Comum) para fazer com que sua energia amaldiçoada dê um
+      pequeno atraso, acertando o alvo uma segunda vez logo após seu golpe,
+      liberando dois impactos distintos. Caso você role um resultado no dado de
+      15 ou mais e acerte o alvo, você causa novamente o dano do seu primeiro
+      ataque, até um máximo de dano igual a 1 vez o seu atributo principal para
+      cada desvantagem que você escolheu receber.</p><p><em>Por exemplo, ao se
+      impor 3 desvantagens, você pode aumentar o limite de dano causado,
+      aplicando até 3 vezes o seu atributo principal em dano.</em></p><p>Esse
+      golpe conta como uma jogada de ataque (Comum) diferente usando o mesmo
+      acerto.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Punho Divergente
+      requisitos: []
+folder: jj2f000000000010
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816389458
+  modifiedTime: 1791816389458
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000051'

@@ -1,0 +1,1066 @@
+[
+ {
+  "name": "ALUCINADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "ALUCINADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições mentais — São condições relacionadas a mente da criatura.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 2 Pontos de Energia Amaldiçoada (PA).</p><ul><li>A criatura tem seu Nível de Desafio (caso possua) diminuído em 2 para características ligadas ao ND;</li><li>A criatura sofrendo de alucinações, ataca qualquer outra criatura que esteja próxima, independentemente se é inimigo ou não.</li></ul>"
+  },
+  "sort": 100,
+  "image": {}
+ },
+ {
+  "name": "AMEDRONTADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "AMEDRONTADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições mentais — São condições relacionadas a mente da criatura.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 2 Pontos de Energia Amaldiçoada (PA)</p><ul><li>Você vai utilizar todas as suas ações para se afastar da fonte do seu medo até estar a mais de 30 metros dela;</li><li>Você tem uma desvantagem em atacar a fonte do seu medo.</li></ul>"
+  },
+  "sort": 200,
+  "image": {}
+ },
+ {
+  "name": "APAIXONADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "APAIXONADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições mentais — São condições relacionadas a mente da criatura.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 3 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Você tem 3 desvantagens para atacar o alvo da sua paixão;</li><li>Você tem 3 desvantagens em testes de interação contra o alvo da sua paixão;</li><li>Você fica receoso em atacar o alvo da sua paixão e ela o valor máximo de vantagem em testes de interação social contra você.</li></ul>"
+  },
+  "sort": 300,
+  "image": {}
+ },
+ {
+  "name": "ENFEITIÇADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "ENFEITIÇADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições mentais — São condições relacionadas a mente da criatura.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 2 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura enfeitiçada não pode atacar quem a enfeitiçou ou tê-lo como alvo de habilidades ou efeitos nocivos.</li><li>Quem o enfeitiçou possui vantagem em Testes de Atributo feitos para interagir socialmente com a criatura.</li></ul>"
+  },
+  "sort": 400,
+  "image": {}
+ },
+ {
+  "name": "ENFURECIDO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "ENFURECIDO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de defesas — São condições relacionadas ao a defesa do personagem.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 6 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Quando uma criatura está enfurecida, ela se comporta de forma imprudente e fica menos capaz de se defender.</li><li>Ela sofre uma penalidade de -2 na Classe de Resistência;</li><li>Ela não pode gastar Pontos de Energia Amaldiçoada em nenhuma ação que não seja um ataque.</li></ul>"
+  },
+  "sort": 500,
+  "image": {}
+ },
+ {
+  "name": "EXPOSTO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "EXPOSTO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de defesas — São condições relacionadas ao a defesa do personagem.</em></p><p><strong>Custo em pontos para técnicas de aspecto ou memórias.:</strong> 6 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Alguns ataques podem deixar um inimigo temporariamente vulnerável;</li><li>Quando uma criatura está exposta, sua Classe de Resistência sofre uma penalidade de -2.</li></ul>"
+  },
+  "sort": 600,
+  "image": {}
+ },
+ {
+  "name": "INCONSCIENTE",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "INCONSCIENTE"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de defesas — São condições relacionadas ao a defesa do personagem.</em></p><p><strong>Custo em pontos para técnicas de aspecto ou memórias.:</strong> 15 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Quando uma criatura está inteiramente incapaz de agi, ela está inconsciente.</li><li>Quando um alvo está incapacitado, sua Classe de Resistência se torna 0;</li><li>Não pode contribuir e nem ajudar aliados de nenhuma forma.</li></ul>"
+  },
+  "sort": 700,
+  "image": {}
+ },
+ {
+  "name": "CEGO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "CEGO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de percepção — São condições relacionadas ao a percepção do personagem.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 5 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura Cega não pode ver usando percepção baseada em luz;</li><li>Ela não pode usar nenhuma Ação que exija que o alvo seja visto.</li><li>Os ataques de uma criatura cega sofrem 1 Desvantagem, enquanto ataques contra ela ganham 1 Vantagem.</li></ul>"
+  },
+  "sort": 800,
+  "image": {}
+ },
+ {
+  "name": "DESATENTO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "DESATENTO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de percepção — São condições relacionadas ao a percepção do personagem.</em></p><p><strong>Custo em pontos para técnicas de aspecto ou memórias.:</strong> Não pode ser aplicado por Feitiços.</p><ul><li>Uma criatura desatenta age no combate com Iniciativa 1 e não pode realizar Reações.</li><li>A condição desatento é removida automaticamente no início do turno da criatura.</li></ul>"
+  },
+  "sort": 900,
+  "image": {}
+ },
+ {
+  "name": "INVISÍVEL",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "INVISÍVEL"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de percepção — São condições relacionadas ao a percepção do personagem.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 10 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura invisível é impossível de ser vista sem a ajuda de habilidades ou feitiços sensoriais;</li><li>Uma criatura invisível tem sua energia amaldiçoada oculta, podendo ser encontrada só por testes de percepção;</li><li>Para o propósito de se esconder, a criatura é considerada em área de escuridão densa;</li><li>A localização da criatura pode ser detectada por qualquer barulho que ela faça ou rastros que ela deixe;</li><li>Jogadas de ataque contra a criatura sofrem desvantagem, e os ataques da criatura possuem vantagem.</li></ul>"
+  },
+  "sort": 1000,
+  "image": {}
+ },
+ {
+  "name": "SURDO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "SURDO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de percepção — São condições relacionadas ao a percepção do personagem.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 2 Ponto de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura Surda não consegue utilizar nenhuma percepção baseada em som.</li><li>Ela não pode ser afetada por nenhuma ação auditiva.</li></ul>"
+  },
+  "sort": 1100,
+  "image": {}
+ },
+ {
+  "name": "SILENCIADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "SILENCIADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de percepção — São condições relacionadas ao a percepção do personagem.</em></p><p><strong>Custo em pontos para técnicas de aspecto ou memórias.:</strong> 4 Ponto de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura silenciada não consegue realizar nenhuma ação que precise falar ou de encantamentos;</li><li>Uma criatura silenciada não consegue se comunicar através de palavras.</li></ul>"
+  },
+  "sort": 1200,
+  "image": {}
+ },
+ {
+  "name": "ATORDOADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "ATORDOADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em></em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 7 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura atordoada tem -4 Pontos de Ação [⬢⬢⬢⬢];</li><li>A criatura tem seu deslocamento reduzido a 3 metros no turno dela;</li><li>A criatura falha automaticamente em Salvaguardas de Força ou Agilidade.</li><li>Jogadas de acerto tem 1 vantagem contra a criatura;</li></ul>"
+  },
+  "sort": 1300,
+  "image": {}
+ },
+ {
+  "name": "BÊBADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "BÊBADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em></em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 5 Ponto de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura em estado de embriaguez se comporta de forma visivelmente diferente de seu habitual.</li><li>Uma criatura bêbada recebe desvantagem em Testes e Salvaguardas de Agilidade;</li><li>Uma criatura bêbada não consegue utilizar ações com a palavra-chave Reação;</li><li>A condição se encerra quando a criatura passar em uma Salvaguarda de Constituição ou em situações que o Narrador acreditar serem efetivas, por exemplo, tomar café forte, ser jogado em água fria, assistir a uma cena forte.</li></ul>"
+  },
+  "sort": 1400,
+  "image": {}
+ },
+ {
+  "name": "CONCUSSÃO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "CONCUSSÃO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em></em></p><p><strong>Custo em pontos para técnicas de aspecto ou memórias.:</strong> 4 Ponto de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura com concussão tem -2 Pontos de Ação [⬢⬢];</li><li>Uma criatura com concussão está nauseada e tonta, recebendo desvantagem em testes e salvaguardas de agilidade.</li></ul>"
+  },
+  "sort": 1500,
+  "image": {}
+ },
+ {
+  "name": "DESORIENTADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "DESORIENTADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em></em></p><p><strong>Custo em pontos para técnicas de aspecto ou memórias.:</strong> 5 Ponto de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura desorientada consome 1 PA adicional ao ativar qualquer ação que usar PA.</li></ul>"
+  },
+  "sort": 1600,
+  "image": {}
+ },
+ {
+  "name": "INCAPACITADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "INCAPACITADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em></em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 4 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura incapacitada perde 2 Pontos de Ação [⬢⬢];</li><li>Uma criatura incapacitada consome 1 PA adicional em ações e técnicas com a palavra-chave Reação.</li></ul>"
+  },
+  "sort": 1700,
+  "image": {}
+ },
+ {
+  "name": "SONOLENTO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "SONOLENTO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em></em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 4 Pontos de Energia Amaldiçoada (PA).</p><ul><li>A criatura perde 1 Ponto de Ação [⬢];</li><li>A criatura recebe desvantagem em Salvaguardas de Agilidade e Sabedoria;</li><li>A criatura sonolenta, independentemente das habilidades, não pode usar mais de um ataque e/ou técnica de dano.</li></ul>"
+  },
+  "sort": 1800,
+  "image": {}
+ },
+ {
+  "name": "PARALISADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "PARALISADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em></em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 12 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura paralisada não pode realizar ações até que a paralisia termine;</li><li>Uma criatura paralisada se comunica pausadamente ou não consegue falar de forma inteligível;</li><li>Uma criatura paralisada é considerada como “Incapacitado”;</li><li>Uma criatura paralisada tem sua Classe de Resistência reduzida pela metade.</li></ul>"
+  },
+  "sort": 1900,
+  "image": {}
+ },
+ {
+  "name": "AGARRADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "AGARRADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições físicas — São condições relacionadas a estados físicos.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 2 Pontos de Energia Amaldiçoada (PA).</p><ul><li>O deslocamento de uma criatura agarrada é reduzido a 0;</li><li>A criatura não pode se mover a menos que faça um Teste Resistido de Atletismo contra a criatura a agarrando;</li><li>Se mover com uma criatura agarrada, independentemente quem passou no teste, custa dobro do deslocamento;</li><li>A condição encerra caso a criatura que a agarrou fique incapacitada (veja a condição) ou solte a criatura agarrada.</li></ul>"
+  },
+  "sort": 2000,
+  "image": {}
+ },
+ {
+  "name": "DESIDRATADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "DESIDRATADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições físicas — São condições relacionadas a estados físicos.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 2 Ponto de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura desidratada tem seu deslocamento reduzido pela metade.</li><li>A criatura sofre 1 nível de exaustão a cada 1 hora.</li><li>A criatura, no turno dela, perde um Ponto de Ação [⬢].  A condição se encerra logo após a ingestão de, no mínimo, 500 ml de água.</li></ul>"
+  },
+  "sort": 2100,
+  "image": {}
+ },
+ {
+  "name": "EMPODERADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "EMPODERADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições físicas — São condições relacionadas a estados físicos.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 5 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Suas jogadas de ataque corpo-a-corpo, aumentam em um passo;</li><li>Uma criatura empoderada não perde PA ao errar uma técnica que faça rolagem de acerto;</li><li>O deslocamento de criaturas empoderadas não pode ser reduzido por terreno difícil.</li></ul>"
+  },
+  "sort": 2200,
+  "image": {}
+ },
+ {
+  "name": "ENERGIA ESGOTADA",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "ENERGIA ESGOTADA"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições físicas — São condições relacionadas a estados físicos.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> Não pode ser reproduzido.</p><ul><li>Uma criatura com energia esgotada não pode utilizar nenhuma habilidade ou técnica.</li><li>Uma criatura com energia esgotada está letárgica (veja a condição).</li></ul>"
+  },
+  "sort": 2300,
+  "image": {}
+ },
+ {
+  "name": "EXAUSTO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "EXAUSTO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições físicas — São condições relacionadas a estados físicos.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 4 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura exausta recebe -2 em rolagens no d20;</li><li>Uma criatura exausta perde 1,5 metros de deslocamento;</li><li>Se utilizado como redutor de “Efeito Colateral”, você só reduz 2 PA por nível de exaustão;</li><li>Exaustão por condição pode ser aplicada até 3 vezes através feitiços, técnicas e habilidades, não podendo superar esse valor. Se ela tiver com acúmulos de exaustão normal, a soma não irá superar 5 através dessa condição.</li></ul>"
+  },
+  "sort": 2400,
+  "image": {}
+ },
+ {
+  "name": "HIPOTÉRMICO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "HIPOTÉRMICO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições físicas — São condições relacionadas a estados físicos.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 3 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura hipotérmica sofre 1 desvantagem em Salvaguardas e Testes de Agilidade; e jogadas de ataque.</li><li>A condição se estende até que seja tratada de forma adequada com um Teste de Atributo de Sabedoria (Medicina) CD 10 ou um Teste de Atributo de Sabedoria (Sobrevivência) CD 17.</li></ul>"
+  },
+  "sort": 2500,
+  "image": {}
+ },
+ {
+  "name": "SUFOCADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "SUFOCADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições físicas — São condições relacionadas a estados físicos.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 2 Pontos de Energia Amaldiçoada (PA).</p><ul><li>A criatura não consegue formular palavras entendíveis.</li><li>A criatura recebe desvantagem em Salvaguarda de Agilidade, podendo permanecer neste estado por um número de turnos igual 1 + o seu modificador de Constituição (mínimo de 1 turno), após isso deve fazer um Teste de Constituição CD 10, para não desmaiar, no início de cada turno, em cada um dos turnos seguintes é aumentado +2 ao Teste.</li></ul>"
+  },
+  "sort": 2600,
+  "image": {}
+ },
+ {
+  "name": "ACELERADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "ACELERADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de movimento — São condições relacionadas ao deslocamento do personagem.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 10 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Você recebe 2 Pontos de Ação [⬢] adicionais em cada um de seus turnos, até um máximo de 8;</li><li>Você recebe 10 metros de deslocamento adicional pela duração da condição;</li><li>O custo dobra em caso de duração prolongada.</li></ul>"
+  },
+  "sort": 2700,
+  "image": {}
+ },
+ {
+  "name": "CAÍDO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "CAÍDO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de movimento — São condições relacionadas ao deslocamento do personagem.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 2 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Você só pode rastejar, consumindo 1 metro de movimento adicional para cada 1 metro que se mover;</li><li>Ataques a distância conta a criatura recebem 1 desvantagem;</li><li>Ataques corpo-a-corpo contra a criatura recebem 1 vantagem;</li><li>A criatura recebe 1 desvantagem para qualquer rolagem de ataque e consome uma ação [⬢] para levantar.</li></ul>"
+  },
+  "sort": 2800,
+  "image": {}
+ },
+ {
+  "name": "ESTREMECIDO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "ESTREMECIDO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de movimento — São condições relacionadas ao deslocamento do personagem.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 4 Ponto de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura estremecida sofre 1 desvantagem em jogadas de ataque;</li><li>A criatura estremecida não pode manter concentração e falha automaticamente ao tentar;</li><li>Cada 1,5 metro de deslocamento da criatura estremecida custa 1,5 metro adicional.</li></ul>"
+  },
+  "sort": 2900,
+  "image": {}
+ },
+ {
+  "name": "IMPEDIDO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "IMPEDIDO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de movimento — São condições relacionadas ao deslocamento do personagem.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 4 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura impedida não consegue realizar nenhuma ação que envolva movimento;</li><li>Uma criatura Impedida sofre 1 desvantagem em rolagens de ataque.</li><li>Uma criatura Impedida pode usar a ação “Escapar” para se libertar, fazendo um teste de atletismo na CD da remoção. Que é sempre 12 + atributo de Força do quem te deixou impedido ou 17 fixo para objetos e estruturas.</li></ul>"
+  },
+  "sort": 3000,
+  "image": {}
+ },
+ {
+  "name": "LENTO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "LENTO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de movimento — São condições relacionadas ao deslocamento do personagem.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 3 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura lenta perde 10 metros de deslocamento no turno;</li><li>Uma criatura lenta consome 1 metro de movimento adicional para cada 1 metro que se mover.</li></ul>"
+  },
+  "sort": 3100,
+  "image": {}
+ },
+ {
+  "name": "VOANDO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "VOANDO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de movimento — São condições relacionadas ao deslocamento do personagem.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 5 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Você recebe movimento de voo igual seu movimento padrão;</li><li>Você só pode ser alvejado por ataques a distância, efeitos com alcance ou criaturas voadoras.</li></ul>"
+  },
+  "sort": 3200,
+  "image": {}
+ },
+ {
+  "name": "LETÁRGICO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "LETÁRGICO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de movimento — São condições relacionadas ao deslocamento do personagem.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 5 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura letárgica tem seu deslocamento reduzido pela metade.</li><li>Os danos de ataques feitos pela criatura são reduzidos pela metade, exceto de ataques feitos por armas de fogo.</li></ul>"
+  },
+  "sort": 3300,
+  "image": {}
+ },
+ {
+  "name": "PESADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "PESADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de movimento — São condições relacionadas ao deslocamento do personagem.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> 2 Pontos de Energia Amaldiçoada (PA).</p><ul><li>Uma criatura pesada tem seu deslocamento reduzido pela metade.</li><li>A criatura sofre desvantagem em suas jogadas de ataque corpo-a-corpo.</li></ul>"
+  },
+  "sort": 3400,
+  "image": {}
+ },
+ {
+  "name": "ENVENENADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "ENVENENADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de dano — São condições relacionadas aos seus tipos de dano, causando dano por rodadas. Remover uma condição de dano usa sempre a ação “Remover”, realizando um teste de perícia de medicina na CD da criatura.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> Através do gatilho de dano.</p><ul><li>A criatura sofre dano de Veneno no início de cada turno dela;</li><li>A criatura sofre um valor de dano igual ao atributo principal da criatura ou resistência a veneno do PdN;</li><li>A condição dura por 3 rodadas. Aplicar uma segunda vez irá resetar a duração, não acumulando.</li></ul>"
+  },
+  "sort": 3500,
+  "image": {}
+ },
+ {
+  "name": "CHOCADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "CHOCADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de dano — São condições relacionadas aos seus tipos de dano, causando dano por rodadas. Remover uma condição de dano usa sempre a ação “Remover”, realizando um teste de perícia de medicina na CD da criatura.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> Através do gatilho de dano.</p><ul><li>A criatura sofre dano Elétrico no início de cada turno dela;</li><li>A criatura sofre um valor de dano igual a metade do atributo principal da criatura;</li><li>A condição dura por 3 rodadas. Aplicar uma segunda vez irá resetar a duração, não acumulando.</li></ul>"
+  },
+  "sort": 3600,
+  "image": {}
+ },
+ {
+  "name": "CONGELANDO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "CONGELANDO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de dano — São condições relacionadas aos seus tipos de dano, causando dano por rodadas. Remover uma condição de dano usa sempre a ação “Remover”, realizando um teste de perícia de medicina na CD da criatura.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> Através do gatilho de dano.</p><ul><li>A criatura sofre a condição “Lento”;</li><li>A criatura sofre dano de Frio no início de cada turno dela;</li><li>A criatura sofre um valor de dano igual ao atributo principal do atacante;</li><li>A condição dura por 1 rodada (termina no fim do turno dela). Aplicar uma segunda vez irá resetar a duração, não acumulando.</li></ul>"
+  },
+  "sort": 3700,
+  "image": {}
+ },
+ {
+  "name": "CONFUSO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "CONFUSO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de dano — São condições relacionadas aos seus tipos de dano, causando dano por rodadas. Remover uma condição de dano usa sempre a ação “Remover”, realizando um teste de perícia de medicina na CD da criatura.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> Através do gatilho de dano.</p><ul><li>A criatura sofre a condição “Desorientado”;</li><li>A criatura sofre dano Psíquico no início de cada turno dela;</li><li>A criatura sofre um valor de dano igual a metade do atributo principal do atacante;</li><li>A condição dura por 2 rodadas. Aplicar uma segunda vez irá resetar a duração, não acumulando.</li></ul>"
+  },
+  "sort": 3800,
+  "image": {}
+ },
+ {
+  "name": "CORROENDO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "CORROENDO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de dano — São condições relacionadas aos seus tipos de dano, causando dano por rodadas. Remover uma condição de dano usa sempre a ação “Remover”, realizando um teste de perícia de medicina na CD da criatura.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> Através do gatilho de dano.</p><ul><li>A criatura sofre dano de Ácido no início de cada turno dela;</li><li>A criatura sofre um valor de dano igual ao atributo principal do atacante;</li><li>A condição dura por 3 rodadas. Aplicar uma segunda vez irá resetar a duração, não acumulando.</li></ul>"
+  },
+  "sort": 3900,
+  "image": {}
+ },
+ {
+  "name": "EM CHAMAS",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "EM CHAMAS"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de dano — São condições relacionadas aos seus tipos de dano, causando dano por rodadas. Remover uma condição de dano usa sempre a ação “Remover”, realizando um teste de perícia de medicina na CD da criatura.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> Através do gatilho de dano..</p><ul><li>A criatura sofre dano de Fogo no início de cada turno dela;</li><li>A criatura sofre um valor de dano igual ao atributo principal do atacante;</li><li>A condição dura por 3 rodadas. Aplicar uma segunda vez irá resetar a duração, não acumulando.</li></ul>"
+  },
+  "sort": 4000,
+  "image": {}
+ },
+ {
+  "name": "ENTROPIA",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "ENTROPIA"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de dano — São condições relacionadas aos seus tipos de dano, causando dano por rodadas. Remover uma condição de dano usa sempre a ação “Remover”, realizando um teste de perícia de medicina na CD da criatura.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> Através do gatilho de dano.</p><ul><li>A criatura recebe a condição “Amedrontado”.</li><li>A criatura sofre dano na Alma no início de cada turno dela;</li><li>A criatura sofre um valor de dano igual a metade do atributo principal do atacante;</li><li>A condição dura por 2 rodadas. Aplicar uma segunda vez irá resetar a duração, não acumulando.</li></ul>"
+  },
+  "sort": 4100,
+  "image": {}
+ },
+ {
+  "name": "IRRADIADO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "IRRADIADO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de dano — São condições relacionadas aos seus tipos de dano, causando dano por rodadas. Remover uma condição de dano usa sempre a ação “Remover”, realizando um teste de perícia de medicina na CD da criatura.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> Através do gatilho de dano.</p><ul><li>A criatura sofre dano de Energia no início de cada turno dela;</li><li>A criatura sofre um valor de dano igual ao atributo principal do atacante;</li><li>A condição dura por 3 rodadas. Aplicar uma segunda vez irá resetar a duração, não acumulando.</li></ul>"
+  },
+  "sort": 4200,
+  "image": {}
+ },
+ {
+  "name": "SANGRAMENTO",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "SANGRAMENTO"
+  },
+  "text": {
+   "format": 1,
+   "content": "<p><em>Condições de dano — São condições relacionadas aos seus tipos de dano, causando dano por rodadas. Remover uma condição de dano usa sempre a ação “Remover”, realizando um teste de perícia de medicina na CD da criatura.</em></p><p><strong>Custo em pontos para feitiços inatos ou herdados:</strong> Através do gatilho de dano.</p><ul><li>Uma criatura sangrando sofre dano Perfurante ou Cortante, no início de cada turno dela;</li><li>A criatura sofre um valor de dano igual ao atributo principal da criatura atacante;</li><li>A condição dura por 3 rodadas. Aplicar uma segunda vez irá resetar a duração, não acumulando.</li></ul>"
+  },
+  "sort": 4300,
+  "image": {}
+ },
+ {
+  "name": "Atordoado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Atordoado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura atordoada está <strong>incapacitada</strong> (veja a condição).</p></li><li><p class=\"MsoBodyText\">A criatura não pode utilizar ações de poder para atacar;</p></li><li><p class=\"MsoBodyText\">Ela não pode se mover e somente pode falar hesitantemente.</p></li><li><p class=\"MsoBodyText\">A criatura falha automaticamente em Salvaguardas de Força ou Agilidade.</p></li><li><p class=\"MsoBodyText\">Jogadas de ataque contra a criatura possuem vantagem.</p></li></ul>"
+  },
+  "sort": 10000000,
+  "image": {}
+ },
+ {
+  "name": "Agarrado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Agarrado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">O deslocamento de uma criatura agarrada se torna 0, e ela não pode se beneficiar de qualquer bônus em seu deslocamento.</p></li><li><p class=\"MsoBodyText\">A condição encerra caso a criatura que a agarrou fique incapacitada (veja a condição) ou solte a criatura agarrada.</p></li></ul>"
+  },
+  "sort": 10000100,
+  "image": {}
+ },
+ {
+  "name": "Alucinado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Alucinado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">A criatura sofrendo de alucinações, ataca qualquer outra criatura que esteja próxima, independentemente se é inimigo ou não.</p></li><li><p class=\"MsoBodyText\">A criatura tem seu Nível de Desafio (caso possua) diminuído em 2.</p></li></ul>"
+  },
+  "sort": 10000200,
+  "image": {}
+ },
+ {
+  "name": "Amedrontado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Amedrontado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura amedrontada sofre desvantagem em Testes de Atributo e jogadas de ataque enquanto a fonte do seu medo estiver em sua linha de visão.</p></li><li><p class=\"MsoBodyText\">A criatura não pode se mover voluntariamente para uma posição que a faça terminar o turno mais próxima da sua fonte de medo do que sua posição inicial.</p></li></ul>"
+  },
+  "sort": 10000300,
+  "image": {}
+ },
+ {
+  "name": "Apaixonado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Apaixonado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura apaixonada é tomada por amor ou grande admiração por outra criatura, sentindo-se menos propenso a causar danos a ela.</p></li><li><p class=\"MsoBodyText\">Os seguintes sintomas podem ou não ocorrer: coração acelerado, agitação, ciúmes leves ou a ponto de matar e vontade de estar com o alvo da paixão/admiração.</p></li><li><p class=\"MsoBodyText\">Uma criatura apaixonada não pode atacar quem o apaixonou ou tê-lo como alvo de habilidades ou efeitos nocivos. Quem o apaixonou possui vantagem em Testes de Atributo feitos para interagir socialmente com a criatura.</p></li></ul>"
+  },
+  "sort": 10000400,
+  "image": {}
+ },
+ {
+  "name": "Energia Esgotada (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Energia Esgotada (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p>Uma criatura com energia esgotada não pode utilizar nenhuma habilidade ou técnica.</p></li><li><p>Uma criatura com energia esgotada está letárgica (veja a condição).</p></li></ul>"
+  },
+  "sort": 10000500,
+  "image": {}
+ },
+ {
+  "name": "Bêbado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Bêbado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura em estado de embriaguez se comporta de forma visivelmente diferente de seu habitual.</p></li><li><p class=\"MsoBodyText\">A criatura recebe desvantagem em Salvaguardas e Habilidade de Agilidade e em qualquer outro teste que o Narrador interpretar que seja comprometido.</p></li><li><p class=\"MsoBodyText\">A condição se encerra quando a criatura passar em uma Salvaguarda de Constituição ou em situações que o Narrador acreditar serem efetivas, por exemplo, tomar café forte, ser jogado em água fria, assistir a uma cena forte.</p></li></ul>"
+  },
+  "sort": 10000600,
+  "image": {}
+ },
+ {
+  "name": "Caído (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Caído (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">A única opção de movimento que uma criatura caída tem é rastejar, a menos que ela se levante, encerrando assim a condição.</p></li><li><p class=\"MsoBodyText\">A criatura sofre desvantagem nas jogadas de ataque.</p></li><li><p class=\"MsoBodyText\">Uma jogada de ataque contra a criatura possui vantagem se o atacante estiver a 1,5 metro dela. De qualquer outra forma a jogada sofre desvantagem.</p></li></ul>"
+  },
+  "sort": 10000700,
+  "image": {}
+ },
+ {
+  "name": "Cego (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Cego (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura cega falha automaticamente em qualquer Teste de Atributo que requeira o uso da visão.</p></li><li><p class=\"MsoBodyText\">Jogadas de ataque contra a criatura possuem vantagem, e os ataques da criatura sofrem desvantagem.</p></li></ul>"
+  },
+  "sort": 10000800,
+  "image": {}
+ },
+ {
+  "name": "Congelado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Congelado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura congelada está envolvida, juntamente com todos os objetos que estiver vestindo ou carregando, por gelo.</p></li><li><p class=\"MsoBodyText\">A criatura está incapacitada (veja a condição), não pode se mover ou falar, e não tem ciência de seus arredores.</p></li><li><p class=\"MsoBodyText\">A criatura não pode utilizar ações de poder;</p></li><li><p class=\"MsoBodyText\">A criatura deve passar em uma Salvaguarda de Constituição para não sofrer a condição “hipotérmico”.</p></li><li><p class=\"MsoBodyText\">Jogadas de ataque contra a criatura possuem vantagem.</p></li><li><p class=\"MsoBodyText\">A criatura falha automaticamente em Salvaguardas de Constituição e Agilidade.</p></li><li><p class=\"MsoBodyText\">A criatura tem resistência a todos os tipos de dano.</p></li><li><p class=\"MsoBodyText\">Seu peso é multiplicado por cinco.</p></li><li><p class=\"MsoBodyText\">A criatura é imune a veneno e doenças, embora um veneno ou doença previamente presente em seu sistema seja apenas suspenso, não neutralizado.</p></li></ul>"
+  },
+  "sort": 10000900,
+  "image": {}
+ },
+ {
+  "name": "Desidratado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Desidratado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura desidratada tem seu deslocamento reduzido pela metade. A criatura sofre 1 nível de exaustão a cada 1 hora.</p></li><li><p class=\"MsoBodyText\">A criatura, no turno dela, pode usar ou uma ação ou uma ação bônus, mas não ambas. A condição se encerra logo após a ingestão de, no mínimo, 500 ml de água.</p></li></ul>"
+  },
+  "sort": 10001000,
+  "image": {}
+ },
+ {
+  "name": "Empoderado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Empoderado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p>Os danos de jogadas de ataque corpo-a-corpo de uma criatura empoderada se tornam 1d12 (prevalecendo o maior, caso possua).</p></li><li><p>Os Pontos de Energia Amaldiçoada de jogadas de ataque de técnicas mal sucedidas não são descontados de criaturas empoderadas.O deslocamento de criaturas empoderadas não pode ser reduzido por terreno difícil.</p></li></ul>"
+  },
+  "sort": 10001100,
+  "image": {}
+ },
+ {
+  "name": "Estremecido (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Estremecido (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoListParagraph\">Uma criatura estremecida sofre desvantagem em jogadas de ataque (comuns e de técnicas).</p></li><li><p class=\"MsoListParagraph\">A criatura estremecida não pode usar técnicas ou características que requeiram concentração e falha automaticamente em salvaguardas para manter sua concentração.</p></li><li><p class=\"MsoListParagraph\">Cada 1,5 metro de deslocamento da criatura estremecida custa 1,5 metro adicional.</p></li></ul>"
+  },
+  "sort": 10001200,
+  "image": {}
+ },
+ {
+  "name": "Enfeitiçado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Enfeitiçado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura enfeitiçada não pode atacar quem a enfeitiçou ou tê-lo como alvo de habilidades ou efeitos nocivos.</p></li><li><p class=\"MsoBodyText\">Quem o enfeitiçou possui vantagem em Testes de Atributo feitos para interagir socialmente com a criatura.</p></li></ul>"
+  },
+  "sort": 10001300,
+  "image": {}
+ },
+ {
+  "name": "Exausto (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Exausto (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p>Uma criatura exausta recebe -2 em rolagens no d20;</p></li><li><p>Uma criatura exausta perde 1,5 metros de deslocamento;</p></li><li><p>Se utilizado como redutor de “Efeito Colateral”, você só reduz 2 PA por nível de exaustão;</p></li><li><p>Exaustão por condição pode ser aplicada até 3 vezes através feitiços, técnicas e habilidades, não podendo superar esse valor. Se ela tiver com acúmulos de exaustão normal, a soma não irá superar 5 através dessa condição.</p></li></ul>"
+  },
+  "sort": 10001400,
+  "image": {}
+ },
+ {
+  "name": "Evenenado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Evenenado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura envenenada sofre desvantagem em jogadas de ataque e Testes de Atributo.</p></li><li><p class=\"MsoBodyText\">Para venenos comuns, após um dia de descanso, a criatura se cura e pode fazer uma Salvaguarda de Constituição CD 15. Se passar, pelas próximas 24 horas, ganha vantagem em Salvaguardas contra o veneno que a afetou.</p></li></ul>"
+  },
+  "sort": 10001500,
+  "image": {}
+ },
+ {
+  "name": "Enfurecido (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Enfurecido (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura enfurecida tenta atacar a todo custo a fonte da sua fúria e recebe desvantagem em suas jogadas de ataque. A criatura ataca qualquer outra criatura, amigável ou não, que esteja próxima e tente impedir, de qualquer forma, seu combate contra quem a enfureceu.</p></li><li><p class=\"MsoBodyText\">Os danos de ataques corpo-a-corpo contra quem a enfureceu aumentam em 1d4, enquanto a fúria persistir.</p></li><li><p class=\"MsoBodyText\">A fúria se mantém por 1 minuto. Ela termina prematuramente se a criatura cair inconsciente ou se seu turno acabar e a criatura não tiver atacado nenhuma criatura desde seu último turno ou não tiver sofrido dano nesse período.</p></li><li><p class=\"MsoBodyText\">Uma criatura amigável pode gastar uma ação para fazer um Teste de Atributo de Sabedoria (Persuasão) CD 13 para acalmar a criatura enfurecida, com desvantagem enquanto a fonte da fúria estiver em sua linha de visão.</p></li></ul>"
+  },
+  "sort": 10001600,
+  "image": {}
+ },
+ {
+  "name": "Impedido (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Impedido (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">O deslocamento de uma criatura impedida se torna 0, e ela não pode se beneficiar de qualquer bônus em seu deslocamento.</p></li><li><p class=\"MsoBodyText\">Jogadas de ataque contra a criatura possuem vantagem, e os ataques da criatura sofrem desvantagem.</p></li><li><p class=\"MsoBodyText\">A criatura sofre desvantagem em Salvaguardas de Agilidade.</p></li></ul>"
+  },
+  "sort": 10001700,
+  "image": {}
+ },
+ {
+  "name": "Incapacitado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Incapacitado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p> Uma criatura incapacitada não pode realizar ações ou reações.</p></li></ul>"
+  },
+  "sort": 10001800,
+  "image": {}
+ },
+ {
+  "name": "Inconsciente (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Inconsciente (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoListParagraph\">Uma criatura inconsciente está <strong>incapacitada (veja a condição)</strong>.</p></li><li><p class=\"MsoListParagraph\">A criatura não pode realizar nenhum tipo de ação ou inação;</p></li><li><p class=\"MsoListParagraph\">A criatura não pode usar princípios que gastem Energia Amaldiçoada;</p></li><li><p class=\"MsoListParagraph\">Ela não pode se mover ou falar e não tem ciência de seus arredores;</p></li><li><p class=\"MsoListParagraph\">A criatura larga tudo que estiver segurando e fica caída.</p></li><li><p class=\"MsoListParagraph\">A criatura falha automaticamente em Salvaguardas de Força ou Agilidade.</p></li><li><p class=\"MsoListParagraph\">Jogadas de ataque contra a criatura possuem vantagem.</p></li><li><p class=\"MsoListParagraph\">Qualquer ataque que atinja a criatura é um acerto crítico, se o atacante estiver a 1,5 metro dela.</p></li></ul>"
+  },
+  "sort": 10001900,
+  "image": {}
+ },
+ {
+  "name": "Invisível (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Invisível (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura invisível é impossível de ser vista sem a ajuda de técnicas ou sentidos especiais. Para o propósito de se esconder, a criatura é considerada em área de escuridão densa.</p></li><li><p class=\"MsoBodyText\">A localização da criatura pode ser detectada por qualquer barulho que ela faça ou rastros que ela deixe.</p></li><li><p class=\"MsoBodyText\">Jogadas de ataque contra a criatura sofrem desvantagem, e os ataques da criatura possuem vantagem.</p></li></ul>"
+  },
+  "sort": 10002000,
+  "image": {}
+ },
+ {
+  "name": "Hipotérmico (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Hipotérmico (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura hipotérmica sofre desvantagem em Salvaguardas de Agilidade, Testes de Atributo e jogadas de ataque.</p></li><li><p class=\"MsoBodyText\">A condição se estende até que seja tratada de forma adequada com um Teste de Atributo de Sabedoria (Medicina) CD 10 ou um Teste de Atributo de Sabedoria (Sobrevivência) CD 17.</p></li></ul>"
+  },
+  "sort": 10002100,
+  "image": {}
+ },
+ {
+  "name": "Letárgico (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Letárgico (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura letárgica tem seu deslocamento reduzido pela metade.</p></li><li><p class=\"MsoBodyText\">Os danos de ataques feitos pela criatura são reduzidos pela metade, exceto de ataques feitos por armas de fogo.</p></li></ul>"
+  },
+  "sort": 10002200,
+  "image": {}
+ },
+ {
+  "name": "Mudo (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Mudo (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">A criatura falha automaticamente em testes para se comunicar pela fala e não pode emitir sons pela boca.</p></li></ul>"
+  },
+  "sort": 10002300,
+  "image": {}
+ },
+ {
+  "name": "Paralisado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Paralisado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura paralisada está incapacitada (veja a condição);</p></li><li><p class=\"MsoBodyText\">Uma criatura paralisada não pode utilizar ações bônus;</p></li><li><p class=\"MsoBodyText\">Uma criatura paralisada não pode utilizar Ações de Poder para atacar;</p></li><li><p class=\"MsoBodyText\">Ela não pode se mover ou falar.</p></li><li><p class=\"MsoBodyText\">A criatura falha automaticamente em Salvaguarda de Força e Agilidade.</p></li><li><p class=\"MsoBodyText\">Jogadas de ataque contra a criatura possuem vantagem.</p></li><li><p class=\"MsoBodyText\">Qualquer ataque que atinja a criatura é um acerto crítico, se o atacante estiver a 1,5 metro dela.</p></li></ul>"
+  },
+  "sort": 10002400,
+  "image": {}
+ },
+ {
+  "name": "Pesado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Pesado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura pesada tem seu deslocamento reduzido pela metade.</p></li><li><p class=\"MsoBodyText\">A criatura sofre desvantagem em suas jogadas de ataque corpo-a-corpo.</p></li></ul>"
+  },
+  "sort": 10002500,
+  "image": {}
+ },
+ {
+  "name": "Petrificado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Petrificado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura petrificada está incapaz de se mover e suas funções corporais estão pausadas, ela tem a superfície do corpo, podendo até ter os músculos, preenchidos com um material sólido (geralmente pedra). Seu peso é multiplicado por dez, e ela para de envelhecer.</p></li><li><p class=\"MsoBodyText\">A criatura está incapacitada (veja a condição), não pode se mover ou falar, e não tem ciência de seus arredores ou realizar ações;</p></li><li><p class=\"MsoBodyText\">Jogadas de ataque contra a criatura possuem vantagem.</p></li><li><p class=\"MsoBodyText\">A criatura falha automaticamente em Salvaguardas de Força e Agilidade. A criatura tem resistência a todos os tipos de dano.</p></li><li><p class=\"MsoBodyText\">A criatura é imune a veneno e doenças, embora um veneno ou doença previamente presente em seu sistema seja apenas suspenso, não neutralizado.</p></li></ul>"
+  },
+  "sort": 10002600,
+  "image": {}
+ },
+ {
+  "name": "Queimado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Queimado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura queimada sofre dano contínuo de 1d6 de dano de Fogo (que não pode ser reduzido ou transferidos para Pontos de Vida temporários) na primeira ação ou movimento que realizar durante o turno dela;</p></li><li><p class=\"MsoBodyText\">Durante esse período, a criatura não pode usar técnicas ou características que requeiram concentração e falha automaticamente em Testes de Concentração;</p></li><li><p class=\"MsoBodyText\">A criatura recebe a condição “Queimadura” que se mantém mesmo após ela remover a condição.</p></li></ul>"
+  },
+  "sort": 10002700,
+  "image": {}
+ },
+ {
+  "name": "Queimadura (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Queimadura (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">A criatura tem desvantagem em Testes de Concentração até que seja tratada de forma adequada com um Teste de Sabedoria (Medicina) CD 13 ou um Teste de Atributo de Sabedoria (Sobrevivência) CD 17.</p></li></ul>"
+  },
+  "sort": 10002800,
+  "image": {}
+ },
+ {
+  "name": "Sangramento (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Sangramento (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p>Uma criatura sangrando sofre dano contínuo de 1d6 de dano Cortante (que não pode ser reduzido ou transferidos para Pontos de Vida temporários) na primeira vez que realizar uma ação ou se movimente no turno;</p></li><li><p>A criatura pode acumular até 3 vezes essa condição, recebendo 1d6 a mais a cada acúmulo;</p></li><li><p>O sangramento persiste até que seja tratado de forma adequada com uma Teste de Atributo de Intelecto (Medicina) CD 12 ou um Teste de Atributo de Sabedoria (Sobrevivência) CD 16, encerrando a condição completamente.</p></li></ul>"
+  },
+  "sort": 10002900,
+  "image": {}
+ },
+ {
+  "name": "Sonolento (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Sonolento (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">A criatura não pode usar Ações Bônus ou Reações;</p></li><li><p class=\"MsoBodyText\">A criatura recebe desvantagem em Salvaguardas de Agilidade e Sabedoria;</p></li><li><p class=\"MsoBodyText\">A criatura sonolenta, independentemente das habilidades, não poderá realizar mais de um ataque corpo-a-corpo (Comuns e/ou de Técnicas) durante o turno dela.</p></li></ul>"
+  },
+  "sort": 10003000,
+  "image": {}
+ },
+ {
+  "name": "Sufocado (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Sufocado (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">A criatura não consegue formular palavras entendíveis.</p></li><li><p class=\"MsoBodyText\">A criatura recebe desvantagem em Salvaguarda de Agilidade, podendo permanecer neste estado por um número de turnos igual 1 + o seu modificador de Constituição (mínimo de 1 turno), após isso deve fazer um Teste de Constituição CD 10, para não desmaiar, no início de cada turno, em cada um dos turnos seguintes é aumentado +2 ao Teste.</p></li></ul>"
+  },
+  "sort": 10003100,
+  "image": {}
+ },
+ {
+  "name": "Surdo (1.0)",
+  "type": "text",
+  "title": {
+   "level": 1,
+   "name": "Surdo (1.0)"
+  },
+  "text": {
+   "format": 1,
+   "content": "<hr><ul><li><p class=\"MsoBodyText\">Uma criatura surda falha automaticamente em qualquer Teste de Atributo que requeira o uso da audição.</p></li></ul>"
+  },
+  "sort": 10003200,
+  "image": {}
+ }
+]

@@ -1,0 +1,22 @@
+_id: jj2a000000000064
+_key: '!items!jj2a000000000064'
+name: Plataforma Espacial
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: plataforma-espacial
+  description:
+    value: <p><em><strong>Requisito:</strong> 20 Habilidades de Especialização Totais e Foco Múltiplo</em></p><p>Feiticeiros extremamente poderosos conseguem "agarrar" ou perceber a superfície do espaço e usar rajadas controladas de energia amaldiçoada sob os pés para dar um impulso no ar, como se estivessem fazendo um salto duplo ou pisando em plataformas invisíveis.</p><p>Você consegue usar seu movimento adicional, ao usar Pontos de Ação [⬢] em pleno ar, mas esse efeito não se aplica a sua movimentação livre, precisando sempre consumir Pontos de Ação.</p><p>Se utilizados dessa forma, você pode se manter no ar até o início do seu próximo turno.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Canalização de Energia
+      requisitos:
+        - 20 Habilidades de Especialização Totais e Foco Múltiplo
+folder: jj2f000000000011
+ownership:
+  default: 0
+effects: []
+sort: 0

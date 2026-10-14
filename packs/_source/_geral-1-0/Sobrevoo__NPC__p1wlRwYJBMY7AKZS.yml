@@ -1,0 +1,74 @@
+_id: p1wlRwYJBMY7AKZS
+name: Sobrevoo (NPC)
+type: feat
+img: icons/creatures/birds/birds-flock-fly-yellow.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 5200000
+flags:
+  scene-packer:
+    hash: aeef4281a756814931bb2e0ae5d15990f64beb67
+    sourceId: Item.p1wlRwYJBMY7AKZS
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Sobrevoo (–): </strong>A criatura não provoca um “Ataque de
+      Oportunidade” quando realiza um voo para fora do alcance de um
+      inimigo.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: sobrevoo-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.W0Aj5iZMa7PACtTU
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910558
+  modifiedTime: 1776624910577
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!p1wlRwYJBMY7AKZS'

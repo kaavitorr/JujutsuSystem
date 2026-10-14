@@ -1,0 +1,86 @@
+folder: ls08eesb1lEJwIZj
+name: Corpo Espiritual
+type: feat
+img: icons/commodities/treasure/token-engraved-red-glowing.webp
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Como um corpo espiritual amaldiçoado, você tem vastas
+      reservas de energia amaldiçoada que até então não podia ser
+      acessada.</p><p class="MsoNormal"><strong>Requisito:</strong> 8º Nível de
+      Personagem.</p><p
+      class="MsoListParagraph"><strong>Característica:</strong> Você recebe 4
+      vezes o seu nível em Pontos de Energia Amaldiçoada (PA), recebendo 4
+      adicionais a cada nível seguinte.</p>
+    chat: ''
+  source:
+    custom: LdJ Capítulo 6
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: Kiriko
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: metamorfose-parcial
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+sort: 0
+ownership:
+  default: 3
+  SzgJKa4cNTf0QdJk: 3
+  MhGXeDSlt2zUqR0J: 3
+  v3jAvKuyCM7VFuIU: 3
+  vQ8cHNVhVHOdX3zY: 3
+flags:
+  scene-packer:
+    hash: 10fe3983082e8e737da29574c83722d700b6988c
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  core: {}
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  compendiumSource: Item.pIaAt98DZBQngnAh
+  duplicateSource: Item.pRcSukxctTCIBjae
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624902123
+  modifiedTime: 1776962424702
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: ADMudy8rPAq7xJyv
+_key: '!items!ADMudy8rPAq7xJyv'

@@ -1,0 +1,22 @@
+_id: jj2a000000000048
+_key: '!items!jj2a000000000048'
+name: Potencialização Extrema
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: potencializacao-extrema
+  description:
+    value: <p><em><strong>Requisito:</strong> Ira do Berserker</em></p><p>Suas jogadas de ataque (Comuns) com resultado de 15-19 que não sejam considerados um acerto crítico ou Fulgor Negro, causam o máximo possível das rolagens de dano.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Corpo de Guerreiro
+      requisitos:
+        - Ira do Berserker
+folder: jj2f000000000009
+ownership:
+  default: 0
+effects: []
+sort: 0

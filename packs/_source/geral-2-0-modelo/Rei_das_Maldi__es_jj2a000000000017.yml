@@ -1,0 +1,44 @@
+_id: jj2a000000000017
+name: Rei das Maldições
+type: feat
+img: icons/magic/unholy/silhouette-evil-horned-giant.webp
+system:
+  identifier: rei-das-maldicoes
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Refinamento Duplo</em></p><p>Seu
+      Shikigami afetado pelo “Refinamento Duplo” é incrivelmente aprimorado,
+      recebendo as seguintes características:</p><ul><li>Ele recebe dois Pontos
+      de Ação adicionais [⬢⬢], até um máximo de 6 ações [⬢⬢⬢⬢⬢⬢];</li><li>A
+      Classe de Resistência dele se torna igual a sua;</li><li>Os Pontos de Vida
+      dele se tornam iguais aos seus;</li></ul><p>Se essa criatura for
+      destruída, ela não pode ser conjurada novamente até o fim do seu próximo
+      descanso longo.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Invocador de Shikigami
+      requisitos:
+        - Refinamento Duplo
+folder: jj2f000000000003
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814865817
+  modifiedTime: 1791814865817
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000017'

@@ -1,0 +1,242 @@
+_id: tFOxouPw3Bzgp54e
+name: Feint
+type: spell
+img: icons/skills/wounds/bone-broken-knee-beam.webp
+effects: []
+folder: AWDdu9KCy1KeXLsN
+sort: 200000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickVersatile:
+      value: false
+      altValue: false
+    quickOther:
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      value: true
+      altValue: true
+    quickAttack:
+      value: true
+      altValue: true
+    quickSave:
+      value: true
+      altValue: true
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+      altValue:
+        '0': true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: f2d2571ad13273e0ae3cf653bf66c7c9d33e49e5
+    sourceId: Item.892uKcA4G8BPY19Y
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+    quickOther:
+      context: ''
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+    quickAttack:
+      value: true
+    quickSave:
+      value: true
+  midi-qol:
+    fumbleThreshold: null
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  midiProperties:
+    confirmTargets: default
+    saveDamage: default
+    bonusSaveDamage: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+system:
+  description:
+    value: "<p>Você realiza um golpe contra o ponto vital e, antes de atingir, gira seu corpo desferindo um chute na lateral do corpo do alvo. A criatura deve realizar uma Salvaguarda de [[/save str dc=@attributes.spell.dc]] para não ser atirada 6 metros em uma direção a sua escolha.</p><p>\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Se, durante o empurrão, a criatura colidir com um objeto ou estrutura de 1,5 metros de raio ou maior, ela recebe 2d8 de dano Contundente adicional.</p><hr><p><strong>Duração:</strong> Instantâneo</p><p><strong>Alcance:</strong>\_Toque</p><p><strong>Requisito:</strong>\_Ação de Poder</p><p><strong>Dano:</strong> 4d10 de dano Contundente</p><p><strong>Custo:</strong> 4 PA</p>"
+    chat: ''
+  source:
+    custom: ''
+    revision: 1
+    rules: '2014'
+  activation:
+    type: action
+    condition: ''
+    value: 1
+  duration:
+    value: ''
+    units: inst
+    expiry: null
+  target:
+    affects:
+      choice: false
+      type: ''
+    template:
+      units: ft
+      contiguous: false
+      stationary: false
+      type: ''
+  range:
+    units: touch
+    special: ''
+  uses:
+    max: ''
+    recovery: []
+    spent: 0
+  level: 2
+  school: trs
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  properties: []
+  activities:
+    dnd5eactivity000:
+      _id: dnd5eactivity000
+      type: attack
+      activation:
+        type: action
+        value: null
+        override: false
+      consumption:
+        targets:
+          - type: material
+            value: '4'
+            target: ''
+            scaling:
+              mode: ''
+          - type: attribute
+            value: '4'
+            target: energy.generated
+            scaling:
+              mode: ''
+        scaling:
+          allowed: false
+          max: ''
+        spellSlot: false
+      description:
+        chatFlavor: ''
+        value: ''
+      duration:
+        units: inst
+        concentration: false
+        override: false
+        expiry: null
+      effects: []
+      range:
+        override: false
+        units: self
+      target:
+        prompt: true
+        template:
+          contiguous: false
+          units: ft
+          stationary: false
+        affects:
+          choice: false
+        override: false
+      uses:
+        spent: 0
+        max: ''
+        recovery: []
+      attack:
+        ability: ''
+        bonus: ''
+        critical:
+          threshold: null
+        flat: false
+        type:
+          value: melee
+          classification: spell
+      damage:
+        critical:
+          bonus: ''
+        includeBase: true
+        parts:
+          - custom:
+              enabled: false
+              formula: ''
+            number: 4
+            denomination: 10
+            bonus: ''
+            types:
+              - bludgeoning
+            scaling:
+              mode: ''
+              number: 1
+            modifiers: []
+      sort: 0
+      name: ''
+      img: ''
+      flags: {}
+      visibility:
+        level:
+          min: null
+          max: null
+        requireAttunement: false
+        requireIdentification: false
+        requireMagic: false
+      behaviors: []
+      jjScale:
+        enabled: false
+        cost: 1
+        maxPA: 0
+      constantCost:
+        enabled: false
+        pool: generated
+        concentration: false
+  identifier: rage-kick
+  method: spell
+  prepared: 0
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.L6HuNeoNWkAsMyNE
+  duplicateSource: null
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791829184043
+  modifiedTime: 1791829184043
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!tFOxouPw3Bzgp54e'

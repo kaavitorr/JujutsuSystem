@@ -1,0 +1,40 @@
+_id: jj2a000000000057
+name: Impacto Concussivo
+type: feat
+img: icons/magic/light/hand-sparks-glow-yellow.webp
+system:
+  identifier: impacto-concussivo
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Ativação Aprimorada</em></p><p>Você faz
+      com que seus golpes com “Energia Atrasada” se tornem ainda mais potentes.
+      Você não precisa mais receber desvantagem para usar a característica,
+      podendo sempre os usar no limite máximo.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Punho Divergente
+      requisitos:
+        - Ativação Aprimorada
+folder: jj2f000000000010
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816439366
+  modifiedTime: 1791816439366
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000057'

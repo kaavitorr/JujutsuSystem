@@ -1,0 +1,73 @@
+_id: gNGgYyLmTJyAHo38
+name: Visão Aguçada (NPC)
+type: feat
+img: icons/creatures/eyes/humanoid-single-yellow.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 5500000
+flags:
+  scene-packer:
+    hash: 220127f7add65415616018bc141e3d5c107792e6
+    sourceId: Item.gNGgYyLmTJyAHo38
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Visão Aguçada (–): </strong>A criatura tem vantagem em Testes
+      de Habilidade de Espírito (Percepção) relacionados à visão.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: visao-agucada-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.aSwB17G2luS8uMhF
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910554
+  modifiedTime: 1776624910574
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!gNGgYyLmTJyAHo38'

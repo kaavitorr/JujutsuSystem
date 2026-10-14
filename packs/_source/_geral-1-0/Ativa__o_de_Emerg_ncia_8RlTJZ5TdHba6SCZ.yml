@@ -1,0 +1,103 @@
+name: Ativação de Emergência
+type: feat
+img: icons/magic/symbols/star-inverted-yellow.webp
+effects: []
+folder: TOc92NuiE5uyXD8M
+sort: 1900000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  scene-packer:
+    hash: 452f512f67123f549f2fee0eee73eb73615f431e
+    sourceId: Item.56za1y6eXu2k49Rg
+  custom-character-sheet-sections:
+    sectionName: ''
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+system:
+  description:
+    value: >-
+      <p class="MsoNormal">Você está sempre preparado para recorrer às suas
+      habilidades quando necessário, mas forçar esse preparo tem um preço.</p><p
+      class="MsoNormal">No início de um encontro, antes da rolagem de
+      iniciativa, você pode utilizar suas ações para ativar qualquer quantidade
+      de habilidades ou feitiços que não realizem jogada de ataque e nem deem
+      alvos em criaturas inimigas. Após fazê-lo, role a iniciativa normalmente.
+      Porém, você se torna o último da iniciativa e começa seu turno sem as
+      ações usadas para ativar as habilidades.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  properties: []
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  identifier: poco-de-estamina
+  activities: {}
+  enchant: {}
+  advancement: {}
+  cover: null
+  crewed: false
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.habilidades-classes.uMNWzaM7WqfTGRaL
+  duplicateSource: Item.t5Wfu7rP3PxQbz7h
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1776624882941
+  modifiedTime: 1782436267264
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: 8RlTJZ5TdHba6SCZ
+_key: '!items!8RlTJZ5TdHba6SCZ'

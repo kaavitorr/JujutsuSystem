@@ -1,0 +1,20 @@
+type: Item
+folder: null
+name: Habilidades de Especialização
+color: '#af3c3c'
+sorting: a
+_id: 1roC0BlA1sepbPGH
+description: ''
+sort: 0
+flags: {}
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814486167
+  modifiedTime: 1791814489719
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!1roC0BlA1sepbPGH'

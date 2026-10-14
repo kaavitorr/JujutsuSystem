@@ -1,0 +1,22 @@
+_id: jj2a000000000108
+_key: '!items!jj2a000000000108'
+name: Corpo e Alma
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: corpo-e-alma
+  description:
+    value: <p><em><strong>Requisito:</strong> Agressão da Alma</em></p><p>Seu corpo entrou em uma sincronia extraordinária com a sua alma, fazendo com que praticamente não exista distinção entre os dois.</p><p>Ao utilizar energia reversa em si mesmo, você consegue curar seu corpo e sua alma simultaneamente, fazendo com que danos causados diretamente à sua alma sejam muito menos perigosos para você do que seriam para outras criaturas.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Ressonância da Alma
+      requisitos:
+        - Agressão da Alma
+folder: jj2f000000000016
+ownership:
+  default: 0
+effects: []
+sort: 0

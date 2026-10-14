@@ -1,0 +1,73 @@
+_id: z3ERIgD7tYyrbES5
+name: Prender a Respiração (NPC)
+type: feat
+img: icons/creatures/reptiles/snake-poised-white.webp
+effects: []
+folder: 5W9hXoOT7yU6jAg3
+sort: 4300000
+flags:
+  scene-packer:
+    hash: ee319da99546295d0f8e40b707f80d3e582bc8b7
+    sourceId: Item.z3ERIgD7tYyrbES5
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Prender a Respiração (–): </strong>A criatura pode prender sua
+      respiração por 1 hora.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: prender-a-respiracao-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.mXdtI3bd14YR1d08
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910563
+  modifiedTime: 1776624910579
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!z3ERIgD7tYyrbES5'

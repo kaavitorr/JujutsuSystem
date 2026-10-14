@@ -1,0 +1,40 @@
+_id: jj2a000000000056
+name: Ativação Aprimorada
+type: feat
+img: icons/magic/light/projectiles-star-purple.webp
+system:
+  identifier: ativacao-aprimorada
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> Vibração de Energia</em></p><p>A margem
+      para atingir seu “Energia Atrasada” se torna 12-20 e seu limite de dano da
+      característica se torna até 6 vezes o seu atributo principal no lugar do
+      original.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Punho Divergente
+      requisitos:
+        - Vibração de Energia
+folder: jj2f000000000010
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791816433686
+  modifiedTime: 1791816433686
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000056'

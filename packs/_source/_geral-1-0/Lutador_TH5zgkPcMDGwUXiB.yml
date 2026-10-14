@@ -1,0 +1,22 @@
+name: Lutador
+sorting: m
+folder: sE4zROXK6hDLuikm
+type: Item
+description: ''
+sort: 50000
+color: null
+flags:
+  scene-packer:
+    hash: a17a0d367186d0c3dc1580c002532e35a58d86bf
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624911263
+  modifiedTime: 1776903298068
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_id: TH5zgkPcMDGwUXiB
+_key: '!folders!TH5zgkPcMDGwUXiB'

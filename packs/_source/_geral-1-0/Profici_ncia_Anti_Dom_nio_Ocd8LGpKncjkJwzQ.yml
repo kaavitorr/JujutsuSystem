@@ -1,0 +1,77 @@
+folder: QwYh3uEF10z8gSGn
+name: Proficiência Anti-Domínio
+type: feat
+img: icons/magic/unholy/barrier-fire-pink.webp
+system:
+  description:
+    value: "<p>A partir do <strong>6º nível de Sentinela</strong>, você aprendeu a manipular os efeitos do seu domínio simples para adaptá-lo às mais diversas situações. Enquanto seu domínio simples estiver ativo, você pode se mover até metade do seu deslocamento padrão e escolher uma das seguintes características sempre que o expandir:</p><ul><li><p><strong>Expansão Aumentada:</strong> Você dobra o alcance do seu domínio simples, assim como o alcance do seu “Toque”.</p></li><li><p><strong>Domínio da Proteção:</strong> Você reduz pela metade todo dano sofrido por feitiços (não cumulativo com resistência), sejam eles provenientes de ataques realizados contra você ou contra outras criaturas (à sua escolha) que estejam dentro do seu domínio simples.</p></li><li><p><strong>Ativação Econômica:</strong> Você reduz o alcance do seu domínio simples para 3 metros e não precisa pagar o custo em PA para ativá-lo nem para mantê-lo ativo.</p></li><li><p><strong>Muralha de Lâminas:</strong> Você pode sacrificar sua ação e todo seu movimento no seu turno para que sua Classe de Resistência aumente em +5, até um máximo de 30. Esse efeito dura até o início do seu turno seguinte.</p></li><li><p><strong>Troca Arriscada:</strong> Sempre que uma criatura errar um ataque contra você, você pode escolher ser atingido por ele automaticamente. Ao fazer isso, você recebe +3 de acerto na sua próxima rolagem de acerto. Se você forçou o acerto contra uma técnica, você recebe 3 dados de dano adicionais em sua próxima técnica.</p></li></ul><p class=\"MsoNormal\">\_</p><p class=\"MsoNormal\">A partir do 12º nível de Sentinela, todas as características acima permanecem ativas simultaneamente sempre que você expandir seu domínio simples.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: estilo-do-emissor
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  custom-character-sheet-sections:
+    sectionName: ''
+  scene-packer:
+    hash: d8a632d7930b501d57e292fcb3875f3aa448cd29
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  coreVersion: '14.364'
+  systemId: jujutsu-system
+  systemVersion: 1.0.6
+  createdTime: 1782435398729
+  modifiedTime: 1782435398785
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  vQ8cHNVhVHOdX3zY: 3
+_id: Ocd8LGpKncjkJwzQ
+sort: 400000
+_key: '!items!Ocd8LGpKncjkJwzQ'

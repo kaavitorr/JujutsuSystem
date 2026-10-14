@@ -1,0 +1,22 @@
+_id: jj2a000000000114
+_key: '!items!jj2a000000000114'
+name: Reversão de Feitiço
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: reversao-de-feitico
+  description:
+    value: <p><em><strong>Requisito:</strong> Reversão Ofensiva</em></p><p>Após adquirir essa habilidade, você pode criar habilidades de reversão para seus feitiços básicos e estendidos. Você pode ter até 3 habilidades menores que funcionam como as versões de Reversão de Feitiço, mas todos eles compartilham o custo total de 20 PA, funcionando como uma manifestação própria.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Energia Reversa
+      caminho: Técnica de Energia Reversa
+      requisitos:
+        - Reversão Ofensiva
+folder: jj2f000000000018
+ownership:
+  default: 0
+effects: []
+sort: 0

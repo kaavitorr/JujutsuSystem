@@ -1,0 +1,76 @@
+folder: x1kCFkwfVVg7tErL
+name: Compressão de Energia
+type: feat
+img: icons/magic/control/buff-flight-wings-runes-red-yellow.webp
+system:
+  description:
+    value: "<p class=\"TextoPadro\">A partir do 6º nível de Lutador, você pode utilizar a pressão do combate para acumular momento de forma a explodir com potencial em períodos específicos. A cada 6 Pontos de Dano que você receber em combate com uma criatura inimiga, você ganha 1 Ponto de Potencial. Você pode gastar Pontos de Potencial (PP) para ativar as seguintes características:</p><ul><li><p><strong>2 PP:</strong> Você recebe vantagem na sua próxima rolagem de acerto;</p></li><li><p><strong>5 PP:</strong> Você recebe acerto automático na sua próxima rolagem de acerto;</p></li><li><p><strong>1 ~ 5 PP:</strong> Você recebe +1 de acerto na sua próxima rolagem de acerto para cada PP gasto;</p></li><li><p><strong>1 ~ 5 PP:</strong> Você recebe 1 dado de dano na sua próxima técnica para cada PP gasto, mas esses dados não podem fazer seu dano ir acima do dano máximo possível sem a utilização deles. </p></li></ul><p class=\"TextoPadro\">Por exemplo: Se uma técnica causar 3d10 de dano, o dano máximo possível para ela é de 30.</p><p class=\"TextoPadro\">\_</p><p>Os Pontos de Potencial não têm limite de quantidade e desaparecem ao fim de um descanso longo, mas você pode manter um valor guardado ao fim dele igual seu nível de personagem.</p>"
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: aprimorador-fisico
+  activities: {}
+  advancement: {}
+  enchant: {}
+effects: []
+flags:
+  rsr5e:
+    quickDesc:
+      value: true
+    quickFooter:
+      value: true
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  scene-packer:
+    hash: aa5f9474e62fa48af160cdabe262283792981f1e
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624881649
+  modifiedTime: 1776918822079
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+ownership:
+  default: 0
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_id: p47ZMostv44h2jiD
+sort: 150000
+_key: '!items!p47ZMostv44h2jiD'

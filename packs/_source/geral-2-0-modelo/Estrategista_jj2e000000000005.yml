@@ -1,0 +1,79 @@
+_id: jj2e000000000005
+name: Estrategista
+type: class
+img: systems/jujutsu-system/assets/Estilos%20de%20Combate/Estrategista-icon.png
+system:
+  identifier: estrategista
+  levels: 1
+  description:
+    value: >-
+      <p style="text-align:center"><span
+      style="font-size:x-large"><strong>ESTRATEGISTA</strong></span></p><p><span
+      style="font-size:large"><strong>Pontos de
+      Vida</strong></span></p><p><strong>Vida Base:</strong> 4 por nível de
+      personagem.</p><p><strong>Vida por Ponto de Constituição:</strong> 4 por
+      ponto.</p><p></p><p><span style="font-size:large"><strong>Energia
+      Amaldiçoada</strong></span></p><p><strong>Energia Base:</strong> 15 por
+      nível de personagem.</p><p></p><p><span
+      style="font-size:large"><strong>Proficiências</strong></span></p><ul><li><p><strong>Equipamentos:</strong>
+      Recebe 2 Pontos de Proficiência entre qualquer tipo de
+      arma.</p></li><li><p><strong>Salvaguarda:</strong> Recebe 2 Pontos de
+      Proficiência para distribuir entre as
+      Salvaguardas.</p></li><li><p><strong>Perícias:</strong> Escolha 5 Pontos
+      de Proficiência para distribuir entre as
+      Perícias.</p></li></ul><p></p><p><span
+      style="font-size:large"><strong>Informações
+      Gerais</strong></span></p><ul><li><p><strong>Atributo Principal:</strong>
+      Sabedoria.</p></li><li><p><strong>Habilidades de Especialização:</strong>
+      Você recebe 1 habilidade de "Feitiço
+      Inato".</p></li><li><p><strong>Equipamentos:</strong> Uma arma cortante,
+      especial ou ¥ 3.000 e; ¥ 8.000.</p></li></ul><p></p><p
+      style="text-align:center"><span
+      style="font-size:x-large"><strong>Características de
+      Combate</strong></span></p><hr><p><span
+      style="font-size:large"><strong>Amaldiçoado com
+      Conhecimento</strong></span></p><p>Você tem uma facilidade maior para
+      aprender qualquer coisa relacionada a energia amaldiçoada e seu controle
+      sobre ela avança a passos largos. Você recebe as seguintes
+      características:</p><ul><li><p>Sempre que você rolar 1 no resultado do
+      d20, você pode rolar novamente e usar o novo
+      resultado;</p></li><li><p>Você pode criar barreiras usando da sua reserva
+      Total de Energia sem consumir do seu limite de
+      Refinamento;</p></li></ul><p>Além disso, você também deve escolher uma
+      entre as duas especializações:</p><p></p><h4>Mestre de
+      Barreiras</h4><hr><p>Você se especializou no uso de barreiras para lutar e
+      ajudar seus companheiros, você recebe 3 habilidades de Especialização de
+      Barreira e suas barreiras recebem 2 Pontos de Vida adicionais por PA gasto
+      para cria-las.</p><p></p><h4>Médico de Campo</h4><hr><p>Você desbloqueia
+      instantaneamente a Energia Reversa e recebe 1 Habilidade de Especialização
+      dela, mas todas as suas técnicas de dano de Feitiços passam a custar 1
+      Ponto de Ação [⬢] adicional.<br>Além disso, você dobra o limite de Pontos
+      de Energia Reversa que pode ter de 30 para 60.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    legacy2:
+      vidaBase: 4
+      energiaBase: 15
+      atributoPrincipal: wis
+      espIniciais: 1
+      proficiencias:
+        armas: 2
+        salvaguardas: 2
+        pericias: 5
+ownership:
+  default: 0
+effects: []
+folder: duEiLT0m9eoDwk8O
+sort: 200000
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791813444004
+  modifiedTime: 1791816833073
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2e000000000005'

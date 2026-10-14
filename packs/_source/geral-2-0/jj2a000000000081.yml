@@ -1,0 +1,21 @@
+_id: jj2a000000000081
+_key: '!items!jj2a000000000081'
+name: Senhor do Terror
+type: feat
+img: systems/jujutsu-system/icons/svg/items/feature.svg
+system:
+  identifier: senhor-do-terror
+  description:
+    value: <p>A existência aprimorada - defensiva é uma arvore de habilidades específicas do Restringido, interagindo com seus Pontos de Estamina, devido a isso, ela normalmente não pode ser adquirida por outras criaturas. Essa arvore é voltada para parte defensiva e de regeneração.</p><p>Você aprendeu a canalizar sua presença para causar um terror incompreensível nas criaturas ao seu redor. Ao gastar 3 Pontos de Ação e 3 PE, você pode liberar uma profunda onda de terror em tudo a 15 metros de distância de emanação.</p><p>Todas as criaturas afetadas devem realizar uma Salvaguarda de Presença com CD igual a 10 + seu atributo de Presença. Em caso de falha, elas sofrem dano Psíquico igual ao seu atributo de Presença e recebem a condição “Amedrontado” até o fim do próximo turno delas.</p>
+    chat: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Habilidades Especiais
+      caminho: Existência Aprimorada - Defensivo
+      requisitos: []
+folder: jj2f000000000014
+ownership:
+  default: 0
+effects: []
+sort: 0

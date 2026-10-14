@@ -1,0 +1,29 @@
+<section class="tab {{ tab.cssClass }} jj2-page jj2-skills" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
+  <div class="jj2-page-heading jj2-manga-heading jj2-skills-heading">
+    <h2>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="dice" }}Perícias</h2>
+    {{#unless jj2.npc}}<div class="jj2-skills-points" role="group" aria-label="Pontos de Proficiência">
+      <div class="jj2-skills-points-count"><output aria-label="Pontos de Proficiência disponíveis">{{ jj2.pontos.available }}</output><span aria-label="{{ jj2.pontos.total }} Pontos de Proficiência totais">/ {{ jj2.pontos.total }}</span></div>
+      <div class="jj2-skills-points-caption"><strong>Proficiência</strong><span>pontos disponíveis</span></div>
+    </div>{{/unless}}
+  </div>
+  <div class="jj2-skill-groups">
+    {{#each jj2.skillGroups}}<div class="jj2-panel jj2-skill-group"><header class="jj2-skill-group-heading"><h3>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=icon }}{{ label }}</h3><span>Bônus / Proficiência</span></header><ul>
+      {{#each skills}}<li class="jj2-rank-row jj2-proficiency-row" data-key="{{ key }}">
+        <span class="jj2-proficiency-icon">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=ability }}</span>
+        <div class="jj2-proficiency-info"><a class="{{ @root.rollableClass }}" data-action="roll" data-type="skill">{{ label }}</a><div><span>{{ rankLabel }}</span><span class="jj2-skill-ability">{{ abilityAbbr }}</span></div></div>
+        <strong class="jj2-proficiency-bonus">{{ dnd5e-formatModifier total }}</strong>
+        <div class="jj2-proficiency-progress">{{> "systems/jujutsu-system/templates/actors/parts/jj2-ranks.hbs" ctx="skills" }}</div>
+      </li>{{/each}}
+    </ul></div>{{/each}}
+  </div>
+  <div class="jj2-panel jj2-weapons-panel"><h2>Proficiência em Armas</h2><ul class="jj2-weapons">
+    {{#each jj2.armas}}<li class="jj2-rank-row jj2-proficiency-row" data-key="{{ key }}">
+      <span class="jj2-proficiency-icon">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="weapons" }}</span>
+      <div class="jj2-proficiency-info"><strong>{{ label }}</strong><div><span>{{ rankLabel }}</span></div></div>
+      <strong class="jj2-proficiency-bonus">{{ dnd5e-formatModifier bonus }}</strong>
+      <div class="jj2-proficiency-progress">{{> "systems/jujutsu-system/templates/actors/parts/jj2-ranks.hbs" ctx="armas" }}</div>
+    </li>{{/each}}
+  </ul></div>
+  <div class="jj2-rank-legend">{{#each jj2.rankDots}}<span><i></i>{{ label }}</span>{{/each}}</div>
+  {{#unless jj2.npc}}{{#if editable}}<details class="jj2-training-config"><summary>Ajustes de proficiência e espécie</summary><label>Pontos adicionais concedidos pelo Mestre<input type="number" name="system.legacy2.pontos.extra" value="{{ jj2.pontos.extra }}" min="0" data-dtype="Number"></label><label>PV da Espécie<input type="number" name="system.legacy2.pvEspecie" value="{{ jj2.pvEspecie }}" min="0" data-dtype="Number"></label></details>{{/if}}{{/unless}}
+</section>

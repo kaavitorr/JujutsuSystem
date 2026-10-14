@@ -1,0 +1,77 @@
+_id: VZBbGCeGcmn7eQMr
+name: Investida Derrubadora (NPC)
+type: feat
+img: icons/creatures/abilities/bear-roar-bite-brown-green.webp
+effects: []
+folder: I4nmFeOf3cr9gQWb
+sort: 900000
+flags:
+  scene-packer:
+    hash: 947af0771f8e55b6783b67ec4ced85bec8f53ff0
+    sourceId: Item.VZBbGCeGcmn7eQMr
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  cf: {}
+  core: {}
+  custom-character-sheet-sections:
+    sectionName: ''
+system:
+  description:
+    value: >-
+      <p><strong>Investida Derrubadora (Aumenta o dano efetivo da criatura na
+      primeira rodada): </strong>Se a criatura se mover por 3 metros ou mais em
+      direção a um alvo e realizar uma jogada de ataque corpo-a-corpo, o alvo
+      sofre dano de Concussão extra. Se o alvo for uma criatura, ele deve ser
+      bem sucedido em um Teste de Resistência de Força CD ou será empurrado por
+      6 metros e caíra no chão.</p>
+    chat: ''
+  source:
+    custom: ''
+    rules: '2014'
+    revision: 1
+  cover: null
+  crewed: false
+  uses:
+    max: ''
+    spent: 0
+    recovery: []
+  type:
+    value: ''
+    subtype: ''
+  requirements: ''
+  prerequisites:
+    level: null
+    repeatable: false
+    items: []
+  properties: []
+  identifier: investida-derrubadora-npc
+  activities: {}
+  advancement: {}
+  enchant: {}
+ownership:
+  default: 0
+  t5PbnGeCtUw6xzkd: 3
+  SzgJKa4cNTf0QdJk: 3
+  vQ8cHNVhVHOdX3zY: 3
+_stats:
+  compendiumSource: Compendium.world.tracos-npcs.JdCwGv97tfLeMnpL
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910546
+  modifiedTime: 1776624910571
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+_key: '!items!VZBbGCeGcmn7eQMr'

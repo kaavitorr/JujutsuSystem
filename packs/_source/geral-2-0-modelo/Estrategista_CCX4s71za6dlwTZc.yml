@@ -1,0 +1,20 @@
+type: Item
+folder: mtDR7e9B9wll3UIy
+name: Estrategista
+color: null
+sorting: a
+_id: CCX4s71za6dlwTZc
+description: ''
+sort: 0
+flags: {}
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791817054885
+  modifiedTime: 1791817054885
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!folders!CCX4s71za6dlwTZc'

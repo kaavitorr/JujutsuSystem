@@ -1,0 +1,42 @@
+_id: jj2a000000000010
+name: Trabalho em Equipe
+type: feat
+img: icons/magic/unholy/projectile-helix-blood-red.webp
+system:
+  identifier: trabalho-em-equipe
+  description:
+    value: >-
+      <p>A segunda disciplina dentro das habilidades de Feitiço inato é a de
+      Invocar Shikigamis, recebendo diversos efeitos e habilidades enquanto luta
+      com a ajuda de seus Shikigamis.</p><p>Você passa a receber +1 no seu valor
+      de Engajamento para cada Shikigami Invocado a até 6 metros de distância.
+      Seu acerto aumenta em +1 para cada valor de Engajamento que você tiver
+      maior que seu adversário. Esse bônus pode ser transferido para um de seus
+      Shikigami até o fim do turno atual.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Feitiço Inato
+      caminho: Invocador de Shikigami
+      requisitos: []
+folder: jj2f000000000003
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814802341
+  modifiedTime: 1791814802341
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000010'

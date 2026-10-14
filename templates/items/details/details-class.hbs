@@ -1,0 +1,93 @@
+<fieldset>
+    <legend>{{ localize "DND5E.ItemClassDetails" }}</legend>
+
+    {{!-- Identifier --}}
+    <div class="form-group">
+        <label>{{ localize "DND5E.Identifier" }}</label>
+        <div class="form-fields">
+            {{ formInput fields.identifier value=source.identifier placeholder=item.identifier }}
+        </div>
+        <p class="hint">
+            {{{ localize "DND5E.ClassIdentifierHint" identifier=item.identifier }}}
+            {{ localize "DND5E.IdentifierError" }}
+        </p>
+    </div>
+
+    {{#if isV2}}
+    {{!-- 2.0: sem dado de vida — Vida/Energia Base e Pontos de Proficiência --}}
+    <div class="form-group">
+        <label>Pontos de Vida Base</label>
+        <div class="form-fields">
+            <input type="number" name="flags.jujutsu-system.legacy2.vidaBase"
+                   value="{{ legacy2.vidaBase }}" min="0" placeholder="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Energia Base</label>
+        <div class="form-fields">
+            <input type="number" name="flags.jujutsu-system.legacy2.energiaBase"
+                   value="{{ legacy2.energiaBase }}" min="0" placeholder="vazio = sem energia (Restringido)">
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Pontos de Proficiência Destinados (criação)</label>
+        <div class="form-fields jj2-prof-fields">
+            <span class="jj2-prof-field">
+                <span class="jj2-prof-label">Armas</span>
+                <input type="number" name="flags.jujutsu-system.legacy2.proficiencias.armas"
+                       value="{{ legacy2.proficiencias.armas }}" min="0" placeholder="0">
+            </span>
+            <span class="jj2-prof-field">
+                <span class="jj2-prof-label">Salvaguardas</span>
+                <input type="number" name="flags.jujutsu-system.legacy2.proficiencias.salvaguardas"
+                       value="{{ legacy2.proficiencias.salvaguardas }}" min="0" placeholder="0">
+            </span>
+            <span class="jj2-prof-field">
+                <span class="jj2-prof-label">Perícias</span>
+                <input type="number" name="flags.jujutsu-system.legacy2.proficiencias.pericias"
+                       value="{{ legacy2.proficiencias.pericias }}" min="0" placeholder="0">
+            </span>
+        </div>
+        <p class="hint">Além destes, o personagem recebe +1 Ponto de Proficiência por nível.</p>
+    </div>
+    {{else}}
+    {{!-- Hit Dice --}}
+    <div class="form-group split-group">
+        <label>{{ localize "DND5E.CLASS.FIELDS.hd.label" }}</label>
+        <div class="form-fields">
+
+            {{!-- Denomination --}}
+            {{ formField fields.hd.fields.denomination value=source.hd.denomination options=hitDieOptions
+                         label="DND5E.Denomination" localize=true classes="label-top" rootId=partId }}
+
+            {{!-- Spent --}}
+            {{ formField fields.hd.fields.spent value=source.hd.spent placeholder="0" localize=true label="DND5E.Spent"
+                         classes="label-top" rootId=partId }}
+        </div>
+    </div>
+
+    {{#if source.hd.additional}}
+    {{ formField fields.hd.fields.additional value=source.hd.additional localize=true rootId=partId }}
+    {{/if}}
+    {{/if}}
+
+    {{!-- Class Properties --}}
+    {{ formField fields.properties options=properties.options input=inputs.createMultiCheckboxInput stacked=true
+                 classes="checkbox-grid checkbox-grid-3" }}
+</fieldset>
+
+{{#unless isV2}}
+<fieldset>
+    <legend>{{ localize "DND5E.CLASS.Multiclass.Title" }}</legend>
+
+    {{!-- Primary Ability --}}
+    {{ formField fields.primaryAbility.fields.value value=source.primaryAbility.value options=primaryAbilities
+                 rootId=partId }}
+
+    {{!-- All Required --}}
+    {{#if (gt source.primaryAbility.value.length 1)}}
+    {{ formField fields.primaryAbility.fields.all value=source.primaryAbility.all input=inputs.createCheckboxInput
+                 rootId=partId }}
+    {{/if}}
+</fieldset>
+{{/unless}}

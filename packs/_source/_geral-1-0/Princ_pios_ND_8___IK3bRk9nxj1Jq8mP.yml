@@ -1,0 +1,22 @@
+name: Princípios ND 8 +
+sorting: a
+folder: hRjnfrCi2GynI6bk
+type: Item
+_id: IK3bRk9nxj1Jq8mP
+sort: 0
+color: '#3cb972'
+flags:
+  scene-packer:
+    hash: 20e62437f3170801e5c830508f73c5a6554075c5
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '14.360'
+  systemId: jujutsu-system
+  systemVersion: 5.3.2
+  createdTime: 1776624910214
+  modifiedTime: 1776624910214
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  exportSource: null
+description: ''
+_key: '!folders!IK3bRk9nxj1Jq8mP'

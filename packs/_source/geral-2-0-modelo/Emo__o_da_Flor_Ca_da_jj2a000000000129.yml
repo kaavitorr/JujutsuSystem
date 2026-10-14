@@ -1,0 +1,48 @@
+_id: jj2a000000000129
+name: Emoção da Flor Caída
+type: feat
+img: icons/magic/nature/leaf-hand-green.webp
+system:
+  identifier: emocao-da-flor-caida
+  description:
+    value: >-
+      <p><em><strong>Requisito:</strong> 4º nível ou superior</em></p><p>Uma
+      técnica anti-domínio que envolve o corpo do usuário em energia amaldiçoada
+      que contra ataca os efeitos de acerto garantido de uma expansão de
+      domínio, defendendo o usuário de forma automática. Possui as seguintes
+      características:</p><ul><li>Você cancela o Inescapável, Fatal e
+      Irresistível de uma expansão de domínio contra o próprio
+      usuário;</li><li>Toda vez que uma criatura te atacar ou entrar ou sair do
+      seu alcance, você pode realizar um ataque ou técnica contra ela como uma
+      Reação, mas ainda consome os Pontos de Ação normal da
+      ação.</li></ul><p>Uma Emoção da Flor Caída consome 4 Pontos de Energia
+      Amaldiçoada (PA) na sua ativação, e no início de cada um de seus
+      turnos.</p>
+    chat: ''
+  prerequisites:
+    level: null
+  uses:
+    max: ''
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Domínio e Anti-Domínio
+      caminho: Técnicas Anti-Domínio
+      requisitos:
+        - 4º nível ou superior
+folder: jj2f000000000021
+ownership:
+  default: 0
+effects: []
+sort: 0
+_stats:
+  coreVersion: '14.369'
+  systemId: jujutsu-system
+  systemVersion: 1.2.0
+  createdTime: 1791814611766
+  modifiedTime: 1791814611766
+  lastModifiedBy: vQ8cHNVhVHOdX3zY
+  compendiumSource: null
+  duplicateSource: null
+  exportSource: null
+_key: '!items!jj2a000000000129'
