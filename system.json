@@ -9,7 +9,7 @@
   },
   "url": "https://github.com/kaavitorr/JujutsuSystem",
   "manifest": "https://raw.githubusercontent.com/kaavitorr/JujutsuSystem/main/system.json",
-  "download": "https://github.com/kaavitorr/JujutsuSystem/releases/download/v1.0.10/jujutsu-system.zip",
+  "download": "https://github.com/kaavitorr/JujutsuSystem/releases/download/v1.2.1/jujutsu-system.zip",
   "authors": [
     {
       "name": "Noroi",
@@ -527,7 +527,7 @@
     "units": "ft"
   },
   "primaryTokenAttribute": "attributes.hp",
-  "background": "systems/dnd5e/ui/official/dnd5e-background.webp",
+  "background": "systems/jujutsu-system/ui/official/jjk-background.webp",
   "flags": {
     "compendiumArtMappings": {
       "dnd5e": {
