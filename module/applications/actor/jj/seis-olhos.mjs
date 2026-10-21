@@ -20,14 +20,18 @@ async function gastePA(actor) {
   return true;
 }
 
-/** Sobrecarga Mental: 3d4 de dano Psíquico direto na reserva de vida. */
+/**
+ * Sobrecarga Mental: 3d4 de dano Psíquico DIRETO na vida — ignora escudo,
+ * Pontos de Armadura e pontos de vida temporários (regra do Efeito Colateral).
+ */
 async function sobrecargaMental(actor, contexto) {
   const rolagem = await new Roll("3d4").evaluate();
   await rolagem.toMessage({
     speaker: ChatMessage.getSpeaker({ actor }),
-    flavor: `⚡ Sobrecarga Mental (${contexto}) — 3d4 de dano Psíquico`
+    flavor: `⚡ Sobrecarga Mental (${contexto}) — 3d4 de dano Psíquico direto na vida`
   });
-  await actor.applyDamage(rolagem.total);
+  const hp = actor.system.attributes.hp;
+  await actor.update({ "system.attributes.hp.value": Math.max(0, (hp.value ?? 0) - rolagem.total) });
 }
 
 /**

@@ -125,3 +125,51 @@ test("selecting untrained removes the spent rank and makes its points available 
   assert.equal(result.update["system.legacy2.saves"].str, 0);
   assert.equal(result.update["system.legacy2.pontos.gastos"], 0);
 });
+
+test("sem Voando, o tile mostra o deslocamento padrão", () => {
+  const a = actor({ attributes: {
+    hp: { value: 48, max: 60 }, init: { total: 3 },
+    movement: { units: "m", speeds: { walk: 10, fly: 0 } }
+  } });
+  const ctx = sheet.buildLegacy2Context(a, config, Ruleset);
+  assert.equal(ctx.movement.value, 10);
+  assert.equal(ctx.movement.voando, false);
+});
+
+test("com Voando, o tile mostra o deslocamento de voo no lugar do padrão", () => {
+  const a = actor({ attributes: {
+    hp: { value: 48, max: 60 }, init: { total: 3 },
+    movement: { units: "m", speeds: { walk: 10, fly: 0 } }
+  } });
+  a.statuses = new Set(["jj-voando"]);
+  const ctx = sheet.buildLegacy2Context(a, config, Ruleset);
+  assert.equal(ctx.movement.voando, true);
+  // "Movimento de voo igual ao padrão": campo de voo vazio cai no padrão.
+  assert.equal(ctx.movement.value, 10);
+});
+
+test("com Voando e voo próprio preenchido, mostra o voo", () => {
+  const a = actor({ attributes: {
+    hp: { value: 48, max: 60 }, init: { total: 3 },
+    movement: { units: "m", speeds: { walk: 10, fly: 14 } }
+  } });
+  a.statuses = new Set(["jj-voando"]);
+  assert.equal(sheet.buildLegacy2Context(a, config, Ruleset).movement.value, 14);
+});
+
+test("sem Voando, o maior deslocamento não oculto continua valendo", () => {
+  const a = actor({ attributes: {
+    hp: { value: 48, max: 60 }, init: { total: 3 },
+    movement: { units: "m", speeds: { walk: 10, fly: 14 } }
+  } });
+  assert.equal(sheet.buildLegacy2Context(a, config, Ruleset).movement.value, 14);
+});
+
+test("os dois templates de resumo trocam o rótulo para Voo quando voando", async () => {
+  const { readFileSync } = await import("node:fs");
+  const caminho = "C:/Users/kaa_v/Documents/FoundryVTT/Data/systems/jujutsu-system/templates/actors/tabs";
+  for (const arquivo of ["character-summary-hunter-2.hbs", "npc-summary-2.hbs"]) {
+    const fonte = readFileSync(`${caminho}/${arquivo}`, "utf8");
+    assert.ok(fonte.includes('>{{#if jj2.movement.voando}}Voo{{else}}Movimento{{/if}}</span>'), arquivo);
+  }
+});

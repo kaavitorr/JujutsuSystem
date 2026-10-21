@@ -9,6 +9,7 @@
 import { aplicarCondicaoPorDano } from "../../../systems/condicoes-dano.mjs";
 import Ruleset from "../../../systems/ruleset.mjs";
 import { applyNumericResistances } from "../../../systems/legacy2-resistances.mjs";
+import { absorbShieldDamage } from "../../../systems/legacy2-shield.mjs";
 
 /**
  * Aplica dano a um único ator seguindo a ordem de absorção.
@@ -18,12 +19,24 @@ import { applyNumericResistances } from "../../../systems/legacy2-resistances.mj
  * @param {number}  amount   Quantidade bruta de dano
  * @param {object}  [options]
  * @param {string[]|string} [options.damageTypes]  Tipo(s) de dano (chaves do sistema).
- *          Usado pela resistência por Pontos de Armadura: enquanto houver PA, a
- *          criatura resiste (metade) a tudo, exceto Verdadeiro (force).
+ *          Na 2.0 o Escudo absorve dois pontos de qualquer dano por ponto gasto.
+ *          A exceção de dano Verdadeiro (force) é exclusiva da 1.0.
+ * @param {boolean} [options.diretoNaVida]  Ignora escudo, armadura e pontos
+ *          temporários: o dano vai direto nos Pontos de Vida (Efeito Colateral —
+ *          Sobrecarga dos Seis Olhos, custo de técnica etc.).
  * @returns {Promise<{resist:number, reducao:number, armor:number, temp:number, hp:number}|null>}
  *          Resumo do que foi absorvido em cada camada, ou null se o ator não tem PV.
  */
-export async function applyDamageToActor(actor, amount, { damageTypes = [], damages } = {}) {
+export async function applyDamageToActor(actor, amount, { damageTypes = [], damages, diretoNaVida = false } = {}) {
+  if ( diretoNaVida ) {
+    const hp = actor?.system?.attributes?.hp;
+    if ( !hp ) return null;
+    const dano = Math.max(0, Number(amount) || 0);
+    await actor.update({ "system.attributes.hp.value": Math.max(0, (hp.value ?? 0) - dano) });
+    ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor }),
+      content: `🩸 <strong>${actor.name}</strong>: ${dano} de dano direto na vida.` });
+    return { resist: 0, reducao: 0, armor: 0, temp: 0, hp: dano };
+  }
   let restante = Math.max(0, Number(amount) || 0);
   let numericAdjustment = 0;
   if (Ruleset.isV2()) {
@@ -58,7 +71,7 @@ export async function applyDamageToActor(actor, amount, { damageTypes = [], dama
 
   // A resistência é dos PONTOS DE ARMADURA, não do personagem: ela só vale na
   // camada de PA (ver passo 2). O dano que passa para o PV NÃO é reduzido.
-  // Exceção: dano Verdadeiro (force) ignora a resistência da armadura.
+  // 1.0: dano Verdadeiro (force) ignora a resistência da armadura.
   const tipos = (Array.isArray(damageTypes) ? damageTypes : [damageTypes])
     .filter(Boolean).map(t => String(t).toLowerCase());
   const soVerdadeiro = tipos.length > 0 && tipos.every(t => t === "force");
@@ -87,10 +100,15 @@ export async function applyDamageToActor(actor, amount, { damageTypes = [], dama
 
   // 2. Pontos de Armadura (Foco Defensivo) — a armadura TEM resistência: cada
   //    ponto absorve 2 de dano (metade), parando o dobro do valor em PA. O que
-  //    sobra segue para o PV em cheio. Contra Verdadeiro (force) não há
-  //    resistência: 1 ponto absorve 1 de dano.
+  //    sobra segue para o PV em cheio. A 1.0 mantém a exceção de force.
   if ( armorAtual > 0 && restante > 0 ) {
-    if ( soVerdadeiro ) {
+    if ( Ruleset.isV2() ) {
+      const shield = absorbShieldDamage(armorAtual, restante);
+      restante = shield.remaining;
+      log.armor = shield.absorbed;
+      log.resist = shield.absorbed - shield.spent;
+      updates["system.armorPoints.value"] = shield.value;
+    } else if ( soVerdadeiro ) {
       const consumido = Math.min(armorAtual, restante);
       restante -= consumido;
       log.armor = consumido;

@@ -1,0 +1,76 @@
+// ============================================================
+// ATUALIZAR CUSTO DAS ARMAS — 2 Pontos de Ação por ataque
+// (+1 = 3 total para Mordida, Chifres e Ferrão, que causam
+//  dano adicional — regra da Enciclopédia, p. 18)
+// Rodar UMA VEZ como GM (macro de script ou console F12).
+// Afeta: JLRPG - Equipamentos e JLRPG - Equipamento PdN.
+// Idempotente: o que já está correto não é tocado.
+// ============================================================
+const PACKS = [
+  { id: "jujutsu-compendium.equipamentos", texto: true },
+  { id: "jujutsu-compendium.equipamento-pdn", texto: false }
+];
+// Partes de dano adicional: 2 + 1 = 3 Pontos de Ação
+const CUSTO_EXTRA = [/^Mordida/i, /^Chifre/i, /^Ferr/i];
+const custoDe = nome => CUSTO_EXTRA.some(rx => rx.test(nome)) ? "3" : "2";
+const textoDe = nome => `${custoDe(nome)} Pontos de Ação por ataque.`;
+
+let atualizadas = 0, jaOk = 0, semAtaque = 0;
+
+for (const { id: pid, texto } of PACKS) {
+  const pack = game.packs.get(pid);
+  if (!pack) { console.warn(`[custo-armas] Pack não encontrado: ${pid}`); continue; }
+  const docs = await pack.getDocuments({ type: "weapon" });
+  console.log(`[custo-armas] ${pid}: ${docs.length} armas`);
+
+  for (const item of docs) {
+    const custo = custoDe(item.name);
+    const upd = {};
+    let mudou = false;
+
+    // 1) consumo de energia em todas as activities de ataque
+    const acts = foundry.utils.deepClone(item.system.activities ?? {});
+    let temAtaque = false;
+    for (const a of Object.values(acts)) {
+      if (a.type !== "attack") continue;
+      temAtaque = true;
+      const cons = a.consumption ?? (a.consumption = {});
+      const targets = cons.targets ?? (cons.targets = []);
+      const atual = targets.find(t => t.target === "energy.generated");
+      if (!atual) {
+        targets.push({ type: "attribute", target: "energy.generated", value: custo });
+        mudou = true;
+      } else if (String(atual.value) !== custo) {
+        atual.value = custo;
+        mudou = true;
+      }
+    }
+    if (mudou) upd["system.activities"] = acts;
+    if (!temAtaque) semAtaque++;
+
+    // 2) texto do custo na descrição (somente packs que usam o texto)
+    const desc = item.system.description?.value ?? "";
+    const frase = `<p><strong>Custo de uso:</strong> ${textoDe(item.name)}</p>`;
+    if (texto && !desc.includes("Custo de uso")) {
+      upd["system.description.value"] = desc + frase;
+      mudou = true;
+    } else if (texto && /Custo de uso:<\/strong>\s*\d+ Pontos/.test(desc)
+               && !desc.includes(textoDe(item.name))) {
+      // texto existe mas com número errado
+      upd["system.description.value"] =
+        desc.replace(/Custo de use:<\/strong>\s*\d+ Pontos[^<]*/, frase.slice(4, -4))
+            .replace(/Custo de uso:<\/strong>\s*\d+ Pontos[^<]*/, frase.slice(4, -4));
+      mudou = true;
+    }
+
+    if (Object.keys(upd).length) {
+      await item.update(upd);
+      atualizadas++;
+      console.log(`✔ ${item.name} → ${custo} PA`);
+    } else {
+      jaOk++;
+    }
+  }
+}
+console.log(`[custo-armas] concluído: ${atualizadas} atualizadas, ${jaOk} já corretas, ${semAtaque} sem activity de ataque.`);
+ui.notifications.info(`Custo das armas ajustado (Mordida/Chifres/Ferrão = 3 PA; demais = 2): ${atualizadas} atualizadas.`);

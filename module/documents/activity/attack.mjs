@@ -3,8 +3,10 @@ import AttackRollConfigurationDialog from "../../applications/dice/attack-config
 import BaseAttackActivityData from "../../data/activity/attack-data.mjs";
 import TargetsField from "../../data/chat-message/fields/targets-field.mjs";
 import D20RollModificationField from "../../data/shared/d20-roll-modification-field.mjs";
-import { prepareJJAttackContext, postJJAttackRoll, commitLegacy2Attack } from "../../applications/actor/jj/native-cards.mjs";
+import { prepareJJAttackContext, postJJAttackRoll, commitLegacy2Attack, fulgorAtivoPara, excedenteCriticoPara } from "../../applications/actor/jj/native-cards.mjs";
+import { doencaInterrompeAtaque, marcarDoencaUsada } from "../../systems/peculiaridades-automacao.mjs";
 import Ruleset from "../../systems/ruleset.mjs";
+import { extraEscalaDano } from "../../systems/escala-dano.mjs";
 import { activationChoices } from "../../applications/activity/legacy2-activation.mjs";
 import ActivityMixin from "./mixin.mjs";
 
@@ -105,8 +107,20 @@ export default class AttackActivity extends ActivityMixin(BaseAttackActivityData
     // de Energia/PA já foi feita e é injetada pelo maybePromptJJScale.
     if ( rolls?.length && this.damage?.parts?.length && !config.skipAutoDamage ) {
       const { ability, ammunition, attackMode } = rolls[0].options ?? {};
+      // Doença Sobrenatural: crítico próprio é interrompido (Inconsciente,
+      // 1×/descanso longo) — o dano automático não rola.
+      if ( rolls[0].isCritical && doencaInterrompeAtaque(this.actor) ) {
+        await marcarDoencaUsada(this.actor);
+        return rolls;
+      }
+      // Kokusen (Fulgor Negro, 20 natural + dado secundário): o ×2,5 incide
+      // sobre o dano BASE — o crítico normal (dobrar os dados) é sobrescrito.
+      // Crítico Excedente: acerto acima da CA na margem rola como crítico
+      // (dobra os dados), mesmo funcionamento do 20 natural sem Black Flash.
+      const kokusen = fulgorAtivoPara(this);
+      const criticoEfetivo = rolls[0].isCritical || excedenteCriticoPara(this);
       await this.rollDamage(
-        { ability, ammunition, attackMode, isCritical: rolls[0].isCritical, legacy2: config.legacy2 },
+        { ability, ammunition, attackMode, isCritical: criticoEfetivo && !kokusen, legacy2: config.legacy2 },
         { configure: false }
       );
     }
@@ -156,10 +170,28 @@ export default class AttackActivity extends ActivityMixin(BaseAttackActivityData
       "rolls.attack", `rolls.attack.${this.getActionType(rollConfig.attackMode)}`
     ], { rules: { category: "attack", actor: this.actor, item: this.item, rollData } }) : {};
 
+    // Condições de visão (2.0):
+    //   Invisível: os ataques do ator invisível têm vantagem e ataques contra
+    //   um alvo invisível têm desvantagem.
+    //   Cego: os ataques do ator cego têm desvantagem e ataques contra um alvo
+    //   cego têm vantagem.
+    // Vantagem e desvantagem se anulam quando ambas ocorrem.
+    const condicoesVisao = a => ({
+      invisivel: !!a?.statuses?.has?.("jj-invisivel"),
+      cego: !!a?.statuses?.has?.("jj-cego")
+    });
+    const condAtacante = Ruleset.isV2() ? condicoesVisao(this.actor) : { invisivel: false, cego: false };
+    const condAlvos = Ruleset.isV2()
+      ? targets.map(d => condicoesVisao(fromUuidSync(d.token, { strict: false })?.actor))
+      : [];
+    const vantagemCondicional = condAtacante.invisivel || condAlvos.some(c => c.cego);
+    const desvantagemCondicional = condAtacante.cego || condAlvos.some(c => c.invisivel);
+
     rollConfig.hookNames = [...(config.hookNames ?? []), "attack", "d20Test"];
     rollConfig.rolls = [CONFIG.Dice.D20Roll.mergeConfigs({
       options: {
-        advantage, disadvantage,
+        advantage: (!!advantage || vantagemCondicional) && !(!!disadvantage || desvantagemCondicional),
+        disadvantage: (!!disadvantage || desvantagemCondicional) && !(!!advantage || vantagemCondicional),
         ammunition: rollConfig.ammunition,
         attackMode: rollConfig.attackMode,
         criticalSuccess: this.criticalThreshold,
@@ -362,6 +394,24 @@ export default class AttackActivity extends ActivityMixin(BaseAttackActivityData
   /* -------------------------------------------- */
   /*  Helpers                                     */
   /* -------------------------------------------- */
+
+  /**
+   * Roll data extra da 2.0: `@escala` resolve os dados da Escala de Dano de
+   * NPC pelo ND do ator — armas de NPC configuram o dano como "@escala + @mod"
+   * e seguem a tabela sem configuração por arma.
+   * @override
+   */
+  getRollData(options = {}) {
+    const rollData = super.getRollData(options);
+    if ( Ruleset.isV2() && (this.actor?.type === "npc") ) {
+      const nivel = Ruleset.nivel(this.actor);
+      rollData.escala = Ruleset.escalaDano(nivel).dados;
+      // Modificadores "+1 dado de dano / 4 ND" (Mordida, Chifres, Ferrão):
+      // concatena à fórmula, ex. "@escala + @mod@escalaExtra".
+      rollData.escalaExtra = extraEscalaDano(nivel);
+    }
+    return rollData;
+  }
 
   /**
    * Prepare ability options for this attack.

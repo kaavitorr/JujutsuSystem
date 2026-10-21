@@ -113,9 +113,19 @@ export function adquiridas(actor) {
   return actor?.getFlag("jujutsu-system", "especializacoes") ?? [];
 }
 
+/** Nomes concedidos pelo Mestre — não consomem escolha de especialização. */
+export function concedidas(actor) {
+  return actor?.getFlag?.("jujutsu-system", "especializacoesConcedidas") ?? [];
+}
+
+/** Todas as especializações que o ator possui (normais + concedidas). */
+export function possuidas(actor) {
+  return [...concedidas(actor), ...adquiridas(actor)];
+}
+
 /** O ator possui a especialização? */
 export function tem(actor, nome) {
-  return adquiridas(actor).includes(nome);
+  return possuidas(actor).includes(nome);
 }
 
 /** Registra/esquece uma especialização (persistência atômica). */
@@ -130,6 +140,23 @@ export async function esquecer(actor, nome) {
   const lista = adquiridas(actor);
   if ( !lista.includes(nome) ) return;
   await actor.setFlag("jujutsu-system", "especializacoes", lista.filter(n => n !== nome));
+  await removerItemEspecializacao(actor, nome);
+}
+
+/** Concede uma especialização sem gastar escolha (concessão do Mestre). */
+export async function conceder(actor, nome) {
+  if ( tem(actor, nome) ) return;
+  const lista = concedidas(actor);
+  if ( lista.includes(nome) ) return;
+  await actor.setFlag("jujutsu-system", "especializacoesConcedidas", [...lista, nome]);
+  await criarItemEspecializacao(actor, nome);
+}
+
+/** Retira uma concessão do Mestre (e o feat espelhado na ficha). */
+export async function revogarConcessao(actor, nome) {
+  const lista = concedidas(actor);
+  if ( !lista.includes(nome) ) return;
+  await actor.setFlag("jujutsu-system", "especializacoesConcedidas", lista.filter(n => n !== nome));
   await removerItemEspecializacao(actor, nome);
 }
 
@@ -177,7 +204,7 @@ async function removerItemEspecializacao(actor, nome) {
  */
 export async function sincronizarEspecializacoes(actor, grafo) {
   if ( !actor || !grafo?.porNome ) return;
-  const lista = adquiridas(actor);
+  const lista = possuidas(actor);
   const concedidos = actor.items.filter(i =>
     i.getFlag("jujutsu-system", "especializacaoAdquirida"));
   const faltando = lista.filter(nome =>
@@ -278,7 +305,7 @@ function avaliarRequisito(actor, requisito, nomeNo) {
   // (a) nome de outro nó do grafo (com ou sem >< na fonte original)
   const limpo = req.replaceAll(">", "").replaceAll("<", "").trim();
   if ( _porNome?.has(limpo) ) {
-    return { ok: adquiridas(actor).includes(limpo), texto: limpo, tipo: "no" };
+    return { ok: possuidas(actor).includes(limpo), texto: limpo, tipo: "no" };
   }
 
   // "A ou B (ou C…)" — requisitos alternativos: basta UMA das partes. Só vale
@@ -315,12 +342,12 @@ function avaliarRequisito(actor, requisito, nomeNo) {
     const qtd = Number(mCont[1]);
     const alvo = mCont[2].trim().replace(/\s+totais?$/i, "").trim();
     if ( /^especializa/i.test(alvo) ) {
-      return { ok: adquiridas(actor).length >= qtd, texto: req, tipo: "contagem" };
+      return { ok: possuidas(actor).length >= qtd, texto: req, tipo: "contagem" };
     }
     const norm = (s) => (s ?? "").toLowerCase();
     const ehCategoria = [...new Set([...(_porNome?.values() ?? [])].map(n => n.categoria))]
       .some(c => norm(c) === norm(alvo));
-    const tem = adquiridas(actor).filter(nome => {
+    const tem = possuidas(actor).filter(nome => {
       const no = _porNome?.get(nome);
       if ( !no ) return false;
       return ehCategoria ? norm(no.categoria) === norm(alvo)
@@ -359,6 +386,24 @@ function avaliarRequisito(actor, requisito, nomeNo) {
  * Estado de um nó para o ator: adquirido | disponível | bloqueado.
  * @returns {{estado: string, pendencias: {texto,tipo}[], informativos: string[]}}
  */
+/* ── Modificadores lendários que liberam requisitos ────────────────────────
+ * Receptáculo Destinado permite adquirir "Abençoado Pelas Faíscas Negras"
+ * ignorando qualquer requisito. No ator real o modificador é um feat da
+ * seção jj-legendary-modifiers; no draft da criação o pseudo-ator carrega
+ * os nomes escolhidos em flags.jujutsu-system.modLendarioNomes. */
+const IGNORA_REQUISITOS = Object.freeze({ "Abençoado Pelas Faíscas Negras": "Receptáculo Destinado" });
+
+const nomeChave = nome => String(nome ?? "").trim().toLocaleLowerCase();
+
+function temModificadorLendario(actor, nome) {
+  const alvo = nomeChave(nome);
+  if ( Array.isArray(actor?.flags?.["jujutsu-system"]?.modLendarioNomes)
+    && actor.flags["jujutsu-system"].modLendarioNomes.some(n => nomeChave(n) === alvo) ) return true;
+  return Array.from(actor?.items ?? []).some(item => item.type === "feat"
+    && nomeChave(item.name) === alvo
+    && (item.getFlag?.("jujutsu-system", "featureSection") ?? item.flags?.["jujutsu-system"]?.featureSection) === "jj-legendary-modifiers");
+}
+
 export function avaliarNo(actor, no) {
   if ( tem(actor, no.nome) ) return { estado: "adquirido", pendencias: [], informativos: [] };
 
@@ -370,6 +415,12 @@ export function avaliarNo(actor, no) {
     const res = avaliarRequisito(actor, req, no.nome);
     if ( res.tipo === "info" ) informativos.push(res.texto);
     else if ( !res.ok ) pendencias.push(res);
+  }
+  const liberador = Object.entries(IGNORA_REQUISITOS)
+    .find(([noNome]) => nomeChave(noNome) === nomeChave(no.nome))?.[1];
+  if ( liberador && temModificadorLendario(actor, liberador) ) {
+    pendencias.length = 0;
+    informativos.length = 0;
   }
   const estado = (pendencias.length === 0) && (informativos.length === 0)
     ? "disponivel"

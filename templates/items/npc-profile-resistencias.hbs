@@ -1,0 +1,24 @@
+<section class="tab {{tab.cssClass}} jj2-npc-resistencias" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+  <header class="jj2-scale-heading"><div><small>{{#if profile.taxonomy}}TAXONOMIA{{else}}ARQUÉTIPO{{/if}}</small><h2>Resistências a Dano</h2></div></header>
+  <p class="jj2-scale-intro">{{#if profile.taxonomy}}Valores fixos aplicados a todo NPC desta taxonomia: positivo reduz o dano (resistência), negativo aumenta (vulnerabilidade). Imune anula o dano do tipo.{{else}}Resistência por ND: valores positivos escalam com o ND do NPC (valor × ND) e negativos são vulnerabilidade de valor fixo. Imune anula o dano do tipo.{{/if}}</p>
+  <div class="jj2-npc-res-grid">
+    {{#each profile.resistencias}}
+    <div class="jj2-npc-res-row" data-damage-type="{{key}}">
+      <span class="jj2-npc-res-name">{{label}}</span>
+      {{#if @root.editable}}
+      <input type="number" name="system.resistencias.{{key}}.value" value="{{value}}" step="1" data-dtype="Number"
+        aria-label="{{#if @root.profile.taxonomy}}Resistência a {{label}}{{else}}Resistência por ND a {{label}}{{/if}}"
+        title="{{#if @root.profile.taxonomy}}Positivo: resistência · Negativo: vulnerabilidade{{else}}Positivo: resistência por ND (× ND) · Negativo: vulnerabilidade fixa{{/if}}">
+      <label class="jj2-npc-res-immune" title="Imunidade a {{label}}">
+        <input type="checkbox" name="system.resistencias.{{key}}.immune" {{checked immune}}>
+        <span>Imune</span>
+      </label>
+      {{else}}
+      <strong class="jj2-npc-res-value" aria-label="Valor">{{#if immune}}∞{{else}}{{value}}{{/if}}</strong>
+      <span class="jj2-npc-res-immune{{#if immune}} active{{/if}}">{{#if immune}}Imune{{else}}—{{/if}}</span>
+      {{/if}}
+    </div>
+    {{/each}}
+  </div>
+  <p class="jj2-scale-copy-note">Os valores do perfil se somam às resistências próprias do NPC (Resumo da ficha dele), que continuam editáveis por criatura.</p>
+</section>

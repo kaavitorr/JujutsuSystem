@@ -2,7 +2,7 @@
   "id": "jujutsu-system",
   "title": "Jujutsu Legacy",
   "description": "Jujutsu Legacy RPG — a Jujutsu Kaisen-inspired tabletop role-playing system for the Foundry Virtual Tabletop environment.",
-  "version": "1.2.1",
+  "version": "1.2.15",
   "compatibility": {
     "minimum": "14.367",
     "verified": "14"
@@ -193,10 +193,16 @@
     },
     "Item": {
       "taxonomy": {
-        "htmlFields": ["description.value", "description.chat"]
+        "htmlFields": [
+          "description.value",
+          "description.chat"
+        ]
       },
       "archetype": {
-        "htmlFields": ["description.value", "description.chat"]
+        "htmlFields": [
+          "description.value",
+          "description.chat"
+        ]
       },
       "weapon": {
         "filePathFields": {

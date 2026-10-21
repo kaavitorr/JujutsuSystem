@@ -14,7 +14,7 @@ import ChatTrayElement from "./chat-tray-element.mjs";
  * List of multiplier options as tuples containing their numeric value and rendered text.
  * @type {[number, string][]}
  */
-const MULTIPLIERS = [[-1, "-1"], [0, "0"], [.25, "¼"], [.5, "½"], [1, "1"], [2, "2"]];
+const MULTIPLIERS = [[-1, "-1"], [0, "0"], [.25, "¼"], [.5, "½"], [1, "1"], [2, "2"], [2.5, "K<i class=\"fa-fw fa-solid fa-bolt\" aria-hidden=\"true\"></i>"]];
 
 /**
  * Application to handle applying damage from a chat card.
@@ -332,10 +332,23 @@ export default class DamageApplicationElement extends ChatTrayElement {
    */
   buildMultiplierButtons(active) {
     const pressed = active instanceof Set ? active : new Set([active]);
+    // Crítico: os dados já foram rolados novamente na rolagem — dobrar de
+    // novo na aplicação multiplicaria o total, então o "2" fica indisponível.
+    const critico = this.chatMessage?.rolls?.some(roll => roll.isCritical) === true;
     return MULTIPLIERS.map(([value, display]) => {
       const button = document.createElement("button");
       button.classList.add("multiplier-button", "split-control");
       Object.assign(button, { value, ariaPressed: pressed.has(value), type: "button" });
+      if ( value === 2.5 ) {
+        // Kokusen: aplica o dano com o multiplicador do Black Flash (×2,5).
+        button.classList.add("jj2-kokusen-mult");
+        button.title = "Fulgor Negro (Kokusen) — aplica o dano ×2,5";
+        button.setAttribute("aria-label", "Fulgor Negro: multiplicador 2,5");
+      }
+      if ( critico && (value === 2) ) {
+        button.disabled = true;
+        button.title = "Card crítico: os dados já foram rolados novamente na rolagem.";
+      }
       button.insertAdjacentHTML("afterbegin", `<span>${display}</span>`);
       return button;
     });

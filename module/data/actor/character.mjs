@@ -451,7 +451,17 @@ export default class CharacterData extends CreatureTemplate {
       // com o TOTAL limitado a 28; e progressão mínima Mestre/Proficiente em
       // Feitiço (arc) e Percepção (prc).
       const seisCr = crSeisOlhos(actor2);
-      this.attributes.ac.value = Math.min(28, Ruleset.resistanceClass(actor2) + seisCr);
+      // Modificadores de CR de efeitos (Enfurecido/Exposto −2, manipulações
+      // etc.): a diferença entre o bônus preparado (com Active Effects) e o da
+      // fonte — o valor próprio do ator fica fora da fórmula, como antes.
+      const bonusCREfeitos = Math.trunc(Number(this.attributes.ac.bonus ?? 0)
+        - Number(this._source?.attributes?.ac?.bonus ?? 0)) || 0;
+      this.attributes.ac.value = Math.min(28, Ruleset.resistanceClass(actor2) + seisCr + bonusCREfeitos);
+      // Override de CR por efeito (ex.: Inconsciente automático a 0 PV): vence
+      // sobre a fórmula.
+      if ( Number.isFinite(this.attributes.ac.override) ) {
+        this.attributes.ac.value = this.attributes.ac.override;
+      }
       this.attributes.ac.calc = "resistencia";
       this.attributes.ac.armor = this.attributes.ac.value;
       const rankSeis = rankSeisOlhos(actor2);
@@ -511,6 +521,15 @@ export default class CharacterData extends CreatureTemplate {
     this.masteryLocked = (masteryTable.find(m => mp >= m.pts)?.level ?? 0) > 7 && !dominioExpandido;
 
     // Pontos de Armadura (Foco Defensivo) — máximo derivado das habilidades:
+    // Na 2.0 a especialização Foco Múltiplo usa o mesmo atributo persistente.
+    if ( Ruleset.isV2() ) {
+      this.armorPoints ??= {};
+      this.armorPoints.max = (this.parent?.itemTypes?.feat ?? []).some(item =>
+        item.system?.identifier === "foco-multiplo" || item.name === "Foco Múltiplo") ? 20 : 0;
+      // Edições manuais e efeitos continuam válidos sem o desbloqueio antigo da 1.0.
+      this.armorPoints.value = Math.max(0, this._source?.armorPoints?.value ?? this.armorPoints.value ?? 0);
+      return;
+    }
     //  • Foco Defensivo desbloqueado → 20
     //  • Fluxo Constante desbloqueado → +20 adicionais
     //  • Resistência Aprimorada (rank 1/2/3) → +rank por Nível de Maestria

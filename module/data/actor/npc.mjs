@@ -17,7 +17,8 @@ import TraitsFields from "./templates/traits.mjs";
 import legacy2Schema from "./legacy2-schema.mjs";
 import Ruleset from "../../systems/ruleset.mjs";
 import { prepareNpc2Abilities } from "../../systems/legacy2-npc-attributes.mjs";
-import { npcProfile } from "../../systems/legacy2-npc-profiles.mjs";
+import { npcProfile, npcNd } from "../../systems/legacy2-npc-profiles.mjs";
+import { NUMERIC_DAMAGE_TYPES } from "../../systems/legacy2-resistances.mjs";
 import { npcClassification, prepareNpcClassificationActions, npcClassificationActionUpdate } from "../../systems/legacy2-npc-classification.mjs";
 import { prepareEngagement } from "../../systems/engagement.mjs";
 
@@ -507,13 +508,48 @@ export default class NPCData extends CreatureTemplate {
       this.attributes.hd.max = 0;
       this.attributes.hd.value = 0;
       // CR com o principal do Arquétipo (ou do estilo, quando só ele existe)
-      const principal = npcProfile(actor2, "archetype")
+      const arquetipo = npcProfile(actor2, "archetype");
+      const principal = arquetipo
         ? Ruleset.npcPrincipal(actor2)
         : (estiloCfg.atributoPrincipal ?? "str");
       const attrV = (id) => Number(this.abilities?.[id]?.value ?? 1);
-      this.attributes.ac.value = 10 + Math.floor((attrV(principal) + attrV("dex") + attrV("con")) / 3);
+      // Bônus de CR de efeitos (Enfurecido/Exposto −2, manipulações etc.): a
+      // diferença entre o bônus preparado (com Active Effects) e o da fonte —
+      // sem isso, o Enfurecido não derrubaria a CR de nenhuma criatura.
+      const bonusCR = Math.trunc(Number(this.attributes.ac.bonus ?? 0)
+        - Number(this._source?.attributes?.ac?.bonus ?? 0)) || 0;
+      this.attributes.ac.value = 10 + Math.floor((attrV(principal) + attrV("dex") + attrV("con")) / 3) + bonusCR;
+      // Override de CR por efeito (ex.: Inconsciente automático a 0 PV): vence
+      // sobre a fórmula.
+      if ( Number.isFinite(this.attributes.ac.override) ) {
+        this.attributes.ac.value = this.attributes.ac.override;
+      }
       this.attributes.ac.calc = "resistencia";
       this.attributes.ac.armor = this.attributes.ac.value;
+      // Resistências dos perfis (2.0): a Taxonomia aplica valores fixos e o
+      // Arquétipo aplica resistência por ND — positivo escala com o ND
+      // (valor × ND), negativo é vulnerabilidade de valor fixo; a imunidade
+      // de qualquer perfil vence. Soma sobre os valores próprios do NPC
+      // (fonte); os cards da ficha mostram o base ao lado do efetivo.
+      const taxonomia = npcProfile(actor2, "taxonomy");
+      if ( taxonomia || arquetipo ) {
+        const ndPerfil = npcNd(actor2.system.legacy2?.nd);
+        for ( const { key } of NUMERIC_DAMAGE_TYPES ) {
+          const efetivo = this.legacy2.resistances?.[key];
+          if ( !efetivo ) continue;
+          const base = this._source.legacy2?.resistances?.[key] ?? {};
+          let contrib = 0, imune = false;
+          for ( const [perfil, porNd] of [[taxonomia, false], [arquetipo, true]] ) {
+            const def = perfil?.resistencias?.[key];
+            if ( !def ) continue;
+            const valor = Number(def.value) || 0;
+            contrib += (porNd && (valor > 0)) ? valor * ndPerfil : valor;
+            imune ||= !!def.immune;
+          }
+          efetivo.value = (Number(base.value) || 0) + contrib;
+          efetivo.immune = !!base.immune || imune;
+        }
+      }
       // Iniciativa 2.0: ((AGI + INT) / 2) — igual aos personagens
       const iniciativa2 = Ruleset.iniciativa(actor2);
       this.attributes.init.mod = iniciativa2;

@@ -6,3 +6,16 @@
 @import url("./jujutsu-documents-2.css");
 @import url("./jujutsu-feitico-2.css");
 @import url("./character-creation-2.css");
+.dnd5e2.jj2-ruptura .jj2-effects-page .jj2-fulgor-box { display:grid; gap:12px; margin:0 0 18px; padding:14px; border:1px solid #b3823f66; border-left:3px solid var(--jj2-gold); background:repeating-linear-gradient(155deg, transparent 0 18px, #ffffff04 18px 19px), #1b1420; }
+.dnd5e2.jj2-ruptura .jj2-fulgor-heading { display:flex; align-items:center; gap:9px; color:var(--jj2-gold); }
+.jj2-ruptura .jj2-fulgor-heading h3 { margin:0; border:0; color:var(--jj2-paper); font:italic 700 18px/1.2 JJ2Condensed,sans-serif; }
+.jj2-ruptura .jj2-fulgor-heading span { color:var(--jj2-muted); font-size:10px; }
+.jj2-ruptura .jj2-fulgor-settings { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.jj2-ruptura .jj2-fulgor-settings label { display:grid; grid-template-columns:minmax(0,1fr) 48px; align-items:center; gap:5px 8px; min-width:0; font-size:12px; }
+.jj2-ruptura .jj2-fulgor-settings input { width:48px; height:30px; margin:0; text-align:center; color:var(--jj2-gold); font:700 18px JJ2Condensed,sans-serif; }
+.jj2-ruptura .jj2-fulgor-settings small { grid-column:1 / -1; color:var(--jj2-muted); font-size:10px; }
+.jj2-ruptura .jj2-fulgor-hint { margin:0; color:var(--jj2-muted); font-size:10px; line-height:1.4; }
+.jj2-ruptura .jj2-fulgor-controls { display:flex; flex-wrap:wrap; gap:8px; }
+.dnd5e2.jj2-ruptura .jj2-fulgor-box button { display:flex; align-items:center; justify-content:center; gap:6px; min-height:30px; padding:5px 10px; color:var(--jj2-paper); background:#241a2c; border:1px solid #b3823f66; font-size:11px; font-weight:700; }
+.dnd5e2.jj2-ruptura .jj2-fulgor-box .jj2-fulgor-testar { color:#17131e; background:#efc351; border-color:#efc351; }
+.dnd5e2.jj2-ruptura .jj2-fulgor-box .jj2-fulgor-zona.active { color:#17131e; background:#b3823f; border-color:#b3823f; }

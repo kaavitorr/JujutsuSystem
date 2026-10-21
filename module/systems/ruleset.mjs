@@ -1,6 +1,7 @@
-import { weaponGroupRank } from "./legacy2-proficiencies.mjs";
+import { weaponGroupRank, proficienciaPorDefeitos } from "./legacy2-proficiencies.mjs";
 import { extrasAtributosEstado, npcAttributeDistribution, npcNd, npcProfile } from "./legacy2-npc-profiles.mjs";
 import { npcClassification } from "./legacy2-npc-classification.mjs";
+import { ESCALA_DANO, linhaEscalaDano, formulaEscalaDano } from "./escala-dano.mjs";
 
 /**
  * ── RULESET 2.0 ──────────────────────────────────────────────────────────────
@@ -77,7 +78,8 @@ export default class Ruleset {
 
   /**
    * Pool total de pontos de treino de um ator na 2.0:
-   * criação (CONFIG, calibrável) + 1 por nível + concessões do Mestre.
+   * criação (CONFIG, calibrável) + 1 por nível + concessões do Mestre
+   * + a conversão de Defeitos (cada 2 Pontos de Defeito = 1 Ponto).
    */
   static trainingPointsTotal(actor) {
     const stylePoints = this.isV2() ? this.estilo(actor)?.proficiencias : null;
@@ -85,7 +87,8 @@ export default class Ruleset {
       : Number(CONFIG.JUJUTSU?.trainingPoints?.criacao ?? 4);
     const level = Number(actor?.system?.details?.level ?? 1);
     const extra = Number(actor?.system?.legacy2?.pontos?.extra ?? 0);
-    return creation + (stylePoints ? Math.max(0, level - 1) : level) + extra;
+    const defeitos = proficienciaPorDefeitos(actor);
+    return creation + (stylePoints ? Math.max(0, level - 1) : level) + extra + defeitos;
   }
 
   /** Pontos ainda disponíveis (total − gastos). */
@@ -254,6 +257,25 @@ export default class Ruleset {
     return Number.isFinite(nd) && (nd > 0) ? nd : Number(actor?.system?.details?.level ?? 1);
   }
 
+  /* ── Escala de Dano de NPC (2.0) ───────────────────────────────────────── */
+
+  /** Tabela canônica da Escala de Dano (linhas { nd, dados }). */
+  static ESCALA_DANO = ESCALA_DANO;
+
+  /** Linha da Escala de Dano para um ND (ímpar cai no par anterior). */
+  static escalaDano(nd) {
+    return linhaEscalaDano(nd);
+  }
+
+  /**
+   * Fórmula de dano da escala: `formulaEscalaDano(nd, { atributo })` — com
+   * número ("1d6 + 3") ou placeholder ("1d6 + @mod"). Armas de NPC usam
+   * "@escala + @mod" no dano e o rolldata resolve a linha pelo ND.
+   */
+  static formulaEscalaDano(nd, options) {
+    return formulaEscalaDano(nd, options);
+  }
+
   /**
    * Config do Estilo de Combate do ator — lida do item de Classe criado a
    * partir do compendium "Geral - 2.0" (flag jujutsu-system.legacy2 no item):
@@ -377,6 +399,13 @@ export default class Ruleset {
     let energiaBase;
     if ( estilo && ("energiaBase" in estilo) ) energiaBase = Number(estilo.energiaBase ?? 0);
     else energiaBase = Number(npcProfile(actor, "taxonomy")?.energiaBase ?? 10);
+    // Energia Colossal (modificador lendário): dobra APENAS o valor descrito no
+    // Estilo de Combate (a raiz) — aumentos de origem de poder e peculiaridades
+    // NÃO são dobrados (efeito em flags.jujutsu-system.energiaColossal).
+    if ( estilo && ("energiaBase" in estilo)
+      && (Number(actor?.flags?.["jujutsu-system"]?.energiaColossal) > 0) ) {
+      energiaBase *= 2;
+    }
     // Energia Base da Origem soma à base do Estilo (snapshot energiaEspecie).
     energiaBase = Math.max(0, energiaBase + Number(actor?.system?.legacy2?.energiaEspecie ?? 0));
     const level = this.nivel(actor);

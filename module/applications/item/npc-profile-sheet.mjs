@@ -1,4 +1,5 @@
 import ItemSheet5e from "./item-sheet.mjs";
+import { NUMERIC_DAMAGE_TYPES } from "../../systems/legacy2-resistances.mjs";
 import { distributeNpcAttributes, NPC_ABILITIES, NPC_EQUAL_SCALE, validNpcScale } from "../../systems/legacy2-npc-profiles.mjs";
 
 /** Save all six weights together, rather than rejecting intermediate edits. */
@@ -12,12 +13,14 @@ export default class NpcProfileSheet extends ItemSheet5e {
     header: super.PARTS.header, tabs: super.PARTS.tabs,
     scales: { template: "systems/jujutsu-system/templates/items/npc-profile-scales.hbs",
       templates: ["systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs"], scrollable: [""] },
+    resistencias: { template: "systems/jujutsu-system/templates/items/npc-profile-resistencias.hbs", scrollable: [""] },
     habilidades: { template: "systems/jujutsu-system/templates/items/npc-profile-habilidades.hbs",
       templates: ["systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs"], scrollable: [""] },
     description: super.PARTS.description,
     footer: { template: "systems/jujutsu-system/templates/items/npc-profile-footer.hbs" }
   };
   static TABS = [ { tab: "scales", label: "Escala de Atributos" },
+    { tab: "resistencias", label: "Resistências" },
     { tab: "habilidades", label: "Habilidades" },
     { tab: "description", label: "Descrição" } ];
   tabGroups = { primary: "scales" };
@@ -39,6 +42,13 @@ export default class NpcProfileSheet extends ItemSheet5e {
           img: doc?.img ?? "icons/svg/book.svg" };
       })));
       context.profile = { ...(context.profile ?? {}), habilidades: entradas.sort((a, b) => a.nd - b.nd) };
+      return context;
+    }
+    if (partId === "resistencias") {
+      const fontes = context.source.resistencias ?? {};
+      context.profile = { ...(context.profile ?? {}), taxonomy: this.item.type === "taxonomy",
+        resistencias: NUMERIC_DAMAGE_TYPES.map(({ key, label }) => ({ key, label,
+          value: Number(fontes[key]?.value) || 0, immune: !!fontes[key]?.immune })) };
       return context;
     }
     if (partId !== "scales") return context;

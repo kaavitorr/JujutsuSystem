@@ -389,7 +389,9 @@ export default class ChatMessage5e extends ChatMessage {
         label: "DND5E.ChatContextDoubleDamage",
         icon: "fa-solid fa-user-injured",
         group: "damage",
-        visible: canApply,
+        // Cards críticos já vêm com os dados re-rolados: "em dobro" dobraria
+        // o total de novo, então a opção só existe para cards normais.
+        visible: li => canApply(li) && !game.messages.get(li.dataset.messageId)?.rolls?.some(roll => roll.isCritical),
         onClick: (_, target) => game.messages.get(target.dataset.messageId)?.applyChatCardDamage(target, 2)
       },
       {
@@ -498,6 +500,10 @@ export default class ChatMessage5e extends ChatMessage {
    * @returns {Promise}
    */
   applyChatCardDamage(li, multiplier) {
+    // Regra 2.0 do crítico: os dados de dano JÁ são rolados novamente na
+    // rolagem — aplicar "em dobro" sobre um card crítico dobraria o total
+    // de novo, então o multiplicador cai para 1.
+    if ( (multiplier === 2) && this.rolls?.some(roll => roll.isCritical) ) multiplier = 1;
     const damages = aggregateDamageRolls(this.rolls, { respectProperties: true }).map(roll => ({
       value: Math.max(0, roll.total) * (roll.options.type in CONFIG.DND5E.healingTypes ? -1 : 1),
       type: roll.options.type,

@@ -16,7 +16,15 @@ const currentActions = (value, max) => Number.isFinite(Number(value)) ? Math.min
 export function prepareNpcClassificationActions(system) {
   const rules = system.legacy2 ??= {}, classification = npcClassification({ system });
   const actions = rules.actions ??= { value: classification.actions };
-  actions.max = classification.actions;
+  // Condições de Ação (Atordoado −4, Concussão −2, Incapacitado −2, Sonolento
+  // −1, Acelerado +2, Paralisado 0, Desidratado −1) são Active Effects
+  // aplicados ANTES desta fase sobre o máximo preparado — preserva o delta
+  // sobre o máximo da fonte, do mesmo jeito que o delta de CR dos efeitos.
+  // Sem isso, nenhuma condição de PA afeta NPCs: o teto da classificação
+  // sobrescrevia a contribuição do efeito.
+  const fonteMax = Number(system._source?.legacy2?.actions?.max ?? classification.actions);
+  const deltaEfeitos = Math.trunc(Number(actions.max) - fonteMax) || 0;
+  actions.max = Math.max(0, classification.actions + deltaEfeitos);
   actions.value = currentActions(actions.value, actions.max);
 }
 

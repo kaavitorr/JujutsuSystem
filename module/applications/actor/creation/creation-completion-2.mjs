@@ -1,5 +1,6 @@
 import Ruleset from "../../../systems/ruleset.mjs";
-import { creationActor, validateCreation, rankSpent, ABILITY_KEYS, styleRules, creationPathOptions, creationSpecializationSlots } from "./creation-model-2.mjs";
+import { creationActor, validateCreation, rankSpent, ABILITY_KEYS, styleRules, creationPathOptions, creationSpecializationSlots,
+  PENALIDADE_VITAL_NOME, penalidadeVitalUuid } from "./creation-model-2.mjs";
 
 const pending = new WeakMap();
 const raw = doc => structuredClone(doc.toObject?.() ?? doc);
@@ -56,6 +57,13 @@ export async function prepareCreationCompletion(actor, draft, catalog, {
     data._stats = { ...data._stats, compendiumSource: source.startsWith("Compendium.") ? source : data._stats?.compendiumSource ?? null };
     data.flags ??= {}; data.flags["jujutsu-system"] = { ...data.flags["jujutsu-system"], ...tag,
       creation2Source: source };
+    // A penalidade de Vida/Energia traz os dois efeitos; no ator entra só o
+    // lado escolhido na criação (a escolha fica registrada na flag).
+    if ( doc?.type === "feat" && doc.name === PENALIDADE_VITAL_NOME ) {
+      data.flags["jujutsu-system"].penalidadeVital = draft.penalidadeVital;
+      const manter = draft.penalidadeVital === "vida" ? "Penalidade: Vida" : "Penalidade: Energia";
+      data.effects = (data.effects ?? []).filter(efeito => efeito.name === manter);
+    }
     if (data.type === "class") data.system.levels = 1;
     create.push(data);
     seen.set(uuid, data);
@@ -90,6 +98,13 @@ export async function prepareCreationCompletion(actor, draft, catalog, {
   const energiaAdicional = Number(species.getFlag?.("jujutsu-system", "energiaAdicional")
     ?? species.flags?.["jujutsu-system"]?.energiaAdicional ?? 0);
   preview.system.legacy2.energiaBonusOrigem = energiaAdicional;
+  // Penalidade variante de Vida/Energia: o lado escolhido entra no preview
+  // para PV/Energia iniciais já reduzidos (no ator, o efeito transferido do
+  // item mantém a redução no valor preparado).
+  const penalidadeVital = draft.customization["jj-variant-penalties"]?.includes(penalidadeVitalUuid(catalog))
+    ? draft.penalidadeVital : null;
+  if ( penalidadeVital === "vida" ) preview.system.legacy2.pvEspecie -= 2;
+  if ( penalidadeVital === "energia" ) preview.system.legacy2.energiaEspecie -= 4;
   const hp = Ruleset.maxHitPoints(preview), energy = Ruleset.maxEnergy(preview);
   const caminhoInfo = creationPathOptions(style).find(caminho => caminho.id === draft.caminho) ?? null;
   const slotsExtras = Math.max(0, creationSpecializationSlots(style, draft.caminho).total - Number(styleRules(style).espIniciais ?? 0));

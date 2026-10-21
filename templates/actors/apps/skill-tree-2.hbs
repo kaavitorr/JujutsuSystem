@@ -5,7 +5,7 @@
       <div><span class="jj2m-eyebrow">Jujutsu Legacy 2.0</span><h2>Mapa de caminhos</h2><p>{{actor.name}}</p></div>
     </div>
     <div class="jj2m-budget" aria-label="Escolhas de especialização" aria-live="polite">
-      <output>{{escolhas.disponiveis}}</output><div><strong>escolhas disponíveis</strong><span>{{escolhas.usadas}} de {{escolhas.totais}} utilizadas</span></div>
+      <output>{{escolhas.disponiveis}}</output><div><strong>escolhas disponíveis</strong><span>{{escolhas.usadas}} de {{escolhas.totais}} utilizadas{{#if escolhas.concedidas}} · {{escolhas.concedidas}} concedida(s) pelo Mestre{{/if}}</span></div>
     </div>
     <div class="jj2m-header-actions">
       {{#if ehGM}}<button type="button" class="jj2m-adm {{#if admMode}}on{{/if}}" data-action="adm" aria-pressed="{{admMode}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="edit"}}<span>Requisitos</span></button>{{/if}}
@@ -81,12 +81,20 @@
       </section>
       <div class="jj2m-actions">
         {{#if podeEditar}}
-          {{#if (eq selecionado.estado "adquirido")}}<button type="button" class="jj2m-learn esquecer" data-action="esquecer" data-nome="{{selecionado.nome}}">Desfazer escolha</button>
-          {{else if temEscolhas}}
-            {{#if (eq selecionado.estado "disponivel")}}<button type="button" class="jj2m-learn" data-action="aprender" data-nome="{{selecionado.nome}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}Aprender · 1 escolha</button>
-            {{else if ehGM}}<button type="button" class="jj2m-learn gm" data-action="aprender" data-nome="{{selecionado.nome}}">Conceder (Mestre) · 1 escolha</button>
-            {{else}}<button type="button" class="jj2m-learn" disabled>Requisitos pendentes</button>{{/if}}
-          {{else}}<button type="button" class="jj2m-learn" disabled>Sem escolhas disponíveis</button>{{/if}}
+          {{#if (eq selecionado.estado "adquirido")}}
+            {{#if selecionado.concedida}}
+              {{#if ehGM}}<button type="button" class="jj2m-learn esquecer" data-action="revogar" data-nome="{{selecionado.nome}}">Revogar concessão</button>
+              {{else}}<button type="button" class="jj2m-learn" disabled>Concedida pelo Mestre</button>{{/if}}
+            {{else}}<button type="button" class="jj2m-learn esquecer" data-action="esquecer" data-nome="{{selecionado.nome}}">Desfazer escolha</button>{{/if}}
+          {{else}}
+            {{#if ehGM}}<button type="button" class="jj2m-learn gm" data-action="conceder" data-nome="{{selecionado.nome}}">Conceder (Mestre) · sem custo</button>{{/if}}
+            {{#if temEscolhas}}
+              {{#if (eq selecionado.estado "disponivel")}}<button type="button" class="jj2m-learn" data-action="aprender" data-nome="{{selecionado.nome}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}Aprender · 1 escolha</button>
+              {{else if ehGM}}<button type="button" class="jj2m-learn gm" data-action="aprender" data-nome="{{selecionado.nome}}">Forçar (Mestre) · 1 escolha</button>
+              {{else}}<button type="button" class="jj2m-learn" disabled>Requisitos pendentes</button>{{/if}}
+            {{else if ehGM}}<button type="button" class="jj2m-learn gm" data-action="aprender" data-nome="{{selecionado.nome}}">Forçar (Mestre) · sem escolhas</button>
+            {{else}}<button type="button" class="jj2m-learn" disabled>Sem escolhas disponíveis</button>{{/if}}
+          {{/if}}
         {{else}}<button type="button" class="jj2m-learn" disabled>Somente leitura</button>{{/if}}
         <button type="button" class="jj2m-open" data-action="abrir">Abrir habilidade no compêndio</button>
       </div>

@@ -1,0 +1,11 @@
+<div class="jj2-shield" data-resource="shield" role="group" aria-label="Pontos de Escudo">
+  <div class="jj2-shield-control">
+    <svg class="jj2-shield-frame" viewBox="0 0 72 76" fill="none" stroke="currentColor" stroke-linejoin="miter" aria-hidden="true">
+      <path class="jj2-shield-plate" d="m36 8 23 9-3 29-20 17-20-17-3-29Z"/>
+      <path class="jj2-shield-inset" d="m36 13 18 7-3 23-15 13-15-13-3-23Z"/>
+      <path class="jj2-shield-accents" d="m10 22-1-8 12-4m30 0 12 4-1 8M25 62l11 9 11-9"/>
+    </svg>
+    <input id="{{rootId}}-jj2-shield" type="number" name="system.armorPoints.value" value="{{jj2.shield.value}}" min="0" step="1" data-dtype="Number" aria-label="Pontos de Escudo atuais" data-tooltip="Pontos de Escudo · Clique para editar" class="{{#if owner}}always-interactive{{/if}}" {{disabled (not owner)}}>
+  </div>
+  {{#if jj2.shield.canActivate}}<button type="button" class="jj2-shield-toggle {{#if owner}}always-interactive{{/if}}" data-action="jj2DefensiveFocus" aria-label="{{jj2.shield.toggleLabel}}" data-tooltip="{{jj2.shield.toggleLabel}}" {{disabled (not owner)}}>Pontos de Escudo</button>{{else}}<label for="{{rootId}}-jj2-shield">Pontos de Escudo</label>{{/if}}
+</div>

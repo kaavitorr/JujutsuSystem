@@ -1,12 +1,13 @@
 import Ruleset from "../../../systems/ruleset.mjs";
 import { CREATION_STEPS, ABILITY_KEYS, creationDraft, creationBudgets, styleRules, rankSpent,
-  chooseCreationStyle, chooseCreationPath, creationPathOptions, creationSpecializationSlots, creationPrimaryOptions, creationSpecializationScope, allocateCreationRank, toggleCreationSpecialization, evaluateCreationSpecialization, creationPodeEscolher, creationSpeciesGroups, validateCreation, speciesAtributosAdicionais } from "./creation-model-2.mjs";
+  chooseCreationStyle, chooseCreationPath, creationPathOptions, creationSpecializationSlots, creationPrimaryOptions, creationSpecializationScope, allocateCreationRank, toggleCreationSpecialization, evaluateCreationSpecialization, creationPodeEscolher, creationSpeciesGroups, validateCreation, speciesAtributosAdicionais,
+  PENALIDADE_VITAL_NOME, penalidadeVitalUuid } from "./creation-model-2.mjs";
 import { loadCreationCatalog, resolveCreationDocument } from "./creation-catalog-2.mjs";
 import { commitCreation } from "./creation-completion-2.mjs";
 import { CUSTOMIZATION_SECTIONS } from "../jj/legacy2-customization.mjs";
 const limiteDaSecao = (category) => CUSTOMIZATION_SECTIONS.find(s => s.id === category)?.max ?? Infinity;
 import { SKILL_GROUPS } from "../jj/legacy2-sheet.mjs";
-import { WEAPON_GROUPS } from "../../../systems/legacy2-proficiencies.mjs";
+import { WEAPON_GROUPS, CONVERSAO_DEFEITO, pontosDoItem } from "../../../systems/legacy2-proficiencies.mjs";
 import { ICONES_CATEGORIA } from "../jj/skill-tree-map-2.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
@@ -24,6 +25,7 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
       species: this.onSpecies, style: this.onStyle, path: this.onPath, ability: this.onAbility, rank: this.onRank,
       specialization: this.onSpecialization, category: this.onCategory, focus: this.onFocus,
       customization: this.onCustomization, browseCustomization: this.onBrowseCustomization,
+      penalidadeVital: this.onPenalidadeVital,
       profile: this.onProfile, token: this.onToken, copyPortrait: this.onCopyPortrait, finish: this.onFinish
     }
   };
@@ -123,23 +125,38 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
           name: String(doc.name ?? "").replace(/\s*\(\d+\s*pontos?\)/i, "").trim(), img: doc.img,
           desc: String(doc.system?.description?.value ?? "").trim(),
           picked: draft.customization[section.id].includes(doc.uuid) }));
-        // Defeitos vêm em 1/3/5 pontos: agrupa quando TODOS trazem "(N pontos)" no nome.
+        // Defeitos vêm em 1/3/5 pontos: agrupa quando TODOS pontuam (flag do
+        // importador ou sufixo "(N pontos)" no nome).
         const porNome = new Map(catalog.customization[section.id].map(doc => [doc.uuid, doc]));
         const grupos = new Map();
         const todosComPontos = options.length > 0 && options.every(item =>
-          /\((\d+)\s*pontos?\)/i.test(porNome.get(item.uuid)?.name ?? ""));
+          pontosDoItem(porNome.get(item.uuid)) > 0);
         const groups = todosComPontos
           ? [...options.reduce((mapa, item) => {
-              const n = Number(/\((\d+)\s*pontos?\)/i.exec(porNome.get(item.uuid).name)[1]);
+              const n = pontosDoItem(porNome.get(item.uuid));
               mapa.set(n, [...(mapa.get(n) ?? []), item]);
               return mapa;
             }, new Map()).entries()].sort((a, b) => a[0] - b[0])
             .map(([pontos, lista]) => ({ rotulo: `${pontos} ${pontos > 1 ? "Pontos" : "Ponto"}`,
               options: lista.sort((a, b) => a.name.localeCompare(b.name, "pt-BR")) }))
           : [];
+        // Defeitos convertidos em Proficiência: cada 2 Pontos de Defeito
+        // = 1 Ponto de Proficiência na ficha (sobe arma/salvaguarda/perícia).
+        const pontosSelecionados = section.id === "jj-flaws"
+          ? draft.customization["jj-flaws"].reduce((total, uuid) =>
+              total + pontosDoItem(porNome.get(uuid)), 0)
+          : 0;
+        // Penalidade de Vida/Energia: botões de escolha quando ela está marcada.
+        const escolhaVital = section.id === "jj-variant-penalties" ? {
+          ativa: draft.customization["jj-variant-penalties"].includes(penalidadeVitalUuid(catalog)),
+          vida: draft.penalidadeVital === "vida", energia: draft.penalidadeVital === "energia" } : null;
         return { ...section,
           label: section.id === "jj-variant-penalties" ? "Desvantagens" : section.label,
-          count: draft.customization[section.id].length, options, groups };
+          count: draft.customization[section.id].length, options, groups,
+          ...(section.id === "jj-flaws" ? { notaDefeitos: pontosSelecionados > 0
+            ? `Cada 2 Pontos de Defeito = 1 Ponto de Proficiência na ficha. Selecionados: ${pontosSelecionados} ponto(s) → +${Math.floor(pontosSelecionados / CONVERSAO_DEFEITO)} de Proficiência.`
+            : "Cada 2 Pontos de Defeito = 1 Ponto de Proficiência na ficha (sobe arma, salvaguarda e perícia)." } : {}),
+          ...(escolhaVital ? { escolhaVital } : {}) };
       })
     });
     return context;
@@ -195,19 +212,38 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
   static onFocus(event,target) { if(this.busy)return;this.captureInputs();this.focus=target.dataset.name;this.render(); }
   static async onCustomization(event,target) { if(this.busy)return;this.captureInputs();const items=this.draft.customization[target.dataset.category];if(!items)return;
     const index=items.indexOf(target.dataset.uuid);
-    if(index>=0)items.splice(index,1);else {
+    if(index>=0){items.splice(index,1);
+      delete this.draft.customizacaoNomes?.[target.dataset.uuid];
+      // Ao retirar a penalidade de Vida/Energia, limpa a escolha do lado.
+      if(target.dataset.category==="jj-variant-penalties"&&target.dataset.uuid===penalidadeVitalUuid(this.catalog))this.draft.penalidadeVital=null;
+    } else {
       const doc=this.catalog.customization[target.dataset.category]?.find(item=>item.uuid===target.dataset.uuid);
       if(doc)await this.addCustomization(doc,target.dataset.category);
     }
     this.errors=[];this.render(); }
+
+  /** Escolha do lado da penalidade variante Vida −2 / Energia Base −4. */
+  onPenalidadeVital(event, target) {
+    if ( this.busy || !["vida", "energia"].includes(target.dataset.valor) ) return;
+    this.draft.penalidadeVital = target.dataset.valor;
+    this.errors = [];
+    this.render();
+  }
 
   async addCustomization(doc, category) {
     if(this.busy||doc?.type!=="feat"||!this.draft.customization[category])return;
     if(!this.catalog.customization[category].some(item=>item.uuid===doc.uuid))this.catalog.customization[category].push(doc);
     const items=this.draft.customization[category];
     if(!items.includes(doc.uuid)&&items.length<limiteDaSecao(category)){
-      for(const [key,choices] of Object.entries(this.draft.customization))if(key!==category)this.draft.customization[key]=choices.filter(uuid=>uuid!==doc.uuid);
+      for(const [key,choices] of Object.entries(this.draft.customization)){
+        const restantes=choices.filter(uuid=>uuid!==doc.uuid);
+        if(restantes.length===choices.length)continue;
+        delete this.draft.customizacaoNomes?.[doc.uuid];
+        this.draft.customization[key]=restantes;
+      }
       items.push(doc.uuid);
+      // Nomes para automações do draft (ex.: bypass do Receptáculo Destinado).
+      this.draft.customizacaoNomes[doc.uuid]=doc.name;
     }
     this.render();
   }

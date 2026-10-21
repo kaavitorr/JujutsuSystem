@@ -62,3 +62,10 @@
 .jj2-npc-profile-sheet .jj2-habilidade-remover:hover { background:#432848; color:#fff; }
 .jj2-npc-profile-sheet .jj2-habilidade-remover svg { width:14px; height:14px; }
 .jj2-npc-profile-sheet .jj2-habilidade-vazia { color:#8d7a9e; font-style:italic; border-style:dashed; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-npc-res-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-npc-res-row { display:grid; grid-template-columns:minmax(0,1fr) 72px 64px; align-items:center; gap:8px; padding:9px 12px; border:1px solid #80609955; border-left:3px solid var(--profile-purple); background:#211929; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-npc-res-name { font-size:11px; font-weight:800; overflow-wrap:anywhere; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-npc-res-row input[type=number] { width:100%; height:30px; text-align:center; color:#f6f1e5; background:#110d18; border:1px solid #9470b766; font-weight:900; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-npc-res-immune { display:flex; align-items:center; justify-content:center; gap:5px; font-size:10px; color:#c5becc; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-npc-res-immune.active { color:var(--profile-gold); }
+.dnd5e2.jj2-npc-profile-sheet .jj2-npc-res-value { text-align:center; font-size:16px; color:var(--profile-gold); }

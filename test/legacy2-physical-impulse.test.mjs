@@ -78,7 +78,8 @@ test("level one can spend one PE for two defensive d4s",async()=>{
 test("native damage consumes physical defense once before temporary HP, and healing preserves it",async()=>{
  const source=readFileSync(new URL('../module/documents/actor/actor.mjs',import.meta.url),'utf8');
  const body=source.match(/async applyDamage\(damages, options=\{\}\) \{([\s\S]*?)\n  \}/)[1];
- const apply=new Function('Ruleset',`return async function(damages,options={}){${body}}`)(Ruleset);
+  const {absorbShieldDamage}=await import('../module/systems/legacy2-shield.mjs');
+  const apply=new Function('Ruleset','absorbShieldDamage',`return async function(damages,options={}){${body}}`)(Ruleset,absorbShieldDamage);
  Number.isNumeric=value=>typeof value==='number';Math.clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
  const hp={value:30,temp:5,damage:0},pending={reducao:8,physicalImpulse:true};
  const actor={system:{attributes:{hp},_source:{attributes:{hp:{tempmax:0}}}},getFlag:()=>actor.pending,pending,

@@ -74,6 +74,13 @@
 .jj2-ruptura .jj2-resource-stack { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .jj2-ruptura .jj2-hero-resources.jj2-stamina-resources { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; }
 .jj2-ruptura .jj2-stamina-bars { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; min-width: 0; }
+.dnd5e2.sheet.actor.character.jj2-ruptura .jj2-hero-resources {
+  --jj2-header-bars-max: 340px;
+  grid-template-columns: minmax(0, var(--jj2-header-bars-max)) max-content;
+  justify-content: start; margin-right: 0;
+}
+.dnd5e2.sheet.actor.character.jj2-ruptura :is(.jj2-header-bars, .jj2-stamina-bars) { width: 100%; max-width: var(--jj2-header-bars-max); }
+.dnd5e2.sheet.actor.character.jj2-ruptura .jj2-header-emblems { align-items: end; gap: 8px; }
 .jj2-ruptura .jj2-stamina-bars [data-resource='actions'] { grid-column: 1; }
 .jj2-ruptura .jj2-stamina-emblem { display: flex; flex-direction: column; align-items: center; gap: 3px; }
 .jj2-ruptura .jj2-resource { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 3px 2px; min-width: 0; --resource-color: #e54042; }
@@ -144,6 +151,16 @@
 .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-action-restore { width: auto; min-width: 0; height: 14px; margin: 0; padding: 0; border: 0; border-radius: 0; background: none; color: var(--jj2-paper); box-shadow: none; font: 700 9px/14px JJ2Condensed,sans-serif; text-transform: uppercase; white-space: nowrap; }
 .jj2-ruptura .jj2-action-restore:disabled { opacity: 1; }
 .jj2-ruptura .jj2-action-restore:not(:disabled):hover { color: var(--jj2-purple); }
+/* A compact shield crest shares the baseline of the action and refinement seals. */
+.jj2-ruptura .jj2-shield { flex: none; display: flex; flex-direction: column; align-items: center; width: 80px; color: var(--jj2-gold); }
+.jj2-ruptura .jj2-shield-control { position: relative; width: 80px; height: 76px; }
+.jj2-ruptura .jj2-shield-frame { position: absolute; inset: 0 4px; width: 72px; height: 76px; pointer-events: none; }
+.jj2-ruptura .jj2-shield-plate { fill: #1b1520; stroke-width: 1.3; }
+.jj2-ruptura .jj2-shield-inset { stroke: #efbf514d; stroke-width: .7; }
+.jj2-ruptura .jj2-shield-accents { stroke-width: 1; }
+.dnd5e2.sheet.actor.character.jj2-ruptura .jj2-shield input { position: absolute; left: 50%; top: 24px; transform: translateX(-50%); width: 38px; min-width: 0; height: 26px; margin: 0; padding: 0; border: 0; background: transparent; color: var(--jj2-paper); box-shadow: none; font: 700 21px/26px JJ2Condensed, sans-serif; text-align: center; font-variant-numeric: tabular-nums; }
+.dnd5e2.sheet.actor.character.jj2-ruptura .jj2-shield > :is(label, .jj2-shield-toggle) { width: auto; min-width: 0; height: 14px; margin: 0; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; color: var(--jj2-paper); font: 700 9px/14px JJ2Condensed, sans-serif; text-align: center; white-space: nowrap; text-transform: uppercase; }
+.jj2-ruptura .jj2-shield-toggle:not(:disabled):hover { color: var(--jj2-gold); }
 .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .sheet-body { flex: 1; min-height: 0; padding: 0; overflow: hidden; }
 .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .main-content { display: grid !important; grid-template-columns: 155px minmax(0, 1fr) 46px; grid-template-rows: 83px minmax(0, 1fr); gap: 12px; padding: 0; height: 100%; min-height: 0; container-type: inline-size; }
 .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-sidebar { grid-column: 1; grid-row: 1 / 3; width: auto; margin: 0; padding: 26px 10px 10px; overflow-y: auto; border: 0; border-left: 3px solid var(--jj2-purple); border-radius: 0; background: repeating-linear-gradient(155deg, transparent 0 13px, #ffffff04 13px 14px), var(--jj2-raised); position: relative; }
@@ -891,3 +908,9 @@
 .jj2-er-recovery-dialog .jj2-er-conversion > span { color: #c9a7ef; font-size: 22px; }
 .application.dnd5e2.jj2-er-recovery-dialog :is(.dialog-buttons, .form-footer) button { text-transform: none; font-family: JJ2Condensed, sans-serif; }
 @media (prefers-reduced-motion: reduce) { .jj2-ruptura .window-content .jj2-special-resource .jj2-special-btn { transition: none; } }
+.dnd5e2.sheet.actor.jj2-ruptura .jj-kokusen-margens { display:flex; align-items:center; flex-wrap:wrap; gap:6px 10px; margin:2px 0 8px; padding:6px 8px; border:1px solid #b3823f66; border-left:3px solid #efc351; background:#ffffff08; font-size:11px; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj-kokusen-margens > span { font-weight:800; color:#efc351; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj-kokusen-margens label { display:flex; align-items:center; gap:5px; color:#c5becc; }
+.dnd5e2.sheet.actor.jj2-ruptura .jj-kokusen-margens input { width:52px; height:24px; text-align:center; font-weight:700; }
+damage-application.dnd5e2 .multiplier-button.jj2-kokusen-mult { color:#17131e; background:#efc351; border-color:#b3823f; }
+damage-application.dnd5e2 .multiplier-button.jj2-kokusen-mult[aria-pressed="true"] { background:#b3823f; color:#f6f1e5; }

@@ -195,3 +195,17 @@ test("a single creature begins the next round once and an encounter without a se
   assert.equal(unselected.turn, null);
   assert.equal(unselected.combatant, undefined);
 });
+
+test("Desatento: iniciativa 1, sem bônus de reserva e sem rolagem", async () => {
+  const combat = new Combat5e({ round: 0, turn: null, scores: [30, 20, 10] });
+  combat.combatants.get("A").actor.statuses.add("jj-desatento");
+  combat.combatants.get("A").actor.system.legacy2.reservas.value = 5;
+  await combat.startCombat();
+  assert.equal(combat.combatants.get("A").initiative, 1); // desatento: iniciativa fixa em 1
+  assert.equal(combat.combatants.get("B").initiative, 20); // os demais rolam normalmente
+  // rodada 2: a reserva (9) NÃO levanta a iniciativa do desatento
+  combat.combatants.get("A").actor.system.legacy2.reservas.value = 9;
+  await combat.nextRound();
+  assert.equal(combat.combatants.get("A").initiative, 1);
+  assert.equal(combat.combatants.get("B").initiative, 20);
+});

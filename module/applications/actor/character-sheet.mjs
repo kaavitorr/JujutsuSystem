@@ -79,6 +79,7 @@ export default class CharacterActorSheet extends BaseActorSheet {
       jj2RestoreActions: CharacterActorSheet.#onRestoreActions,
       jj2Creation: function() { if (this.isEditable) return openCharacterCreation(this.actor); },
       jj2ActionPip: CharacterActorSheet.#onActionPip,
+      jj2DefensiveFocus: function() { if (Ruleset.isV2() && this.isEditable) return onFocoDefensivo(this.actor); },
       jj2RefineEnergy: CharacterActorSheet.#onRefineEnergy,
       jj2Zone: CharacterActorSheet.#onZone,
       jj2SeisOlhos: CharacterActorSheet.#onSeisOlhos,
@@ -331,6 +332,7 @@ export default class CharacterActorSheet extends BaseActorSheet {
           "systems/jujutsu-system/templates/actors/parts/jj2-ranks.hbs",
           "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs",
            "systems/jujutsu-system/templates/actors/parts/jj2-action-ring.hbs",
+          "systems/jujutsu-system/templates/actors/parts/jj2-shield.hbs",
           "systems/jujutsu-system/templates/actors/parts/jj2-resistances.hbs");
       }
     }
@@ -459,9 +461,23 @@ export default class CharacterActorSheet extends BaseActorSheet {
     }
     if ( custo ) await ator.update({ "system.legacy2.actions.value": pa - custo });
 
+    // Enfurecido (2.0): só pode gastar PA com ataques — os atalhos de perícia
+    // (Esconder/Procurar/Interagir) ficam bloqueados; ataque e reativo passam.
+    if ( ["esconder", "procurar", "interagir"].includes(acao)
+      && ator.statuses?.has("jj-enfurecido") ) {
+      ui.notifications.warn(`⚡ ${ator.name} está Enfurecido — só pode gastar PA com ataques.`);
+      return;
+    }
+
     switch ( acao ) {
       case "ataque":
+        return this.#acaoAtacar(ator);
       case "reativo":
+        // Desatento (2.0): sem Reações — remove-se no início do próprio turno.
+        if ( ator.statuses?.has("jj-desatento") ) {
+          ui.notifications.warn(`${ator.name} está Desatento — sem Reações neste turno.`);
+          return;
+        }
         return this.#acaoAtacar(ator);
       case "esconder":
         return ator.rollSkill({ skill: "ste" });
@@ -871,6 +887,10 @@ context.skills = skillsSorted;
       const labels = { temporary: "Efeitos Temporários", passive: "Efeitos Passivos", inactive: "Efeitos Inativos",
         suppressed: "Efeitos Indisponíveis", enchantment: "Encantamentos", activeEnchantment: "Encantamentos Ativos",
         inactiveEnchantment: "Encantamentos Inativos" };
+      context.fulgorNegro = !!this.actor.system.manipulation?.abilities?.fulgorNegro?.unlocked;
+      context.fulgorPrimaria = this.actor.getFlag("jujutsu-system", "fulgorPrimaria") ?? 20;
+      context.fulgorSecundaria = getFulgorSecundaria(this.actor);
+      context.fulgorZona = this.actor.getFlag("jujutsu-system", "fulgorZona") ?? false;
       context.effectsSearchLabel = "Buscar efeitos";
       context.jj2EffectsCount = 0;
       for ( const category of Object.values(context.effects) ) {
@@ -1754,7 +1774,11 @@ async _onRender(context, options) {
    * @protected
    */
   _toggleDeathTray(open) {
-    const tray = this.form.querySelector(".death-tray");
+    // A ficha 2.0 não renderiza a death-tray — sem o guard, o TypeError nulo
+    // quebra a cadeia de renderização (janela fechada e impossível de reabrir
+    // até recarregar o cliente).
+    const tray = this.form?.querySelector(".death-tray");
+    if ( !tray ) return;
     const tab = tray.querySelector(".death-tab");
     tray.classList.toggle("open", open);
     this._deathTrayOpen = tray.classList.contains("open");

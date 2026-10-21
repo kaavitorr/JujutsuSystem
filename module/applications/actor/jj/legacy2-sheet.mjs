@@ -189,6 +189,12 @@ export function buildLegacy2Context(actor, config, ruleset) {
   const movement = system.attributes.movement ?? {};
   const movementValues = Object.entries(movement.speeds ?? {}).filter(([key]) => !config.movementTypes?.[key]?.hidden)
     .map(([, value]) => Math.max(0, Number(value) || 0));
+  // Condição Voando: o tile de movimento passa a mostrar o deslocamento de
+  // VOO. "Igual ao padrão" — usa o campo de voo quando preenchido, senão o
+  // deslocamento padrão (o maior dos não-ocultos, como o tile já mostrava).
+  const voando = actor.statuses?.has?.("jj-voando") ?? false;
+  const deslocamentoPadrao = Math.max(0, ...movementValues);
+  const deslocamentoVoo = Math.max(0, Number(movement.speeds?.fly) || 0);
   return {
     creationPending: actor.type === "character" && actor.isOwner && !(actor.items?.size ?? actor.items?.length ?? 0)
       && !actor.getFlag?.("jujutsu-system", "creation2")?.completed,
@@ -219,6 +225,9 @@ export function buildLegacy2Context(actor, config, ruleset) {
     atributos: { soma: somaAtributos, orcamento: orcamentoAtributos,
       excesso: Math.max(0, somaAtributos - orcamentoAtributos), pct: percent(somaAtributos, orcamentoAtributos) },
     wounds: { value: woundsValue, max: woundsMax, pct: percent(woundsValue, woundsMax) },
+    shield: { value: Math.max(0, Math.trunc(Number(system.armorPoints?.value) || 0)),
+      canActivate: Number(system.armorPoints?.max) > 0,
+      toggleLabel: Number(system.armorPoints?.value) > 0 ? "Desativar Foco Defensivo" : "Ativar Foco Defensivo" },
     explosaoLimite: Math.ceil(ruleset.nivel(actor) / 2),
     impulsoLimite: isRestringido ? ruleset.physicalImpulseLimit(actor) : 0,
     impulsoDados: isRestringido ? 2 * ruleset.physicalImpulseLimit(actor) : 0,
@@ -230,7 +239,7 @@ export function buildLegacy2Context(actor, config, ruleset) {
     hpPct: percent(system.attributes.hp.value, Number(system.attributes.hp.effectiveMax) || hpMax),
     energyPct: percent(system.energy?.total, Number(system.energy?.max) || 0),
     isRestringido, energyAvailable, refinement, refinementPct: percent(energyAvailable, refinement),
-    movement: { value: Math.max(0, ...movementValues),
-      unit: config.movementUnits?.[movement.units]?.abbreviation ?? movement.units ?? "m" }
+    movement: { value: voando ? (deslocamentoVoo || deslocamentoPadrao) : deslocamentoPadrao,
+      unit: config.movementUnits?.[movement.units]?.abbreviation ?? movement.units ?? "m", voando }
   };
 }

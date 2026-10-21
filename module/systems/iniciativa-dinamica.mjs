@@ -89,8 +89,10 @@ export async function prepararIniciativaDaRodada(combat, { round = combat.round 
     if ( !actor ) continue;
     let total;
     const status = actor.statuses;
+    // Desatento (2.0): Iniciativa 1 e remove-se no início do próprio turno.
+    const desatento = status.has("jj-desatento");
     if ( status.has("dead") || status.has("incapacitated") ) total = 0;
-    else if ( status.has("surprised") ) total = 1;
+    else if ( desatento || status.has("surprised") ) total = 1;
     else {
       const roll = actor.getInitiativeRoll();
       await roll.evaluate();
@@ -103,7 +105,7 @@ export async function prepararIniciativaDaRodada(combat, { round = combat.round 
     if ( descomunal ) total -= 4;
     // Reservas de Ação (2.1): +1 de iniciativa por ação guardada no turno
     // anterior — não conta na primeira rodada; Desatento age na iniciativa 1.
-    if ( round >= 2 && !(status.has("dead") || status.has("incapacitated") || status.has("surprised")) ) {
+    if ( round >= 2 && !(status.has("dead") || status.has("incapacitated") || status.has("surprised") || desatento) ) {
       const saldo = encerrarTurno && combat.started && combat.combatant?.id === combatente.id
         ? actor.system.legacy2?.actions?.value : actor.system.legacy2?.reservas?.value;
       const reservas = Math.max(0, Math.floor(Number(saldo ?? 0)));

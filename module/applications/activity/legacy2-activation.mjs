@@ -67,11 +67,14 @@ export function gestosPossiveis(actor) {
     .map(([value, def]) => ({ value, label: def.label, dado: def.dado, area: def.area }));
 }
 
-/** Pool máximo de selos: 3 + 1 por habilidade adicional do caminho Selos e Encantamentos. */
+/** Pool máximo de selos: 3 + 1 por habilidade adicional do caminho Selos e
+ * Encantamentos, mais o bônus de efeitos (a penalidade variante "Perde 3
+ * dos seus Selos" aplica −3 em flags.jujutsu-system.selosBonus). */
 export function selosMax(actor) {
   const noCaminho = actor?.items?.filter(i => i.type === "feat"
     && i.getFlag?.("jujutsu-system", "especializacao")?.caminho === SELOS_CAMINHO).length;
-  return 3 + Math.max(0, noCaminho - 1);
+  const bonus = Math.trunc(Number(actor?.flags?.["jujutsu-system"]?.selosBonus) || 0);
+  return Math.max(0, 3 + Math.max(0, noCaminho - 1) + bonus);
 }
 
 export function selosAtuais(actor) {

@@ -13,6 +13,41 @@ import { applyJJTextTooltips } from "./tooltips.mjs";
 import { legacy2ConditionIcon } from "./legacy2-condition-icons.mjs";
 import { acoesTetoEfetivo } from "./legacy2-sheet.mjs";
 import { MODIFICADORES_MOVIMENTO } from "../../../systems/condicoes-dano.mjs";
+import { temPeculiaridade, imunidadeCondicao } from "../../../systems/peculiaridades-automacao.mjs";
+
+// ── Modificadores de condição (usados pelo toggle da aba de Efeitos e pela
+// automação do Inconsciente automático) ──────────────────────────────────────
+
+/* ── Condições de Ações: modificadores de Pontos de Ação ─────────────────────
+ * Aplicados como changes do efeito, reduzindo (ou zerando) o pool de PA
+ * enquanto a condição estiver ativa:
+ *   Acelerado +2 · Atordoado −4 · Concussão −2 · Incapacitado −2 · Sonolento −1 ·
+ *   Paralisado zera (OVERRIDE 0) · Desidratado −1. O Desorientado cobra +1 ⬢ por
+ *   ação que use PA (tratado no custo do uso, acoes-combate.mjs). */
+export const MODIFICADORES_CONDICOES = {
+  "jj-acelerado":    [{ key: "system.legacy2.actions.max", mode: 2, value: 2 }],
+  "jj-atordoado":    [{ key: "system.legacy2.actions.max", mode: 2, value: -4 }],
+  "jj-concussao":    [{ key: "system.legacy2.actions.max", mode: 2, value: -2 }],
+  "jj-incapacitado": [{ key: "system.legacy2.actions.max", mode: 2, value: -2 }],
+  "jj-sonolento":    [{ key: "system.legacy2.actions.max", mode: 2, value: -1 }],
+  "jj-paralisado":   [{ key: "system.legacy2.actions.max", mode: 5, value: 0 }],
+  // Desidratado (2.0): −1 Ponto de Ação por turno + 1 exaustão por hora
+  // (a exaustão horária é por código — hook updateWorldTime em acoes-combate.mjs).
+  "jj-desidratado":  [{ key: "system.legacy2.actions.max", mode: 2, value: -1 }],
+  // Inconsciente (2.0): sem ações.
+  "jj-inconsciente": [{ key: "system.legacy2.actions.value", mode: 5, value: 0 }]
+};
+
+/* ── Condições de Defesas: Classe de Resistência ─────────────────────────────
+ * Aplicados como changes do efeito, derrubando o CR enquanto a condição
+ * estiver ativa: Enfurecido −2 · Exposto −2 · Inconsciente zera (OVERRIDE 0
+ * em ac.override, que vence o cálculo no prepareArmorClass; o piso do CR
+ * continua em 0 pelo cálculo normal e pelo min do ator). */
+export const MODIFICADORES_DEFESA = {
+  "jj-enfurecido":   [{ key: "system.attributes.ac.bonus", mode: 2, value: -2 }],
+  "jj-exposto":      [{ key: "system.attributes.ac.bonus", mode: 2, value: -2 }],
+  "jj-inconsciente": [{ key: "system.attributes.ac.override", mode: 5, value: 0 }]
+};
 
 // [gerado: jj1]
 export const JJ_CONDITIONS = [
@@ -117,6 +152,47 @@ export const JJ2_CONDITION_GROUPS = [
 
 /** Lista plana das condições 2.0 (para busca por id). */
 export const JJ2_CONDITIONS = JJ2_CONDITION_GROUPS.flatMap(g => g.condicoes);
+
+/* ── Status Effects no token (Assign Status Effect) ──────────────────────────
+ * Todas as condições jj ficam registradas em CONFIG.statusEffects — aparecem
+ * no HUD do token e podem ser aplicadas/removidas por qualquer caminho. As
+ * que têm referente no dnd5e também incluem o status core no efeito
+ * (Invisível desaparece no canvas, Cego usa a arte do sistema etc.). */
+const REFERENTES_CORE = Object.freeze({
+  "jj-cego": "blind",
+  "jj-surdo": "deafened",
+  "jj-amedrontado": "frightened",
+  "jj-agarrado": "grappled",
+  "jj-invisivel": "invisible",
+  "jj-paralisado": "paralyzed",
+  "jj-petrificado": "petrified",
+  "jj-envenenado": "poisoned",
+  "jj-caido": "prone",
+  "jj-impedido": "restrained",
+  "jj-atordoado": "stunned",
+  "jj-inconsciente": "unconscious"
+});
+
+/** Registra as condições jj em CONFIG.statusEffects (chamado na carga do módulo). */
+export function registrarStatusEffectsCondicoes() {
+  const alvo = (CONFIG.statusEffects ??= {});
+  for ( const cond of JJ2_CONDITIONS ) {
+    if ( alvo[cond.id] ) continue;
+    const svg = legacy2ConditionIcon(cond.id).replaceAll("currentColor", "#f6f1e5");
+    alvo[cond.id] = {
+      id: cond.id,
+      name: cond.label,
+      img: `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`
+    };
+  }
+}
+globalThis.Hooks?.once?.("init", () => registrarStatusEffectsCondicoes());
+
+/** Ids de status para o efeito de uma condição: o id jj + o status core referente. */
+export function statusesParaCondicao(condId) {
+  const core = REFERENTES_CORE[condId];
+  return (core && CONFIG.statusEffects[core]) ? [condId, core] : [condId];
+}
 // [/gerado: jj2]
 
 /**
@@ -184,14 +260,6 @@ export function injectJJConditions(element, actor) {
    *   Atordoado −4 · Concussão −2 · Incapacitado −2 · Sonolento −1 ·
    *   Paralisado zera (OVERRIDE 0). O Desorientado cobra +1 ⬢ por ação que
    *   use PA (tratado no custo do uso, acoes-combate.mjs). */
-  const MODIFICADORES_CONDICOES = {
-    "jj-acelerado":    [{ key: "system.legacy2.actions.max", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: 2 }],
-    "jj-atordoado":    [{ key: "system.legacy2.actions.max", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: -4 }],
-    "jj-concussao":    [{ key: "system.legacy2.actions.max", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: -2 }],
-    "jj-incapacitado": [{ key: "system.legacy2.actions.max", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: -2 }],
-    "jj-sonolento":    [{ key: "system.legacy2.actions.max", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: -1 }],
-    "jj-paralisado":   [{ key: "system.legacy2.actions.max", mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE, value: 0 }]
-  };
 
   /* ── Condições de Movimento: deslocamento ───────────────────────────────────
    * ÷2: Desidratado, Estremecido (custo dobrado), Letárgico e Pesado ·
@@ -243,10 +311,35 @@ export function injectJJConditions(element, actor) {
 
   const section = document.createElement("div");
   section.className = "jj-conditions-section";
+  // Kokusen (Fulgor Negro): margens editáveis na aba de efeitos — a primária
+  // é o 20 natural que permite o teste e a secundária o mínimo do dado extra.
+  const kokusenMargens = actor.system.manipulation?.abilities?.fulgorNegro?.unlocked
+    && !effectsTab.querySelector(".jj2-fulgor-box") ? {
+    primaria: Number(actor.getFlag("jujutsu-system", "fulgorPrimaria") ?? 20) || 20,
+    secundaria: Number(actor.getFlag("jujutsu-system", "fulgorSecundaria") ?? 15) || 15
+  } : null;
+  const donoEditor = actor.isOwner !== false;
+  // Corpo Frágil (peculiaridade): imune à REDUÇÃO de Pontos de Ação das
+  // condições — os changes de actions.max negativos/override são filtrados.
+  const imuneReducaoPA = temPeculiaridade(actor, "corpo-fragil");
+  const cambiosCondicao = condId => [
+    ...(MODIFICADORES_CONDICOES[condId] ?? []),
+    ...(MODIFICADORES_MOVIMENTO[condId] ?? []),
+    ...(MODIFICADORES_DEFESA[condId] ?? [])
+  ].filter(change => !(imuneReducaoPA
+    && (change.key === "system.legacy2.actions.max")
+    && ((change.mode === CONST.ACTIVE_EFFECT_MODES.ADD && Number(change.value) < 0)
+      || (change.mode === CONST.ACTIVE_EFFECT_MODES.OVERRIDE))));
   section.innerHTML = modern ? `
     <div class="jj-cond-header"><span>${legacy2ConditionIcon("conditions")}<strong>Condições</strong></span>
-      <button type="button" class="jj-cond-custom-btn ${actor.isOwner !== false ? "always-interactive" : ""}" aria-label="Adicionar condição customizada" ${actor.isOwner === false ? "disabled" : ""}>${legacy2ConditionIcon("add")}Adicionar</button>
+      <button type="button" class="jj-cond-custom-btn ${donoEditor ? "always-interactive" : ""}" aria-label="Adicionar condição customizada" ${actor.isOwner === false ? "disabled" : ""}>${legacy2ConditionIcon("add")}Adicionar</button>
     </div>
+    ${kokusenMargens ? `
+    <div class="jj-kokusen-margens" data-tooltip="Kokusen (Fulgor Negro): em um ataque com resultado natural ≥ Principal, role o dado secundário — igual ou acima da Secundária ativa o Kokusen (dano base ×2,5). Depois da primeira ativação no encontro, todo natural ≥ Principal ativa direto. Com Fulgor Certeiro, a Secundária efetiva nunca passa de 11.">
+      <span>⚡ Kokusen</span>
+      <label>Principal <input type="number" min="1" max="20" step="1" value="${kokusenMargens.primaria}" data-kokusen="fulgorPrimaria" ${donoEditor ? "" : "disabled"} aria-label="Margem principal do Kokusen"></label>
+      <label>Secundária <input type="number" min="1" max="20" step="1" value="${kokusenMargens.secundaria}" data-kokusen="fulgorSecundaria" ${donoEditor ? "" : "disabled"} aria-label="Margem secundária do Kokusen"></label>
+    </div>` : ""}
     ${JJ2_CONDITION_GROUPS.map(grupo => `
     <div class="jj-cond-grupo" data-grupo="${grupo.nome}">
       <div class="jj-cond-grupo-titulo" data-tooltip="${grupo.desc}" data-tooltip-direction="UP">${grupo.nome}</div>
@@ -268,6 +361,15 @@ export function injectJJConditions(element, actor) {
         </div>`).join("")}
     </div>`;
 
+  // Margens do Kokusen: gravação imediata nas flags (clamp 1–20).
+  section.querySelectorAll("[data-kokusen]").forEach(input => input.addEventListener("change", async () => {
+    if ( modern && actor.isOwner === false ) return;
+    const valor = Math.min(20, Math.max(1, Math.trunc(Number(input.value)) || 20));
+    input.value = valor;
+    await actor.setFlag("jujutsu-system", input.dataset.kokusen, valor);
+    ui.notifications.info(`Kokusen: margem ${input.dataset.kokusen === "fulgorPrimaria" ? "principal" : "secundária"} ajustada para ${valor}.`);
+  }));
+
   // Listeners de toggle
   section.querySelectorAll(".jj-cond-item").forEach(el => {
     el.addEventListener("click", async () => {
@@ -276,6 +378,11 @@ export function injectJJConditions(element, actor) {
       const isActive = el.classList.contains("active");
       const cond = JJ2_CONDITIONS.find(c => c.id === condId) ?? JJ_CONDITIONS.find(c => c.id === condId);
       if ( !cond ) return;
+      // Imunidades por peculiaridade (Pesadelos→Amedrontado · Olhar do Abismo→Atordoado).
+      if ( !isActive && imunidadeCondicao(actor, condId) ) {
+        ui.notifications.warn(`${cond.label}: ${actor.name} é imune a esta condição (peculiaridade).`);
+        return;
+      }
       const scroll = guardarScroll();
       // Exausto: ACUMULÁVEL — cada clique adiciona +1 nível (máx. 6),
       // −1,5 m de deslocamento por nível.
@@ -294,10 +401,15 @@ export function injectJJConditions(element, actor) {
         await actor.createEmbeddedDocuments("ActiveEffect", [{
           name:     cond.label,
           icon:     "icons/svg/aura.svg",
-          statuses: [condId],
-          changes:  [...(MODIFICADORES_CONDICOES[condId] ?? []), ...(MODIFICADORES_MOVIMENTO[condId] ?? [])],
+          statuses: statusesParaCondicao(condId),
+          changes:  cambiosCondicao(condId),
           flags:    { "jujutsu-system": { isJujutsuCondition: true, ...(condId === "jj-exausto" ? { exaustoNivel: 1 } : {}) } }
         }]);
+        // Desidratado: inicia a contagem de horas para a exaustão (1/hora).
+        if ( condId === "jj-desidratado" ) {
+          await actor.setFlag("jujutsu-system", "desidratadoDesde", Math.floor(game.time?.worldTime ?? 0));
+          await actor.setFlag("jujutsu-system", "desidratadoHoras", 0);
+        }
         // Condição de Ação: as ações atuais caem pro teto imediatamente
         // (Paralisado zera; Atordoado −4; Concussão/Incapacitado −2; Sonolento −1).
         if ( MODIFICADORES_CONDICOES[condId] ) {
@@ -306,6 +418,12 @@ export function injectJJConditions(element, actor) {
       } else {
         const existing = actor.effects.find(e => e.statuses?.has(condId));
         await apagarEfeitoSemCorrida(actor, existing);
+        // Desidratado removida (500 ml de água): encerra a contagem de horas —
+        // a exaustão acumulada permanece (removida por descanso/cura).
+        if ( condId === "jj-desidratado" ) {
+          await actor.unsetFlag("jujutsu-system", "desidratadoDesde");
+          await actor.unsetFlag("jujutsu-system", "desidratadoHoras");
+        }
       }
       // Estado visual atualizado automaticamente pelo re-render
     });

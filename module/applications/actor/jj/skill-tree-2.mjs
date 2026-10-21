@@ -1,6 +1,7 @@
 import ApplicationV2Mixin from "../../api/application-v2-mixin.mjs";
 import {
-  carregarGrafo, adquiridas, aprender, esquecer, sincronizarEspecializacoes,
+  carregarGrafo, adquiridas, concedidas, possuidas, aprender, esquecer,
+  conceder, revogarConcessao, sincronizarEspecializacoes,
   avaliarNo, escolhasTotais, escolhasDisponiveis, ORDEM_CATEGORIAS, CORES_CATEGORIA
 } from "../../../systems/especializacoes-2.mjs";
 import { ICONES_CATEGORIA, origensRequisito, contagensRequisito, construirMapaCategoria } from "./skill-tree-map-2.mjs";
@@ -13,6 +14,7 @@ export default class SkillTreeApp extends ApplicationV2Mixin(foundry.application
     actions: {
       selecionar: SkillTreeApp.#onSelecionar, categoria: SkillTreeApp.#onCategoria,
       aprender: SkillTreeApp.#onAprender, esquecer: SkillTreeApp.#onEsquecer,
+      conceder: SkillTreeApp.#onConceder, revogar: SkillTreeApp.#onRevogar,
       fechar: SkillTreeApp.#onFechar, adm: SkillTreeApp.#onToggleAdm,
       ampliar: SkillTreeApp.#onAmpliar, reduzir: SkillTreeApp.#onReduzir,
       ajustar: SkillTreeApp.#onAjustar, centralizar: SkillTreeApp.#onCentralizar,
@@ -61,6 +63,8 @@ export default class SkillTreeApp extends ApplicationV2Mixin(foundry.application
     const actor = this.#actor;
     await sincronizarEspecializacoes(actor, this.#grafo);
     const aprendidas = adquiridas(actor);
+    const concedidasLista = concedidas(actor);
+    const possuidasLista = [...concedidasLista, ...aprendidas];
     this.#categoria ??= this.#grafo.categorias[0]?.nome ?? ORDEM_CATEGORIAS[0];
     const categoria = this.#grafo.categorias.find(c => c.nome === this.#categoria)
       ?? { nome: this.#categoria, caminhos: [] };
@@ -76,11 +80,14 @@ export default class SkillTreeApp extends ApplicationV2Mixin(foundry.application
     const labels = { adquirido: "Aprendida", disponivel: "Disponível", bloqueado: "Bloqueada" };
     const nos = mapa.nos.map(no => {
       const av = avaliarNo(actor, no);
-      const contagem = (no.requisitos ?? []).flatMap(r => contagensRequisito(r, aprendidas, this.#grafo.porNome))[0];
-      return { ...no, ...av, estadoLabel: labels[av.estado], selecionado: no.nome === this.#selecionado,
+      const concedida = concedidasLista.includes(no.nome);
+      const contagem = (no.requisitos ?? []).flatMap(r => contagensRequisito(r, possuidasLista, this.#grafo.porNome))[0];
+      return { ...no, ...av, estadoLabel: concedida ? "Concedida" : labels[av.estado], concedida,
+        selecionado: no.nome === this.#selecionado,
         exigido: exigidos.has(no.nome), contagem,
         livre: !(no.requisitos?.length),
-        dica: av.estado === "adquirido" ? "Habilidade aprendida" : [...av.pendencias.map(p => p.texto), ...av.informativos].join("; ") || "Disponível" };
+        dica: av.estado === "adquirido" ? (concedida ? "Concedida pelo Mestre (não gasta escolha)" : "Habilidade aprendida")
+          : [...av.pendencias.map(p => p.texto), ...av.informativos].join("; ") || "Disponível" };
     });
     const porNome = new Map(nos.map(n => [n.nome, n]));
     context.mapa = { ...mapa, nos, linhas: mapa.linhas.map(l => ({ ...l,
@@ -95,11 +102,12 @@ export default class SkillTreeApp extends ApplicationV2Mixin(foundry.application
       const cat = this.#grafo.categorias.find(c => c.nome === nome);
       const habilidades = [...new Set((cat?.caminhos ?? []).flatMap(c => c.nos.map(n => n.nome)))];
       return { nome, icone: ICONES_CATEGORIA[nome], cor: CORES_CATEGORIA[nome], ativa: nome === this.#categoria,
-        total: habilidades.length, aprendidas: habilidades.filter(n => aprendidas.includes(n)).length };
+        total: habilidades.length, aprendidas: habilidades.filter(n => possuidasLista.includes(n)).length };
     });
     context.categoria = context.categorias.find(c => c.ativa);
     context.quantidadeCaminhos = categoria.caminhos.length;
-    context.escolhas = { totais: escolhasTotais(actor), disponiveis: escolhasDisponiveis(actor), usadas: aprendidas.length };
+    context.escolhas = { totais: escolhasTotais(actor), disponiveis: escolhasDisponiveis(actor), usadas: aprendidas.length,
+      concedidas: concedidasLista.length };
     context.temEscolhas = context.escolhas.disponiveis > 0;
     context.selecionado = porNome.get(this.#selecionado) ?? null;
     context.requisitos = (selecionado?.requisitos ?? []).map(texto => {
@@ -107,7 +115,7 @@ export default class SkillTreeApp extends ApplicationV2Mixin(foundry.application
       const av = avaliarNo(actor, { nome: "", requisitos: [texto] });
       const origens = origensRequisito(texto, this.#grafo.porNome);
       return { texto, ok: av.estado === "disponivel", informativo: !!av.informativos.length,
-        contagens: contagensRequisito(texto, aprendidas, this.#grafo.porNome),
+        contagens: contagensRequisito(texto, possuidasLista, this.#grafo.porNome),
         links: origens.map(nome => ({ nome, categoria: this.#grafo.porNome.get(nome)?.categoria })) };
     });
     const html = selecionado?.descricao ?? "";
@@ -428,7 +436,9 @@ export default class SkillTreeApp extends ApplicationV2Mixin(foundry.application
       ui.notifications.warn(`${nome} está bloqueado. Falta: ${falta}`);
       return;
     }
-    if ( escolhasDisponiveis(this.#actor) <= 0 ) {
+    // Sem escolhas: só o Mestre pode forçar (o botão dele anuncia a concessão
+    // fora do orçamento — conceder — ou o gasto forçado de uma bloqueada).
+    if ( escolhasDisponiveis(this.#actor) <= 0 && !ehGM ) {
       ui.notifications.warn("Você não tem escolhas de especialização disponíveis!");
       return;
     }
@@ -451,6 +461,36 @@ export default class SkillTreeApp extends ApplicationV2Mixin(foundry.application
     const nome = target.closest("[data-nome]")?.dataset.nome;
     if ( !nome ) return;
     await this.#confirmarEsquecer(nome);
+  }
+
+  /** Concessão do Mestre: desbloqueia a habilidade sem gastar escolha. */
+  static async #onConceder(event, target) {
+    const nome = target.closest("[data-nome]")?.dataset.nome;
+    if ( !nome || !game.user.isGM ) return;
+    const no = this.#grafo?.porNome?.get(nome);
+    if ( !no ) return;
+    const ok = await this.#confirmarManga("Conceder Especialização",
+      `<p class="jj2t-md-titulo">Conceder <strong>${foundry.utils.escapeHTML(nome)}</strong> para ${foundry.utils.escapeHTML(this.#actor.name)}?</p>`
+      + '<p class="jj2t-md-sub">A habilidade é desbloqueada no lugar do jogador e NÃO consome ponto de especialização.</p>');
+    if ( !ok ) return;
+    await conceder(this.#actor, nome);
+    ui.notifications.info(`Especialização concedida: ${nome}`);
+    this.#selecionado = nome;
+    await this.render({ force: true });
+  }
+
+  /** Retira uma concessão do Mestre (o ponto regular não é reembolsado). */
+  static async #onRevogar(event, target) {
+    const nome = target.closest("[data-nome]")?.dataset.nome;
+    if ( !nome || !game.user.isGM ) return;
+    const ok = await this.#confirmarManga("Revogar Concessão",
+      `<p class="jj2t-md-titulo">Revogar a concessão de <strong>${foundry.utils.escapeHTML(nome)}</strong>?</p>`
+      + '<p class="jj2t-md-sub">A habilidade sai da ficha. Escolhas regulares não são afetadas.</p>');
+    if ( !ok ) return;
+    await revogarConcessao(this.#actor, nome);
+    ui.notifications.info(`Concessão revogada: ${nome}`);
+    if ( this.#selecionado === nome ) this.#selecionado = null;
+    await this.render({ force: true });
   }
 
   /**

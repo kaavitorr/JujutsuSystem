@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
+globalThis.Hooks ??= { on() {} };
+const { getFulgorSecundaria } = await import("../module/applications/actor/jj/fulgor-negro.mjs");
 
 const source = readFileSync(new URL("../module/applications/components/effects.mjs", import.meta.url), "utf8");
 const body = source.match(/async _onToggleExpand\(target, \{ effect \}=\{\}\) \{([\s\S]*?)\n  \}/)[1];
@@ -40,15 +42,19 @@ test("the 2.0 effect context changes presentation while retaining native columns
   const columns = [{ id: "detail", width: 150, template: "detail.hbs" }, { id: "controls", width: 70, template: "controls.hbs" }, { id: "extension", template: "module.hbs" }];
   const categories = () => ({ passive: { type: "passive", label: "Passive", columns, effects: [{ id: "real-owned" }] }, inactive: { type: "inactive", label: "Inactive", columns, effects: [] } });
   for (const v2 of [true, false]) {
-    const Sheet = new Function("Ruleset", "JJ_CONDITIONS", `return class extends class { async _prepareEffectsContext(context) { return context; } } { async _prepareEffectsContext(context, options) {${contextBody}} }`)(
-      { isV2: () => v2 }, [{ id: "jj-caido", label: "Caído" }]);
-    const instance = new Sheet(); instance.actor = { statuses: new Set(["jj-caido"]) };
+    const Sheet = new Function("Ruleset", "JJ_CONDITIONS", "getFulgorSecundaria", `return class extends class { async _prepareEffectsContext(context) { return context; } } { async _prepareEffectsContext(context, options) {${contextBody}} }`)(
+      { isV2: () => v2 }, [{ id: "jj-caido", label: "Caído" }], getFulgorSecundaria);
+    const instance = new Sheet(); instance.actor = { statuses: new Set(["jj-caido"]),
+      system: { manipulation: { abilities: { fulgorNegro: { unlocked: true } } } },
+      getFlag: (scope, key) => ({ fulgorPrimaria: 18, fulgorSecundaria: 10, fulgorZona: true })[key] };
     const context = await instance._prepareEffectsContext({ effects: categories() }, {});
     assert.equal(context.jjConditions[0].active, true);
     assert.equal(context.effects.passive.effects[0].id, "real-owned");
     assert.equal(context.effects.passive.columns[2].template, "module.hbs");
     assert.equal(context.effects.passive.label, v2 ? "Efeitos Passivos" : "Passive");
     assert.equal(context.jj2EffectsCount, v2 ? 1 : undefined);
+    assert.equal(context.fulgorPrimaria, v2 ? 18 : undefined);
+    assert.equal(context.fulgorSecundaria, v2 ? 10 : undefined);
     assert.equal(context.effects.passive.columns[1].template, v2 ? "systems/jujutsu-system/templates/effects/columns/controls-2.hbs" : "controls.hbs");
   }
   assert.equal(columns[1].width, 70, "the native shared column definitions are not mutated");

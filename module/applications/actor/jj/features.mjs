@@ -68,10 +68,24 @@ export function setupFeatureSectionDrops(element, actor) {
       catch(err) { return; }
       if ( dragData?.type !== "Item" ) return;
       const item = dragData.uuid ? await fromUuid(dragData.uuid) : actor.items.get(dragData.id);
-      if ( !item || item.parent !== actor || item.type !== "feat" ) return;
+      if ( !item || item.type !== "feat" ) return;
       // Pequeno delay para o nativo processar primeiro
       setTimeout(async () => {
-        await item.setFlag("jujutsu-system", "featureSection", sectionId);
+        // Item já pertence ao ator: marca direto
+        if ( item.parent === actor ) {
+          await item.setFlag("jujutsu-system", "featureSection", sectionId);
+          return;
+        }
+        // Item de compendium: localiza a cópia criada pelo drop nativo (sourceId/nome) e marca
+        const source = dragData.uuid;
+        const candidates = Array.from(actor.items).filter(i => i.type === "feat"
+          && (i.getFlag("core", "sourceId") === source
+            || i._stats?.compendiumSource === source
+            || i._source?._stats?.compendiumSource === source
+            || i.name === item.name));
+        const created = candidates.filter(i => !i.getFlag("jujutsu-system", "featureSection")).at(-1)
+          ?? candidates.at(-1);
+        if ( created ) await created.setFlag("jujutsu-system", "featureSection", sectionId);
       }, 50);
     });
   });

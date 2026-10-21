@@ -1,5 +1,6 @@
 import Ruleset from "./ruleset.mjs";
 import { reducaoCustoSeisOlhos } from "./seis-olhos.mjs";
+import { MODIFICADORES_CONDICOES, MODIFICADORES_DEFESA } from "../applications/actor/jj/conditions.mjs";
 import { EnergySystem } from "./energy.mjs";
 
 /**
@@ -73,6 +74,12 @@ Hooks.on("dnd5e.preUseActivity", (activity, usageConfig) => {
   const actor = activity?.actor ?? activity?.item?.actor;
   const custo = custoEfetivoEmAcoes(activity, usageConfig, actor);
   if ( !actor || (custo <= 0) ) return;
+  // Enfurecido (2.0): só pode gastar PA com ataques — o uso de técnica e de
+  // outras atividades com custo em PA fica bloqueado.
+  if ( (activity.type !== "attack") && actor.statuses?.has?.("jj-enfurecido") ) {
+    ui.notifications.warn(`⚡ ${actor.name} está Enfurecido — só pode gastar PA com ataques.`);
+    return false;
+  }
   const atual = Number(actor.system.legacy2?.actions?.value ?? 0);
   if ( atual >= custo ) return;
   ui.notifications.warn(`${activity.item?.name ?? "Técnica"} custa ${custo} ${nomeCampo} — `
@@ -158,6 +165,15 @@ Hooks.on("updateCombat", async (combat, changed, options, userId) => {
     const combatente = combat.combatants.get(atualId);
     const actor = combatente?.actor;
     if ( actor ) {
+      // Desatento (2.0): remove-se no início do próprio turno.
+      if ( actor.statuses?.has("jj-desatento") ) {
+        const efeito = actor.effects.find(e => e.statuses?.has("jj-desatento"));
+        if ( efeito ) {
+          await efeito.delete();
+          ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor }),
+            content: `👁️ <strong>Desatento</strong> se removeu — ${actor.name} age normalmente neste turno.` });
+        }
+      }
       const maximo = Number(actor.system.legacy2?.actions?.max ?? 0);
       if ( maximo > 0 ) {
         const updates = {};
@@ -179,3 +195,75 @@ Hooks.on("updateCombat", async (combat, changed, options, userId) => {
 
 /* Combate deletado: limpa o rastro de turno. */
 Hooks.on("deleteCombat", (combat) => turnoEmCurso.delete(combat.id));
+
+/* ── DESIDRATADO (2.0): 1 nível de exaustão por hora com a condição ativa ────
+ * O toggle da condição grava desidratadoDesde (tempo de mundo) e
+ * desidratadoHoras; quando o tempo avança, as horas vencidas convertem em
+ * exaustão. Encerra removendo a condição (500 ml de água) — a exaustão
+ * acumulada permanece até ser removida pelos meios normais.
+ * Consumido pelo gancho updateWorldTime abaixo (um único cliente aplica).
+ */
+export async function atualizarDesidratado(actor, worldTime) {
+  if ( !actor || !actor.statuses?.has?.("jj-desidratado") ) return 0;
+  const desde = Math.floor(Number(actor.getFlag?.("jujutsu-system", "desidratadoDesde")) || 0);
+  const ja = Math.floor(Number(actor.getFlag?.("jujutsu-system", "desidratadoHoras")) || 0);
+  const horas = Math.floor(Math.max(0, worldTime - desde) / 3600);
+  const extras = Math.max(0, horas - ja);
+  if ( extras <= 0 ) return 0;
+  const exaustao = Number(actor.system.attributes.exhaustion) || 0;
+  await actor.update({ "system.attributes.exhaustion": exaustao + extras });
+  await actor.setFlag("jujutsu-system", "desidratadoHoras", horas);
+  ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor }),
+    content: `💧 <strong>Desidratado</strong>: ${actor.name} sofre <strong>${extras} nível(is) de exaustão</strong> (${horas}h sem água — encerra com 500 ml).` });
+  return extras;
+}
+
+Hooks.on("updateWorldTime", async (worldTime, delta) => {
+  if ( !Ruleset.isV2() || (delta <= 0) ) return;
+  const gm = game.users?.activeGM;
+  const autoridade = gm ? (gm.id === game.user.id) : true;
+  if ( !autoridade ) return;
+  for ( const actor of game.actors ) {
+    if ( !actor.statuses?.has?.("jj-desidratado") ) continue;
+    const gm = game.users?.activeGM;
+    const pode = gm ? (gm === game.user) : (actor.isOwner === true);
+    if ( !pode ) continue;
+    await atualizarDesidratado(actor, worldTime).catch(() => {});
+  }
+});
+
+
+/* ── INCONSCIENTE AUTOMÁTICO (2.0): criatura a 0 PV fica Inconsciente ────────
+ * Aplica a condição jj-inconsciente quando o PV chega a 0 (CR 0 e sem ações)
+ * e remove quando o PV sobe de 0 (cura). Marcada com inconscienteAuto para
+ * não tocar em Inconscientes concedidos manualmente pelo Narrador. */
+async function sincronizarInconsciente(actor) {
+  const hp = actor.system.attributes.hp;
+  if ( !hp ) return;
+  const efeito = actor.effects.find(e => e.statuses?.has("jj-inconsciente")
+    && e.getFlag?.("jujutsu-system", "inconscienteAuto"));
+  if ( (hp.value ?? 0) > 0 ) {
+    if ( efeito ) await efeito.delete();
+    return;
+  }
+  if ( efeito ) return;
+  await actor.createEmbeddedDocuments("ActiveEffect", [{
+    name: "Inconsciente (0 PV)", icon: "icons/svg/unconscious.svg",
+    statuses: ["jj-inconsciente"],
+    changes: [
+      ...(MODIFICADORES_CONDICOES["jj-inconsciente"] ?? []),
+      ...(MODIFICADORES_DEFESA["jj-inconsciente"] ?? [])
+    ],
+    flags: { "jujutsu-system": { inconscienteAuto: true, isJujutsuCondition: true } }
+  }]);
+  ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor }),
+    content: `💫 <strong>${actor.name}</strong> chegou a 0 PV e fica <strong>Inconsciente</strong>.` });
+}
+
+Hooks.on("updateActor", (actor) => {
+  if ( !Ruleset.isV2() || !actor?.system?.attributes?.hp ) return;
+  const gm = game.users?.activeGM;
+  const pode = gm ? (gm === game.user) : (actor.isOwner === true);
+  if ( !pode ) return;
+  sincronizarInconsciente(actor).catch(() => {});
+});

@@ -1,5 +1,6 @@
 import Ruleset from "../../systems/ruleset.mjs";
 import { applyNumericResistances } from "../../systems/legacy2-resistances.mjs";
+import { absorbShieldDamage } from "../../systems/legacy2-shield.mjs";
 import BaseRestDialog from "../../applications/actor/rest/base-rest-dialog.mjs";
 import { EnergySystem } from "../../systems/energy.mjs";
 import CreateDocumentDialog from "../../applications/create-document-dialog.mjs";
@@ -805,14 +806,18 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
     const impulse = Ruleset.isV2() ? this.getFlag("jujutsu-system", "explosaoDefensivaPendente") : null;
     const consumeImpulse = impulse?.physicalImpulse === true && amount > 0 && Number(impulse.reducao) > 0;
     if (consumeImpulse) amount = Math.max(0, amount - Number(impulse.reducao));
-    const deltaTemp = amount > 0 ? Math.min(hp.temp, amount) : 0;
-    const deltaHP = Math.clamp(amount - deltaTemp, -hp.damage + tempMax, hp.value - tempMax);
+    const shield = Ruleset.isV2() && amount > 0
+      ? absorbShieldDamage(this.system.armorPoints?.value, amount) : null;
+    const remaining = shield?.remaining ?? amount;
+    const deltaTemp = remaining > 0 ? Math.min(hp.temp, remaining) : 0;
+    const deltaHP = Math.clamp(remaining - deltaTemp, -hp.damage + tempMax, hp.value - tempMax);
     const updates = {
       "system.attributes.hp.temp": hp.temp - deltaTemp,
       "system.attributes.hp.tempmax": hpSource.tempmax - tempMax,
       "system.attributes.hp.value": hp.value - deltaHP
     };
     if (consumeImpulse) updates["flags.jujutsu-system.-=explosaoDefensivaPendente"] = null;
+    if (shield?.spent) updates["system.armorPoints.value"] = shield.value;
 
     if ( temp > updates["system.attributes.hp.temp"] ) updates["system.attributes.hp.temp"] = temp;
 
@@ -837,8 +842,12 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
       isBar: true
     }, updates) === false ) return this;
 
-    const context = options.origin?.getFlag?.("dnd5e", "context");
-    await this.update(updates, context ? { dnd5e: context } : {});
+    // O escopo de flags do sistema é "jujutsu-system" — ler "dnd5e" lança
+    // "Flag scope not valid" e quebra o botão Aplicar da bandeja de dano
+    // (que passa a mensagem como options.origin). Nenhum código grava esse
+    // flag hoje; a leitura permanece para compatibilidade futura.
+    const context = options.origin?.getFlag?.("jujutsu-system", "context");
+    await this.update(updates, context ? { jujutsuSystem: context } : {});
 
     /**
      * A hook event that fires after damage has been applied to an actor.

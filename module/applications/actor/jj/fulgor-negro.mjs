@@ -38,10 +38,25 @@ export function getFulgorSecundaria(actor) {
   return v;
 }
 
+/**
+ * Botão de teste do Fulgor: rola um 1d20 e roda a verificação
+ * completa do Kokusen (≥ limiar principal → dado secundário → ativação).
+ * @param {Actor5e} actor Ator que tenta o Kokusen.
+ * @returns {Promise<boolean>} `true` quando o Kokusen ativou.
+ */
+export async function testarKokusen(actor) {
+  const roll = await new Roll("1d20").evaluate();
+  const resultado = roll.dice[0].results[0].result;
+  await roll.toMessage({
+    speaker: ChatMessage.getSpeaker({ actor }),
+    flavor: "⚡ Black Flash (Kokusen) — teste manual"
+  });
+  return checkFulgorNegro(actor, resultado);
+}
+
 export async function checkFulgorNegro(actor, d20Result) {
   if ( !actor || !d20Result ) return false;
   if ( !actor.system.manipulation?.abilities?.fulgorNegro?.unlocked ) return false;
-
   const primaria   = Number(actor.getFlag("jujutsu-system", "fulgorPrimaria")  ?? 20);
   const secundaria = getFulgorSecundaria(actor);
   const jaAtivou   = fulgorAtivadoCombate.get(actor.id) ?? false;
@@ -140,11 +155,16 @@ export async function applyFulgorZonaEffect(actor, active) {
 }
 
 /**
- * Configura os listeners da caixa de Fulgor Negro no sidebar.
+ * Configura os listeners do Fulgor (Efeitos na 2.0; sidebar na 1.0).
  */
+const boundFulgorBoxes = new WeakSet();
 export function setupFulgorNegro(element, actor) {
-  const box = element.querySelector(".jj-fulgor-box");
-  if ( !box ) return;
+  const box = element.querySelector(".jj-fulgor-box, .jj2-fulgor-box");
+  if ( !box || actor.isOwner === false || boundFulgorBoxes.has(box) ) return;
+  boundFulgorBoxes.add(box);
+
+  const btnTestar = box.querySelector("[data-action='jj-fulgor-testar']");
+  if ( btnTestar ) btnTestar.addEventListener("click", () => testarKokusen(actor));
 
   const inputPrimaria = box.querySelector("[name='flags.jujutsu-system.fulgorPrimaria']");
   if ( inputPrimaria ) {
@@ -172,7 +192,9 @@ export function setupFulgorNegro(element, actor) {
       await actor.setFlag("jujutsu-system", "fulgorZona", next);
       await applyFulgorZonaEffect(actor, next);
       btnZona.classList.toggle("active", next);
-      btnZona.innerHTML = next
+      const label = btnZona.querySelector("[data-fulgor-zone-label]");
+      if ( label ) label.textContent = next ? "Desativar Zona" : "Ativar Zona";
+      else btnZona.innerHTML = next
         ? `<i class="fas fa-eye" inert></i> <span>Desativar Zona</span>`
         : `<i class="fas fa-eye" inert></i> <span>Ativar Zona</span>`;
     });

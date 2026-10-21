@@ -21,6 +21,7 @@
 import { chooseJJScale, applyScaleChoice, promptJJScale, scaleFormula } from "./jj-scale.mjs";
 import { checkFulgorNegro } from "./fulgor-negro.mjs";
 import { getMasteryTechniqueBonus } from "./mastery-milestones.mjs";
+import { margemExcedente } from "../../../systems/peculiaridades-automacao.mjs";
 import { applyDamageToActor } from "./damage-application.mjs";
 import aggregateDamageRolls from "../../../dice/aggregate-damage-rolls.mjs";
 import { scaleTypedDamage } from "../../../systems/legacy2-resistances.mjs";
@@ -116,28 +117,6 @@ async function _consumePA(actor, quantidade, reducaoJaAplicada = false) {
 
 /* ── CRÍTICO EXCEDENTE (acerto supera a CA em 10+) ─────────────────────────── */
 
-// Conta quantos dados de UMA denominação específica aparecem numa fórmula —
-// trata dados "escondidos" no bonus da mesma denominação do dado principal
-// como parte do total de dados da base.
-function _countMatchingDice(bonusFormula, denomination) {
-  if ( !bonusFormula ) return 0;
-  let total = 0;
-  for ( const m of String(bonusFormula).matchAll(/(\d*)d(\d+)/gi) ) {
-    if ( Number(m[2]) === denomination ) total += (m[1] ? Number(m[1]) : 1);
-  }
-  return total;
-}
-
-// Excedente soma dados do DADO BASE (primeira parte). Base com mais de 1 dado
-// (incluindo dados de mesma denominação no `bonus`) dobra pra 4 dados — mantém
-// a proporção de dano ao migrar de 1d12 para 2d6 (ver card antigo).
-function _excedenteDiceCount(damageParts) {
-  const base = damageParts?.[0];
-  if ( !base ) return 2;
-  const baseTotalDados = (base.number ?? 1) + _countMatchingDice(base.bonus, base.denomination ?? 6);
-  return baseTotalDados > 1 ? 4 : 2;
-}
-
 /* ── CONTEXTO PENDENTE DE DANO (ataque → dano) ─────────────────────────────── */
 
 const _pendingDamage = new Map(); // chave estável → contexto
@@ -160,6 +139,28 @@ function _ensureExtras(activity) {
     _pendingDamage.set(key, ctx);
   }
   return ctx;
+}
+
+/**
+ * Kokusen (Fulgor Negro) ativo para o dano desta activity — o ataque tirou 20
+ * natural e o Fulgor foi ativado. O dano automático então ROLA O BASE (sem os
+ * dados dobrados do crítico) e o mini-card ×2,5 incide sobre esse base.
+ * @param {Activity} activity A activity do ataque.
+ * @returns {boolean}
+ */
+export function fulgorAtivoPara(activity) {
+  return _pendingDamage.get(_stashKey(activity))?.fulgorAtivo === true;
+}
+
+/**
+ * Crítico Excedente ativo para o dano desta activity — o acerto superou a CA
+ * do alvo na margem sem ser crítico. O dano automático rola como crítico
+ * (dados dobrados), igual ao 20 natural sem Black Flash.
+ * @param {Activity} activity A activity do ataque.
+ * @returns {boolean}
+ */
+export function excedenteCriticoPara(activity) {
+  return _pendingDamage.get(_stashKey(activity))?.excedenteCritico === true;
 }
 
 /**
@@ -371,22 +372,18 @@ export async function postJJAttackRoll(activity, rolls) {
   const d20Ativo = (d20Results.find(r => !r.discarded) ?? d20Results[0])?.result;
 
   // ── CRÍTICO EXCEDENTE (auto) ────────────────────────────────────────────
-  // Com um alvo marcado, se o acerto superar a CA dele em 10+ e NÃO for
-  // crítico, o Excedente entra automaticamente no dano. Prioridade: crítico
-  // (dobra os dados) vence o Excedente quando ambos ocorrem. Síncrono — o
-  // stash precisa estar pronto antes do dano automático.
+  // Com um alvo marcado, se o acerto superar a CA dele na margem (10, ou 8
+  // com Rastro da Desgraça) e NÃO for crítico, o dano é rolado como CRÍTICO —
+  // mesmo funcionamento do 20 natural sem Black Flash: os dados de dano são
+  // dobrados. Síncrono — o stash precisa estar pronto antes do dano automático.
   if ( !roll.isCritical ) {
     const alvo = Array.from(game.user.targets ?? [])[0];
     const caAlvo = Number(alvo?.actor?.system?.attributes?.ac?.value);
-    if ( Number.isFinite(caAlvo) && roll.total >= (caAlvo + 10) ) {
-      const damageParts = activity.damage?.parts ?? [];
-      const baseDen = damageParts[0]?.denomination ?? 6;
-      _ensureExtras(activity).rolls.push({
-        parts: [`${_excedenteDiceCount(damageParts)}d${baseDen}`], label: "★ Crítico Excedente"
-      });
+    if ( Number.isFinite(caAlvo) && roll.total >= (caAlvo + margemExcedente(actor)) ) {
+      _ensureExtras(activity).excedenteCritico = true;
       ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor }),
-        content: `<span class="jj-pa-badge" style="color:#50b0ff;border-color:#205080;">★ Excedente! (${roll.total} ≥ CA ${caAlvo}+10 — +dados no dano)</span>`
+        content: `<span class="jj-pa-badge" style="color:#50b0ff;border-color:#205080;">★ Crítico Excedente! (${roll.total} ≥ CA ${caAlvo}+${margemExcedente(actor)} — dados de dano dobrados)</span>`
       });
     }
   }

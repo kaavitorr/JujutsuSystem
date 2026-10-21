@@ -31,6 +31,12 @@ export class EnergySystem {
     return Ruleset.isV2() ? 2 : actor.system.energy.generation.baseMultiplier ?? 2;
   }
 
+  /** Bônus fixo ao Refinamento (por turno e nos tetos) — Energia Colossal
+   * aplica +5 via efeito em flags.jujutsu-system.refinamentoBonus. */
+  static refinamentoBonus(actor) {
+    return Math.max(0, Math.trunc(Number(actor?.flags?.["jujutsu-system"]?.refinamentoBonus) || 0));
+  }
+
   /**
    * Bônus fixo de geração por turno vindo dos treinos de PA Gerada.
    * = bonuses.generatedEnergy + intensiveTraining.generatedEnergy
@@ -45,7 +51,8 @@ export class EnergySystem {
   static actionReserveRefinementUpdates(actor, reserves) {
     if (!Ruleset.isV2() || Ruleset.isRestringido(actor) || !actor.system.energy) return {};
     const energy = actor.system.energy;
-    const normal = Math.max(0, this.calculateLimit(Ruleset.nivel(actor), 2) + this.calculateGenerationBonus(actor));
+    const normal = Math.max(0, this.calculateLimit(Ruleset.nivel(actor), 2) + this.calculateGenerationBonus(actor)
+      + this.refinamentoBonus(actor));
     const ceiling = normal * (reserves >= 5 ? 2 : 1);
     const generated = Math.max(0, Number(energy.generated) || 0);
     const total = Math.max(0, Number(energy.total) || 0);
@@ -77,7 +84,10 @@ export class EnergySystem {
     const bonusFlat = energy.generation.bonusFlat ?? 0;
     const trainingBonus = this.calculateGenerationBonus(actor);
     const limite = this.calculateLimit(level, baseMultiplier);
-    const limiteTotal = limite + trainingBonus;
+    // O bônus de Refinamento (Energia Colossal) gera como um bônus fixo:
+    // entra no teto total e na geração extra do turno, junto ao treino.
+    const refinamento = this.refinamentoBonus(actor);
+    const limiteTotal = limite + trainingBonus + refinamento;
 
     if (energy.generated >= limiteTotal) return null;
 
@@ -88,7 +98,7 @@ export class EnergySystem {
 
     // Bônus de treinamento: aplica apenas se ainda não foi atingido o teto total
     const faltandoTotal = limiteTotal - energy.generated;
-    const bonusAplicado = Math.min(trainingBonus, faltandoTotal - geracaoBase);
+    const bonusAplicado = Math.min(trainingBonus + refinamento, faltandoTotal - geracaoBase);
     const geracao = geracaoBase + Math.max(0, bonusAplicado);
 
     const transferencia = Math.min(geracao, energy.total);
@@ -184,7 +194,7 @@ export class EnergySystem {
 
     const trainingBonus = this.calculateGenerationBonus(actor);
     const limite = this.calculateLimit(level, baseMultiplier);
-    const limiteTotal = limite + trainingBonus;
+    const limiteTotal = limite + trainingBonus + this.refinamentoBonus(actor);
     const faltandoTotal = limiteTotal - energy.generated;
 
     // Bônus manual (Feitiço/Habilidade): extra livre à geração — NÃO é limitado

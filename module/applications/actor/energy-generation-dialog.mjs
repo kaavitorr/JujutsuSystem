@@ -61,7 +61,8 @@ export default class EnergyGenerationDialog extends Dialog5e {
     const isV2 = Ruleset.isV2();
     const baseMultiplier = EnergySystem.generationBaseMultiplier(actor);
     const trainingBonus = EnergySystem.calculateGenerationBonus(actor);
-    const limite = EnergySystem.calculateLimit(level, baseMultiplier) + trainingBonus;
+    const limite = EnergySystem.calculateLimit(level, baseMultiplier) + trainingBonus
+      + EnergySystem.refinamentoBonus(actor);
 
     context.actor = actor;
     context.rootId = this.id;

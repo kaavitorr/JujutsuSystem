@@ -6,7 +6,7 @@ import { legacy2ActionMax } from "../module/applications/actor/jj/legacy2-sheet.
 import * as classification from "../module/systems/legacy2-npc-classification.mjs";
 globalThis.game={settings:{get:()=>"2.0"},user:{isGM:true}};
 globalThis.CONFIG={JUJUTSU:{taxonomias:{espirito:{vidaEnergia:true}}}};
-const actor=(categoria,type="npc",taxonomia=null)=>({type,items:[],itemTypes:{class:[]},system:{details:{level:5},legacy2:{nd:"5",categoria,taxonomia,actions:{value:6,max:6}},abilities:{con:{value:5}}}});
+const actor=(categoria,type="npc",taxonomia=null)=>({type,items:[],itemTypes:{class:[]},system:{details:{level:5},legacy2:{nd:"5",categoria,taxonomia,actions:{value:6,max:6}},_source:{legacy2:{actions:{max:6}}},abilities:{con:{value:5}}}});
 const cases=[["lacaio",.5,4,63],["normal",1,6,125],["elite",1.5,8,188],["chefe",2,10,250]];
 test("all NPC classifications set life multipliers and action budgets",()=>{
   for(const [key,mult,actions,pv] of cases){
@@ -49,6 +49,9 @@ test("prepared NPC action limits clamp overspent pools without refilling spent a
   const a=actor("lacaio");classification.prepareNpcClassificationActions(a.system);
   assert.equal(a.system.legacy2.actions.max,4);assert.equal(a.system.legacy2.actions.value,4);
   a.system.legacy2.categoria="elite";a.system.legacy2.actions.value=2;
+  // Mudança de categoria persiste o novo teto na fonte (via _preUpdate) e a
+  // preparação reconstrói o máximo a partir dela — modelar as duas partes.
+  a.system.legacy2.actions.max=8;a.system._source.legacy2.actions.max=8;
   classification.prepareNpcClassificationActions(a.system);assert.equal(a.system.legacy2.actions.max,8);assert.equal(a.system.legacy2.actions.value,2);
   classification.prepareNpcClassificationActions(a.system);assert.equal(a.system.legacy2.actions.value,2);
 });

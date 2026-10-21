@@ -1,4 +1,5 @@
 // ⬇⬇ EXECUTAR COMO GM — importa TODA a personalização 2.0 (defeitos, peculiaridades, modificadores lendários e penalidades variantes)
+// v2: itens existentes são ATUALIZADOS pelo nome (upsert, mesmo _id) — não precisa apagar nada antes.
 const pack = game.packs.get("jujutsu-compendium.geral-2-0");
 if ( !pack ) return ui.notifications.error("Pack geral-2-0 não encontrado.");
 const dados = [
@@ -943,7 +944,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você vê coisas que não deveria, como aparições que não existem e ilusões de terror.</p><p>Penalidade: Uma vez por interação ou 2 vezes por combate, o narrador pode impor falha em uma rolagem de acerto.</p><p>Bônus: Você recebe uma habilidade de especialização adicional.</p>"
+    "value": "<p>Você vê coisas que não deveria, como aparições que não existem e ilusões de terror.</p><p><strong>Penalidade:</strong> Uma vez por interação ou 2 vezes por combate, o narrador pode impor falha em uma rolagem de acerto.</p><p><strong>Benefícios:</strong> Você recebe uma habilidade de especialização adicional.</p>"
    }
   },
   "flags": {
@@ -951,7 +952,41 @@ const dados = [
     "featureSection": "jj-peculiarities"
    }
   },
-  "_pasta": "Peculiaridades"
+  "_pasta": "Peculiaridades",
+  "effects": [
+   {
+    "_id": "JJ20000000000001",
+    "name": "Peculiaridade: Visões Fugazes",
+    "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.especiaisExtra",
+      "mode": 2,
+      "value": "1",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Ferida Amaldiçoada",
@@ -959,7 +994,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você possui uma ferida que recebeu de uma maldição durante algum momento da sua infância que ressurge com poder assustador em momentos importantes.</p><p>Penalidade: No início de cada encontro, você deve rolar 1d20. Em um resultado de 10 ou menor, você é afetado pela sua maldição que te causa uma dor terrível durante o combate. Você recebe a condição “Incapacitado” por 3 rodadas do combate.</p><p>Após ser afetado por essa característica, ela não te afeta novamente até o fim do seu próximo descanso longo.</p><p>Benefício: Seus Pontos de Vida base aumentam em +1;</p>"
+    "value": "<p>Você possui uma ferida que recebeu de uma maldição durante algum momento da sua infância que ressurge com poder assustador em momentos importantes.</p><p><strong>Penalidade:</strong> No início de cada encontro, você deve rolar 1d20. Em um resultado de 10 ou menor, você é afetado pela sua maldição que te causa uma dor terrível durante o combate. Você recebe a condição “Incapacitado” por 3 rodadas do combate.</p><p>Após ser afetado por essa característica, ela não te afeta novamente até o fim do seu próximo descanso longo.</p><p><strong>Benefícios:</strong> Seus Pontos de Vida base aumentam em +1;</p>"
    }
   },
   "flags": {
@@ -967,7 +1002,41 @@ const dados = [
     "featureSection": "jj-peculiarities"
    }
   },
-  "_pasta": "Peculiaridades"
+  "_pasta": "Peculiaridades",
+  "effects": [
+   {
+    "_id": "JJ20000000000002",
+    "name": "Peculiaridade: Ferida Amaldiçoada",
+    "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.pvEspecie",
+      "mode": 2,
+      "value": "1",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Gêmeo Amaldiçoado",
@@ -975,7 +1044,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Os gêmeos são sinais de mal agouro no mundo de Jujutsu. Devido ao seu destino e poderes compartilhados, eles costumam ser muito fracos ao invés de poderosos.</p><p>Até que um deles morra em prol do outro durante a narrativa, os dois são severamente penalizados.</p><p>Penalidade: Os gêmeos possuem a Energia Amaldiçoada Máxima e Refinamento divididas entre si, recebendo cada um, metade do total.</p><p>Benefícios: Caso um gêmeo morra em prol do outro, ele pode escolher levar consigo o corpo físico ou a energia. Se ele deixar a energia, a sua base aumenta em 5. Se levar a energia, você recebe 4 Pontos de Atributo e recebe a origem de poder Fisicamente Dotado e o Estilo de Combate de Restringido, podendo refazer sua ficha.</p>"
+    "value": "<p>Os gêmeos são sinais de mal agouro no mundo de Jujutsu. Devido ao seu destino e poderes compartilhados, eles costumam ser muito fracos ao invés de poderosos.</p><p>Até que um deles morra em prol do outro durante a narrativa, os dois são severamente penalizados.</p><p><strong>Penalidade:</strong> Os gêmeos possuem a Energia Amaldiçoada Máxima e Refinamento divididas entre si, recebendo cada um, metade do total.</p><p><strong>Benefícios:</strong> Caso um gêmeo morra em prol do outro, ele pode escolher levar consigo o corpo físico ou a energia. Se ele deixar a energia, a sua base aumenta em 5. Se levar a energia, você recebe 4 Pontos de Atributo e recebe a origem de poder Fisicamente Dotado e o Estilo de Combate de Restringido, podendo refazer sua ficha.</p>"
    }
   },
   "flags": {
@@ -991,7 +1060,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você foi amaldiçoado com um físico frágil que nunca pode se igualar com o das outras pessoas, pegando doenças mais facilmente e tendo mais dificuldade em se recuperar ou resistir a lesões severas.</p><p>Penalidade: Seu limite de Constituição se torna 10 e você perde 1 Ponto de Vida Base.</p><p>Benefícios: Sua Energia Base aumenta em 2 Pontos e seu valor de Intelecto ou Sabedoria aumenta em 1.</p>"
+    "value": "<p>Você foi amaldiçoado com um físico frágil que nunca pode se igualar com o das outras pessoas, pegando doenças mais facilmente e tendo mais dificuldade em se recuperar ou resistir a lesões severas.</p><p><strong>Penalidade:</strong> Seu limite de Constituição se torna 10 e você perde 1 Ponto de Vida Base.</p><p><strong>Benefícios:</strong> Sua Energia Base aumenta em 2 Pontos e seu valor de Intelecto ou Sabedoria aumenta em 1.</p>"
    }
   },
   "flags": {
@@ -999,7 +1068,47 @@ const dados = [
     "featureSection": "jj-peculiarities"
    }
   },
-  "_pasta": "Peculiaridades"
+  "_pasta": "Peculiaridades",
+  "effects": [
+   {
+    "_id": "JJ20000000000003",
+    "name": "Peculiaridade: Físico Limitado",
+    "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.pvEspecie",
+      "mode": 2,
+      "value": "-1",
+      "priority": null
+     },
+     {
+      "key": "system.legacy2.energiaEspecie",
+      "mode": 2,
+      "value": "2",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Apetite Canibal",
@@ -1007,7 +1116,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você tem impulsos fortes por ingerir carne humana, mas deseja que ela seja preparada com maestria para conseguir saciar sua fome.</p><p>Penalidade: Se você não ingerir um banquete de carne humana (pelo menos 5 kg) pelo menos 1 vez por mês, você recebe -1 em todas as rolagens do d20 até que ela seja ingerida. Esse bônus vai se acumulando todo mês até que você seja saciado.</p><p>Essa maldição não acumula caso você esteja em uma condição que impossibilitaria você de saciar sua fome, como selado ou preso, parando apenas em -1.</p><p>Benefícios: Você recebe 1 Habilidade de Especialização de Proezas Físicas.</p>"
+    "value": "<p>Você tem impulsos fortes por ingerir carne humana, mas deseja que ela seja preparada com maestria para conseguir saciar sua fome.</p><p><strong>Penalidade:</strong> Se você não ingerir um banquete de carne humana (pelo menos 5 kg) pelo menos 1 vez por mês, você recebe -1 em todas as rolagens do d20 até que ela seja ingerida. Esse bônus vai se acumulando todo mês até que você seja saciado.</p><p>Essa maldição não acumula caso você esteja em uma condição que impossibilitaria você de saciar sua fome, como selado ou preso, parando apenas em -1.</p><p><strong>Benefícios:</strong> Você recebe 1 Habilidade de Especialização de Proezas Físicas.</p>"
    }
   },
   "flags": {
@@ -1015,7 +1124,41 @@ const dados = [
     "featureSection": "jj-peculiarities"
    }
   },
-  "_pasta": "Peculiaridades"
+  "_pasta": "Peculiaridades",
+  "effects": [
+   {
+    "_id": "JJ20000000000005",
+    "name": "Peculiaridade: Apetite Canibal",
+    "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.especiaisExtra",
+      "mode": 2,
+      "value": "1",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Corpo Exaurido",
@@ -1023,7 +1166,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você está sempre cansado — não por trabalhar demais, mas porque seu corpo nunca teve um nível alto de energia devido à maldição que o afeta.</p><p>Penalidade: Ao final de cada encontro, você deve realizar uma Salvaguarda de Constituição CD 18. Em caso de falha, você recebe 1 nível de exaustão.</p><p>A CD aumenta em +5 para cada encontro adicional que você participar antes de completar um descanso longo. Para cada descanso longo realizado antes de voltar a lutar, a CD é reduzida em −5, até um mínimo de 20.</p><p>Benefícios: Você recebe 2 Pontos de Proficiência e 1 de Energia Base adicional.</p>"
+    "value": "<p>Você está sempre cansado — não por trabalhar demais, mas porque seu corpo nunca teve um nível alto de energia devido à maldição que o afeta.</p><p><strong>Penalidade:</strong> Ao final de cada encontro, você deve realizar uma Salvaguarda de Constituição CD 18. Em caso de falha, você recebe 1 nível de exaustão.</p><p>A CD aumenta em +5 para cada encontro adicional que você participar antes de completar um descanso longo. Para cada descanso longo realizado antes de voltar a lutar, a CD é reduzida em −5, até um mínimo de 20.</p><p><strong>Benefícios:</strong> Você recebe 2 Pontos de Proficiência e 1 de Energia Base adicional.</p>"
    }
   },
   "flags": {
@@ -1031,7 +1174,47 @@ const dados = [
     "featureSection": "jj-peculiarities"
    }
   },
-  "_pasta": "Peculiaridades"
+  "_pasta": "Peculiaridades",
+  "effects": [
+   {
+    "_id": "JJ20000000000006",
+    "name": "Peculiaridade: Corpo Exaurido",
+    "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.pontos.extra",
+      "mode": 2,
+      "value": "2",
+      "priority": null
+     },
+     {
+      "key": "system.legacy2.energiaEspecie",
+      "mode": 2,
+      "value": "1",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Pesadelos Terríveis",
@@ -1039,7 +1222,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Seu sono nunca é tranquilo e muitas vezes vem acompanhado de cenas horríveis de mortes das pessoas que você ama ou de lutas em que a vitória é impossível.</p><p>Penalidade: Ao fim de um descanso longo, você deve rolar 1d20. Em um resultado de 10 ou menor, você acorda com 1 nível de exaustão que não pode ser removido a menos que seja por um descanso longo bem sucedido.</p><p>Caso você falhe também no próximo descanso, você não remove a exaustão adquirida por essa característica e acumula uma adicional, até um máximo de 5 níveis.</p><p>Benefícios: Você recebe imunidade a condição “Amedrontado” e 4 Pontos de Proficiência em Intimidação.</p>"
+    "value": "<p>Seu sono nunca é tranquilo e muitas vezes vem acompanhado de cenas horríveis de mortes das pessoas que você ama ou de lutas em que a vitória é impossível.</p><p><strong>Penalidade:</strong> Ao fim de um descanso longo, você deve rolar 1d20. Em um resultado de 10 ou menor, você acorda com 1 nível de exaustão que não pode ser removido a menos que seja por um descanso longo bem sucedido.</p><p>Caso você falhe também no próximo descanso, você não remove a exaustão adquirida por essa característica e acumula uma adicional, até um máximo de 5 níveis.</p><p><strong>Benefícios:</strong> Você recebe imunidade a condição “Amedrontado” e 4 Pontos de Proficiência em Intimidação.</p>"
    }
   },
   "flags": {
@@ -1047,7 +1230,41 @@ const dados = [
     "featureSection": "jj-peculiarities"
    }
   },
-  "_pasta": "Peculiaridades"
+  "_pasta": "Peculiaridades",
+  "effects": [
+   {
+    "_id": "JJ20000000000008",
+    "name": "Peculiaridade: Pesadelos Terríveis",
+    "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.skills.itm",
+      "mode": 2,
+      "value": "4",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Má Cicatrização",
@@ -1055,7 +1272,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Uma maldição em seu corpo afeta diretamente sua capacidade de cicatrizar e se curar.</p><p>Penalidade: Toda vez que você for curado de qualquer forma, você recebe uma das seguintes penalidades dependendo do tipo de cura recebida:</p><p>Você reduz 2 dados de dano da cura (mínimo 1);</p><p>Em um valor fixo, você sofre penalidade de metade do seu Atributo de Constituição (arredondado para cima);</p><p>Se você for curado diretamente metade ou o valor total da sua vida de uma vez, você reduz esse valor em 1/3.</p><p>Benefícios: Você aumenta sua vida e energia base em 1.</p>"
+    "value": "<p>Uma maldição em seu corpo afeta diretamente sua capacidade de cicatrizar e se curar.</p><p><strong>Penalidade:</strong> Toda vez que você for curado de qualquer forma, você recebe uma das seguintes penalidades dependendo do tipo de cura recebida:</p><p>Você reduz 2 dados de dano da cura (mínimo 1);</p><p>Em um valor fixo, você sofre penalidade de metade do seu Atributo de Constituição (arredondado para cima);</p><p>Se você for curado diretamente metade ou o valor total da sua vida de uma vez, você reduz esse valor em 1/3.</p><p><strong>Benefícios:</strong> Você aumenta sua vida e energia base em 1.</p>"
    }
   },
   "flags": {
@@ -1063,7 +1280,47 @@ const dados = [
     "featureSection": "jj-peculiarities"
    }
   },
-  "_pasta": "Peculiaridades"
+  "_pasta": "Peculiaridades",
+  "effects": [
+   {
+    "_id": "JJ20000000000009",
+    "name": "Peculiaridade: Má Cicatrização",
+    "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.pvEspecie",
+      "mode": 2,
+      "value": "1",
+      "priority": null
+     },
+     {
+      "key": "system.legacy2.energiaEspecie",
+      "mode": 2,
+      "value": "1",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Tremores Involuntários",
@@ -1071,7 +1328,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Sua maldição afeta sua coordenação e controle motor em momentos de dificuldade.</p><p>Penalidade: Uma vez por rodada, ao sofrer um crítico, você recebe a condição “Estremecido” de forma automática até o fim do seu próximo turno. Esse efeito passa para criaturas controladas por você.</p><p>Benefício: Seu valor de refinamento aumenta em +2.</p>"
+    "value": "<p>Sua maldição afeta sua coordenação e controle motor em momentos de dificuldade.</p><p><strong>Penalidade:</strong> Uma vez por rodada, ao sofrer um crítico, você recebe a condição “Estremecido” de forma automática até o fim do seu próximo turno. Esse efeito passa para criaturas controladas por você.</p><p><strong>Benefícios:</strong> Seu valor de refinamento aumenta em +2.</p>"
    }
   },
   "flags": {
@@ -1079,7 +1336,41 @@ const dados = [
     "featureSection": "jj-peculiarities"
    }
   },
-  "_pasta": "Peculiaridades"
+  "_pasta": "Peculiaridades",
+  "effects": [
+   {
+    "_id": "JJ20000000000011",
+    "name": "Peculiaridade: Tremores Involuntários",
+    "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "flags.jujutsu-system.refinamentoBonus",
+      "mode": 2,
+      "value": "2",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Presença Incômoda",
@@ -1087,7 +1378,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Sua presença causa desconforto nas pessoas ao redor, fazendo elas terem diversos tipos de reações diferentes quando te olham, como calafrios ou apenas medo.</p><p>Penalidade: Você tem 2 desvantagens em testes de interações sociais contra criaturas que possam te ver. Isso afeta seu valor passivo nesses testes.</p><p>Benefícios: Você recebe 2 vantagens em Testes de Atributo de Intimidação – que é imune a penalidade – e Sobrevivência.</p>"
+    "value": "<p>Sua presença causa desconforto nas pessoas ao redor, fazendo elas terem diversos tipos de reações diferentes quando te olham, como calafrios ou apenas medo.</p><p><strong>Penalidade:</strong> Você tem 2 desvantagens em testes de interações sociais contra criaturas que possam te ver. Isso afeta seu valor passivo nesses testes.</p><p><strong>Benefícios:</strong> Você recebe 2 vantagens em Testes de Atributo de Intimidação – que é imune a penalidade – e Sobrevivência.</p>"
    }
   },
   "flags": {
@@ -1103,7 +1394,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Sua maldição se concentra nos seus pulmões fazendo você não conseguir manter um fôlego estável de forma alguma.</p><p>Penalidade: Se você usar mais de 3 Pontos de Ação para deslocamento adicional no turno, você recebe 1 nível de exaustão até realizar um descanso curto ou longo. É possível acumular diversos níveis dessa forma.</p><p>Benefícios: Você aprendeu a utilizar seus recursos de forma muito eficiente. Você recebe uma vantagem contra todas as criaturas abaixo de você na iniciativa.</p>"
+    "value": "<p>Sua maldição se concentra nos seus pulmões fazendo você não conseguir manter um fôlego estável de forma alguma.</p><p><strong>Penalidade:</strong> Se você usar mais de 3 Pontos de Ação para deslocamento adicional no turno, você recebe 1 nível de exaustão até realizar um descanso curto ou longo. É possível acumular diversos níveis dessa forma.</p><p><strong>Benefícios:</strong> Você aprendeu a utilizar seus recursos de forma muito eficiente. Você recebe uma vantagem contra todas as criaturas abaixo de você na iniciativa.</p>"
    }
   },
   "flags": {
@@ -1119,7 +1410,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Pequenos azares te acompanham constantemente e são exacerbados pela sua maldição.</p><p>Penalidade: Sempre que você tirar 1 natural, algo absurdo irá ocorrer, mesmo que não faça sentido algum desde que seja para dificultar sua vida.</p><p>Essa característica te afeta mesmo que você possua algo que permita rolar novamente suas rolagens. Você poderá rolar novamente, mas ainda sofrerá as consequências dessa maldição pelo 1 natural.</p><p>Benefícios: Toda vez que você tirar um 20 natural, você recupera Energia Amaldiçoada Total em um valor igual seu atributo de Intelecto.</p>"
+    "value": "<p>Pequenos azares te acompanham constantemente e são exacerbados pela sua maldição.</p><p><strong>Penalidade:</strong> Sempre que você tirar 1 natural, algo absurdo irá ocorrer, mesmo que não faça sentido algum desde que seja para dificultar sua vida.</p><p>Essa característica te afeta mesmo que você possua algo que permita rolar novamente suas rolagens. Você poderá rolar novamente, mas ainda sofrerá as consequências dessa maldição pelo 1 natural.</p><p><strong>Benefícios:</strong> Toda vez que você tirar um 20 natural, você recupera Energia Amaldiçoada Total em um valor igual seu atributo de Intelecto.</p>"
    }
   },
   "flags": {
@@ -1135,7 +1426,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você amaldiçoou uma pessoa querida sem querer, causando um sofrimento tremendo a essa criatura. Saber disso causa um enorme tormento a sua mente, algo que acompanha você a cada segundo da sua vida.</p><p>Penalidade: Você recebe -1 em todas as rolagens no d20. Além disso, você pode sofrer gatilhos aleatórios toda vez que se lembrar da pessoa. Isso pode ocorrer sob as seguintes circunstâncias:</p><p>Você vê essa pessoa;</p><p>Você recebe notícias sobre a pessoa;</p><p>Encontra algo diretamente ligado a ela (objeto, memória forte, local importante);</p><p>É colocado em uma situação que relembra claramente do ocorrido (à critério do mestre).</p><p>Toda vez que esses casos ocorrerem, sua penalidade se torna -3 pelas próximas 4 horas.</p><p>Benefícios: Seu valor de Sabedoria aumenta em +1 e você recebe 2 Habilidades de Especialização adicionais.</p>"
+    "value": "<p>Você amaldiçoou uma pessoa querida sem querer, causando um sofrimento tremendo a essa criatura. Saber disso causa um enorme tormento a sua mente, algo que acompanha você a cada segundo da sua vida.</p><p><strong>Penalidade:</strong> Você recebe -1 em todas as rolagens no d20. Além disso, você pode sofrer gatilhos aleatórios toda vez que se lembrar da pessoa. Isso pode ocorrer sob as seguintes circunstâncias:</p><p>Você vê essa pessoa;</p><p>Você recebe notícias sobre a pessoa;</p><p>Encontra algo diretamente ligado a ela (objeto, memória forte, local importante);</p><p>É colocado em uma situação que relembra claramente do ocorrido (à critério do mestre).</p><p>Toda vez que esses casos ocorrerem, sua penalidade se torna -3 pelas próximas 4 horas.</p><p><strong>Benefícios:</strong> Seu valor de Sabedoria aumenta em +1 e você recebe 2 Habilidades de Especialização adicionais.</p>"
    }
   },
   "flags": {
@@ -1143,7 +1434,47 @@ const dados = [
     "featureSection": "jj-peculiarities"
    }
   },
-  "_pasta": "Peculiaridades"
+  "_pasta": "Peculiaridades",
+  "effects": [
+   {
+    "_id": "JJ20000000000012",
+    "name": "Peculiaridade: Lembrete Sombrio",
+    "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.abilities.wis.value",
+      "mode": 2,
+      "value": "1",
+      "priority": null
+     },
+     {
+      "key": "system.legacy2.especiaisExtra",
+      "mode": 2,
+      "value": "2",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Energia Destrutiva",
@@ -1151,7 +1482,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Sua energia amaldiçoada consegue ser maléfica até mesmo ao seu próprio corpo.</p><p>Penalidade: Sempre que utilizar uma técnica, você recebe dano diretamente na sua vida igual ao custo em PA dela.</p><p>Benefícios: Sua energia base aumenta em 3.</p>"
+    "value": "<p>Sua energia amaldiçoada consegue ser maléfica até mesmo ao seu próprio corpo.</p><p><strong>Penalidade:</strong> Sempre que utilizar uma técnica, você recebe dano diretamente na sua vida igual ao custo em PA dela.</p><p><strong>Benefícios:</strong> Sua energia base aumenta em 3.</p>"
    }
   },
   "flags": {
@@ -1159,7 +1490,41 @@ const dados = [
     "featureSection": "jj-peculiarities"
    }
   },
-  "_pasta": "Peculiaridades"
+  "_pasta": "Peculiaridades",
+  "effects": [
+   {
+    "_id": "JJ20000000000014",
+    "name": "Peculiaridade: Energia Destrutiva",
+    "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.energiaEspecie",
+      "mode": 2,
+      "value": "3",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Voz Amaldiçoada",
@@ -1167,7 +1532,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Algo fala dentro da sua mente com sua própria voz, sussurrando seus pensamentos mais destrutivos.</p><p>Penalidade: A qualquer momento, o Narrador pode emitir ordens intrusivas que nunca serão ao seu favor. Você pode realizar uma Salvaguarda de Presença CD 13. Em caso de falha, você pode escolher entre executar a ação ou sofrer -3 em todas as rolagens no d20 até o fim do encontro ou pela próxima hora (afeta seus valores passivos de perícia).</p><p>A cada vez que você passar na Salvaguarda, você aumenta a CD da próxima em +1, resetando ao falhar.</p><p>Benefícios: No início de cada dia, você pode escolher rolar 1d20. A qualquer momento, você pode substituir uma rolagem sua ou de uma criatura qualquer a até 30 metros pelo resultado da rolagem.</p>"
+    "value": "<p>Algo fala dentro da sua mente com sua própria voz, sussurrando seus pensamentos mais destrutivos.</p><p><strong>Penalidade:</strong> A qualquer momento, o Narrador pode emitir ordens intrusivas que nunca serão ao seu favor. Você pode realizar uma Salvaguarda de Presença CD 13. Em caso de falha, você pode escolher entre executar a ação ou sofrer -3 em todas as rolagens no d20 até o fim do encontro ou pela próxima hora (afeta seus valores passivos de perícia).</p><p>A cada vez que você passar na Salvaguarda, você aumenta a CD da próxima em +1, resetando ao falhar.</p><p><strong>Benefícios:</strong> No início de cada dia, você pode escolher rolar 1d20. A qualquer momento, você pode substituir uma rolagem sua ou de uma criatura qualquer a até 30 metros pelo resultado da rolagem.</p>"
    }
   },
   "flags": {
@@ -1183,7 +1548,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>As coisas simplesmente dão errado ao seu redor devido a sua maldição.</p><p>Penalidade: Sempre que você tirar 1 natural, você recebe uma condição aleatória de até 7 PA.</p><p>Benefícios: Sua margem de critico por excedente se torna 8 ao invés de 10.</p>"
+    "value": "<p>As coisas simplesmente dão errado ao seu redor devido a sua maldição.</p><p><strong>Penalidade:</strong> Sempre que você tirar 1 natural, você recebe uma condição aleatória de até 7 PA.</p><p><strong>Benefícios:</strong> Sua margem de critico por excedente se torna 8 ao invés de 10.</p>"
    }
   },
   "flags": {
@@ -1199,7 +1564,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Nada que é ruim vem sozinho e sua maldição é a forma perfeita de representar isso.</p><p>Penalidade: Sempre que você falhar catastroficamente em realizar uma ação que esteja tentando fazer, como falhar por 10 ou mais em uma rolagem ou tirar 1 natural, o narrador recebe 1 Ponto de Reflexo Amaldiçoado. Esses pontos devem ser utilizados para forçar a falha de qualquer rolagem que com certeza irá piorar a vida do dono dessa maldição, seja de forma direta ou indiretamente.</p><p>Benefícios: Você recebe 1 Ponto de Vida Base e recebe 2 Habilidades de Especialização adicionais.</p>"
+    "value": "<p>Nada que é ruim vem sozinho e sua maldição é a forma perfeita de representar isso.</p><p><strong>Penalidade:</strong> Sempre que você falhar catastroficamente em realizar uma ação que esteja tentando fazer, como falhar por 10 ou mais em uma rolagem ou tirar 1 natural, o narrador recebe 1 Ponto de Reflexo Amaldiçoado. Esses pontos devem ser utilizados para forçar a falha de qualquer rolagem que com certeza irá piorar a vida do dono dessa maldição, seja de forma direta ou indiretamente.</p><p><strong>Benefícios:</strong> Você recebe 1 Ponto de Vida Base e recebe 2 Habilidades de Especialização adicionais.</p>"
    }
   },
   "flags": {
@@ -1207,7 +1572,47 @@ const dados = [
     "featureSection": "jj-peculiarities"
    }
   },
-  "_pasta": "Peculiaridades"
+  "_pasta": "Peculiaridades",
+  "effects": [
+   {
+    "_id": "JJ20000000000015",
+    "name": "Peculiaridade: Reflexo Amaldiçoado",
+    "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.pvEspecie",
+      "mode": 2,
+      "value": "1",
+      "priority": null
+     },
+     {
+      "key": "system.legacy2.especiaisExtra",
+      "mode": 2,
+      "value": "2",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Sede De Sangue Imposta",
@@ -1215,7 +1620,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>As criaturas adoram o cheiro de seu sangue e não irão perder a oportunidade de tirar sua vida.</p><p>Penalidade: Sempre que você ficar com menos de 50% da sua vida, as criaturas irão automaticamente mudar o alvo para você até que esteja morto.</p><p>Benefícios: Você recebe 1 Ponto de Vida Base e 1 Ponto de Atributo de Presença.</p>"
+    "value": "<p>As criaturas adoram o cheiro de seu sangue e não irão perder a oportunidade de tirar sua vida.</p><p><strong>Penalidade:</strong> Sempre que você ficar com menos de 50% da sua vida, as criaturas irão automaticamente mudar o alvo para você até que esteja morto.</p><p><strong>Benefícios:</strong> Você recebe 1 Ponto de Vida Base e 1 Ponto de Atributo de Presença.</p>"
    }
   },
   "flags": {
@@ -1223,7 +1628,47 @@ const dados = [
     "featureSection": "jj-peculiarities"
    }
   },
-  "_pasta": "Peculiaridades"
+  "_pasta": "Peculiaridades",
+  "effects": [
+   {
+    "_id": "JJ20000000000017",
+    "name": "Peculiaridade: Sede De Sangue Imposta",
+    "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.pvEspecie",
+      "mode": 2,
+      "value": "1",
+      "priority": null
+     },
+     {
+      "key": "system.abilities.pre.value",
+      "mode": 2,
+      "value": "1",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Olhar Do Abismo",
@@ -1231,7 +1676,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você presenciou algo que mudou sua vida para a pior, fazendo com que você temesse tudo que esteja um pouquinho fora do seu alcance.</p><p>Penalidade: Sempre que você estiver de cara com uma criatura inimiga com ND maior que seu nível, você deve realizar uma Salvaguarda de Sabedoria CD 10, onde ela aumenta em +4 para cada ND que a criatura possuir acima do seu nível. Se você falhar, você recebe a condição “Amedrontado” contra ela por 1 minuto ou até sofrer dano e irá correr com tudo para o mais longe possível dela.</p><p>Enquanto estiver enfrentando essa criatura, você deve rolar 1d4 no início de cada turno. Em um resultado de 1 ou 2, você deve realizar a Salvaguarda novamente.</p><p>Você só pode ser amedrontado dessa forma até 3 vezes por descanso longo.</p><p>Benefício: Você recebe 3 Pontos de Proficiência e imunidade a condição “Atordoado”.</p>"
+    "value": "<p>Você presenciou algo que mudou sua vida para a pior, fazendo com que você temesse tudo que esteja um pouquinho fora do seu alcance.</p><p><strong>Penalidade:</strong> Sempre que você estiver de cara com uma criatura inimiga com ND maior que seu nível, você deve realizar uma Salvaguarda de Sabedoria CD 10, onde ela aumenta em +4 para cada ND que a criatura possuir acima do seu nível. Se você falhar, você recebe a condição “Amedrontado” contra ela por 1 minuto ou até sofrer dano e irá correr com tudo para o mais longe possível dela.</p><p>Enquanto estiver enfrentando essa criatura, você deve rolar 1d4 no início de cada turno. Em um resultado de 1 ou 2, você deve realizar a Salvaguarda novamente.</p><p>Você só pode ser amedrontado dessa forma até 3 vezes por descanso longo.</p><p><strong>Benefícios:</strong> Você recebe 3 Pontos de Proficiência e imunidade a condição “Atordoado”.</p>"
    }
   },
   "flags": {
@@ -1239,7 +1684,41 @@ const dados = [
     "featureSection": "jj-peculiarities"
    }
   },
-  "_pasta": "Peculiaridades"
+  "_pasta": "Peculiaridades",
+  "effects": [
+   {
+    "_id": "JJ20000000000019",
+    "name": "Peculiaridade: Olhar Do Abismo",
+    "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.pontos.extra",
+      "mode": 2,
+      "value": "3",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Maldição Descontrolada",
@@ -1247,7 +1726,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Sua maldição toma uma forma tangível de nível especial ligada a você e mata qualquer criatura que te ofenda de qualquer forma, mesmo que seja amigos durante uma brincadeira. Isso faz com que você se torne perigoso demais para as criaturas ao seu redor.</p><p>Essa maldição possui uma ficha de ND 17 e não pode ser morta enquanto você estiver vivo e volta a vida caso você seja revivido de alguma forma.</p><p>Penalidade: Se descobrirem as transgressões da sua maldição, você é considerado como um criminoso para a sociedade Jujutsu, podendo ser condenado a execução. Além disso, a maldição irá pedir algo macabro ou cruel para você pelo menos 1 vez a cada 3 dias. Se você recusar, você recebe a condição “Letárgico” por 24 horas.</p><p>Benefício: Você recebe 3 Pontos de Foco. A qualquer momento, você pode gastar 1 Ponto de Foco para negar uma condição qualquer recebida.</p>"
+    "value": "<p>Sua maldição toma uma forma tangível de nível especial ligada a você e mata qualquer criatura que te ofenda de qualquer forma, mesmo que seja amigos durante uma brincadeira. Isso faz com que você se torne perigoso demais para as criaturas ao seu redor.</p><p>Essa maldição possui uma ficha de ND 17 e não pode ser morta enquanto você estiver vivo e volta a vida caso você seja revivido de alguma forma.</p><p><strong>Penalidade:</strong> Se descobrirem as transgressões da sua maldição, você é considerado como um criminoso para a sociedade Jujutsu, podendo ser condenado a execução. Além disso, a maldição irá pedir algo macabro ou cruel para você pelo menos 1 vez a cada 3 dias. Se você recusar, você recebe a condição “Letárgico” por 24 horas.</p><p><strong>Benefícios:</strong> Você recebe 3 Pontos de Foco. A qualquer momento, você pode gastar 1 Ponto de Foco para negar uma condição qualquer recebida.</p>"
    }
   },
   "flags": {
@@ -1263,7 +1742,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Seu corpo é tão frágil que ameaça se quebrar com a menor das pressões devido a uma maldição contida em seu corpo e o reforço da sua energia amaldiçoada é a única coisa que faz com que você possa funcionar como uma pessoa normal.</p><p>Penalidade: Ao sofrer uma rolagem de ataque (Comum), você sofre 1 dado de dano adicional e ao sofrer uma técnica, você recebe 1/3 dos dados totais sofridos (arredondado para cima) como dano adicional.</p><p>Benefício: Você aprendeu a lutar com um corpo quebrado. Você é imune aos efeitos de redução de Pontos de Ação das condições, embora ainda sofra todos os outros efeitos relacionados as condições.</p>"
+    "value": "<p>Seu corpo é tão frágil que ameaça se quebrar com a menor das pressões devido a uma maldição contida em seu corpo e o reforço da sua energia amaldiçoada é a única coisa que faz com que você possa funcionar como uma pessoa normal.</p><p><strong>Penalidade:</strong> Ao sofrer uma rolagem de ataque (Comum), você sofre 1 dado de dano adicional e ao sofrer uma técnica, você recebe 1/3 dos dados totais sofridos (arredondado para cima) como dano adicional.</p><p><strong>Benefícios:</strong> Você aprendeu a lutar com um corpo quebrado. Você é imune aos efeitos de redução de Pontos de Ação das condições, embora ainda sofra todos os outros efeitos relacionados as condições.</p>"
    }
   },
   "flags": {
@@ -1279,7 +1758,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você firmou um voto com entidades extremamente poderosas — sejam líderes do mundo Jujutsu ou maldições de alto nível. Sua existência agora serve a eles.</p><p>Penalidade: Você não pode ferir, trair ou agir diretamente contra qualquer criatura com a qual tenha firmado o voto. Qualquer tentativa de fazê-lo resulta em morte imediata.</p><p>Se uma dessas entidades estiver em risco e você tiver conhecimento disso, você é obrigado a agir para protegê-la, dentro de suas capacidades.</p><p>Correntes de Servidão: Ordens diretas dessas entidades não podem ser recusadas sem resistência. Ao receber uma ordem que vá contra seus interesses diretos, faça uma Salvaguarda de Presença (CD 10). Em caso falha, você deve cumprir a ordem. Se obtiver sucesso, você recebe a condição “Letárgico” e -3 em todas as rolagens no d20 até que as ordens sejam cumpridas.</p><p>Seu voto só pode ser quebrado se todas as entidades envolvidas (mínimo 5) morrerem, mas você não pode ter nenhuma relação com a morte delas.</p><p>Benefício: Você desbloqueia sua Energia Reversa e recebe 3 Habilidades de Especialização dessa arvore.</p>"
+    "value": "<p>Você firmou um voto com entidades extremamente poderosas — sejam líderes do mundo Jujutsu ou maldições de alto nível. Sua existência agora serve a eles.</p><p><strong>Penalidade:</strong> Você não pode ferir, trair ou agir diretamente contra qualquer criatura com a qual tenha firmado o voto. Qualquer tentativa de fazê-lo resulta em morte imediata.</p><p>Se uma dessas entidades estiver em risco e você tiver conhecimento disso, você é obrigado a agir para protegê-la, dentro de suas capacidades.</p><p>Correntes de Servidão: Ordens diretas dessas entidades não podem ser recusadas sem resistência. Ao receber uma ordem que vá contra seus interesses diretos, faça uma Salvaguarda de Presença (CD 10). Em caso falha, você deve cumprir a ordem. Se obtiver sucesso, você recebe a condição “Letárgico” e -3 em todas as rolagens no d20 até que as ordens sejam cumpridas.</p><p>Seu voto só pode ser quebrado se todas as entidades envolvidas (mínimo 5) morrerem, mas você não pode ter nenhuma relação com a morte delas.</p><p><strong>Benefícios:</strong> Você desbloqueia sua Energia Reversa e recebe 3 Habilidades de Especialização dessa arvore.</p>"
    }
   },
   "flags": {
@@ -1287,7 +1766,41 @@ const dados = [
     "featureSection": "jj-peculiarities"
    }
   },
-  "_pasta": "Peculiaridades"
+  "_pasta": "Peculiaridades",
+  "effects": [
+   {
+    "_id": "JJ20000000000020",
+    "name": "Peculiaridade: Voto Vinculativo",
+    "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.especiaisExtra",
+      "mode": 2,
+      "value": "3",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Visão Deturpada Do Mundo",
@@ -1295,7 +1808,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Diversos acontecimentos desde a sua infância relacionado a maldições fez com que você criasse uma visão distorcida do mundo, ao culpar os não-feiticeiros pela existência das maldições, não sendo nem um pouco diferente delas.</p><p>Penalidade: Sempre que um não-feiticeiro tentar te impedir diretamente ou causar qualquer tipo de prejuízo ou empecilho a você, o Narrador pode pedir uma Salvaguarda de Sabedoria CD 12. Em caso de falha, você se torna violento e tenta neutralizar a criatura imediatamente.</p><p>A cada vez que você obtiver sucesso, a CD aumenta em +2 até o momento que você falhar, resetando os efeitos quando isso ocorrer.</p><p>Benefícios: Você pode escolher um feitiço específico de 3 com requisito de 4 ou mais Pontos de Ação. Reduza o custo de Pontos de Ação dele ou de uma habilidade menor dentro dele em 1 de forma permanente.</p>"
+    "value": "<p>Diversos acontecimentos desde a sua infância relacionado a maldições fez com que você criasse uma visão distorcida do mundo, ao culpar os não-feiticeiros pela existência das maldições, não sendo nem um pouco diferente delas.</p><p><strong>Penalidade:</strong> Sempre que um não-feiticeiro tentar te impedir diretamente ou causar qualquer tipo de prejuízo ou empecilho a você, o Narrador pode pedir uma Salvaguarda de Sabedoria CD 12. Em caso de falha, você se torna violento e tenta neutralizar a criatura imediatamente.</p><p>A cada vez que você obtiver sucesso, a CD aumenta em +2 até o momento que você falhar, resetando os efeitos quando isso ocorrer.</p><p><strong>Benefícios:</strong> Você pode escolher um feitiço específico de 3 com requisito de 4 ou mais Pontos de Ação. Reduza o custo de Pontos de Ação dele ou de uma habilidade menor dentro dele em 1 de forma permanente.</p>"
    }
   },
   "flags": {
@@ -1311,7 +1824,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Seu destino está ligado a um espírito amaldiçoado de grau especial. Sua existência e a dela são uma só.</p><p>Penalidade: Você tem um vínculo de morte com a maldição, fazendo com que a morte dela ou a sua cause a morte do outro.</p><p>Segredo da Condenação: Você sabe a identidade e os poderes da maldição, mas toda vez que você tentar revela-la, você deve realizar uma Salvaguarda de Sabedoria CD 28. Em caso de falha, você perde metade dos seus Pontos de Vida e Energia máximos por 7 dias e não pode tentar revelar sobre ela durante esse período.</p><p>Se obtiver sucesso, você consegue falar sobre a maldição, mas recebe 2d8 de dano Psíquico por rodada enquanto estiver revelando algo sobre ela.</p><p>A maldição possui as mesmas limitações que você, não podendo revelar sobre você sem pagar o preço.</p><p>Benefícios: Você e a Maldição recebem um bônus de +2 nos Pontos de Vida e +5 nos Pontos de Energia Base.</p>"
+    "value": "<p>Seu destino está ligado a um espírito amaldiçoado de grau especial. Sua existência e a dela são uma só.</p><p><strong>Penalidade:</strong> Você tem um vínculo de morte com a maldição, fazendo com que a morte dela ou a sua cause a morte do outro.</p><p>Segredo da Condenação: Você sabe a identidade e os poderes da maldição, mas toda vez que você tentar revela-la, você deve realizar uma Salvaguarda de Sabedoria CD 28. Em caso de falha, você perde metade dos seus Pontos de Vida e Energia máximos por 7 dias e não pode tentar revelar sobre ela durante esse período.</p><p>Se obtiver sucesso, você consegue falar sobre a maldição, mas recebe 2d8 de dano Psíquico por rodada enquanto estiver revelando algo sobre ela.</p><p>A maldição possui as mesmas limitações que você, não podendo revelar sobre você sem pagar o preço.</p><p><strong>Benefícios:</strong> Você e a Maldição recebem um bônus de +2 nos Pontos de Vida e +5 nos Pontos de Energia Base.</p>"
    }
   },
   "flags": {
@@ -1319,7 +1832,47 @@ const dados = [
     "featureSection": "jj-peculiarities"
    }
   },
-  "_pasta": "Peculiaridades"
+  "_pasta": "Peculiaridades",
+  "effects": [
+   {
+    "_id": "JJ20000000000021",
+    "name": "Peculiaridade: Destino Entrelaçado",
+    "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.pvEspecie",
+      "mode": 2,
+      "value": "2",
+      "priority": null
+     },
+     {
+      "key": "system.legacy2.energiaEspecie",
+      "mode": 2,
+      "value": "5",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Doença Sobrenatural",
@@ -1327,7 +1880,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Você possui uma doença contraída a partir de uma maldição em algum momento no seu passado que faz com que você tenha momentos de inconsciência em ocasiões decisivas e importantes.</p><p>Penalidade: Ao causar um acerto crítico em uma rolagem de acerto, o ataque é interrompido e você recebe a condição “Inconsciente” até o fim do seu turno seguinte.</p><p>Essa penalidade te afeta apenas uma vez e reseta ao fim de cada descanso longo.</p><p>Benefícios: Você é imune a condições de “Dano”.</p>"
+    "value": "<p>Você possui uma doença contraída a partir de uma maldição em algum momento no seu passado que faz com que você tenha momentos de inconsciência em ocasiões decisivas e importantes.</p><p><strong>Penalidade:</strong> Ao causar um acerto crítico em uma rolagem de acerto, o ataque é interrompido e você recebe a condição “Inconsciente” até o fim do seu turno seguinte.</p><p>Essa penalidade te afeta apenas uma vez e reseta ao fim de cada descanso longo.</p><p><strong>Benefícios:</strong> Você é imune a condições de “Dano”.</p>"
    }
   },
   "flags": {
@@ -1343,7 +1896,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Seu feitiço inato faz com que você emita uma energia muito específica, facilmente rastreável por uma maldição que anseia consumir sua existência.</p><p>Penalidade: Uma vez por dia, ao utilizar seu feitiço inato, você deve rolar 1d12. Em um resultado 1, você recebe uma Marca de Presa, indicando que a maldição de ND 17 percebeu sua presença.</p><p>Ao acumular 5 Marcas de Presa, a maldição descobre sua localização e surgirá em até 30 dias para caçá-lo e consumi-lo.</p><p>Além disso, a cada 2 níveis que você adquirir, o ND da maldição aumenta em +1.</p><p>Benefícios: Você aprendeu a controlar sua energia amaldiçoada de forma a quase não vazar vestígios, com medo de ser encontrado. Você recebe 2 Habilidades de Especialização de “Canalização de Energia”, 2 Pontos de Proficiência em Feitiçaria e 1 Ponto de Atributo em Intelecto.</p>"
+    "value": "<p>Seu feitiço inato faz com que você emita uma energia muito específica, facilmente rastreável por uma maldição que anseia consumir sua existência.</p><p><strong>Penalidade:</strong> Uma vez por dia, ao utilizar seu feitiço inato, você deve rolar 1d12. Em um resultado 1, você recebe uma Marca de Presa, indicando que a maldição de ND 17 percebeu sua presença.</p><p>Ao acumular 5 Marcas de Presa, a maldição descobre sua localização e surgirá em até 30 dias para caçá-lo e consumi-lo.</p><p>Além disso, a cada 2 níveis que você adquirir, o ND da maldição aumenta em +1.</p><p><strong>Benefícios:</strong> Você aprendeu a controlar sua energia amaldiçoada de forma a quase não vazar vestígios, com medo de ser encontrado. Você recebe 2 Habilidades de Especialização de “Canalização de Energia”, 2 Pontos de Proficiência em Feitiçaria e 1 Ponto de Atributo em Intelecto.</p>"
    }
   },
   "flags": {
@@ -1351,7 +1904,47 @@ const dados = [
     "featureSection": "jj-peculiarities"
    }
   },
-  "_pasta": "Peculiaridades"
+  "_pasta": "Peculiaridades",
+  "effects": [
+   {
+    "_id": "JJ20000000000023",
+    "name": "Peculiaridade: Caçador Sombrio",
+    "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.abilities.int.value",
+      "mode": 2,
+      "value": "1",
+      "priority": null
+     },
+     {
+      "key": "system.legacy2.especiaisExtra",
+      "mode": 2,
+      "value": "2",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Desejo Sombrio",
@@ -1359,7 +1952,7 @@ const dados = [
   "img": "icons/magic/death/projectile-skull-fire-orange.webp",
   "system": {
    "description": {
-    "value": "<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p><p>Uma maldição em seu corpo faz com que você desenvolva desejos sombrios de tempos em tempos, precisando saciá-los para manter um certo nível de sanidade.</p><p>Penalidade: Ao final de cada sessão ou evento marcante na mesa, desde que ocorram em dias diferentes, role 1d6. Em um resultado de 4 ou mais, o Desejo Sombrio se manifesta.</p><p>O desejo sombrio é sempre algo moralmente condenável e, geralmente, configura um crime dentro da sociedade jujutsu. Você deve escolher três tipos de desejos sombrios: um leve, um moderado e um grave. Quando o desejo se manifestar, role 1d3 para determinar qual deles ocorrerá (ou d6 em mesas presenciais):</p><p>1 – Leve: Você irá manipular, trair ou causar sofrimento a um inocente ou aliado, conforme sua escolha.</p><p>2 – Moderado: Você irá ferir gravemente um inocente ou aliado ou; destruir algo importante.</p><p>3 – Grave: Você irá matar, sacrificar ou cometer um ato extremo punível com a morte pelas leis.</p><p>Você deve definir previamente uma única ação específica para cada um dos três níveis, que representarão seus desejos sombrios.</p><p>Falhar em cumprir seu desejo sombrio faz você ter -4 em todas as rolagens não relacionadas a cumpri-lo até que ele seja saciado.</p><p>Benefícios: Você recebe 2 Pontos Lendários para usar em modificadores.</p>"
+    "value": "<p>Uma maldição em seu corpo faz com que você desenvolva desejos sombrios de tempos em tempos, precisando saciá-los para manter um certo nível de sanidade.</p><p><strong>Penalidade:</strong> Ao final de cada sessão ou evento marcante na mesa, desde que ocorram em dias diferentes, role 1d6. Em um resultado de 4 ou mais, o Desejo Sombrio se manifesta.</p><p>O desejo sombrio é sempre algo moralmente condenável e, geralmente, configura um crime dentro da sociedade jujutsu. Você deve escolher três tipos de desejos sombrios: um leve, um moderado e um grave. Quando o desejo se manifestar, role 1d3 para determinar qual deles ocorrerá (ou d6 em mesas presenciais):</p><p>1 – Leve: Você irá manipular, trair ou causar sofrimento a um inocente ou aliado, conforme sua escolha.</p><p>2 – Moderado: Você irá ferir gravemente um inocente ou aliado ou; destruir algo importante.</p><p>3 – Grave: Você irá matar, sacrificar ou cometer um ato extremo punível com a morte pelas leis.</p><p>Você deve definir previamente uma única ação específica para cada um dos três níveis, que representarão seus desejos sombrios.</p><p>Falhar em cumprir seu desejo sombrio faz você ter -4 em todas as rolagens não relacionadas a cumpri-lo até que ele seja saciado.</p><p><strong>Benefícios:</strong> Você recebe 2 Pontos Lendários para usar em modificadores.</p>"
    }
   },
   "flags": {
@@ -1435,7 +2028,41 @@ const dados = [
     "pontosLendarios": 3
    }
   },
-  "_pasta": "Modificadores Lendários"
+  "_pasta": "Modificadores Lendários",
+  "effects": [
+   {
+    "_id": "JJ20000000000025",
+    "name": "Resistência 20 (Alma)",
+    "img": "icons/magic/death/skull-energy-light-white.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.resistances.soul.value",
+      "mode": 2,
+      "value": "20",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Receptáculo Destinado",
@@ -1469,7 +2096,41 @@ const dados = [
     "pontosLendarios": 6
    }
   },
-  "_pasta": "Modificadores Lendários"
+  "_pasta": "Modificadores Lendários",
+  "effects": [
+   {
+    "_id": "JJ20000000000026",
+    "name": "Mais 6 Selos",
+    "img": "icons/magic/death/skull-energy-light-white.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "flags.jujutsu-system.selosBonus",
+      "mode": 2,
+      "value": "6",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Seis Olhos",
@@ -1494,16 +2155,51 @@ const dados = [
   "img": "icons/magic/symbols/circled-gem-pink.webp",
   "system": {
    "description": {
-    "value": "<p>Você possui uma quantidade imensa de energia amaldiçoada desde o seu nascimento, tornando a utilização de feitiços algo natural para você.</p><p>Sua quantidade de Energia Amaldiçoada passa a ser 30 vezes o seu nível de personagem, em vez dos 20 atuais, e você recebe 10 PA máximos pelo benefício “Evolução na Prática”, em vez dos 5 que recebe normalmente.</p><p>Custo: <strong>6 Pontos Lendários</strong>.</p>"
-   }
-  },
-  "flags": {
-   "jujutsu-system": {
-    "featureSection": "jj-legendary-modifiers",
+    "value": "<p>Você possui uma quantidade imensa de energia amaldiçoada desde o seu nascimento, tornando a utilização de feitiços algo natural para você.</p><p>Sua <strong>Energia Base dobra</strong> — apenas o valor descrito no Estilo de Combate (a raiz): um Estilo de 10 passa a 20; aumentos de origem de poder e peculiaridades NÃO são dobrados. O valor do seu <strong>Refinamento aumenta em 5</strong> (geração por turno e tetos de reserva).</p><p>Custo: <strong>6 Pontos Lendários</strong>.</p>",
     "pontosLendarios": 6
    }
   },
-  "_pasta": "Modificadores Lendários"
+  "_pasta": "Modificadores Lendários",
+  "effects": [
+   {
+    "_id": "JJ20000000000027",
+    "name": "Energia Colossal",
+    "img": "icons/magic/death/skull-energy-light-white.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "flags.jujutsu-system.energiaColossal",
+      "mode": 2,
+      "value": "1",
+      "priority": null
+     },
+     {
+      "key": "flags.jujutsu-system.refinamentoBonus",
+      "mode": 2,
+      "value": "5",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Perde 3 dos seus Selos",
@@ -1519,7 +2215,41 @@ const dados = [
     "featureSection": "jj-variant-penalties"
    }
   },
-  "_pasta": "Penalidades Variantes"
+  "_pasta": "Penalidades Variantes",
+  "effects": [
+   {
+    "_id": "JJ20000000000028",
+    "name": "Menos 3 Selos",
+    "img": "icons/magic/death/skull-energy-light-white.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "flags.jujutsu-system.selosBonus",
+      "mode": 2,
+      "value": "-3",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Perde 2 Habilidades de Especialização",
@@ -1535,7 +2265,41 @@ const dados = [
     "featureSection": "jj-variant-penalties"
    }
   },
-  "_pasta": "Penalidades Variantes"
+  "_pasta": "Penalidades Variantes",
+  "effects": [
+   {
+    "_id": "JJ20000000000029",
+    "name": "Menos 2 Especializações",
+    "img": "icons/magic/death/skull-energy-light-white.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.especiaisExtra",
+      "mode": 2,
+      "value": "-2",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Sacrifica os benefícios da origem",
@@ -1559,7 +2323,7 @@ const dados = [
   "img": "icons/magic/death/skull-energy-light-white.webp",
   "system": {
    "description": {
-    "value": "<p>Você perde 2 Pontos de Vida ou 4 de Energia Base.</p><p>Bônus: <strong>2 Pontos Lendários</strong>.</p>"
+    "value": "<p>Você perde 2 Pontos de Vida ou 4 de Energia Base.</p><p>Bônus: <strong>2 Pontos Lendários</strong>.</p><p>Na criação de personagem você escolhe qual perder; apenas o efeito escolhido é aplicado. Fora da criação, desative manualmente um dos dois efeitos na aba Efeitos.</p>"
    }
   },
   "flags": {
@@ -1567,7 +2331,73 @@ const dados = [
     "featureSection": "jj-variant-penalties"
    }
   },
-  "_pasta": "Penalidades Variantes"
+  "_pasta": "Penalidades Variantes",
+  "effects": [
+   {
+    "_id": "JJ20000000000026",
+    "name": "Penalidade: Vida",
+    "img": "icons/magic/death/skull-energy-light-white.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.pvEspecie",
+      "mode": 2,
+      "value": "-2",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   },
+   {
+    "_id": "JJ20000000000027",
+    "name": "Penalidade: Energia",
+    "img": "icons/magic/death/skull-energy-light-white.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.energiaEspecie",
+      "mode": 2,
+      "value": "-4",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Perde 1 Ponto de Ação permanente",
@@ -1583,7 +2413,41 @@ const dados = [
     "featureSection": "jj-variant-penalties"
    }
   },
-  "_pasta": "Penalidades Variantes"
+  "_pasta": "Penalidades Variantes",
+  "effects": [
+   {
+    "_id": "JJ20000000000032",
+    "name": "Menos 1 Ponto de Ação",
+    "img": "icons/magic/death/skull-energy-light-white.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.actions.max",
+      "mode": 2,
+      "value": "-1",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  },
  {
   "name": "Vulnerabilidade 10 a danos físicos",
@@ -1599,24 +2463,84 @@ const dados = [
     "featureSection": "jj-variant-penalties"
    }
   },
-  "_pasta": "Penalidades Variantes"
+  "_pasta": "Penalidades Variantes",
+  "effects": [
+   {
+    "_id": "JJ20000000000033",
+    "name": "Vulnerabilidade 10 (físicos)",
+    "img": "icons/magic/death/skull-energy-light-white.webp",
+    "type": "base",
+    "system": {},
+    "changes": [
+     {
+      "key": "system.legacy2.resistances.bludgeoning.value",
+      "mode": 2,
+      "value": "-10",
+      "priority": null
+     },
+     {
+      "key": "system.legacy2.resistances.slashing.value",
+      "mode": 2,
+      "value": "-10",
+      "priority": null
+     },
+     {
+      "key": "system.legacy2.resistances.piercing.value",
+      "mode": 2,
+      "value": "-10",
+      "priority": null
+     }
+    ],
+    "disabled": false,
+    "duration": {
+     "startTime": null,
+     "seconds": null,
+     "combat": null,
+     "rounds": null,
+     "turns": null,
+     "startRound": null,
+     "startTurn": null
+    },
+    "description": "",
+    "origin": null,
+    "tint": "#ffffff",
+    "statuses": [],
+    "sort": 0,
+    "flags": {},
+    "transfer": true
+   }
+  ]
  }
 ];
-const criarPasta = async (nome) => {
+
+// ── Pastas do pack (cria as que não existirem) ─────────────────────────────
+async function criarPasta(nome) {
   const existente = pack.folders.find(f => f.name === nome);
-  return existente ?? (await Folder.createDocuments([{ name: nome, type: "Item", folder: null }], { pack: pack.collection }))[0];
-};
+  if ( existente ) return existente;
+  const [criada] = await Folder.createDocuments([{ name: nome, type: "Item" }], { pack: pack.collection });
+  return criada;
+}
+
 const pastas = {};
-for ( const nome of ["Defeitos", "Peculiaridades", "Modificadores Lendários", "Penalidades Variantes"] ) {
+for ( const nome of ["Defeitos", "Peculiaridades", "Modificadores Lendários", "Penalidades Variantes"] )
   pastas[nome] = await criarPasta(nome);
-}
-let criados = 0, pulados = 0;
-const nomesExistentes = new Set((await pack.getDocuments()).map(d => d.name));
+
+// ── Itens existentes: nome → _id (para ATUALIZAR em vez de duplicar) ───────
+const nomesExistentes = new Map(pack.index.map(i => [i.name, i._id]));
+let criados = 0, atualizados = 0;
+
 for ( const dado of dados ) {
-  if ( nomesExistentes.has(dado.name) ) { pulados++; continue; }
   const pasta = pastas[dado._pasta];
-  await Item.createDocuments([{ name: dado.name, type: dado.type, folder: pasta?.id ?? null,
-    system: dado.system, flags: dado.flags }], { pack: pack.collection });
-  criados++;
+  const dadosItem = { name: dado.name, type: dado.type, img: dado.img, folder: pasta?.id ?? null,
+    system: dado.system, flags: dado.flags,
+    ...(dado.effects?.length ? { effects: dado.effects } : {}) };
+  const idExistente = nomesExistentes.get(dado.name);
+  if ( idExistente ) {
+    await Item.updateDocuments([{ _id: idExistente, ...dadosItem }], { pack: pack.collection });
+    atualizados++;
+  } else {
+    await Item.createDocuments([dadosItem], { pack: pack.collection });
+    criados++;
+  }
 }
-ui.notifications.info(`Personalização 2.0: ${criados} criados, ${pulados} já existiam.`);
+ui.notifications.info(`Personalização 2.0: ${criados} criados, ${atualizados} atualizados.`);

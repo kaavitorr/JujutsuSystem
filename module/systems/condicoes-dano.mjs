@@ -10,6 +10,8 @@
  *    tempo contra a mesma CD da salvaguarda.
  */
 import Ruleset from "./ruleset.mjs";
+import { temPeculiaridade } from "./peculiaridades-automacao.mjs";
+import { statusesParaCondicao } from "../applications/actor/jj/conditions.mjs";
 
 /** CD base da salvaguarda: 10 + atributo principal do atacante. */
 const CD_BASE = 10;
@@ -23,11 +25,17 @@ export const CONDICOES_DANO = Object.freeze({
   acid:      { status: "jj-corroendo",   label: "Corroendo",   save: "con", rodadas: 3, extra: [] },
   fire:      { status: "jj-em-chamas",   label: "Em Chamas",   save: "con", rodadas: 3, extra: [] },
   necrotic:  { status: "jj-entropia",    label: "Entropia",    save: "wis", rodadas: 2, extra: ["jj-amedrontado"] },
+  // Alma (2.0): dano de alma compartilha a Entropia do necrótico — membros
+  // elementais Sombrios causam dano de tipo "soul" e disparam a mesma condição
+  // em crítico de 20 natural.
+  soul:      { status: "jj-entropia",    label: "Entropia",    save: "wis", rodadas: 2, extra: ["jj-amedrontado"] },
   radiant:   { status: "jj-irradiado",   label: "Irradiado",   save: "con", rodadas: 3, extra: [] },
   slashing:  { status: "jj-sangramento", label: "Sangramento", save: "con", rodadas: 3, extra: [] },
   piercing:  { status: "jj-sangramento", label: "Sangramento", save: "con", rodadas: 3, extra: [] },
-  // Trovejante: a página do Estremecido não define duração — permanece até removida.
-  thunder:   { status: "jj-estremecido", label: "Estremecido", save: "con", rodadas: null, extra: [] }
+  // Trovejante: o Estremecido dura até o FIM do turno da própria criatura
+  // (duração em turnos com expiração no turnEnd — fora de combate, permanece
+  // até ser removida manualmente, pois não há turnos para contar).
+  thunder:   { status: "jj-estremecido", label: "Estremecido", save: "con", rodadas: null, turnos: 1, expiry: "turnEnd", extra: [] }
 });
 
 /** Changes de movimento por condição — usados no efeito criado pelo toggle
@@ -119,6 +127,12 @@ export async function aplicarCondicaoPorDano(alvo, { tiposAplicados = [], atacan
 export async function aplicarCondicaoDano(alvo, condKey, { cd = CD_BASE, atacante = "o atacante" } = {}) {
   const cond = CONDICOES_DANO[condKey];
   if ( !cond || !alvo?.system?.abilities?.[cond.save] ) return false;
+  // Doença Sobrenatural (peculiaridade): imune às condições de DANO.
+  if ( temPeculiaridade(alvo, "doenca-sobrenatural") ) {
+    ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: alvo }),
+      content: `☣️ <strong>${alvo.name}</strong> é imune a condições de Dano (Doença Sobrenatural).` });
+    return false;
+  }
   const atributo = cond.save === "wis" ? "Sabedoria" : "Constituição";
 
   const roll = await alvo.rollAbilitySave?.(cond.save, {
@@ -134,23 +148,29 @@ export async function aplicarCondicaoDano(alvo, condKey, { cd = CD_BASE, atacant
 
   const combate = game.combat;
   const existente = alvo.effects.find(e => e.statuses?.has(cond.status));
-  // Duração: as condições com rodadas expiram sozinhas; as sem duração
-  // definida (ex.: Estremecido) permanecem até serem removidas.
-  const duracao = cond.rodadas
-    ? (combate
-      ? { rounds: cond.rodadas, startRound: combate.round, startTurn: combate.turn, turns: cond.rodadas }
-      : { seconds: cond.rodadas * 6 })
-    : undefined;
+  // Duração: condições com rodadas expiram sozinhas; o Estremecido (turnos +
+  // expiry turnEnd) dura até o FIM do turno da própria criatura; sem combate,
+  // condições sem rodadas permanecem até serem removidas.
+  const duracao = cond.turnos
+    ? (combate ? { turns: cond.turnos, expiry: cond.expiry ?? "turnEnd" } : undefined)
+    : cond.rodadas
+      ? (combate
+        ? { rounds: cond.rodadas, startRound: combate.round, startTurn: combate.turn, turns: cond.rodadas }
+        : { seconds: cond.rodadas * 6 })
+      : undefined;
+  const textoDuracao = cond.turnos
+    ? " — dura até o fim do seu turno"
+    : cond.rodadas ? ` — duração resetada para ${cond.rodadas} rodada(s)` : " (permanece até removida)";
   if ( existente ) {
     await existente.update({ duration: duracao }); // reaplicar reseta a duração
     ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: alvo }),
-      content: `☠️ <strong>${alvo.name}</strong> sofre novamente <strong>${cond.label}</strong>${cond.rodadas ? ` — duração resetada para ${cond.rodadas} rodada(s)` : " (permanece até removida)"} (Salv. de ${atributo} ${total} vs CD ${cd}).` });
+      content: `☠️ <strong>${alvo.name}</strong> sofre novamente <strong>${cond.label}</strong>${textoDuracao} (Salv. de ${atributo} ${total} vs CD ${cd}).` });
   } else {
     await alvo.createEmbeddedDocuments("ActiveEffect", [{
       name: cond.label,
       icon: "systems/jujutsu-system/icons/svg/items/feature.svg",
       origin: atacante ? atacante : null,
-      statuses: [cond.status, ...cond.extra],
+      statuses: [cond.status, ...cond.extra].flatMap(s => statusesParaCondicao(s)),
       changes: [cond.status, ...cond.extra].flatMap(s => MODIFICADORES_MOVIMENTO[s] ?? []),
       duration: duracao,
       flags: { "jujutsu-system": { condicaoDano: { chave: condKey, cd, save: cond.save } } },
@@ -158,7 +178,7 @@ export async function aplicarCondicaoDano(alvo, condKey, { cd = CD_BASE, atacant
       transfer: false
     }]);
     ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: alvo }),
-      content: `☠️ <strong>${alvo.name}</strong> falha na Salvaguarda de ${atributo} (${total} vs CD ${cd}) e sofre <strong>${cond.label}</strong>${cond.rodadas ? ` por ${cond.rodadas} rodada(s)` : ""}!` });
+      content: `☠️ <strong>${alvo.name}</strong> falha na Salvaguarda de ${atributo} (${total} vs CD ${cd}) e sofre <strong>${cond.label}</strong>${cond.turnos ? " até o fim do seu turno" : cond.rodadas ? ` por ${cond.rodadas} rodada(s)` : ""}!` });
   }
   return true;
 }

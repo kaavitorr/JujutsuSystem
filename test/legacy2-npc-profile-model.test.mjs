@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { readFileSync } from "node:fs";
 import { NPC_ABILITIES, validNpcScale, canCreateNpcProfiles, serializeNpcProfileCreation } from "../module/systems/legacy2-npc-profiles.mjs";
+import { NUMERIC_DAMAGE_TYPES } from "../module/systems/legacy2-resistances.mjs";
 
 // Foundry is the framework boundary; evaluate the actual model/schema definitions.
 class Field {constructor(options){Object.assign(this,options);}}
@@ -13,7 +14,7 @@ globalThis.ItemDataModel=class {
   static validateJoint(data){this._validateJoint(data);}
   prepareDerivedData(){}prepareDescriptionData(){this.descriptionPrepared=true;}
 };
-Object.assign(globalThis,{NPC_ABILITIES,validNpcScale});
+Object.assign(globalThis,{NPC_ABILITIES,validNpcScale,NUMERIC_DAMAGE_TYPES});
 globalThis.ItemDescriptionTemplate={};
 const source=readFileSync(new URL("../module/data/item/npc-profile.mjs",import.meta.url),"utf8").replace(/^import .*;\r?$/gm,"");
 const {TaxonomyData,ArchetypeData}=await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
@@ -26,6 +27,11 @@ test("registered profile models define six bounded integer fields with a valid d
   }
   const taxonomy=TaxonomyData.defineSchema();assert.equal(taxonomy.vidaEnergia.initial,false);assert.equal(taxonomy.energiaBase.initial,10);
   assert.equal(ArchetypeData.defineSchema().energiaBase,undefined);
+  const resistencias=TaxonomyData.defineSchema().resistencias.fields;
+  assert.deepEqual(Object.keys(resistencias),NUMERIC_DAMAGE_TYPES.map(type=>type.key));
+  assert.deepEqual(Object.keys(resistencias.fire.fields),["value","immune"]);
+  assert(resistencias.fire.fields.value.integer&&resistencias.fire.fields.value.initial===0);
+  assert(resistencias.fire.fields.immune.initial===false);
 });
 test("joint validation permits partial prevalidation and rejects invalid scales once merged with source",()=>{
   const valid={str:4,dex:2,con:3,int:1,wis:1,cha:1};

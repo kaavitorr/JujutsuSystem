@@ -1,5 +1,6 @@
 import ItemDataModel from "../abstract/item-data-model.mjs";
 import ItemDescriptionTemplate from "./templates/item-description.mjs";
+import { NUMERIC_DAMAGE_TYPES } from "../../systems/legacy2-resistances.mjs";
 import { NPC_ABILITIES, validNpcScale } from "../../systems/legacy2-npc-profiles.mjs";
 
 /** Authorable NPC scales, stored as genuine world/compendium/owned Items. */
@@ -8,10 +9,19 @@ export class NpcProfileData extends ItemDataModel.mixin(ItemDescriptionTemplate)
   static metadata = Object.freeze(foundry.utils.mergeObject(super.metadata, { singleton: true }, { inplace: false }));
 
   static defineSchema() {
-    const { ArrayField, NumberField, SchemaField, StringField } = foundry.data.fields;
+    const { ArrayField, BooleanField, NumberField, SchemaField, StringField } = foundry.data.fields;
     return this.mergeSchema(super.defineSchema(), {
       pesos: new SchemaField(Object.fromEntries(NPC_ABILITIES.map(key => [key,
         new NumberField({ required: true, nullable: false, integer: true, min: 0, max: 12, initial: 2 })]))),
+      // Resistências concedidas pelo perfil ao NPC. Valor positivo é
+      // resistência e negativo é vulnerabilidade; na Taxonomia o valor é
+      // fixo, no Arquétipo o positivo escala com o ND (valor × ND).
+      resistencias: new SchemaField(Object.fromEntries(NUMERIC_DAMAGE_TYPES.map(({ key, label }) => [key,
+        new SchemaField({
+          value: new NumberField({ required: true, nullable: false, integer: true, initial: 0,
+            label: `Resistência a ${label}` }),
+          immune: new BooleanField({ initial: false, label: `Imunidade a ${label}` })
+        })]))),
       // Habilidades concedidas pelo perfil: características (feats) com o ND
       // a partir do qual o NPC pode recebê-las.
       habilidades: new ArrayField(new SchemaField({

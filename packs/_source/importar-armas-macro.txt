@@ -1,0 +1,2471 @@
+/* ============================================================
+ * IMPORTAR: Armas de Personagem (compêndio "JLRPG - Equipamentos PdN", 2.0)
+ * Como usar: crie uma Macro no Foundry (tipo "script"), cole este código
+ * inteiro e execute como GM. Importa/atualiza as 28 armas
+ * nas pastas por categoria (Pesadas, Projétil, Leves, Desarmadas).
+ * Rodar de novo é seguro: atualiza pelo _id. Destrava o pack se preciso.
+ * ============================================================ */
+const DADOS = {
+ "armas": [
+  {
+   "_id": "jjarm00000000001",
+   "name": "Machado Grande",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "martialM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Alcance, Duas Mãos, Pesada.</p><p><strong>Preço:</strong> ¥600 · <strong>Peso:</strong> 3 kg · <strong>Dano:</strong> 1d12 Cortante.</p><p>Um pedaço de madeira ou metal circular com duas lâminas grossas e afiadas opostas uma à outra, em sua extremidade.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 3,
+    "price": {
+     "value": 600,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "rch",
+     "two",
+     "hvy"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 12,
+      "types": [
+       "slashing"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000001": {
+      "_id": "jjarm00000000001",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "pesada",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 0,
+   "_pasta": "Armas Pesadas"
+  },
+  {
+   "_id": "jjarm00000000002",
+   "name": "Nodachi",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "martialM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Alcance, Duas Mãos, Pesada.</p><p><strong>Preço:</strong> ¥650 · <strong>Peso:</strong> 2 kg · <strong>Dano:</strong> 1d8 Cortante.</p><p>Uma grande katana. Sua capacidade de corte e alcance são superiores ao de uma katana, devido ao seu peso e tamanho.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 2,
+    "price": {
+     "value": 650,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "rch",
+     "two",
+     "hvy"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 8,
+      "types": [
+       "slashing"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000002": {
+      "_id": "jjarm00000000002",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "pesada",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 1,
+   "_pasta": "Armas Pesadas"
+  },
+  {
+   "_id": "jjarm00000000003",
+   "name": "Espada Montante",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "martialM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Alcance, Arma de Cerco, Duas Mãos, Pesada.</p><p><strong>Preço:</strong> ¥1.000 · <strong>Peso:</strong> 8 kg · <strong>Dano:</strong> 2d6 Cortante.</p><p>Uma espada de 2 metros de comprimento com uma lâmina um pouco mais larga.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 8,
+    "price": {
+     "value": 1000,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "rch",
+     "sce",
+     "two",
+     "hvy"
+    ],
+    "damage": {
+     "base": {
+      "number": 2,
+      "denomination": 6,
+      "types": [
+       "slashing"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000003": {
+      "_id": "jjarm00000000003",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "pesada",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 2,
+   "_pasta": "Armas Pesadas"
+  },
+  {
+   "_id": "jjarm00000000004",
+   "name": "Foice",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "martialM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Alcance, Duas Mãos.</p><p><strong>Preço:</strong> ¥350 · <strong>Peso:</strong> 1,5 kg · <strong>Dano:</strong> 1d8 Cortante.</p><p>Uma haste de madeira com uma lâmina curvada na ponta. Uma versão mais letal da ferramenta usada para cortar trigo em plantações.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 1.5,
+    "price": {
+     "value": 350,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "rch",
+     "two"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 8,
+      "types": [
+       "slashing"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000004": {
+      "_id": "jjarm00000000004",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "pesada",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 3,
+   "_pasta": "Armas Pesadas"
+  },
+  {
+   "_id": "jjarm00000000005",
+   "name": "Lança",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "martialM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Alcance, Duas Mãos, Arremesso.</p><p><strong>Preço:</strong> ¥450 · <strong>Peso:</strong> 1,5 kg · <strong>Dano:</strong> 1d6 Perfurante ou Contundente.</p><p>Uma haste de metal com uma ponta de metal moldado e afiado.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 1.5,
+    "price": {
+     "value": 450,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "rch",
+     "two",
+     "thr"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 6,
+      "types": [
+       "piercing",
+       "bludgeoning"
+      ]
+     },
+     "parts": []
+    },
+    "range": {
+     "value": 10,
+     "long": null,
+     "units": "m"
+    },
+    "activities": {
+     "jjarm00000000005": {
+      "_id": "jjarm00000000005",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "pesada",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 4,
+   "_pasta": "Armas Pesadas"
+  },
+  {
+   "_id": "jjarm00000000006",
+   "name": "Mangual",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "martialM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Arma de Cerco, Pesada.</p><p><strong>Preço:</strong> ¥190 · <strong>Peso:</strong> 2 kg · <strong>Dano:</strong> 1d10 Perfurante.</p><p>Uma haste de madeira e metal com uma corrente na ponta presa a uma bola de metal com espinhos.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 2,
+    "price": {
+     "value": 190,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "sce",
+     "hvy"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 10,
+      "types": [
+       "piercing"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000006": {
+      "_id": "jjarm00000000006",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "pesada",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 5,
+   "_pasta": "Armas Pesadas"
+  },
+  {
+   "_id": "jjarm00000000007",
+   "name": "Martelo de Guerra",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "martialM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Arma de Cerco, Duas Mãos, Pesada.</p><p><strong>Preço:</strong> ¥520 · <strong>Peso:</strong> 3 kg · <strong>Dano:</strong> 1d12 Contundente.</p><p>Um martelo com um lado afiado em uma ponta e uma parte chata na outra.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 3,
+    "price": {
+     "value": 520,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "sce",
+     "two",
+     "hvy"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 12,
+      "types": [
+       "bludgeoning"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000007": {
+      "_id": "jjarm00000000007",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "pesada",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 6,
+   "_pasta": "Armas Pesadas"
+  },
+  {
+   "_id": "jjarm00000000008",
+   "name": "Tridente",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "martialM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Acuidade, Duas Mãos.</p><p><strong>Preço:</strong> ¥450 · <strong>Peso:</strong> 2 kg · <strong>Dano:</strong> 1d6 Perfurante ou Contundente.</p><p>Uma haste de metal envolvida em couro com uma ponta que parece um garfo de 3 pontas.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 2,
+    "price": {
+     "value": 450,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "fin",
+     "two"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 6,
+      "types": [
+       "piercing",
+       "bludgeoning"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000008": {
+      "_id": "jjarm00000000008",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "pesada",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 7,
+   "_pasta": "Armas Pesadas"
+  },
+  {
+   "_id": "jjarm00000000009",
+   "name": "Arco",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "simpleR"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Munição, Duas Mãos.</p><p><strong>Preço:</strong> ¥150 · <strong>Peso:</strong> 1,5 kg · <strong>Dano:</strong> 1d6 Perfurante.</p><p>Uma vara de madeira resistente com uma corda elástica que dispara flechas a longas distâncias.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 1.5,
+    "price": {
+     "value": 150,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "amm",
+     "two"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 6,
+      "types": [
+       "piercing"
+      ]
+     },
+     "parts": []
+    },
+    "range": {
+     "value": 25,
+     "long": null,
+     "units": "m"
+    },
+    "activities": {
+     "jjarm00000000009": {
+      "_id": "jjarm00000000009",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "ranged",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "projetil",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 8,
+   "_pasta": "Armas de Projétil"
+  },
+  {
+   "_id": "jjarm00000000010",
+   "name": "Zarabatana",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "simpleR"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> —.</p><p><strong>Preço:</strong> ¥55 · <strong>Peso:</strong> 0,1 kg · <strong>Dano:</strong> 1d4 Perfurante.</p><p>Um cilindro oco capaz de disparar dardos em grande velocidade.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 0.1,
+    "price": {
+     "value": 55,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 4,
+      "types": [
+       "piercing"
+      ]
+     },
+     "parts": []
+    },
+    "range": {
+     "value": 10,
+     "long": null,
+     "units": "m"
+    },
+    "activities": {
+     "jjarm00000000010": {
+      "_id": "jjarm00000000010",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "ranged",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "projetil",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 9,
+   "_pasta": "Armas de Projétil"
+  },
+  {
+   "_id": "jjarm00000000011",
+   "name": "Shuriken",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "simpleR"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Acuidade, Arremesso.</p><p><strong>Preço:</strong> ¥5 · <strong>Peso:</strong> 0,1 kg · <strong>Dano:</strong> 1d4 Perfurante.</p><p>Uma haste de metal com uma ponta de metal moldado e afiado.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 0.1,
+    "price": {
+     "value": 5,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "fin",
+     "thr"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 4,
+      "types": [
+       "piercing"
+      ]
+     },
+     "parts": []
+    },
+    "range": {
+     "value": 6,
+     "long": 12,
+     "units": "m"
+    },
+    "activities": {
+     "jjarm00000000011": {
+      "_id": "jjarm00000000011",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "ranged",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "projetil",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 10,
+   "_pasta": "Armas de Projétil"
+  },
+  {
+   "_id": "jjarm00000000012",
+   "name": "Adaga/Kunai",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "simpleM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Acuidade, Arremesso, Emboscada, Intuitivo.</p><p><strong>Preço:</strong> ¥130 · <strong>Peso:</strong> 0,1 kg · <strong>Dano:</strong> 1d4 Cortante ou Perfurante.</p><p>Uma pequena arma cortante e muito leve, pode ser usada para combates corpo-a-corpo ou lançada contra inimigos.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 0.1,
+    "price": {
+     "value": 130,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "fin",
+     "thr",
+     "emb",
+     "int"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 4,
+      "types": [
+       "slashing",
+       "piercing"
+      ]
+     },
+     "parts": []
+    },
+    "range": {
+     "value": 10,
+     "long": null,
+     "units": "m"
+    },
+    "activities": {
+     "jjarm00000000012": {
+      "_id": "jjarm00000000012",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "leves",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 11,
+   "_pasta": "Armas Leves"
+  },
+  {
+   "_id": "jjarm00000000013",
+   "name": "Daito Katana",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "simpleM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Acuidade, Versátil.</p><p><strong>Preço:</strong> ¥520 · <strong>Peso:</strong> 1,6 kg · <strong>Dano:</strong> 1d6 Cortante.</p><p>Categoria de espada, que possui entre 24 e 60 centímetros de linha reta, sendo o resto curva, é maior que uma katana normal.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 1.6,
+    "price": {
+     "value": 520,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "fin",
+     "ver"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 6,
+      "types": [
+       "slashing"
+      ]
+     },
+     "versatile": {
+      "number": 1,
+      "denomination": 8,
+      "types": [
+       "slashing"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000013": {
+      "_id": "jjarm00000000013",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "leves",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 12,
+   "_pasta": "Armas Leves"
+  },
+  {
+   "_id": "jjarm00000000014",
+   "name": "Katana",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "simpleM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Acuidade.</p><p><strong>Preço:</strong> ¥450 · <strong>Peso:</strong> 1,2 kg · <strong>Dano:</strong> 1d6 Cortante.</p><p>É um tipo de espada, de corte em apenas um gume e com uma leve curva.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 1.2,
+    "price": {
+     "value": 450,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "fin"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 6,
+      "types": [
+       "slashing"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000014": {
+      "_id": "jjarm00000000014",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "leves",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 13,
+   "_pasta": "Armas Leves"
+  },
+  {
+   "_id": "jjarm00000000015",
+   "name": "Kogatana",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "simpleM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Acuidade.</p><p><strong>Preço:</strong> ¥200 · <strong>Peso:</strong> 0,5 kg · <strong>Dano:</strong> 1d4 Cortante.</p><p>Versão pequena de uma katana, se assemelhando a uma faca.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 0.5,
+    "price": {
+     "value": 200,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "fin"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 4,
+      "types": [
+       "slashing"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000015": {
+      "_id": "jjarm00000000015",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "leves",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 14,
+   "_pasta": "Armas Leves"
+  },
+  {
+   "_id": "jjarm00000000016",
+   "name": "Machado",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "simpleM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Arremesso.</p><p><strong>Preço:</strong> ¥360 · <strong>Peso:</strong> 1 kg · <strong>Dano:</strong> 1d6 Cortante.</p><p>Um pedaço de madeira ou metal circular com uma lâmina grossa e afiada, em sua extremidade.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 1,
+    "price": {
+     "value": 360,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "thr"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 6,
+      "types": [
+       "slashing"
+      ]
+     },
+     "parts": []
+    },
+    "range": {
+     "value": 6,
+     "long": 15,
+     "units": "m"
+    },
+    "activities": {
+     "jjarm00000000016": {
+      "_id": "jjarm00000000016",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "leves",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 15,
+   "_pasta": "Armas Leves"
+  },
+  {
+   "_id": "jjarm00000000017",
+   "name": "Rapieira",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "simpleM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Acuidade.</p><p><strong>Preço:</strong> ¥450 · <strong>Peso:</strong> 1 kg · <strong>Dano:</strong> 1d8 Cortante ou Perfurante.</p><p>É uma esbelta espada pontiaguda, projetada principalmente para estocadas. O cabo tem um projeto complexo que atua como uma forma de proteção para que a mão possa realizar seus ataques.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 1,
+    "price": {
+     "value": 450,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "fin"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 8,
+      "types": [
+       "slashing",
+       "piercing"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000017": {
+      "_id": "jjarm00000000017",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "leves",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 16,
+   "_pasta": "Armas Leves"
+  },
+  {
+   "_id": "jjarm00000000018",
+   "name": "Sabre",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "simpleM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> —.</p><p><strong>Preço:</strong> ¥450 · <strong>Peso:</strong> 1,5 kg · <strong>Dano:</strong> 1d6 Cortante.</p><p>É uma espada com um gume e com um grande protetor de mão. A lâmina é, geralmente, curvada e com comprimento variável.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 1.5,
+    "price": {
+     "value": 450,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 6,
+      "types": [
+       "slashing"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000018": {
+      "_id": "jjarm00000000018",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "leves",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 17,
+   "_pasta": "Armas Leves"
+  },
+  {
+   "_id": "jjarm00000000019",
+   "name": "Shikomizue",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "simpleM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Acuidade.</p><p><strong>Preço:</strong> ¥500 · <strong>Peso:</strong> 1 kg · <strong>Dano:</strong> 1d6 Cortante.</p><p>É uma espada fina, normalmente, escondida dentro de uma bengala.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 1,
+    "price": {
+     "value": 500,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "fin"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 6,
+      "types": [
+       "slashing"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000019": {
+      "_id": "jjarm00000000019",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "leves",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 18,
+   "_pasta": "Armas Leves"
+  },
+  {
+   "_id": "jjarm00000000020",
+   "name": "Chicote",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "simpleM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Alcance.</p><p><strong>Preço:</strong> ¥50 · <strong>Peso:</strong> 0,2 kg · <strong>Dano:</strong> 1d6 Cortante.</p><p>Um material extremamente flexível e duro preso a um cabo rígido de couro.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 0.2,
+    "price": {
+     "value": 50,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "rch"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 6,
+      "types": [
+       "slashing"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000020": {
+      "_id": "jjarm00000000020",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "leves",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 19,
+   "_pasta": "Armas Leves"
+  },
+  {
+   "_id": "jjarm00000000021",
+   "name": "Dardo de Corda",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "simpleM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Munição, Duas Mãos.</p><p><strong>Preço:</strong> ¥250 · <strong>Peso:</strong> 0,5 kg · <strong>Dano:</strong> 1d6 Cortante ou Perfurante.</p><p>Uma corda com uma adaga presa a ponta, sendo capaz de cortar ou perfurar os alvos a distância.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 0.5,
+    "price": {
+     "value": 250,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "amm",
+     "two"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 6,
+      "types": [
+       "slashing",
+       "piercing"
+      ]
+     },
+     "parts": []
+    },
+    "range": {
+     "value": 6,
+     "long": 9,
+     "units": "m"
+    },
+    "activities": {
+     "jjarm00000000021": {
+      "_id": "jjarm00000000021",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "leves",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 20,
+   "_pasta": "Armas Leves"
+  },
+  {
+   "_id": "jjarm00000000022",
+   "name": "Foice Dupla",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "simpleM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Duas Mãos, Acuidade.</p><p><strong>Preço:</strong> ¥750 · <strong>Peso:</strong> 2,5 kg · <strong>Dano:</strong> 1d6 Cortante.</p><p>Duas Foices médias de uma mão presas por uma corrente de argolas de aço entrelaçado.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 2.5,
+    "price": {
+     "value": 750,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "two",
+     "fin"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 6,
+      "types": [
+       "slashing"
+      ]
+     },
+     "parts": []
+    },
+    "range": {
+     "value": 5,
+     "long": 10,
+     "units": "m"
+    },
+    "activities": {
+     "jjarm00000000022": {
+      "_id": "jjarm00000000022",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "leves",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 21,
+   "_pasta": "Armas Leves"
+  },
+  {
+   "_id": "jjarm00000000023",
+   "name": "Katar",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "simpleM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Acuidade, Emboscada, Duas Mãos.</p><p><strong>Preço:</strong> ¥1.500 · <strong>Peso:</strong> 1,5 kg · <strong>Dano:</strong> 1d6 Perfurante ou Cortante.</p><p>Você pode, uma vez por turno, para executar um ataque adicional com essa arma causando apenas o dado de dano da arma sem adicional de modificadores ou capacidade de crítico.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 1.5,
+    "price": {
+     "value": 1500,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "fin",
+     "emb",
+     "two"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 6,
+      "types": [
+       "piercing",
+       "slashing"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000023": {
+      "_id": "jjarm00000000023",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "leves",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 22,
+   "_pasta": "Armas Leves"
+  },
+  {
+   "_id": "jjarm00000000024",
+   "name": "Kusarigama",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "simpleM"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Acuidade.</p><p><strong>Preço:</strong> ¥400 · <strong>Peso:</strong> 2 kg · <strong>Dano:</strong> 1d4 Cortante ou Contundente.</p><p>Uma pequena foice de uma mão com uma corrente presa ao cabo com um peso na ponta. Você pode causar dano Contundente a distância usando o peso na ponta da corrente.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 2,
+    "price": {
+     "value": 400,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "fin"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 4,
+      "types": [
+       "slashing",
+       "bludgeoning"
+      ]
+     },
+     "parts": []
+    },
+    "range": {
+     "value": 10,
+     "long": null,
+     "units": "m"
+    },
+    "activities": {
+     "jjarm00000000024": {
+      "_id": "jjarm00000000024",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "leves",
+     "custoPA": 2
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 23,
+   "_pasta": "Armas Leves"
+  },
+  {
+   "_id": "jjarm00000000025",
+   "name": "Bastão",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "improv"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Alcance, Duas Mãos, Desarmado.</p><p><strong>Preço:</strong> ¥250 · <strong>Peso:</strong> 1,5 kg · <strong>Dano:</strong> 1d6 Contundente.</p><p>Um pedaço de madeira ou metal circular.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 1.5,
+    "price": {
+     "value": 250,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "rch",
+     "two",
+     "des"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 6,
+      "types": [
+       "bludgeoning"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000025": {
+      "_id": "jjarm00000000025",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "desarmado",
+     "custoPA": 2,
+     "danoAssumido": true
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 24,
+   "_pasta": "Armas Desarmadas"
+  },
+  {
+   "_id": "jjarm00000000026",
+   "name": "Kanabo/Tacape",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "improv"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Arma de Cerco, Duas Mãos, Pesada, Desarmado.</p><p><strong>Preço:</strong> ¥400 · <strong>Peso:</strong> 4,5 kg · <strong>Dano:</strong> 1d8 Contundente ou Perfurante.</p><p>Um cabo de madeira ou metal com a extremidade grossa, podendo possuir espinhos em sua ponta.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 4.5,
+    "price": {
+     "value": 400,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "sce",
+     "two",
+     "hvy",
+     "des"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 8,
+      "types": [
+       "bludgeoning",
+       "piercing"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000026": {
+      "_id": "jjarm00000000026",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "desarmado",
+     "custoPA": 2,
+     "danoAssumido": true
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 25,
+   "_pasta": "Armas Desarmadas"
+  },
+  {
+   "_id": "jjarm00000000027",
+   "name": "Luva de Espinhos",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "improv"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Desarmado.</p><p><strong>Preço:</strong> ¥130 · <strong>Peso:</strong> 0,3 kg · <strong>Dano:</strong> 1d4 Perfurante.</p><p>Uma luva com uma placa de metal coberta de espinhos, na parte superior dos dedos.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 0.3,
+    "price": {
+     "value": 130,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "des"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 4,
+      "types": [
+       "piercing"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000027": {
+      "_id": "jjarm00000000027",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "desarmado",
+     "custoPA": 2,
+     "danoAssumido": true
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 26,
+   "_pasta": "Armas Desarmadas"
+  },
+  {
+   "_id": "jjarm00000000028",
+   "name": "Nunchaku",
+   "type": "weapon",
+   "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+   "system": {
+    "type": {
+     "value": "improv"
+    },
+    "rarity": "",
+    "identified": true,
+    "description": {
+     "value": "<p><strong>Propriedades:</strong> Acuidade, Desarmado.</p><p><strong>Preço:</strong> ¥160 · <strong>Peso:</strong> 2 kg · <strong>Dano:</strong> 1d6 Contundente.</p><p>Dois pedaços de madeira ou metal conectados por uma corrente.</p><p><strong>Custo de uso:</strong> 2 Pontos de Ação por ataque.</p>",
+     "chat": ""
+    },
+    "quantity": 1,
+    "weight": 2,
+    "price": {
+     "value": 160,
+     "denomination": "yen"
+    },
+    "equipped": false,
+    "properties": [
+     "fin",
+     "des"
+    ],
+    "damage": {
+     "base": {
+      "number": 1,
+      "denomination": 6,
+      "types": [
+       "bludgeoning"
+      ]
+     },
+     "parts": []
+    },
+    "activities": {
+     "jjarm00000000028": {
+      "_id": "jjarm00000000028",
+      "type": "attack",
+      "identifier": "ataque",
+      "name": "Ataque",
+      "sort": 0,
+      "consumption": {
+       "scaling": {
+        "allowed": false,
+        "max": ""
+       },
+       "spellSlot": true,
+       "targets": [
+        {
+         "type": "attribute",
+         "target": "energy.generated",
+         "value": "2"
+        }
+       ]
+      },
+      "damage": {
+       "parts": []
+      },
+      "attack": {
+       "ability": "",
+       "bonus": "",
+       "flat": false,
+       "type": {
+        "value": "melee",
+        "classification": ""
+       }
+      }
+     }
+    }
+   },
+   "flags": {
+    "jujutsu-system": {
+     "armaPdn": true,
+     "categoria": "desarmado",
+     "custoPA": 2,
+     "danoAssumido": true
+    }
+   },
+   "effects": [],
+   "folder": null,
+   "sort": 27,
+   "_pasta": "Armas Desarmadas"
+  }
+ ]
+};
+
+const PACOTE = "jujutsu-compendium.equipamento-pdn";
+const ROTULO = "JLRPG - Equipamentos PdN";
+
+const pack = game.packs.get(PACOTE);
+if ( !pack ) {
+  ui.notifications.error(`Compêndio "${ROTULO}" (${PACOTE}) não encontrado — crie-o no módulo jujutsu-compendium antes de importar.`);
+  return;
+}
+if ( pack.locked ) await pack.configure({ locked: false });
+
+// ── Pastas por categoria ────────────────────────────────────────────────────
+async function criarPasta(nome) {
+  const existente = pack.folders.find(f => f.name === nome && !f.folder);
+  if ( existente ) return existente;
+  const [criada] = await Folder.createDocuments([{ name: nome, type: "Item" }], { pack: pack.collection });
+  return criada;
+}
+const pastas = {};
+for ( const categoria of ["Armas Pesadas", "Armas de Projétil", "Armas Leves", "Armas Desarmadas"] )
+  pastas[categoria] = await criarPasta(categoria);
+
+// ── Existentes por _id (atualizar em vez de duplicar) ──────────────────────
+await pack.getDocuments({});
+const existentes = new Map(pack.index.map(i => [i._id, i._id]));
+let criados = [], atualizados = [];
+
+for ( const fonte of DADOS.armas ) {
+  const dadosItem = { _id: fonte._id, name: fonte.name, type: fonte.type, img: fonte.img,
+    system: fonte.system, flags: fonte.flags, folder: pastas[fonte._pasta]?.id ?? null };
+  if ( existentes.has(fonte._id) ) {
+    await Item.updateDocuments([dadosItem], { pack: pack.collection });
+    atualizados.push(fonte.name);
+  } else {
+    await Item.createDocuments([dadosItem], { pack: pack.collection, keepId: true });
+    criados.push(fonte.name);
+  }
+}
+
+const total = (await pack.getIndex()).size;
+const esperado = DADOS.armas.length;
+let mensagem = `<strong>Armas de Personagem</strong> — ${total}/${esperado} itens no compêndio.`;
+if ( criados.length ) mensagem += `<br>Importadas: ${criados.length} arma(s).`;
+if ( atualizados.length ) mensagem += `<br>Atualizadas: ${atualizados.length} arma(s).`;
+ChatMessage.create({ content: mensagem, speaker: ChatMessage.getSpeaker() });
+ui.notifications.info(`Armas de Personagem: ${total}/${esperado} no compêndio.`);

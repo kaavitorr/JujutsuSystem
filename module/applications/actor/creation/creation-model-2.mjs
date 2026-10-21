@@ -14,6 +14,11 @@ const integer = value => Number.isFinite(Number(value)) ? Math.max(0, Math.floor
 export const styleRules = style => style?.getFlag?.("jujutsu-system", "legacy2") ?? style?.flags?.["jujutsu-system"]?.legacy2 ?? {};
 export const rankSpent = values => Object.values(values ?? {}).reduce((sum, value) => sum + integer(value), 0);
 
+/** Penalidade variante com escolha na criação: Vida −2 ou Energia Base −4. */
+export const PENALIDADE_VITAL_NOME = "Perde 2 Pontos de Vida ou 4 de Energia Base";
+export const penalidadeVitalUuid = catalog =>
+  catalog?.customization?.["jj-variant-penalties"]?.find(doc => doc.name === PENALIDADE_VITAL_NOME)?.uuid ?? null;
+
 /* ── Caminhos de Estilo (Lutador / Estrategista) ────────────────────────────
  * Lutador (Guerrilheiro): "Punho Ardente" ou "Mestre das Armas".
  * Estrategista: "Médico de Campo" (+1 slot na 1ª habilidade de Energia
@@ -61,9 +66,12 @@ const scopeKey = value => String(value ?? "").normalize("NFD").replace(/[\u0300-
 
 export function creationDraft(actor) {
   return { step: 0, name: actor?.name ?? "", img: actor?.img ?? "", tokenImg: actor?.prototypeToken?.texture?.src ?? "",
-    species: null, style: null, primary: null, caminho: null, abilities: Object.fromEntries(ABILITY_KEYS.map(key => [key, 1])),
+    species: null, style: null, primary: null, caminho: null, penalidadeVital: null, abilities: Object.fromEntries(ABILITY_KEYS.map(key => [key, 1])),
     specializations: [], proficiencies: Object.fromEntries(Object.entries(CREATION_RANK_KEYS).map(([key, keys]) => [key, zeros(keys)])),
     customization: Object.fromEntries(CUSTOMIZATION_SECTIONS.map(section => [section.id, []])),
+    // uuid → nome das características escolhidas (automações do draft, ex.:
+    // o bypass de requisitos do Receptáculo Destinado).
+    customizacaoNomes: {},
     physical: Object.fromEntries(["height", "hair", "weight", "gender", "skin", "age"].map(key => [key, ""])) };
 }
 
@@ -168,6 +176,7 @@ export function creationActor(draft, style, learned = draft.specializations) {
   return { name: draft.name, system: { details: { level: 1 }, abilities: Object.fromEntries(ABILITY_KEYS.map(key => [key, { value: draft.abilities[key] }])),
     legacy2: { ...draft.proficiencies, principalEscolhido: draft.primary } },
     itemTypes: { class: [{ name: style?.name, getFlag: () => rules }] }, items: [],
+    flags: { "jujutsu-system": { modLendarioNomes: Object.values(draft.customizacaoNomes ?? {}) } },
     getFlag: (scope, key) => key === "especializacoes" ? learned : undefined };
 }
 
@@ -273,6 +282,10 @@ export function validateCreation(draft, catalog, throughStep = 2) {
         customSources.add(uuid);
       }
     }
+    // A penalidade de Vida/Energia exige a escolha do lado que será perdido.
+    const vitalSelecionada = draft.customization["jj-variant-penalties"]?.includes(penalidadeVitalUuid(catalog));
+    if (vitalSelecionada && !["vida", "energia"].includes(draft.penalidadeVital))
+      fail(2, "Escolha se a penalidade variante reduz Vida ou Energia Base.");
   }
   return errors;
 }
