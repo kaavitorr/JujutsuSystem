@@ -27,3 +27,7 @@ node_modules/
 .tmp-merge/
 .claude/
 .zcode/
+
+# documentos de regras e macros de execucao (local apenas)
+docs/
+packs/_source/*.txt
