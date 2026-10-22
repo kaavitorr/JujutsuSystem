@@ -69,3 +69,44 @@
 .dnd5e2.jj2-npc-profile-sheet .jj2-npc-res-immune { display:flex; align-items:center; justify-content:center; gap:5px; font-size:10px; color:#c5becc; }
 .dnd5e2.jj2-npc-profile-sheet .jj2-npc-res-immune.active { color:var(--profile-gold); }
 .dnd5e2.jj2-npc-profile-sheet .jj2-npc-res-value { text-align:center; font-size:16px; color:var(--profile-gold); }
+.dnd5e2.jj2-npc-profile-sheet .jj2-npc-proficiencias { flex:1; min-height:0; overflow-y:auto; padding:16px; background:repeating-linear-gradient(155deg,transparent 0 26px,#ffffff03 27px 28px),var(--profile-ink); }
+.dnd5e2.jj2-npc-profile-sheet .jj2-npc-proficiencias .jj2-scale-heading h2 { text-transform:none; font-size:23px; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-profile-proficiency-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr)); gap:14px; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-profile-proficiency-group { min-width:0; padding:0 10px 4px; border:1px solid #80609955; background:#211929; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-profile-proficiency-group h3 { margin:0 -10px 4px; padding:8px 10px; border:0; border-bottom:1px solid #b38add66; color:var(--profile-purple); font:italic 700 16px/1.2 JJ2Condensed,sans-serif; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-profile-proficiency-row { display:grid; grid-template-columns:minmax(0,1fr) 119px; align-items:center; gap:8px; min-height:35px; border-bottom:1px solid #ffffff0b; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-profile-proficiency-row:last-child { border-bottom:0; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-profile-proficiency-row > span { min-width:0; overflow-wrap:anywhere; color:#f6f1e5; font-size:12px; }
+.application.dnd5e2.jj2-npc-profile-sheet .jj2-profile-proficiency-row select { width:100%; min-width:0; height:28px; padding:3px 5px; border:1px solid #9470b766; border-radius:0; background:#110d18; color:#f6f1e5; font:400 12px/1.2 JJ2Condensed,sans-serif; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-profile-proficiency-row > strong { text-align:center; color:var(--profile-gold); font-size:15px; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-profile-proficiency-example { margin:14px 0 0; padding:10px 12px; border-left:2px solid var(--profile-purple); background:#211929; color:#e3d6ee; font-size:12px; line-height:1.4; }
+
+/* A numbered priority queue: its sequence is the rule, not decoration. */
+.dnd5e2 :is(.jj2-npc-proficiencias,.jj2-npc-proficiency-panel) { --order-purple:#b38add; --order-gold:#efc351; }
+.dnd5e2 .jj2-proficiency-budget { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:6px; margin:10px 0; font-size:12px; }
+.dnd5e2 .jj2-proficiency-budget strong { color:var(--order-gold); }
+.dnd5e2 .jj2-proficiency-budget > span { color:#b9aec5; }
+.dnd5e2 .jj2-proficiency-order { list-style:none; display:grid; gap:5px; margin:12px 0; padding:0; }
+.dnd5e2 .jj2-proficiency-order > li { display:flex; align-items:center; gap:10px; min-height:44px; padding:6px 8px; border:1px solid #80609955; border-left:2px solid var(--order-purple); background:#211929; }
+.dnd5e2 .jj2-proficiency-position { flex:0 0 24px; text-align:center; color:var(--order-gold); font:italic 800 21px/1 JJ2Condensed,sans-serif; }
+.dnd5e2 .jj2-proficiency-label { flex:1; min-width:0; }
+.dnd5e2 .jj2-proficiency-label strong { display:block; color:#f6f1e5; font:700 14px/1.2 JJ2Condensed,sans-serif; overflow-wrap:anywhere; }
+.dnd5e2 .jj2-proficiency-label small { color:#b9aec5; font-size:10px; }
+.dnd5e2 .jj2-proficiency-growth { color:var(--order-purple); font:800 17px JJ2Condensed,sans-serif; }
+.dnd5e2 .jj2-proficiency-controls { display:flex; flex:0 0 auto; gap:3px; }
+.application.dnd5e2 .jj2-proficiency-controls button { display:grid; place-items:center; width:26px; min-width:0; height:27px; padding:3px; margin:0; color:#e3d6ee; border:1px solid #80609966; border-radius:0; background:#17121e; box-shadow:none; }
+.dnd5e2 .jj2-proficiency-controls button svg { width:17px; height:17px; pointer-events:none; }
+.dnd5e2 .jj2-proficiency-controls button:disabled { opacity:.25; }
+.dnd5e2 .jj2-proficiency-controls button:not(:disabled):hover { border-color:var(--order-purple); color:white; background:#49305f; }
+.dnd5e2 .jj2-proficiency-add { display:flex; flex-wrap:wrap; gap:6px; }
+.application.dnd5e2 .jj2-proficiency-add select { flex:1 1 160px; min-width:0; height:32px; padding:3px 7px; border:1px solid #9470b766; border-radius:0; color:#f6f1e5; background:#110d18; font:400 13px JJ2Condensed,sans-serif; }
+.application.dnd5e2 .jj2-proficiency-add > button { flex:0 0 auto; width:auto; min-height:32px; padding:4px 12px; margin:0; border:1px solid #b38add; border-radius:0; color:#17121e; background:#b38add; font:700 13px JJ2Condensed,sans-serif; text-transform:none; }
+.application.dnd5e2 .jj2-proficiency-reset { width:auto; height:auto; min-height:28px; padding:3px 0; margin:8px 0 0; border:0; border-radius:0; color:var(--order-purple); background:transparent; box-shadow:none; font:400 12px JJ2Condensed,sans-serif; text-transform:none; text-decoration:underline; }
+.dnd5e2 .jj2-proficiency-order .jj2-proficiency-empty { color:#b9aec5; font-size:12px; line-height:1.4; border-style:dashed; padding:12px; }
+.dnd5e2 .jj2-proficiency-save-note { margin:7px 0 0; color:#b9aec5; font-size:10px; }
+.dnd5e2 .jj2-proficiency-unspent { margin:10px 0 0; color:var(--order-gold); font-size:12px; line-height:1.4; }
+.dnd5e2 .jj2-proficiency-editor :is(button,select):focus-visible { outline:2px solid var(--order-gold); outline-offset:2px; }
+.dnd5e2.jj2-npc.jj2-ruptura .jj2-npc-proficiency-panel > summary { display:flex; align-items:center; gap:8px; cursor:pointer; font:italic 800 17px/1.2 JJ2Condensed,sans-serif; }
+.dnd5e2.jj2-npc.jj2-ruptura .jj2-npc-proficiency-panel > summary::before { content:""; width:7px; height:7px; border:solid #b38add; border-width:0 1.5px 1.5px 0; transform:rotate(-45deg); }
+.dnd5e2.jj2-npc.jj2-ruptura .jj2-npc-proficiency-panel[open] > summary::before { transform:rotate(45deg); }
+.dnd5e2.jj2-npc.jj2-ruptura .jj2-npc-proficiency-panel > summary span { margin-left:auto; color:#efc351; font-size:14px; }

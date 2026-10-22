@@ -2,12 +2,13 @@ import { avaliarNo, bloqueioDeEstilo } from "../../../systems/especializacoes-2.
 import { WEAPON_GROUPS } from "../../../systems/legacy2-proficiencies.mjs";
 import { SKILL_GROUPS } from "../jj/legacy2-sheet.mjs";
 import { CUSTOMIZATION_SECTIONS, MAX_DEFEITOS } from "../jj/legacy2-customization.mjs";
+import { ALTERNATIVE_SAVES, alternativeSavesEnabled } from "../../../systems/legacy2-alternative-saves.mjs";
 
 export const ABILITY_KEYS = ["str", "dex", "con", "int", "wis", "cha"];
 export const CREATION_STEPS = [{ id: "origin", label: "Origem e Atributos", icon: "str" },
   { id: "style", label: "Estilo e Especializações", icon: "tree" },
   { id: "personalization", label: "Personalização", icon: "personalization" }];
-export const CREATION_RANK_KEYS = { saves: ABILITY_KEYS, armas: WEAPON_GROUPS.map(g => g.key),
+export const CREATION_RANK_KEYS = { get saves() { return alternativeSavesEnabled() ? ALTERNATIVE_SAVES.map(save => save.key) : ABILITY_KEYS; }, armas: WEAPON_GROUPS.map(g => g.key),
   skills: SKILL_GROUPS.flatMap(g => g.skills.map(([key]) => key)) };
 const zeros = keys => Object.fromEntries(keys.map(key => [key, 0]));
 const integer = value => Number.isFinite(Number(value)) ? Math.max(0, Math.floor(Number(value))) : 0;
@@ -174,7 +175,9 @@ export function shouldOpenCreation(actor, options = {}, userId, currentUserId, e
 export function creationActor(draft, style, learned = draft.specializations) {
   const rules = styleRules(style);
   return { name: draft.name, system: { details: { level: 1 }, abilities: Object.fromEntries(ABILITY_KEYS.map(key => [key, { value: draft.abilities[key] }])),
-    legacy2: { ...draft.proficiencies, principalEscolhido: draft.primary } },
+    legacy2: { ...draft.proficiencies,
+      ...(alternativeSavesEnabled() ? { alternativeSaves: { ...draft.proficiencies.saves }, saves: {} } : {}),
+      principalEscolhido: draft.primary } },
     itemTypes: { class: [{ name: style?.name, getFlag: () => rules }] }, items: [],
     flags: { "jujutsu-system": { modLendarioNomes: Object.values(draft.customizacaoNomes ?? {}) } },
     getFlag: (scope, key) => key === "especializacoes" ? learned : undefined };

@@ -1,0 +1,26 @@
+<div class="jj2-proficiency-editor" data-proficiency-editor>
+  {{#unless order.profile}}
+  <div class="jj2-proficiency-budget"><strong>{{order.allocated}} / {{order.budget}} pontos distribuídos</strong><span>{{#if order.custom}}Ordem personalizada{{else}}Sugestão dos perfis{{/if}}</span></div>
+  {{/unless}}
+  <ol class="jj2-proficiency-order">
+    {{#each order.entries}}
+    <li>
+      <span class="jj2-proficiency-position">{{n}}</span>
+      <span class="jj2-proficiency-label"><strong>{{label}}</strong><small>{{kind}}</small></span>
+      {{#unless ../order.profile}}<span class="jj2-proficiency-growth" title="Degraus automáticos por ND">+{{granted}}</span>{{/unless}}
+      {{#if @root.editable}}<div class="jj2-proficiency-controls">
+        <button type="button" data-action="jj2ProficiencyOrder" data-command="up" data-id="{{id}}" aria-label="Subir {{label}} na ordem" {{disabled first}}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg></button>
+        <button type="button" data-action="jj2ProficiencyOrder" data-command="down" data-id="{{id}}" aria-label="Descer {{label}} na ordem" {{disabled last}}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 10 6 6 6-6"/></svg></button>
+        <button type="button" data-action="jj2ProficiencyOrder" data-command="remove" data-id="{{id}}" aria-label="Remover {{label}} da ordem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </div>{{/if}}
+    </li>
+    {{else}}<li class="jj2-proficiency-empty">{{#if order.profile}}Adicione as perícias e salvaguardas que este perfil deve priorizar.{{else}}Adicione prioridades aqui ou configure os perfis aplicados ao NPC.{{/if}}</li>{{/each}}
+  </ol>
+  {{#if @root.editable}}
+  {{#if order.canAdd}}<div class="jj2-proficiency-add"><select data-proficiency-choice aria-label="Perícia ou salvaguarda para adicionar à ordem"><option value="">Escolher perícia ou salvaguarda</option>{{#each order.choices}}<option value="{{id}}">{{label}} · {{kind}}</option>{{/each}}</select><button type="button" data-action="jj2ProficiencyOrder" data-command="add">Adicionar</button></div>{{/if}}
+  {{#if order.profile}}{{#if order.entries}}<button type="button" class="jj2-proficiency-reset" data-action="jj2ProficiencyOrder" data-command="reset">Limpar ordem</button>{{/if}}
+  {{else}}{{#if order.custom}}<button type="button" class="jj2-proficiency-reset" data-action="jj2ProficiencyOrder" data-command="reset">Usar sugestões dos perfis</button>{{/if}}{{/if}}
+  <p class="jj2-proficiency-save-note">As alterações na ordem são salvas ao clicar.</p>
+  {{/if}}
+  {{#if order.unspent}}<p class="jj2-proficiency-unspent">{{order.unspent}} ponto(s) sem destino. Inclua mais opções na ordem; cada uma pode receber até 4 degraus automáticos.</p>{{/if}}
+</div>

@@ -68,7 +68,7 @@ test("NPC preparation uses applied taxonomy and growth before attacks; changes t
 test("taxonomy energy traits are resolved from the owned item rather than an old key",async()=>{
   const actor=fixture();actor.system.legacy2.taxonomia="espirito";
   await assignNpcProfile(actor,"taxonomy",document("taxonomy",taxonomy));
-  assert.equal(Ruleset.isEspirito(actor),false);assert.equal(Ruleset.maxEnergy(actor),91);
+  assert.equal(Ruleset.isEspirito(actor),false);assert.equal(Ruleset.maxEnergy(actor),390); // 30×ND (espírito só quando o item aplicado tem vidaEnergia)
   actor.items[0].system.vidaEnergia=true;assert.equal(Ruleset.isEspirito(actor),true);
   assert.equal(Ruleset.maxEnergy(actor),310); // 10×ND + 15×CON (espírito: energia = PV)
   actor.system.legacy2.nd=null;actor.system.details={level:9};

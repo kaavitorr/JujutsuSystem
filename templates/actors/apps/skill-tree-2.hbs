@@ -6,6 +6,9 @@
     </div>
     <div class="jj2m-budget" aria-label="Escolhas de especialização" aria-live="polite">
       <output>{{escolhas.disponiveis}}</output><div><strong>escolhas disponíveis</strong><span>{{escolhas.usadas}} de {{escolhas.totais}} utilizadas{{#if escolhas.concedidas}} · {{escolhas.concedidas}} concedida(s) pelo Mestre{{/if}}</span></div>
+      {{#each escolhasRestritas}}
+      {{#if this.disponiveis}}<output>{{this.disponiveis}}</output><div><strong>slots: {{this.rotulo}}</strong><span>{{this.usados}} de {{this.quantidade}} utilizados — só para {{this.rotulo}}</span></div>{{/if}}
+      {{/each}}
     </div>
     <div class="jj2m-header-actions">
       {{#if ehGM}}<button type="button" class="jj2m-adm {{#if admMode}}on{{/if}}" data-action="adm" aria-pressed="{{admMode}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="edit"}}<span>Requisitos</span></button>{{/if}}
@@ -89,7 +92,7 @@
           {{else}}
             {{#if ehGM}}<button type="button" class="jj2m-learn gm" data-action="conceder" data-nome="{{selecionado.nome}}">Conceder (Mestre) · sem custo</button>{{/if}}
             {{#if temEscolhas}}
-              {{#if (eq selecionado.estado "disponivel")}}<button type="button" class="jj2m-learn" data-action="aprender" data-nome="{{selecionado.nome}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}Aprender · 1 escolha</button>
+              {{#if (eq selecionado.estado "disponivel")}}<button type="button" class="jj2m-learn" data-action="aprender" data-nome="{{selecionado.nome}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}Aprender · {{#if (and (not escolhas.disponiveis) temEscolhas)}}slot restrito{{else}}1 escolha{{/if}}</button>
               {{else if ehGM}}<button type="button" class="jj2m-learn gm" data-action="aprender" data-nome="{{selecionado.nome}}">Forçar (Mestre) · 1 escolha</button>
               {{else}}<button type="button" class="jj2m-learn" disabled>Requisitos pendentes</button>{{/if}}
             {{else if ehGM}}<button type="button" class="jj2m-learn gm" data-action="aprender" data-nome="{{selecionado.nome}}">Forçar (Mestre) · sem escolhas</button>

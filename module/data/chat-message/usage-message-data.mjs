@@ -2,6 +2,7 @@ import ItemMessageData from "./item-message-data.mjs";
 import { ActorDeltasField } from "./fields/deltas-field.mjs";
 import SourceReferenceField from "./fields/source-reference-field.mjs";
 import TargetsField from "./fields/targets-field.mjs";
+import { alternativeSavesEnabled, alternativeSaveDefinition } from "../../systems/legacy2-alternative-saves.mjs";
 
 const {
   ArrayField, BooleanField, DocumentIdField, HTMLField, NumberField, ObjectField, SchemaField, StringField
@@ -255,12 +256,28 @@ export default class UsageMessageData extends ItemMessageData {
   _prepareButtons() {
     const activity = this.parent.getAssociatedActivity();
     const isCreator = game.user.isGM || this.actor?.isOwner || this.parent.isAuthor;
+    const alternativeSaves = alternativeSavesEnabled(), seenSaves = new Set();
     return this.buttons.map((button, index) => {
       const { action, visibility } = button;
+      const definition = action === "rollSave" ? alternativeSaveDefinition(button.dataset?.ability) : null;
+      const alternative = alternativeSaves ? definition : null;
+      // Render old and new cards with the active rule; retain original attributes for clicks and rollback.
+      if ( definition && (alternative || button.dataset.jj2AlternativeSave) ) {
+        const ability = alternative?.label ?? CONFIG.DND5E.abilities[button.dataset.ability]?.label ?? "";
+        const promptTitle = _loc("DND5E.SavePromptTitle", { ability });
+        const dc = button.dataset.dc;
+        button = { ...button, label: { ...button.label, hidden: promptTitle,
+          value: dc ? _loc("DND5E.SavingThrowDC", { ability, dc }) : promptTitle } };
+      }
       let hidden = visibility !== "all";
       if ( hidden ) {
         hidden = (visibility === "gm") && !game.user.isGM;
         hidden ||= !isCreator || activity?.shouldHideChatButton(button, this.parent);
+      }
+      if ( alternative && !hidden ) {
+        const key = `${alternative.key}:${button.dataset.dc ?? ""}`;
+        hidden = seenSaves.has(key);
+        seenSaves.add(key);
       }
       const label = this.parent.shouldDisplayChallenge
         ? button.label.value

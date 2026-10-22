@@ -2,14 +2,14 @@
   "id": "jujutsu-system",
   "title": "Jujutsu Legacy",
   "description": "Jujutsu Legacy RPG — a Jujutsu Kaisen-inspired tabletop role-playing system for the Foundry Virtual Tabletop environment.",
-  "version": "1.2.15",
+  "version": "1.2.2",
   "compatibility": {
     "minimum": "14.367",
     "verified": "14"
   },
   "url": "https://github.com/kaavitorr/JujutsuSystem",
   "manifest": "https://raw.githubusercontent.com/kaavitorr/JujutsuSystem/main/system.json",
-  "download": "https://github.com/kaavitorr/JujutsuSystem/releases/download/v1.2.1/jujutsu-system.zip",
+  "download": "https://github.com/kaavitorr/JujutsuSystem/releases/download/v1.2.2/jujutsu-system.zip",
   "authors": [
     {
       "name": "Noroi",

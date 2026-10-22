@@ -1,0 +1,27 @@
+<div class="jj2-alternative-save-list">
+  {{#each jj2.saves}}
+  <div class="jj2-alternative-save" data-key="{{key}}" data-ability="{{ability}}" data-tooltip="{{tooltip}}">
+    <span class="jj2-alternative-save-name">{{label}}</span>
+    <button type="button" class="jj2-save-seal saving-throw {{@root.rollableClass}} {{#if @root.owner}}always-interactive{{/if}}" data-action="roll" data-type="ability" aria-label="Rolar salvaguarda de {{label}}: {{total}}" {{disabled (not @root.owner)}}>
+      <svg viewBox="0 0 100 112" fill="none" stroke="currentColor" stroke-linejoin="miter" aria-hidden="true">
+        <path class="jj2-save-seal-outer" d="M50 4 94 30v52l-44 26L6 82V30Z"/>
+        {{#if (eq key "fortitude")}}
+        <path class="jj2-save-seal-inner" d="m50 9 40 23v48l-40 23-40-23V32Z"/>
+        <path class="jj2-save-seal-facet" d="m50 4-8 8 8 8 8-8ZM6 30l11-1L6 47Zm88 0-11-1 11 18ZM6 82l11 1L6 65Zm88 0-11 1 11-18Zm-44 26-8-8 8-8 8 8Z"/>
+        {{else if (eq key "vontade")}}
+        <path class="jj2-save-seal-inner" d="m50 10 39 23v46l-39 23-39-23V33Zm0 6 34 20v40l-34 20-34-20V36Z"/>
+        <path class="jj2-save-seal-facet" d="m6 30 9 10v32L6 82Zm88 0-9 10v32l9 10Z"/>
+        <path class="jj2-save-seal-ink" d="M19 26 50 8l31 18M19 86l31 18 31-18"/>
+        {{else}}
+        <path class="jj2-save-seal-inner" d="m50 8 40 24v48l-40 24-40-24V32Z"/>
+        <path class="jj2-save-seal-facet" d="M27 18 50 4l23 14-23-8Zm0 76 23 14 23-14-23 8Z"/>
+        <path class="jj2-save-seal-ink" d="M6 32v48m88-48v48"/>
+        {{/if}}
+      </svg>
+      <strong>{{dnd5e-formatModifier total}}</strong>
+    </button>
+    <small class="jj2-alternative-save-rank">{{rankLabel}}</small>
+    {{> "systems/jujutsu-system/templates/actors/parts/jj2-ranks.hbs" ctx="alternativeSaves" }}
+  </div>
+  {{/each}}
+</div>

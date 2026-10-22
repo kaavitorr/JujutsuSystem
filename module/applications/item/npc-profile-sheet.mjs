@@ -1,10 +1,13 @@
 import ItemSheet5e from "./item-sheet.mjs";
 import { NUMERIC_DAMAGE_TYPES } from "../../systems/legacy2-resistances.mjs";
-import { distributeNpcAttributes, NPC_ABILITIES, NPC_EQUAL_SCALE, validNpcScale } from "../../systems/legacy2-npc-profiles.mjs";
+import { distributeNpcAttributes, NPC_ABILITIES, NPC_EQUAL_SCALE, validNpcScale,
+  npcProfileProficiencyOrder, npcProficiencyMode } from "../../systems/legacy2-npc-profiles.mjs";
+import { proficiencyOrderContext, updateNpcProficiencyOrder } from "../actor/jj/npc-proficiency-order.mjs";
 
 /** Save all six weights together, rather than rejecting intermediate edits. */
 export default class NpcProfileSheet extends ItemSheet5e {
   static DEFAULT_OPTIONS = {
+    actions: { jj2ProficiencyOrder: function(event, target) { return updateNpcProficiencyOrder(this, target); } },
     classes: ["jj2-npc-profile-sheet"],
     form: { submitOnChange: false, closeOnSubmit: false },
     position: { width: 560, height: 650 }, window: { resizable: true }
@@ -14,6 +17,8 @@ export default class NpcProfileSheet extends ItemSheet5e {
     scales: { template: "systems/jujutsu-system/templates/items/npc-profile-scales.hbs",
       templates: ["systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs"], scrollable: [""] },
     resistencias: { template: "systems/jujutsu-system/templates/items/npc-profile-resistencias.hbs", scrollable: [""] },
+    proficiencias: { template: "systems/jujutsu-system/templates/items/npc-profile-proficiencias.hbs",
+      templates: ["systems/jujutsu-system/templates/actors/parts/jj2-proficiency-order.hbs"], scrollable: [""] },
     habilidades: { template: "systems/jujutsu-system/templates/items/npc-profile-habilidades.hbs",
       templates: ["systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs"], scrollable: [""] },
     description: super.PARTS.description,
@@ -21,6 +26,7 @@ export default class NpcProfileSheet extends ItemSheet5e {
   };
   static TABS = [ { tab: "scales", label: "Escala de Atributos" },
     { tab: "resistencias", label: "Resistências" },
+    { tab: "proficiencias", label: "Proficiências" },
     { tab: "habilidades", label: "Habilidades" },
     { tab: "description", label: "Descrição" } ];
   tabGroups = { primary: "scales" };
@@ -32,6 +38,11 @@ export default class NpcProfileSheet extends ItemSheet5e {
 
   async _preparePartContext(partId, context, options) {
     context = await super._preparePartContext(partId, context, options);
+    if (partId === "proficiencias") {
+      context.profile = { ...(context.profile ?? {}), combinedSaves: npcProficiencyMode() === "alternative",
+        proficiency: proficiencyOrderContext(npcProfileProficiencyOrder(context.source), { profile: true }) };
+      return context;
+    }
     if (partId === "habilidades") {
       // Resolve cada característica para exibição; ausentes ficam com o
       // placeholder mas continuam removíveis/ajustáveis.

@@ -1,0 +1,7 @@
+<section class="tab {{tab.cssClass}} jj2-npc-proficiencias" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+  <header class="jj2-scale-heading"><div><h2>Prioridades de proficiência</h2></div></header>
+  <p class="jj2-scale-intro">Ordene as perícias e salvaguardas mais importantes deste perfil. O NPC ganha 1 ponto por aumento de ND e distribui um degrau por vez, percorrendo a ordem e recomeçando do início.</p>
+  {{> "systems/jujutsu-system/templates/actors/parts/jj2-proficiency-order.hbs" order=profile.proficiency}}
+  <p class="jj2-profile-proficiency-example">Taxonomia e Arquétipo sugerem uma única ordem na ficha, alternando suas prioridades e sem repetir opções. Você pode ajustar essa ordem em cada NPC. ND 1 não tem pontos de crescimento; ND 5 tem 4.</p>
+  <p class="jj2-scale-copy-note">{{#if profile.combinedSaves}}Fortitude, Vontade e Reflexo estão ativas neste mundo.{{else}}As seis salvaguardas dos atributos estão ativas neste mundo.{{/if}} As distribuições das duas regras são guardadas separadamente.</p>
+</section>

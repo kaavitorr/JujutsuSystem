@@ -1,7 +1,7 @@
 import MappingField from "../fields/mapping-field.mjs";
 import { NUMERIC_DAMAGE_TYPES } from "../../systems/legacy2-resistances.mjs";
 
-const { BooleanField, NumberField, SchemaField, StringField } = foundry.data.fields;
+const { ArrayField, BooleanField, NumberField, SchemaField, StringField } = foundry.data.fields;
 
 /**
  * Sub-schema aditivo `system.legacy2` — campos exclusivos das regras
@@ -35,6 +35,11 @@ export default function legacy2Schema({ engagementInitial = 2 } = {}) {
     }),
     skills: new MappingField(rankField(), { initial: {} }),
     saves: new MappingField(rankField(), { initial: {} }),
+    alternativeSaves: new MappingField(rankField(), { initial: {}, label: "Proficiências das salvaguardas alternativas" }),
+    proficiencyOrder: new SchemaField(Object.fromEntries(["original", "alternative"].map(mode => [mode,
+      new ArrayField(new StringField({ required: true, nullable: false, blank: false }), {
+        required: true, nullable: true, initial: null
+      })]))),
     armas: new MappingField(rankField(), { initial: {} }),
     resistances: new SchemaField(Object.fromEntries(NUMERIC_DAMAGE_TYPES.map(({ key, label }) => [key,
       new SchemaField({

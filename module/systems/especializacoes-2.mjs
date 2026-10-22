@@ -240,6 +240,46 @@ export function escolhasDisponiveis(actor) {
   return Math.max(0, escolhasTotais(actor) - adquiridas(actor).length);
 }
 
+/* ── Slots restritos de caminho (Mestre de Barreiras / Médico de Campo) ─────
+ * Feats de caminho concedem escolhas que SÓ podem ser gastas na categoria/
+ * habilidade deles. Contagem dinâmica: cada habilidade já adquirida que casa
+ * com o grupo consome um slot — sem dupla contagem com a criação (as escolhas
+ * feitas lá já estão em adquiridas). */
+const CAMINHOS_SLOTS = Object.freeze([
+  { identificador: "mestre-de-barreiras", nome: "Mestre de Barreiras", rotulo: "Técnicas de Barreira",
+    quantidade: 3, casa: no => no.categoria === "Técnicas de Barreira" },
+  { identificador: "medico-de-campo", nome: "Médico de Campo", rotulo: "Energia Reversa",
+    quantidade: 1, casa: no => no.categoria === "Energia Reversa" && no.nome === "Energia Reversa" }
+]);
+
+function temCaminho(actor, def) {
+  const alvo = def.nome.toLocaleLowerCase();
+  const idAlvo = def.identificador.toLocaleLowerCase();
+  return Array.from(actor?.items ?? []).some(item =>
+    (item.type === "feat" || item.type === "subclass")
+    && (String(item.system?.identifier ?? item.identifier ?? "").trim().toLocaleLowerCase() === idAlvo
+      || String(item.name ?? "").trim().toLocaleLowerCase() === alvo));
+}
+
+/** Slots restritos de caminho no ator: [{ rotulo, quantidade, usados, disponiveis, casa }]. */
+export function escolhasRestritas(actor) {
+  const porNome = obterGrafo().porNome;
+  const aprendidas = adquiridas(actor);
+  const grupos = [];
+  for ( const def of CAMINHOS_SLOTS ) {
+    if ( !temCaminho(actor, def) ) continue;
+    const usados = aprendidas.filter(n => def.casa(porNome.get(n) ?? {})).length;
+    grupos.push({ id: def.identificador, rotulo: def.rotulo, quantidade: def.quantidade,
+      usados, disponiveis: Math.max(0, def.quantidade - usados), casa: def.casa });
+  }
+  return grupos;
+}
+
+/** Slot restrito livre que pode pagar este nó (ou null). */
+export function slotRestritoPara(actor, no) {
+  return escolhasRestritas(actor).find(grupo => grupo.disponiveis > 0 && grupo.casa(no)) ?? null;
+}
+
 /* ── Motor de requisitos ─────────────────────────────────────────────────── */
 
 const RX_CONTAGEM = /^(?:todas as outras\s+)?(\d+)\s*[Hh]abilidades?\s*(?:de\s+especializa[çc][ãa]o\s+)?(?:do|da|de)\s+(.+)$/i;

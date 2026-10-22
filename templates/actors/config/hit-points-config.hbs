@@ -1,3 +1,6 @@
+{{#if jj2Health}}
+{{> "systems/jujutsu-system/templates/actors/config/hit-points-config-2.hbs" }}
+{{else}}
 <section class="flexcol">
     <div class="final-value">{{ dnd5e-numberFormat data.value }} / {{ dnd5e-numberFormat data.effectiveMax }}</div>
     <fieldset class="card">
@@ -86,3 +89,4 @@
 </div>
 {{/each}}
 {{/inline}}
+{{/if}}

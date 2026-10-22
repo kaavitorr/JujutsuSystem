@@ -128,6 +128,12 @@ export function registerSystemSettings() {
     }
   });
 
+  game.settings.register("jujutsu-system", "showWorldRulesOnEntry", {
+    name: "Mostrar escolha de regras ao entrar",
+    hint: "Pergunta ao mestre quais regras usar ao entrar no mundo. Pode ser desativado pelo botão Não mostrar novamente e reativado aqui.",
+    scope: "world", config: true, type: Boolean, default: true
+  });
+
   // Polymorph Settings
   game.settings.register("jujutsu-system", "transformationSettings", {
     scope: "client",
@@ -582,7 +588,14 @@ export function registerSystemSettings() {
     type: Boolean
   });
 
-  // 2.0: iniciativa dinâmica — todos rerolam no início de cada rodada
+  // 2.0: três salvaguardas opcionais, sem sobrescrever as seis originais.
+  game.settings.register("jujutsu-system", "regraSalvaguarda", {
+    name: "Ativar Regra de Salvaguarda",
+    hint: "Na 2.0, substitui as seis salvaguardas por Fortitude (Força + Sabedoria), Vontade (Constituição + Presença) e Reflexo (Agilidade + Intelecto). Usa a média arredondada para cima e proficiência própria. Os valores da regra anterior são preservados.",
+    scope: "world", config: true, type: Boolean, default: false, requiresReload: true
+  });
+
+  // 2.0: iniciativa dinâmica — todos rerolam no início de cada rodada.
   game.settings.register("jujutsu-system", "iniciativaDinamica", {
     name: "Iniciativa Dinâmica (2.0)",
     hint: "No início de cada rodada a iniciativa de todos é rolada novamente e o resultado aparece num card compacto no chat.",

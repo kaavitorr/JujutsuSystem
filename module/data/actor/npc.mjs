@@ -69,12 +69,20 @@ export default class NPCData extends CreatureTemplate {
         }, { label: "DND5E.HitDice" }),
         hp: new SchemaField({
           ...AttributesFields.hitPoints,
+          maxOverride: new NumberField({
+            nullable: true, initial: null, min: 0,
+            label: "Vida máxima manual (vazio = calculado)"
+          }),
           bloodied: new NumberField({
             nullable: false, min: 0, max: 100, persisted: false, initial: () => CONFIG.DND5E.bloodied.threshold,
             label: "DND5E.HITPOINTS.Bloodied.label"
           }),
           formula: new FormulaField({ required: true, label: "DND5E.HPFormula" })
         }, { label: "DND5E.HitPoints" }),
+        acOverride: new NumberField({
+          nullable: true, initial: null, min: 0,
+          label: "CR manual (vazio = calculado)"
+        }),
         death: new RollConfigField({
           ability: false,
           success: new NumberField({
@@ -520,9 +528,13 @@ export default class NPCData extends CreatureTemplate {
         - Number(this._source?.attributes?.ac?.bonus ?? 0)) || 0;
       this.attributes.ac.value = 10 + Math.floor((attrV(principal) + attrV("dex") + attrV("con")) / 3) + bonusCR;
       // Override de CR por efeito (ex.: Inconsciente automático a 0 PV): vence
-      // sobre a fórmula.
+      // sobre a fórmula. A sobrescrita manual (ficha 2.0) vence sobre ambos.
       if ( Number.isFinite(this.attributes.ac.override) ) {
         this.attributes.ac.value = this.attributes.ac.override;
+      }
+      const crManual = Number(this._source?.attributes?.acOverride);
+      if ( Number.isFinite(crManual) && crManual > 0 ) {
+        this.attributes.ac.value = crManual;
       }
       this.attributes.ac.calc = "resistencia";
       this.attributes.ac.armor = this.attributes.ac.value;

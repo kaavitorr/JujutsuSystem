@@ -1,4 +1,5 @@
 import Ruleset from "../../../systems/ruleset.mjs";
+import { alternativeSavesEnabled } from "../../../systems/legacy2-alternative-saves.mjs";
 import { creationActor, validateCreation, rankSpent, ABILITY_KEYS, styleRules, creationPathOptions, creationSpecializationSlots,
   PENALIDADE_VITAL_NOME, penalidadeVitalUuid } from "./creation-model-2.mjs";
 
@@ -122,7 +123,10 @@ export async function prepareCreationCompletion(actor, draft, catalog, {
     "flags.jujutsu-system.creation2": { completed: true, completedAt: Date.now(), species: draft.species,
       style: draft.style, primary: draft.primary, caminho: draft.caminho, specializations: [...draft.specializations] } };
   for (const key of ABILITY_KEYS) updates[`system.abilities.${key}.value`] = draft.abilities[key];
-  for (const [category, ranks] of Object.entries(draft.proficiencies)) updates[`system.legacy2.${category}`] = { ...ranks };
+  for (const [category, ranks] of Object.entries(draft.proficiencies)) {
+    const field = category === "saves" && alternativeSavesEnabled() ? "alternativeSaves" : category;
+    updates[`system.legacy2.${field}`] = { ...ranks };
+  }
   for (const [key, value] of Object.entries(draft.physical)) updates[`system.details.${key}`] = String(value ?? "");
   return { actor: updates, create };
 }

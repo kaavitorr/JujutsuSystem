@@ -9,6 +9,8 @@ import { legacy2ActionMax, acoesTetoEfetivo, SKILL_GROUPS } from "./jj/legacy2-s
 import { mountLegacy2Layout } from "./jj/legacy2-layout.mjs";
 import { injectJJConditions } from "./jj/conditions.mjs";
 import { assignNpcProfile, removeNpcProfile } from "./jj/npc-profile-selection.mjs";
+import { onExplosaoDefensiva2 } from "./jj/explosao-defensiva.mjs";
+import { updateNpcProficiencyOrder } from "./jj/npc-proficiency-order.mjs";
 
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 
@@ -24,6 +26,7 @@ export default class NPCActorSheet extends BaseActorSheet {
       jj2RestoreActions: function() { if (Ruleset.isV2()) return updateNpc2Actions(this, acoesTetoEfetivo(this.actor)); },
       jj2RefineEnergy: function() { if (Ruleset.isV2() && this.isEditable) return _npcGenerateEnergy(this.actor); },
       jj2Rank: function(event, target) { return updateNpc2Rank(this, target, Ruleset, CONFIG.DND5E.abilities); },
+      jj2ProficiencyOrder: function(event, target) { return updateNpcProficiencyOrder(this, target); },
       jj2RemoveNpcProfile: function(event, target) { if (Ruleset.isV2()) return removeNpcProfile(this, target.dataset.profileType); }
     },
     classes: ["npc", "vertical-tabs"],
@@ -768,6 +771,8 @@ async function _npcGenerateEnergy(actor) {
 
 // Explosão Defensiva do NPC — mesmo comportamento do jogador
 async function _npcExplosaoDefensiva(actor) {
+  if (Ruleset.isV2()) return onExplosaoDefensiva2(actor);
+
   const flagData     = actor.getFlag("jujutsu-system", "explosaoDefensivaPendente") ?? null;
   const pendente     = flagData?.reducao ?? 0;
   const pendenteCusto = flagData?.paCusto ?? 0;

@@ -1,0 +1,25 @@
+<section class="jj2-hp-config">
+  <header class="jj2-hp-hero">
+    <div><span>Pontos de Vida</span><strong>{{data.value}} <small>/ {{data.effectiveMax}}</small></strong></div>
+    <div class="jj2-hp-automatic"><span>Máximo automático</span><strong>{{jj2Health.automaticMax}}</strong></div>
+  </header>
+  <fieldset>
+    <legend>PV máximo</legend>
+    <label class="jj2-hp-field"><span>Sobrescrever máximo</span><input type="number" name="{{jj2Health.maximumPath}}" value="{{jj2Health.maximumOverride}}" placeholder="{{jj2Health.automaticMax}}" min="0" step="1" data-dtype="Number" aria-label="Sobrescrever PV máximo" {{disabled (not editable)}}></label>
+    <p class="jj2-hp-hint">Deixe em branco para voltar ao cálculo automático.</p>
+    <label class="jj2-hp-field"><span>Ajuste temporário do máximo</span><input type="number" name="system.attributes.hp.tempmax" value="{{source.tempmax}}" step="1" data-dtype="Number" aria-label="Ajuste temporário de PV máximo" {{disabled (not editable)}}></label>
+    {{#unless jj2Health.npc}}<p class="jj2-hp-wounds">Ferimentos <strong>{{jj2Health.wounds}}</strong><span>Redução do máximo <strong>−{{jj2Health.woundReduction}}</strong></span></p>{{/unless}}
+  </fieldset>
+  <fieldset>
+    <legend>Vida atual</legend>
+    <label class="jj2-hp-field"><span>Pontos de Vida</span><input type="number" name="system.attributes.hp.value" value="{{data.value}}" min="0" step="1" data-dtype="Number" aria-label="Pontos de Vida atuais" {{disabled (not editable)}}></label>
+    <label class="jj2-hp-field"><span>PV temporários</span><input type="number" name="system.attributes.hp.temp" value="{{source.temp}}" min="0" step="1" data-dtype="Number" aria-label="Pontos de Vida temporários" {{disabled (not editable)}}></label>
+  </fieldset>
+  {{#if otherFields.length}}
+  <fieldset>
+    <legend>Outros ajustes</legend>
+    {{#each otherFields}}{{formField field value=value localize=true placeholder="—" disabled=(not @root.editable)}}{{/each}}
+  </fieldset>
+  {{/if}}
+  <p class="jj2-hp-hint jj2-hp-final">O máximo efetivo inclui os ajustes temporários{{#unless jj2Health.npc}} e a redução por ferimentos{{/unless}}. Alterar o máximo preserva a quantidade de PV perdida.</p>
+</section>

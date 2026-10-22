@@ -110,12 +110,6 @@ export default class EffectChangeConfig extends DocumentSheet5e {
     context.defaultPriority = ActiveEffect.CHANGE_TYPES[context.source?.type]?.defaultPriority;
     context.fields = this.effect.system.schema.fields.changes.element.fields;
 
-    context.hintText = _loc("DND5E.EFFECT.AttributeKeyTooltip", {
-      url: this.effect.type === "enchantment"
-        ? "https://github.com/foundryvtt/dnd5e/wiki/Enchantment"
-        : "https://github.com/foundryvtt/dnd5e/wiki/Active-Effect-Guide"
-    });
-
     context.typeOptions = Object.entries(ActiveEffect.CHANGE_TYPES)
       .map(([value, { group, label }]) => ({ value, label: _loc(label), group: _loc(
         CONFIG.ActiveEffect.changeTypes[value]?.group

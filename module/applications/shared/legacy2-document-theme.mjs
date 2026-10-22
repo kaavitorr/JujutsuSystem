@@ -1,5 +1,5 @@
 /** Presentation only: native form fields, documents and controls keep their identity. */
-const KINDS = { item: "jj2-item-sheet", activity: "jj2-activity-sheet", "activity-create": "jj2-activity-create", "activity-choice": "jj2-activity-choice", "weapon-choice": "jj2-weapon-choice", "energy-generation": "jj2-energy-generation", activation: "jj2-activation", attack: "jj2-attack-dialog", roll: "jj2-roll-dialog", defense: "jj2-defensive-burst" };
+const KINDS = { item: "jj2-item-sheet", activity: "jj2-activity-sheet", "activity-create": "jj2-activity-create", "activity-choice": "jj2-activity-choice", "weapon-choice": "jj2-weapon-choice", "energy-generation": "jj2-energy-generation", activation: "jj2-activation", attack: "jj2-attack-dialog", roll: "jj2-roll-dialog", defense: "jj2-defensive-burst", health: "jj2-health-config" };
 const paths = {
   edit: 'm4 16 12-12 4 4L8 20l-5 1zM13 7l4 4',
   delete: 'M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7',

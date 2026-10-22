@@ -2,7 +2,7 @@ import ApplicationV2Mixin from "../../api/application-v2-mixin.mjs";
 import {
   carregarGrafo, adquiridas, concedidas, possuidas, aprender, esquecer,
   conceder, revogarConcessao, sincronizarEspecializacoes,
-  avaliarNo, escolhasTotais, escolhasDisponiveis, ORDEM_CATEGORIAS, CORES_CATEGORIA
+  avaliarNo, escolhasTotais, escolhasDisponiveis, escolhasRestritas, slotRestritoPara, ORDEM_CATEGORIAS, CORES_CATEGORIA
 } from "../../../systems/especializacoes-2.mjs";
 import { ICONES_CATEGORIA, origensRequisito, contagensRequisito, construirMapaCategoria } from "./skill-tree-map-2.mjs";
 
@@ -106,9 +106,11 @@ export default class SkillTreeApp extends ApplicationV2Mixin(foundry.application
     });
     context.categoria = context.categorias.find(c => c.ativa);
     context.quantidadeCaminhos = categoria.caminhos.length;
+    context.escolhasRestritas = escolhasRestritas(actor);
     context.escolhas = { totais: escolhasTotais(actor), disponiveis: escolhasDisponiveis(actor), usadas: aprendidas.length,
       concedidas: concedidasLista.length };
-    context.temEscolhas = context.escolhas.disponiveis > 0;
+    context.temEscolhas = context.escolhas.disponiveis > 0
+      || context.escolhasRestritas.some(g => g.disponiveis > 0);
     context.selecionado = porNome.get(this.#selecionado) ?? null;
     context.requisitos = (selecionado?.requisitos ?? []).map(texto => {
       // Use the actual rules engine even for an already acquired skill.
@@ -438,7 +440,8 @@ export default class SkillTreeApp extends ApplicationV2Mixin(foundry.application
     }
     // Sem escolhas: só o Mestre pode forçar (o botão dele anuncia a concessão
     // fora do orçamento — conceder — ou o gasto forçado de uma bloqueada).
-    if ( escolhasDisponiveis(this.#actor) <= 0 && !ehGM ) {
+    const slotRestrito = slotRestritoPara(this.#actor, no);
+    if ( escolhasDisponiveis(this.#actor) <= 0 && !slotRestrito && !ehGM ) {
       ui.notifications.warn("Você não tem escolhas de especialização disponíveis!");
       return;
     }

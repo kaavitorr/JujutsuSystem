@@ -6,6 +6,7 @@
 @import url("./jujutsu-documents-2.css");
 @import url("./jujutsu-feitico-2.css");
 @import url("./character-creation-2.css");
+@import url("./jujutsu-world-rules.css");
 .dnd5e2.jj2-ruptura .jj2-effects-page .jj2-fulgor-box { display:grid; gap:12px; margin:0 0 18px; padding:14px; border:1px solid #b3823f66; border-left:3px solid var(--jj2-gold); background:repeating-linear-gradient(155deg, transparent 0 18px, #ffffff04 18px 19px), #1b1420; }
 .dnd5e2.jj2-ruptura .jj2-fulgor-heading { display:flex; align-items:center; gap:9px; color:var(--jj2-gold); }
 .jj2-ruptura .jj2-fulgor-heading h3 { margin:0; border:0; color:var(--jj2-paper); font:italic 700 18px/1.2 JJ2Condensed,sans-serif; }

@@ -63,7 +63,7 @@ test("the real schema exposes a numeric effect key with character and automatic 
   class DataField { constructor(options = {}) { Object.assign(this, options); } }
   class SchemaField extends DataField { constructor(fields, options) { super(options); this.fields = fields; } }
   class TypedObjectField extends DataField { constructor(element, options) { super(options); this.element = element; } }
-  globalThis.foundry = { data: { fields: { DataField, NumberField: DataField, StringField: DataField, BooleanField: DataField, SchemaField, TypedObjectField } } };
+  globalThis.foundry = { data: { fields: { DataField, NumberField: DataField, StringField: DataField, BooleanField: DataField, ArrayField: TypedObjectField, SchemaField, TypedObjectField } } };
   const { default: schema } = await import("../module/data/actor/legacy2-schema.mjs");
   const field = schema().fields.engagement;
   assert.ok(field, "system.legacy2.engagement exists in the actor schema");
@@ -72,4 +72,8 @@ test("the real schema exposes a numeric effect key with character and automatic 
   assert.equal(field.min, 0);
   assert.equal(field.label, "Engajamento");
   assert.equal(schema({ engagementInitial: null }).fields.engagement.initial, null);
+  const order = schema().fields.proficiencyOrder.fields;
+  assert.deepEqual(Object.keys(order), ["original", "alternative"]);
+  assert.equal(order.original.initial, null);
+  assert.equal(order.alternative.nullable, true);
 });

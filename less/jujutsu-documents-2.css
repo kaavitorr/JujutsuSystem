@@ -107,6 +107,28 @@
 .jj2-document :is(input, select):not([type='checkbox']):not([type='radio']):not([type='range']) { min-height: 28px; font-size: 12px; }
 .jj2-document :is(input, select, textarea):focus { outline: 1px solid var(--jj2-purple); border-color: var(--jj2-purple); box-shadow: none; }
 .jj2-document :is(input, select, textarea):disabled { opacity: .65; }
+
+/* PV configuration: a compact health readout and explicit automatic/manual maximum. */
+.application.jj2-document.jj2-health-config { --jj2-hp-muted:#b9afc5; max-width:calc(100vw - 24px); border:1px solid #a67bda66; background:#15121c; }
+.application.jj2-document.jj2-health-config .window-content { padding:16px; background:repeating-linear-gradient(153deg,transparent 0 22px,#ffffff04 22px 23px),#15121c; }
+.application.dnd5e2.jj2-document.jj2-health-config .window-header .window-title { color:var(--jj2-paper); font:italic 700 18px/1.2 JJ2Condensed,sans-serif; text-shadow:none; }
+.jj2-health-config .jj2-hp-config { display:flex; flex-direction:column; gap:14px; min-width:0; }
+.jj2-health-config .jj2-hp-hero { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; border-left:3px solid var(--jj2-purple); background:linear-gradient(115deg,#a67bda20 0 58%,transparent 58%),#211929; }
+.jj2-health-config .jj2-hp-hero > div { display:flex; flex-direction:column; gap:5px; min-width:0; }
+.jj2-health-config .jj2-hp-hero span { color:var(--jj2-hp-muted); font:700 12px/1.2 JJ2Condensed,sans-serif; }
+.jj2-health-config .jj2-hp-hero strong { color:var(--jj2-paper); font:700 34px/1 JJ2Condensed,sans-serif; font-variant-numeric:tabular-nums; }
+.jj2-health-config .jj2-hp-hero small { color:var(--jj2-hp-muted); font-size:19px; }
+.jj2-health-config .jj2-hp-automatic { text-align:right; }
+.jj2-health-config .jj2-hp-automatic strong { color:var(--jj2-gold); font-size:26px; }
+.application.jj2-document.jj2-health-config fieldset { margin:0; padding:12px; border:1px solid #a67bda55; border-left:2px solid var(--jj2-purple); background:#1b1623; }
+.application.jj2-document.jj2-health-config fieldset > legend { color:var(--jj2-paper); font:italic 700 16px/1.2 JJ2Condensed,sans-serif; text-transform:none; }
+.jj2-health-config .jj2-hp-field { display:grid; grid-template-columns:minmax(0,1fr) 84px; align-items:center; gap:12px; min-height:40px; color:var(--jj2-paper); font:700 13px/1.2 JJ2Condensed,sans-serif; }
+.application.jj2-document.jj2-health-config .jj2-hp-field input { box-sizing:border-box; width:84px; height:32px; padding:4px 6px; color:var(--jj2-paper); background:#100d17; border:1px solid #a67bda77; font:700 18px/1 JJ2Condensed,sans-serif; text-align:center; }
+.jj2-health-config .jj2-hp-hint { margin:2px 0 8px; color:var(--jj2-hp-muted); font:400 12px/1.4 JJ2Condensed,sans-serif; }
+.jj2-health-config .jj2-hp-final { margin:0; }
+.jj2-health-config .jj2-hp-wounds { display:flex; align-items:center; flex-wrap:wrap; gap:5px; margin:10px 0 0; padding-top:10px; border-top:1px solid #a67bda26; color:var(--jj2-hp-muted); font:400 12px/1.3 JJ2Condensed,sans-serif; }
+.jj2-health-config .jj2-hp-wounds > span { margin-left:auto; }
+.jj2-health-config .jj2-hp-wounds strong { color:var(--jj2-paper); }
 .jj2-document :is(input[type='checkbox'], input[type='radio']) { accent-color: var(--jj2-gold); }
 .jj2-document select option { background: #17131f; color: var(--jj2-paper); }
 .jj2-document :is(.form-group, .form-fields) { min-width: 0; }

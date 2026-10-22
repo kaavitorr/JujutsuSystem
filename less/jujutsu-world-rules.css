@@ -1,0 +1,31 @@
+.application.jj-world-rules { --jj-world-ink:#15121c; --jj-world-paper:#f1ece5; --jj-world-purple:#a67bda; --jj-world-muted:#b9afc5; max-width:calc(100vw - 24px); border:1px solid #a67bda66; background:var(--jj-world-ink); color:var(--jj-world-paper); }
+.jj-world-rules .window-header { background:#21192c; color:var(--jj-world-paper); border-bottom:1px solid #a67bda66; }
+.jj-world-rules .window-content { background:repeating-linear-gradient(153deg,transparent 0 22px,#ffffff04 22px 23px),var(--jj-world-ink); padding:18px; }
+.jj-world-rules .jj-world-rules-intro { margin:0 0 16px; color:var(--jj-world-paper); font:italic 700 21px/1.15 JJ2Condensed,sans-serif; }
+.jj-world-rules fieldset { margin:0 0 16px; padding:0; border:0; min-width:0; }
+.application.jj2-document.jj-world-rules fieldset > legend { margin:0 0 8px; padding:0; background:none; font:700 14px/1.2 JJ2Condensed,sans-serif; color:var(--jj-world-muted); text-transform:none; }
+.jj-world-rules .jj-world-rules-versions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.jj-world-rules label { display:flex; align-items:center; gap:10px; min-width:0; min-height:66px; padding:12px; border:1px solid #a67bda42; border-left:3px solid #a67bda65; background:#211a2a; cursor:var(--cursor-pointer,pointer); }
+.jj-world-rules label:has(input:checked) { border-color:var(--jj-world-purple); background:#30213e; }
+.jj-world-rules label:focus-within { outline:1px solid var(--jj-world-paper); outline-offset:2px; }
+.jj-world-rules input:is([type=radio],[type=checkbox]) { flex:none; appearance:auto; width:16px; height:16px; margin:0; accent-color:var(--jj-world-purple); }
+.jj-world-rules label > span { display:flex; flex-direction:column; gap:3px; min-width:0; }
+.jj-world-rules label > .jj-world-rules-checkbox { position:relative; display:block; flex:none; width:20px; height:20px; }
+.jj-world-rules .jj-world-rules-checkbox input[type=checkbox] { display:block; appearance:none; -webkit-appearance:none; width:20px; height:20px; margin:0; padding:0; border:2px solid #bdb2cb; border-radius:2px; background:#141019; box-shadow:none; }
+.jj-world-rules .jj-world-rules-checkbox input[type=checkbox]::before, .jj-world-rules .jj-world-rules-checkbox input[type=checkbox]::after { content:none; display:none; }
+.jj-world-rules .jj-world-rules-checkbox input[type=checkbox]:checked { border-color:#bb96e3; background:#bb96e3; }
+.jj-world-rules .jj-world-rules-checkbox > svg { position:absolute; inset:0; width:20px; height:20px; color:#17121e; opacity:0; pointer-events:none; }
+.jj-world-rules .jj-world-rules-checkbox input:checked + svg { opacity:1; }
+.jj-world-rules .jj-world-rules-checkbox input:focus-visible { outline:2px solid var(--jj-world-paper); outline-offset:3px; }
+.jj-world-rules strong { color:var(--jj-world-paper); font:700 16px/1.2 JJ2Condensed,sans-serif; }
+.jj-world-rules .jj-world-rules-versions strong { font-size:26px; }
+.jj-world-rules small { color:var(--jj-world-muted); font-size:12px; line-height:1.3; }
+.jj-world-rules .jj-world-rules-saves:disabled { opacity:.45; }
+.jj-world-rules .jj-world-rules-saves:disabled label { cursor:default; }
+.jj-world-rules .jj-world-rules-note, .jj-world-rules .jj-world-rules-reload { margin:0 0 12px; color:var(--jj-world-muted); font-size:12px; line-height:1.4; }
+.jj-world-rules .jj-world-rules-reload { margin-bottom:16px; padding-top:12px; border-top:1px solid #a67bda30; }
+.application.jj2-document.jj-world-rules .form-footer { display:flex; flex-wrap:wrap; gap:8px; }
+.application.jj2-document.jj-world-rules .form-footer button { flex:1 1 150px; min-width:0; min-height:36px; height:auto; padding:8px 12px; border:1px solid #a67bda65; border-radius:0; color:var(--jj-world-paper); background:#261d30; font:700 14px/1.2 JJ2Condensed,sans-serif; text-transform:none; white-space:normal; }
+.application.jj2-document.jj-world-rules .form-footer button[data-action=apply] { color:#17121e; background:var(--jj-world-purple); border-color:var(--jj-world-purple); }
+.application.jj2-document.jj-world-rules .form-footer button[data-action=hide] { flex-basis:100%; min-height:30px; padding:5px 8px; border-color:transparent; background:none; color:var(--jj-world-muted); font-weight:400; text-decoration:underline; text-underline-offset:3px; }
+.application.jj2-document.jj-world-rules .form-footer button:not(:disabled):hover { filter:brightness(1.12); }

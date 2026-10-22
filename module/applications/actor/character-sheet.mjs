@@ -332,6 +332,7 @@ export default class CharacterActorSheet extends BaseActorSheet {
           "systems/jujutsu-system/templates/actors/parts/jj2-ranks.hbs",
           "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs",
            "systems/jujutsu-system/templates/actors/parts/jj2-action-ring.hbs",
+          "systems/jujutsu-system/templates/actors/parts/jj2-alternative-saves.hbs",
           "systems/jujutsu-system/templates/actors/parts/jj2-shield.hbs",
           "systems/jujutsu-system/templates/actors/parts/jj2-resistances.hbs");
       }

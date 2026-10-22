@@ -8,6 +8,7 @@ import { CUSTOMIZATION_SECTIONS } from "../jj/legacy2-customization.mjs";
 const limiteDaSecao = (category) => CUSTOMIZATION_SECTIONS.find(s => s.id === category)?.max ?? Infinity;
 import { SKILL_GROUPS } from "../jj/legacy2-sheet.mjs";
 import { WEAPON_GROUPS, CONVERSAO_DEFEITO, pontosDoItem } from "../../../systems/legacy2-proficiencies.mjs";
+import { ALTERNATIVE_SAVES, alternativeSavesEnabled } from "../../../systems/legacy2-alternative-saves.mjs";
 import { ICONES_CATEGORIA } from "../jj/skill-tree-map-2.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
@@ -116,7 +117,8 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
       specializationCategories: categories.map(category => ({ name: category.nome, img: ICONES_CATEGORIA[category.nome], selected: category.nome === this.category })),
       nodes, specializationGroups, specializationsSpent: draft.specializations.length, specializationsRemaining: budget.specializations - draft.specializations.length,
       selectedDetail: selected ?? style, detailHTML,
-      proficiencyPanels: [rankRows("saves", ABILITY_KEYS.map(key => [key, labels[key],key])),
+      proficiencyPanels: [rankRows("saves", alternativeSavesEnabled()
+        ? ALTERNATIVE_SAVES.map(save => [save.key, save.label, save.icon]) : ABILITY_KEYS.map(key => [key, labels[key],key])),
         rankRows("armas", WEAPON_GROUPS.map(group => [group.key, group.label, "weapons"])),
         rankRows("skills", SKILL_GROUPS.flatMap(group => group.skills.map(([key,label,ability]) => [key,label,ability])))],
       physicalFields: [["height","Altura"],["hair","Cabelo"],["weight","Peso"],["gender","Gênero"],["skin","Pele"],["age","Idade"]].map(([key,label])=>({key,label,value:draft.physical[key]})),

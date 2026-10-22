@@ -34,6 +34,7 @@ import * as utils from "./module/utils.mjs";
 import DragDrop5e from "./module/drag-drop.mjs";
 import { registerCreationHooks } from "./module/applications/actor/creation/creation-hooks-2.mjs";
 import { registerEnergyShieldTreeUpdate } from "./module/systems/legacy2-energy-shield-tree.mjs";
+import { presentWorldRules } from "./module/applications/world-rules-dialog.mjs";
 
 registerCreationHooks();
 registerEnergyShieldTreeUpdate();
@@ -799,7 +800,13 @@ async function _handleMigration() {
 /**
  * Display the welcome dialog if required.
  */
-Hooks.once("dnd5e.ready", () => {
+Hooks.once("dnd5e.ready", async () => {
+  try {
+    if ( await presentWorldRules() ) return;
+  } catch (error) {
+    console.error("Jujutsu Legacy | Falha ao configurar as regras do mundo.", error);
+    ui.notifications.error("Não foi possível salvar as regras do mundo. Confira as configurações do sistema.");
+  }
   applications.WelcomeScreen.presentScreen();
 });
 

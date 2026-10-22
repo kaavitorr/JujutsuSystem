@@ -3,6 +3,7 @@ import BaseSaveActivityData from "../../data/activity/save-data.mjs";
 import { getSceneTargets } from "../../utils.mjs";
 import { maybePromptJJScale } from "../../applications/actor/jj/native-cards.mjs";
 import ActivityMixin from "./mixin.mjs";
+import { alternativeSavesEnabled, alternativeSaveDefinition } from "../../systems/legacy2-alternative-saves.mjs";
 
 /**
  * Activity for making saving throws and rolling damage.
@@ -52,14 +53,16 @@ export default class SaveActivity extends ActivityMixin(BaseSaveActivityData) {
   _usageChatButtons(message) {
     const buttons = [];
     const dc = this.save.dc.value;
+    const alternativeSaves = alternativeSavesEnabled();
 
     for ( const abilityId of this.save.ability ) {
-      const ability = CONFIG.DND5E.abilities[abilityId]?.label ?? "";
+      const alternative = alternativeSaves ? alternativeSaveDefinition(abilityId) : null;
+      const ability = alternative?.label ?? CONFIG.DND5E.abilities[abilityId]?.label ?? "";
       const promptTitle = _loc("DND5E.SavePromptTitle", { ability });
       const button = {
         action: "rollSave",
         canGroup: true,
-        dataset: { dc, ability: abilityId },
+        dataset: { dc, ability: abilityId, ...(alternative ? { jj2AlternativeSave: true } : {}) },
         icon: "fa-solid fa-shield-heart",
         label: {
           hidden: promptTitle,

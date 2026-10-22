@@ -1,5 +1,5 @@
-<div class="jj2-dots" data-ctx="{{ ctx }}" data-key="{{ key }}" data-current-rank="{{ rank }}" role="group" aria-label="Proficiência em {{ label }}: {{ rankLabel }}">
+<div class="jj2-dots" data-ctx="{{ ctx }}" data-key="{{ key }}" data-current-rank="{{ rank }}" role="group" aria-label="Proficiência em {{ label }}: {{ rankLabel }}" {{#if grantedRank}}data-tooltip="O crescimento por ND concede {{grantedRank}} degraus; a edição ajusta apenas os pontos individuais."{{/if}}>
   {{#each @root.jj2.rankDots as |dot|}}
-  {{#if dot.rank}}<button type="button" class="jj2-dot {{#if (lte dot.rank ../rank)}}filled{{/if}} {{#if (eq dot.rank ../rank)}}selected{{/if}}" data-action="jj2Rank" data-rank="{{ dot.rank }}" data-tooltip="{{ dot.label }}{{#if (eq dot.rank ../rank)}} · Clique novamente para destreinar{{/if}}" aria-label="{{ dot.label }}" aria-pressed="{{#if (eq dot.rank ../rank)}}true{{else}}false{{/if}}" {{ disabled (not @root.editable) }}><span></span></button>{{/if}}
+  {{#if dot.rank}}<button type="button" class="jj2-dot {{#if (lte dot.rank ../rank)}}filled{{/if}} {{#if (eq dot.rank ../rank)}}selected{{/if}}" data-action="jj2Rank" data-rank="{{ dot.rank }}" data-tooltip="{{ dot.label }}{{#if (eq dot.rank ../rank)}} · Clique novamente para {{#if ../grantedRank}}remover os pontos individuais{{else}}destreinar{{/if}}{{/if}}" aria-label="{{ dot.label }}" aria-pressed="{{#if (eq dot.rank ../rank)}}true{{else}}false{{/if}}" {{ disabled (not @root.editable) }}><span></span></button>{{/if}}
   {{/each}}
 </div>

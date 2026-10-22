@@ -1603,7 +1603,9 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
       && (await this.system.rollSavingThrow(config, dialog, message) === false) ) return null;
     if ( !this.system.abilities ) return null;
     if ( config.ability === "spellcasting" ) config = { ...config, ability: this.spellcastingAbility };
-    const abilityLabel = CONFIG.DND5E.abilities[config.ability]?.label ?? "";
+    const alternative = Ruleset.alternativeSave(this, config.ability);
+    if ( alternative && !this.system.abilities[config.ability] ) config = { ...config, ability: alternative.ability };
+    const abilityLabel = alternative?.label ?? CONFIG.DND5E.abilities[config.ability]?.label ?? "";
     const dialogConfig = foundry.utils.mergeObject({
       options: {
         window: {
@@ -1631,11 +1633,12 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
 
     const ability = this.system.abilities?.[config.ability];
     const abilityConfig = CONFIG.DND5E.abilities[config.ability];
+    const alternative = type === "save" ? Ruleset.alternativeSave(this, config.ability) : null;
 
     const rollData = this.getRollData({ roll: true });
     Object.assign(rollData.roll, {
       ability: config.ability,
-      proficient: ability?.[type]?.prof?.multiplier >= 1,
+      proficient: alternative ? alternative.rank >= 1 : ability?.[type]?.prof?.multiplier >= 1,
       type: config[`${type}Type`] ?? "ability"
     });
     const { bonus, ...options } = D20RollModificationField.combineFields(this.system, [
@@ -1644,11 +1647,11 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
     let { parts, data } = Ruleset.isV2()
       ? CONFIG.Dice.D20Roll.constructParts({
         // 2.0: atributo inteiro (1-12); salvaguarda soma o degrau
-        mod: ability?.value,
+        mod: alternative?.base ?? ability?.value,
         legacyRank: Ruleset.rankPart(type === "save" ? Ruleset.saveRank(this, config.ability) : 0),
         legacyAdv: Ruleset.advantagePart(config.legacy2 ?? {}),
         ruleBonus: bonus,
-        cover: (config.ability === "dex") && (type === "save") ? this.system.attributes?.ac?.cover : null
+        cover: (config.ability === "dex" || alternative?.key === "reflexo") && (type === "save") ? this.system.attributes?.ac?.cover : null
       }, rollData)
       : CONFIG.Dice.D20Roll.constructParts({
         mod: ability?.mod,
@@ -1671,7 +1674,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
 
     const messageData = {
       flavor: _loc(`DND5E.${type === "check" ? "Ability" : "Save"}PromptTitle`, {
-        ability: abilityConfig?.label ?? ""
+        ability: alternative?.label ?? abilityConfig?.label ?? ""
       }),
       speaker: ChatMessage.getSpeaker({ actor: this })
     };

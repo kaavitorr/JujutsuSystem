@@ -1,5 +1,7 @@
 import { formatNumber } from "../../../utils.mjs";
 import BaseConfigSheet from "../api/base-config-sheet.mjs";
+import Ruleset from "../../../systems/ruleset.mjs";
+import { mountLegacy2DocumentTheme } from "../../shared/legacy2-document-theme.mjs";
 
 /**
  * Configuration application for hit point bonuses and current values.
@@ -21,7 +23,8 @@ export default class HitPointsConfig extends BaseConfigSheet {
   /** @override */
   static PARTS = {
     config: {
-      template: "systems/jujutsu-system/templates/actors/config/hit-points-config.hbs"
+      template: "systems/jujutsu-system/templates/actors/config/hit-points-config.hbs",
+      templates: ["systems/jujutsu-system/templates/actors/config/hit-points-config-2.hbs"]
     }
   };
 
@@ -44,6 +47,21 @@ export default class HitPointsConfig extends BaseConfigSheet {
     context.data = this.document.system.attributes.hp;
     context.fields = this.document.system.schema.fields.attributes.fields.hp.fields;
     context.source = this.document.system._source.attributes.hp;
+    context.otherFields = ["dt", "mt"].flatMap(p => {
+      return p in context.fields ? { field: context.fields[p], value: context.source[p] } : [];
+    });
+
+    if (Ruleset.isV2() && ["character", "npc"].includes(this.document.type)) {
+      const npc = this.document.type === "npc";
+      const wounds = npc ? 0 : Math.max(0, Math.floor(Number(this.document.system.legacy2?.wounds?.value) || 0));
+      context.jj2Health = {
+        npc, automaticMax: Ruleset.maxHitPoints(this.document, { ignoreOverride: true }),
+        maximumPath: npc ? "system.attributes.hp.maxOverride" : "system.attributes.hp.max",
+        maximumOverride: (npc ? context.source.maxOverride : context.source.max) ?? "",
+        wounds, woundReduction: Math.floor(wounds / 2)
+      };
+      return context;
+    }
 
     // Display positive ability modifier as its own row, but if negative merge into classes totals
     const ability = CONFIG.DND5E.abilities[CONFIG.DND5E.defaultAbilities.hitPoints];
@@ -77,17 +95,20 @@ export default class HitPointsConfig extends BaseConfigSheet {
     context.showCalculation = context.classes.length || context.fields.bonuses;
     context.showMaxInCalculation = context.showCalculation && this.document.system.isNPC;
 
-    // Additional fields
-    context.otherFields = ["dt", "mt"].flatMap(p => {
-      return p in context.fields ? { field: context.fields[p], value: context.source[p] } : [];
-    });
-
     return context;
   }
 
   /* -------------------------------------------- */
   /*  Event Listeners and Handlers                */
   /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    mountLegacy2DocumentTheme(this.element, "health", {
+      enabled: Ruleset.isV2() && ["character", "npc"].includes(this.document.type)
+    });
+  }
 
   /**
    * Handle rolling NPC health values using the provided formula.
@@ -117,6 +138,6 @@ export default class HitPointsConfig extends BaseConfigSheet {
     const maxDelta = clone.system.attributes.hp.max - max;
     const current = submitData.system.attributes.hp.value ?? value;
     foundry.utils.setProperty(submitData, "system.attributes.hp.value", Math.max(current + maxDelta, 0));
-    super._processSubmitData(event, form, submitData);
+    return super._processSubmitData(event, form, submitData);
   }
 }

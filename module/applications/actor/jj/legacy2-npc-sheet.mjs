@@ -1,7 +1,8 @@
 import { buildLegacy2Context, legacy2ActionMax, prepareRankUpdate } from "./legacy2-sheet.mjs";
 import { npc2AbilityValue } from "../../../systems/legacy2-npc-attributes.mjs";
-import { npcProfile, npcAttributeDistribution, NPC_ABILITIES } from "../../../systems/legacy2-npc-profiles.mjs";
+import { npcProfile, npcAttributeDistribution, npcProficiencyDistribution, NPC_ABILITIES } from "../../../systems/legacy2-npc-profiles.mjs";
 import { NPC_CLASSIFICATIONS, npcClassification, npcClassificationKey } from "../../../systems/legacy2-npc-classification.mjs";
+import { proficiencyOrderContext } from "./npc-proficiency-order.mjs";
 
 export const NPC2_TABS = [["details", "Resumo", "summary"], ["features", "Habilidades", "weapons"],
   ["spells", "Técnicas", "int"], ["skills", "Perícias", "dice"], ["inventory", "Equipamentos", "inventory"],
@@ -32,6 +33,10 @@ export function buildNpc2Context(actor, config, ruleset, npcConfig = {}) {
         type, kind, label: profile.label, uuid: profile.item?.uuid
       })),
     category: classification.label, classificationHp: classification.hpMultiplier.toLocaleString("pt-BR"),
+    proficiency: (() => {
+      const distribution = npcProficiencyDistribution(actor);
+      return proficiencyOrderContext(distribution.order, distribution);
+    })(),
     classificationActions: classification.actions, hasTaxonomy: !!tax,
     derivedAttributes: !!tax,
     distribution: distribution ? { ...distribution, rows: NPC_ABILITIES.map(key => ({ key,
@@ -41,7 +46,11 @@ export function buildNpc2Context(actor, config, ruleset, npcConfig = {}) {
     armorPct: percent(actor.system.armorPoints?.value, actor.system.armorPoints?.max),
     legendaries: ["legact", "legres"].map(key => ({ key, label: key === "legact" ? "Ações Lendárias" : "Resistências Lendárias",
       max: actor.system.resources?.[key]?.max ?? 0, spent: actor.system.resources?.[key]?.spent ?? 0,
-      value: actor.system.resources?.[key]?.value ?? 0 })) };
+      value: actor.system.resources?.[key]?.value ?? 0 })),
+    override: {
+      hpMax: actor.system.attributes?.hp?.maxOverride ?? "",
+      cr: actor.system.attributes?.acOverride ?? ""
+    } };
   return data;
 }
 const percent = (value, max) => max > 0 ? Math.max(0, Math.min(100, 100 * (Number(value) || 0) / max)) : 0;
@@ -56,7 +65,9 @@ export function configureNpc2Parts(parts) {
   for (const part of Object.values(parts)) (part.templates ??= []).push(
     "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs", "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs",
     "systems/jujutsu-system/templates/actors/parts/jj2-action-ring.hbs",
+    "systems/jujutsu-system/templates/actors/parts/jj2-alternative-saves.hbs",
     "systems/jujutsu-system/templates/actors/parts/jj2-ranks.hbs",
+    "systems/jujutsu-system/templates/actors/parts/jj2-proficiency-order.hbs",
     "systems/jujutsu-system/templates/actors/parts/jj2-resistances.hbs");
   return parts;
 }

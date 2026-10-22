@@ -1,5 +1,6 @@
 /** NPC profile rules are independent of Foundry document preparation. */
 import { npcClassificationKey } from "./legacy2-npc-classification.mjs";
+import { SKILL_GROUPS } from "./legacy2-skills.mjs";
 
 export const NPC_ABILITIES = Object.freeze(["str", "dex", "con", "int", "wis", "cha"]);
 export const NPC_EQUAL_SCALE = Object.freeze(Object.fromEntries(NPC_ABILITIES.map(key => [key, 2])));
@@ -30,6 +31,65 @@ export function npcProfile(actor, type, config = globalThis.CONFIG?.JUJUTSU ?? {
   if (item) return { ...item.system, label: item.name, item, pesos: item.system.pesos };
   const definition = config[type === "taxonomy" ? "taxonomias" : "arquetipos"]?.[reference];
   return definition ? { ...definition, pesos: definition.pesos ?? NPC_EQUAL_SCALE, key: reference } : null;
+}
+
+const proficiencySteps = value => Number.isFinite(Number(value)) ? Math.min(4, Math.max(0, Math.trunc(Number(value)))) : 0;
+
+export const npcProficiencyMode = () => globalThis.game?.settings?.get("jujutsu-system", "regraSalvaguarda") === true
+  ? "alternative" : "original";
+
+/** Canonical, validated choices shared by profile editors and NPCs. */
+export function npcProficiencyDefinitions(combined = npcProficiencyMode() === "alternative") {
+  const skills = SKILL_GROUPS.flatMap(group => group.skills.map(([key, label]) => ({
+    id: `skills.${key}`, category: "skills", key, label, kind: "Perícia"
+  })));
+  const saves = combined ? [["fortitude", "Fortitude"], ["vontade", "Vontade"], ["reflexo", "Reflexo"]]
+    : NPC_ABILITIES.map((key, index) => [key, ["Força", "Agilidade", "Constituição", "Intelecto", "Sabedoria", "Presença"][index]]);
+  const category = combined ? "alternativeSaves" : "saves";
+  return [...skills, ...saves.map(([key, label]) => ({ id: `${category}.${key}`, category, key, label, kind: "Salvaguarda" }))];
+}
+
+export function normalizeNpcProficiencyOrder(order, combined = npcProficiencyMode() === "alternative") {
+  const valid = new Set(npcProficiencyDefinitions(combined).map(entry => entry.id));
+  return [...new Set((Array.isArray(order) ? order : []).filter(id => valid.has(id)))];
+}
+
+/** Older direct grants provide suggestions only; no legacy points are added to growth. */
+export function npcProfileProficiencyOrder(profile, combined = npcProficiencyMode() === "alternative") {
+  const saved = profile?.proficiencyOrder?.[combined ? "alternative" : "original"];
+  if (Array.isArray(saved)) return normalizeNpcProficiencyOrder(saved, combined);
+  return npcProficiencyDefinitions(combined).map(entry => ({ ...entry,
+    weight: proficiencySteps(profile?.proficiencias?.[entry.category]?.[entry.key])
+  })).filter(entry => entry.weight > 0).sort((a, b) => b.weight - a.weight).map(entry => entry.id);
+}
+
+/** A single budget, interleaving the profiles' suggestions and omitting repeated choices. */
+export function npcProficiencyDistribution(actor, combined = npcProficiencyMode() === "alternative") {
+  const grants = { skills: {}, saves: {}, alternativeSaves: {} };
+  if (actor?.type !== "npc" || globalThis.game?.settings?.get("jujutsu-system", "rulesetVersion") !== "2.0")
+    return { order: [], suggested: [], custom: false, budget: 0, allocated: 0, unspent: 0, grants };
+  const profiles = ["taxonomy", "archetype"].map(type => npcProfileProficiencyOrder(npcProfile(actor, type), combined));
+  const suggested = normalizeNpcProficiencyOrder(Array.from({ length: Math.max(...profiles.map(order => order.length)) },
+    (_, index) => profiles.map(order => order[index])).flat(), combined);
+  const saved = actor.system?.legacy2?.proficiencyOrder?.[combined ? "alternative" : "original"];
+  const custom = Array.isArray(saved), order = custom ? normalizeNpcProficiencyOrder(saved, combined) : suggested;
+  const budget = npcNd(actor.system?.legacy2?.nd) - 1;
+  const allocated = Math.min(budget, order.length * 4);
+  for (let point = 0; point < allocated; point++) {
+    const [category, key] = order[point % order.length].split(".");
+    grants[category][key] = (grants[category][key] ?? 0) + 1;
+  }
+  return { order, suggested, custom, budget, allocated, unspent: budget - allocated, grants };
+}
+
+/** Automatic ND growth remains separate from freely assigned individual ranks. */
+export function npcProficiencyBonus(actor, category, key) {
+  if (!["skills", "saves", "alternativeSaves"].includes(category)) return 0;
+  return npcProficiencyDistribution(actor).grants[category]?.[key] ?? 0;
+}
+
+export function npcProficiencyRank(actor, category, key) {
+  return Math.min(4, proficiencySteps(actor?.system?.legacy2?.[category]?.[key]) + npcProficiencyBonus(actor, category, key));
 }
 
 /** Highest averages allocate integer points proportionally without removing prior gains.

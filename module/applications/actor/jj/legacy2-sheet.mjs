@@ -1,23 +1,12 @@
 /** Presentation data for the 2.0 sheet. No Foundry globals or document mutations. */
 import { WEAPON_GROUPS, weaponGroupRank } from "../../../systems/legacy2-proficiencies.mjs";
+import { ALTERNATIVE_SAVES, alternativeSavesEnabled, alternativeSaveData } from "../../../systems/legacy2-alternative-saves.mjs";
 import { extraResourceCards } from "./legacy2-extra-resources.mjs";
 import { baseEngagement, engagementValue } from "../../../systems/engagement.mjs";
+import { SKILL_GROUPS } from "../../../systems/legacy2-skills.mjs";
+import { npcProficiencyBonus } from "../../../systems/legacy2-npc-profiles.mjs";
 import { prepareNpcClassificationActions } from "../../../systems/legacy2-npc-classification.mjs";import { resistanceCards } from "../../../systems/legacy2-resistances.mjs";
-export { WEAPON_GROUPS, weaponGroupRank };
-export const SKILL_GROUPS = [
-  { label: "Exploração", icon: "movement", skills: [
-    ["ath", "Atletismo", "str"], ["acr", "Coordenação", "dex"], ["prc", "Percepção", "wis"],
-    ["ste", "Furtividade", "dex"], ["sur", "Sobrevivência", "wis"]
-  ] },
-  { label: "Conhecimento", icon: "int", skills: [
-    ["arc", "Feitiçaria", "int"], ["rel", "Medicina", "wis"], ["inv", "Investigação", "int"],
-    ["his", "História", "int"], ["ani", "Sobrenatural", "wis"]
-  ] },
-  { label: "Influência", icon: "cha", skills: [
-    ["dec", "Enganação", "cha"], ["per", "Persuasão", "cha"], ["itm", "Intimidação", "cha"],
-    ["prf", "Atuação", "cha"], ["luc", "Sorte", "cha"]
-  ] }
-];
+export { WEAPON_GROUPS, weaponGroupRank, SKILL_GROUPS };
 
 export const LEGACY2_TABS = [
   ["details", "Resumo"], ["inventory", "Inventário"], ["feitico", "Feitiço"], ["spells", "Técnicas"], ["skills", "Perícias"],
@@ -114,11 +103,16 @@ export function legacy2Species(actor) {
  * @param abilities
  */
 export function prepareRankUpdate(actor, category, key, rank, ruleset, abilities) {
-  if ( !["skills", "saves", "armas"].includes(category) || !Number.isInteger(rank) || rank < 0 || rank > 4 ) return null;
+  const saveCategory = alternativeSavesEnabled() ? "alternativeSaves" : "saves";
+  const categories = ["skills", saveCategory, "armas"];
+  if ( !categories.includes(category) || !Number.isInteger(rank) || rank < 0 || rank > 4 ) return null;
   const keys = category === "skills" ? SKILL_GROUPS.flatMap(group => group.skills.map(([id]) => id))
-    : category === "armas" ? WEAPON_GROUPS.map(group => group.key) : Object.keys(abilities);
+    : category === "armas" ? WEAPON_GROUPS.map(group => group.key)
+      : category === "alternativeSaves" ? ALTERNATIVE_SAVES.map(save => save.key) : Object.keys(abilities);
   if ( !keys.includes(key) ) return null;
   const l2 = actor.system.legacy2 ?? {};
+  // NPC dots show the combined rank; persist only the individually assigned steps.
+  rank = Math.max(0, rank - npcProficiencyBonus(actor, category, key));
   const group = { ...l2[category], [key]: rank };
   const aliases = category === "armas" ? WEAPON_GROUPS.find(g => g.key === key).aliases : [];
   if ( rankOf(l2[category]?.[key]) === rank && !aliases.some(alias => alias in (l2[category] ?? {})) ) return null;
@@ -128,8 +122,8 @@ export function prepareRankUpdate(actor, category, key, rank, ruleset, abilities
     update[`system.legacy2.armas.-=${alias}`] = null;
   }
   const sum = values => Object.values(values ?? {}).reduce((total, value) => total + rankOf(value), 0);
-  const spent = ["skills", "saves", "armas"].reduce((total, ctx) => total + sum(ctx === category ? group : l2[ctx]), 0);
-  const previous = ["skills", "saves", "armas"].reduce((total, ctx) => total + sum(l2[ctx]), 0);
+  const spent = categories.reduce((total, ctx) => total + sum(ctx === category ? group : l2[ctx]), 0);
+  const previous = categories.reduce((total, ctx) => total + sum(l2[ctx]), 0);
   // NPC ranks remain freely configurable, as with their former numeric rank fields.
   if ( actor.type !== "npc" && spent - previous > ruleset.trainingPointsAvailable(actor) ) return { insufficient: true };
   update["system.legacy2.pontos.gastos"] = spent;
@@ -157,9 +151,11 @@ export function buildLegacy2Context(actor, config, ruleset) {
     value: system.abilities[key]?._source?.value ?? system.abilities[key]?.value ?? 1,
     principal: key === principalKey
   }));
-  const saves = abilities.map(ability => {
-    const rank = rankOf(l2.saves?.[ability.key]);
+  const alternativeSaves = alternativeSavesEnabled();
+  const saves = alternativeSaves ? ALTERNATIVE_SAVES.map(save => alternativeSaveData(actor, save.key, ruleset)) : abilities.map(ability => {
+    const rank = rankOf(ruleset.saveRank?.(actor, ability.key) ?? l2.saves?.[ability.key]);
     return { ...ability, rank, rankLabel: ruleset.rankLabel(rank),
+      grantedRank: npcProficiencyBonus(actor, "saves", ability.key),
       total: Number(system.abilities[ability.key]?.value ?? 1) + ruleset.rankBonus(rank) };
   });
   // Orçamento de atributos (2.0): 20 + 1 por nível a partir do 2º
@@ -172,8 +168,9 @@ export function buildLegacy2Context(actor, config, ruleset) {
     skills: group.skills.map(([key, label, defaultAbility]) => {
       const ability = key === "inv" && ["wis", "int"].includes(system.skills?.[key]?.ability)
         ? system.skills[key].ability : defaultAbility;
-      const rank = rankOf(l2.skills?.[key]);
+      const rank = rankOf(ruleset.skillRank?.(actor, key) ?? l2.skills?.[key]);
       return { key, label, ability, abilityAbbr: abilityConfig[ability]?.abbreviation ?? ability,
+        grantedRank: npcProficiencyBonus(actor, "skills", key),
         rank, rankLabel: ruleset.rankLabel(rank),
         total: Number(system.abilities[ability]?.value ?? 1) + ruleset.rankBonus(rank) };
     })
@@ -208,7 +205,7 @@ export function buildLegacy2Context(actor, config, ruleset) {
       generatedEnergy: Math.max(0, Number(system.energy?.intensiveTraining?.generatedEnergy) || 0),
       energyBonus: Math.max(0, Number(system.energy?.intensiveTraining?.maxEnergy) || 0) * (style?.energiaBase ?? 10)
     },
-    abilities, saves, skillGroups, skills: skillGroups.flatMap(group => group.skills),
+    abilities, saves, alternativeSaves, skillGroups, skills: skillGroups.flatMap(group => group.skills),
     armas: WEAPON_GROUPS.map(group => {
       const rank = weaponGroupRank(l2.armas, group.key);
       return { ...group, rank, rankLabel: ruleset.rankLabel(rank), bonus: ruleset.rankBonus(rank) };

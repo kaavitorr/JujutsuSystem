@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import { readFileSync } from "node:fs";
+import Ruleset from "../module/systems/ruleset.mjs";
 
 globalThis.Hooks = { on() {} };
 let choice = "1", confirm = false, dialogOptions, formulas = [];
@@ -28,6 +30,12 @@ globalThis.foundry = { data: { fields: camposEncontrados }, utils: { escapeHTML:
   async confirm() { return confirm; }
 } } } };
 const { onExplosaoDefensiva2 } = await import("../module/applications/actor/jj/explosao-defensiva.mjs");
+// Exercise the NPC's actual entry point without loading the unrelated sheet framework.
+const npcSheetSource = readFileSync(new URL("../module/applications/actor/npc-sheet.mjs", import.meta.url), "utf8");
+const npcBurstSource = npcSheetSource.slice(npcSheetSource.indexOf("async function _npcExplosaoDefensiva("),
+  npcSheetSource.indexOf("async function _npcSyncIntensiveTraining("));
+const npcBurst = new Function("Ruleset", "onExplosaoDefensiva2",
+  `${npcBurstSource}\nreturn _npcExplosaoDefensiva;`)(Ruleset, onExplosaoDefensiva2);
 function actor(pa = 4, nivel = 9, pending = null) {
   formulas = []; dialogOptions = null;
   const flags = { explosaoDefensivaPendente: pending };
@@ -88,4 +96,50 @@ test("the native cancel fallback never rolls", async () => {
   await onExplosaoDefensiva2(a);
   assert.deepEqual(formulas, []);
   assert.deepEqual(a.updates, []);
+});
+
+test("NPC defense opens the player's themed modal and uses ND without spending energy", async () => {
+  choice = "99";
+  const a = withUpdates(actor(0, 20));
+  a.type = "npc";
+  a.system.legacy2.nd = "9";
+  a.system.energy.generated = 0;
+  await npcBurst(a);
+  assert.deepEqual(dialogOptions?.classes, ["dnd5e2", "jj2-document", "jj2-defensive-burst"]);
+  assert.ok(dialogOptions.actions.jj2StepCounter);
+  assert.equal(typeof dialogOptions.render, "function");
+  assert.deepEqual(formulas, ["5d4"]);
+  assert.deepEqual(a.flags.explosaoDefensivaPendente, { reducao: 10, paCusto: 0 });
+  assert.deepEqual(a.updates, []);
+  assert.equal(a.system.energy.generated, 0);
+  assert.equal(a.system.energy.total, 200);
+});
+
+test("canceling NPC defense preserves its pending reduction and resources", async () => {
+  choice = "cancel";
+  const pending = { reducao: 8, paCusto: 0 };
+  const a = withUpdates(actor(3, 9, pending));
+  a.type = "npc";
+  a.system.legacy2.nd = "9";
+  await npcBurst(a);
+  assert.equal(dialogOptions?.window.title, "Explosão Defensiva");
+  assert.deepEqual(a.flags.explosaoDefensivaPendente, pending);
+  assert.deepEqual(formulas, []);
+  assert.deepEqual(a.updates, []);
+});
+
+test("NPC defense retains the legacy energy requirement in rules 1.0", async () => {
+  const getSetting = game.settings.get;
+  game.settings.get = () => "1.0";
+  try {
+    const a = withUpdates(actor());
+    a.type = "npc";
+    a.system.energy.generated = 0;
+    await npcBurst(a);
+    assert.equal(dialogOptions, null);
+    assert.deepEqual(formulas, []);
+    assert.deepEqual(a.updates, []);
+  } finally {
+    game.settings.get = getSetting;
+  }
 });

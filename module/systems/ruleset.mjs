@@ -1,7 +1,8 @@
 import { weaponGroupRank, proficienciaPorDefeitos } from "./legacy2-proficiencies.mjs";
-import { extrasAtributosEstado, npcAttributeDistribution, npcNd, npcProfile } from "./legacy2-npc-profiles.mjs";
+import { extrasAtributosEstado, npcAttributeDistribution, npcNd, npcProfile, npcProficiencyRank } from "./legacy2-npc-profiles.mjs";
 import { npcClassification } from "./legacy2-npc-classification.mjs";
 import { ESCALA_DANO, linhaEscalaDano, formulaEscalaDano } from "./escala-dano.mjs";
+import { alternativeSavesEnabled, alternativeSaveData } from "./legacy2-alternative-saves.mjs";
 
 /**
  * ── RULESET 2.0 ──────────────────────────────────────────────────────────────
@@ -93,7 +94,9 @@ export default class Ruleset {
 
   /** Pontos ainda disponíveis (total − gastos). */
   static trainingPointsAvailable(actor) {
-    const spent = Number(actor?.system?.legacy2?.pontos?.gastos ?? 0);
+    const alternateRanks = actor?.system?.legacy2?.alternativeSaves;
+    const spent = this.isV2() && (alternativeSavesEnabled() || Object.keys(alternateRanks ?? {}).length)
+      ? this.trainingPointsSpent(actor) : Number(actor?.system?.legacy2?.pontos?.gastos ?? 0);
     return Math.max(0, this.trainingPointsTotal(actor) - spent);
   }
 
@@ -105,7 +108,7 @@ export default class Ruleset {
     const l2 = actor?.system?.legacy2;
     if ( !l2 ) return 0;
     const sum = (obj) => Object.values(obj ?? {}).reduce((t, n) => t + (Math.floor(Number(n) || 0)), 0);
-    return sum(l2.skills) + sum(l2.saves) + sum(l2.armas);
+    return sum(l2.skills) + sum(alternativeSavesEnabled() ? l2.alternativeSaves : l2.saves) + sum(l2.armas);
   }
 
   /* ── Vantagens empilháveis ────────────────────────────────────────────── */
@@ -179,12 +182,20 @@ export default class Ruleset {
 
   /** Rank 0-4 da perícia (null quando não mapeada). */
   static skillRank(actor, skillId) {
+    if (this.isV2() && actor?.type === "npc") return npcProficiencyRank(actor, "skills", skillId);
     return Number(actor?.system?.legacy2?.skills?.[skillId] ?? 0);
   }
 
   /** Rank 0-4 da salvaguarda do atributo. */
   static saveRank(actor, abilityId) {
+    const alternative = this.alternativeSave(actor, abilityId);
+    if ( alternative ) return alternative.rank;
+    if (this.isV2() && actor?.type === "npc") return npcProficiencyRank(actor, "saves", abilityId);
     return Number(actor?.system?.legacy2?.saves?.[abilityId] ?? 0);
+  }
+
+  static alternativeSave(actor, abilityId) {
+    return alternativeSaveData(actor, abilityId, this);
   }
 
   /**
@@ -357,7 +368,14 @@ export default class Ruleset {
    * • Personagem: (nível × vidaBase) + (CON × vidaBase) + bônus fixos, onde a
    *   Vida Base da Origem (pvEspecie) SOMA à vidaBase do Estilo.
    */
-  static maxHitPoints(actor) {
+  static maxHitPoints(actor, { ignoreOverride = false } = {}) {
+    if (this.isV2() && !ignoreOverride && ["character", "npc"].includes(actor?.type)) {
+      // Read the saved maximum, never the calculated value from a previous preparation.
+      const source = actor.system?._source?.attributes?.hp ?? actor._source?.system?.attributes?.hp;
+      const override = actor.type === "npc" ? (source?.maxOverride ?? actor.system?.attributes?.hp?.maxOverride) : source?.max;
+      if (override !== null && override !== undefined && String(override).trim() !== ""
+        && Number.isFinite(Number(override)) && Number(override) >= 0) return Math.trunc(Number(override));
+    }
     const nd = this.nivel(actor);
     const con = Number(actor?.system?.abilities?.con?.value ?? 1);
     if ( this.isV2() && (actor?.type === "npc") ) {

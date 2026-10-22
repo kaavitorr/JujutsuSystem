@@ -123,6 +123,28 @@ test("NPC skill rolls include whole attribute, every proficiency rank, effects, 
   assert.deepEqual(combineCalls.at(-1), ["abilities.int.check.roll", "rolls.ability.check", "rolls.ability.skill", "skills.rel.roll"]);
 });
 
+test("NPC native skill rolls apply automatic ND proficiency once and react to removing its suggested priority", () => {
+  const body = method("documents/actor/actor.mjs", "_buildSkillToolConfig(type, hostActor, process, config, formData, index)");
+  const Actor = new Function("Ruleset", "D20RollModificationField",
+    `return class {_buildSkillToolConfig(type,hostActor,process,config,formData,index) {${body}}}`
+  )(Ruleset, { combineFields: () => ({ bonus: 0 }) });
+  const actor = Object.assign(new Actor(), { type: "npc",
+    items: ["taxonomy", "archetype"].map(type => ({ type, id: type, name: type,
+      system: { proficiencyOrder: { original: [type === "taxonomy" ? "skills.rel" : "skills.ste"] } } })),
+    system: { abilities: { wis: { value: 6 } }, legacy2: { nd: "4", skills: {} } },
+    getRollData: () => ({ roll: {} }), addConditionRollReduction() {} });
+  const process = { skill: "rel", ability: "wis" };
+  for (let i = 0; i < 3; i++) {
+    const roll = { parts: [], data: {}, options: {} };
+    actor._buildSkillToolConfig("skill", actor, process, roll);
+    assert.equal(total(roll), 7); assert.equal(roll.data.legacyRank, 1);
+  }
+  actor.items.shift();
+  const roll = { parts: [], data: {}, options: {} };
+  actor._buildSkillToolConfig("skill", actor, process, roll);
+  assert.equal(total(roll), 2); assert.equal(roll.data.legacyRank, -4);
+});
+
 test("NPC weapon damage includes whole attribute, magic, ammo and effects once, with proficiency confined to attack", () => {
   const appliedRules = {
     collect: () => ({ toArray: () => ["6"] }),

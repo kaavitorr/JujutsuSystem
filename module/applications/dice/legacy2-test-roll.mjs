@@ -45,6 +45,7 @@ export function testRollBreakdown(process, roll, index = 0) {
   const ability = roll.data?.abilityId ?? process.ability;
   const parts = roll.parts ?? roll.options?.jj2TestParts ?? [];
   const save = process.hookNames?.some(name => /saving|save/i.test(name));
+  const alternative = save ? Ruleset.alternativeSave(process.subject, ability) : null;
   const hasRank = !!(parts.includes("@legacyRank") || process.skill || save);
   const names = { ruleBonus: "Efeitos", extraBonus: "Bônus adicional", cover: "Cobertura", exhaustion: "Exaustão" };
   const extras = parts.filter(part => !["@mod", "@legacyRank", "@legacyAdv", "@situational"].includes(part))
@@ -53,8 +54,8 @@ export function testRollBreakdown(process, roll, index = 0) {
       const value = String(part).replace(/@([\w.]+)/g, (match, path) => valueAt(roll.data, path) ?? match);
       return { label: names[key] ?? "Bônus adicional", value: signed(value) };
     });
-  return { index, ability, attributeLabel: initiative ? "Iniciativa" : "Atributo",
-    abilityLabel: initiative ? "Base" : globalThis.CONFIG?.DND5E?.abilities?.[ability]?.label ?? ability,
+  return { index, ability, attributeLabel: initiative ? "Iniciativa" : alternative ? "Média dos atributos" : "Atributo",
+    abilityLabel: initiative ? "Base" : alternative?.label ?? globalThis.CONFIG?.DND5E?.abilities?.[ability]?.label ?? ability,
     abilityValue: roll.data?.mod ?? (initiative ? process.subject.system.attributes?.init?.mod : process.subject.system.abilities?.[ability]?.value) ?? 0,
     hasRank, rankValue: roll.data?.legacyRank ?? 0, rankValueLabel: signed(roll.data?.legacyRank ?? 0), rankLabel: save ? "Salvaguarda" : process.skill ? "Perícia" : "Treinamento",
     rankDetail: process.skill ? globalThis.CONFIG?.DND5E?.skills?.[process.skill]?.label : "",

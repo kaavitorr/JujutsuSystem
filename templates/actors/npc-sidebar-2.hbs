@@ -1,4 +1,18 @@
 <aside class="jj2-sidebar jj2-npc-sidebar" aria-label="Características do NPC">
   <h2>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="con"}}Características</h2>
   {{> "systems/jujutsu-system/templates/actors/npc-sidebar.hbs"}}
+  {{#if @root.editable}}
+  <div class="jj2-manual-override" style="margin-top:10px; padding:8px; border:1px solid #2c2c44; border-radius:6px;">
+    <h3 style="margin:0 0 6px; font-size:11px; text-transform:uppercase; opacity:0.8;">Sobrescrita manual</h3>
+    <label style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-bottom:4px; font-size:11px;">
+      <span>Vida Máx</span>
+      <input type="number" name="system.attributes.hp.maxOverride" value="{{ npc.override.hpMax }}" placeholder="auto" min="0" data-dtype="Number" style="width:70px;" class="always-interactive">
+    </label>
+    <label style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-bottom:4px; font-size:11px;">
+      <span>Classe de Resistência</span>
+      <input type="number" name="system.attributes.acOverride" value="{{ npc.override.cr }}" placeholder="auto" min="0" data-dtype="Number" style="width:70px;" class="always-interactive">
+    </label>
+    <small style="opacity:0.6; font-size:10px;">Deixe vazio para usar o cálculo (Taxonomia/Arquétipo).</small>
+  </div>
+  {{/if}}
 </aside>
