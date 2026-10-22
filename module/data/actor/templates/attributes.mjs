@@ -585,7 +585,8 @@ export default class AttributesFields {
       this.attributes.movement.max = Math.max(speeds[type], this.attributes.movement.max);
       if ( type === "walk" ) this.attributes.movement.speed = speeds[type];
     }
-    const baseSpeed = this._source.attributes.movement.speeds.walk || this.attributes.movement.fromSpecies?.walk;
+    const baseSpeed = this.attributes.movement.fromNpcProfile?.walk
+      ?? (this._source.attributes.movement.speeds.walk || this.attributes.movement.fromSpecies?.walk);
     this.attributes.movement.slowed = speeds.walk <= (simplifyBonus(baseSpeed, rollData) / 2);
     this.attributes.movement.speeds.jump = (this.abilities?.str.value ?? 0) / 2;
   }

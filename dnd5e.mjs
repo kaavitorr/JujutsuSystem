@@ -35,9 +35,11 @@ import DragDrop5e from "./module/drag-drop.mjs";
 import { registerCreationHooks } from "./module/applications/actor/creation/creation-hooks-2.mjs";
 import { registerEnergyShieldTreeUpdate } from "./module/systems/legacy2-energy-shield-tree.mjs";
 import { presentWorldRules } from "./module/applications/world-rules-dialog.mjs";
+import { registerNpcEquipmentHooks } from "./module/systems/legacy2-npc-equipment.mjs";
 
 registerCreationHooks();
 registerEnergyShieldTreeUpdate();
+registerNpcEquipmentHooks();
 
 /* -------------------------------------------- */
 /*  Define Module Structure                     */

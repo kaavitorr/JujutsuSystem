@@ -32,6 +32,26 @@
 .dnd5e2.jj2-npc-profile-sheet .jj2-scale-energy input[type=number] { width:76px; flex:none; text-align:center; }
 .dnd5e2.jj2-npc-profile-sheet .jj2-scale-energy label:has(input[type=checkbox]) { justify-content:flex-start; margin-bottom:0; }
 .dnd5e2.jj2-npc-profile-sheet .jj2-scale-copy-note { color:#b6adbf; font-size:11px; margin:12px 0 0; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-profile-section { margin-top:22px; padding-top:16px; border-top:1px solid #b38add44; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-profile-section-title { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-profile-section-title h3 { margin:0; padding-left:9px; border:0; border-left:3px solid var(--profile-purple); color:#f6f1e5; font:italic 800 20px/1.2 JJ2Condensed,sans-serif; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-profile-section-title > span { color:var(--profile-gold); font-size:11px; }
+.dnd5e2.jj2-npc-profile-sheet :is(.jj2-movement-grid,.jj2-movement-growth) { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:8px; }
+.dnd5e2.jj2-npc-profile-sheet :is(.jj2-movement-grid,.jj2-movement-growth) > label { min-width:0; padding:10px; background:#211929; border:1px solid #80609955; border-top:2px solid var(--profile-purple); }
+.dnd5e2.jj2-npc-profile-sheet :is(.jj2-movement-grid,.jj2-movement-growth) label > span { display:block; margin-bottom:7px; font-size:12px; font-weight:700; color:#d5cadd; }
+.dnd5e2.jj2-npc-profile-sheet :is(.jj2-movement-grid,.jj2-movement-growth) label > div { display:flex; align-items:center; gap:6px; }
+.application.dnd5e2.jj2-npc-profile-sheet :is(.jj2-movement-grid,.jj2-movement-growth) input { width:100%; min-width:0; height:34px; border:1px solid #9470b766; border-radius:0; background:#110d18; color:#f6f1e5; text-align:center; font:700 20px JJ2Condensed,sans-serif; }
+.dnd5e2.jj2-npc-profile-sheet :is(.jj2-movement-grid,.jj2-movement-growth) small { color:var(--profile-gold); font-size:11px; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-npc-equipment { flex:1; min-height:0; overflow-y:auto; padding:16px; background:repeating-linear-gradient(155deg,transparent 0 26px,#ffffff03 27px 28px),var(--profile-ink); }
+.dnd5e2.jj2-npc-profile-sheet .jj2-profile-gear-slot { margin-top:18px; padding:14px; border:1px solid #80609955; background:#211929; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-profile-gear-row { display:flex; align-items:center; gap:10px; min-width:0; padding:9px; background:#110d18; border-bottom:2px solid #b38add66; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-profile-gear-row img { width:36px; height:36px; flex:none; border:1px solid #b38add55; object-fit:cover; }
+.application.dnd5e2.jj2-npc-profile-sheet .jj2-gear-name { flex:1; min-width:0; width:auto; padding:0; margin:0; border:0; border-radius:0; background:none; box-shadow:none; text-align:left; white-space:normal; overflow-wrap:anywhere; color:#f6f1e5; font:700 15px/1.3 JJ2Condensed,sans-serif; text-transform:none; }
+.application.dnd5e2.jj2-npc-profile-sheet .jj2-gear-remove { display:grid; place-items:center; flex:none; width:26px; height:28px; min-height:0; margin:0; padding:4px; border:1px solid #b38add55; border-radius:0; color:#d5cadd; background:#211929; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-gear-remove svg { width:16px; height:16px; pointer-events:none; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-profile-gear-list { display:grid; gap:7px; }
+.dnd5e2.jj2-npc-profile-sheet :is(.jj2-gear-empty,.jj2-gear-drop) { padding:16px 12px; border:1px dashed #b38add66; color:#c5b7d2; font-size:12px; line-height:1.5; text-align:center; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-gear-drop { margin-bottom:0; color:var(--profile-purple); }
 .dnd5e2.jj2-npc-profile-sheet .jj2-scale-footer { padding:10px 16px; flex:none; border-top:1px solid #80609955; background:#141019; }
 .dnd5e2.jj2-npc-profile-sheet .jj2-scale-footer button { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; min-height:36px; color:#141019; background:var(--profile-gold); border:1px solid var(--profile-gold); font-weight:900; text-transform:uppercase; }
 .dnd5e2.jj2-npc-profile-sheet .jj2-scale-footer svg { width:18px; height:18px; }
@@ -62,7 +82,7 @@
 .jj2-npc-profile-sheet .jj2-habilidade-remover:hover { background:#432848; color:#fff; }
 .jj2-npc-profile-sheet .jj2-habilidade-remover svg { width:14px; height:14px; }
 .jj2-npc-profile-sheet .jj2-habilidade-vazia { color:#8d7a9e; font-style:italic; border-style:dashed; }
-.dnd5e2.jj2-npc-profile-sheet .jj2-npc-res-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.dnd5e2.jj2-npc-profile-sheet .jj2-npc-res-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,232px),1fr)); gap:8px; }
 .dnd5e2.jj2-npc-profile-sheet .jj2-npc-res-row { display:grid; grid-template-columns:minmax(0,1fr) 72px 64px; align-items:center; gap:8px; padding:9px 12px; border:1px solid #80609955; border-left:3px solid var(--profile-purple); background:#211929; }
 .dnd5e2.jj2-npc-profile-sheet .jj2-npc-res-name { font-size:11px; font-weight:800; overflow-wrap:anywhere; }
 .dnd5e2.jj2-npc-profile-sheet .jj2-npc-res-row input[type=number] { width:100%; height:30px; text-align:center; color:#f6f1e5; background:#110d18; border:1px solid #9470b766; font-weight:900; }

@@ -1,5 +1,6 @@
 import Ruleset from "../../systems/ruleset.mjs";
 import SkillTreeApp from "./jj/skill-tree-2.mjs";
+import { stepPlayerAbility } from "./jj/ability-steps-2.mjs";
 import { formatNumber } from "../../utils.mjs";
 import AdvancementManager from "../advancement/advancement-manager.mjs";
 import EnergyGenerationDialog from "./energy-generation-dialog.mjs";
@@ -74,6 +75,7 @@ export default class CharacterActorSheet extends BaseActorSheet {
   static DEFAULT_OPTIONS = {
     actions: {
       jj2Rank: CharacterActorSheet.#onRankDot,
+      jj2AbilityStep: function(_event, target) { return stepPlayerAbility(this, target); },
       jj2EscolherEstilo: CharacterActorSheet.#onEscolherEstilo,
       jj2SkillTree: CharacterActorSheet.#onSkillTree,
       jj2RestoreActions: CharacterActorSheet.#onRestoreActions,

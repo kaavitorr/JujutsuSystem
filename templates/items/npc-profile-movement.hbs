@@ -1,0 +1,19 @@
+<section class="jj2-profile-section jj2-profile-movement">
+  <header class="jj2-profile-section-title"><h3>Deslocamento</h3><span>Metros</span></header>
+  {{#if profile.taxonomy}}
+  <p class="jj2-scale-intro">Deslocamentos iniciais no ND 1. Use 0 para um tipo que a criatura não possui; deixe vazio para manter o valor individual da ficha.</p>
+  <div class="jj2-movement-grid">
+    {{#each profile.movement}}
+    <label><span>{{label}}</span><div>{{#if @root.editable}}<input type="number" name="system.movimento.{{key}}" value="{{value}}" min="0" step="any" placeholder="Ficha" data-dtype="Number" aria-label="{{label}} inicial em metros">{{else}}<strong>{{#if (eq value null)}}—{{else}}{{value}}{{/if}}</strong>{{/if}}<small>m</small></div></label>
+    {{/each}}
+  </div>
+  {{else}}
+  <p class="jj2-scale-intro">O ganho vale para todos os tipos de deslocamento que o NPC já possui, até o teto de cada um.</p>
+  <div class="jj2-movement-growth">
+    <label><span>Ganho</span><div>{{#if editable}}<input type="number" name="system.movimento.ganho" value="{{source.movimento.ganho}}" min="0" step="any" data-dtype="Number" aria-label="Ganho de deslocamento em metros">{{else}}<strong>{{source.movimento.ganho}}</strong>{{/if}}<small>m</small></div></label>
+    <label><span>A cada</span><div>{{#if editable}}<input type="number" name="system.movimento.intervalo" value="{{source.movimento.intervalo}}" min="1" step="1" required data-dtype="Number" aria-label="Intervalo em NDs">{{else}}<strong>{{source.movimento.intervalo}}</strong>{{/if}}<small>NDs</small></div></label>
+    <label><span>Máximo</span><div>{{#if editable}}<input type="number" name="system.movimento.maximo" value="{{source.movimento.maximo}}" min="0" step="any" placeholder="Sem teto" data-dtype="Number" aria-label="Deslocamento máximo em metros">{{else}}<strong>{{#if (eq source.movimento.maximo null)}}∞{{else}}{{source.movimento.maximo}}{{/if}}</strong>{{/if}}<small>m</small></div></label>
+  </div>
+  <p class="jj2-scale-copy-note">Ex.: +1 m a cada 2 NDs → aumentos no ND 2, 4, 6… A cada 1 ND, o primeiro aumento ocorre no ND 2. Máximo vazio significa sem teto.</p>
+  {{/if}}
+</section>

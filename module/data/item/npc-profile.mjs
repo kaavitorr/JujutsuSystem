@@ -4,6 +4,7 @@ import { NUMERIC_DAMAGE_TYPES } from "../../systems/legacy2-resistances.mjs";
 import { NPC_ABILITIES, validNpcScale } from "../../systems/legacy2-npc-profiles.mjs";
 import { SKILL_GROUPS } from "../../systems/legacy2-skills.mjs";
 import { ALTERNATIVE_SAVES } from "../../systems/legacy2-alternative-saves.mjs";
+import { NPC_MOVEMENT_TYPES } from "../../systems/legacy2-npc-movement.mjs";
 
 /** Authorable NPC scales, stored as genuine world/compendium/owned Items. */
 export class NpcProfileData extends ItemDataModel.mixin(ItemDescriptionTemplate) {
@@ -65,12 +66,29 @@ export class NpcProfileData extends ItemDataModel.mixin(ItemDescriptionTemplate)
 
 export class TaxonomyData extends NpcProfileData {
   static defineSchema() {
-    const { BooleanField, NumberField } = foundry.data.fields;
+    const { BooleanField, NumberField, SchemaField } = foundry.data.fields;
     return this.mergeSchema(super.defineSchema(), {
       vidaEnergia: new BooleanField({ initial: false }),
-      energiaBase: new NumberField({ required: true, nullable: false, integer: true, min: 0, initial: 10 })
+      energiaBase: new NumberField({ required: true, nullable: false, integer: true, min: 0, initial: 10 }),
+      movimento: new SchemaField(Object.fromEntries(NPC_MOVEMENT_TYPES.map(([key, label]) => [key,
+        new NumberField({ required: true, nullable: true, min: 0, initial: null, label })])))
     });
   }
 }
 
-export class ArchetypeData extends NpcProfileData {}
+export class ArchetypeData extends NpcProfileData {
+  static defineSchema() {
+    const { ArrayField, NumberField, SchemaField, StringField } = foundry.data.fields;
+    return this.mergeSchema(super.defineSchema(), {
+      movimento: new SchemaField({
+        ganho: new NumberField({ required: true, nullable: false, min: 0, initial: 0 }),
+        intervalo: new NumberField({ required: true, nullable: false, integer: true, min: 1, initial: 2 }),
+        maximo: new NumberField({ required: true, nullable: true, min: 0, initial: null })
+      }),
+      equipamentos: new SchemaField({
+        armadura: new StringField({ required: true, nullable: true, blank: false, initial: null }),
+        armas: new ArrayField(new StringField({ required: true, nullable: false, blank: false }), { initial: [] })
+      })
+    });
+  }
+}

@@ -5,6 +5,7 @@ import { NPC_ABILITIES, validNpcScale, canCreateNpcProfiles, serializeNpcProfile
 import { NUMERIC_DAMAGE_TYPES } from "../module/systems/legacy2-resistances.mjs";
 import { SKILL_GROUPS } from "../module/systems/legacy2-skills.mjs";
 import { ALTERNATIVE_SAVES } from "../module/systems/legacy2-alternative-saves.mjs";
+import { NPC_MOVEMENT_TYPES } from "../module/systems/legacy2-npc-movement.mjs";
 
 // Foundry is the framework boundary; evaluate the actual model/schema definitions.
 class Field {constructor(options){Object.assign(this,options);}}
@@ -17,7 +18,7 @@ globalThis.ItemDataModel=class {
   static validateJoint(data){this._validateJoint(data);}
   prepareDerivedData(){}prepareDescriptionData(){this.descriptionPrepared=true;}
 };
-Object.assign(globalThis,{NPC_ABILITIES,validNpcScale,NUMERIC_DAMAGE_TYPES,SKILL_GROUPS,ALTERNATIVE_SAVES});
+Object.assign(globalThis,{NPC_ABILITIES,validNpcScale,NUMERIC_DAMAGE_TYPES,SKILL_GROUPS,ALTERNATIVE_SAVES,NPC_MOVEMENT_TYPES});
 globalThis.ItemDescriptionTemplate={};
 const source=readFileSync(new URL("../module/data/item/npc-profile.mjs",import.meta.url),"utf8").replace(/^import .*;\r?$/gm,"");
 const {TaxonomyData,ArchetypeData}=await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
@@ -42,6 +43,15 @@ test("joint validation permits partial prevalidation and rejects invalid scales 
   assert.doesNotThrow(()=>TaxonomyData.validateJoint({pesos:{str:3}}));
   assert.throws(()=>TaxonomyData.validateJoint({pesos:{...valid,str:3}}),/12/);
   assert.throws(()=>ArchetypeData.validateJoint({pesos:{...valid,dex:2.5}}),/12/);
+});
+test("taxonomy saves initial movement by type; only archetypes define ND growth, its cap and equipment",()=>{
+  const taxonomy=TaxonomyData.defineSchema(), archetype=ArchetypeData.defineSchema();
+  assert.deepEqual(Object.keys(taxonomy.movimento.fields),NPC_MOVEMENT_TYPES.map(([key])=>key));
+  assert.equal(taxonomy.movimento.fields.walk.min,0);assert.equal(taxonomy.movimento.fields.walk.initial,null);
+  assert.equal(archetype.movimento.fields.intervalo.integer,true);assert.equal(archetype.movimento.fields.intervalo.min,1);
+  assert.equal(archetype.movimento.fields.maximo.nullable,true);
+  assert.equal(taxonomy.equipamentos,undefined);
+  assert.deepEqual(Object.keys(archetype.equipamentos.fields),["armadura","armas"]);
 });
 test("both profile types persist bounded proficiency grants for every skill and each save rule",()=>{
   for(const Model of [TaxonomyData,ArchetypeData]){

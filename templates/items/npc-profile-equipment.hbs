@@ -1,0 +1,29 @@
+<section class="tab {{tab.cssClass}} jj2-npc-equipment" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+  <header class="jj2-scale-heading"><div><small>ARQUÉTIPO</small><h2>Equipamentos</h2></div></header>
+  <p class="jj2-scale-intro">A armadura e as armas abaixo são adicionadas e equipadas ao aplicar este Arquétipo ao NPC. Seus ataques e efeitos continuam funcionando normalmente.</p>
+  <section class="jj2-profile-gear-slot">
+    <header class="jj2-profile-section-title"><h3>Armadura natural</h3><span>1 armadura</span></header>
+    {{#if profile.armor}}
+    <div class="jj2-profile-gear-row">
+      <img src="{{profile.armor.img}}" alt="">
+      <button type="button" class="jj2-gear-name" data-action="jj2ProfileEquipment" data-operation="open" data-uuid="{{profile.armor.uuid}}">{{profile.armor.name}}</button>
+      {{#if editable}}<button type="button" class="jj2-gear-remove" data-action="jj2ProfileEquipment" data-operation="remove" data-kind="armadura" aria-label="Remover armadura natural" title="Remover armadura natural"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>{{/if}}
+    </div>
+    {{else}}<p class="jj2-gear-empty">{{#if editable}}Arraste uma Armadura Natural para cá.{{else}}Nenhuma armadura configurada.{{/if}}</p>{{/if}}
+    {{#if editable}}<p class="jj2-scale-copy-note">Arrastar outra armadura substitui a seleção. Clique no nome para editar sua CR e o atributo usado.</p>{{/if}}
+  </section>
+  <section class="jj2-profile-gear-slot">
+    <header class="jj2-profile-section-title"><h3>Armas e ataques naturais</h3><span>{{profile.weapons.length}} armas</span></header>
+    <div class="jj2-profile-gear-list">
+    {{#each profile.weapons}}
+    <div class="jj2-profile-gear-row">
+      <img src="{{img}}" alt="">
+      <button type="button" class="jj2-gear-name" data-action="jj2ProfileEquipment" data-operation="open" data-uuid="{{uuid}}">{{name}}</button>
+      {{#if @root.editable}}<button type="button" class="jj2-gear-remove" data-action="jj2ProfileEquipment" data-operation="remove" data-kind="armas" data-uuid="{{uuid}}" aria-label="Remover {{name}}" title="Remover {{name}}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>{{/if}}
+    </div>
+    {{else}}<p class="jj2-gear-empty">Nenhuma arma configurada.</p>{{/each}}
+    </div>
+    {{#if editable}}<p class="jj2-gear-drop">Arraste armas para adicionar: mordida, membros, garras…</p>{{/if}}
+  </section>
+  <p class="jj2-scale-copy-note">Ao trocar ou remover o Arquétipo, saem apenas os equipamentos concedidos por ele. Equipamentos adicionados manualmente permanecem na ficha.</p>
+</section>

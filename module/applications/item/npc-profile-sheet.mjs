@@ -3,11 +3,16 @@ import { NUMERIC_DAMAGE_TYPES } from "../../systems/legacy2-resistances.mjs";
 import { distributeNpcAttributes, NPC_ABILITIES, NPC_EQUAL_SCALE, validNpcScale,
   npcProfileProficiencyOrder, npcProficiencyMode } from "../../systems/legacy2-npc-profiles.mjs";
 import { proficiencyOrderContext, updateNpcProficiencyOrder } from "../actor/jj/npc-proficiency-order.mjs";
+import { NPC_MOVEMENT_TYPES } from "../../systems/legacy2-npc-movement.mjs";
+import { configureNpcEquipment, npcEquipmentContext } from "./npc-profile-equipment.mjs";
 
 /** Save all six weights together, rather than rejecting intermediate edits. */
 export default class NpcProfileSheet extends ItemSheet5e {
   static DEFAULT_OPTIONS = {
-    actions: { jj2ProficiencyOrder: function(event, target) { return updateNpcProficiencyOrder(this, target); } },
+    actions: {
+      jj2ProficiencyOrder: function(event, target) { return updateNpcProficiencyOrder(this, target); },
+      jj2ProfileEquipment: function(event, target) { return configureNpcEquipment(this, target); }
+    },
     classes: ["jj2-npc-profile-sheet"],
     form: { submitOnChange: false, closeOnSubmit: false },
     position: { width: 560, height: 650 }, window: { resizable: true }
@@ -15,8 +20,10 @@ export default class NpcProfileSheet extends ItemSheet5e {
   static PARTS = {
     header: super.PARTS.header, tabs: super.PARTS.tabs,
     scales: { template: "systems/jujutsu-system/templates/items/npc-profile-scales.hbs",
-      templates: ["systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs"], scrollable: [""] },
-    resistencias: { template: "systems/jujutsu-system/templates/items/npc-profile-resistencias.hbs", scrollable: [""] },
+      templates: ["systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs",
+        "systems/jujutsu-system/templates/items/npc-profile-resistencias.hbs",
+        "systems/jujutsu-system/templates/items/npc-profile-movement.hbs"], scrollable: [""] },
+    equipamentos: { template: "systems/jujutsu-system/templates/items/npc-profile-equipment.hbs", scrollable: [""] },
     proficiencias: { template: "systems/jujutsu-system/templates/items/npc-profile-proficiencias.hbs",
       templates: ["systems/jujutsu-system/templates/actors/parts/jj2-proficiency-order.hbs"], scrollable: [""] },
     habilidades: { template: "systems/jujutsu-system/templates/items/npc-profile-habilidades.hbs",
@@ -24,8 +31,8 @@ export default class NpcProfileSheet extends ItemSheet5e {
     description: super.PARTS.description,
     footer: { template: "systems/jujutsu-system/templates/items/npc-profile-footer.hbs" }
   };
-  static TABS = [ { tab: "scales", label: "Escala de Atributos" },
-    { tab: "resistencias", label: "Resistências" },
+  static TABS = [ { tab: "scales", label: "Detalhes" },
+    { tab: "equipamentos", label: "Equipamentos", condition: item => item.type === "archetype" },
     { tab: "proficiencias", label: "Proficiências" },
     { tab: "habilidades", label: "Habilidades" },
     { tab: "description", label: "Descrição" } ];
@@ -55,17 +62,18 @@ export default class NpcProfileSheet extends ItemSheet5e {
       context.profile = { ...(context.profile ?? {}), habilidades: entradas.sort((a, b) => a.nd - b.nd) };
       return context;
     }
-    if (partId === "resistencias") {
-      const fontes = context.source.resistencias ?? {};
-      context.profile = { ...(context.profile ?? {}), taxonomy: this.item.type === "taxonomy",
-        resistencias: NUMERIC_DAMAGE_TYPES.map(({ key, label }) => ({ key, label,
-          value: Number(fontes[key]?.value) || 0, immune: !!fontes[key]?.immune })) };
+    if (partId === "equipamentos") {
+      context.profile = await npcEquipmentContext(this.item);
       return context;
     }
     if (partId !== "scales") return context;
     const taxonomy = this.item.type === "taxonomy", weights = context.source.pesos;
+    const fontes = context.source.resistencias ?? {};
     const result = distributeNpcAttributes(taxonomy ? weights : NPC_EQUAL_SCALE, taxonomy ? null : weights, taxonomy ? 1 : 13);
     context.profile = { taxonomy, total: NPC_ABILITIES.reduce((sum, key) => sum + weights[key], 0),
+      movement: NPC_MOVEMENT_TYPES.map(([key, label]) => ({ key, label, value: context.source.movimento?.[key] })),
+      resistencias: NUMERIC_DAMAGE_TYPES.map(({ key, label }) => ({ key, label,
+        value: Number(fontes[key]?.value) || 0, immune: !!fontes[key]?.immune })),
       attributes: NPC_ABILITIES.map(key => ({ key, label: game.i18n.localize(CONFIG.DND5E.abilities[key].label),
         weight: weights[key], preview: taxonomy ? result.initial[key] : result.growth[key] })) };
     return context;
@@ -73,9 +81,11 @@ export default class NpcProfileSheet extends ItemSheet5e {
 
   /** Drop de característica (feat) na aba Habilidades: entra com ND 1. */
   async _onDrop(event) {
+    if (!this.isEditable || !this.isEditMode) return false;
     const data = TextEditor.getDragEventData(event);
     if ( data.type === "Item" ) {
       const doc = await fromUuid(data.uuid).catch(() => null);
+      if (event.target.closest?.(".jj2-npc-equipment")) return configureNpcEquipment(this, null, doc);
       if ( (doc?.documentName === "Item") && (doc.type === "feat") ) {
         const atuais = foundry.utils.deepClone(this.item.system._source.habilidades ?? []);
         if ( atuais.some(h => h.uuid === data.uuid) ) {
@@ -96,7 +106,7 @@ export default class NpcProfileSheet extends ItemSheet5e {
     // early-return da aba de escalas — renders parciais podem trazer só
     // uma das seções no DOM.
     const habilidades = this.element.querySelector(".jj2-npc-habilidades");
-    if ( habilidades ) {
+    if ( habilidades && this.isEditable && this.isEditMode ) {
       const gravar = async mutador => {
         const atuais = foundry.utils.deepClone(this.item.system._source.habilidades ?? []);
         mutador(atuais);

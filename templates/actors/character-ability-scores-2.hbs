@@ -1,7 +1,11 @@
 <section class="jj2-attributes" aria-label="Atributos">
   {{#each jj2.abilities}}<div class="jj2-ability {{#if principal}}principal{{/if}}" data-ability="{{ key }}">
     <a class="jj2-ability-heading {{ @root.rollableClass }}" data-action="roll" data-type="ability" aria-label="Rolar {{ label }}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=key }}{{ abbr }}</a>
-    {{#if @root.editable}}<input type="number" name="system.abilities.{{ key }}.value" value="{{ value }}" min="1" max="12" data-dtype="Number" aria-label="{{ label }}">{{else}}<strong>{{ value }}</strong>{{/if}}
+    <strong>{{value}}</strong>
+    {{#if @root.editable}}<div class="jj2-ability-stepper" role="group" aria-label="Ajustar {{label}}">
+      <button type="button" data-action="jj2AbilityStep" data-ability="{{key}}" data-step="1" aria-label="Aumentar {{label}}" title="Aumentar {{label}}" {{disabled (gte value 12)}}><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 10 4-4 4 4"/></svg></button>
+      <button type="button" data-action="jj2AbilityStep" data-ability="{{key}}" data-step="-1" aria-label="Diminuir {{label}}" title="Diminuir {{label}}" {{disabled (lte value 1)}}><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></button>
+    </div>{{/if}}
     <span class="jj2-ability-label">{{ label }}</span>
   </div>{{/each}}
   {{#with jj2.atributos}}<div class="jj2-atributos-total {{#if excesso}}excesso{{/if}}"

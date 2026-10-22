@@ -2,7 +2,7 @@ import Actor5e from "../../documents/actor/actor.mjs";
 import Proficiency from "../../documents/actor/proficiency.mjs";
 import * as Trait from "../../documents/actor/trait.mjs";
 import { getRulesVersion } from "../../enrichers.mjs";
-import { defaultUnits, formatCR, formatLength, formatNumber, getPluralRules, splitSemicolons } from "../../utils.mjs";
+import { convertLength, defaultUnits, formatCR, formatLength, formatNumber, getPluralRules, splitSemicolons } from "../../utils.mjs";
 import { ActorDeltasField } from "../chat-message/fields/deltas-field.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import CreatureTypeField from "../shared/creature-type-field.mjs";
@@ -22,6 +22,7 @@ import { NUMERIC_DAMAGE_TYPES } from "../../systems/legacy2-resistances.mjs";
 import { npcClassification, prepareNpcClassificationActions, npcClassificationActionUpdate } from "../../systems/legacy2-npc-classification.mjs";
 import { prepareEngagement } from "../../systems/engagement.mjs";
 import { prepareLegacy2ArmorClass } from "../../systems/legacy2-armor.mjs";
+import { prepareNpcProfileMovement } from "../../systems/legacy2-npc-movement.mjs";
 
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 const { ArrayField, BooleanField, NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
@@ -460,6 +461,7 @@ export default class NPCData extends CreatureTemplate {
     for ( const key of Object.keys(CONFIG.DND5E.senses) ) this.attributes.senses.ranges[key] ??= 0;
     this.attributes.movement.units ??= defaultUnits("length");
     this.attributes.senses.units ??= defaultUnits("length");
+    if (Ruleset.isV2()) prepareNpcProfileMovement(this.parent, convertLength);
   }
 
   /* -------------------------------------------- */

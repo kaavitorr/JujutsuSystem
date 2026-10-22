@@ -1,5 +1,5 @@
-<section class="tab {{tab.cssClass}} jj2-npc-resistencias" data-tab="{{tab.id}}" data-group="{{tab.group}}">
-  <header class="jj2-scale-heading"><div><small>{{#if profile.taxonomy}}TAXONOMIA{{else}}ARQUÉTIPO{{/if}}</small><h2>Resistências a Dano</h2></div></header>
+<section class="jj2-npc-resistencias jj2-profile-section">
+  <header class="jj2-profile-section-title"><h3>Resistências a dano</h3><span>{{#if profile.taxonomy}}Valor fixo{{else}}Resistência × ND{{/if}}</span></header>
   <p class="jj2-scale-intro">{{#if profile.taxonomy}}Valores fixos aplicados a todo NPC desta taxonomia: positivo reduz o dano (resistência), negativo aumenta (vulnerabilidade). Imune anula o dano do tipo.{{else}}Resistência por ND: valores positivos escalam com o ND do NPC (valor × ND) e negativos são vulnerabilidade de valor fixo. Imune anula o dano do tipo.{{/if}}</p>
   <div class="jj2-npc-res-grid">
     {{#each profile.resistencias}}
