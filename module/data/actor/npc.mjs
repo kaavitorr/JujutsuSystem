@@ -21,6 +21,7 @@ import { npcProfile, npcNd } from "../../systems/legacy2-npc-profiles.mjs";
 import { NUMERIC_DAMAGE_TYPES } from "../../systems/legacy2-resistances.mjs";
 import { npcClassification, prepareNpcClassificationActions, npcClassificationActionUpdate } from "../../systems/legacy2-npc-classification.mjs";
 import { prepareEngagement } from "../../systems/engagement.mjs";
+import { prepareLegacy2ArmorClass } from "../../systems/legacy2-armor.mjs";
 
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 const { ArrayField, BooleanField, NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
@@ -61,6 +62,11 @@ export default class NPCData extends CreatureTemplate {
   static defineSchema() {
     return this.mergeSchema(super.defineSchema(), {
       legacy2: legacy2Schema({ engagementInitial: null }),
+      favorites: new ArrayField(new SchemaField({
+        type: new StringField({ required: true, blank: false }),
+        id: new StringField({ required: true, blank: false }),
+        sort: new NumberField({ required: true, integer: true, initial: 0 })
+      }), { initial: [], label: "DND5E.Favorites" }),
       attributes: new SchemaField({
         ...AttributesFields.common,
         ...AttributesFields.creature,
@@ -526,7 +532,7 @@ export default class NPCData extends CreatureTemplate {
       // sem isso, o Enfurecido não derrubaria a CR de nenhuma criatura.
       const bonusCR = Math.trunc(Number(this.attributes.ac.bonus ?? 0)
         - Number(this._source?.attributes?.ac?.bonus ?? 0)) || 0;
-      this.attributes.ac.value = 10 + Math.floor((attrV(principal) + attrV("dex") + attrV("con")) / 3) + bonusCR;
+      prepareLegacy2ArmorClass(actor2, 10 + Math.floor((attrV(principal) + attrV("dex") + attrV("con")) / 3), { bonus: bonusCR });
       // Override de CR por efeito (ex.: Inconsciente automático a 0 PV): vence
       // sobre a fórmula. A sobrescrita manual (ficha 2.0) vence sobre ambos.
       if ( Number.isFinite(this.attributes.ac.override) ) {
@@ -536,8 +542,6 @@ export default class NPCData extends CreatureTemplate {
       if ( Number.isFinite(crManual) && crManual > 0 ) {
         this.attributes.ac.value = crManual;
       }
-      this.attributes.ac.calc = "resistencia";
-      this.attributes.ac.armor = this.attributes.ac.value;
       // Resistências dos perfis (2.0): a Taxonomia aplica valores fixos e o
       // Arquétipo aplica resistência por ND — positivo escala com o ND
       // (valor × ND), negativo é vulnerabilidade de valor fixo; a imunidade
@@ -598,6 +602,24 @@ export default class NPCData extends CreatureTemplate {
       this.parent.updateSource({ "system.legacy2.actions": { max, value: Math.min(max, Math.max(0, value)) } });
     }
     await TraitsFields.preCreateSize.call(this, data, options, user);
+  }
+
+  /** Same persisted favorites API used by native item, activity and effect menus. */
+  hasFavorite(favoriteId) {
+    return this.favorites.some(favorite => favorite.id === favoriteId);
+  }
+
+  addFavorite(favorite) {
+    if (this.hasFavorite(favorite.id)) return Promise.resolve(this.parent);
+    if (favorite.id.startsWith(".") && fromUuidSync(favorite.id, { relative: this.parent }) === null)
+      throw new Error("O documento deste atalho não pertence à ficha.");
+    const favorites = this.favorites.map(entry => ({ ...entry }));
+    favorites.push({ ...favorite, sort: Math.max(0, ...favorites.map(entry => entry.sort)) + CONST.SORT_INTEGER_DENSITY });
+    return this.parent.update({ "system.favorites": favorites });
+  }
+
+  removeFavorite(favoriteId) {
+    return this.parent.update({ "system.favorites": this.favorites.filter(favorite => favorite.id !== favoriteId) });
   }
 
   /* -------------------------------------------- */

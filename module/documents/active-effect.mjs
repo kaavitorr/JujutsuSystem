@@ -5,6 +5,7 @@ import MappingField from "../data/fields/mapping-field.mjs";
 import { parseOrString, simplifyBonus, staticID } from "../utils.mjs";
 import DependentDocumentMixin from "./mixins/dependent.mjs";
 import Scaling from "./scaling.mjs";
+import { isLegacyArmorClassChange } from "../systems/legacy2-armor.mjs";
 
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 const { NumberField, ObjectField, SchemaField, SetField, StringField } = foundry.data.fields;
@@ -358,6 +359,7 @@ export default class ActiveEffect5e extends DependentDocumentMixin(ActiveEffect)
 
   /** @inheritDoc */
   static applyChange(model, change, options={}) {
+    if (isLegacyArmorClassChange(model, change)) return {};
     // Apply shims to moved fields
     change = change.effect?._applyChangeShim(change) ?? change;
 

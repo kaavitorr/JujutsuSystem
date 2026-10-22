@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { readFileSync } from "node:fs";
 import Ruleset from "../module/systems/ruleset.mjs";
+import { prepareLegacy2ArmorClass } from "../module/systems/legacy2-armor.mjs";
 import { npcProfile, npcNd } from "../module/systems/legacy2-npc-profiles.mjs";
 import { NUMERIC_DAMAGE_TYPES } from "../module/systems/legacy2-resistances.mjs";
 import { prepareNpcClassificationActions } from "../module/systems/legacy2-npc-classification.mjs";
@@ -11,7 +12,7 @@ globalThis.CONFIG={JUJUTSU:{},DND5E:{skillPassive:{base:10}}};
 Math.clamp=(value,min,max)=>Math.min(max,Math.max(min,value));
 const source=readFileSync(new URL("../module/data/actor/npc.mjs",import.meta.url),"utf8");
 const native=source.match(/const actor2 = this\.parent;([\s\S]*?)\r?\n    \}\r?\n\r?\n    \/\/ Legendary Actions/)[1];
-const prepare=new Function("Ruleset","npcProfile","prepareNpcClassificationActions","npcNd","NUMERIC_DAMAGE_TYPES",`const actor2=this.parent;${native}`);
+const prepare=new Function("prepareLegacy2ArmorClass",`return function(Ruleset,npcProfile,prepareNpcClassificationActions,npcNd,NUMERIC_DAMAGE_TYPES){const actor2=this.parent;${native}}`)(prepareLegacy2ArmorClass);
 
 const tipos=Object.fromEntries(NUMERIC_DAMAGE_TYPES.map(({key})=>[key,{value:0,immune:false}]));
 const perfilItem=(type,nome,resistencias={})=>({id:`${type}-1`,type,name:nome,

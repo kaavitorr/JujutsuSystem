@@ -20,6 +20,7 @@ import MappingField from "../fields/mapping-field.mjs";
 import legacy2Schema from "./legacy2-schema.mjs";
 import Ruleset from "../../systems/ruleset.mjs";
 import { crSeisOlhos, rankSeisOlhos } from "../../systems/seis-olhos.mjs";
+import { prepareLegacy2ArmorClass } from "../../systems/legacy2-armor.mjs";
 
 /**
  * @import { ActorFavorites5e, CharacterActorSystemData, ResourceData } from "./_types.mjs";
@@ -456,14 +457,12 @@ export default class CharacterData extends CreatureTemplate {
       // fonte — o valor próprio do ator fica fora da fórmula, como antes.
       const bonusCREfeitos = Math.trunc(Number(this.attributes.ac.bonus ?? 0)
         - Number(this._source?.attributes?.ac?.bonus ?? 0)) || 0;
-      this.attributes.ac.value = Math.min(28, Ruleset.resistanceClass(actor2) + seisCr + bonusCREfeitos);
+      prepareLegacy2ArmorClass(actor2, Ruleset.resistanceClass(actor2), { bonus: seisCr + bonusCREfeitos, maximum: 28 });
       // Override de CR por efeito (ex.: Inconsciente automático a 0 PV): vence
       // sobre a fórmula.
       if ( Number.isFinite(this.attributes.ac.override) ) {
         this.attributes.ac.value = this.attributes.ac.override;
       }
-      this.attributes.ac.calc = "resistencia";
-      this.attributes.ac.armor = this.attributes.ac.value;
       const rankSeis = rankSeisOlhos(actor2);
       if ( rankSeis ) {
         this.legacy2.skills.arc = Math.max(this.legacy2.skills.arc ?? 0, rankSeis);

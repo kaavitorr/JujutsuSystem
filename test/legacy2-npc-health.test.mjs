@@ -5,12 +5,13 @@ import Ruleset from "../module/systems/ruleset.mjs";
 import { npcProfile, npcNd } from "../module/systems/legacy2-npc-profiles.mjs";
 import { NUMERIC_DAMAGE_TYPES } from "../module/systems/legacy2-resistances.mjs";
 import { prepareNpcClassificationActions } from "../module/systems/legacy2-npc-classification.mjs";
+import { prepareLegacy2ArmorClass } from "../module/systems/legacy2-armor.mjs";
 globalThis.game={settings:{get:()=>"2.0"}};
 globalThis.CONFIG={JUJUTSU:{},DND5E:{skillPassive:{base:10}}};
 Math.clamp=(value,min,max)=>Math.min(max,Math.max(min,value));
 const source=readFileSync(new URL("../module/data/actor/npc.mjs",import.meta.url),"utf8");
 const native=source.match(/const actor2 = this\.parent;([\s\S]*?)\r?\n    \}\r?\n\r?\n    \/\/ Legendary Actions/)[1];
-const prepare=new Function("Ruleset","npcProfile","prepareNpcClassificationActions","npcNd","NUMERIC_DAMAGE_TYPES",`const actor2=this.parent;${native}`);
+const prepare=new Function("prepareLegacy2ArmorClass",`return function(Ruleset,npcProfile,prepareNpcClassificationActions,npcNd,NUMERIC_DAMAGE_TYPES){const actor2=this.parent;${native}}`)(prepareLegacy2ArmorClass);
 test("NPC maximum life ignores legacy wounds while preserving temporary adjustments and saved HP",()=>{
   const system={legacy2:{nd:"5",wounds:{value:30}},abilities:{str:{value:3},dex:{value:4},con:{value:6},int:{value:2}},energy:{max:100},attributes:{hp:{max:10,tempmax:3,value:10},hd:{},ac:{},init:{}},_source:{attributes:{hp:{value:40}},legacy2:{actions:{max:6}}}};
   system.parent={type:"npc",items:[],itemTypes:{class:[]},system};

@@ -56,11 +56,12 @@ export function buildNpc2Context(actor, config, ruleset, npcConfig = {}) {
 const percent = (value, max) => max > 0 ? Math.max(0, Math.min(100, 100 * (Number(value) || 0) / max)) : 0;
 
 export function configureNpc2Parts(parts) {
+  delete parts.sidebarCollapser;
   const templates = { header: "npc-header-2", sidebar: "npc-sidebar-2", abilityScores: "npc-ability-scores-2",
     details: "tabs/npc-summary-2", skills: "tabs/character-skills-2", tabs: "character-tabs-hunter-2", effects: "tabs/character-effects-2" };
   for (const [id, template] of Object.entries(templates)) if (parts[id]) parts[id].template = `systems/jujutsu-system/templates/actors/${template}.hbs`;
   if (parts.tabs) parts.tabs.classes = ["jj2-tabs-nav"];
-  if (parts.sidebar) (parts.sidebar.templates ??= []).push("systems/jujutsu-system/templates/actors/npc-sidebar.hbs");
+  if (parts.sidebar) (parts.sidebar.templates ??= []).push("systems/jujutsu-system/templates/actors/parts/jj2-sidebar-actions.hbs");
   if (parts.effects) (parts.effects.templates ??= []).push("systems/jujutsu-system/templates/effects/columns/controls-2.hbs", "systems/jujutsu-system/templates/effects/columns/detail-2.hbs");
   for (const part of Object.values(parts)) (part.templates ??= []).push(
     "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs", "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs",

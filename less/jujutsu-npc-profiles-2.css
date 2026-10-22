@@ -110,3 +110,13 @@
 .dnd5e2.jj2-npc.jj2-ruptura .jj2-npc-proficiency-panel > summary::before { content:""; width:7px; height:7px; border:solid #b38add; border-width:0 1.5px 1.5px 0; transform:rotate(-45deg); }
 .dnd5e2.jj2-npc.jj2-ruptura .jj2-npc-proficiency-panel[open] > summary::before { transform:rotate(45deg); }
 .dnd5e2.jj2-npc.jj2-ruptura .jj2-npc-proficiency-panel > summary span { margin-left:auto; color:#efc351; font-size:14px; }
+.jj2-ruptura .jj2-npc-favorites-heading { display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:6px; }
+.jj2-ruptura .jj2-npc-favorites-heading h2 { margin:0; }
+.jj2-ruptura .jj2-npc-sidebar .jj2-favorite-name > span strong { overflow-wrap:anywhere; white-space:normal; }
+.jj2-ruptura .jj2-npc-sidebar .jj2-favorite-name > svg { width:18px; flex:0 0 18px; color:var(--jj2-purple); }
+.dnd5e2.sheet.actor.npc.jj2-ruptura .jj2-npc-sidebar { min-width:0; transition:none; }
+.dnd5e2.sheet.actor.npc.jj2-ruptura .jj2-npc-sidebar > .sidebar-collapser { display:grid; place-items:center; border-radius:0; box-shadow:none; }
+.dnd5e2.sheet.actor.npc.jj2-ruptura .jj2-npc-sidebar > .sidebar-collapser::before,
+.dnd5e2.sheet.actor.npc.jj2-ruptura .jj2-npc-sidebar > .sidebar-collapser::after { content:none; }
+.dnd5e2.sheet.actor.npc.jj2-ruptura .jj2-npc-sidebar > .sidebar-collapser svg { width:14px; height:14px; pointer-events:none; }
+.dnd5e2.sheet.actor.npc.jj2-ruptura.sidebar-collapsed .jj2-npc-sidebar { overflow:hidden; border-right:1px solid #a67bda33; }

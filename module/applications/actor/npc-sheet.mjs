@@ -11,6 +11,8 @@ import { injectJJConditions } from "./jj/conditions.mjs";
 import { assignNpcProfile, removeNpcProfile } from "./jj/npc-profile-selection.mjs";
 import { onExplosaoDefensiva2 } from "./jj/explosao-defensiva.mjs";
 import { updateNpcProficiencyOrder } from "./jj/npc-proficiency-order.mjs";
+import { useSheetAction, removeSheetDamageCondition } from "./jj/sheet-actions-2.mjs";
+import { prepareNpcFavorites, useNpcFavorite, deleteNpcFavorite, configureNpcFavorite, dropNpcFavorite } from "./jj/npc-favorites-2.mjs";
 
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 
@@ -27,6 +29,12 @@ export default class NPCActorSheet extends BaseActorSheet {
       jj2RefineEnergy: function() { if (Ruleset.isV2() && this.isEditable) return _npcGenerateEnergy(this.actor); },
       jj2Rank: function(event, target) { return updateNpc2Rank(this, target, Ruleset, CONFIG.DND5E.abilities); },
       jj2ProficiencyOrder: function(event, target) { return updateNpcProficiencyOrder(this, target); },
+      jj2Acao: function(event, target) { return useSheetAction(this, event, target); },
+      jj2RemoverCondicao: function() { return removeSheetDamageCondition(this); },
+      jj2ExplosaoDefensiva: function() { if (Ruleset.isV2() && this.isEditable) return onExplosaoDefensiva2(this.actor); },
+      useFavorite: function(event, target) { return useNpcFavorite(this, event, target); },
+      deleteFavorite: function(_event, target) { return deleteNpcFavorite(this, target); },
+      jj2ConfigureFavorite: function() { return configureNpcFavorite(this); },
       jj2RemoveNpcProfile: function(event, target) { if (Ruleset.isV2()) return removeNpcProfile(this, target.dataset.profileType); }
     },
     classes: ["npc", "vertical-tabs"],
@@ -198,6 +206,17 @@ export default class NPCActorSheet extends BaseActorSheet {
       return;
     }
     return super._onDropItem(event, item);
+  }
+
+  _defaultDropBehavior(event, data) {
+    if (Ruleset.isV2() && event.target.closest(".jj2-favorites")) return "link";
+    return super._defaultDropBehavior(event, data);
+  }
+
+  async _onDrop(event) {
+    if (Ruleset.isV2() && event.target.closest(".jj2-favorites"))
+      return dropNpcFavorite(this, TextEditor.getDragEventData(event));
+    return super._onDrop(event);
   }
 
   /** Match the shared 2.0 skill labels to their roll attributes, preserving the 1.0 handler. */
@@ -405,6 +424,10 @@ export default class NPCActorSheet extends BaseActorSheet {
    * @protected
    */
   async _prepareSidebarContext(context, options) {
+    if (Ruleset.isV2() && !this.actor.limited) {
+      context.favorites = await prepareNpcFavorites(this);
+      return context;
+    }
     const { attributes, details } = context.system;
 
     // Gear
@@ -614,8 +637,6 @@ export default class NPCActorSheet extends BaseActorSheet {
     this.element.classList.toggle("jj2-npc", modern);
     if (modern) {
       mountLegacy2Layout(this.element);
-      const sidebar = this.element.querySelector(".jj2-npc-sidebar"), collapser = this.element.querySelector(".sidebar-collapser");
-      if (sidebar && collapser && collapser.parentElement !== sidebar) sidebar.prepend(collapser);
       this._toggleSidebar(this.element.classList.contains("sidebar-collapsed"));
       injectJJConditions(this.element, this.actor);
     }

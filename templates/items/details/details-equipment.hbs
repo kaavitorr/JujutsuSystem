@@ -17,6 +17,18 @@
 
     {{!-- Armor --}}
     {{#if system.isArmor}}
+    {{#if armor2}}
+    <div class="jj2-armor-settings">
+      {{formField fields.armor.fields.value value=armor2.base step=1 label=(ifThen armor2.shield "Bônus de CR" "CR base") classes="label-top" rootId=partId}}
+      {{#unless armor2.shield}}
+      {{formField fields.armor.fields.ability value=armor2.ability options=armor2.choices valueAttr="value" labelAttr="label" label="Atributo somado" classes="label-top" rootId=partId}}
+      {{formField fields.armor.fields.dex value=armor2.limit label="Limite do atributo" placeholder="∞" classes="label-top" rootId=partId}}
+      {{formField fields.strength value=source.strength label="Força mínima" placeholder="—" classes="label-top" rootId=partId}}
+      {{/unless}}
+    </div>
+    <p class="jj2-armor-formula">{{#if armor2.shield}}Escudo: +{{armor2.base}} CR{{else}}CR = {{armor2.formula}}{{/if}}</p>
+    {{#unless armor2.shield}}<p class="jj2-armor-hint">Ao equipar, esta fórmula substitui a defesa padrão. Soma o valor inteiro do atributo. Deixe o limite vazio para somar todo o atributo.</p>{{/unless}}
+    {{else}}
     <div class="form-group split-group">
         <label>{{ localize "DND5E.Armor" }}</label>
         <div class="form-fields">
@@ -39,10 +51,13 @@
         </div>
     </div>
     {{/if}}
+    {{/if}}
 
     {{!-- Properties --}}
+    {{#unless armor2}}
     {{ formField fields.properties options=properties.options label="DND5E.ItemEquipmentProperties" localize=true
                  input=inputs.createMultiCheckboxInput stacked=true classes="checkbox-grid checkbox-grid-3" }}
+    {{/unless}}
 
     {{!-- Magical Properties --}}
     {{#if properties.object.mgc}}

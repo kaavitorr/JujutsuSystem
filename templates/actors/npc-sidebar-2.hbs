@@ -1,18 +1,18 @@
-<aside class="jj2-sidebar jj2-npc-sidebar" aria-label="Características do NPC">
-  <h2>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="con"}}Características</h2>
-  {{> "systems/jujutsu-system/templates/actors/npc-sidebar.hbs"}}
-  {{#if @root.editable}}
-  <div class="jj2-manual-override" style="margin-top:10px; padding:8px; border:1px solid #2c2c44; border-radius:6px;">
-    <h3 style="margin:0 0 6px; font-size:11px; text-transform:uppercase; opacity:0.8;">Sobrescrita manual</h3>
-    <label style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-bottom:4px; font-size:11px;">
-      <span>Vida Máx</span>
-      <input type="number" name="system.attributes.hp.maxOverride" value="{{ npc.override.hpMax }}" placeholder="auto" min="0" data-dtype="Number" style="width:70px;" class="always-interactive">
-    </label>
-    <label style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-bottom:4px; font-size:11px;">
-      <span>Classe de Resistência</span>
-      <input type="number" name="system.attributes.acOverride" value="{{ npc.override.cr }}" placeholder="auto" min="0" data-dtype="Number" style="width:70px;" class="always-interactive">
-    </label>
-    <small style="opacity:0.6; font-size:10px;">Deixe vazio para usar o cálculo (Taxonomia/Arquétipo).</small>
-  </div>
-  {{/if}}
+<aside class="sidebar jj2-sidebar jj2-npc-sidebar" aria-label="Ações e atalhos do NPC">
+  <button type="button" class="sidebar-collapser always-interactive" data-action="toggleSidebar" aria-expanded="{{#if sidebarCollapsed}}false{{else}}true{{/if}}" aria-label="{{#if sidebarCollapsed}}Expandir sidebar{{else}}Recolher sidebar{{/if}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="collapse"}}</button>
+  {{> "systems/jujutsu-system/templates/actors/parts/jj2-sidebar-actions.hbs"}}
+  <section class="jj2-ed-card">
+    <button type="button" class="jj2-ed-btn {{#if owner}}always-interactive{{/if}}" data-action="jj2ExplosaoDefensiva" {{disabled (not owner)}} data-tooltip="Explosão Defensiva: até {{jj2.explosaoLimite}}d4 de redução, sem custo.">
+      <span class="jj2-ed-head">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="con"}}<strong>Explosão Defensiva</strong></span><span class="jj2-ed-dice">{{jj2.explosaoLimite}}d4</span>
+    </button>
+  </section>
+  <section class="jj2-favorites favorites"><header class="jj2-npc-favorites-heading"><h2>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="pin"}}Atalhos</h2>
+    {{#if editable}}<button type="button" class="jj2-config" data-action="jj2ConfigureFavorite" aria-label="Adicionar atalho" title="Adicionar atalho">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}</button>{{/if}}
+    </header><ul>
+      {{#each favorites}}<li class="{{#if itemId}}item-tooltip{{/if}} {{type}}" data-favorite-id="{{id}}" {{#if itemId}}data-item-id="{{itemId}}"{{/if}}>
+        <button type="button" class="jj2-favorite-name {{#if @root.owner}}always-interactive{{/if}}" data-action="useFavorite" {{disabled (not @root.owner)}}>{{#if img}}<img src="{{img}}" alt="">{{else}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="pin"}}{{/if}}<span><strong>{{title}}</strong></span></button>
+        {{#if @root.editable}}<button type="button" class="jj2-config" data-action="deleteFavorite" aria-label="Remover {{title}} dos atalhos">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="close"}}</button>{{/if}}
+      </li>{{else}}<li class="jj2-favorites-empty">Arraste itens e atividades da ficha para cá ou use Adicionar atalho no modo de edição.</li>{{/each}}
+    </ul>
+  </section>
 </aside>

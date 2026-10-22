@@ -52,7 +52,7 @@ import "./jj/npc-generator-dialog.mjs";
 import "./jj/combat-sacrifice-hud.mjs";
 import "./jj/heal-limit.mjs";
 import "./jj/constant-cost.mjs";
-import { condicoesDanoAtivas, removerCondicaoDano } from "../../systems/condicoes-dano.mjs";
+import { useSheetAction, removeSheetDamageCondition } from "./jj/sheet-actions-2.mjs";
 import { restaurarScrollCondicoes } from "./jj/conditions.mjs";
 import { acoesTetoEfetivo } from "./jj/legacy2-sheet.mjs";
 import { ensureFeiticoPack } from "../../data/item/feitico-template.mjs";
@@ -328,7 +328,8 @@ export default class CharacterActorSheet extends BaseActorSheet {
       for ( const key of ["manipulation", "trainings", "bastion"] ) delete parts[key];
       for ( const part of Object.values(parts) ) {
         part.templates ??= [];
-        part.templates.push("systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs",
+        part.templates.push("systems/jujutsu-system/templates/actors/parts/jj2-sidebar-actions.hbs",
+          "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs",
           "systems/jujutsu-system/templates/actors/parts/jj2-ranks.hbs",
           "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs",
            "systems/jujutsu-system/templates/actors/parts/jj2-action-ring.hbs",
@@ -426,103 +427,12 @@ export default class CharacterActorSheet extends BaseActorSheet {
 
   /** 2.0: ação "Remover" — 2 ⬢⬢ + Medicina contra a CD da condição de dano. */
   static async #onRemoverCondicao() {
-    if ( !Ruleset.isV2() || !this.isEditable ) return;
-    const ativas = condicoesDanoAtivas(this.actor);
-    if ( !ativas.length ) {
-      ui.notifications.info(`${this.actor.name} não tem nenhuma condição de dano ativa.`);
-      return;
-    }
-    const escolhida = ativas.length === 1 ? ativas[0] : await foundry.applications.api.DialogV2.wait({
-      classes: ["dnd5e2", "jj2-document"],
-      window: { title: "Remover Condição de Dano" },
-      content: `<p style="margin:0 0 6px">Custa <strong>2 Pontos de Ação [⬢⬢]</strong> e rola Medicina contra a CD da condição.</p>
-        <select name="condicao">${ativas.map(c => `<option value="${c.status}">${c.label} — CD ${c.cd ?? 10}</option>`).join("")}</select>`,
-      buttons: [
-        { label: "Remover", action: "ok", default: true,
-          callback: (event, button, dialog) => ativas.find(c => c.status === dialog.element?.querySelector("select")?.value) ?? ativas[0] },
-        { label: "Cancelar", action: "cancel", callback: () => null }
-      ],
-      rejectClose: false, close: () => null
-    });
-    if ( !escolhida ) return;
-    return removerCondicaoDano(this.actor, escolhida);
+    return removeSheetDamageCondition(this);
   }
 
-  /** 2.0: botões do painel Ações (atacar, testes e interação). */
+  /** Player and NPC action panels share the native weapon and skill workflows. */
   static async #onAcao(event, target) {
-    if ( !Ruleset.isV2() || !this.isEditable ) return;
-    const ator = this.actor;
-    const acao = target.dataset.acao;
-    const custo = { esconder: 1, procurar: 1, interagir: 1 }[acao] ?? 0;
-    const nomes = { esconder: "Esconder", procurar: "Procurar", interagir: "Interagir com Objeto" };
-    const pa = Number(ator.system?.legacy2?.actions?.value ?? 0);
-    if ( custo && (pa < custo) ) {
-      ui.notifications.warn(`${nomes[acao]} custa ⬢x${custo} — ${ator.name} tem apenas ${pa} Pontos de Ação.`);
-      return;
-    }
-    if ( custo ) await ator.update({ "system.legacy2.actions.value": pa - custo });
-
-    // Enfurecido (2.0): só pode gastar PA com ataques — os atalhos de perícia
-    // (Esconder/Procurar/Interagir) ficam bloqueados; ataque e reativo passam.
-    if ( ["esconder", "procurar", "interagir"].includes(acao)
-      && ator.statuses?.has("jj-enfurecido") ) {
-      ui.notifications.warn(`⚡ ${ator.name} está Enfurecido — só pode gastar PA com ataques.`);
-      return;
-    }
-
-    switch ( acao ) {
-      case "ataque":
-        return this.#acaoAtacar(ator);
-      case "reativo":
-        // Desatento (2.0): sem Reações — remove-se no início do próprio turno.
-        if ( ator.statuses?.has("jj-desatento") ) {
-          ui.notifications.warn(`${ator.name} está Desatento — sem Reações neste turno.`);
-          return;
-        }
-        return this.#acaoAtacar(ator);
-      case "esconder":
-        return ator.rollSkill({ skill: "ste" });
-      case "procurar":
-        return ator.rollSkill({ skill: "prc" });
-      case "interagir":
-        ui.notifications.info(`${ator.name} interage com um objeto (1 ⬢ consumido).`);
-        return;
-    }
-  }
-
-  /** Pergunte qual arma usar e abre o modal de ataque dela. */
-  async #acaoAtacar(ator) {
-    const armas = ator.itemTypes?.weapon ?? [];
-    if ( !armas.length ) {
-      ui.notifications.warn(`${ator.name} não tem nenhuma arma para atacar.`);
-      return;
-    }
-    const opcoes = [...armas]
-      .sort((a, b) => Number(b.system?.equipped ?? false) - Number(a.system?.equipped ?? false))
-      .map(w => `<option value="${w.id}">${w.name}${w.system?.equipped ? "" : " (não equipada)"}</option>`)
-      .join("");
-    const id = await foundry.applications.api.DialogV2.wait({
-      classes: ["dnd5e2", "jj2-document", "jj2-weapon-choice"],
-      window: { title: "Escolher arma" },
-      render: (event, dialog) => mountLegacy2DocumentTheme(dialog.element, "weapon-choice"),
-      content: `<p style="margin:0 0 6px">Com qual arma você vai atacar?</p>
-        <select name="arma" style="width:100%">${opcoes}</select>`,
-      buttons: [
-        { label: "Atacar", action: "ok", default: true,
-          callback: (event, button, dialog) => dialog.element?.querySelector("select")?.value ?? null },
-        { label: "Cancelar", action: "cancel", callback: () => null }
-      ],
-      rejectClose: false, close: () => null
-    });
-    if ( !id ) return;
-    const arma = ator.items.get(id);
-    const activity = arma.system.activities?.contents?.find(a => a.type === "attack")
-      ?? arma.system.activities?.contents?.[0];
-    if ( !activity ) {
-      ui.notifications.warn(`"${arma.name}" não tem atividade de ataque configurada.`);
-      return;
-    }
-    return activity.use({}, { configure: true });
+    return useSheetAction(this, event, target);
   }
 
   static async #onResourceUse(event, target) {

@@ -1,5 +1,7 @@
 import { formatNumber, simplifyBonus } from "../../../utils.mjs";
 import BaseConfigSheet from "../api/base-config-sheet.mjs";
+import Ruleset from "../../../systems/ruleset.mjs";
+import { armor2Configuration } from "../../../systems/legacy2-armor.mjs";
 
 const { StringField } = foundry.data.fields;
 
@@ -76,7 +78,11 @@ export default class ArmorClassConfig extends BaseConfigSheet {
    * @protected
    */
   async _prepareCalculationContext(context, options) {
-    if ( context.data.formula.includes("@attributes.ac.dex") ) {
+    if (Ruleset.isV2() && ["character", "npc"].includes(this.document.type) && context.data.equippedArmor) {
+      const armor = armor2Configuration(context.data.equippedArmor);
+      if (armor.ability) context.ability = { label: `${armor.abilityLabel} (valor inteiro)`,
+        value: Math.min(Number(this.document.system.abilities?.[armor.ability]?.value ?? 0), armor.limit ?? Infinity) };
+    } else if ( context.data.formula.includes("@attributes.ac.dex") ) {
       context.ability = { label: CONFIG.DND5E.abilities.dex?.label, value: context.data.dex };
     } else if ( context.data.formula.includes("@attributes.ac.clamped.") ) {
       const ability = context.data.formula.match(/@attributes\.ac\.clamped\.([a-zA-Z]+)/);

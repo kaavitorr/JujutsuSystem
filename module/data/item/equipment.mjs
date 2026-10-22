@@ -9,6 +9,8 @@ import ItemTypeTemplate from "./templates/item-type.mjs";
 import PhysicalItemTemplate from "./templates/physical-item.mjs";
 import MountableTemplate from "./templates/mountable.mjs";
 import ItemTypeField from "./fields/item-type-field.mjs";
+import Ruleset from "../../systems/ruleset.mjs";
+import { ARMOR_ABILITIES_2, armor2Configuration } from "../../systems/legacy2-armor.mjs";
 
 const { NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
 
@@ -56,6 +58,9 @@ export default class EquipmentData extends ItemDataModel.mixin(
       armor: new SchemaField({
         value: new NumberField({ required: true, integer: true, min: 0, label: "DND5E.ArmorClass" }),
         magicalBonus: new FormulaField({ deterministic: true, label: "DND5E.MagicalBonus" }),
+        ability: new StringField({ required: true, nullable: true, initial: null,
+          choices: Object.fromEntries(ARMOR_ABILITIES_2.map(entry => [entry.value, entry.label])),
+          label: "Atributo da armadura" }),
         dex: new NumberField({ required: true, integer: true, label: "DND5E.ItemEquipmentDexMod" })
       }),
       proficient: new NumberField({
@@ -272,7 +277,7 @@ export default class EquipmentData extends ItemDataModel.mixin(
   /** @inheritDoc */
   prepareBaseData() {
     super.prepareBaseData();
-    this.armor.base = this.armor.value = (this._source.armor.value ?? 0);
+    this.armor.base = this.armor.value = Ruleset.isV2() ? armor2Configuration(this.parent).base : (this._source.armor.value ?? 0);
   }
 
   /* -------------------------------------------- */
@@ -329,6 +334,7 @@ export default class EquipmentData extends ItemDataModel.mixin(
       ...Object.entries(CONFIG.DND5E.armorTypes).map(([value, label]) => ({ value, label, group: "DND5E.Armor" }))
     ];
     context.hasDexModifier = this.isArmor && (this.type.value !== "shield");
+    if (Ruleset.isV2() && this.isArmor) context.armor2 = armor2Configuration(this.parent);
     if ( this.armor.value && (this.isArmor || (this.type.value === "shield")) ) {
       context.properties.active.shift();
       context.info = [{
