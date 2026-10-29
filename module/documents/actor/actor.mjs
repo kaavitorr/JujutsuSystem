@@ -1,4 +1,5 @@
 import Ruleset from "../../systems/ruleset.mjs";
+import { applyLegacy2TestRoll } from "../../applications/dice/legacy2-test-roll.mjs";
 import { replacesNativeConditionRoll } from "../../systems/legacy2-condition-rolls.mjs";
 import { npcFeatureRollData } from "../../systems/legacy2-npc-features.mjs";
 import { applyNumericResistances } from "../../systems/legacy2-resistances.mjs";
@@ -1924,8 +1925,8 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
     ], { rules: { category: "check", actor: this, rollData } });
     const ehV2 = Ruleset.isV2();
     let { parts, data } = CONFIG.Dice.D20Roll.constructParts({
-      // 2.0: init.mod já é ((AGI + INT) / 2) — sem proficiência nem alerta
-      mod: init?.mod,
+      // Resolve 2.0 from the current whole attributes, independent of stale native initiative data.
+      mod: ehV2 ? Ruleset.iniciativa(this) : init?.mod,
       prof: !ehV2 && init.prof.hasProficiency ? init.prof.term : null,
       ruleBonus: bonus,
       alert: !ehV2 && flags.initiativeAlert && (dnd5e.settings.rulesVersion === "legacy") ? 5 : null
@@ -1941,7 +1942,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
 
     // Fixed initiative score
     const scoreMode = game.settings.get("jujutsu-system", "initiativeScore");
-    const useScore = (scoreMode === "all") || ((scoreMode === "npcs") && game.user.isGM && this.system.isNPC);
+    const useScore = !ehV2 && ((scoreMode === "all") || ((scoreMode === "npcs") && game.user.isGM && this.system.isNPC));
 
     options = foundry.utils.mergeObject({
       advantage, disadvantage, advantageCount, disadvantageCount, maximum, minimum,
@@ -1962,6 +1963,23 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
      * @param {D20RollConfiguration} config  Configuration data for the pending roll.
      */
     Hooks.callAll("dnd5e.preConfigureInitiative", this, rollConfig);
+
+    // Tracker and dynamic-round rolls construct D20Roll directly, bypassing the dialog factory.
+    // Normalize here too so every initiative path uses one d20 and numeric +1/-1 advantages.
+    if (ehV2) {
+      const rollOptions = rollConfig.options, modes = CONFIG.Dice.D20Roll.ADV_MODE;
+      const independent = rollOptions.jjIndependentRollModes ??= {};
+      // Hooks may add a boolean/mode source after the native counts were prepared.
+      // Retain that source before normalization clears the native dice flags.
+      for (const [flag, counter, key, mode] of [["advantage", "advantageCount", "vantagens", modes.ADVANTAGE],
+        ["disadvantage", "disadvantageCount", "desvantagens", modes.DISADVANTAGE]]) {
+        rollOptions[counter] ??= 0;
+        if (!Number(rollOptions[counter]) && (rollOptions[flag] || rollOptions.advantageMode === mode)) {
+          independent[key] = Math.max(Number(independent[key]) || 0, 1);
+        }
+      }
+      applyLegacy2TestRoll(rollConfig, {subject: this, hookNames: ["initiativeDialog"], legacy2: options.legacy2});
+    }
 
     return rollConfig;
   }

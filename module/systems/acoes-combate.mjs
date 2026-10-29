@@ -130,8 +130,9 @@ Hooks.on("dnd5e.postUseActivity", async (activity, usageConfig) => {
  * Chegada do próprio turno (a partir da 2ª rodada): as Reservas definem o
  * limite de refinamento normal; com 5 ou mais guardadas, até o DOBRO
  * do limite normal, transferido da Energia Total só ao confirmar o modal — e os
- * Pontos de Ação são todos recuperados. As Reservas também dão +1 de
- * iniciativa por ação na rolagem da rodada (iniciativa-dinamica.mjs). */
+ * Pontos de Ação são todos recuperados. Na virada da rodada, os PA ainda
+ * disponíveis entram como vantagens na iniciativa, com o limite total de 6
+ * (iniciativa-dinamica.mjs); essa leitura não usa as Reservas salvas. */
 const turnoEmCurso = new Map(); // combatId → last processed round/combatant key
 
 Hooks.on("updateCombat", async (combat, changed, options, userId) => {

@@ -123,7 +123,7 @@ export default class Combat5e extends Combat {
     if (!Ruleset.isV2() || !user.isGM || !game.settings.get("jujutsu-system", "iniciativaDinamica")
       || options.turnEvents === false || !(changed.round >= 1) || !(changed.round > this.round)) return;
 
-    const { linhas, updates } = await prepararIniciativaDaRodada(this, { round: changed.round, encerrarTurno: true });
+    const { linhas, updates } = await prepararIniciativaDaRodada(this, { round: changed.round });
     if (!updates.length) return;
     const combatants = new Map((changed.combatants ?? []).map(update => [update._id, update]));
     for (const update of updates) combatants.set(update._id, { ...combatants.get(update._id), ...update });

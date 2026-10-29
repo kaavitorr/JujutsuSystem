@@ -319,9 +319,22 @@ export default class Ruleset {
    * para baixo (a rolagem é 1d20 [Vantagens] + este valor).
    */
   static iniciativa(actor) {
-    const agi = Number(actor?.system?.abilities?.dex?.value) || 1;
-    const int = Number(actor?.system?.abilities?.int?.value) || 1;
+    const attribute = key => {
+      const value = Number(actor?.system?.abilities?.[key]?.value ?? 1);
+      return Number.isFinite(value) ? value : 1;
+    };
+    const agi = attribute("dex"), int = attribute("int");
     return Math.floor((agi + int) / 2);
+  }
+
+  /** PA disponíveis na virada, dentro do máximo preparado; entram no limite geral de vantagens. */
+  static iniciativaAcoes(actor) {
+    if (actor?.statuses?.has?.("jj-paralisado")) return 0;
+    const actions = actor?.system?.legacy2?.actions;
+    const value = Number(actions?.value ?? 0), maximum = Number(actions?.max ?? 6);
+    const available = Number.isFinite(value) ? Math.max(0, Math.floor(value)) : 0;
+    const limit = Number.isFinite(maximum) ? Math.max(0, Math.floor(maximum)) : 6;
+    return Math.min(available, limit);
   }
 
   /** Habilidades de especialização grátis iniciais concedidas pelo Estilo. */

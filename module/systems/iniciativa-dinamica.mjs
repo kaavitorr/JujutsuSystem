@@ -8,8 +8,9 @@ import { flawInitiativeLast } from "./defeitos-active-effects.mjs";
  * num único card compacto no chat, ordenado do maior para o menor.
  *
  * Regras especiais: Incapacitado/Morto → 0; Desatento (surpreso) → 1.
- * Rolagem individual: 1d20 [Vantagens] + ((AGI + INT) / 2) — o
- * getInitiativeRoll do ator já aplica a fórmula 2.0.
+ * Rolagem individual: 1d20 + floor((AGI + INT) / 2) + Vantagens − Desvantagens.
+ * A partir da 2ª rodada, cada PA disponível concede uma vantagem, junto das
+ * outras fontes e respeitando o limite total de 6; não se soma fora da rolagem.
  *
  * Setting world "iniciativaDinamica" (padrão: ligado).
  * Roda somente no cliente GM — um único cliente rola e posta o card.
@@ -82,9 +83,12 @@ Hooks.on("renderChatMessageHTML", (message, html) => {
 /**
  * Prepara a próxima ordem sem publicar turnos intermediários no tracker.
  */
-export async function prepararIniciativaDaRodada(combat, { round = combat.round ?? 1, encerrarTurno = false } = {}) {
+export async function prepararIniciativaDaRodada(combat, { round = combat.round ?? 1 } = {}) {
   const linhas = [];
   const updates = [];
+  // Capture every creature before awaiting any dice or recovering the next creature's actions.
+  const actions = new Map(Array.from(combat.combatants, combatant =>
+    [combatant.id, round >= 2 ? Ruleset.iniciativaAcoes(combatant.actor) : 0]));
   for ( const combatente of combat.combatants ) {
     const actor = combatente.actor;
     if ( !actor ) continue;
@@ -95,22 +99,10 @@ export async function prepararIniciativaDaRodada(combat, { round = combat.round 
     if ( status.has("dead") || status.has("incapacitated") ) total = 0;
     else if ( desatento || status.has("surprised") ) total = 1;
     else {
-      const roll = actor.getInitiativeRoll();
+      const roll = actor.getInitiativeRoll({jjInitiativeActions: actions.get(combatente.id) ?? 0});
       await roll.evaluate();
-      total = roll.total;
-    }
-    // Descomunal: arma equipada impõe 2 desvantagens à Iniciativa.
-    const descomunal = (actor.itemTypes?.weapon ?? []).some(w =>
-      w.system?.equipped && (typeof w.system.properties?.has === "function"
-        ? w.system.properties.has("des") : !!w.system.properties?.des));
-    if ( descomunal ) total -= 4;
-    // Reservas de Ação (2.1): +1 de iniciativa por ação guardada no turno
-    // anterior — não conta na primeira rodada; Desatento age na iniciativa 1.
-    if ( round >= 2 && !(status.has("dead") || status.has("incapacitated") || status.has("surprised") || desatento) ) {
-      const saldo = encerrarTurno && combat.started && combat.combatant?.id === combatente.id
-        ? actor.system.legacy2?.actions?.value : actor.system.legacy2?.reservas?.value;
-      const reservas = Math.max(0, Math.floor(Number(saldo ?? 0)));
-      if ( reservas > 0 ) total += reservas;
+      total = Number(roll.total);
+      if (!Number.isFinite(total)) throw new Error(`Iniciativa inválida para ${combatente.name ?? actor.name}.`);
     }
     updates.push({ _id: combatente.id, initiative: total });
     const img = combatente.img ?? actor.img;

@@ -23,7 +23,10 @@ class CoreCombatBoundary {
       isDefeated: false, refreshDynamicRing() {},
       actor: { name, statuses: new Set(), system: { legacy2: { reservas: { value: 0 }, actions: { value: 0 } } },
         itemTypes: { weapon: [] }, calls: 0,
-        getInitiativeRoll() { this.calls++; return { total: scores[index], async evaluate() {} }; } } }));
+        getInitiativeRoll(options = {}) {
+          this.calls++;
+          return {total: scores[index] + Ruleset.netAdvantageBonus(options.jjInitiativeActions ?? 0, 0), async evaluate() {}};
+        } } }));
     this.combatants.get = id => this.combatants.find(c => c.id === id);
     this.setupTurns(); this.previous = { ...this.current };
   }
@@ -183,6 +186,43 @@ test("the last creature's remaining actions contribute to the new round before i
   assert.equal(combat.combatants.get("C").initiative, 26);
   assert.equal(combat.combatant.id, "C");
   assert.deepEqual(combat.startedActors, ["C"]);
+});
+
+test("each creature receives +1 per action actually available at the round boundary, ignoring old reserves", async () => {
+  const combat = new Combat5e({scores: [10, 10, 10]});
+  for (const [id, actions, reserves, max] of [["A", 2, 99, 6], ["B", 0, 6, 6], ["C", 8, 0, 8]]) {
+    Object.assign(combat.combatants.get(id).actor.system.legacy2, {actions: {value: actions, max}, reservas: {value: reserves}});
+  }
+  await combat.nextRound();
+  assert.deepEqual(combat.combatants.map(c => c.initiative), [12, 10, 16]);
+  assert.equal(combat.combatant.id, "C");
+  await combat.nextRound();
+  assert.deepEqual(combat.combatants.map(c => c.initiative), [12, 10, 16], "PA bonuses cannot accumulate between rounds");
+});
+
+test("the boundary snapshots available actions before any asynchronous initiative evaluation", async () => {
+  const combat = new Combat5e({scores: [10, 10, 10]});
+  combat.combatants.get("B").actor.system.legacy2.actions = {value: 4, max: 6};
+  combat.combatants.get("A").actor.getInitiativeRoll = () => ({total: 10, async evaluate() {
+    combat.combatants.get("B").actor.system.legacy2.actions.value = 0;
+  }});
+  await combat.nextRound();
+  assert.equal(combat.combatants.get("B").initiative, 14);
+});
+
+test("invalid or overfilled PA never creates an impossible bonus and fixed-status initiative remains exact", async () => {
+  for (const [value, expected] of [[9999, 16], [Infinity, 10], [-3, 10], [3.8, 13]]) {
+    const combat = new Combat5e({scores: [10, 10, 10]});
+    combat.combatants.get("A").actor.system.legacy2.actions = {value, max: 6};
+    const result = await initiative.prepararIniciativaDaRodada(combat, {round: 2});
+    assert.equal(result.updates[0].initiative, expected);
+  }
+  for (const [status, expected] of [["dead", 0], ["incapacitated", 0], ["jj-desatento", 1], ["surprised", 1]]) {
+    const combat = new Combat5e({scores: [10, 10, 10]}), subject = combat.combatants.get("A").actor;
+    subject.statuses.add(status);subject.system.legacy2.actions = {value: 6, max: 6};
+    subject.itemTypes.weapon = [{system: {equipped: true, properties: new Set(["des"])}}];
+    assert.equal((await initiative.prepararIniciativaDaRodada(combat, {round: 2})).updates[0].initiative, expected);
+  }
 });
 
 test("the first round ignores action reserves and the standalone roller retains the current creature", async () => {

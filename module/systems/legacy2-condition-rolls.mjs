@@ -47,7 +47,11 @@ function fromSource(actor, id, target) {
 /** Jujutsu 2.0 condition rules shared by PC/NPC weapons, techniques, checks and saves. */
 export function conditionRollAdvantages(actor, { kind, ability, skill, target, melee = false } = {}) {
   let vantagens = 0, desvantagens = 0;
-  if (kind === "attack") {
+  if (kind === "initiative") {
+    const oversized = (actor?.itemTypes?.weapon ?? []).some(weapon => weapon.system?.equipped
+      && (weapon.system.properties?.has?.("des") ?? !!weapon.system.properties?.des));
+    if (oversized) desvantagens += 2;
+  } else if (kind === "attack") {
     for (const id of ["jj-cego", "jj-caido", "jj-estremecido", "jj-impedido", "jj-hipotermico"])
       if (has(actor, id)) desvantagens++;
     if (melee && has(actor, "jj-pesado")) desvantagens++;

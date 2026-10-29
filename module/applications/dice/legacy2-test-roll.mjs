@@ -26,6 +26,8 @@ function automaticConditions(process, formData, roll) {
   conditions.desvantagens += flawRollDisadvantages(process.subject, { kind, skill: process.skill,
     rank: process.skill ? Ruleset.skillRank(process.subject, process.skill) : 0 });
   const options = roll?.options ?? process.rolls?.[0]?.options ?? {};
+  // Round-boundary PA are advantages, sharing the same six-source cap as every other source.
+  if (isInitiativeTest(process)) conditions.vantagens += count(options.jjInitiativeActions);
   const modes = globalThis.CONFIG?.Dice?.D20Roll?.ADV_MODE ?? { ADVANTAGE: 1, DISADVANTAGE: -1 };
   const independent = process.jjIndependentRollModes ?? options.jjIndependentRollModes ?? {};
   const shortcuts = process.jjKeyRollModes ?? {};
