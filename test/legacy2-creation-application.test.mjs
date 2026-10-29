@@ -13,9 +13,39 @@ globalThis.game={settings:{get:()=>"2.0"},packs:new Map(),items:[],user:{id:"me"
 globalThis.CONFIG={};
 const {default:Creation}=await import("../module/applications/actor/creation/character-creation-2.mjs");
 const actor=id=>({id,name:"Inicial",type:"character",isOwner:true,items:[],getFlag(){},sheet:{render(){}}});
+test("every creator action is registered and the Life/Energy penalty buttons update the draft",()=>{
+  for(const [name,action] of Object.entries(Creation.DEFAULT_OPTIONS.actions))assert.equal(typeof action,"function",name);
+  const app=new Creation(actor("vital-penalty"));
+  Creation.DEFAULT_OPTIONS.actions.penalidadeVital.call(app,{}, {dataset:{valor:"vida"}});
+  assert.equal(app.draft.penalidadeVital,"vida");
+  Creation.DEFAULT_OPTIONS.actions.penalidadeVital.call(app,{}, {dataset:{valor:"energia"}});
+  assert.equal(app.draft.penalidadeVital,"energia");
+  app.busy=true;Creation.DEFAULT_OPTIONS.actions.penalidadeVital.call(app,{}, {dataset:{valor:"vida"}});
+  assert.equal(app.draft.penalidadeVital,"energia");
+});
 test("forward navigation validates the previous stage instead of skipping required choices",()=>{
   const app=new Creation(actor("navigation"));app.catalog={species:[],styles:[],graph:{porNome:new Map()},customization:{}};
   app.changeStep(1);assert.equal(app.draft.step,0);assert(app.errors.length>0);
+});
+test("the Restringido proficiency panel disables every positive Feitiçaria rank",async()=>{
+  const app=new Creation(actor("restricted-skills"));
+  const style={uuid:"Item.restricted",name:"Restringido",system:{identifier:"restringido"},flags:{"jujutsu-system":{legacy2:{espIniciais:1}}}};
+  app.catalog={styles:[style],species:[],graph:{porNome:new Map(),categorias:[]},customization:Object.fromEntries(Object.keys(app.draft.customization).map(key=>[key,[]]))};
+  app.draft.style=style.uuid;
+  const context=await app._prepareContext({});
+  const row=context.proficiencyPanels.find(panel=>panel.category==="skills").rows.find(row=>row.key==="arc");
+  assert(row.dots.filter(dot=>dot.value>0).every(dot=>dot.disabled));assert.equal(row.dots[0].disabled,false);
+});
+test("Imaculado disables the Restringido card and its action refuses the incompatible choice",async()=>{
+  const app=new Creation(actor("blocked-combination"));
+  const restricted={uuid:"Item.restricted",name:"Restringido",system:{identifier:"restringido"},flags:{"jujutsu-system":{legacy2:{espIniciais:1}}}};
+  const origin={uuid:"Item.imaculado",name:"Imaculado",type:"race",system:{identifier:"imaculado"}};
+  app.catalog={styles:[restricted],species:[origin],graph:{porNome:new Map(),categorias:[]},customization:Object.fromEntries(Object.keys(app.draft.customization).map(key=>[key,[]]))};
+  app.draft.species=origin.uuid;
+  await Creation.DEFAULT_OPTIONS.actions.style.call(app,{}, {dataset:{uuid:restricted.uuid}});
+  assert.equal(app.draft.style,null);assert(app.errors[0].message.includes("Imaculado não pode"));
+  const context=await app._prepareContext({});
+  assert.equal(context.styleCards[0].unavailable,true);assert(context.styleCards[0].unavailableReason.includes("Canalização"));
 });
 test("closing directly captures unblurred inputs and resumes the same local draft without actor writes",async()=>{
   const a=actor("resume"),app=new Creation(a);

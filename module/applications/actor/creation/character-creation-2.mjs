@@ -1,7 +1,7 @@
 import Ruleset from "../../../systems/ruleset.mjs";
 import { CREATION_STEPS, ABILITY_KEYS, creationDraft, creationBudgets, styleRules, rankSpent,
   chooseCreationStyle, chooseCreationPath, creationPathOptions, creationSpecializationSlots, creationPrimaryOptions, creationSpecializationScope, allocateCreationRank, toggleCreationSpecialization, evaluateCreationSpecialization, creationSpeciesGroups, validateCreation, speciesAtributosAdicionais,
-  PENALIDADE_VITAL_NOME, penalidadeVitalUuid } from "./creation-model-2.mjs";
+  PENALIDADE_VITAL_NOME, penalidadeVitalUuid, creationRankAllowed, creationWeaponBonus, creationCombinationError } from "./creation-model-2.mjs";
 import { loadCreationCatalog, resolveCreationDocument } from "./creation-catalog-2.mjs";
 import { commitCreation } from "./creation-completion-2.mjs";
 import { CUSTOMIZATION_SECTIONS } from "../jj/legacy2-customization.mjs";
@@ -66,10 +66,11 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     this.catalog ??= await loadCreationCatalog();
-    const draft = this.draft, catalog = this.catalog, style = this.style, budget = creationBudgets(style, draft.caminho);
-    const slots = creationSpecializationSlots(style, draft.caminho);
-    const text = normalize(this.search), matches = doc => !text || normalize(doc.name ?? doc.nome).includes(text);
+    const draft = this.draft, catalog = this.catalog, style = this.style;
     const species = catalog.species.find(doc => doc.uuid === draft.species);
+    const budget = creationBudgets(style, draft.caminho, species);
+    const slots = creationSpecializationSlots(style, draft.caminho, species);
+    const text = normalize(this.search), matches = doc => !text || normalize(doc.name ?? doc.nome).includes(text);
     const categories = catalog.graph.categorias ?? [];
     this.category ??= categories[0]?.nome;
     const tree = buildCreationTree(draft, style, catalog, { category: this.category, focus: this.focus,
@@ -84,11 +85,13 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
     tree.styleDetail = style;tree.styleHTML = selected ? "" : detailHTML;
     this.tree = tree;
     const rankRows = (category, rows) => ({ category, label: { saves: "Salvaguardas", armas: "Tipos de Arma", skills: "Perícias" }[category],
+      hint: category === "armas" && creationWeaponBonus(style, draft.caminho) ? "Maestria: os 2 pontos extras devem ficar no mesmo tipo de arma." : null,
       budget: budget[category], spent: rankSpent(draft.proficiencies[category]),
       remaining: budget[category] - rankSpent(draft.proficiencies[category]),
       rows: rows.map(([key, label, icon]) => { const rank = draft.proficiencies[category][key]; return { key, label, icon, rank,
         rankLabel: Ruleset.rankLabel(rank), dots: [0,1,2,3,4].map(value => ({ value, selected: value === rank,
-          filled: value > 0 && value <= rank, disabled: this.busy || (value > rank && value - rank > budget[category] - rankSpent(draft.proficiencies[category])) })) }; }) });
+          filled: value > 0 && value <= rank, disabled: this.busy || (value > 0 && !creationRankAllowed(style, category, key))
+            || (value > rank && value - rank > budget[category] - rankSpent(draft.proficiencies[category])) })) }; }) });
     const orcamentoAtributos = 20 + speciesAtributosAdicionais(species);
     const errors = validateCreation(draft, catalog, draft.step);
     Object.assign(context, { rootId: this.id, draft, busy: this.busy, errors: this.errors, search: this.search,
@@ -104,7 +107,9 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
       attributesSpent: rankSpent(draft.abilities), attributesRemaining: orcamentoAtributos - rankSpent(draft.abilities),
       orcamentoAtributos,
       styleCards: catalog.styles.map(doc => ({ uuid: doc.uuid, name: doc.name, img: doc.img, selected: doc.uuid === draft.style,
+        unavailable: !!creationCombinationError(doc, species), unavailableReason: creationCombinationError(doc, species),
         ...styleRules(doc), points: creationBudgets(doc) })), style, budget,
+      combinationError: creationCombinationError(style, species),
       specializationScope: creationSpecializationScope(style),
       pathOptions: creationPathOptions(style).map(caminho => ({ ...caminho, selected: caminho.id === draft.caminho })),
       slotHints: slots.grupos.map(grupo => `${grupo.quantidade} de ${grupo.rotulo}`),
@@ -198,8 +203,11 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
   static onSpecies(event,target) { if(this.busy)return;this.captureInputs();this.draft.species=target.dataset.uuid;this.errors=[];this.render(); }
   static onStyle(event,target) {
     if(this.busy)return;this.captureInputs();const style=this.catalog.styles.find(doc=>doc.uuid===target.dataset.uuid);if(!style)return;
+    const error=creationCombinationError(style,this.catalog.species?.find(doc=>doc.uuid===this.draft.species));
+    if(error){this.errors=[{step:1,message:error}];this.render();return;}
     chooseCreationStyle(this.draft,style);this.errors=[];this.focus=null;
-    const available=Array.from(this.catalog.graph.porNome.values()).find(node=>node.caminho&&evaluateCreationSpecialization(this.draft,style,node).estado==="disponivel");
+    const available=Array.from(this.catalog.graph.porNome.values()).find(node=>node.caminho&&evaluateCreationSpecialization(this.draft,style,node,this.draft.specializations,
+      this.catalog.species?.find(doc=>doc.uuid===this.draft.species)).estado==="disponivel");
     if(available)this.category=available.categoria;this.render();
   }
   static onPath(event,target) {
@@ -237,7 +245,7 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
     this.errors=[];this.render(); }
 
   /** Escolha do lado da penalidade variante Vida −2 / Energia Base −4. */
-  onPenalidadeVital(event, target) {
+  static onPenalidadeVital(event, target) {
     if ( this.busy || !["vida", "energia"].includes(target.dataset.valor) ) return;
     this.draft.penalidadeVital = target.dataset.valor;
     this.errors = [];

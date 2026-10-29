@@ -602,6 +602,13 @@ function _configureStatusEffects() {
   for ( const [id, data] of Object.entries(CONFIG.DND5E.encumbrance.effects) ) {
     addEffect({ id, ...data, hud: false });
   }
+  // Conditions registered during init must survive the post-init configuration rebuild.
+  for ( const [key, data] of Object.entries(CONFIG.statusEffects) ) {
+    const id = data.id ?? key;
+    if ( id in statusEffects ) continue;
+    addEffect({ ...data, id });
+    if ( data._id ) statusEffects[id]._id = data._id;
+  }
   CONFIG.statusEffects = statusEffects;
 }
 

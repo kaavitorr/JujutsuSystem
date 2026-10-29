@@ -1,0 +1,3391 @@
+{
+  "source": "jujutsu-compendium.geral-2-0 (2026-10-29)",
+  "docs": [
+    {
+      "_id": "5X2Kwuu3YPNWTsvw",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.5X2Kwuu3YPNWTsvw",
+      "name": "Anomalia - Feto Amaldiçoado",
+      "type": "race",
+      "img": "systems/jujutsu-system/assets/Origens/Choso_Cursed_Clash.webp",
+      "system": {
+        "type": {
+          "value": "humanoid",
+          "custom": "",
+          "subtype": ""
+        },
+        "identifier": "feto-amaldicoado",
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\"><span><span style=\"font-size:38px\"><strong>FETO AMALDIÇOADO</strong></span></span></p><p style=\"margin-bottom:.0001pt;text-justify:inter-ideograph;line-height:normal;mso-layout-grid-align:none;text-autospace:none;text-align:justify\"><span style=\"font-family:'Chaparral Pro, serif'\"> </span></p><p><strong>Vida Adicional:</strong> 10 Pontos de Vida.</p><p><strong>Tamanho:</strong> 1,50 a 2,50 metros (pequeno, médio ou grande).</p><p><strong>Peso:</strong> Normalmente, entre 45 kg e 200 kg.</p><p><strong>Deslocamento:</strong> 10 metros.</p><p><strong>Nado:</strong> 5 metros.</p><p> </p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ESPÉCIA</strong></span></p></td></tr></tbody></table><p><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">Essas</span><span style=\"letter-spacing:.7pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">características</span><span style=\"letter-spacing:.55pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">acompanham</span><span style=\"letter-spacing:.55pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">a</span><span style=\"letter-spacing:.7pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">existência</span><span style=\"letter-spacing:.65pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">do</span><span style=\"letter-spacing:.8pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">personagem,</span><span style=\"letter-spacing:.75pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">são</span><span style=\"letter-spacing:.6pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">representações</span><span style=\"letter-spacing:.75pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">da</span><span style=\"letter-spacing:.65pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">sua</span><span style=\"letter-spacing:.7pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">origem,</span><span style=\"letter-spacing:.55pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">sendo</span><span style=\"letter-spacing:.6pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">uma</span><span style=\"letter-spacing:.8pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">parte</span><span style=\"letter-spacing:.6pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">essencial</span><span style=\"letter-spacing:.75pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">de</span><span style=\"letter-spacing:.05pt\"> </span><span style=\"mso-font-width:105%\">como</span><span style=\"letter-spacing:-.45pt\"> </span><span style=\"mso-font-width:105%\">ele</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">vê</span><span style=\"letter-spacing:-.45pt\"> </span><span style=\"mso-font-width:105%\">o</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">mundo</span><span style=\"letter-spacing:-.55pt\"> </span><span style=\"mso-font-width:105%\">e</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">de</span><span style=\"letter-spacing:-.45pt\"> </span><span style=\"mso-font-width:105%\">como</span><span style=\"letter-spacing:-.5pt\"> </span><span style=\"mso-font-width:105%\">o</span><span style=\"letter-spacing:-.45pt\"> </span><span style=\"mso-font-width:105%\">mundo</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">olha</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">pra</span><span style=\"letter-spacing:-.35pt\"> </span><span style=\"mso-font-width:105%\">ele.</span></p><p style=\"margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:7.1pt;text-justify:inter-ideograph;tab-stops:7.1pt 345.55pt 467.8pt 522.85pt;text-align:justify\"></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM - FETO AMALDIÇOADO</strong></span></p><hr><ul><li><p><strong>Corpo Hibrido: </strong>Como um feto amaldiçoado, você tem um corpo espiritual capaz de se regenerar mais facilmente. Você pode gastar 2 PA para recuperar 1d4 Pontos de Vida, até um máximo de dados igual a ¼ do seu nível de personagem (arredondado para cima).</p><p>A quantidade de Pontos de Vida recuperados cura tanto suas feridas quanto seus Pontos de Vida normais.</p></li><li><p><strong>Habilidade Vinculada:</strong> Você recebe um Feitiço Inato ou Herdado à sua escolha. Em caso de Feitiço Herdado, você pode começar com sua Inerente.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>DESVANTAGENS DA VARIANTE</strong></span></p><hr><ul><li><p><strong>Composição Estranha: </strong>Seu corpo é feito parcialmente de energia amaldiçoada e parcialmente de carne e osso, fazendo com que você seja um pouco mais suscetível contra energia reversa. Ataques e feitiços usando reversão de feitiço tem +2 para te acertar e em caso de sofrer um acerto crítico deles, você sofre 1 dado de dano adicional ao fim da rolagem de dano.</p></li></ul>",
+          "chat": ""
+        },
+        "advancement": {
+          "rEJzDVRlCiq4jyq7": {
+            "type": "Size",
+            "_id": "rEJzDVRlCiq4jyq7",
+            "configuration": {
+              "sizes": [
+                "med"
+              ]
+            },
+            "level": 0,
+            "value": {},
+            "flags": {},
+            "hint": "",
+            "name": "",
+            "img": null
+          },
+          "pWi09QUI278nzGY8": {
+            "type": "Trait",
+            "configuration": {
+              "grants": [
+                "languages:standard:common"
+              ],
+              "mode": "default",
+              "allowReplacements": false,
+              "choices": []
+            },
+            "_id": "pWi09QUI278nzGY8",
+            "level": 0,
+            "value": {
+              "chosen": []
+            },
+            "flags": {},
+            "hint": ""
+          },
+          "wsyp1BXHynfWEUde": {
+            "type": "ItemGrant",
+            "_id": "wsyp1BXHynfWEUde",
+            "configuration": {
+              "items": [
+                {
+                  "optional": false,
+                  "sort": 0,
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.I9rnRVbiSHF2agJo"
+                }
+              ],
+              "optional": false,
+              "spell": null,
+              "sorting": "m"
+            },
+            "flags": {},
+            "value": {},
+            "level": 0,
+            "hint": "",
+            "name": "trait"
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "pvAdicional": 10,
+          "legacy2": {
+            "pvEspecie": null,
+            "energiaEspecie": null
+          },
+          "energiaAdicional": null,
+          "atributosAdicionais": null
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "6CZtFvyBKb7bvuux",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.6CZtFvyBKb7bvuux",
+      "name": "Corpo Amaldiçoado",
+      "type": "feat",
+      "img": "icons/creatures/abilities/wolf-howl-moon-purple.webp",
+      "system": {
+        "identifier": "corpo-amaldicoado-trait",
+        "prerequisites": {
+          "items": [],
+          "repeatable": false,
+          "level": null
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "6tS4Z9rDPp9LIQmS",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.6tS4Z9rDPp9LIQmS",
+      "name": "Linhagem - Zenin",
+      "type": "race",
+      "img": "systems/jujutsu-system/assets/Origens/Megumi_Fushiguro_Cursed_Clash.webp",
+      "system": {
+        "type": {
+          "value": "humanoid",
+          "custom": "",
+          "subtype": ""
+        },
+        "identifier": "zenin",
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\"><span><span style=\"font-size:38px\"><strong>ZENIN</strong></span></span></p><p><strong>Vida Adicional:</strong> 4 Pontos de Vida.</p><p><strong>Tamanho:</strong> 1,50 a 2,00 metros (pequeno, médio).</p><p><strong>Peso:</strong> Normalmente, entre 45 kg e 200 kg.</p><p><strong>Deslocamento:</strong> 10 metros.</p><p><strong>Nado:</strong> 5 metros.</p><p> </p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ESPÉCIA</strong></span></p></td></tr></tbody></table><p>Essas características acompanham a existência do personagem, são representações da sua origem, sendo uma parte essencial de como ele vê o mundo e de como o mundo olha pra ele.</p><p style=\"margin:0.5pt 0cm 0.0001pt 7.1pt;text-align:justify\"></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM - ZENIN</strong></span></p><hr><ul><li><p><strong>Técnica Herdada: </strong>Como um membro da linhagem do Clã Zenin, deve escolher entre as <strong>“10 Sombras”</strong> ou <strong>“Projeção”</strong>.</p></li><li><p><strong>Encarando a Morte: </strong>Você é capaz de explodir com um poder incomparável em momentos de necessidade. Ao cair a 1/3 dos Pontos de Vida ou menos, seu valor de <strong>Refinamento</strong> aumenta em 5 Pontos.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>DESVANTAGENS DA VARIANTE</strong></span></p><hr><ul><li><p><strong>Linhagem de Supremacistas:</strong> Seu clã acredita no poder acima de tudo, e isso lhe causa empecilhos quando você decide não seguir a agenda deles. Enquanto você se recusar a se tornar um pau-mandado do Clã Zenin, um assassino aparecerá todo mês para tentar matar um de seus companheiros. Essa desvantagem pode ser anulada por meios políticos mais à frente durante a aventura.</p></li></ul>",
+          "chat": ""
+        },
+        "advancement": {
+          "rEJzDVRlCiq4jyq7": {
+            "type": "Size",
+            "_id": "rEJzDVRlCiq4jyq7",
+            "configuration": {
+              "sizes": [
+                "med"
+              ]
+            },
+            "level": 0,
+            "value": {},
+            "flags": {},
+            "hint": "",
+            "name": "",
+            "img": null
+          },
+          "pWi09QUI278nzGY8": {
+            "type": "Trait",
+            "configuration": {
+              "grants": [
+                "languages:standard:common"
+              ],
+              "mode": "default",
+              "allowReplacements": false,
+              "choices": []
+            },
+            "_id": "pWi09QUI278nzGY8",
+            "level": 0,
+            "value": {
+              "chosen": []
+            },
+            "flags": {},
+            "hint": ""
+          },
+          "4RXJIfXI8J2WfgL2": {
+            "_id": "4RXJIfXI8J2WfgL2",
+            "type": "ItemGrant",
+            "configuration": {
+              "items": [
+                {
+                  "optional": false,
+                  "sort": 0,
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jXbofdng8zaCTpWh"
+                }
+              ],
+              "optional": false,
+              "spell": null,
+              "sorting": "m"
+            },
+            "value": {},
+            "level": 0,
+            "flags": {},
+            "hint": "",
+            "name": "trait",
+            "img": null
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "pvAdicional": 4,
+          "legacy2": {
+            "pvEspecie": null,
+            "energiaEspecie": null
+          },
+          "energiaAdicional": null,
+          "atributosAdicionais": null
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "97pr5olYsfxVyIcj",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.97pr5olYsfxVyIcj",
+      "name": "Punho Ardente",
+      "type": "feat",
+      "img": "icons/magic/control/buff-flight-wings-runes-blue.webp",
+      "system": {
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "prerequisites": {
+          "level": null,
+          "repeatable": false,
+          "items": []
+        },
+        "identifier": "estilo-do-emissor",
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "EQlKGRFismnjH05X",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.EQlKGRFismnjH05X",
+      "name": "Linhagem - Kamo",
+      "type": "race",
+      "img": "systems/jujutsu-system/assets/Origens/Noritoshi_Kamo_Cursed_Clash.webp",
+      "system": {
+        "type": {
+          "value": "humanoid",
+          "custom": "",
+          "subtype": ""
+        },
+        "identifier": "kamo",
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\"><span><span style=\"font-size:38px\"><strong>KAMO</strong></span></span></p><p><strong>Vida Adicional:</strong> 4 Pontos de Vida.</p><p><strong>Tamanho:</strong> 1,50 a 2,00 metros (pequeno, médio).</p><p><strong>Peso:</strong> Normalmente, entre 45 kg e 200 kg.</p><p><strong>Deslocamento:</strong> 10 metros.</p><p><strong>Nado:</strong> 5 metros.</p><p> </p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ESPÉCIA</strong></span></p></td></tr></tbody></table><p><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">Essas</span><span style=\"letter-spacing:0.7pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">características</span><span style=\"letter-spacing:0.55pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">acompanham</span><span style=\"letter-spacing:0.55pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">a</span><span style=\"letter-spacing:0.7pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">existência</span><span style=\"letter-spacing:0.65pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">do</span><span style=\"letter-spacing:0.8pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">personagem,</span><span style=\"letter-spacing:0.75pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">são</span><span style=\"letter-spacing:0.6pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">representações</span><span style=\"letter-spacing:0.75pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">da</span><span style=\"letter-spacing:0.65pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">sua</span><span style=\"letter-spacing:0.7pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">origem,</span><span style=\"letter-spacing:0.55pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">sendo</span><span style=\"letter-spacing:0.6pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">uma</span><span style=\"letter-spacing:0.8pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">parte</span><span style=\"letter-spacing:0.6pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">essencial</span><span style=\"letter-spacing:0.75pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">de</span><span style=\"letter-spacing:0.05pt\"> </span><span>como</span><span style=\"letter-spacing:-0.45pt\"> </span><span>ele</span><span style=\"letter-spacing:-0.4pt\"> </span><span>vê</span><span style=\"letter-spacing:-0.45pt\"> </span><span>o</span><span style=\"letter-spacing:-0.4pt\"> </span><span>mundo</span><span style=\"letter-spacing:-0.55pt\"> </span><span>e</span><span style=\"letter-spacing:-0.4pt\"> </span><span>de</span><span style=\"letter-spacing:-0.45pt\"> </span><span>como</span><span style=\"letter-spacing:-0.5pt\"> </span><span>o</span><span style=\"letter-spacing:-0.45pt\"> </span><span>mundo</span><span style=\"letter-spacing:-0.4pt\"> </span><span>olha</span><span style=\"letter-spacing:-0.4pt\"> </span><span>pra</span><span style=\"letter-spacing:-0.35pt\"> </span><span>ele.</span></p><p style=\"margin:0.5pt 0cm 0.0001pt 7.1pt;text-align:justify\"></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM - KAMO</strong></span></p><hr><ul><li><p><strong>Técnica Herdada: </strong>Como um membro da linhagem do Clã Kamo, você recebe acesso à técnica herdada da <strong>“Manipulação de Sangue”</strong>.</p></li><li><p><strong>Controle Refinado: </strong>Você consegue gerar sangue a partir da energia amaldiçoada, assim como controla-lo com quase perfeição. Você recebe imunidade a condição <strong>“Sangramento” </strong>e<strong> “Envenenado”</strong>, assim como ignora níveis de exaustão de 2º nível ou inferior.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>DESVANTAGENS DA VARIANTE</strong></span></p><hr><ul><li><p><strong>Letargia Inescapável:</strong> Você recebe 2 Pontos de Sangue, onde um é consumido ao fim de cada encontro que você usou sua técnica herdada. Caso você fique com 0 Pontos, você recebe a condição<strong> “Letárgico”</strong> até o fim do seu próximo descanso curto ou longo. Você recupera 1 Ponto de Sangue por descanso longo.</p><p>Se você utilizar sua técnica amaldiçoada tendo 0 Pontos de Sangue, a letargia só é removida ao fim de um descanso longo ao invés de um curto.</p><table><tbody><tr style=\"mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes\"><td><p class=\"TextoPadro\"><strong>EXCEÇÕES DO CLÃ KAMO</strong></p><p class=\"MsoNormal\">Apesar de não serem capazes de gerar sangue no mundo de Jujutsu, essa exceção foi feita com as mecânicas do RPG em mente, em vista de equilibra-lo com os outros clãs e diminuir o empecilho do jogador.</p></td></tr></tbody></table><p style=\"tab-stops:467.8pt\" class=\"TextoPadro\"><span style=\"font-size:5pt\"> </span></p></li></ul>",
+          "chat": ""
+        },
+        "advancement": {
+          "rEJzDVRlCiq4jyq7": {
+            "type": "Size",
+            "_id": "rEJzDVRlCiq4jyq7",
+            "configuration": {
+              "sizes": [
+                "med"
+              ]
+            },
+            "level": 0,
+            "value": {},
+            "flags": {},
+            "hint": "",
+            "name": "",
+            "img": null
+          },
+          "pWi09QUI278nzGY8": {
+            "type": "Trait",
+            "configuration": {
+              "grants": [
+                "languages:standard:common"
+              ],
+              "mode": "default",
+              "allowReplacements": false,
+              "choices": []
+            },
+            "_id": "pWi09QUI278nzGY8",
+            "level": 0,
+            "value": {
+              "chosen": []
+            },
+            "flags": {},
+            "hint": ""
+          },
+          "4RXJIfXI8J2WfgL2": {
+            "_id": "4RXJIfXI8J2WfgL2",
+            "type": "ItemGrant",
+            "configuration": {
+              "items": [
+                {
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.Re9Z1vJVmXac3vz0",
+                  "optional": false,
+                  "sort": 0
+                }
+              ],
+              "optional": false,
+              "spell": null,
+              "sorting": "m"
+            },
+            "value": {},
+            "level": 0,
+            "flags": {},
+            "hint": "",
+            "name": "trait",
+            "img": null
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "pvAdicional": 4,
+          "legacy2": {
+            "pvEspecie": null,
+            "energiaEspecie": null
+          },
+          "energiaAdicional": null,
+          "atributosAdicionais": null
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "H3NQzS9ioMwybCCd",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.H3NQzS9ioMwybCCd",
+      "name": "Seis Olhos",
+      "type": "feat",
+      "img": "icons/magic/symbols/circled-gem-pink.webp",
+      "system": {
+        "identifier": "gojo",
+        "prerequisites": {
+          "items": [],
+          "repeatable": false,
+          "level": null
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {
+        "jujutsu-system": {
+          "featureSection": "jj-legendary-modifiers",
+          "pontosLendarios": 6
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "HI6SM6ZiPqALcXco",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.HI6SM6ZiPqALcXco",
+      "name": "Imaculado",
+      "type": "feat",
+      "img": "icons/creatures/magical/spirit-undead-horned-blue.webp",
+      "system": {
+        "identifier": "beneficios-corpo-amaldicoado",
+        "prerequisites": {
+          "items": [],
+          "repeatable": false,
+          "level": null
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": [
+        {
+          "name": "Imaculado",
+          "img": "icons/creatures/magical/spirit-undead-horned-blue.webp",
+          "system": {
+            "magical": false,
+            "origin": {
+              "item": "Compendium.jujutsu-compendium.geral-2-0.Item.HI6SM6ZiPqALcXco",
+              "actor": null,
+              "behavior": null,
+              "effect": null,
+              "message": null
+            },
+            "changes": [
+              {
+                "key": "system.legacy2.energiaEspecie",
+                "type": "add",
+                "value": "+2",
+                "phase": "initial",
+                "_id": "FaTJBwnFLx31LFdM",
+                "conditions": "{}",
+                "replacement": "",
+                "priority": null
+              },
+              {
+                "key": "system.legacy2.pvEspecie",
+                "type": "add",
+                "value": "+1",
+                "phase": "initial",
+                "_id": "laOoe4TH49vMIEgG",
+                "conditions": "{}",
+                "replacement": "",
+                "priority": null
+              }
+            ],
+            "conditions": "{}",
+            "rider": {
+              "statuses": []
+            }
+          },
+          "type": "base",
+          "_id": "zGItq6FQO42tmter",
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.369",
+            "systemId": "jujutsu-system",
+            "systemVersion": "1.2.15",
+            "createdTime": 1792638863994,
+            "modifiedTime": 1792638975705,
+            "lastModifiedBy": "vQ8cHNVhVHOdX3zY",
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          }
+        }
+      ]
+    },
+    {
+      "_id": "I39PE7v2C7lhwtJP",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.I39PE7v2C7lhwtJP",
+      "name": "Anomalia - Restrição Celestial",
+      "type": "race",
+      "img": "systems/jujutsu-system/assets/Origens/Toji_Fushiguro_Phantom_Parade.webp",
+      "system": {
+        "type": {
+          "value": "humanoid",
+          "custom": "",
+          "subtype": ""
+        },
+        "identifier": "restricao-celestial",
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\"><span><span style=\"font-size:38px\"><strong>RESTRIÇÃO CELESTIAL</strong></span></span></p><p style=\"margin-bottom:.0001pt;text-justify:inter-ideograph;line-height:normal;mso-layout-grid-align:none;text-autospace:none;text-align:justify\"><span style=\"font-family:'Chaparral Pro, serif'\"> </span></p><p><strong>Vida Adicional:</strong> 10 Pontos de Vida.</p><p><strong>Tamanho:</strong> 1,50 a 2,00 metros (pequeno, médio).</p><p><strong>Peso:</strong> Normalmente, entre 45 kg e 200 kg.</p><p><strong>Deslocamento:</strong> 10 metros.</p><p><strong>Nado:</strong> 5 metros.</p><p> </p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ESPÉCIA</strong></span></p></td></tr></tbody></table><p><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">Essas</span><span style=\"letter-spacing:.7pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">características</span><span style=\"letter-spacing:.55pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">acompanham</span><span style=\"letter-spacing:.55pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">a</span><span style=\"letter-spacing:.7pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">existência</span><span style=\"letter-spacing:.65pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">do</span><span style=\"letter-spacing:.8pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">personagem,</span><span style=\"letter-spacing:.75pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">são</span><span style=\"letter-spacing:.6pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">representações</span><span style=\"letter-spacing:.75pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">da</span><span style=\"letter-spacing:.65pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">sua</span><span style=\"letter-spacing:.7pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">origem,</span><span style=\"letter-spacing:.55pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">sendo</span><span style=\"letter-spacing:.6pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">uma</span><span style=\"letter-spacing:.8pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">parte</span><span style=\"letter-spacing:.6pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">essencial</span><span style=\"letter-spacing:.75pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">de</span><span style=\"letter-spacing:.05pt\"> </span><span style=\"mso-font-width:105%\">como</span><span style=\"letter-spacing:-.45pt\"> </span><span style=\"mso-font-width:105%\">ele</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">vê</span><span style=\"letter-spacing:-.45pt\"> </span><span style=\"mso-font-width:105%\">o</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">mundo</span><span style=\"letter-spacing:-.55pt\"> </span><span style=\"mso-font-width:105%\">e</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">de</span><span style=\"letter-spacing:-.45pt\"> </span><span style=\"mso-font-width:105%\">como</span><span style=\"letter-spacing:-.5pt\"> </span><span style=\"mso-font-width:105%\">o</span><span style=\"letter-spacing:-.45pt\"> </span><span style=\"mso-font-width:105%\">mundo</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">olha</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">pra</span><span style=\"letter-spacing:-.35pt\"> </span><span style=\"mso-font-width:105%\">ele.</span></p><p style=\"margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:7.1pt;text-justify:inter-ideograph;tab-stops:7.1pt 345.55pt 467.8pt 522.85pt;text-align:justify\"></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM - RESTRIÇÃO CELESTIAL</strong></span></p><hr><ul><li><p><strong>Fisicamente Dotado: </strong>Você recebe o Estilo de Combate <strong>Restringido</strong> e recebe 1 vantagem em Salvaguardas contra todos os tipos de condições.</p></li><li><p><strong>Físico Extremo:</strong> Seu personagem recebe 3 Pontos de Atributo adicionais para distribuir entre todos os atributos e seu limite para os atributos físicos se torna 14.</p><p></p></li></ul><p><span style=\"font-size:large\"><strong>DESVANTAGENS DA VARIANTE</strong></span></p><hr><ul><li><p><strong>Vazio de Energia: </strong>Você não possui energia amaldiçoada, recebendo diversas limitações que os outros feiticeiros não possuem. Você não pode causar dano ou enxergar Espíritos Amaldiçoados sem o auxílio de<strong> “Ferramentas Amaldiçoadas”</strong>.</p></li><li><p><strong>Manipulação Inexistente:</strong> Você não pode aprender ou utilizar Habilidades de Especialização que utilizem Energia Amaldiçoada.</p></li></ul>",
+          "chat": ""
+        },
+        "advancement": {
+          "rEJzDVRlCiq4jyq7": {
+            "type": "Size",
+            "_id": "rEJzDVRlCiq4jyq7",
+            "configuration": {
+              "sizes": [
+                "med"
+              ]
+            },
+            "level": 0,
+            "value": {},
+            "flags": {},
+            "hint": "",
+            "name": "",
+            "img": null
+          },
+          "pWi09QUI278nzGY8": {
+            "type": "Trait",
+            "configuration": {
+              "grants": [
+                "languages:standard:common"
+              ],
+              "mode": "default",
+              "allowReplacements": false,
+              "choices": []
+            },
+            "_id": "pWi09QUI278nzGY8",
+            "level": 0,
+            "value": {
+              "chosen": []
+            },
+            "flags": {},
+            "hint": ""
+          },
+          "4RXJIfXI8J2WfgL2": {
+            "_id": "4RXJIfXI8J2WfgL2",
+            "type": "ItemGrant",
+            "configuration": {
+              "items": [
+                {
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.m6fswjDaSwCMr6tj",
+                  "optional": false,
+                  "sort": 0
+                }
+              ],
+              "optional": false,
+              "spell": null,
+              "sorting": "m"
+            },
+            "value": {},
+            "level": 0,
+            "flags": {},
+            "hint": "",
+            "name": "trait",
+            "img": null
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "pvAdicional": 10,
+          "legacy2": {
+            "pvEspecie": null,
+            "energiaEspecie": null
+          },
+          "energiaAdicional": null,
+          "atributosAdicionais": 3
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "I9rnRVbiSHF2agJo",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.I9rnRVbiSHF2agJo",
+      "name": "Feto amaldiçoado",
+      "type": "feat",
+      "img": "icons/creatures/abilities/dragon-breath-purple.webp",
+      "system": {
+        "identifier": "feto-amaldicoado-trait",
+        "prerequisites": {
+          "items": [],
+          "repeatable": false,
+          "level": null
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "JEotq0xTcZTgJIqD",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.JEotq0xTcZTgJIqD",
+      "name": "Maldição",
+      "type": "race",
+      "img": "systems/jujutsu-system/assets/Origens/Mahito_Cursed_Clash.webp",
+      "system": {
+        "type": {
+          "value": "humanoid",
+          "custom": "",
+          "subtype": ""
+        },
+        "identifier": "maldicao",
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\"><span><span style=\"font-size:38px\"><strong>MALDIÇÃO</strong></span></span></p><p class=\"MsoNormal\"><strong>Vida Adicional:</strong> 14 Pontos de Vida.</p><p class=\"MsoNormal\"><strong>Tamanho:</strong> Normalmente, entre 1,50 e 3,00 metros (Médio).</p><p class=\"MsoNormal\"><strong>Peso:</strong> Normalmente, entre 65 e 300 kg.</p><p class=\"MsoNormal\"><strong>Deslocamento:</strong> 10 metros.</p><p><strong>Nado:</strong> 5 metros.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ORIGEM</strong></span></p></td></tr></tbody></table><p>Essas características acompanham a existência do personagem, são representações da sua origem, sendo uma parte essencial de como ele vê o mundo e de como o mundo olha pra ele.</p><p style=\"margin:0.5pt 0cm 0.0001pt 7.1pt;text-align:justify\"></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM</strong></span></p><hr><p><strong>Natureza Amaldiçoada:</strong> <span style=\"mso-bidi-font-weight:bold\">Você recebe acesso a um </span><strong style=\"mso-bidi-font-weight:normal\">Feitiço Inato </strong><span style=\"mso-bidi-font-weight:bold\">e recupera todo o seu valor de </span><strong style=\"mso-bidi-font-weight:normal\">Feridas</strong><span style=\"mso-bidi-font-weight:bold\"> em um descanso longo.</span></p><p style=\"tab-stops:467.8pt\" class=\"TextoPadro\"><strong style=\"mso-bidi-font-weight:normal\">Constituição de Maldição: </strong>Seus Pontos de Energia Base do Estilo de Combate aumenta em 5.</p><p style=\"tab-stops:467.8pt\" class=\"TextoPadro\"><strong style=\"mso-bidi-font-weight:normal\">Manipulação Instintiva: </strong><span style=\"mso-bidi-font-weight:bold\">Por ser feito de energia amaldiçoada, você tem uma capacidade incrível em manipula-la, permitindo eficiência extrema. O custo dos seus feitiços e habilidades menores é reduzido em -1, até um mínimo de 1.</span></p><p style=\"tab-stops:467.8pt\" class=\"TextoPadro\"><strong style=\"mso-bidi-font-weight:normal\">Corpo Bestial:</strong><span style=\"mso-bidi-font-weight:bold\"> Você sacrificar a </span><strong style=\"mso-bidi-font-weight:normal\">“Manipulação Instintiva”</strong><span style=\"mso-bidi-font-weight:bold\"> e receber </span><strong style=\"mso-bidi-font-weight:normal\">3 Traços Animais Comuns</strong><span style=\"mso-bidi-font-weight:bold\"> e </span><strong style=\"mso-bidi-font-weight:normal\">2 Traços Animais Específicos</strong><span style=\"mso-bidi-font-weight:bold\"> da Origem de Poder de </span><strong style=\"mso-bidi-font-weight:normal\">Corpo Amaldiçoado</strong><span style=\"mso-bidi-font-weight:bold\">.</span></p><p></p><p><span style=\"font-size:large\"><strong>DESVANTAGENS DA VARIANTE</strong></span></p><hr><p><strong style=\"mso-bidi-font-weight:normal\">Aniquilação Mútua: </strong><span style=\"mso-bidi-font-weight:bold\">Seu corpo não pode conter energia reversa por ser feito totalmente de energia negativa. Dessa forma, você não pode utilizar Reversão de Feitiços assim como sofre dano extra de energia amaldiçoada de acordo com as regras padrões para </span><strong style=\"mso-bidi-font-weight:normal\">Energia Reversa</strong><span style=\"mso-bidi-font-weight:bold\">.</span></p><p style=\"tab-stops:467.8pt\" class=\"TextoPadro\"></p>",
+          "chat": ""
+        },
+        "advancement": {
+          "rEJzDVRlCiq4jyq7": {
+            "type": "Size",
+            "_id": "rEJzDVRlCiq4jyq7",
+            "configuration": {
+              "sizes": [
+                "sm",
+                "med",
+                "lg"
+              ]
+            },
+            "level": 0,
+            "value": {},
+            "flags": {},
+            "hint": "",
+            "name": "",
+            "img": null
+          },
+          "pWi09QUI278nzGY8": {
+            "type": "Trait",
+            "configuration": {
+              "grants": [
+                "languages:standard:common"
+              ],
+              "mode": "default",
+              "allowReplacements": false,
+              "choices": []
+            },
+            "_id": "pWi09QUI278nzGY8",
+            "level": 0,
+            "value": {
+              "chosen": []
+            },
+            "flags": {},
+            "hint": ""
+          },
+          "4RXJIfXI8J2WfgL2": {
+            "_id": "4RXJIfXI8J2WfgL2",
+            "type": "ItemGrant",
+            "configuration": {
+              "items": [
+                {
+                  "optional": false,
+                  "sort": 0,
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.NLyakokw5kmfHlVJ"
+                }
+              ],
+              "optional": false,
+              "spell": null,
+              "sorting": "m"
+            },
+            "value": {},
+            "level": 0,
+            "flags": {},
+            "hint": "",
+            "name": "trait",
+            "img": null
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "pvAdicional": 14,
+          "legacy2": {
+            "pvEspecie": null,
+            "energiaEspecie": null
+          },
+          "energiaAdicional": null,
+          "atributosAdicionais": null
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "NLyakokw5kmfHlVJ",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.NLyakokw5kmfHlVJ",
+      "name": "Maldição",
+      "type": "feat",
+      "img": "icons/magic/control/fear-fright-monster-grin-red-orange.webp",
+      "system": {
+        "identifier": "maldicao-trait",
+        "prerequisites": {
+          "items": [],
+          "repeatable": false,
+          "level": null
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "NYb4LVdZWKRRoSKn",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.NYb4LVdZWKRRoSKn",
+      "name": "Inumaki",
+      "type": "feat",
+      "img": "icons/creatures/magical/spirit-poison-smoke-green.webp",
+      "system": {
+        "identifier": "inumaki-trait",
+        "prerequisites": {
+          "items": [],
+          "repeatable": false,
+          "level": null
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "Pty48nNNhfU0awmy",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.Pty48nNNhfU0awmy",
+      "name": "Físico Perfeito",
+      "type": "feat",
+      "img": "icons/magic/holy/angel-winged-humanoid-blue.webp",
+      "system": {
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "prerequisites": {
+          "level": null,
+          "repeatable": false,
+          "items": []
+        },
+        "identifier": "mestre-aprimorador",
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "Re9Z1vJVmXac3vz0",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.Re9Z1vJVmXac3vz0",
+      "name": "Kamo",
+      "type": "feat",
+      "img": "icons/skills/wounds/blood-drip-droplet-red.webp",
+      "system": {
+        "identifier": "kamo-trait",
+        "prerequisites": {
+          "items": [],
+          "repeatable": false,
+          "level": null
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "T4SBWazCqSzYcKQz",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.T4SBWazCqSzYcKQz",
+      "name": "Anomalia - Corpo Amaldiçoado",
+      "type": "race",
+      "img": "systems/jujutsu-system/assets/Origens/Panda_Cursed_Clash.webp",
+      "system": {
+        "type": {
+          "value": "humanoid",
+          "custom": "",
+          "subtype": ""
+        },
+        "identifier": "corpo-amaldicoado",
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\"><span><span style=\"font-size:38px\"><strong>CORPO AMALDIÇOADO</strong></span></span></p><p style=\"margin-bottom:.0001pt;text-justify:inter-ideograph;line-height:normal;mso-layout-grid-align:none;text-autospace:none;text-align:justify\"><span style=\"font-family:'Chaparral Pro, serif'\"> </span></p><p><strong>Vida Adicional:</strong> 10 Pontos de Vida.</p><p><strong>Tamanho:</strong> 1,50 a 2,00 metros (pequeno, médio).</p><p><strong>Peso:</strong> Normalmente, entre 45 kg e 200 kg.</p><p><strong>Deslocamento:</strong> 10 metros.</p><p><strong>Nado:</strong> 5 metros.</p><p> </p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ESPÉCIA</strong></span></p></td></tr></tbody></table><p>Essas características acompanham a existência do personagem, são representações da sua origem, sendo uma parte essencial de como ele vê o mundo e de como o mundo olha pra ele.</p><p style=\"margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:7.1pt;text-justify:inter-ideograph;tab-stops:7.1pt 345.55pt 467.8pt 522.85pt;text-align:justify\"></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM - CORPO AMALDIÇOADO</strong></span></p><hr><ul><li><p><em>Você recebe 3 Traços Animais Comuns e 2 Específicos.</em></p></li><li><p><em>Você pode diminuir sua Energia Base em 3 para criar um <strong>núcleo adicional</strong>. Você pode escolher um <strong>feitiçoinato</strong> para seu núcleo ao cria-lo, não podendo ter mais de 3 núcleos (contando seu original).</em></p><p><em>Você pode usar um Ponto de Ação </em>[<span style=\"font-size:8.0pt;font-family:'Segoe UI Symbol',sans-serif;mso-bidi-font-family:'Segoe UI Symbol'\">⬢</span>] <em>para trocar entre núcleos, mas ficar em um núcleo que não seja seu original, consome 2 Pontos de Energia Amaldiçoada (PA) na troca e no início de cada um de seus turnos.</em></p></li></ul><p></p><p><span style=\"font-size:large\"><strong>DESVANTAGENS DA VARIANTE</strong></span></p><hr><ul><li><p><strong>Constituição Dividida: </strong>Devido a sua natureza única, a partir do momento que você criar um núcleo adicional, você perde uma quantidade de Pontos de Vida igual a duas vezes o seu nível de personagem. Essa redução é feita apenas para o núcleo principal.</p></li></ul><table><tbody><tr style=\"mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes\"><td><p class=\"TextoPadro\"><span style=\"font-size:large\"><strong>REGRAS DOS NÚCLEOS ADICIONAIS</strong></span></p><p class=\"MsoNormal\">Cada núcleo é considerado uma alma diferente dentro de um mesmo corpo, o que também significa que cada um deles possui sua própria resistência e durabilidade. Cada núcleo pode ter sua própria ficha, mantendo mesmo Estilo de Combate, mas sempre terá uma quantidade de Pontos de Vida igual a metade da vida do original. Cada núcleo também pode possuir um Feitiço Básico que não chame Shikigamis ofensivos, de acordo com as regras do Manual de Feitiços.</p><p class=\"MsoNormal\">               Quando um núcleo chega a 0 Pontos de Vida, ele fica dormente até que você realize um descanso curto ou longo. Ao realizar um descanso curto, você pode escolher gastar dados de vida para recuperar Pontos de Vida de um núcleo específico.</p><p>                Com exceção do Estilo de Combate, todas as outras informações das fichas adicionais são iguais as da original.</p></td></tr></tbody></table>",
+          "chat": ""
+        },
+        "advancement": {
+          "rEJzDVRlCiq4jyq7": {
+            "type": "Size",
+            "_id": "rEJzDVRlCiq4jyq7",
+            "configuration": {
+              "sizes": [
+                "sm",
+                "med",
+                "lg"
+              ]
+            },
+            "level": 0,
+            "value": {},
+            "flags": {},
+            "hint": "",
+            "name": "",
+            "img": null
+          },
+          "pWi09QUI278nzGY8": {
+            "type": "Trait",
+            "configuration": {
+              "grants": [
+                "languages:standard:common"
+              ],
+              "mode": "default",
+              "allowReplacements": false,
+              "choices": []
+            },
+            "_id": "pWi09QUI278nzGY8",
+            "level": 0,
+            "value": {
+              "chosen": []
+            },
+            "flags": {},
+            "hint": ""
+          },
+          "4RXJIfXI8J2WfgL2": {
+            "_id": "4RXJIfXI8J2WfgL2",
+            "type": "ItemGrant",
+            "configuration": {
+              "items": [
+                {
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.6CZtFvyBKb7bvuux",
+                  "optional": false,
+                  "sort": 0
+                }
+              ],
+              "optional": false,
+              "spell": null,
+              "sorting": "m"
+            },
+            "value": {},
+            "level": 0,
+            "flags": {},
+            "hint": "",
+            "name": "trait",
+            "img": null
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "pvAdicional": 10,
+          "legacy2": {
+            "pvEspecie": null,
+            "energiaEspecie": null
+          },
+          "energiaAdicional": null,
+          "atributosAdicionais": null
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "YVNqO37PTLGGdTBZ",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.YVNqO37PTLGGdTBZ",
+      "name": "Anomalia - Receptáculo",
+      "type": "race",
+      "img": "systems/jujutsu-system/assets/Origens/Yuji_Itadori_29748.webp",
+      "system": {
+        "type": {
+          "value": "humanoid",
+          "custom": "",
+          "subtype": ""
+        },
+        "identifier": "receptaculo",
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\"><span><span style=\"font-size:38px\"><strong>RECEPTÁCULO</strong></span></span></p><p style=\"margin-bottom:.0001pt;text-justify:inter-ideograph;line-height:normal;mso-layout-grid-align:none;text-autospace:none;text-align:justify\"><span style=\"font-family:'Chaparral Pro, serif'\"> </span></p><p><strong>Vida Adicional:</strong> 10 Pontos de Vida.</p><p><strong>Tamanho:</strong> 1,50 a 2,00 metros (pequeno, médio).</p><p><strong>Peso:</strong> Normalmente, entre 45 kg e 200 kg.</p><p><strong>Deslocamento:</strong> 10 metros.</p><p><strong>Nado:</strong> 5 metros.</p><p> </p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ESPÉCIA</strong></span></p></td></tr></tbody></table><p><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">Essas</span><span style=\"letter-spacing:.7pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">características</span><span style=\"letter-spacing:.55pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">acompanham</span><span style=\"letter-spacing:.55pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">a</span><span style=\"letter-spacing:.7pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">existência</span><span style=\"letter-spacing:.65pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">do</span><span style=\"letter-spacing:.8pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">personagem,</span><span style=\"letter-spacing:.75pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">são</span><span style=\"letter-spacing:.6pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">representações</span><span style=\"letter-spacing:.75pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">da</span><span style=\"letter-spacing:.65pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">sua</span><span style=\"letter-spacing:.7pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">origem,</span><span style=\"letter-spacing:.55pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">sendo</span><span style=\"letter-spacing:.6pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">uma</span><span style=\"letter-spacing:.8pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">parte</span><span style=\"letter-spacing:.6pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">essencial</span><span style=\"letter-spacing:.75pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">de</span><span style=\"letter-spacing:.05pt\"> </span><span style=\"mso-font-width:105%\">como</span><span style=\"letter-spacing:-.45pt\"> </span><span style=\"mso-font-width:105%\">ele</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">vê</span><span style=\"letter-spacing:-.45pt\"> </span><span style=\"mso-font-width:105%\">o</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">mundo</span><span style=\"letter-spacing:-.55pt\"> </span><span style=\"mso-font-width:105%\">e</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">de</span><span style=\"letter-spacing:-.45pt\"> </span><span style=\"mso-font-width:105%\">como</span><span style=\"letter-spacing:-.5pt\"> </span><span style=\"mso-font-width:105%\">o</span><span style=\"letter-spacing:-.45pt\"> </span><span style=\"mso-font-width:105%\">mundo</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">olha</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">pra</span><span style=\"letter-spacing:-.35pt\"> </span><span style=\"mso-font-width:105%\">ele.</span></p><p style=\"margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:7.1pt;text-justify:inter-ideograph;tab-stops:7.1pt 345.55pt 467.8pt 522.85pt;text-align:justify\"></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM - RECEPTÁCULO</strong></span></p><hr><ul><li><p><strong>Receptáculo Amaldiçoado: </strong>Você pode consumir objetos amaldiçoados para ganhar energia amaldiçoada. Após 30 dias de ter consumido um objeto, você recebe uma técnica inata relacionado a ele. Você pode ter um máximo de 2 técnicas, que não podem ser trocadas, e todo objeto ingerido após isso não serve para essa característica.</p></li><li><p><strong>Devorador de Objetos:</strong> A cada vez que você comer um objeto amaldiçoado <strong>já possuindo duas técnicas</strong>, você recebe energia adicional equivalente à sua base.</p></li><li><p><strong>Resistência Elevada:</strong>Seu corpo é feito especialmente para conter maldições e seus efeitos. Dessa forma, você tem uma resistência enorme a efeitos debilitantes causados por elas. Você recebe resistência a efeitos negativos e condições causados por maldições e feitiços inatos, recebendo 2 vantagens em Salvaguarda contra eles.</p><p>Essa habilidade também torna você extremamente resistente a Venenos e Toxinas de todos os tipos, ignorando seus efeitos debilitantes.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>DESVANTAGENS DA VARIANTE</strong></span></p><hr><ul><li><p><strong>Reencarnação Temporária: </strong>Os objetos que você consome podem acabar lutando para tomar o controle. Toda vez que sua vida cair abaixo de 1/3, você deve realizar uma Salvaguarda de Presença CD 16 para manter o controle. Além disso, se você cair a 0 Pontos de Vida, você recupera todos os PV e o objeto reencarna por 10 minutos. Essa reencarnação não liga se você morre ou vive e nunca irá fugir de uma luta, mas se ela morrer, você também morre permanentemente.</p></li><li><p><strong>Peso da Maldição:</strong> Seu valor de Energia Base é reduzido em 3, fazendo você perder Energia de forma proporcional a tudo que você ganhou até o momento. Por exemplo, se você está nível 5, você perde 3 * 5 de energia máxima.</p></li><li><p><strong>Potencial Inexplorado: </strong>Você nasceu sem uma técnica inata, dependendo apenas da energia amaldiçoada e do seu poderoso físico para lutar. Em alguns casos, você pode sequer ter energia amaldiçoada, dependendo apenas de ferramentas para tal, mas esses casos são extremamente raros e de cunho narrativo.</p></li></ul>",
+          "chat": ""
+        },
+        "advancement": {
+          "rEJzDVRlCiq4jyq7": {
+            "type": "Size",
+            "_id": "rEJzDVRlCiq4jyq7",
+            "configuration": {
+              "sizes": [
+                "med"
+              ]
+            },
+            "level": 0,
+            "value": {},
+            "flags": {},
+            "hint": "",
+            "name": "",
+            "img": null
+          },
+          "pWi09QUI278nzGY8": {
+            "type": "Trait",
+            "configuration": {
+              "grants": [
+                "languages:standard:common"
+              ],
+              "mode": "default",
+              "allowReplacements": false,
+              "choices": []
+            },
+            "_id": "pWi09QUI278nzGY8",
+            "level": 0,
+            "value": {
+              "chosen": []
+            },
+            "flags": {},
+            "hint": ""
+          },
+          "4RXJIfXI8J2WfgL2": {
+            "_id": "4RXJIfXI8J2WfgL2",
+            "type": "ItemGrant",
+            "configuration": {
+              "items": [
+                {
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.eCDfHA1ISbXGj6aO",
+                  "optional": false,
+                  "sort": 0
+                }
+              ],
+              "optional": false,
+              "spell": null,
+              "sorting": "m"
+            },
+            "value": {},
+            "level": 0,
+            "flags": {},
+            "hint": "",
+            "name": "trait",
+            "img": null
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "pvAdicional": 10,
+          "legacy2": {
+            "pvEspecie": null,
+            "energiaEspecie": null
+          },
+          "energiaAdicional": null,
+          "atributosAdicionais": null
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "Ym1btsYF88SkB38v",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.Ym1btsYF88SkB38v",
+      "name": "Hazy Moon",
+      "type": "spell",
+      "img": "icons/skills/melee/weapons-crossed-swords-white-blue.webp",
+      "system": {
+        "identifier": "muscle-barrier",
+        "activities": {
+          "5XXwoL836r1WG2sL": {
+            "_id": "5XXwoL836r1WG2sL",
+            "type": "utility"
+          }
+        },
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "ZOvgDyTr4xnEDiKT",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.ZOvgDyTr4xnEDiKT",
+      "name": "Mestre de Barreiras",
+      "type": "feat",
+      "img": "icons/magic/unholy/orb-rays-blue.webp",
+      "system": {
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "prerequisites": {
+          "level": null,
+          "repeatable": false,
+          "items": []
+        },
+        "identifier": "mestre-de-barreiras",
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "a0EnvT0iw2hVTUrr",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.a0EnvT0iw2hVTUrr",
+      "name": "Destabilize",
+      "type": "spell",
+      "img": "icons/skills/melee/blade-tips-triple-steel.webp",
+      "system": {
+        "identifier": "muscle-barrier",
+        "activities": {
+          "kwi14SI7ueXbFxoF": {
+            "_id": "kwi14SI7ueXbFxoF",
+            "name": "",
+            "type": "attack"
+          }
+        },
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "dsqcehOeUy6wDmu8",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.dsqcehOeUy6wDmu8",
+      "name": "Anomalia - Energia Descomunal",
+      "type": "race",
+      "img": "systems/jujutsu-system/assets/Origens/Mechamaru_Ultimate_29.webp",
+      "system": {
+        "type": {
+          "value": "humanoid",
+          "custom": "",
+          "subtype": ""
+        },
+        "identifier": "energia-descomunal",
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\"><span><span style=\"font-size:38px\"><strong>ENERGIA DESCOMUNAL</strong></span></span></p><p style=\"margin-bottom:.0001pt;text-justify:inter-ideograph;line-height:normal;mso-layout-grid-align:none;text-autospace:none;text-align:justify\"><span style=\"font-family:'Chaparral Pro, serif'\"> </span></p><p><strong>Vida Adicional:</strong> 10 Pontos de Vida.</p><p><strong>Tamanho:</strong> 1,50 a 2,00 metros (pequeno, médio).</p><p><strong>Peso:</strong> Normalmente, entre 45 kg e 200 kg.</p><p><strong>Deslocamento:</strong> 10 metros.</p><p><strong>Nado:</strong> 5 metros.</p><p> </p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ESPÉCIA</strong></span></p></td></tr></tbody></table><p><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">Essas</span><span style=\"letter-spacing:.7pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">características</span><span style=\"letter-spacing:.55pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">acompanham</span><span style=\"letter-spacing:.55pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">a</span><span style=\"letter-spacing:.7pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">existência</span><span style=\"letter-spacing:.65pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">do</span><span style=\"letter-spacing:.8pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">personagem,</span><span style=\"letter-spacing:.75pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">são</span><span style=\"letter-spacing:.6pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">representações</span><span style=\"letter-spacing:.75pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">da</span><span style=\"letter-spacing:.65pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">sua</span><span style=\"letter-spacing:.7pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">origem,</span><span style=\"letter-spacing:.55pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">sendo</span><span style=\"letter-spacing:.6pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">uma</span><span style=\"letter-spacing:.8pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">parte</span><span style=\"letter-spacing:.6pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">essencial</span><span style=\"letter-spacing:.75pt\"> </span><span style=\"font-size:10.0pt;line-height:102%;font-family:'Chaparral Pro',serif\">de</span><span style=\"letter-spacing:.05pt\"> </span><span style=\"mso-font-width:105%\">como</span><span style=\"letter-spacing:-.45pt\"> </span><span style=\"mso-font-width:105%\">ele</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">vê</span><span style=\"letter-spacing:-.45pt\"> </span><span style=\"mso-font-width:105%\">o</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">mundo</span><span style=\"letter-spacing:-.55pt\"> </span><span style=\"mso-font-width:105%\">e</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">de</span><span style=\"letter-spacing:-.45pt\"> </span><span style=\"mso-font-width:105%\">como</span><span style=\"letter-spacing:-.5pt\"> </span><span style=\"mso-font-width:105%\">o</span><span style=\"letter-spacing:-.45pt\"> </span><span style=\"mso-font-width:105%\">mundo</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">olha</span><span style=\"letter-spacing:-.4pt\"> </span><span style=\"mso-font-width:105%\">pra</span><span style=\"letter-spacing:-.35pt\"> </span><span style=\"mso-font-width:105%\">ele.</span></p><p style=\"margin-top:.5pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:7.1pt;text-justify:inter-ideograph;tab-stops:7.1pt 345.55pt 467.8pt 522.85pt;text-align:justify\"></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM - ENERGIA DESCOMUNAL</strong></span></p><hr><ul><li><p><strong>Energia Descomunal: </strong>A sua <strong>Energia Base</strong> aumenta em 10 e seu valor de <strong>Refinamento</strong> aumenta em um valor igual a metade do seu nível de personagem.</p></li><li><p><strong>Alcance Inacreditável:</strong> Sua energia amaldiçoada é extremamente persistente e pode ser controlada a distâncias absurdas, dependendo da situação. Qualquer feitiço que você possua tem seu alcance padrão triplicado.</p><p>Além disso, qualquer habilidade envolvendo marionetes ou Shikigamis permite que você os controle em um raio de até 450 km. No entanto, ainda é possível identificar a direção de onde sua energia amaldiçoada está sendo transmitida.</p><p>Você pode controlar apenas um deles por vez como se fosse seu próprio corpo ou vários simultaneamente, tratando-os como lacaios.</p><p></p></li></ul><p><span style=\"font-size:large\"><strong>DESVANTAGENS DA VARIANTE</strong></span></p><hr><ul><li><p><strong>Corpo Inútil: </strong>Seu corpo é monstruoso e defeituoso, fazendo com que até se mover te cause uma dor terrível. Você está sempre em estado de exaustão de 1º nível no seu corpo físico e qualquer Salvaguarda de Constituição para efeitos e condições no seu corpo original é fixo em -3 independentemente do motivo.</p></li><li><p><strong>Ossos de Vidro:</strong> Os Pontos de Vida Base do seu corpo original são fixos em 3 por nível e qualquer aumento por treinamento ou Atributo de Constituição afeta apenas as criaturas que você controla. Além disso, seu corpo original recebe dano dobrado de qualquer fonte.</p><p>No caso do efeito <strong>“Criar Shikigami”</strong> ou similar, role sua vida normalmente de acordo com seu Estilo de Combate, essa criatura recebe esses Pontos de Vida no seu lugar.</p></li></ul><p></p><table><tbody><tr><td><p class=\"TextoPadro\"><span style=\"font-size:large\"><strong>REGRAS DA ENERGIA DESCOMUNAL</strong></span></p><p class=\"MsoNormal\">Assim como ocorre com uma Restrição Celestial comum, seu corpo deformado possui a mesma forma de sua alma, estando diretamente ligado à sua restrição.</p><p class=\"MsoNormal\">                Qualquer tentativa bem-sucedida de corrigir ou restaurar seu corpo resulta na perda da Restrição Celestial, juntamente com todos os benefícios que ela concede.</p><p style=\"text-justify:inter-ideograph;text-align:justify\" class=\"MsoNormal\"><span style=\"font-size:10.0pt;font-family:'Chaparral Pro',serif\"> </span></p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>ENCONTRANDO O CORPO ORIGINAL</strong></span></p><p class=\"MsoNormal\">Embora destruir uma marionete ou Shikigami do usuário dessa Restrição Celestial possa ajudar a ganhar tempo, isso não representa uma solução definitiva, já que apenas a destruição do corpo original garante seu fim.</p><p class=\"MsoNormal\">                Dessa forma, sempre que um feitiço ou habilidade com custo superior a 6 PA for utilizado, uma criatura que presencie o efeito pode realizar um Teste de Atributo de Sabedoria (Percepção) com CD 10 para localizar o corpo original.</p><p>                A CD aumenta em +1 para cada 5 km de distância entre o usuário e o Shikigami ou marionete utilizado na tentativa de rastreá-lo.</p></td></tr></tbody></table>",
+          "chat": ""
+        },
+        "advancement": {
+          "rEJzDVRlCiq4jyq7": {
+            "type": "Size",
+            "_id": "rEJzDVRlCiq4jyq7",
+            "configuration": {
+              "sizes": [
+                "med"
+              ]
+            },
+            "level": 0,
+            "value": {},
+            "flags": {},
+            "hint": "",
+            "name": "",
+            "img": null
+          },
+          "pWi09QUI278nzGY8": {
+            "type": "Trait",
+            "configuration": {
+              "grants": [
+                "languages:standard:common"
+              ],
+              "mode": "default",
+              "allowReplacements": false,
+              "choices": []
+            },
+            "_id": "pWi09QUI278nzGY8",
+            "level": 0,
+            "value": {
+              "chosen": []
+            },
+            "flags": {},
+            "hint": ""
+          },
+          "4RXJIfXI8J2WfgL2": {
+            "_id": "4RXJIfXI8J2WfgL2",
+            "type": "ItemGrant",
+            "configuration": {
+              "items": [
+                {
+                  "optional": false,
+                  "sort": 0,
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.eb3EqAQSq0coOrZi"
+                }
+              ],
+              "optional": false,
+              "spell": null,
+              "sorting": "m"
+            },
+            "value": {},
+            "level": 0,
+            "flags": {},
+            "hint": "",
+            "name": "trait",
+            "img": null
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "pvAdicional": 10,
+          "legacy2": {
+            "pvEspecie": null,
+            "energiaEspecie": null
+          },
+          "energiaAdicional": null,
+          "atributosAdicionais": null
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "eCDfHA1ISbXGj6aO",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.eCDfHA1ISbXGj6aO",
+      "name": "Receptáculo",
+      "type": "feat",
+      "img": "icons/creatures/magical/humanoid-silhouette-glowing-pink.webp",
+      "system": {
+        "identifier": "beneficios-corpo-amaldicoado",
+        "prerequisites": {
+          "items": [],
+          "repeatable": false,
+          "level": null
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "eb3EqAQSq0coOrZi",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.eb3EqAQSq0coOrZi",
+      "name": "Energia Descomunal",
+      "type": "feat",
+      "img": "icons/magic/light/orb-shadow-blue.webp",
+      "system": {
+        "identifier": "energia-descomunal-trait",
+        "prerequisites": {
+          "items": [],
+          "repeatable": false,
+          "level": null
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": [
+        {
+          "name": "Energia Descomunal",
+          "img": "icons/magic/light/orb-shadow-blue.webp",
+          "system": {
+            "magical": false,
+            "origin": {
+              "item": "Compendium.jujutsu-compendium.geral-2-0.Item.eb3EqAQSq0coOrZi",
+              "actor": null,
+              "behavior": null,
+              "effect": null,
+              "message": null
+            },
+            "changes": [
+              {
+                "key": "system.legacy2.energiaEspecie",
+                "type": "add",
+                "value": "+10",
+                "phase": "initial",
+                "_id": "MeOBbUMxjnmsYDjF",
+                "conditions": "{}",
+                "replacement": "",
+                "priority": null
+              }
+            ],
+            "conditions": "{}",
+            "rider": {
+              "statuses": []
+            }
+          },
+          "type": "base",
+          "_id": "oulzokldIRDVsjtl",
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.369",
+            "systemId": "jujutsu-system",
+            "systemVersion": "1.2.15",
+            "createdTime": 1792639050090,
+            "modifiedTime": 1792639100857,
+            "lastModifiedBy": "vQ8cHNVhVHOdX3zY",
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          }
+        }
+      ]
+    },
+    {
+      "_id": "jEqNlXpUdX4gMIN9",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jEqNlXpUdX4gMIN9",
+      "name": "Linhagem - Gojo",
+      "type": "race",
+      "img": "systems/jujutsu-system/assets/Origens/Satoru_Gojo_Cursed_Clash.webp",
+      "system": {
+        "type": {
+          "value": "humanoid",
+          "custom": "",
+          "subtype": ""
+        },
+        "identifier": "gojo",
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\"><span><span style=\"font-size:38px\"><strong>GOJO</strong></span></span></p><p><strong>Vida Adicional:</strong> 4 Pontos de Vida.</p><p><strong>Tamanho:</strong> 1,50 a 2,00 metros (pequeno, médio).</p><p><strong>Peso:</strong> Normalmente, entre 45 kg e 200 kg.</p><p><strong>Deslocamento:</strong> 10 metros.</p><p><strong>Nado:</strong> 5 metros.</p><p> </p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ESPÉCIA</strong></span></p></td></tr></tbody></table><p>Essas características acompanham a existência do personagem, são representações da sua origem, sendo uma parte essencial de como ele vê o mundo e de como o mundo olha pra ele.</p><p style=\"margin:0.5pt 0cm 0.0001pt 7.1pt;text-align:justify\"></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM - GOJO</strong></span></p><hr><ul><li><p>Como um membro da linhagem do Clã Gojo, você recebe acesso ao <strong>“Ilimitado”</strong>.</p></li><li><p><strong>Seis Olhos: </strong>Após definir que essa será sua origem de poder, você se torna apto a adquirir os 6 olhos. Para tal, o Narrador pode definir quais regras ele irá usar da sua preferência, podendo até negar totalmente a capacidade de adquiri-lo, ou apenas rolar 1d20. Em um resultado de 20, o personagem desperta esse poder.</p></li><li><p><strong>Poder da Linhagem: </strong>Caso você não possua os <strong>Seis Olhos</strong>, seus Pontos de Energia Base aumentam em +2.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>DESVANTAGENS DA VARIANTE</strong></span></p><hr><ul><li><p><strong>Peso do Topo: </strong>Você é obrigado a possuir uma peculiaridade e uma penalidade variante, mas você recebe Pontos Lendários de acordo. Se sua aventura não utilizar modificadores lendários, você não recebe pontos lendários, mas ainda recebe a penalidade.</p></li></ul><p></p><table><tbody><tr style=\"mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes\"><td><p class=\"TextoPadro\"><span style=\"font-size:large\"><strong>SEIS OLHOS</strong></span></p><p class=\"MsoNormal\">Uma habilidade ocular extremamente rara no mundo, os seis olhos têm a habilidade de aumentar grandemente a percepção de seu usuário assim como ajuda-lo a refinar seu controle de Energia Amaldiçoada a níveis extremos. Um usuário dos seis olhos recebe as seguintes características:</p><p class=\"MsoNormal\"> </p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>PODER COMPLETO</strong></span></p><hr><p class=\"MsoNormal\">Enquanto estiver utilizando todas as habilidades dos seis olhos, você recebe as seguintes características:</p><ul><li><p>Você recebe +2 na sua Classe de Resistência, até um máximo de 28;</p></li><li><p>Você recebe +2 em suas rolagens de acerto de ataques (Comuns e de Técnica);</p></li><li><p>Você reduz o custo de todas as técnicas e feitiços em 2 Pontos de Energia Amaldiçoada (PA)</p></li><li><p>Você recebe progressão de proficiência “Mestre” em Feitiçaria e Percepção.</p></li><li><p>Análise de Fluxo: Quando uma criatura utilizar uma técnica inata ou herdada, você pode usar um Ponto de Ação [⬢] no seu turno para analisar o fluxo de energia amaldiçoada dela, realizando um Teste de Atributo de Intelecto (Feitiço) CD 15 + ND da criatura. Em caso de sucesso, os feitiços dela não podem ter vantagem contra você e você não pode ter desvantagem em Salvaguardas contra seus efeitos.</p></li><li><p>Leitura Completa:A partir do 8º nível de personagem, você consegue entender todo funcionamento e restrições de uma técnica inata apenas ao olha-la uma única vez.</p></li><li><p>Sobrecarga Mental: Enquanto o usuário estiver com os seis olhos desvendados, recebe 3d4 de dano Psíquico ao desvenda-lo e no início de cada um de seus turnos em combate ou ao desvenda-lo e a cada minuto fora de combate.</p><p>Além disso, caso você o utilize por mais de 2 rodadas seguidas, você recebe 1 nível de exaustão ao fim do encontro.</p></li></ul><p class=\"TextoPadro\"> </p><p class=\"MsoNormal\"><span style=\"font-size:large\"><strong>SELADO</strong>    </span></p><hr><p class=\"MsoNormal\">Ao usar um Ponto de Ação, o usuário pode vendar ou desvendar os seis olhos, se utilizando de faixas, óculos escuros ou similares. Quando ele estiver vendado, ele recebe as seguintes características:</p><ul><li><p>Você recebe metade de todos os bônus numéricos dos seis olhos (arredondado para baixo);</p></li><li><p>Você recebe a progressão de proficiência <strong>“Proficiente”</strong> em Feitiçaria e Percepção</p></li><li><p>Você perde acesso a habilidade –<strong>“Análise de Fluxo”</strong> e <strong>“Leitura Completa”</strong>.</p></li></ul></td></tr></tbody></table>",
+          "chat": ""
+        },
+        "advancement": {
+          "rEJzDVRlCiq4jyq7": {
+            "type": "Size",
+            "_id": "rEJzDVRlCiq4jyq7",
+            "configuration": {
+              "sizes": [
+                "med"
+              ]
+            },
+            "level": 0,
+            "value": {},
+            "flags": {},
+            "hint": "",
+            "name": "",
+            "img": null
+          },
+          "pWi09QUI278nzGY8": {
+            "type": "Trait",
+            "configuration": {
+              "grants": [
+                "languages:standard:common"
+              ],
+              "mode": "default",
+              "allowReplacements": false,
+              "choices": []
+            },
+            "_id": "pWi09QUI278nzGY8",
+            "level": 0,
+            "value": {
+              "chosen": []
+            },
+            "flags": {},
+            "hint": ""
+          },
+          "HZg6i8goKZOOT7B2": {
+            "type": "ItemGrant",
+            "_id": "HZg6i8goKZOOT7B2",
+            "configuration": {
+              "items": [
+                {
+                  "optional": true,
+                  "sort": 0,
+                  "uuid": "Compendium.jujutsu-compendium.geral.Item.H3NQzS9ioMwybCCd"
+                },
+                {
+                  "optional": true,
+                  "sort": 0,
+                  "uuid": "Compendium.jujutsu-compendium.geral.Item.kTJxk9JvrOMOfOMF"
+                },
+                {
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.wyvGpqdaIPzFJXX6",
+                  "optional": false,
+                  "sort": 0
+                }
+              ],
+              "optional": true,
+              "spell": null,
+              "sorting": "m"
+            },
+            "flags": {},
+            "value": {},
+            "level": 0,
+            "hint": "",
+            "name": ""
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "pvAdicional": 4,
+          "legacy2": {
+            "pvEspecie": null,
+            "energiaEspecie": 2
+          },
+          "energiaAdicional": null,
+          "atributosAdicionais": null
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "jXbofdng8zaCTpWh",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jXbofdng8zaCTpWh",
+      "name": "Zenin",
+      "type": "feat",
+      "img": "icons/magic/control/fear-fright-shadow-monster-purple.webp",
+      "system": {
+        "identifier": "zenin-trait",
+        "prerequisites": {
+          "items": [],
+          "repeatable": false,
+          "level": null
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "jj2e000000000001",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2e000000000001",
+      "name": "Restringido",
+      "type": "class",
+      "img": "systems/jujutsu-system/assets/Estilos%20de%20Combate/Resrtingido.png",
+      "system": {
+        "identifier": "restringido",
+        "levels": 1,
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\"><span style=\"font-size:x-large\"><strong>RESTRINGIDO</strong></span></p><p><span style=\"font-size:large\"><strong>Pontos de Vida</strong></span></p><p><strong>Vida Base:</strong> 7 por nível de personagem.</p><p><strong>Vida por Ponto de Constituição:</strong> 7 por ponto.</p><p></p><p><span style=\"font-size:large\"><strong>Proficiências</strong></span></p><ul><li><p><strong>Equipamentos:</strong> Recebe 2 Pontos de Proficiência para distribuir como desejar entre as armas</p></li><li><p><strong>Salvaguarda:</strong> Recebe 2 Pontos de Proficiência para distribuir entre as Salvaguardas.</p></li><li><p><strong>Perícias:</strong> Escolha 3 Pontos de Proficiência para distribuir entre Perícias, sem ser Feitiço.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>Informações Gerais</strong></span></p><ul><li><p><strong>Atributo Principal:</strong> Força ou Agilidade (à sua escolha).</p></li><li><p><strong>Habilidades de Especialização:</strong> Você recebe 1 habilidade de \"Proeza Física\" que você tenha os requisitos.</p></li><li><p><strong>Equipamentos:</strong> Você recebe uma arma amaldiçoada de 4º grau, um par óculos ou lentes de contato que permite ver energia amaldiçoada e; ¥ 5.000.</p></li><li><p><strong>Arsenal Vazio:</strong> Você recebe um Espírito com a habilidade \"Inventário\" que demora 9 níveis para amadurecer e ser usado. Ele pode armazenar 10 ferramentas e não sofre dano ou pode ser alvo enquanto estiver junto de seu corpo.</p></li></ul><p></p><p style=\"text-align:center\"><span style=\"font-size:x-large\"><strong>Características de Combate</strong></span></p><hr><p><span style=\"font-size:large\"><strong>Vazio de Energia</strong></span></p><p>Devido a sua restrição, você recebeu certos benefícios gerais que ajudam você a se sobressair em combate. Você recebe as seguintes características:</p><ul><li><p>Você é imune ao efeito de acerto garantido das Expansões de Domínios e similares;</p></li><li><p>Você é imune a habilidade de \"Sentir Maldição\" da habilidade de Manipulação de Energia;</p></li><li><p>Você pode passar livremente em expansões de domínio ou barreiras, se movendo livremente;</p></li><li><p>Você sempre possui uma progressão de proficiência \"Mestre\" em Testes de Atributo de Atletismo e Coordenação;</p></li><li><p>Você recebe 4 + seu atributo de Constituição em Pontos de Estamina (PE) que são recuperados no início de cada um de seus turnos. A partir do 10º nível, sua base se torna 8 + atributo no lugar do original.</p></li></ul><p>Você não pode se beneficiar de características de manipulação de Energia ou Habilidades de Especialização de Feitiço Inato, Técnicas de Barreira e Técnicas de Reversão.</p><p></p><p><span style=\"font-size:large\"><strong>Físico Perfeito</strong></span></p><p>Seu físico evoluiu, te dando um metabolismo extremamente acelerado e um vigor extremo. Você recebe acesso as seguintes características:</p><ul><li><p><strong>Gênio Marcial:</strong> Você possui uma capacidade extraordinária para desenvolver técnicas e habilidades que auxiliam em combate. A qualquer momento, você pode consumir 5 PT para criar uma nova técnica de até 7º grau, seguindo as regras de criação de técnicas comuns apresentadas no Manual de Feitiços. Não existe um limite de quantas técnicas adicionais você pode criar, desde que você consuma os Pontos de Treinamento necessários.</p></li><li><p><strong>Metabolismo Extremo:</strong> Seu descanso longo se torna de 2 horas e seu curto de 5 minutos.</p></li><li><p><strong>Impulso Físico:</strong> Você pode gastar 1 PE para aumentar seu dano em 2d4 o diminuir o dano sofrido no mesmo valor, até um máximo igual metade do seu nível de personagem (arredondado para cima).</p></li><li><p><strong>Sentidos Extremos:</strong> Você recebe Sentido Verdadeiro em uma área de 30 metros ao seu redor.</p></li></ul>",
+          "chat": ""
+        },
+        "advancement": {
+          "XHmaFBOCpcEOfYlc": {
+            "name": "",
+            "type": "ItemGrant",
+            "_id": "XHmaFBOCpcEOfYlc",
+            "configuration": {
+              "items": [
+                {
+                  "optional": false,
+                  "sort": 0,
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.qZJKU9xGWU73qnRU"
+                },
+                {
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.ti0hhxiKwF8biCtN",
+                  "optional": false,
+                  "sort": 0
+                }
+              ],
+              "optional": false,
+              "sorting": "m",
+              "spell": {
+                "ability": [],
+                "method": "",
+                "uses": {
+                  "max": "",
+                  "per": "",
+                  "requireSlot": false
+                }
+              }
+            },
+            "flags": {},
+            "value": {},
+            "level": 1,
+            "hint": "",
+            "classRestriction": ""
+          },
+          "ogKIIcsU5YiR7tYc": {
+            "name": "Características",
+            "type": "ItemGrant",
+            "_id": "ogKIIcsU5YiR7tYc",
+            "configuration": {
+              "items": [
+                {
+                  "optional": false,
+                  "sort": 0,
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.Pty48nNNhfU0awmy"
+                },
+                {
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.zovA9Xo6BxkGtvyj",
+                  "optional": false,
+                  "sort": 0
+                }
+              ],
+              "optional": false,
+              "sorting": "m",
+              "spell": null
+            },
+            "flags": {},
+            "value": {},
+            "level": 1,
+            "hint": "",
+            "classRestriction": ""
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "legacy2": {
+            "vidaBase": 7,
+            "energiaBase": null,
+            "atributoPrincipal": "str",
+            "principalEscolhivel": true,
+            "espIniciais": 1,
+            "proficiencias": {
+              "armas": 2,
+              "salvaguardas": 2,
+              "pericias": 3
+            }
+          }
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "jj2e000000000002",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2e000000000002",
+      "name": "Lutador",
+      "type": "class",
+      "img": "systems/jujutsu-system/assets/Estilos%20de%20Combate/Lutador-icon.png",
+      "system": {
+        "identifier": "lutador",
+        "levels": 1,
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\"><span style=\"font-size:x-large\"><strong>LUTADOR</strong></span></p><p><span style=\"font-size:large\"><strong>Pontos de Vida</strong></span></p><p><strong>Vida Base:</strong> 7 por nível de personagem.</p><p><strong>Vida por Ponto de Constituição:</strong> 7 por ponto.</p><p></p><p><span style=\"font-size:large\"><strong>Energia Amaldiçoada</strong></span></p><p><strong>Energia Base:</strong> 10 por nível de personagem.</p><p></p><p><span style=\"font-size:large\"><strong>Proficiências</strong></span></p><ul><li><p><strong>Equipamentos:</strong> Recebe 1 Pontos de Proficiência entre qualquer tipo de arma.</p></li><li><p><strong>Salvaguarda:</strong> Recebe 1 Pontos de Proficiência para distribuir entre as Salvaguardas.</p></li><li><p><strong>Perícias:</strong> Escolha 2 Pontos de Proficiência para distribuir entre as Perícias.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>Informações Gerais</strong></span></p><ul><li><p><strong>Atributo Principal:</strong> Força.</p></li><li><p><strong>Habilidades de Especialização:</strong> Você recebe 2 habilidades de \"Proeza Física\".</p></li><li><p><strong>Equipamentos:</strong> Uma arma marcial ou ¥ 3.000 e; ¥ 5.000.</p></li></ul><p></p><p style=\"text-align:center\"><span style=\"font-size:x-large\"><strong>Características de Combate</strong></span></p><hr><p><span style=\"font-size:large\"><strong>Guerrilheiro</strong></span></p><p>Como um lutador, você pode se especializar tanto em lutar com armas como desarmado, recebendo bônus diferentes dependendo do caminho escolhido.</p><p></p><h4>Mestre das Armas</h4><hr><p>Você treinou incansavelmente na utilização de um tipo de Ferramenta Amaldiçoada específica, permitindo que você dominasse seu uso próximo a perfeição. Você recebe acesso as seguintes características:</p><ul><li><p><strong>Maestria:</strong> Você recebe 2 Pontos de Proficiência em um único tipo de Ferramenta Amaldiçoada.</p></li><li><p><strong>Imbuir Feitiço:</strong> A cada 5 níveis que você permanecer usando uma mesma arma para canalizar seu feitiço, você a faz evoluir em um grau de classificação das Ferramentas Amaldiçoadas.</p></li><li><p><strong>Arma Favorita:</strong> Toda vez que você subir de nível, você pode escolher uma Ferramenta Amaldiçoada e receber a proficiência \"Mestre\" com ela, mesmo que você não possua proficiência no tipo. Mas ela só funciona para uma Ferramenta Específica e não o tipo da arma.</p></li><li><p><strong>Posições de Combate:</strong> Como um Mestre das Armas, você dominou um conjunto de posições que te ajudam no meio de combate, você recebe acesso as seguintes posições:</p><ul><li><p><strong>Posição Defensiva:</strong> Você aumenta sua Classe de Resistência em 2 e pode seu valor de engajamento aumenta em +2 até você ser considerado Totalmente Engajado.</p></li><li><p><strong>Posição Ofensiva:</strong> Seu deslocamento aumento em 5 metros e você recebe +1 de dano igual seu grau de Proficiência (Treinado + 1; Proficiente +2; Especializado +3; Mestre +4).</p></li><li><p><strong>Sentinela:</strong> Toda vez que uma criatura tiver você ou um aliado como alvo de um ataque ou técnica que faça rolagem de acerto, você pode, como Reação, realizar consumir um Ponto de Ação [⬢] para realizar um ataque contra a criatura (máximo de 3 por rodada). Você pode se mover até 3 metros do seu deslocamento disponível antes de fazer esse ataque.</p></li></ul><p>Você pode consumir um Ponto de Ação [⬢] para mudar entre as posições, podendo usar essa característica como Reação.</p></li></ul><p></p><h4>Punho Ardente</h4><hr><p>Seus golpes desarmados são brutais e você consegue transformar praticamente qualquer parte do seu corpo em uma arma contra seus oponentes. Você recebe acesso as seguintes características:</p><ul><li><p><strong>Golpe Brutal:</strong> Sempre que você causar dano máximo ou um acerto crítico em uma criatura, você pode realizar um ataque adicional com custo de ação [⬢] reduzido em 1.</p></li><li><p><strong>Interceptar:</strong> Quando uma criatura realizar uma jogada de ataque (Comum ou de Técnica) contra você e errar, você pode gastar duas ações [⬢⬢] como Reação para interceptar o golpe e atira-la por cima do seu ombro, arremessando-a contra o chão e impondo a condição \"Caído\" se ela falhar em uma Salvaguarda de Agilidade. Se ela receber a condição dessa forma, ele recebe a condição \"Estremecido\" se tentar levantar antes do fim do turno.</p></li><li><p><strong>Mãos Letais:</strong> Suas jogadas de ataque (Comum) corpo-a-corpo passam a receber os mesmos benefícios de uma arma marcial. Dessa forma, você pode escolher qualquer propriedade de uma arma marcial para seus ataques, podendo mudar essa escolha toda vez que sobe de nível.</p></li><li><p><strong>Corpo Forjado:</strong> Você recebe resistência +5 a danos do tipo Contundente, Cortante e Perfurante.</p></li></ul>",
+          "chat": ""
+        },
+        "advancement": {
+          "0rTR9wrEay11yXuP": {
+            "name": "Característica",
+            "type": "ItemChoice",
+            "_id": "0rTR9wrEay11yXuP",
+            "configuration": {
+              "allowDrops": true,
+              "choices": {
+                "1": {
+                  "count": 1,
+                  "replacement": false
+                }
+              },
+              "pool": [
+                {
+                  "sort": 0,
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.oUqpD2qgZh0ZWObh"
+                },
+                {
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.97pr5olYsfxVyIcj",
+                  "sort": 0
+                }
+              ],
+              "restriction": {
+                "list": [],
+                "school": []
+              },
+              "sorting": "a",
+              "spell": null,
+              "type": null
+            },
+            "flags": {},
+            "value": {
+              "added": {},
+              "replaced": {}
+            },
+            "hint": "",
+            "classRestriction": ""
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "legacy2": {
+            "vidaBase": 7,
+            "energiaBase": 10,
+            "atributoPrincipal": "str",
+            "espIniciais": 2,
+            "proficiencias": {
+              "armas": 1,
+              "salvaguardas": 1,
+              "pericias": 2
+            }
+          }
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "jj2e000000000003",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2e000000000003",
+      "name": "Sentinela",
+      "type": "class",
+      "img": "systems/jujutsu-system/assets/Estilos%20de%20Combate/Sentinela.jpg",
+      "system": {
+        "identifier": "sentinela",
+        "levels": 1,
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\"><span style=\"font-size:x-large\"><strong>SENTINELA</strong></span></p><p><span style=\"font-size:large\"><strong>Pontos de Vida</strong></span></p><p><strong>Vida Base:</strong> 6 por nível de personagem.</p><p><strong>Vida por Ponto de Constituição:</strong> 6 por ponto.</p><p></p><p><span style=\"font-size:large\"><strong>Energia Amaldiçoada</strong></span></p><p><strong>Energia Base:</strong> 10 por nível de personagem.</p><p></p><p><span style=\"font-size:large\"><strong>Proficiências</strong></span></p><ul><li><p><strong>Equipamentos:</strong> Recebe 2 Pontos de Proficiência entre qualquer tipo de arma.</p></li><li><p><strong>Salvaguarda:</strong> Recebe 2 Pontos de Proficiência para distribuir entre as Salvaguardas.</p></li><li><p><strong>Perícias:</strong> Escolha 3 Pontos de Proficiência para distribuir entre as Perícias.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>Informações Gerais</strong></span></p><ul><li><p><strong>Atributo Principal:</strong> Agilidade.</p></li><li><p><strong>Habilidades de Especialização:</strong> Você recebe 2 habilidade de \"Novo Estilo das Sombras\".</p></li><li><p><strong>Equipamentos:</strong> Você recebe uma ferramenta amaldiçoada de 4º grau e; ¥ 5.000.</p></li></ul><p></p><p style=\"text-align:center\"><span style=\"font-size:x-large\"><strong>Características de Combate</strong></span></p><hr><table><tbody><tr><td><p><span style=\"font-size:large\"><strong>Peculiaridades do Sentinela</strong></span></p><p>Os Sentinelas são peritos na utilização do Novo Estilo das Sombras, sendo aqueles que refinaram sua manipulação de Energia Amaldiçoada ao limite para compensar a ausência de um feitiço inato.</p><p>Devido a essa peculiaridade, um Sentinela deve dedicar todo o seu tempo ao domínio de suas habilidades. Como resultado, mesmo que possua um feitiço inato, ele é incapaz de utilizá-lo em combate.</p></td></tr></tbody></table><p><span style=\"font-size:large\"><strong>Domínio do Sentinela</strong></span></p><p>Pela falta de um feitiço amaldiçoado, você focou totalmente na capacidade de utilizar energia amaldiçoada e em técnicas anti-domínio. Você recebe acesso as seguintes características:</p><ul><li><p><strong>Aprendizado Focado:</strong> Você recebe uma habilidade de Especialização adicional e uma nova no 4º, 8º, 12º, 16º e 20º nível de personagem.</p></li><li><p><strong>Forma Dominada:</strong> Você pode aprender a habilidade <strong>\"Domínio Simples\"</strong> das técnicas de Domínio e Anti-Domínio.</p></li></ul><p>Além disso, você recebe as seguintes características dentro do \"Domínio Simples\":</p><ul><li><p>Até duas vezes por rodada, você pode realizar uma jogada de ataque (Comum) como Reação, tendo seu custo de ação reduzido em 1 Ponto de Ação [⬢]. O gatilho pode ser um Ponto de Ação da criatura dentro do seu alcance;</p></li><li><p>Ao realizar uma jogada de ataque (Comum ou de Técnica), você ignora até 10 Pontos de Resistência do inimigo.</p></li></ul>",
+          "chat": ""
+        },
+        "advancement": {
+          "1XypWeDEcMF2N5Vb": {
+            "name": "Técnicas",
+            "type": "ItemGrant",
+            "_id": "1XypWeDEcMF2N5Vb",
+            "configuration": {
+              "items": [
+                {
+                  "optional": false,
+                  "sort": 0,
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.a0EnvT0iw2hVTUrr"
+                },
+                {
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.Ym1btsYF88SkB38v",
+                  "optional": false,
+                  "sort": 0
+                }
+              ],
+              "optional": false,
+              "sorting": "m",
+              "spell": {
+                "ability": [],
+                "method": "",
+                "uses": {
+                  "max": "",
+                  "per": "",
+                  "requireSlot": false
+                }
+              }
+            },
+            "flags": {},
+            "value": {},
+            "level": 1,
+            "hint": "",
+            "classRestriction": ""
+          },
+          "WkQqyBA7K37kBLRN": {
+            "name": "Característica",
+            "type": "ItemGrant",
+            "_id": "WkQqyBA7K37kBLRN",
+            "configuration": {
+              "items": [
+                {
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.tiOhvooqcZcUw2AQ",
+                  "optional": false,
+                  "sort": 0
+                }
+              ],
+              "optional": false,
+              "sorting": "m",
+              "spell": null
+            },
+            "flags": {},
+            "value": {},
+            "level": 1,
+            "hint": "",
+            "classRestriction": ""
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "legacy2": {
+            "vidaBase": 6,
+            "energiaBase": 10,
+            "atributoPrincipal": "dex",
+            "espIniciais": 2,
+            "proficiencias": {
+              "armas": 2,
+              "salvaguardas": 2,
+              "pericias": 3
+            }
+          }
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "jj2e000000000004",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2e000000000004",
+      "name": "Especialista",
+      "type": "class",
+      "img": "systems/jujutsu-system/assets/Estilos%20de%20Combate/Especialista-Icon.png",
+      "system": {
+        "identifier": "especialista",
+        "levels": 1,
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\"><span style=\"font-size:x-large\"><strong>ESPECIALISTA</strong></span></p><p><span style=\"font-size:large\"><strong>Pontos de Vida</strong></span></p><p><strong>Vida Base:</strong> 5 por nível de personagem.</p><p><strong>Vida por Ponto de Constituição:</strong> 5 por ponto.</p><p></p><p><span style=\"font-size:large\"><strong>Energia Amaldiçoada</strong></span></p><p><strong>Energia Base:</strong> 15 por nível de personagem.</p><p></p><p><span style=\"font-size:large\"><strong>Proficiências</strong></span></p><ul><li><p><strong>Equipamentos:</strong> Recebe 1 Ponto de Proficiência entre qualquer tipo de arma.</p></li><li><p><strong>Salvaguarda:</strong> Recebe 1 Pontos de Proficiência para distribuir entre as Salvaguardas.</p></li><li><p><strong>Perícias:</strong> Escolha 2 Pontos de Proficiência para distribuir entre as Perícias.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>Informações Gerais</strong></span></p><ul><li><p><strong>Atributo Principal:</strong> Intelecto.</p></li><li><p><strong>Habilidades de Especialização:</strong> Você recebe 2 habilidade de \"Feitiço Inato\".</p></li><li><p><strong>Equipamentos:</strong> Uma arma cortante, especial ou ¥ 3.000 e; ¥ 8.000.</p></li></ul><p></p><p style=\"text-align:center\"><span style=\"font-size:x-large\"><strong>Características de Combate</strong></span></p><hr><p><span style=\"font-size:large\"><strong>Manipulação de Feitiço</strong></span></p><p>Você adquire a habilidade de manipular seus próprios feitiços para adaptá-las às suas necessidades, usando a energia excedente delas para beneficiar suas habilidades. Toda vez que você executar um feitiço ou técnica de manipulação, seja por si mesmo ou por um Shikigami, você recebe 2 Dados de Técnica, definidos por um d6.</p><p>A qualquer momento durante seu turno, você pode utilizar os dados de técnica para ativar um dos seguintes efeitos:</p><ul><li><p><strong>Aprimoramento:</strong> Você pode gastar quantos dados de técnica quiser para aumentar o dano da técnica pelo resultado da rolagem dos dados, mas deve usa-los antes de saber se ela acertou ou errou.</p></li><li><p><strong>Regenerar Maldição:</strong> Você pode gastar quantos dados de técnica desejar e curar um Shikigami pelo mesmo valor do resultado dos dados.</p></li><li><p><strong>Ativação Secundária:</strong> Você pode gastar quantos dados de técnica desejar para reduzir o custo da sua técnica pelo mesmo valor de dados consumidos.</p></li></ul><p>Você pode ter um máximo de dados de técnica igual a 1 + seu bônus de proficiência. Além disso, você também recebe 1 habilidade de Especialização de Feitiço Inato imediatamente ao adquirir esse Estilo de Combate.</p>",
+          "chat": ""
+        },
+        "advancement": {
+          "5QS1kCzSDMiAGQRG": {
+            "name": "Característica",
+            "type": "ItemGrant",
+            "_id": "5QS1kCzSDMiAGQRG",
+            "configuration": {
+              "items": [
+                {
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.rLG7RfZsT9oPWmW2",
+                  "optional": false,
+                  "sort": 0
+                }
+              ],
+              "optional": false,
+              "sorting": "m",
+              "spell": null
+            },
+            "flags": {},
+            "value": {},
+            "level": 1,
+            "hint": "",
+            "classRestriction": ""
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "legacy2": {
+            "vidaBase": 5,
+            "energiaBase": 15,
+            "atributoPrincipal": "int",
+            "espIniciais": 2,
+            "proficiencias": {
+              "armas": 1,
+              "salvaguardas": 1,
+              "pericias": 2
+            }
+          }
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "jj2e000000000005",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2e000000000005",
+      "name": "Estrategista",
+      "type": "class",
+      "img": "systems/jujutsu-system/assets/Estilos%20de%20Combate/Estrategista-icon.png",
+      "system": {
+        "identifier": "estrategista",
+        "levels": 1,
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\"><span style=\"font-size:x-large\"><strong>ESTRATEGISTA</strong></span></p><p><span style=\"font-size:large\"><strong>Pontos de Vida</strong></span></p><p><strong>Vida Base:</strong> 4 por nível de personagem.</p><p><strong>Vida por Ponto de Constituição:</strong> 4 por ponto.</p><p></p><p><span style=\"font-size:large\"><strong>Energia Amaldiçoada</strong></span></p><p><strong>Energia Base:</strong> 15 por nível de personagem.</p><p></p><p><span style=\"font-size:large\"><strong>Proficiências</strong></span></p><ul><li><p><strong>Equipamentos:</strong> Recebe 1 Pontos de Proficiência entre qualquer tipo de arma.</p></li><li><p><strong>Salvaguarda:</strong> Recebe 2 Pontos de Proficiência para distribuir entre as Salvaguardas.</p></li><li><p><strong>Perícias:</strong> Escolha 3 Pontos de Proficiência para distribuir entre as Perícias.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>Informações Gerais</strong></span></p><ul><li><p><strong>Atributo Principal:</strong> Sabedoria.</p></li><li><p><strong>Habilidades de Especialização:</strong> Você recebe 1 habilidade de \"Feitiço Inato\".</p></li><li><p><strong>Equipamentos:</strong> Uma arma cortante, especial ou ¥ 3.000 e; ¥ 8.000.</p></li></ul><p></p><p style=\"text-align:center\"><span style=\"font-size:x-large\"><strong>Características de Combate</strong></span></p><hr><p><span style=\"font-size:large\"><strong>Amaldiçoado com Conhecimento</strong></span></p><p>Você tem uma facilidade maior para aprender qualquer coisa relacionada a energia amaldiçoada e seu controle sobre ela avança a passos largos. Você recebe as seguintes características:</p><ul><li><p>Sempre que você rolar 1 no resultado do d20, você pode rolar novamente e usar o novo resultado;</p></li><li><p>Você pode criar barreiras usando da sua reserva Total de Energia sem consumir do seu limite de Refinamento;</p></li></ul><p>Além disso, você também deve escolher uma entre as duas especializações:</p><p></p><h4>Mestre de Barreiras</h4><hr><p>Você se especializou no uso de barreiras para lutar e ajudar seus companheiros, você recebe 3 habilidades de Especialização de Barreira e suas barreiras recebem 2 Pontos de Vida adicionais por PA gasto para cria-las.</p><p></p><h4>Médico de Campo</h4><hr><p>Você desbloqueia instantaneamente a Energia Reversa e recebe 1 Habilidade de Especialização dela, mas todas as suas técnicas de dano de Feitiços passam a custar 1 Ponto de Ação [⬢] adicional.<br>Além disso, você dobra o limite de Pontos de Energia Reversa que pode ter de 30 para 60.</p>",
+          "chat": ""
+        },
+        "advancement": {
+          "PeJvGmCUf09ujSi3": {
+            "name": "Característica",
+            "type": "ItemGrant",
+            "_id": "PeJvGmCUf09ujSi3",
+            "configuration": {
+              "items": [
+                {
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.mAIeDFc3vnoi5HI9",
+                  "optional": false,
+                  "sort": 0
+                }
+              ],
+              "optional": false,
+              "sorting": "m",
+              "spell": null
+            },
+            "flags": {},
+            "value": {},
+            "level": 1,
+            "hint": "",
+            "classRestriction": ""
+          },
+          "AvYD4ZGdzhI2WcYQ": {
+            "name": "Característica",
+            "type": "ItemChoice",
+            "_id": "AvYD4ZGdzhI2WcYQ",
+            "configuration": {
+              "allowDrops": true,
+              "choices": {
+                "1": {
+                  "count": 1,
+                  "replacement": false
+                }
+              },
+              "pool": [
+                {
+                  "sort": 0,
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.zWOcfQFS8W6geju8"
+                },
+                {
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.ZOvgDyTr4xnEDiKT",
+                  "sort": 0
+                }
+              ],
+              "restriction": {
+                "list": [],
+                "school": []
+              },
+              "sorting": "a",
+              "spell": null,
+              "type": null
+            },
+            "flags": {},
+            "value": {
+              "added": {},
+              "replaced": {}
+            },
+            "hint": "",
+            "classRestriction": ""
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "legacy2": {
+            "vidaBase": 4,
+            "energiaBase": 15,
+            "atributoPrincipal": "wis",
+            "espIniciais": 1,
+            "proficiencias": {
+              "armas": 1,
+              "salvaguardas": 2,
+              "pericias": 3
+            }
+          }
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "jvZCIBvT8iyzhj6S",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jvZCIBvT8iyzhj6S",
+      "name": "Linhagem - Inumaki",
+      "type": "race",
+      "img": "systems/jujutsu-system/assets/Origens/Toge_Inumaki_Cursed_Clash.webp",
+      "system": {
+        "type": {
+          "value": "humanoid",
+          "custom": "",
+          "subtype": ""
+        },
+        "identifier": "inumaki",
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\"><span><span style=\"font-size:38px\"><strong>INUMAKI</strong></span></span></p><p><strong>Vida Adicional:</strong> 4 Pontos de Vida.</p><p><strong>Tamanho:</strong> 1,50 a 2,00 metros (pequeno, médio).</p><p><strong>Peso:</strong> Normalmente, entre 45 kg e 200 kg.</p><p><strong>Deslocamento:</strong> 10 metros.</p><p><strong>Nado:</strong> 5 metros.</p><p> </p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ESPÉCIA</strong></span></p></td></tr></tbody></table><p><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">Essas</span><span style=\"letter-spacing:0.7pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">características</span><span style=\"letter-spacing:0.55pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">acompanham</span><span style=\"letter-spacing:0.55pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">a</span><span style=\"letter-spacing:0.7pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">existência</span><span style=\"letter-spacing:0.65pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">do</span><span style=\"letter-spacing:0.8pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">personagem,</span><span style=\"letter-spacing:0.75pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">são</span><span style=\"letter-spacing:0.6pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">representações</span><span style=\"letter-spacing:0.75pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">da</span><span style=\"letter-spacing:0.65pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">sua</span><span style=\"letter-spacing:0.7pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">origem,</span><span style=\"letter-spacing:0.55pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">sendo</span><span style=\"letter-spacing:0.6pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">uma</span><span style=\"letter-spacing:0.8pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">parte</span><span style=\"letter-spacing:0.6pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">essencial</span><span style=\"letter-spacing:0.75pt\"> </span><span style=\"font-size:10pt;line-height:102%;font-family:'Chaparral Pro', serif\">de</span><span style=\"letter-spacing:0.05pt\"> </span><span>como</span><span style=\"letter-spacing:-0.45pt\"> </span><span>ele</span><span style=\"letter-spacing:-0.4pt\"> </span><span>vê</span><span style=\"letter-spacing:-0.45pt\"> </span><span>o</span><span style=\"letter-spacing:-0.4pt\"> </span><span>mundo</span><span style=\"letter-spacing:-0.55pt\"> </span><span>e</span><span style=\"letter-spacing:-0.4pt\"> </span><span>de</span><span style=\"letter-spacing:-0.45pt\"> </span><span>como</span><span style=\"letter-spacing:-0.5pt\"> </span><span>o</span><span style=\"letter-spacing:-0.45pt\"> </span><span>mundo</span><span style=\"letter-spacing:-0.4pt\"> </span><span>olha</span><span style=\"letter-spacing:-0.4pt\"> </span><span>pra</span><span style=\"letter-spacing:-0.35pt\"> </span><span>ele.</span></p><p style=\"margin:0.5pt 0cm 0.0001pt 7.1pt;text-align:justify\"></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM - INUMAKI</strong></span></p><hr><ul><li><p>Como um membro da linhagem do Clã Inumaki, você recebe acesso à técnica herdada da <strong>“Fala Amaldiçoada”</strong>.</p></li><li><p><strong>Voz Soberana: </strong>Você pode escolher posicionar a tatuagem da Fala Amaldiçoada em uma das mãos, em vez de na boca. Ao fazer isso, o custo em ações de todas as técnicas e habilidades da Fala Amaldiçoada aumenta em 1 Ponto de Ação [<span style=\"font-size:8.0pt;font-family:'Segoe UI Symbol',sans-serif;mso-bidi-font-family:'Segoe UI Symbol'\">⬢</span>].</p><p>Entretanto, você não pode utilizar sua habilidade enquanto estiver com as mãos presas ou caso perca o braço onde a marca do feitiço está localizada.</p></li></ul><p></p><p><span style=\"font-size:large\"><strong>DESVANTAGENS DA VARIANTE</strong></span></p><hr><ul><li><p><strong>Língua Traiçoeira: </strong>Devido às peculiaridades da sua técnica herdada, ela permanece sempre ativa, tornando impossível falar normalmente sem o risco de ativá-la enquanto a marca estiver localizada na sua boca.</p><p>Qualquer sentença que contenha uma ordem, imperativo ou palavra de sentido equivalente pode ativar sua técnica contra a sua vontade. Além disso, o Narrador pode considerar outras palavras ou expressões como gatilhos caso julgue que elas possam ser interpretadas como comandos pela sua habilidade.</p></li><li><p><strong>Preço Justo: </strong>Caso a marca da sua fala amaldiçoada não esteja localizada na boca, você perde 1 Ponto de Energia Base.</p></li></ul>",
+          "chat": ""
+        },
+        "advancement": {
+          "rEJzDVRlCiq4jyq7": {
+            "type": "Size",
+            "_id": "rEJzDVRlCiq4jyq7",
+            "configuration": {
+              "sizes": [
+                "med"
+              ]
+            },
+            "level": 0,
+            "value": {},
+            "flags": {},
+            "hint": "",
+            "name": "",
+            "img": null
+          },
+          "pWi09QUI278nzGY8": {
+            "type": "Trait",
+            "configuration": {
+              "grants": [
+                "languages:standard:common"
+              ],
+              "mode": "default",
+              "allowReplacements": false,
+              "choices": []
+            },
+            "_id": "pWi09QUI278nzGY8",
+            "level": 0,
+            "value": {
+              "chosen": []
+            },
+            "flags": {},
+            "hint": ""
+          },
+          "4RXJIfXI8J2WfgL2": {
+            "_id": "4RXJIfXI8J2WfgL2",
+            "type": "ItemGrant",
+            "configuration": {
+              "items": [
+                {
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.NYb4LVdZWKRRoSKn",
+                  "optional": false,
+                  "sort": 0
+                }
+              ],
+              "optional": false,
+              "spell": null,
+              "sorting": "m"
+            },
+            "value": {},
+            "level": 0,
+            "flags": {},
+            "hint": "",
+            "name": "trait",
+            "img": null
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "pvAdicional": 4,
+          "legacy2": {
+            "pvEspecie": null,
+            "energiaEspecie": -1
+          },
+          "energiaAdicional": null,
+          "atributosAdicionais": null
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "kTJxk9JvrOMOfOMF",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.kTJxk9JvrOMOfOMF",
+      "name": "Poder da Linhagem",
+      "type": "feat",
+      "img": "systems/jujutsu-system/assets/Traits/Seis-olhos-ic.png",
+      "system": {
+        "identifier": "gojo",
+        "prerequisites": {
+          "items": [],
+          "repeatable": false,
+          "level": null
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": [
+        {
+          "name": "Poder da Linhagem",
+          "img": "systems/jujutsu-system/assets/Traits/Seis-olhos-ic.png",
+          "origin": "Item.WR4LKwek3NbmgJOs",
+          "type": "base",
+          "_id": "9ovT9FeqLAz7X61e",
+          "system": {
+            "changes": [
+              {
+                "key": "system.legacy2.energiaEspecie",
+                "type": "add",
+                "value": "+2",
+                "phase": "initial",
+                "priority": null,
+                "_id": "SRIBXpJXvVj0pNvB",
+                "conditions": "{}",
+                "replacement": ""
+              }
+            ],
+            "rider": {
+              "statuses": []
+            },
+            "origin": {
+              "actor": null,
+              "behavior": null,
+              "effect": null,
+              "item": null,
+              "message": null
+            },
+            "conditions": "{}",
+            "magical": false
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {
+            "JujutsuLegacy": {
+              "riders": {}
+            }
+          },
+          "_stats": {
+            "coreVersion": "14.369",
+            "systemId": "jujutsu-system",
+            "systemVersion": "1.2.15",
+            "createdTime": 1791816812253,
+            "modifiedTime": 1792639086455,
+            "lastModifiedBy": "vQ8cHNVhVHOdX3zY",
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          }
+        }
+      ]
+    },
+    {
+      "_id": "ktJGbevDfhFsZR0S",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.ktJGbevDfhFsZR0S",
+      "name": "Imaculado",
+      "type": "race",
+      "img": "systems/jujutsu-system/assets/Origens/Kasumi_Miwa_Cursed_Clash.webp",
+      "system": {
+        "type": {
+          "value": "humanoid",
+          "custom": "",
+          "subtype": ""
+        },
+        "identifier": "imaculado",
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\" class=\"MsoNormal\"><span><span style=\"font-size:38px\"><strong>IMACULADO</strong></span></span></p><p class=\"MsoNormal\"><strong>Vida Adicional:</strong> 4 Pontos de Vida.</p><p class=\"MsoNormal\"><strong>Tamanho:</strong> Normalmente, entre 1,50 e 3,00 metros (Médio).</p><p class=\"MsoNormal\"><strong>Peso:</strong> Normalmente, entre 65 e 300 kg.</p><p class=\"MsoNormal\"><strong>Deslocamento:</strong> 10 metros.</p><p><strong>Nado:</strong> 5 metros.</p><p></p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ORIGEM</strong></span></p></td></tr></tbody></table><p>Essas características acompanham a existência do personagem, são representações da sua origem, sendo uma parte essencial de como ele vê o mundo e de como o mundo olha pra ele.</p><p style=\"margin:0.5pt 0cm 0.0001pt 7.1pt;text-align:justify\"></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM</strong></span></p><hr><p><strong style=\"mso-bidi-font-weight:normal\">Controle Refinado:</strong><span style=\"mso-bidi-font-weight:bold\"> Você tem um controle exímio que te ajuda em diversos aspectos do combate. Você recebe acesso as seguintes características:</span></p><p><span style=\"mso-bidi-font-weight:bold\"><em>Seus Pontos de Vida base e Energia base aumentam em 1 e 2, até um máximo de 7 e 20 respectivamente.</em></span></p><p><span style=\"mso-bidi-font-weight:bold\"><em>Você recebe 2 Habilidades de Especialização de </em></span><em><strong style=\"mso-bidi-font-weight:normal\">Canalização de Energia</strong></em><span style=\"mso-bidi-font-weight:bold\"><em> a sua escolha.</em></span></p><p></p><p><span style=\"font-size:large\"><strong>DESVANTAGENS DA VARIANTE</strong></span></p><hr><p><strong style=\"mso-bidi-font-weight:normal\">Quadro em Branco: </strong>Você não nasceu com nenhum feitiço inato, podendo apenas depender de Ferramentas Amaldiçoadas e Habilidades de Especialização de Energia Amaldiçoada para lutar.</p>",
+          "chat": ""
+        },
+        "advancement": {
+          "rEJzDVRlCiq4jyq7": {
+            "type": "Size",
+            "_id": "rEJzDVRlCiq4jyq7",
+            "configuration": {
+              "sizes": [
+                "med"
+              ]
+            },
+            "level": 0,
+            "value": {},
+            "flags": {},
+            "hint": "",
+            "name": "",
+            "img": null
+          },
+          "pWi09QUI278nzGY8": {
+            "type": "Trait",
+            "configuration": {
+              "grants": [
+                "languages:standard:common"
+              ],
+              "mode": "default",
+              "allowReplacements": false,
+              "choices": []
+            },
+            "_id": "pWi09QUI278nzGY8",
+            "level": 0,
+            "value": {
+              "chosen": []
+            },
+            "flags": {},
+            "hint": ""
+          },
+          "4RXJIfXI8J2WfgL2": {
+            "_id": "4RXJIfXI8J2WfgL2",
+            "type": "ItemGrant",
+            "configuration": {
+              "items": [
+                {
+                  "optional": false,
+                  "sort": 0,
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.HI6SM6ZiPqALcXco"
+                }
+              ],
+              "optional": false,
+              "spell": null,
+              "sorting": "m"
+            },
+            "value": {},
+            "level": 0,
+            "flags": {},
+            "hint": "",
+            "name": "trait",
+            "img": null
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "pvAdicional": 4,
+          "legacy2": {
+            "pvEspecie": 1,
+            "energiaEspecie": 2
+          },
+          "energiaAdicional": null,
+          "atributosAdicionais": null
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "m6fswjDaSwCMr6tj",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.m6fswjDaSwCMr6tj",
+      "name": "Restrição Celestial",
+      "type": "feat",
+      "img": "icons/creatures/magical/construct-iron-stomping-yellow.webp",
+      "system": {
+        "identifier": "beneficios-corpo-amaldicoado",
+        "prerequisites": {
+          "items": [],
+          "repeatable": false,
+          "level": null
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "mAIeDFc3vnoi5HI9",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.mAIeDFc3vnoi5HI9",
+      "name": "Amaldiçoado Pelo Conhecimento",
+      "type": "feat",
+      "img": "icons/magic/death/projectile-skull-fire-purple.webp",
+      "system": {
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "prerequisites": {
+          "level": null,
+          "repeatable": false,
+          "items": []
+        },
+        "identifier": "estilo-do-conjurador",
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "oUqpD2qgZh0ZWObh",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.oUqpD2qgZh0ZWObh",
+      "name": "Mestre das Armas",
+      "type": "feat",
+      "img": "icons/skills/melee/weapons-crossed-swords-yellow.webp",
+      "system": {
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "prerequisites": {
+          "level": null,
+          "repeatable": false,
+          "items": []
+        },
+        "identifier": "aprimorador-fisico",
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "qZJKU9xGWU73qnRU",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.qZJKU9xGWU73qnRU",
+      "name": "Disarm",
+      "type": "spell",
+      "img": "icons/skills/melee/sword-damaged-broken-glow-red.webp",
+      "system": {
+        "identifier": "muscle-barrier",
+        "activities": {
+          "PHaCylEPGEvgdLzR": {
+            "_id": "PHaCylEPGEvgdLzR",
+            "name": "",
+            "type": "save"
+          }
+        },
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "rLG7RfZsT9oPWmW2",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.rLG7RfZsT9oPWmW2",
+      "name": "Manipulação de Feitiço",
+      "type": "feat",
+      "img": "icons/magic/light/explosion-beam-impact-silhouette.webp",
+      "system": {
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "prerequisites": {
+          "level": null,
+          "repeatable": false,
+          "items": []
+        },
+        "identifier": "surto-de-aura",
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "t6u0loISngHL1Y5z",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.t6u0loISngHL1Y5z",
+      "name": "Feitiço Inato",
+      "type": "feat",
+      "img": "icons/creatures/magical/spirit-fear-energy-pink.webp",
+      "system": {
+        "identifier": "feitico-inato-trait",
+        "prerequisites": {
+          "items": [],
+          "repeatable": false,
+          "level": null
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "tPwqpsSJcJKkuVPg",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.tPwqpsSJcJKkuVPg",
+      "name": "Feitiço Inato",
+      "type": "race",
+      "img": "systems/jujutsu-system/assets/Origens/Nobara_Kugisaki_29898.webp",
+      "system": {
+        "type": {
+          "value": "humanoid",
+          "custom": "",
+          "subtype": ""
+        },
+        "identifier": "feitico-inato",
+        "activities": {},
+        "description": {
+          "value": "<p style=\"text-align:center\"><span><span style=\"font-size:38px\"><strong>FEITIÇO INATO</strong></span></span></p><p><strong>Vida Base:</strong> 10 Pontos de Vida.</p><p><strong>Tamanho:</strong> 1,50 a 2,00 metros (pequeno, médio).</p><p><strong>Peso:</strong> Normalmente, entre 65 kg e 300 kg.</p><p><strong>Deslocamento:</strong> 10 metros.</p><p><strong>Nado:</strong> 5 metros.</p><p> </p><table border=\"1\" style=\"margin-left:0pt;border-collapse:collapse;border:none\" class=\"MsoTableGrid\"><tbody><tr><td><p style=\"line-height:7pt;text-align:center\"><span style=\"font-size:large\"><strong>CARACTERÍSTICAS DA ESPÉCIA</strong></span></p></td></tr></tbody></table><p>Essas características acompanham a existência do personagem, são representações da sua origem, sendo uma parte essencial de como ele vê o mundo e de como o mundo olha pra ele.</p><p></p><p><span style=\"font-size:large\"><strong>BENEFÍCIOS DA ORIGEM</strong></span></p><hr><p><strong style=\"mso-bidi-font-weight:normal\">Feitiço Único: </strong><span style=\"mso-bidi-font-weight:bold\">Você nasceu com um feitiço que foi despertado muito cedo, permitindo que você pudesse se familiarizar com ele, você recebe as seguintes características:</span></p><ul><li><p><span style=\"mso-bidi-font-weight:bold\"><em>Você recebe acesso a um Feitiço Inato a sua escolha;</em></span></p></li><li><p><span style=\"mso-bidi-font-weight:bold\"><em>Uma vez por descanso curto ou longo, você pode reduzir o custo final de ativação do seu </em></span><em><strong style=\"mso-bidi-font-weight:normal\">Feitiço Inato</strong></em><span style=\"mso-bidi-font-weight:bold\"><em> pela metade (arredondado para baixo).</em></span></p></li></ul><p style=\"tab-stops:467.8pt\" class=\"TextoPadro\"><strong>Eficiência Energética:</strong> Sua energia base aumenta em 1 Ponto.</p><p style=\"tab-stops:467.8pt\" class=\"TextoPadro\"></p>",
+          "chat": ""
+        },
+        "advancement": {
+          "rEJzDVRlCiq4jyq7": {
+            "type": "Size",
+            "_id": "rEJzDVRlCiq4jyq7",
+            "configuration": {
+              "sizes": [
+                "med"
+              ]
+            },
+            "level": 0,
+            "value": {},
+            "flags": {},
+            "hint": "",
+            "name": "",
+            "img": null
+          },
+          "pWi09QUI278nzGY8": {
+            "type": "Trait",
+            "configuration": {
+              "grants": [
+                "languages:standard:common"
+              ],
+              "mode": "default",
+              "allowReplacements": false,
+              "choices": []
+            },
+            "_id": "pWi09QUI278nzGY8",
+            "level": 0,
+            "value": {
+              "chosen": []
+            },
+            "flags": {},
+            "hint": ""
+          },
+          "4RXJIfXI8J2WfgL2": {
+            "_id": "4RXJIfXI8J2WfgL2",
+            "type": "ItemGrant",
+            "configuration": {
+              "items": [
+                {
+                  "optional": false,
+                  "sort": 0,
+                  "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.t6u0loISngHL1Y5z"
+                }
+              ],
+              "optional": false,
+              "spell": null,
+              "sorting": "m"
+            },
+            "value": {},
+            "level": 0,
+            "flags": {},
+            "hint": "",
+            "name": "trait",
+            "img": null
+          }
+        }
+      },
+      "flags": {
+        "jujutsu-system": {
+          "pvAdicional": 4,
+          "legacy2": {
+            "pvEspecie": null,
+            "energiaEspecie": 1
+          },
+          "energiaAdicional": null,
+          "atributosAdicionais": null
+        }
+      },
+      "effects": []
+    },
+    {
+      "_id": "ti0hhxiKwF8biCtN",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.ti0hhxiKwF8biCtN",
+      "name": "Heavy Strike",
+      "type": "spell",
+      "img": "icons/skills/melee/unarmed-punch-fist-blue.webp",
+      "system": {
+        "identifier": "heavy-strike",
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "name": "",
+            "type": "attack"
+          }
+        },
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "tiOhvooqcZcUw2AQ",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.tiOhvooqcZcUw2AQ",
+      "name": "Domínio do Sentinela",
+      "type": "feat",
+      "img": "icons/magic/air/wind-vortex-swirl-blue.webp",
+      "system": {
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "prerequisites": {
+          "level": null,
+          "repeatable": false,
+          "items": []
+        },
+        "identifier": "estilo-do-emissor",
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "wyvGpqdaIPzFJXX6",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.wyvGpqdaIPzFJXX6",
+      "name": "Gojo",
+      "type": "feat",
+      "img": "icons/creatures/magical/spirit-mischief-fire-ice-blue.webp",
+      "system": {
+        "identifier": "gojo-trait",
+        "prerequisites": {
+          "items": [],
+          "repeatable": false,
+          "level": null
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "zWOcfQFS8W6geju8",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.zWOcfQFS8W6geju8",
+      "name": "Médico de Campo",
+      "type": "feat",
+      "img": "icons/magic/defensive/armor-green-hex.webp",
+      "system": {
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "prerequisites": {
+          "level": null,
+          "repeatable": false,
+          "items": []
+        },
+        "identifier": "medico-de-campo",
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    },
+    {
+      "_id": "zovA9Xo6BxkGtvyj",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.zovA9Xo6BxkGtvyj",
+      "name": "Vazio de Energia",
+      "type": "feat",
+      "img": "icons/skills/melee/weapons-crossed-swords-black-gray.webp",
+      "system": {
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "prerequisites": {
+          "level": null,
+          "repeatable": false,
+          "items": []
+        },
+        "identifier": "estilo-do-aprimorador",
+        "activities": {},
+        "advancement": {}
+      },
+      "flags": {},
+      "effects": []
+    }
+  ],
+  "graph": [
+    {
+      "nome": "Escudo de Energia",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.4GSEevFdTjccyNAN",
+      "categoria": "Proezas Físicas",
+      "caminho": "Canalização de Energia",
+      "requisitos": [
+        "Canalização Amplificadora",
+        "Canalização de Combate"
+      ]
+    },
+    {
+      "nome": "Selos de Mão",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000002",
+      "categoria": "Feitiço Inato",
+      "caminho": "Selos e Encantamentos",
+      "requisitos": []
+    },
+    {
+      "nome": "Selos Complexos",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000003",
+      "categoria": "Feitiço Inato",
+      "caminho": "Selos e Encantamentos",
+      "requisitos": [
+        "Selos de Mão"
+      ]
+    },
+    {
+      "nome": "Encantamentos",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000004",
+      "categoria": "Feitiço Inato",
+      "caminho": "Selos e Encantamentos",
+      "requisitos": [
+        "Selos Complexos"
+      ]
+    },
+    {
+      "nome": "Encantamento Veloz",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000005",
+      "categoria": "Feitiço Inato",
+      "caminho": "Selos e Encantamentos",
+      "requisitos": [
+        "Encantamentos"
+      ]
+    },
+    {
+      "nome": "Manipulação de Selos",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000006",
+      "categoria": "Feitiço Inato",
+      "caminho": "Selos e Encantamentos",
+      "requisitos": [
+        "Encantamento Veloz"
+      ]
+    },
+    {
+      "nome": "Concentração Inabalável",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000007",
+      "categoria": "Feitiço Inato",
+      "caminho": "Selos e Encantamentos",
+      "requisitos": [
+        "Manipulação de Selos"
+      ]
+    },
+    {
+      "nome": "Ativação Dupla",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000008",
+      "categoria": "Feitiço Inato",
+      "caminho": "Selos e Encantamentos",
+      "requisitos": [
+        "Manipulação de Selos"
+      ]
+    },
+    {
+      "nome": "Forma Dominada",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000009",
+      "categoria": "Feitiço Inato",
+      "caminho": "Selos e Encantamentos",
+      "requisitos": [
+        "Ativação Dupla"
+      ]
+    },
+    {
+      "nome": "Trabalho em Equipe",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000010",
+      "categoria": "Feitiço Inato",
+      "caminho": "Invocador de Shikigami",
+      "requisitos": []
+    },
+    {
+      "nome": "Fortalecer Invocação",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000011",
+      "categoria": "Feitiço Inato",
+      "caminho": "Invocador de Shikigami",
+      "requisitos": [
+        "Trabalho em Equipe"
+      ]
+    },
+    {
+      "nome": "Formação de Horda",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000012",
+      "categoria": "Feitiço Inato",
+      "caminho": "Invocador de Shikigami",
+      "requisitos": [
+        "Trabalho em Equipe"
+      ]
+    },
+    {
+      "nome": "Vínculo Amaldiçoado",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000013",
+      "categoria": "Feitiço Inato",
+      "caminho": "Invocador de Shikigami",
+      "requisitos": [
+        "Trabalho em Equipe"
+      ]
+    },
+    {
+      "nome": "Transferência de Emergência",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000014",
+      "categoria": "Feitiço Inato",
+      "caminho": "Invocador de Shikigami",
+      "requisitos": [
+        "Vínculo Amaldiçoado"
+      ]
+    },
+    {
+      "nome": "Aprimoramento de Espírito",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000015",
+      "categoria": "Feitiço Inato",
+      "caminho": "Invocador de Shikigami",
+      "requisitos": [
+        "Transferência de Emergência"
+      ]
+    },
+    {
+      "nome": "Refinamento Duplo",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000016",
+      "categoria": "Feitiço Inato",
+      "caminho": "Invocador de Shikigami",
+      "requisitos": [
+        "Aprimoramento de Espírito"
+      ]
+    },
+    {
+      "nome": "Rei das Maldições",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000017",
+      "categoria": "Feitiço Inato",
+      "caminho": "Invocador de Shikigami",
+      "requisitos": [
+        "Refinamento Duplo"
+      ]
+    },
+    {
+      "nome": "Execução Veloz",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000018",
+      "categoria": "Feitiço Inato",
+      "caminho": "Manipulação de Técnica",
+      "requisitos": []
+    },
+    {
+      "nome": "Gestos: Flecha e Linha",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000019",
+      "categoria": "Feitiço Inato",
+      "caminho": "Manipulação de Técnica",
+      "requisitos": []
+    },
+    {
+      "nome": "Manipulação Eficiente",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000020",
+      "categoria": "Feitiço Inato",
+      "caminho": "Manipulação de Técnica",
+      "requisitos": [
+        "Execução Veloz ou Gestos: Flecha e Linha"
+      ]
+    },
+    {
+      "nome": "Gestos: Cone e Leque",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000021",
+      "categoria": "Feitiço Inato",
+      "caminho": "Manipulação de Técnica",
+      "requisitos": [
+        "Gestos: Flecha e Linha"
+      ]
+    },
+    {
+      "nome": "Gestos: Raio e Emanação",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000022",
+      "categoria": "Feitiço Inato",
+      "caminho": "Manipulação de Técnica",
+      "requisitos": [
+        "Gestos: Cone e Leque"
+      ]
+    },
+    {
+      "nome": "Aprimorar Alcance",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000023",
+      "categoria": "Feitiço Inato",
+      "caminho": "Manipulação de Técnica",
+      "requisitos": [
+        "Gestos: Flecha e Linha ou Gestos: Cone e Leque ou Gestos: Raio e Emanação"
+      ]
+    },
+    {
+      "nome": "Manipulação Rápida",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000024",
+      "categoria": "Feitiço Inato",
+      "caminho": "Manipulação de Técnica",
+      "requisitos": [
+        "Aprimorar Alcance"
+      ]
+    },
+    {
+      "nome": "Canalização Máxima",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000026",
+      "categoria": "Feitiço Inato",
+      "caminho": "Manipulação de Técnica",
+      "requisitos": [
+        "Todas as outras 7 habilidades da Manipulação de Técnica"
+      ]
+    },
+    {
+      "nome": "Véu",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000028",
+      "categoria": "Técnicas de Barreira",
+      "caminho": "Barreiras",
+      "requisitos": []
+    },
+    {
+      "nome": "Barreira Vazia",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000029",
+      "categoria": "Técnicas de Barreira",
+      "caminho": "Barreiras",
+      "requisitos": [
+        "Véu"
+      ]
+    },
+    {
+      "nome": "Barreira Pura",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000030",
+      "categoria": "Técnicas de Barreira",
+      "caminho": "Barreiras",
+      "requisitos": [
+        "Barreira Vazia"
+      ]
+    },
+    {
+      "nome": "Barreira Bon",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000031",
+      "categoria": "Técnicas de Barreira",
+      "caminho": "Barreiras",
+      "requisitos": [
+        "Barreira Pura"
+      ]
+    },
+    {
+      "nome": "Conceder Regras",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000032",
+      "categoria": "Técnicas de Barreira",
+      "caminho": "Técnicas de Barreiras",
+      "requisitos": [
+        "Véu"
+      ]
+    },
+    {
+      "nome": "Criar Catalisador",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000033",
+      "categoria": "Técnicas de Barreira",
+      "caminho": "Técnicas de Barreiras",
+      "requisitos": [
+        "Conceder Regras"
+      ]
+    },
+    {
+      "nome": "Manipulação de Ambiente",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000034",
+      "categoria": "Técnicas de Barreira",
+      "caminho": "Técnicas de Barreiras",
+      "requisitos": [
+        "Barreira Vazia"
+      ]
+    },
+    {
+      "nome": "Barreira Estratégica",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000035",
+      "categoria": "Técnicas de Barreira",
+      "caminho": "Técnicas de Barreiras",
+      "requisitos": [
+        "Manipulação de Ambiente"
+      ]
+    },
+    {
+      "nome": "Barreira Adaptativa",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000036",
+      "categoria": "Técnicas de Barreira",
+      "caminho": "Técnicas de Barreiras",
+      "requisitos": [
+        "Barreira Estratégica"
+      ]
+    },
+    {
+      "nome": "Criação Instantânea",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000037",
+      "categoria": "Técnicas de Barreira",
+      "caminho": "Técnicas de Barreiras",
+      "requisitos": [
+        "Barreira Adaptativa",
+        "Barreira Pura"
+      ]
+    },
+    {
+      "nome": "Barreira Permanente",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000038",
+      "categoria": "Técnicas de Barreira",
+      "caminho": "Técnicas de Barreiras",
+      "requisitos": [
+        "Barreira Adaptativa",
+        "Barreira Pura"
+      ]
+    },
+    {
+      "nome": "Programação de Barreiras",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000039",
+      "categoria": "Técnicas de Barreira",
+      "caminho": "Técnicas de Barreiras",
+      "requisitos": [
+        "Barreira Permanente",
+        "Barreira Bon"
+      ]
+    },
+    {
+      "nome": "Explosão de Velocidade",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000041",
+      "categoria": "Proezas Físicas",
+      "caminho": "Corpo de Guerreiro",
+      "requisitos": []
+    },
+    {
+      "nome": "Passo Esguio",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000042",
+      "categoria": "Proezas Físicas",
+      "caminho": "Corpo de Guerreiro",
+      "requisitos": []
+    },
+    {
+      "nome": "Punho Devastador",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000043",
+      "categoria": "Proezas Físicas",
+      "caminho": "Corpo de Guerreiro",
+      "requisitos": []
+    },
+    {
+      "nome": "Entrada Impactante",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000044",
+      "categoria": "Proezas Físicas",
+      "caminho": "Corpo de Guerreiro",
+      "requisitos": [
+        "Punho Devastador"
+      ]
+    },
+    {
+      "nome": "Punho de Aço",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000045",
+      "categoria": "Proezas Físicas",
+      "caminho": "Corpo de Guerreiro",
+      "requisitos": [
+        "Entrada Impactante"
+      ]
+    },
+    {
+      "nome": "Ataque Potencializado",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000046",
+      "categoria": "Proezas Físicas",
+      "caminho": "Corpo de Guerreiro",
+      "requisitos": [
+        "Entrada Impactante"
+      ]
+    },
+    {
+      "nome": "Ira do Berserker",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000047",
+      "categoria": "Proezas Físicas",
+      "caminho": "Corpo de Guerreiro",
+      "requisitos": [
+        "Ataque Potencializado"
+      ]
+    },
+    {
+      "nome": "Potencialização Extrema",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000048",
+      "categoria": "Proezas Físicas",
+      "caminho": "Corpo de Guerreiro",
+      "requisitos": [
+        "Ira do Berserker"
+      ]
+    },
+    {
+      "nome": "Corpo Indestrutível",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000049",
+      "categoria": "Proezas Físicas",
+      "caminho": "Corpo de Guerreiro",
+      "requisitos": [
+        "Potencialização Extrema"
+      ]
+    },
+    {
+      "nome": "Ataque Cruel",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000050",
+      "categoria": "Proezas Físicas",
+      "caminho": "Corpo de Guerreiro",
+      "requisitos": [
+        "Ira do Berserker"
+      ]
+    },
+    {
+      "nome": "Energia Atrasada",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000051",
+      "categoria": "Proezas Físicas",
+      "caminho": "Punho Divergente",
+      "requisitos": []
+    },
+    {
+      "nome": "Castigo de Ferro",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000052",
+      "categoria": "Proezas Físicas",
+      "caminho": "Punho Divergente",
+      "requisitos": [
+        "Energia Atrasada"
+      ]
+    },
+    {
+      "nome": "Dispersão de Energia",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000053",
+      "categoria": "Proezas Físicas",
+      "caminho": "Punho Divergente",
+      "requisitos": [
+        "Castigo de Ferro"
+      ]
+    },
+    {
+      "nome": "Recuperação de Foco",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000054",
+      "categoria": "Proezas Físicas",
+      "caminho": "Punho Divergente",
+      "requisitos": [
+        "Dispersão de Energia"
+      ]
+    },
+    {
+      "nome": "Vibração de Energia",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000055",
+      "categoria": "Proezas Físicas",
+      "caminho": "Punho Divergente",
+      "requisitos": [
+        "Recuperação de Foco"
+      ]
+    },
+    {
+      "nome": "Ativação Aprimorada",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000056",
+      "categoria": "Proezas Físicas",
+      "caminho": "Punho Divergente",
+      "requisitos": [
+        "Vibração de Energia"
+      ]
+    },
+    {
+      "nome": "Impacto Concussivo",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000057",
+      "categoria": "Proezas Físicas",
+      "caminho": "Punho Divergente",
+      "requisitos": [
+        "Ativação Aprimorada"
+      ]
+    },
+    {
+      "nome": "Aceleração Súbita",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000058",
+      "categoria": "Proezas Físicas",
+      "caminho": "Punho Divergente",
+      "requisitos": [
+        "Ativação Aprimorada"
+      ]
+    },
+    {
+      "nome": "Canalização Amplificadora",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000059",
+      "categoria": "Proezas Físicas",
+      "caminho": "Canalização de Energia",
+      "requisitos": []
+    },
+    {
+      "nome": "Sentir Maldição",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000060",
+      "categoria": "Proezas Físicas",
+      "caminho": "Canalização de Energia",
+      "requisitos": []
+    },
+    {
+      "nome": "Canalização de Combate",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000061",
+      "categoria": "Proezas Físicas",
+      "caminho": "Canalização de Energia",
+      "requisitos": []
+    },
+    {
+      "nome": "Manipulação Precisa",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000062",
+      "categoria": "Proezas Físicas",
+      "caminho": "Canalização de Energia",
+      "requisitos": []
+    },
+    {
+      "nome": "Foco Múltiplo",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000063",
+      "categoria": "Proezas Físicas",
+      "caminho": "Canalização de Energia",
+      "requisitos": [
+        "Canalização Amplificadora",
+        "Canalização de Combate"
+      ]
+    },
+    {
+      "nome": "Plataforma Espacial",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000064",
+      "categoria": "Proezas Físicas",
+      "caminho": "Canalização de Energia",
+      "requisitos": [
+        "20 Habilidades de Especialização Totais e Foco Múltiplo"
+      ]
+    },
+    {
+      "nome": "Abençoado Pelas Faíscas Negras",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000065",
+      "categoria": "Proezas Físicas",
+      "caminho": "Canalização de Energia",
+      "requisitos": [
+        "5 habilidades de especialização de Canalização de Energia"
+      ]
+    },
+    {
+      "nome": "Fulgor Certeiro",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000066",
+      "categoria": "Proezas Físicas",
+      "caminho": "Canalização de Energia",
+      "requisitos": [
+        "Abençoado Pelas Faíscas Negras"
+      ]
+    },
+    {
+      "nome": "Acúmulo de Fulgor",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000067",
+      "categoria": "Proezas Físicas",
+      "caminho": "Canalização de Energia",
+      "requisitos": [
+        "Fulgor Certeiro",
+        "Não possuir feitiço inato"
+      ]
+    },
+    {
+      "nome": "Evasão de Contra-Ataque",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000069",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Ofensivo",
+      "requisitos": []
+    },
+    {
+      "nome": "Velocidade Anormal",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000070",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Ofensivo",
+      "requisitos": []
+    },
+    {
+      "nome": "Ataque Cadenciado",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000071",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Ofensivo",
+      "requisitos": [
+        "Evasão de Contra-Ataque"
+      ]
+    },
+    {
+      "nome": "Lança Destruidora",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000072",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Ofensivo",
+      "requisitos": [
+        "Ataque Cadenciado"
+      ]
+    },
+    {
+      "nome": "Aquecimento",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000073",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Ofensivo",
+      "requisitos": [
+        "4 Habilidades do Existência Aprimorada - Ofensivo"
+      ]
+    },
+    {
+      "nome": "Destruidor de Exércitos",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000074",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Ofensivo",
+      "requisitos": [
+        "Aquecimento"
+      ]
+    },
+    {
+      "nome": "Reflexo Marcial",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000075",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Ofensivo",
+      "requisitos": [
+        "4 Habilidades do Existência Aprimorada - Ofensivo"
+      ]
+    },
+    {
+      "nome": "Estamina Ilimitada",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000076",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Ofensivo",
+      "requisitos": [
+        "Reflexo Marcial"
+      ]
+    },
+    {
+      "nome": "Movimento Instantâneo",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000077",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Ofensivo",
+      "requisitos": [
+        "Reflexo Marcial"
+      ]
+    },
+    {
+      "nome": "Velocidade Descomunal",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000078",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Ofensivo",
+      "requisitos": [
+        "Movimento Instantâneo"
+      ]
+    },
+    {
+      "nome": "Realização",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000079",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Ofensivo",
+      "requisitos": [
+        "Velocidade Descomunal"
+      ]
+    },
+    {
+      "nome": "Finalização Destrutiva",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000080",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Ofensivo",
+      "requisitos": [
+        "Realização"
+      ]
+    },
+    {
+      "nome": "Senhor do Terror",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000081",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Defensivo",
+      "requisitos": []
+    },
+    {
+      "nome": "Corpo Endurecido",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000082",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Defensivo",
+      "requisitos": []
+    },
+    {
+      "nome": "Resistência Superior",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000083",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Defensivo",
+      "requisitos": [
+        "Corpo Endurecido"
+      ]
+    },
+    {
+      "nome": "Reflexo Superior",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000084",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Defensivo",
+      "requisitos": [
+        "Resistência Superior"
+      ]
+    },
+    {
+      "nome": "Regeneração Acelerada",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000085",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Defensivo",
+      "requisitos": [
+        "Reflexo Superior"
+      ]
+    },
+    {
+      "nome": "Corpo Rígido",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000086",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Defensivo",
+      "requisitos": [
+        "Regeneração Acelerada"
+      ]
+    },
+    {
+      "nome": "Impulso Físico (Defensivo)",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000087",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Defensivo",
+      "requisitos": [
+        "Corpo Rígido"
+      ]
+    },
+    {
+      "nome": "Regeneração Superior",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000088",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Defensivo",
+      "requisitos": [
+        "Impulso Físico"
+      ]
+    },
+    {
+      "nome": "Corpo Fechado",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000089",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Defensivo",
+      "requisitos": [
+        "Regeneração Superior"
+      ]
+    },
+    {
+      "nome": "Bastião",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000090",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Defensivo",
+      "requisitos": [
+        "Corpo Fechado"
+      ]
+    },
+    {
+      "nome": "Constituição Perfeita",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000091",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Defensivo",
+      "requisitos": [
+        "Corpo Fechado"
+      ]
+    },
+    {
+      "nome": "Defesa Absoluta",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000092",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Existência Aprimorada - Defensivo",
+      "requisitos": [
+        "26 habilidades de Especialização",
+        "Constituição Perfeita"
+      ]
+    },
+    {
+      "nome": "Domínio Veloz",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000093",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Novo Estilo das Sombras",
+      "requisitos": [
+        "Domínio Simples"
+      ]
+    },
+    {
+      "nome": "Adepto das Sombras",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000094",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Novo Estilo das Sombras",
+      "requisitos": [
+        "Domínio Simples"
+      ]
+    },
+    {
+      "nome": "Domínio da Proteção",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000095",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Novo Estilo das Sombras",
+      "requisitos": [
+        "Adepto das Sombras"
+      ]
+    },
+    {
+      "nome": "Expansão Aumentada",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000096",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Novo Estilo das Sombras",
+      "requisitos": [
+        "Domínio da Proteção"
+      ]
+    },
+    {
+      "nome": "Domínio Móvel",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000097",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Novo Estilo das Sombras",
+      "requisitos": [
+        "Expansão Aumentada"
+      ]
+    },
+    {
+      "nome": "Troca Arriscada",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000098",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Novo Estilo das Sombras",
+      "requisitos": [
+        "Domínio Móvel"
+      ]
+    },
+    {
+      "nome": "Lâmina Partida",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000099",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Novo Estilo das Sombras",
+      "requisitos": [
+        "Troca Arriscada"
+      ]
+    },
+    {
+      "nome": "Deus da Lâmina",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000100",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Novo Estilo das Sombras",
+      "requisitos": [
+        "Sentinela",
+        "Lâmina Partida"
+      ]
+    },
+    {
+      "nome": "Proteção Instintiva",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000101",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Ressonância da Alma",
+      "requisitos": []
+    },
+    {
+      "nome": "Fonte de Poder",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000102",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Ressonância da Alma",
+      "requisitos": []
+    },
+    {
+      "nome": "Leitura Perfeita",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000103",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Ressonância da Alma",
+      "requisitos": [
+        "Fonte de Poder"
+      ]
+    },
+    {
+      "nome": "Expandir Energia",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000104",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Ressonância da Alma",
+      "requisitos": [
+        "Fonte de Poder"
+      ]
+    },
+    {
+      "nome": "Análise Constante",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000105",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Ressonância da Alma",
+      "requisitos": [
+        "5 Pontos de Presença e Fonte de Poder"
+      ]
+    },
+    {
+      "nome": "Sede de Sangue",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000106",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Ressonância da Alma",
+      "requisitos": [
+        "Expandir Energia"
+      ]
+    },
+    {
+      "nome": "Agressão da Alma",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000107",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Ressonância da Alma",
+      "requisitos": [
+        "Sede de Sangue"
+      ]
+    },
+    {
+      "nome": "Corpo e Alma",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000108",
+      "categoria": "Habilidades Especiais",
+      "caminho": "Ressonância da Alma",
+      "requisitos": [
+        "Agressão da Alma"
+      ]
+    },
+    {
+      "nome": "Energia Reversa",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000110",
+      "categoria": "Energia Reversa",
+      "caminho": "Técnica de Energia Reversa",
+      "requisitos": []
+    },
+    {
+      "nome": "Regeneração de Feridas",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000111",
+      "categoria": "Energia Reversa",
+      "caminho": "Técnica de Energia Reversa",
+      "requisitos": [
+        "Energia Reversa"
+      ]
+    },
+    {
+      "nome": "Recuperando Reservas",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000112",
+      "categoria": "Energia Reversa",
+      "caminho": "Técnica de Energia Reversa",
+      "requisitos": [
+        "Regeneração de Feridas"
+      ]
+    },
+    {
+      "nome": "Reversão Ofensiva",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000113",
+      "categoria": "Energia Reversa",
+      "caminho": "Técnica de Energia Reversa",
+      "requisitos": [
+        "Energia Reversa"
+      ]
+    },
+    {
+      "nome": "Reversão de Feitiço",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000114",
+      "categoria": "Energia Reversa",
+      "caminho": "Técnica de Energia Reversa",
+      "requisitos": [
+        "Reversão Ofensiva"
+      ]
+    },
+    {
+      "nome": "Reversão Externa",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000115",
+      "categoria": "Energia Reversa",
+      "caminho": "Técnica de Energia Reversa",
+      "requisitos": [
+        "Recuperando Reservas"
+      ]
+    },
+    {
+      "nome": "Regeneração por Fulgor",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000116",
+      "categoria": "Energia Reversa",
+      "caminho": "Técnica de Energia Reversa",
+      "requisitos": [
+        "Recuperando Reservas"
+      ]
+    },
+    {
+      "nome": "Reversão Extrema",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000117",
+      "categoria": "Energia Reversa",
+      "caminho": "Técnica de Energia Reversa",
+      "requisitos": [
+        "7 Habilidades de Energia Reversa"
+      ]
+    },
+    {
+      "nome": "Reverter Esgotamento",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000118",
+      "categoria": "Energia Reversa",
+      "caminho": "Técnica de Energia Reversa",
+      "requisitos": [
+        "8 Habilidades de Energia Reversa"
+      ]
+    },
+    {
+      "nome": "Expansão Especial",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000120",
+      "categoria": "Domínio e Anti-Domínio",
+      "caminho": "Técnicas de Expansão de Domínio",
+      "requisitos": [
+        "Feitiço com Expansão de Domínio Especial"
+      ]
+    },
+    {
+      "nome": "Domínio Incompleto",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000121",
+      "categoria": "Domínio e Anti-Domínio",
+      "caminho": "Técnicas de Expansão de Domínio",
+      "requisitos": [
+        "6º nível de personagem"
+      ]
+    },
+    {
+      "nome": "Configurando Expansão",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000122",
+      "categoria": "Domínio e Anti-Domínio",
+      "caminho": "Técnicas de Expansão de Domínio",
+      "requisitos": [
+        "Domínio Incompleto ou Superior"
+      ]
+    },
+    {
+      "nome": "Expansão de Domínio",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000123",
+      "categoria": "Domínio e Anti-Domínio",
+      "caminho": "Técnicas de Expansão de Domínio",
+      "requisitos": [
+        "10º nível de personagem",
+        "Barreira Vazia"
+      ]
+    },
+    {
+      "nome": "Fortalecendo Domínio",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000124",
+      "categoria": "Domínio e Anti-Domínio",
+      "caminho": "Técnicas de Expansão de Domínio",
+      "requisitos": [
+        "Domínio Incompleto ou Superior"
+      ]
+    },
+    {
+      "nome": "Modificação de Domínio",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000125",
+      "categoria": "Domínio e Anti-Domínio",
+      "caminho": "Técnicas de Expansão de Domínio",
+      "requisitos": [
+        "Domínio Completo"
+      ]
+    },
+    {
+      "nome": "Expansão sem Barreiras",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000126",
+      "categoria": "Domínio e Anti-Domínio",
+      "caminho": "Técnicas de Expansão de Domínio",
+      "requisitos": [
+        "Domínio Completo",
+        "16º nível de personagem"
+      ]
+    },
+    {
+      "nome": "Domínio Simples",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000127",
+      "categoria": "Domínio e Anti-Domínio",
+      "caminho": "Técnicas Anti-Domínio",
+      "requisitos": []
+    },
+    {
+      "nome": "Cesta Oca de Vime",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000128",
+      "categoria": "Domínio e Anti-Domínio",
+      "caminho": "Técnicas Anti-Domínio",
+      "requisitos": [
+        "4º nível ou superior"
+      ]
+    },
+    {
+      "nome": "Emoção da Flor Caída",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000129",
+      "categoria": "Domínio e Anti-Domínio",
+      "caminho": "Técnicas Anti-Domínio",
+      "requisitos": [
+        "4º nível ou superior"
+      ]
+    },
+    {
+      "nome": "Amplificação de Domínio",
+      "uuid": "Compendium.jujutsu-compendium.geral-2-0.Item.jj2a000000000130",
+      "categoria": "Domínio e Anti-Domínio",
+      "caminho": "Técnicas Anti-Domínio",
+      "requisitos": [
+        "Deve possuir uma Expansão de Domínio Completa"
+      ]
+    }
+  ]
+}

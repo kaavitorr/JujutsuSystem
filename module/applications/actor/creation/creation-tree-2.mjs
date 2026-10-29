@@ -14,7 +14,8 @@ export function buildCreationTree(draft, style, catalog, { category, focus, sear
   const query = normalize(search);
   const nodes = layout.nos.map(node => {
     const picked = draft.specializations.includes(node.nome);
-    const evaluation = evaluateCreationSpecialization(draft, style, node);
+    const evaluation = evaluateCreationSpecialization(draft, style, node, draft.specializations,
+      catalog.species?.find(doc => doc.uuid === draft.species));
     const canChoose = !!style && creationPodeEscolher(draft, style, node, catalog);
     const estado = picked ? "adquirido" : canChoose ? "disponivel" : "bloqueado";
     const reason = evaluation.pendencias.map(pending => pending.texto).join("; ")

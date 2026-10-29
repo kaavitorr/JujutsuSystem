@@ -12,6 +12,14 @@ test("condition editor uses the game's Jujutsu conditions and the enabled save r
   assert.deepEqual(context.saveOptions.map(option => option.label), ["Fortitude", "Vontade", "Reflexo"]);
   assert.equal(context.rows[0].saveValue, "con");assert.equal(context.isAttack, true);
 });
+test("the condition picker also accepts native keyed registry entries without a redundant id field", () => {
+  const previous = CONFIG.statusEffects;
+  CONFIG.statusEffects = {"jj-atordoado": {name: "Atordoado"}, "jj-cego": {name: "Cego"}, poisoned: {name: "Envenenado"}};
+  try {
+    const context = api.activityConditionsContext({type: "save", conditions: []});
+    assert.deepEqual(context.conditionOptions, [{value: "jj-atordoado", label: "Atordoado"}, {value: "jj-cego", label: "Cego"}]);
+  } finally {CONFIG.statusEffects = previous;}
+});
 test("attack and save effect editors replace applied effects with the condition editor", () => {
   for (const type of ["attack", "save"]) {
     const template = readFileSync(new URL(`../templates/activity/${type}-effect.hbs`, import.meta.url), "utf8");

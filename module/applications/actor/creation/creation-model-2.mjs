@@ -76,14 +76,23 @@ export function creationDraft(actor) {
     physical: Object.fromEntries(["height", "hair", "weight", "gender", "skin", "age"].map(key => [key, ""])) };
 }
 
-export function creationBudgets(style, caminho = null) {
+export const creationWeaponBonus = (style, caminho) =>
+  scopeKey(style?.system?.identifier || style?.name) === "lutador" && caminho === "mestre-armas" ? 2 : 0;
+
+export function creationCombinationError(style, species) {
+  return scopeKey(style?.system?.identifier || style?.name) === "restringido"
+    && scopeKey(species?.system?.identifier || species?.name) === "imaculado"
+    ? "Imaculado não pode usar o Estilo Restringido, pois concede Canalização de Energia. Escolha outro Estilo ou Origem." : null;
+}
+
+export function creationBudgets(style, caminho = null, species = null) {
   const flags = styleRules(style), points = flags.proficiencias ?? {};
-  return { attributes: 20, attributeMax: 6, specializations: creationSpecializationSlots(style, caminho).total,
-    armas: integer(points.armas), saves: integer(points.salvaguardas), skills: integer(points.pericias) };
+  return { attributes: 20, attributeMax: 6, specializations: creationSpecializationSlots(style, caminho, species).total,
+    armas: integer(points.armas) + creationWeaponBonus(style, caminho), saves: integer(points.salvaguardas), skills: integer(points.pericias) };
 }
 
 /** Slots de especialização da criação, divididos em grupos restritos. */
-export function creationSpecializationSlots(style, caminho = null) {
+export function creationSpecializationSlots(style, caminho = null, species = null) {
   const escopo = creationSpecializationScope(style);
   const grupos = [{ id: "base", quantidade: integer(styleRules(style).espIniciais),
     rotulo: escopo ?? "Especializações", categorias: escopo ? [escopoCategoria(escopo)] : null, nomes: null }];
@@ -94,6 +103,12 @@ export function creationSpecializationSlots(style, caminho = null) {
     grupos[0].categorias = [escopoCategoria("Proezas Físicas"), escopoCategoria("Habilidades Especiais")];
     grupos[0].rotulo = "Proezas Físicas ou Habilidades Especiais";
   }
+  if (chaveEstilo === "especialista")
+    grupos.push({ id: "manipulacao-feitico", quantidade: 1, rotulo: "Manipulação de Feitiço — Feitiço Inato",
+      categorias: [escopoCategoria("Feitiço Inato")], nomes: null });
+  if (style && scopeKey(species?.system?.identifier || species?.name) === "imaculado")
+    grupos.push({ id: "origem-canalizacao", quantidade: 2, rotulo: "Imaculado — Canalização de Energia",
+      categorias: [escopoCategoria("Canalização de Energia")], nomes: null });
   if (style?.system?.identifier === "estrategista" || String(style?.name ?? "").toLowerCase() === "estrategista") {
     if (caminho === "mestre-barreiras")
       grupos.push({ id: "barreiras", quantidade: 3, rotulo: "Técnicas de Barreira",
@@ -177,11 +192,15 @@ export function creationSpeciesGroups(species, matches = () => true) {
 
 export function allocateCreationRank(draft, style, category, key, rank) {
   if (!CREATION_RANK_KEYS[category]?.includes(key) || !Number.isInteger(rank) || rank < 0 || rank > 4) return false;
+  if (rank > 0 && !creationRankAllowed(style, category, key)) return false;
   const group = draft.proficiencies[category];
-  if (rankSpent(group) - group[key] + rank > creationBudgets(style)[category]) return false;
+  if (rankSpent(group) - group[key] + rank > creationBudgets(style, draft.caminho)[category]) return false;
   group[key] = rank;
   return true;
 }
+
+export const creationRankAllowed = (style, category, key) =>
+  !(scopeKey(style?.system?.identifier || style?.name) === "restringido" && category === "skills" && key === "arc");
 
 export function shouldOpenCreation(actor, options = {}, userId, currentUserId, enabled) {
   return !!enabled && userId === currentUserId && actor?.type === "character" && actor.isOwner
@@ -202,8 +221,8 @@ export function creationActor(draft, style, learned = draft.specializations) {
     getFlag: (scope, key) => key === "especializacoes" ? learned : undefined };
 }
 
-export function evaluateCreationSpecialization(draft, style, node, learned = draft.specializations) {
-  const slots = creationSpecializationSlots(style, draft.caminho);
+export function evaluateCreationSpecialization(draft, style, node, learned = draft.specializations, species = null) {
+  const slots = creationSpecializationSlots(style, draft.caminho, species);
   const bloqueio = bloqueioDeEstilo(style, node);
   if ( bloqueio )
     return { estado: "bloqueado", pendencias: [{ texto: bloqueio }], informativos: [] };
@@ -220,9 +239,10 @@ export function evaluateCreationSpecialization(draft, style, node, learned = dra
 export function creationPodeEscolher(draft, style, node, catalog) {
   if (!node) return false;
   if (draft.specializations.includes(node.nome)) return true;
-  const slots = creationSpecializationSlots(style, draft.caminho);
+  const species = catalog.species?.find(doc => doc.uuid === draft.species);
+  const slots = creationSpecializationSlots(style, draft.caminho, species);
   if (draft.specializations.length >= slots.total) return false;
-  if (evaluateCreationSpecialization(draft, style, node).estado !== "disponivel") return false;
+  if (evaluateCreationSpecialization(draft, style, node, draft.specializations, species).estado !== "disponivel") return false;
   return cabemNosGrupos(slots.grupos, [...draft.specializations, node.nome], catalog);
 }
 
@@ -233,7 +253,8 @@ export function toggleCreationSpecialization(draft, style, node, catalog) {
     const remaining = draft.specializations.filter(name => name !== node.nome), valid = [];
     for (const name of remaining) {
       const candidate = catalog.graph.porNome.get(name);
-      if (candidate && evaluateCreationSpecialization(draft, style, candidate, valid).estado === "disponivel") valid.push(name);
+      if (candidate && evaluateCreationSpecialization(draft, style, candidate, valid,
+        catalog.species?.find(doc => doc.uuid === draft.species)).estado === "disponivel") valid.push(name);
     }
     draft.specializations = valid;
     return true;
@@ -261,20 +282,22 @@ export function validateCreation(draft, catalog, throughStep = 2) {
       : `Distribua ${orcamentoAtributos} pontos de atributo (20 + ${orcamentoAtributos - 20} da Origem), com valores de 1 a 6.`);
   if (throughStep >= 1) {
     if (!style) fail(1, "Escolha seu Estilo de Combate.");
-    const budget = creationBudgets(style), allowed = creationPrimaryOptions(style);
+    const combinationError = creationCombinationError(style, species);
+    if (combinationError) fail(1, combinationError);
+    const allowed = creationPrimaryOptions(style);
     if (style && !allowed.includes(draft.primary)) fail(1, "Escolha o atributo principal do Estilo.");
     const caminhos = creationPathOptions(style);
     if (style && caminhos.length && !caminhos.some(caminho => caminho.id === draft.caminho))
       fail(1, `Escolha o caminho do seu Estilo: ${caminhos.map(caminho => caminho.label).join(" ou ")}.`);
-    const slots = creationSpecializationSlots(style, draft.caminho);
+    const slots = creationSpecializationSlots(style, draft.caminho, species);
     if (draft.specializations.length !== slots.total || new Set(draft.specializations).size !== draft.specializations.length)
       fail(1, `Escolha ${slots.total} habilidades de Especialização.`);
     else if (!cabemNosGrupos(slots.grupos, draft.specializations, catalog))
-      fail(1, `Distribua suas escolhas entre os grupos do Estilo: ${slots.grupos.map(grupo => `${grupo.quantidade} de ${grupo.rotulo}`).join(" e ")}.`);
+      fail(1, `Distribua suas escolhas entre os grupos da criação: ${slots.grupos.map(grupo => `${grupo.quantidade} de ${grupo.rotulo}`).join(" e ")}.`);
     const learned = [];
     for (const name of draft.specializations) {
       const node = catalog.graph?.porNome.get(name);
-      if (!node || evaluateCreationSpecialization(draft, style, node, learned).estado !== "disponivel") fail(1, `Confira os requisitos de ${name}.`);
+      if (!node || evaluateCreationSpecialization(draft, style, node, learned, species).estado !== "disponivel") fail(1, `Confira os requisitos de ${name}.`);
       learned.push(name);
     }
   }
@@ -283,9 +306,13 @@ export function validateCreation(draft, catalog, throughStep = 2) {
     for (const [category, keys] of Object.entries(CREATION_RANK_KEYS)) {
       const group = draft.proficiencies[category];
       if (keys.some(key => !Number.isInteger(group?.[key]) || group[key] < 0 || group[key] > 4)
-        || Object.keys(group ?? {}).some(key => !keys.includes(key)) || rankSpent(group) !== creationBudgets(style)[category])
+        || Object.keys(group ?? {}).some(key => !keys.includes(key)) || rankSpent(group) !== creationBudgets(style, draft.caminho, species)[category])
         fail(2, `Distribua os pontos de ${ { saves: "Salvaguardas", armas: "Armas", skills: "Perícias" }[category] } do seu Estilo.`);
+      if (keys.some(key => group?.[key] > 0 && !creationRankAllowed(style, category, key)))
+        fail(2, "O Restringido não pode distribuir pontos iniciais em Feitiçaria.");
     }
+    if (creationWeaponBonus(style, draft.caminho) && !Object.values(draft.proficiencies.armas).some(rank => rank >= 2))
+      fail(2, "Maestria: distribua os 2 pontos extras no mesmo tipo de arma.");
     const customSources = new Set();
     for (const section of CUSTOMIZATION_SECTIONS) {
       const selected = draft.customization[section.id] ?? [];

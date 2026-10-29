@@ -6,6 +6,9 @@ export function creationAdvancementFlows(manager) {
       const advancement = flow.advancement;
       const type = advancement.type ?? advancement.constructor.typeName;
       if (["race", "class"].includes(item.type) && ["AbilityScoreImprovement", "HitPoints"].includes(type)) continue;
+      const choices = advancement.configuration.choices?.[level];
+      if (type === "ItemChoice" && choices?.count > 0 && !choices.replacement
+        && Object.keys(advancement.value?.added?.[level] ?? {}).length >= choices.count) continue;
       // Mandatory grants have already been resolved, including their own advancements.
       if (type === "ItemGrant" && !advancement.configuration.optional
         && !advancement.configuration.items.some(grant => grant.optional)
@@ -37,8 +40,46 @@ async function resolveInitialPools(plan, resolve) {
   }
 }
 
+/** Let native grants recognize a non-repeatable feature already chosen in the creator. */
+function reconcileInitialGrants(plan) {
+  const source = item => item.flags?.JujutsuLegacy?.sourceId ?? item.flags?.["jujutsu-system"]?.sourceId
+    ?? item._stats?.compendiumSource ?? item.flags?.["jujutsu-system"]?.creation2Source;
+  for (const owner of plan.create) for (const advancement of Object.values(owner.system?.advancement ?? {})) {
+    if (advancement.type !== "ItemGrant" || Number(advancement.level ?? 0) > 1) continue;
+    const origin = `${owner._id}.${advancement._id}`;
+    for (const { uuid } of advancement.configuration?.items ?? []) {
+      const existing = plan.create.find(item => item.type === "feat" && !item.system?.prerequisites?.repeatable
+        && source(item) === uuid && (!item.flags?.JujutsuLegacy?.advancementOrigin
+          || item.flags.JujutsuLegacy.advancementOrigin === origin)
+        && (!item.flags?.["jujutsu-system"]?.advancementOrigin
+          || item.flags["jujutsu-system"].advancementOrigin === origin));
+      if (!existing) continue;
+      (advancement.value ??= {}).added ??= {};
+      advancement.value.added[existing._id] = uuid;
+      existing.flags ??= {};
+      for (const scope of ["jujutsu-system", "JujutsuLegacy"]) Object.assign(existing.flags[scope] ??= {}, {
+        sourceId: uuid, advancementOrigin: origin,
+        advancementRoot: owner.flags?.[scope]?.advancementRoot ?? origin
+      });
+    }
+  }
+}
+
+/** ItemChoice applies checkbox changes immediately, but native navigation does not require a full choice. */
+function incompleteCreationChoice(step) {
+  const advancement = step?.flow?.advancement;
+  if ((advancement?.type ?? advancement?.constructor.typeName) !== "ItemChoice") return null;
+  const level = step.flow.level, required = Number(advancement.configuration.choices?.[level]?.count ?? 0);
+  const counts = advancement.getCounts?.(level) ?? {
+    current: Object.keys(advancement.value?.added?.[level] ?? {}).length, max: required
+  };
+  return counts.current < counts.max ? counts : null;
+}
+
 /** Serialize the native preview, after transferred effects and all advancement choices. */
 export function creationPlanFromPreview(preview) {
+  const originUpdates = creationOriginResourceUpdates(preview.toObject().items);
+  if (Object.keys(originUpdates).length) preview.updateSource(originUpdates);
   preview.reset();
   const { items, _id, ...actor } = preview.toObject();
   items.push(...channelingTechniqueGrants(items, Ruleset.nivel(preview)).map(item => ({ ...item, _id: foundry.utils.randomID() })));
@@ -81,17 +122,89 @@ export async function collectCreationAdvancements(actor, plan, {
   resolve = globalThis.fromUuid, Manager
 } = {}) {
   await resolveInitialPools(plan, resolve);
+  reconcileInitialGrants(plan);
   Manager ??= (await import("../../advancement/advancement-manager.mjs")).default;
-  let finish;
-  const result = new Promise(resolve => { finish = resolve; });
+  let finish, reject, settled = false;
+  const result = new Promise((resolve, fail) => { finish = resolve;reject = fail; });
   class CreationAdvancementManager extends Manager {
+    static DEFAULT_OPTIONS = {
+      ...Manager.DEFAULT_OPTIONS,
+      actions: Object.fromEntries(Object.entries(Manager.DEFAULT_OPTIONS.actions).map(([action, handler]) => [
+        action, async function(event, target) {
+          if (["next", "complete"].includes(action)) {
+            const counts = incompleteCreationChoice(this.step);
+            if (counts) {
+              ui.notifications.error(`Selecione os benefícios obrigatórios antes de continuar (${counts.current}/${counts.max}).`);
+              return;
+            }
+          }
+          try { return await handler.call(this, event, target); }
+          catch (error) { await this._failCreation(error);throw error; }
+        }
+      ]))
+    };
+
+    _settleCreation() {
+      if (settled) return;
+      settled = true;
+      if (this.creationError) reject(this.creationError);
+      else finish(this.creationResult ?? null);
+    }
+
+    async _failCreation(error) {
+      this.creationError ??= error;
+      // A failed form or transition must release both windows before the creator resumes.
+      await Promise.allSettled(this.steps.map(step => step.flow?.close()));
+      try { await this.close({ skipConfirmation: true }); }
+      finally { this._settleCreation(); }
+    }
+
+    _guardCreationFlow(flow) {
+      if (!flow || this.guardedCreationFlows.has(flow)) return;
+      this.guardedCreationFlows.add(flow);
+      for (const name of ["_handleForm", "_onDrop", "render"]) {
+        if (typeof flow[name] !== "function") continue;
+        const method = flow[name];
+        flow[name] = async (...args) => {
+          try { return await method.apply(flow, args); }
+          catch (error) {
+            const ExpectedError = flow.advancement.constructor.ERROR;
+            if (!ExpectedError || !(error instanceof ExpectedError)) await this._failCreation(error);
+            throw error;
+          }
+        };
+      }
+    }
+
+    guardedCreationFlows = new WeakSet();
+
+    async render(...args) {
+      this._guardCreationFlow((this.step ?? this.steps[0])?.flow);
+      try {
+        const rendered = await super.render(...args);
+        if (!settled && rendered === undefined) {
+          throw new Error("A abertura dos benefícios da criação foi interrompida. Tente concluir a criação novamente.");
+        }
+        return rendered;
+      } catch (error) {
+        await this._failCreation(error);
+        return this;
+      }
+    }
+
     async _complete() {
       this.creationResult = creationPlanFromPreview(this.clone);
       await this.close({ skipConfirmation: true });
+      // V14 skips _onClose when every flow was automatic and no window rendered.
+      this._settleCreation();
+    }
+    async close(options = {}) {
+      await super.close(options);
+      if (!this.rendered && !this.element) this._settleCreation();
     }
     _onClose(options) {
       super._onClose(options);
-      finish(this.creationResult ?? null);
+      this._settleCreation();
     }
   }
   const manager = new CreationAdvancementManager(actor, { automaticApplication: true });
@@ -105,6 +218,7 @@ export async function collectCreationAdvancements(actor, plan, {
 import Ruleset from "../../../systems/ruleset.mjs";
 import { EnergySystem } from "../../../systems/energy.mjs";
 import { channelingTechniqueGrants } from "../../../systems/legacy2-channeling-techniques.mjs";
+import { creationOriginResourceUpdates } from "./creation-origin-resources-2.mjs";
 
 /** Initialize resources using the same reserve transfer and stamina rules as a normal turn. */
 export function initialCreationEnergy(actor, maximum = actor.system.energy?.max ?? 0) {

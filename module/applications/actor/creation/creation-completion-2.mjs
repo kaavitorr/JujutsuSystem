@@ -2,7 +2,8 @@ import Ruleset from "../../../systems/ruleset.mjs";
 import { channelingTechniqueGrants } from "../../../systems/legacy2-channeling-techniques.mjs";
 import { alternativeSavesEnabled } from "../../../systems/legacy2-alternative-saves.mjs";
 import { collectCreationAdvancements, initialCreationEnergy } from "./creation-advancements-2.mjs";
-import { creationActor, validateCreation, rankSpent, ABILITY_KEYS, styleRules, creationPathOptions, creationSpecializationSlots,
+import { creationOriginResourceUpdates } from "./creation-origin-resources-2.mjs";
+import { creationActor, validateCreation, rankSpent, ABILITY_KEYS, styleRules, creationPathOptions, creationSpecializationSlots, creationWeaponBonus,
   PENALIDADE_VITAL_NOME, penalidadeVitalUuid } from "./creation-model-2.mjs";
 
 const pending = new WeakMap();
@@ -36,6 +37,7 @@ export async function prepareCreationCompletion(actor, draft, catalog, {
   const fresh = { ...catalog, species: [species], styles: [style] };
   const errors = validateCreation(draft, fresh);
   if (errors.length) throw new Error(errors[0].message);
+  const caminhoInfo = creationPathOptions(style).find(caminho => caminho.id === draft.caminho) ?? null;
 
   const create = [], seen = new Map(), resolving = new Set();
   async function addDocument(uuid, tag = {}, depth = 0) {
@@ -83,6 +85,28 @@ export async function prepareCreationCompletion(actor, draft, catalog, {
       // Source items can be copies of an owned item. Never retain another actor's grants.
       if (advancement.type === "ItemGrant") advancement.value = {};
       if (advancement.type === "ItemChoice") advancement.value = { added: {}, replaced: {} };
+      // The style path was already selected in the creator. Record that choice
+      // on its native advancement instead of asking again in a second modal.
+      if (advancement.type === "ItemChoice" && source === style.uuid && caminhoInfo
+        && advancement.classRestriction !== "secondary"
+        && Number(advancement.configuration?.choices?.[1]?.count) === 1) {
+        for (const entry of advancement.configuration.pool ?? []) {
+          const option = await resolve(entry.uuid);
+          if (!option || option.name !== caminhoInfo.label) continue;
+          advancement._id ??= key;
+          const granted = await addDocument(entry.uuid, {}, depth + 1);
+          const uuid = granted.flags["jujutsu-system"].creation2Source;
+          entry.uuid = uuid;
+          advancement.value.added[1] = { [granted._id]: uuid };
+          const origin = `${data._id}.${advancement._id}`;
+          for (const scope of ["jujutsu-system", "JujutsuLegacy"]) {
+            const flags = granted.flags[scope] ??= {};
+            flags.advancementOrigin = origin;
+            flags.advancementRoot = origin;
+          }
+          break;
+        }
+      }
       if (advancement.type !== "ItemGrant" || Number(advancement.level ?? 0) > 1) continue;
       advancement._id ??= key;
       advancement.value.added = {};
@@ -149,8 +173,8 @@ export async function prepareCreationCompletion(actor, draft, catalog, {
   if ( penalidadeVital === "energia" ) preview.system.legacy2.energiaEspecie -= 4;
   const hp = Ruleset.maxHitPoints(preview), energy = Ruleset.maxEnergy(preview);
   const initialEnergy = initialCreationEnergy(preview, energy);
-  const caminhoInfo = creationPathOptions(style).find(caminho => caminho.id === draft.caminho) ?? null;
-  const slotsExtras = Math.max(0, creationSpecializationSlots(style, draft.caminho).total - Number(styleRules(style).espIniciais ?? 0));
+  const slotsExtras = Math.max(0, creationSpecializationSlots(style, draft.caminho, species).total - Number(styleRules(style).espIniciais ?? 0));
+  const pontosArmasExtras = creationWeaponBonus(style, draft.caminho);
   const updates = { name: draft.name.trim(), img: draft.img || actor.img,
     "system.details.originalClass": seen.get(draft.style)._id,
     "prototypeToken.texture.src": draft.tokenImg || draft.img || actor.prototypeToken?.texture?.src,
@@ -162,9 +186,10 @@ export async function prepareCreationCompletion(actor, draft, catalog, {
     "system.legacy2.pontos.gastos": Object.values(draft.proficiencies).reduce((sum, ranks) => sum + rankSpent(ranks), 0),
     "flags.jujutsu-system.especializacoes": [...draft.specializations],
     "flags.jujutsu-system.caminhoEstilo": (caminhoInfo || slotsExtras > 0)
-      ? { id: caminhoInfo?.id ?? null, label: caminhoInfo?.label ?? null, estilo: style.name, slotsExtras } : null,
+      ? { id: caminhoInfo?.id ?? null, label: caminhoInfo?.label ?? null, estilo: style.name, slotsExtras, pontosArmasExtras } : null,
     "flags.jujutsu-system.creation2": { completed: true, completedAt: Date.now(), species: draft.species,
       style: draft.style, primary: draft.primary, caminho: draft.caminho, specializations: [...draft.specializations] } };
+  Object.assign(updates, creationOriginResourceUpdates(create));
   for (const key of ABILITY_KEYS) updates[`system.abilities.${key}.value`] = draft.abilities[key];
   for (const [category, ranks] of Object.entries(draft.proficiencies)) {
     const field = category === "saves" && alternativeSavesEnabled() ? "alternativeSaves" : category;

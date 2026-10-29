@@ -89,7 +89,8 @@ export default class Ruleset {
     const level = Number(actor?.system?.details?.level ?? 1);
     const extra = Number(actor?.system?.legacy2?.pontos?.extra ?? 0);
     const defeitos = proficienciaPorDefeitos(actor);
-    return creation + (stylePoints ? Math.max(0, level - 1) : level) + extra + defeitos;
+    const maestria = this.isV2() ? Math.max(0, Math.floor(Number(actor?.getFlag?.("jujutsu-system", "caminhoEstilo")?.pontosArmasExtras) || 0)) : 0;
+    return creation + (stylePoints ? Math.max(0, level - 1) : level) + extra + defeitos + maestria;
   }
 
   /** Pontos ainda disponíveis (total − gastos). */

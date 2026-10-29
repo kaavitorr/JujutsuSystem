@@ -19,8 +19,8 @@ export function conditionSaveOptions() {
     : Object.entries(CONFIG.DND5E.abilities).map(([value, config]) => ({ value, label: localize(config.label) }));
 }
 export function activityConditionsContext(activity) {
-  const conditionOptions = Object.values(CONFIG.statusEffects ?? {}).filter(condition => condition.id
-    && (!Ruleset.isV2() || condition.id.startsWith("jj-"))).map(condition => ({ value: condition.id, label: conditionName(condition.id) }))
+  const conditionOptions = Object.entries(CONFIG.statusEffects ?? {}).map(([id, condition]) => condition.id ?? id)
+    .filter(id => id && (!Ruleset.isV2() || id.startsWith("jj-"))).map(id => ({ value: id, label: conditionName(id) }))
     .sort((a, b) => a.label.localeCompare(b.label, "pt-BR"));
   return { conditionOptions, saveOptions: conditionSaveOptions(), isAttack: activity.type === "attack",
     hasDamage: !!activity.damage?.parts?.length && !!Array.from(activity.save?.ability ?? []).length,

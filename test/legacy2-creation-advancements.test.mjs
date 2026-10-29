@@ -2,6 +2,10 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { collectCreationAdvancements, creationAdvancementFlows, creationPlanFromPreview } from "../module/applications/actor/creation/creation-advancements-2.mjs";
+import { commitCreation } from "../module/applications/actor/creation/creation-completion-2.mjs";
+import { creationDraft } from "../module/applications/actor/creation/creation-model-2.mjs";
+import { performValidatedCustomizationBatch } from "../module/applications/actor/jj/legacy2-customization.mjs";
+import Ruleset from "../module/systems/ruleset.mjs";
 globalThis.game={settings:{get:(_scope,key)=>key==="rulesetVersion"?"2.0":{}}};
 
 const copy = value => structuredClone(value);
@@ -15,9 +19,13 @@ function merge(target, updates) {
   }
 }
 class NativeApplicationBoundary {
-  constructor(options={}) { this.options=options;this.element={querySelector:()=>null}; }
-  async render() { this.rendered=true;return this; }
-  async close(options={}) { this.rendered=false;this._onClose(options); }
+  constructor(options={}) { this.options=options;this.element=null;this.rendered=false; }
+  async render() { this.rendered=true;this.element={querySelector:()=>null};return this; }
+  async close(options={}) {
+    // V14 returns before _onClose when automatic flows never rendered a window.
+    if (!this.element) return this;
+    this.rendered=false;this.element=null;this._onClose(options);return this;
+  }
   _onClose() {}
 }
 class FlowBoundary extends NativeApplicationBoundary {
@@ -85,6 +93,64 @@ const advanceDefinitions=[
 ];
 const resolve=async uuid=>({uuid});
 
+test("all-automatic initial benefits complete even when V14 never opens or closes a manager window",async()=>{
+  const actor=empty();actor.definitions=advanceDefinitions.filter(def=>def.id==="language");let manager;
+  class Manager extends NativeManager {constructor(...args){super(...args);manager=this;}}
+  const pending=collectCreationAdvancements(actor,plan(),{Manager,resolve});
+  const outcome=await Promise.race([pending.then(value=>({state:"complete",value})),
+    new Promise(resolve=>setTimeout(()=>resolve({state:"waiting"}),50))]);
+  assert.equal(outcome.state,"complete","the hidden creator must not keep waiting for a window that never rendered");
+  assert.equal(manager.rendered,false);assert.equal(manager.element,null);
+  assert.equal(outcome.value.actor.system.traits.languages.value[0],"common");
+  assert.deepEqual(outcome.value.create.map(item=>item._id),["origin","style"]);
+  assert.equal(actor.data.items.length,0,"the preview still waits for the single real character commit");
+});
+
+test("Finish persists the origin, style, initial grants, effects and allocations through the real native batch builder",async()=>{
+  const actor=empty();actor.id="actor";actor.type="character";actor.isOwner=true;actor.name="Inicial";actor.img="old.webp";
+  actor.getFlag=(scope,key)=>actor.data.flags?.[scope]?.[key];
+  actor.definitions=[{...advanceDefinitions.find(def=>def.id==="language"),item:"creation1"}];
+  const actorSource=readFileSync(new URL("../module/documents/actor/actor.mjs",import.meta.url),"utf8");
+  const bulkMethod=actorSource.match(/\n  performBulkUpdate\([\s\S]*?\n  \}/)[0];
+  const BulkActor=new Function("Ruleset","performValidatedCustomizationBatch",`return class {${bulkMethod}}`)(Ruleset,performValidatedCustomizationBatch);
+  actor.performBulkUpdate=BulkActor.prototype.performBulkUpdate;
+  const feature={uuid:"Item.feature",type:"feat",name:"Benefício inicial",system:{activities:{ability:{type:"utility"}}},effects:[{_id:"effect",name:"Efeito inicial",transfer:true}]};
+  const flaw={uuid:"Item.flaw",type:"feat",name:"Defeito de teste",system:{},effects:[]};
+  const origin={uuid:"Item.origin",type:"race",name:"Origem",flags:{},system:{advancement:{grant:{_id:"grant",type:"ItemGrant",level:0,configuration:{items:[{uuid:feature.uuid}]}}}}};
+  const style={uuid:"Item.style",type:"class",name:"Estilo",system:{levels:1,advancement:{}},
+    flags:{"jujutsu-system":{legacy2:{vidaBase:7,energiaBase:10,atributoPrincipal:"str",espIniciais:0,proficiencias:{armas:0,salvaguardas:0,pericias:1}}}}};
+  const draft=creationDraft(actor);Object.assign(draft,{species:origin.uuid,style:style.uuid,primary:"str",name:"Criado",img:"portrait.webp",tokenImg:"token.webp"});
+  draft.abilities={str:6,dex:3,con:4,int:3,wis:2,cha:2};draft.proficiencies.skills.ath=1;draft.customization["jj-flaws"]=[flaw.uuid];
+  const catalog={species:[origin],styles:[style],customization:Object.fromEntries(Object.keys(draft.customization).map(key=>[key,key==="jj-flaws"?[flaw]:[]])),graph:{porNome:new Map()}};
+  const batches=[],previous=foundry.documents;let id=0;
+  foundry.documents={modifyBatch:async operations=>{
+    batches.push(operations);
+    for(const operation of operations){
+      if(operation.documentName==="Actor")actor.updateSource(operation.updates[0]);
+      else if(operation.documentName==="Item")actor.updateSource({items:operation.data});
+    }
+    return [[actor],actor.items];
+  }};
+  class Manager extends NativeManager {}
+  try {
+    const pending=commitCreation(actor,draft,catalog,{Manager,idFactory:()=>`creation${++id}`,resolve:async uuid=>[origin,style,feature,flaw].find(doc=>doc.uuid===uuid)});
+    const outcome=await Promise.race([pending.then(value=>({state:"complete",value})),new Promise(resolve=>setTimeout(()=>resolve({state:"waiting"}),50))]);
+    assert.equal(outcome.state,"complete");assert.equal(batches.length,1);
+    assert.equal(actor.getFlag("jujutsu-system","creation2").completed,true);
+    assert.equal(actor.data.name,"Criado");assert.equal(actor.data.img,"portrait.webp");
+    assert.equal(actor.data.system.abilities.str.value,6);assert.equal(actor.data.system.legacy2.skills.ath,1);
+    assert.deepEqual(actor.data.system.traits.languages.value,["common"]);
+    assert.deepEqual(actor.data.items.map(item=>item.name),["Origem","Benefício inicial","Estilo","Defeito de teste"]);
+    const owned=actor.data.items.find(item=>item.name===feature.name);
+    assert.equal(owned.effects[0]._id,"effect");assert.equal(owned.system.activities.ability.type,"utility");
+    assert.equal(owned.flags["jujutsu-system"].advancementOrigin,"creation1.grant");
+    assert.equal(actor.data.system.details.originalClass,actor.data.items.find(item=>item.type==="class")._id);
+    assert.equal(batches[0][1].keepId,true);
+    await assert.rejects(commitCreation(actor,draft,catalog,{Manager}),/não está disponível/);
+    assert.equal(batches.length,1);
+  }finally{foundry.documents=previous;}
+});
+
 test("creation applies automatic traits, asks initial choices and commits only the completed preview",async()=>{
   const actor=empty();actor.definitions=advanceDefinitions;let manager;
   class Manager extends NativeManager { constructor(...args){super(...args);manager=this;} }
@@ -130,6 +196,16 @@ test("only mandatory grants are already handled; optional grants and multiple si
   const flows=creationAdvancementFlows(manager);
   assert.deepEqual(flows.map(s=>s.flow.advancement.id),["optional","mixed","size"]);
   assert.equal(await flows.at(-1).flow.getAutomaticApplicationValue(),false);
+});
+
+test("filled creator choices are skipped while incomplete and replacement choices remain interactive",()=>{
+  const actor=empty();actor.definitions=[
+    {item:"style",id:"filled",type:"ItemChoice",level:1,configuration:{choices:{1:{count:1,replacement:false}}},value:{added:{1:{chosen:"Item.chosen"}}}},
+    {item:"style",id:"incomplete",type:"ItemChoice",level:1,configuration:{choices:{1:{count:2,replacement:false}}},value:{added:{1:{chosen:"Item.chosen"}}}},
+    {item:"style",id:"replacement",type:"ItemChoice",level:1,configuration:{choices:{1:{count:1,replacement:true}}},value:{added:{1:{chosen:"Item.chosen"}}}}
+  ];
+  const manager=new NativeManager(actor);manager.clone.updateSource({items:plan().create});
+  assert.deepEqual(creationAdvancementFlows(manager).map(step=>step.flow.advancement.id),["incomplete","replacement"]);
 });
 
 test("legacy pool references are redirected before the native picker sees the item",async()=>{
