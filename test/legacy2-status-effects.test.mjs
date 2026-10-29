@@ -42,6 +42,17 @@ test("the real post-init status configuration retains every Jujutsu condition fo
   assert(created[0].changes.some(change => change.key === "system.legacy2.actions.max" && change.value === -4));
 });
 
+test("every condition icon is a standalone SVG that the scene texture loader can rasterize",()=>{
+  CONFIG.statusEffects={};registrarStatusEffectsCondicoes();configure();
+  for(const condition of JJ2_CONDITIONS){
+    const svg=decodeURIComponent(CONFIG.statusEffects[condition.id].img.split(",").slice(1).join(","));
+    assert.match(svg,/<svg\b[^>]*\bxmlns="http:\/\/www\.w3\.org\/2000\/svg"/,condition.id);
+    assert.match(svg,/<svg\b[^>]*\bwidth="24"/,condition.id);
+    assert.match(svg,/<svg\b[^>]*\bheight="24"/,condition.id);
+    assert(!svg.includes("currentColor"),condition.id);
+  }
+});
+
 test("native conditions and separately registered module conditions survive repeated configuration with stable identities", () => {
   registrarStatusEffectsCondicoes();
   CONFIG.statusEffects["module-mark"] = {id: "module-mark", _id: "moduleeffect0001", name: "Marca", img: "custom.webp"};
