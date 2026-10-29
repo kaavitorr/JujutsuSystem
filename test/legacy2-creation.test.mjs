@@ -86,3 +86,18 @@ test("Restringido metadata keeps its selectable primary attribute consistent wit
   assert.deepEqual(creation.creationPrimaryOptions(restricted),["str","dex"]);
   assert.equal(Ruleset.atributoPrincipal(creation.creationActor(draft,restricted)),"dex");
 });
+
+test("general and restricted creation choices do not overlap or depend on selection order",async()=>{
+  const custom=structuredClone(style);custom.name="Estrategista";custom.system={identifier:"estrategista"};
+  custom.flags["jujutsu-system"].legacy2.espIniciais=1;
+  const docs=[{name:"Base livre",uuid:"Item.base"},{name:"Energia Reversa",uuid:"Item.reverse"}].map((doc,i)=>({...doc,
+    flags:{"jujutsu-system":{especializacao:{categoria:i?"Energia Reversa":"Proezas Físicas",caminho:"Entrada",requisitos:[]}}},system:{}}));
+  game.packs=new Map([["jujutsu-compendium.geral-2-0",{getDocuments:async()=>docs}]]);
+  const graph=await carregarGrafo(),catalog={graph,styles:[custom],species:[species]};
+  for(const order of [["Energia Reversa","Base livre"],["Base livre","Energia Reversa"]]){
+    const draft=creation.creationDraft(actor);creation.chooseCreationStyle(draft,custom);creation.chooseCreationPath(draft,"medico-campo");
+    draft.species=species.uuid;draft.abilities={str:6,dex:3,con:4,int:3,wis:2,cha:2};
+    for(const name of order)assert(creation.toggleCreationSpecialization(draft,custom,graph.porNome.get(name),catalog),`Cannot choose ${name} in ${order}`);
+    assert.deepEqual(creation.validateCreation(draft,catalog,1),[]);
+  }
+});

@@ -46,7 +46,7 @@ const fonteCondicoes = readFileSync(new URL("../module/systems/condicoes-dano.mj
 
 test("o fluxo de ataque registra o gatilho no 20 natural ou Fulgor Negro", () => {
   assert.match(fonteAtaque, /if \( rolls\?\.length \) await postJJAttackRoll\(this, rolls\)/);
-  assert.match(fonteCards, /d20Ativo === 20 \|\| isFulgor[\s\S]{0,600}?registrarGatilhoDano\(alvo\.actor/);
+  assert.match(fonteCards, /d20Ativo === 20 && !noCriticals\) \|\| isFulgor[\s\S]{0,600}?registrarGatilhoDano\(alvo\.actor/);
   // Os tipos do gatilho vêm das partes de dano da activity.
   assert.ok(fonteCards.includes("activity.damage?.parts ?? []"));
   // E os cards consomem o gatilho no momento do dano.
@@ -152,6 +152,23 @@ test("entropia (necrótico) usa Sabedoria e traz Amedrontado com core 'frightene
   assert.equal(dados.duration.rounds, 2);
   assert.equal(dados.duration.startRound, 3);
   globalThis.game.combat = null;
+});
+test("Entropia retains the actual attacker UUID for source-dependent fear modifiers", async () => {
+  const { alvo, criados } = alvoFalso({ saveTotal: 1 });
+  const atacante = { ...atacanteFalso, uuid: "Actor.source" };
+  registrarGatilhoDano(alvo, { tipos: ["soul"], atacante });
+  assert.equal(await aplicarCondicaoPorDano(alvo, { tiposAplicados: ["soul"] }), true);
+  const effect = criados[0].dados[0];
+  assert.equal(effect.origin, "Actor.source");
+  assert.equal(effect.flags["jujutsu-system"].conditionSourceActor, "Actor.source");
+});
+test("reapplying Entropia updates the fear source when a different attacker applies it", async () => {
+  const updates = [];
+  const effect = { statuses: new Set(["jj-entropia", "jj-amedrontado"]), update: async data => updates.push(data) };
+  const { alvo } = alvoFalso({ saveTotal: 1, efeitos: [effect] });
+  await aplicarCondicaoDano(alvo, "soul", { atacante: "Nova fonte", atacanteUuid: "Actor.newSource" });
+  assert.equal(updates[0].origin, "Actor.newSource");
+  assert.equal(updates[0]["flags.jujutsu-system.conditionSourceActor"], "Actor.newSource");
 });
 
 test("Doença Sobrenatural é imune às condições de dano", async () => {

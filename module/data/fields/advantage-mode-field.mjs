@@ -122,6 +122,10 @@ export default class AdvantageModeField extends foundry.data.fields.NumberField 
         && !counts.advantages.suppressed,
       disadvantage: (((counts.disadvantages.count > 0) && (counts.override === null)) || (counts.override === -1))
         && !counts.disadvantages.suppressed,
+      advantageCount: counts.advantages.suppressed || counts.override === -1 || counts.override === 0 ? 0
+        : counts.override === 1 ? 1 : Math.max(0, counts.advantages.count),
+      disadvantageCount: counts.disadvantages.suppressed || counts.override === 1 || counts.override === 0 ? 0
+        : counts.override === -1 ? 1 : Math.max(0, counts.disadvantages.count),
       mode: this.resolveMode(model, null, counts)
     };
   }

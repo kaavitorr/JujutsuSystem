@@ -403,6 +403,8 @@ export default class NPCData extends CreatureTemplate {
 
   /** @inheritDoc */
   prepareBaseData() {
+    // Filled after Active Effects, before profile contributions are added in derived preparation.
+    delete this._npcProfileResistanceBase;
     if ( Ruleset.isV2() ) prepareEngagement(this, this.parent.type);
     // Determine hit dice denomination & max from hit points formula
     const [, max, denomination] = this.attributes.hp.formula?.match(/(\d*)d(\d+)/i) ?? [];
@@ -551,11 +553,15 @@ export default class NPCData extends CreatureTemplate {
       // (fonte); os cards da ficha mostram o base ao lado do efetivo.
       const taxonomia = npcProfile(actor2, "taxonomy");
       if ( taxonomia || arquetipo ) {
+        this._npcProfileResistanceBase ??= Object.fromEntries(NUMERIC_DAMAGE_TYPES.map(({ key }) => [key, {
+          value: Number(this.legacy2.resistances?.[key]?.value) || 0,
+          immune: !!this.legacy2.resistances?.[key]?.immune
+        }]));
         const ndPerfil = npcNd(actor2.system.legacy2?.nd);
         for ( const { key } of NUMERIC_DAMAGE_TYPES ) {
           const efetivo = this.legacy2.resistances?.[key];
           if ( !efetivo ) continue;
-          const base = this._source.legacy2?.resistances?.[key] ?? {};
+          const base = this._npcProfileResistanceBase[key] ?? {};
           let contrib = 0, imune = false;
           for ( const [perfil, porNd] of [[taxonomia, false], [arquetipo, true]] ) {
             const def = perfil?.resistencias?.[key];
@@ -565,7 +571,7 @@ export default class NPCData extends CreatureTemplate {
             imune ||= !!def.immune;
           }
           efetivo.value = (Number(base.value) || 0) + contrib;
-          efetivo.immune = !!base.immune || imune;
+          efetivo.immune = !!base.immune || !!this._source.legacy2?.resistances?.[key]?.immune || imune;
         }
       }
       // Iniciativa 2.0: ((AGI + INT) / 2) — igual aos personagens

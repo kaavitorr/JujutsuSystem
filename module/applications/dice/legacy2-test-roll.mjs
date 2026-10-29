@@ -1,31 +1,70 @@
 import Ruleset, { MAX_VANTAGENS } from "../../systems/ruleset.mjs";
+import { conditionRollAdvantages } from "../../systems/legacy2-condition-rolls.mjs";
+import { flawRollDisadvantages } from "../../systems/defeitos-active-effects.mjs";
 
 const count = value => Number.isFinite(Number(value)) ? Math.min(MAX_VANTAGENS, Math.max(0, Math.floor(Number(value)))) : 0;
 const valueAt = (data, key) => key.split(".").reduce((v, part) => v?.[part], data);
 const signed = value => Number.isFinite(Number(value)) ? `${Number(value) >= 0 ? "+" : ""}${Number(value)}` : String(value);
 const isInitiativeTest = process => !!process?.hookNames?.includes("initiativeDialog");
+const conditionHistory = new WeakMap();
 
 export function hasLegacy2Test(process) {
   return Ruleset.isV2() && !!process?.subject?.system?.abilities && !process.subject.item
     && !!(process.ability || process.skill || process.tool || isInitiativeTest(process));
 }
 
-export function testRollChoices(process, formData) {
-  const options = process.rolls?.[0]?.options ?? {};
-  const advMode = globalThis.CONFIG?.Dice?.D20Roll?.ADV_MODE ?? { ADVANTAGE: 1, DISADVANTAGE: -1 };
+function automaticConditions(process, formData, roll) {
+  const save = process.hookNames?.some(name => /saving|save/i.test(name));
+  const ability = formData?.get("ability") ?? roll?.data?.abilityId ?? roll?.data?.roll?.ability
+    ?? conditionHistory.get(process)?.ability ?? process.ability;
+  const alternative = save ? Ruleset.alternativeSave(process.subject, ability) : null;
+  const conditions = Ruleset.isV2() ? conditionRollAdvantages(process.subject, {
+    kind: isInitiativeTest(process) ? "initiative" : save ? "save" : "check", ability: alternative?.key ?? ability,
+    skill: process.skill, target: Array.from(globalThis.game?.user?.targets ?? [])[0]?.actor
+  }) : { vantagens: 0, desvantagens: 0 };
+  const kind = isInitiativeTest(process) ? "initiative" : save ? "save" : "check";
+  conditions.desvantagens += flawRollDisadvantages(process.subject, { kind, skill: process.skill,
+    rank: process.skill ? Ruleset.skillRank(process.subject, process.skill) : 0 });
+  const options = roll?.options ?? process.rolls?.[0]?.options ?? {};
+  const modes = globalThis.CONFIG?.Dice?.D20Roll?.ADV_MODE ?? { ADVANTAGE: 1, DISADVANTAGE: -1 };
+  const independent = process.jjIndependentRollModes ?? options.jjIndependentRollModes ?? {};
+  const shortcuts = process.jjKeyRollModes ?? {};
+  const previous = conditionHistory.get(process);
+  const native = {
+    vantagens: options.advantageCount != null ? Math.max(count(options.advantageCount) + count(independent.vantagens) + count(shortcuts.vantagens),
+      Number(!!(options.advantage || options.advantageMode === modes.ADVANTAGE)))
+      : options.jj2TestParts ? previous?.native?.vantagens ?? 0
+        : Number(!!(process.advantage || options.advantage || options.advantageMode === modes.ADVANTAGE)),
+    desvantagens: options.disadvantageCount != null ? Math.max(count(options.disadvantageCount) + count(independent.desvantagens) + count(shortcuts.desvantagens),
+      Number(!!(options.disadvantage || options.advantageMode === modes.DISADVANTAGE)))
+      : options.jj2TestParts ? previous?.native?.desvantagens ?? 0
+        : Number(!!(process.disadvantage || options.disadvantage || options.advantageMode === modes.DISADVANTAGE))
+  };
+  conditions.vantagens += native.vantagens;
+  conditions.desvantagens += native.desvantagens;
+  return { ...conditions, ability, native };
+}
+
+export function testRollChoices(process, formData, roll) {
+  const conditions = automaticConditions(process, formData, roll), previous = conditionHistory.get(process);
+  const choose = key => {
+    const explicit = formData?.get(`jj2Test.${key}`) ?? process.legacy2?.[key];
+    if (explicit == null) return count(conditions[key]);
+    // Only replace the automatic component when the attribute/conditions change; retain manual adjustments.
+    return count(Number(explicit) + (previous ? conditions[key] - previous[key] : 0));
+  };
   return {
-    vantagens: count(formData?.get("jj2Test.vantagens") ?? process.legacy2?.vantagens
-      ?? Number(!!(process.advantage || options.advantage || options.advantageMode === advMode.ADVANTAGE))),
-    desvantagens: count(formData?.get("jj2Test.desvantagens") ?? process.legacy2?.desvantagens
-      ?? Number(!!(process.disadvantage || options.disadvantage || options.advantageMode === advMode.DISADVANTAGE)))
+    vantagens: choose("vantagens"),
+    desvantagens: choose("desvantagens")
   };
 }
 
 /** Called after actor builders: replace their old advantage term instead of adding it twice. */
 export function applyLegacy2TestRoll(roll, process, formData) {
   if (!hasLegacy2Test(process)) return roll;
-  const choices = testRollChoices(process, formData);
+  const choices = testRollChoices(process, formData, roll);
   process.legacy2 = { ...process.legacy2, ...choices };
+  conditionHistory.set(process, automaticConditions(process, formData, roll));
   const bonus = Ruleset.netAdvantageBonus(choices.vantagens, choices.desvantagens);
   roll.parts = (roll.parts ?? []).filter(part => part !== "@legacyAdv");
   if (bonus) roll.parts.push("@legacyAdv");

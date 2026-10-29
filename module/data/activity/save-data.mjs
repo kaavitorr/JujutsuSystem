@@ -1,8 +1,11 @@
 import { simplifyBonus } from "../../utils.mjs";
+import Ruleset from "../../systems/ruleset.mjs";
+import { techniqueDifficulty } from "../../systems/legacy2-technique-dc.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import DamageField from "../shared/damage-field.mjs";
 import BaseActivityData from "./base-activity.mjs";
 import AppliedEffectField from "./fields/applied-effect-field.mjs";
+import AppliedConditionField from "./fields/applied-condition-field.mjs";
 
 const { ArrayField, BooleanField, SchemaField, SetField, StringField } = foundry.data.fields;
 
@@ -20,6 +23,7 @@ export default class BaseSaveActivityData extends BaseActivityData {
   static defineSchema() {
     return {
       ...super.defineSchema(),
+      conditions: new ArrayField(new AppliedConditionField()),
       damage: new SchemaField({
         onSave: new StringField({ required: true, blank: false, initial: "half" }),
         parts: new ArrayField(new DamageField())
@@ -109,7 +113,11 @@ export default class BaseSaveActivityData extends BaseActivityData {
     const bonus = this.save.dc.bonus ? simplifyBonus(this.save.dc.bonus, rollData) : 0;
 
     let ability;
-    if ( this.save.dc.calculation ) ability = this.ability;
+    const automatic = ["initial", "spellcasting"].includes(this.save.dc.calculation)
+      || (!this.save.dc.calculation && !this.save.dc.formula?.trim());
+    if (Ruleset.isV2() && ["character", "npc"].includes(this.actor?.type) && automatic)
+      this.save.dc.value = techniqueDifficulty(this.actor, Ruleset).value;
+    else if ( this.save.dc.calculation ) ability = this.ability;
     else this.save.dc.value = simplifyBonus(this.save.dc.formula, rollData);
     this.save.dc.value ??= this.actor?.system.abilities?.[ability]?.dc
       ?? 8 + (this.actor?.system.attributes?.prof ?? 0);

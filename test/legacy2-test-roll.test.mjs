@@ -1,18 +1,24 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import Ruleset from "../module/systems/ruleset.mjs";
 globalThis.game = { settings: { get: () => "2.0" } };
 const helper = await import("../module/applications/dice/legacy2-test-roll.mjs").catch(() => ({}));
 const actor = { name: "Teste", documentName: "Actor", system: { abilities: { dex: { value: 5 }, str: { value: 8 } } } };
 function process() { return { subject: actor, ability: "dex", skill: "acr", legacy2: {}, rolls: [] }; }
 function initiative() { return { subject: actor, hookNames: ["initiativeDialog", "abilityCheck", "d20Test"],
   rolls: [{ parts: ["@mod", "@ruleBonus"], data: { mod: 5, ruleBonus: 3 }, options: { advantage: true } }] }; }
+test("each advantage contributes +1 and each disadvantage -1, with cancellation and the existing cap", () => {
+  for (const [advantages, disadvantages, expected] of [[0,0,0],[1,0,1],[0,1,-1],[3,1,2],[1,3,-2],[6,0,6],[0,6,-6],[9.8,2.5,4]])
+    assert.equal(Ruleset.netAdvantageBonus(advantages, disadvantages), expected);
+  assert.equal(Ruleset.advantagePart({vantagens:1,desvantagens:2,grausFlanqueamento:3}),2);
+});
 test("initiative without an ability selector uses numeric counters and preserves prepared bonuses", () => {
   const p = initiative();
   assert(helper.hasLegacy2Test(p));
   assert.deepEqual(helper.testRollChoices(p), { vantagens: 1, desvantagens: 0 });
   const roll = structuredClone(p.rolls[0]);
   helper.applyLegacy2TestRoll(roll, p, new Map([["jj2Test.vantagens", "2"], ["jj2Test.desvantagens", "6"]]));
-  assert.equal(roll.data.legacyAdv, -8);
+  assert.equal(roll.data.legacyAdv, -4);
   assert.equal(roll.data.mod, 5);
   assert.equal(roll.data.ruleBonus, 3);
   assert.equal(roll.options.advantageMode, 0);
@@ -31,11 +37,11 @@ test("test counters independently cap at six and preserve automatic advantage de
   assert.deepEqual(helper.testRollChoices({ advantage: true, disadvantage: true }), { vantagens: 1, desvantagens: 1 });
   assert.deepEqual(helper.testRollChoices({ legacy2: { vantagens: NaN, desvantagens: -8 } }), { vantagens: 0, desvantagens: 0 });
 });
-test("six advantages are +12 on one d20 and replace existing advantage parts exactly once", () => {
+test("six advantages are +6 on one d20 and replace existing advantage parts exactly once", () => {
   assert.equal(typeof helper.applyLegacy2TestRoll, "function");
   const p = process(), roll = { parts: ["@mod", "@legacyRank", "@legacyAdv", "@legacyAdv", "@ruleBonus"], data: { mod: 5, legacyRank: -4, legacyAdv: 2, ruleBonus: 3 }, options: { advantageMode: 1, advantage: true } };
   helper.applyLegacy2TestRoll(roll, p, new Map([["jj2Test.vantagens", "6"],["jj2Test.desvantagens","0"]]));
-  assert.equal(roll.data.legacyAdv, 12);
+  assert.equal(roll.data.legacyAdv, 6);
   assert.equal(roll.parts.filter(p=>p==="@legacyAdv").length, 1);
   assert.equal(roll.options.advantageMode, 0);
   assert.equal(roll.options.advantage, false);

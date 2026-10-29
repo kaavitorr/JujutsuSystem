@@ -1,6 +1,6 @@
 import Ruleset from "../../../systems/ruleset.mjs";
 import { CREATION_STEPS, ABILITY_KEYS, creationDraft, creationBudgets, styleRules, rankSpent,
-  chooseCreationStyle, chooseCreationPath, creationPathOptions, creationSpecializationSlots, creationPrimaryOptions, creationSpecializationScope, allocateCreationRank, toggleCreationSpecialization, evaluateCreationSpecialization, creationPodeEscolher, creationSpeciesGroups, validateCreation, speciesAtributosAdicionais,
+  chooseCreationStyle, chooseCreationPath, creationPathOptions, creationSpecializationSlots, creationPrimaryOptions, creationSpecializationScope, allocateCreationRank, toggleCreationSpecialization, evaluateCreationSpecialization, creationSpeciesGroups, validateCreation, speciesAtributosAdicionais,
   PENALIDADE_VITAL_NOME, penalidadeVitalUuid } from "./creation-model-2.mjs";
 import { loadCreationCatalog, resolveCreationDocument } from "./creation-catalog-2.mjs";
 import { commitCreation } from "./creation-completion-2.mjs";
@@ -9,7 +9,8 @@ const limiteDaSecao = (category) => CUSTOMIZATION_SECTIONS.find(s => s.id === ca
 import { SKILL_GROUPS } from "../jj/legacy2-sheet.mjs";
 import { WEAPON_GROUPS, CONVERSAO_DEFEITO, pontosDoItem } from "../../../systems/legacy2-proficiencies.mjs";
 import { ALTERNATIVE_SAVES, alternativeSavesEnabled } from "../../../systems/legacy2-alternative-saves.mjs";
-import { ICONES_CATEGORIA } from "../jj/skill-tree-map-2.mjs";
+import { buildCreationTree } from "./creation-tree-2.mjs";
+import { SkillTreeViewport } from "../jj/skill-tree-viewport-2.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 const openApps = new Map(), drafts = new WeakMap();
@@ -25,6 +26,9 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
       step: this.onStep, next: this.onNext, back: this.onBack, cancel: this.onCancel,
       species: this.onSpecies, style: this.onStyle, path: this.onPath, ability: this.onAbility, rank: this.onRank,
       specialization: this.onSpecialization, category: this.onCategory, focus: this.onFocus,
+      selecionar: this.onFocus, categoria: this.onCategory, requisito: this.onRequirement,
+      aprender: this.onSpecialization, esquecer: this.onSpecialization,
+      ampliar: this.onZoomIn, reduzir: this.onZoomOut, ajustar: this.onMapFit, centralizar: this.onMapReset,
       customization: this.onCustomization, browseCustomization: this.onBrowseCustomization,
       penalidadeVital: this.onPenalidadeVital,
       profile: this.onProfile, token: this.onToken, copyPortrait: this.onCopyPortrait, finish: this.onFinish
@@ -32,17 +36,19 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
   };
 
   static PARTS = { main: { template: "systems/jujutsu-system/templates/actors/creation/creation-2.hbs",
-    templates: ["systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs"],
-    scrollable: [".jj2c-content", ".jj2c-list", ".jj2c-detail", ".jj2c-specializations", ".jj2c-prof-list"] } };
+    templates: ["systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs", "systems/jujutsu-system/templates/actors/apps/skill-tree-2.hbs"],
+    scrollable: [".jj2c-content", ".jj2c-list", ".jj2c-detail", ".jj2m-detail", ".jj2m-categories", ".jj2c-prof-list"] } };
 
   constructor(actor, options = {}) {
     super({ ...options, id: `jj2-character-creation-${actor.id}` });
     this.actor = actor;
     this.draft = structuredClone(drafts.get(actor) ?? creationDraft(actor));
     this.catalog = null; this.category = null; this.focus = null; this.search = ""; this.errors = []; this.busy = false;
-    const href = "systems/jujutsu-system/less/character-creation-2.css";
-    if (!document.querySelector(`link[href="${href}"]`)) {
-      const link = document.createElement("link"); link.rel = "stylesheet"; link.href = href; document.head.append(link);
+    this.mapView = new SkillTreeViewport();
+    for (const href of ["systems/jujutsu-system/less/jujutsu-skill-tree-2.css", "systems/jujutsu-system/less/character-creation-2.css"]) {
+      if (!document.querySelector(`link[href="${href}"]`)) {
+        const link = document.createElement("link"); link.rel = "stylesheet"; link.href = href; document.head.append(link);
+      }
     }
   }
 
@@ -66,27 +72,17 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
     const species = catalog.species.find(doc => doc.uuid === draft.species);
     const categories = catalog.graph.categorias ?? [];
     this.category ??= categories[0]?.nome;
-    const selected = this.focus ? catalog.graph.porNome.get(this.focus) : null;
-    const nodes = Array.from(catalog.graph.porNome.values()).filter(node => node.categoria === this.category && node.caminho && matches(node))
-      .map(node => {
-        const evaluation = evaluateCreationSpecialization(draft, style, node);
-        const picked = draft.specializations.includes(node.nome);
-        return { ...node, picked, focused: node.nome === this.focus, blocked: evaluation.estado === "bloqueado",
-          unavailable: !picked && (!style || !creationPodeEscolher(draft, style, node, catalog)),
-          reason: [...evaluation.pendencias.map(p => p.texto), ...evaluation.informativos].join("; ") };
-      });
-    // Agrupa por caminho dentro da categoria: cada caminho vira uma coluna própria
-    const grupos = new Map();
-    for ( const node of nodes ) {
-      const chave = node.caminho ?? "(sem caminho)";
-      if ( !grupos.has(chave) ) grupos.set(chave, []);
-      grupos.get(chave).push(node);
-    }
-    const specializationGroups = [...grupos.entries()].map(([caminho, grupo]) => ({ caminho, nodes: grupo }));
+    const tree = buildCreationTree(draft, style, catalog, { category: this.category, focus: this.focus,
+      search: this.search, busy: this.busy, ocultas: game.settings.get("jujutsu-system", "especializacoesOcultas") ?? {} });
+    this.category = tree.categoria.nome;
+    const selected = tree.selecionado;
     const renderDescription = async doc => doc ? foundry.applications.ux.TextEditor.implementation.enrichHTML(
       doc.descricao ?? doc.system?.description?.value ?? "", { secrets: this.actor.isOwner, relativeTo: this.actor,
         rollData: this.actor.getRollData?.() ?? {} }) : "";
     const [speciesHTML, detailHTML] = await Promise.all([renderDescription(species), renderDescription(selected ?? style)]);
+    tree.selecionadoHtml = selected ? detailHTML : "";
+    tree.styleDetail = style;tree.styleHTML = selected ? "" : detailHTML;
+    this.tree = tree;
     const rankRows = (category, rows) => ({ category, label: { saves: "Salvaguardas", armas: "Tipos de Arma", skills: "Perícias" }[category],
       budget: budget[category], spent: rankSpent(draft.proficiencies[category]),
       remaining: budget[category] - rankSpent(draft.proficiencies[category]),
@@ -114,8 +110,7 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
       slotHints: slots.grupos.map(grupo => `${grupo.quantidade} de ${grupo.rotulo}`),
       primaryOptions: creationPrimaryOptions(style)
         .map(key => ({ key, label: labels[key] ?? key, selected: key === draft.primary })),
-      specializationCategories: categories.map(category => ({ name: category.nome, img: ICONES_CATEGORIA[category.nome], selected: category.nome === this.category })),
-      nodes, specializationGroups, specializationsSpent: draft.specializations.length, specializationsRemaining: budget.specializations - draft.specializations.length,
+      tree, specializationsSpent: draft.specializations.length, specializationsRemaining: budget.specializations - draft.specializations.length,
       selectedDetail: selected ?? style, detailHTML,
       proficiencyPanels: [rankRows("saves", alternativeSavesEnabled()
         ? ALTERNATIVE_SAVES.map(save => [save.key, save.label, save.icon]) : ABILITY_KEYS.map(key => [key, labels[key],key])),
@@ -173,7 +168,15 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
     }));
     const search = this.element.querySelector("[data-creation-search]");
     search?.addEventListener("input", () => { this.search = search.value; clearTimeout(this._searchTimer);
-      this._searchTimer = setTimeout(() => { this.captureInputs(); this.render(); }, 180); });
+      this._searchTimer = setTimeout(async () => {
+        this.captureInputs();await this.render();
+        const match = this.tree?.mapa.nos.find(node => node.searchMatch);
+        if (this.draft.step === 1 && match) this.mapView.focus(match.nome);
+      }, 180); });
+    if (this.draft.step === 1) {
+      this.mapView.mount(this.element, context.tree.mapa, this.category);
+      if (this._focusMap) { this.mapView.focus(this._focusMap);this._focusMap = null; }
+    } else this.mapView.destroy();
     this.element.querySelectorAll("[data-creation-drop]").forEach(zone => {
       zone.addEventListener("dragover", event => { event.preventDefault(); zone.classList.add("drag-hover"); });
       zone.addEventListener("dragleave", () => zone.classList.remove("drag-hover"));
@@ -208,10 +211,19 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
     if(![-1,1].includes(delta)||value<1||value>6||rankSpent(this.draft.abilities)+delta>teto)return;
     this.draft.abilities[key]=value;this.errors=[];this.render(); }
   static onRank(event,target) { if(this.busy)return;this.captureInputs();if(allocateCreationRank(this.draft,this.style,target.dataset.category,target.dataset.key,Number(target.dataset.rank))){this.errors=[];this.render();} }
-  static onSpecialization(event,target) { if(this.busy)return;this.captureInputs();const node=this.catalog.graph.porNome.get(target.dataset.name);
+  static onSpecialization(event,target) { if(this.busy)return;this.captureInputs();const node=this.catalog.graph.porNome.get(target.dataset.name ?? target.dataset.nome);
     if(toggleCreationSpecialization(this.draft,this.style,node,this.catalog)){this.errors=[];this.focus=node.nome;this.render();} }
-  static onCategory(event,target) { if(this.busy)return;this.captureInputs();this.category=target.dataset.category;this.focus=null;this.render(); }
-  static onFocus(event,target) { if(this.busy)return;this.captureInputs();this.focus=target.dataset.name;this.render(); }
+  static onCategory(event,target) { if(this.busy)return;this.captureInputs();this.category=target.dataset.category ?? target.dataset.categoria;this.search="";this.focus=null;this.render(); }
+  static onFocus(event,target) { if(this.busy)return;this.captureInputs();this.focus=target.dataset.name ?? target.dataset.nome ?? null;this.render(); }
+  static onRequirement(event,target) {
+    if(this.busy)return;
+    const node=this.catalog.graph.porNome.get(target.dataset.nome);if(!node)return;
+    this.captureInputs();this.category=node.categoria;this.focus=node.nome;this.search="";this._focusMap=node.nome;this.render();
+  }
+  static onZoomIn() { this.mapView.zoomAt(this.mapView.zoom * 1.2); }
+  static onZoomOut() { this.mapView.zoomAt(this.mapView.zoom / 1.2); }
+  static onMapFit() { this.mapView.fit(); }
+  static onMapReset() { this.mapView.reset(); }
   static async onCustomization(event,target) { if(this.busy)return;this.captureInputs();const items=this.draft.customization[target.dataset.category];if(!items)return;
     const index=items.indexOf(target.dataset.uuid);
     if(index>=0){items.splice(index,1);
@@ -266,7 +278,14 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
     if(this.busy)return;this.captureInputs();this.errors=validateCreation(this.draft,this.catalog);
     if(this.errors.length){this.draft.step=this.errors[0].step;this.render();return;}
     clearTimeout(this._searchTimer);this.busy=true;
-    try { await this.render();await commitCreation(this.actor,structuredClone(this.draft),this.catalog,{resolve:resolveCreationDocument});
+    try { await this.render();
+      // The advancement choices use the native preview manager above this fullscreen creator.
+      const creatorElement = this.element;
+      if (creatorElement) creatorElement.style.visibility = "hidden";
+      let result;
+      try { result = await commitCreation(this.actor,structuredClone(this.draft),this.catalog,{resolve:resolveCreationDocument}); }
+      finally { if (creatorElement) creatorElement.style.visibility = ""; }
+      if (!result) { this.busy=false;await this.render();return; }
       this.busy=false;await this.close({completed:true});ui.notifications.info(`${this.actor.name}: criação concluída.`);this.actor.sheet?.render({force:true});
     } catch(error) { this.busy=false;this.errors=[{step:this.draft.step,message:error.message}];this.render(); }
   }
@@ -274,6 +293,7 @@ export default class JujutsuCharacterCreation extends HandlebarsApplicationMixin
     if(this.busy&&!options.completed)return this;
     if(!options.completed)this.captureInputs();
     clearTimeout(this._searchTimer);
+    this.mapView.destroy();
     if(options.completed)drafts.delete(this.actor);else drafts.set(this.actor,structuredClone(this.draft));
     await super.close(options);openApps.delete(this.actor.id);
     if(!options.completed)this.actor.sheet?.render({force:true});

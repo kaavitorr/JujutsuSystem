@@ -552,7 +552,7 @@ export default class AdvancementManager extends Application5e {
 
     if ( this.step?.automatic || (automaticData !== false) ) {
       if ( this.#advancing ) return this;
-      this.#forward({ automaticData });
+      await this.#forward({ automaticData });
       return this;
     }
 
@@ -719,8 +719,8 @@ export default class AdvancementManager extends Application5e {
       this.#advancing = false;
     }
 
-    if ( this.step ) this.render({ force: true, direction: "forward" });
-    else this.#complete();
+    if ( this.step ) await this.render({ force: true, direction: "forward" });
+    else await this._complete();
   }
 
   /* -------------------------------------------- */
@@ -889,8 +889,9 @@ export default class AdvancementManager extends Application5e {
    * Apply changes to actual actor after all choices have been made.
    * @param {Event} event  Button click that triggered the change.
    * @returns {Promise}
+   * @protected
    */
-  async #complete(event) {
+  async _complete(event) {
     const updates = this.clone.toObject();
     const items = updates.items;
     delete updates.items;

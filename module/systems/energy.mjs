@@ -47,18 +47,39 @@ export class EnergySystem {
     return (bonuses.generatedEnergy ?? 0) + (intensive.generatedEnergy ?? 0);
   }
 
-  /** 2.0 reserved actions select a ceiling; refinement is transferred from the total reserve. */
-  static actionReserveRefinementUpdates(actor, reserves) {
-    if (!Ruleset.isV2() || Ruleset.isRestringido(actor) || !actor.system.energy) return {};
-    const energy = actor.system.energy;
+  /** A fixed ceiling selected from actions saved before the turn's recovery. */
+  static refinementLimit(actor, reserves = 0) {
     const normal = Math.max(0, this.calculateLimit(Ruleset.nivel(actor), 2) + this.calculateGenerationBonus(actor)
       + this.refinamentoBonus(actor));
-    const ceiling = normal * (reserves >= 5 ? 2 : 1);
+    return normal * (reserves >= 5 ? 2 : 1);
+  }
+
+  /** 2.0 reserved actions select a ceiling; refinement is transferred from the total reserve. */
+  static actionReserveRefinementUpdates(actor, reserves, additional = 0) {
+    if (!Ruleset.isV2() || Ruleset.isRestringido(actor) || !actor.system.energy) return {};
+    const energy = actor.system.energy;
+    const ceiling = this.refinementLimit(actor, reserves);
     const generated = Math.max(0, Number(energy.generated) || 0);
     const total = Math.max(0, Number(energy.total) || 0);
-    const transfer = Math.min(Math.max(0, ceiling - generated), total);
+    const transfer = Math.min(Math.max(0, ceiling - generated) + Math.max(0, Math.trunc(Number(additional) || 0)), total);
     if (!transfer) return {};
     return { "system.energy.total": total - transfer, "system.energy.generated": generated + transfer };
+  }
+
+  /** Ask the active owner (or GM) to confirm; opening or cancelling never transfers energy. */
+  static async promptTurnStart(actor, context = {}) {
+    if (!Ruleset.isV2() || Ruleset.isRestringido(actor) || !actor.system.energy) return;
+    const owner = game.users?.find?.(user => !user.isGM && user.active && actor.testUserPermission?.(user, "OWNER"))
+      ?? game.users?.activeGM ?? game.users?.find?.(user => user.isGM && user.active);
+    if (!owner) return;
+    if (owner.id === game.user.id) {
+      const { default: EnergyGenerationDialog } = await import("../applications/actor/energy-generation-dialog.mjs");
+      const choices = await EnergyGenerationDialog.configure(actor, context);
+      if (choices) await this.processTurnStartWithChoices(actor, choices, context);
+    } else {
+      game.socket.emit("system.jujutsu-system", { action: "energyGenerationDialog", actorId: actor.id,
+        actorUuid: actor.uuid, userId: owner.id, context });
+    }
   }
 
   static calculateCursePointBonus(actor) {
@@ -176,8 +197,15 @@ export class EnergySystem {
     return transferencia;
   }
 
-  static async processTurnStartWithChoices(actor, choices) {
+  static async processTurnStartWithChoices(actor, choices, { reserves = 0 } = {}) {
+    if (!choices) return;
     if (Ruleset.isRestringido(actor)) return this.processTurnStart(actor);
+    if (Ruleset.isV2()) {
+      const updates = this.actionReserveRefinementUpdates(actor, reserves, choices.flatBonus);
+      if (!Object.keys(updates).length) return;
+      updates["system.energy.generation.turnMultiplier"] = 1;
+      return actor.update(updates, { isEnergySystem: true });
+    }
     const energy = actor.system.energy;
     const level = Ruleset.nivel(actor); // 2.0: ND de NPC em vez de details.level
     const abilities = actor.system.energyAbilities;

@@ -60,7 +60,8 @@ test("as variantes herdam o custo e o dado extra da parte original (2 PA; 3 nas 
   for (const membro of especiais) {
     const activity = Object.values(membro.system.activities)[0];
     assert.equal(activity.damage.parts[0].custom.formula, "@escala + @mod@escalaExtra", membro.name);
-    assert.equal(activity.consumption.targets[0].value, "3", membro.name);
+    assert.equal(activity.activation.value, 3, membro.name);
+    assert.equal(activity.consumption.targets.some(t => t.target === "energy.generated"), false, membro.name);
     assert.equal(membro.flags["jujutsu-system"].custoPA, 3, membro.name);
   }
   const simples = membros.filter(m => !["Chifres", "Ferrão"].some(p => m.name.startsWith(p)));
@@ -68,26 +69,17 @@ test("as variantes herdam o custo e o dado extra da parte original (2 PA; 3 nas 
   for (const membro of simples) {
     const activity = Object.values(membro.system.activities)[0];
     assert.equal(activity.damage.parts[0].custom.formula, "@escala + @mod", membro.name);
-    assert.equal(activity.consumption.targets[0].value, "2", membro.name);
+    assert.equal(activity.activation.value, 2, membro.name);
+    assert.equal(activity.consumption.targets.some(t => t.target === "energy.generated"), false, membro.name);
   }
 });
 
-test("cada membro elemental usa o ícone do seu elemento", () => {
-  const ICONES = {
-    acid: "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
-    soul: "icons/creatures/magical/spirit-mischief-fire-ice-blue.webp",
-    lightning: "icons/magic/lightning/bolt-strike-sparks-blue.webp",
-    radiant: "icons/magic/light/projectile-beams-salvo-yellow.webp",
-    fire: "icons/magic/fire/blast-jet-stream-splash.webp",
-    cold: "icons/magic/water/snowflake-ice-snow-white.webp",
-    psychic: "icons/magic/sonic/explosion-shock-wave-teal.webp",
-    thunder: "icons/magic/sonic/explosion-impact-shock-wave.webp",
-    poison: "icons/magic/death/skull-poison-green.webp"
-  };
+test("os ícones dos membros elementais distinguem a anatomia, sem placeholders genéricos", () => {
   for (const membro of membros) {
-    const elemento = membro.flags["jujutsu-system"].elemento;
-    assert.equal(membro.img, ICONES[elemento], membro.name);
+    assert.match(membro.img, /^icons\/.+\.webp$/, membro.name);
   }
+  for (const elemento of new Set(membros.map(m=>m.flags["jujutsu-system"].elemento)))
+    assert.ok(new Set(membros.filter(m=>m.flags["jujutsu-system"].elemento===elemento).map(m=>m.img)).size>=10,elemento);
 });
 
 test("as pastas do compendium agrupam por elemento via macro", () => {

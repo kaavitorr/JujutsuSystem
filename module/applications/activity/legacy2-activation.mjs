@@ -113,7 +113,8 @@ export function activationChoices(activity, choices = {}) {
   const npc = Ruleset.isV2() && actor.type === "npc";
   const principal = npc ? Ruleset.npcPrincipal(actor) : Ruleset.atributoPrincipal(actor);
   const configured = activity.attack?.ability || activity.ability || activity.spellcastingAbility;
-  const fallback = npc && abilities.some(o => o.value === configured) ? configured
+  const fallback = npc && (activity.item.type !== "weapon" || activity.attack?.ability)
+    && abilities.some(o => o.value === configured) ? configured
     : abilities.some(o => o.value === principal) ? principal
       : (configured ?? "int");
   const ability = abilities.length
@@ -162,7 +163,9 @@ export function activationContext(activity, choices = {}) {
   const config = activationChoices(activity, choices), actor = activity.item.actor;
   const data = activity.getAttackData?.({ ...config, legacy2: config })?.data ?? {};
   const fixedAttack = activity.attack?.flat && !(Ruleset.isV2() && actor.type === "npc");
-  const abilityValue = fixedAttack ? 0 : data.mod ?? actor.system.abilities?.[config.ability]?.value ?? 0;
+  const halfAttackAttribute = Ruleset.isV2() && activity.type === "attack" && activity.item.type === "weapon" && !fixedAttack;
+  const rawAbilityValue = actor.system.abilities?.[config.ability]?.value ?? 0;
+  const abilityValue = fixedAttack ? 0 : data.mod ?? (halfAttackAttribute ? Math.floor(rawAbilityValue / 2) : rawAbilityValue);
   const skillValue = fixedAttack ? 0 : data.legacyRank ?? (activity.type === "attack" ? Ruleset.bonusArma(actor, activity.item) : 0);
   const nativeBonus = [data.toHit, data.bonus, data.weaponMagic, data.ammoMagic, data.ruleBonus].filter(v => v !== undefined && v !== null && v !== "");
   const bonusLabel = nativeBonus.length ? nativeBonus.join(" + ") : "0";
@@ -203,7 +206,7 @@ export function activationContext(activity, choices = {}) {
     flanking: data.legacyFlanqueamento?.graus ?? 0,
     burstLimit, burstMax, burstFormula: `${config.pa * (config.physicalImpulse ? 2 : 1)}d4`, availablePA: integer(energyPayer(actor).system?.energy?.generated),
     burstTitle: config.physicalImpulse ? "Impulso Físico" : "Explosão Ofensiva", burstUnit: config.physicalImpulse ? "PE" : "PA",
-    abilityValue, abilityLabel: CONFIG.DND5E.abilities[config.ability]?.label ?? config.ability, skillValue,
+    abilityValue, halfAttackAttribute, abilityLabel: CONFIG.DND5E.abilities[config.ability]?.label ?? config.ability, skillValue,
     skillValueLabel: `${skillValue >= 0 ? "+" : "-"}${Math.abs(skillValue)}`, bonusLabel,
     showGestures, gestures: [...GESTURES, ...(!GESTURES.some(([value]) => value === config.gesture) ? [[config.gesture, "Formato nativo da técnica"]] : [])]
       .map(([value, label]) => ({ value, label, selected: value === config.gesture, disabled: value !== config.gesture })),

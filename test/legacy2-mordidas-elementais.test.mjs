@@ -43,7 +43,8 @@ test("todas herdam a força da Mordida: +1 dado/4 ND e 3 Pontos de Ação", () =
     const item = porNome[nome];
     const activity = Object.values(item.system.activities)[0];
     assert.equal(activity.damage.parts[0].custom.formula, "@escala + @mod@escalaExtra", nome);
-    assert.equal(activity.consumption.targets.find(t => t.target === "energy.generated").value, "3", nome);
+    assert.equal(activity.activation.value, 3, nome);
+    assert.equal(activity.consumption.targets.some(t => t.target === "energy.generated"), false, nome);
     assert.equal(item.flags["jujutsu-system"].danoExtraPorNd, true, nome);
     assert.equal(item.flags["jujutsu-system"].custoPA, 3, nome);
   }

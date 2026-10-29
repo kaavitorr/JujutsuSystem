@@ -11,6 +11,7 @@ export default class EnergyGenerationDialog extends Dialog5e {
   /** @override */
   static DEFAULT_OPTIONS = {
     classes: ["energy-generation"],
+    actions: { skip() { return this.close(); } },
     form: {
       handler: EnergyGenerationDialog.#handleFormSubmission
     },
@@ -28,6 +29,7 @@ export default class EnergyGenerationDialog extends Dialog5e {
   constructor(options={}) {
     super(options);
     this.actor = options.document;
+    this.reserves = options.reserves ?? 0;
   }
 
   /** @override */
@@ -56,13 +58,13 @@ export default class EnergyGenerationDialog extends Dialog5e {
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     const actor = this.actor;
-    const level = actor.system.details?.level ?? 1;
-    const abilities = actor.system.energyAbilities;
+    const level = Ruleset.nivel(actor);
+    const abilities = actor.system.energyAbilities ?? {};
     const isV2 = Ruleset.isV2();
     const baseMultiplier = EnergySystem.generationBaseMultiplier(actor);
     const trainingBonus = EnergySystem.calculateGenerationBonus(actor);
-    const limite = EnergySystem.calculateLimit(level, baseMultiplier) + trainingBonus
-      + EnergySystem.refinamentoBonus(actor);
+    const limite = isV2 ? EnergySystem.refinementLimit(actor, this.reserves)
+      : EnergySystem.calculateLimit(level, baseMultiplier) + trainingBonus + EnergySystem.refinamentoBonus(actor);
 
     context.actor = actor;
     context.rootId = this.id;
@@ -71,15 +73,16 @@ export default class EnergyGenerationDialog extends Dialog5e {
     context.limite = limite;
     context.geradaAtual = actor.system.energy.generated;
     context.totalAtual = actor.system.energy.total;
+    context.doubled = isV2 && this.reserves >= 5;
 
     // Acúmulo de Energia (nível 5+)
-    context.hasAccumulation = !isV2 && abilities.accumulation.enabled;
-    context.accumulationUses = abilities.accumulation.uses;
-    context.accumulationMax = abilities.accumulation.max;
+    context.hasAccumulation = !isV2 && abilities.accumulation?.enabled;
+    context.accumulationUses = abilities.accumulation?.uses;
+    context.accumulationMax = abilities.accumulation?.max;
 
     // Liberação de Energia
-    context.hasLiberation = !isV2 && abilities.liberation.enabled;
-    context.liberationUses = abilities.liberation.uses;
+    context.hasLiberation = !isV2 && abilities.liberation?.enabled;
+    context.liberationUses = abilities.liberation?.uses;
 
     return context;
   }
@@ -100,10 +103,11 @@ static async #handleFormSubmission(event, form, formData) {
   /**
    * Abre o dialog e retorna as escolhas do jogador.
    */
-  static async configure(actor) {
+  static async configure(actor, { reserves = 0 } = {}) {
     return new Promise((resolve, reject) => {
       const app = new this({
         document: actor,
+        reserves,
         config: {},
         buttons: [
           {
@@ -115,9 +119,10 @@ static async #handleFormSubmission(event, form, formData) {
           },
           {
             icon: "fa-solid fa-xmark",
-            label: "Pular",
+            label: "Cancelar",
             name: "skip",
-            action: "skip"
+            action: "skip",
+            type: "button"
           }
         ]
       });

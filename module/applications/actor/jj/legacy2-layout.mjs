@@ -33,5 +33,7 @@ export function mountLegacy2Layout(element) {
   const attributes = element.querySelector(".jj2-attributes");
   const navigation = element.querySelector(".jj2-tabs-nav");
   if ( attributes && attributes.parentElement !== main ) main.append(attributes);
-  if ( navigation && navigation.parentElement !== main ) main.append(navigation);
+  // Keep the native tab controls outside the scrolling/clipped content panel.
+  const sheetBody = main.closest(".sheet-body");
+  if ( navigation && sheetBody && navigation.parentElement !== sheetBody ) sheetBody.append(navigation);
 }

@@ -390,3 +390,21 @@
 .jj2-document .jj2-activation-field .jj2-counter-selos > input::-webkit-inner-spin-button { appearance: none; }
 .jj2-document .jj2-activation-field .jj2-selos-titulo { grid-column: 1 / -1; }
 .jj2-document .jj2-activation-field .jj2-selos-usos { flex: none; color: var(--jj2-gold); font: 700 11px/1 JJ2Condensed, sans-serif; }
+/* Conditions replace the generic active-effect picker for attacks and saves. */
+.activity .jj-activity-conditions legend { display: flex; align-items: center; gap: 6px; }
+.activity .jj-activity-conditions legend button { display: inline-flex; align-items: center; justify-content: center; }
+.activity .jj-activity-conditions .jj-condition-gate { margin: 2px 0 12px; line-height: 1.45; }
+.activity .jj-condition-entries { display: grid; gap: 8px; }
+.activity .jj-condition-entry {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) 24px;
+  align-items: end; gap: 10px; padding: 10px;
+  border: 1px solid #9f7aca44; border-left: 2px solid #a878da;
+  background: linear-gradient(120deg, #a878da0c, transparent 65%);
+}
+.activity .jj-condition-entry label { display: grid; min-width: 0; gap: 5px; }
+.activity .jj-condition-entry label > span { font-size: 11px; font-weight: 700; line-height: 1.2; }
+.activity .jj-condition-entry select { width: 100%; min-width: 0; min-height: 32px; }
+.activity .jj-condition-entry > button { display: grid; place-items: center; height: 32px; color: #c0a3dd; }
+.activity .jj-activity-conditions button svg { width: 16px; height: 16px; flex: 0 0 16px; }
+.activity .jj-condition-empty { margin: 0; padding: 13px 10px; border: 1px dashed #9f7aca55; text-align: center; }
+.activity .jj-activity-conditions .jj-condition-dc { margin: 10px 0 0; font-size: 11px; }

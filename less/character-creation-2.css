@@ -24,7 +24,6 @@
 .jj2-character-creation .jj2c-close { width:34px; height:34px; padding:7px; }
 .jj2c-content { flex:1; min-height:0; padding:22px 26px; overflow:auto; scrollbar-width:thin; scrollbar-color:var(--jj2c-purple) transparent; }
 .jj2c-origin-layout { display:grid; grid-template-columns:minmax(220px,280px) minmax(300px,1fr) minmax(260px,360px); gap:18px; height:100%; min-height:0; }
-.jj2c-style-layout { display:grid; grid-template-columns:240px minmax(330px,1fr) minmax(260px,340px); gap:18px; height:100%; min-height:0; }
 .jj2c-panel { display:flex; flex-direction:column; min-width:0; min-height:0; border:1px solid #a67bda55; border-left:3px solid var(--jj2c-purple); background:repeating-linear-gradient(155deg,transparent 0 18px,#ffffff04 18px 19px),var(--jj2c-panel); box-shadow:4px 4px #07060a; }
 .jj2c-panel-heading { display:flex; align-items:center; justify-content:space-between; gap:8px; flex:none; min-height:48px; padding:12px 14px; border-bottom:1px solid #a67bda44; background:linear-gradient(116deg,#a67bda1d 0 56%,transparent 56%),#17121e; }
 .jj2-character-creation .jj2c-panel-heading :is(h2,h3) { display:flex; align-items:center; gap:7px; min-width:0; font:italic 700 18px/1.15 JJ2Condensed,sans-serif; }
@@ -135,11 +134,6 @@
 @media (max-width:520px) { .jj2c-header{padding:12px}.jj2-character-creation .jj2c-brand h1{font-size:21px}.jj2c-attributes{gap:7px;padding:10px}.jj2c-attribute{padding:12px 3px;gap:9px}.jj2-character-creation .jj2c-attribute-counter input{width:38px}.jj2-character-creation .jj2c-attribute-counter button{width:19px;padding:2px}.jj2c-attribute-counter{gap:3px}.jj2c-specializations{grid-template-columns:minmax(0,1fr)}.jj2c-categories{grid-template-columns:repeat(2,minmax(0,1fr))}.jj2c-proficiency-panels{grid-template-columns:minmax(0,1fr)}.jj2c-prof-list{height:240px}.jj2c-customization-grid{grid-template-columns:minmax(0,1fr)}.jj2c-footer-note{display:none}.jj2c-footer-actions{width:100%;justify-content:flex-end} }
 @media (prefers-reduced-motion:reduce) { .jj2-character-creation *{transition:none!important;scroll-behavior:auto!important} }
 
-/* Especializações agrupadas por caminho: uma coluna por caminho dentro da categoria */
-.jj2c-specializations { display: flex; align-items: flex-start; gap: 10px; }
-.jj2c-specializations .jj2c-spec-group { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 7px; }
-.jj2c-specializations .jj2c-spec-group-title { margin: 0; padding: 5px 8px; border-inline-start: 3px solid var(--jj2c-gold); background: #1e1827; color: var(--jj2c-gold); font: 700 12px/1.2 JJ2Condensed, sans-serif; text-transform: uppercase; letter-spacing: .5px; }
-.jj2c-specializations .jj2c-specialization { width: 100%; }
 
 /* Proficiências como bolinhas redondas (igual à ficha): número oculto,
    preenchida roxa até o rank escolhida, atual com borda dourada */
@@ -151,7 +145,6 @@
 
 /* ── Caminho do Estilo (Lutador: Punho Ardente/Mestre das Armas;
       Estrategista: Médico de Campo/Mestre de Barreiras) ──────────────────── */
-.jj2c-style-layout:has(.jj2c-paths) { grid-template-columns: minmax(300px, 380px) minmax(300px, 1fr) minmax(260px, 340px); }
 .jj2c-paths { margin: 8px 14px 0; padding: 8px 10px 10px; border: 1px solid #a67bda40; background: #17121f; }
 .jj2c-paths legend { padding: 0 6px; color: var(--jj2c-purple); font: 700 11px/1 JJ2Condensed, sans-serif; text-transform: uppercase; letter-spacing: 1px; }
 .jj2c-path-options { display: grid; grid-template-columns: 1fr; gap: 8px; }
@@ -178,4 +171,86 @@
 .jj2-character-creation .jj2c-vital-choice { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-top:10px; padding:8px 10px; border-left:3px solid var(--jj2c-gold); background:#ffffff08; font-size:11.5px; }
 .jj2-character-creation .jj2c-vital-choice > span { color:var(--jj2c-muted); }
 .jj2-character-creation .jj2c-vital-choice button { min-height:28px; padding:0 12px; color:var(--jj2c-paper); background:#221c2b; border:1px solid #a67bda66; font-weight:700; }
+
+/* The creation step embeds the actual sheet skill tree, with the same map and cards. */
+.jj2c-content:has(.jj2c-style-workspace) { padding:12px 16px; overflow:hidden; }
+.jj2c-style-workspace { display:flex; flex-direction:column; gap:10px; height:100%; min-height:0; }
+.jj2c-style-setup { flex:none; padding:10px 14px; border:1px solid #a67bda55; border-left:3px solid var(--jj2c-purple); background:#19141f; }
+.jj2c-style-setup-row { display:flex; align-items:flex-end; flex-wrap:wrap; gap:10px 18px; }
+.jj2c-style-gallery { display:flex; flex-direction:column; gap:6px; flex:1 1 500px; min-width:0; font-size:12px; }
+.jj2c-style-choices { display:flex; align-items:stretch; gap:8px; min-width:0; overflow-x:auto; padding:2px 2px 5px; scrollbar-width:thin; scrollbar-color:var(--jj2c-purple) transparent; }
+.jj2-character-creation .jj2c-style-portrait { flex:1 0 88px; max-width:140px; display:flex; flex-direction:column; justify-content:center; gap:5px; min-height:85px; padding:7px 8px; border:1px solid #a67bda55; background:linear-gradient(118deg,#a67bda13 0 48%,transparent 48%),#100d17; }
+.jj2c-style-portrait img { display:block; width:48px; height:48px; object-fit:contain; }
+.jj2c-style-portrait>span { display:flex; align-items:center; justify-content:center; gap:5px; font-size:13px; font-weight:700; line-height:1.15; }
+.jj2c-style-portrait>span svg { width:13px; height:13px; color:var(--jj2c-gold); }
+.jj2-character-creation .jj2c-style-portrait.selected { border-color:var(--jj2c-gold); background:linear-gradient(118deg,#efbf5120 0 48%,transparent 48%),#211929; box-shadow:inset 0 -2px var(--jj2c-gold); }
+.jj2c-style-setup .jj2c-primary { padding:0; flex:0 1 150px; }
+.jj2-character-creation .jj2c-style-info { min-height:34px; color:var(--jj2c-purple); font-size:12px; }
+.jj2c-tree-budget { display:flex; align-items:center; gap:9px; margin-left:auto; align-self:center; }
+.jj2c-tree-budget strong { font:700 38px/1 JJ2Condensed,sans-serif; color:var(--jj2c-gold); }
+.jj2c-tree-budget span { max-width:145px; font-size:12px; color:var(--jj2c-muted); }
+.jj2c-style-setup>.jj2c-hint { margin-top:8px; font-size:11px; }
+.jj2c-style-setup .jj2c-paths { margin:10px 0 0; padding:6px 8px 8px; }
+.jj2c-style-setup .jj2c-path-options { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.jj2c-style-setup .jj2c-path-copy strong { text-transform:none; letter-spacing:0; font-size:13px; }
+.jj2c-style-setup .jj2c-path-copy small { font-size:11px; }
+.jj2-character-creation .jj2c-tree { position:relative; inset:auto; flex:1; width:100%!important; height:auto!important; min-height:0; min-width:0; overflow:hidden; margin:0; border:1px solid #a67bda55; z-index:auto; }
+.jj2-character-creation .jj2c-tree .jj2m-layout { grid-template-columns:190px minmax(0,1fr) 300px; }
+.jj2-character-creation .jj2c-tree .jj2m-categories { padding:14px 9px; }
+.jj2-character-creation .jj2c-tree .jj2m-category { min-height:69px; padding:8px 6px; gap:8px; }
+.jj2-character-creation .jj2c-tree .jj2m-category-copy strong { font-size:14px; }
+.jj2-character-creation .jj2c-tree .jj2m-category-art,.jj2-character-creation .jj2c-tree .jj2m-category-art img { width:34px; height:36px; }
+.jj2-character-creation .jj2c-tree .jj2m-category-copy small { margin-top:4px; }
+.jj2-character-creation .jj2c-tree .jj2m-map-heading { padding:10px 16px; }
+.jj2-character-creation .jj2c-tree .jj2m-map-heading h3 { font-size:25px; }
+.jj2-character-creation .jj2c-tree .jj2m-map-heading>img { width:36px; height:38px; }
+.jj2-character-creation .jj2c-tree .jj2m-map-toolbar { padding:7px 12px; }
+.jj2-character-creation .jj2c-tree .jj2m-detail { padding:18px 16px; }
+.jj2-character-creation .jj2c-tree .jj2m-detail-heading h3 { font-size:25px; }
+.jj2c-tree .jj2m-detail-top .jj2m-state { flex-shrink:1; text-align:right; }
+.jj2-character-creation .jj2c-tree svg.jj2m-lines { width:100%; height:100%; }
+.jj2c-tree .jj2m-node.search-dim { opacity:.48; }
+.jj2c-tree .jj2m-node.search-dim:hover,.jj2c-tree .jj2m-node.search-dim:focus-visible { opacity:1; }
+.jj2c-tree .jj2m-node.search-match { outline:2px solid var(--jj2-gold); outline-offset:3px; }
+.jj2c-tree-search { margin:0; min-height:38px; border:0; border-bottom:1px solid #a67bda44; padding:0 14px; }
+.jj2c-tree-search output { flex:none; font-size:11px; color:var(--jj2c-muted); }
+.jj2c-tree-reason { font-size:12px; line-height:1.5; color:var(--jj2-muted)!important; }
+@media(max-width:1100px) {
+  .jj2-character-creation .jj2c-tree .jj2m-layout { grid-template-columns:155px minmax(0,1fr) 260px; }
+  .jj2-character-creation .jj2c-tree .jj2m-category-art,.jj2-character-creation .jj2c-tree .jj2m-category-art img { width:26px; height:28px; }
+  .jj2-character-creation .jj2c-tree .jj2m-category-copy strong { font-size:13px; }
+  .jj2c-style-setup .jj2c-path-copy small { display:none; }
+  .jj2c-style-setup .jj2c-paths { margin-top:7px; }
+}
+@media(max-width:950px) {
+  .jj2c-content:has(.jj2c-style-workspace) { overflow:auto; }
+  .jj2c-style-workspace { min-height:850px; }
+  .jj2-character-creation .jj2c-tree .jj2m-layout { display:grid; grid-template-columns:minmax(0,1fr) 250px; grid-template-rows:auto minmax(0,1fr); }
+  .jj2-character-creation .jj2c-tree .jj2m-categories { grid-column:1 / -1; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4px; padding:5px; overflow:auto; border-right:0; border-bottom:1px solid var(--jj2-border); }
+  .jj2-character-creation .jj2c-tree .jj2m-categories h3,.jj2-character-creation .jj2c-tree .jj2m-nav-note { display:none; }
+  .jj2-character-creation .jj2c-tree .jj2m-category { min-height:48px; margin:0; padding:4px 6px; }
+  .jj2-character-creation .jj2c-tree .jj2m-category-copy small { margin-top:2px; }
+  .jj2-character-creation .jj2c-tree .jj2m-map { min-height:0; height:auto; }
+  .jj2-character-creation .jj2c-tree .jj2m-detail { overflow:auto; }
+}
+@media(max-width:760px) {
+  .jj2c-content:has(.jj2c-style-workspace) { overflow:auto; padding:10px; }
+  .jj2c-style-workspace { height:auto; min-height:0; }
+  .jj2-character-creation .jj2c-tree { flex:none; }
+  .jj2-character-creation .jj2c-tree .jj2m-layout { grid-template-columns:minmax(0,1fr); grid-template-rows:auto 540px auto; }
+  .jj2-character-creation .jj2c-tree .jj2m-detail { max-height:400px; }
+  .jj2c-style-gallery { flex-basis:100%; }
+  .jj2c-tree-budget { margin-left:0; }
+  .jj2c-style-setup .jj2c-path-options { grid-template-columns:minmax(0,1fr); }
+  .jj2-character-creation .jj2c-tree .jj2m-category { flex-direction:row; align-items:center; }
+}
+.jj2-character-creation .jj2c-style-workspace button { text-transform:none; letter-spacing:normal; }
+@media(max-height:760px) and (min-width:761px) {
+  .jj2c-content:has(.jj2c-style-workspace) { overflow:auto; }
+  .jj2c-style-workspace { min-height:760px; }
+  .jj2c-style-setup .jj2c-path-copy small { display:none; }
+  .jj2c-style-setup { padding:7px 12px; }
+  .jj2c-style-setup .jj2c-paths { margin-top:5px; padding-block:4px; }
+  .jj2-character-creation .jj2c-tree .jj2m-map-heading { padding-block:6px; }
+}
 .jj2-character-creation .jj2c-vital-choice button.selected { color:#17131e; background:var(--jj2c-gold); border-color:var(--jj2c-gold); }

@@ -30,7 +30,7 @@ function custoBaseEmAcoes(activity) {
  * da ativação (mínimo 1 ação) e o gesto escolhido soma +1 ação. Os selos
  * usados são limitados ao pool disponível do ator.
  */
-function custoEfetivoEmAcoes(activity, usageConfig, actor) {
+export function custoEfetivoEmAcoes(activity, usageConfig, actor) {
   let base = custoBaseEmAcoes(activity);
   // Recarga (lod): atacar com a arma descarregada custa +1 Ponto de Ação
   // (marcando "Recarregar agora" no dialog, o ataque sai carregado).
@@ -129,7 +129,7 @@ Hooks.on("dnd5e.postUseActivity", async (activity, usageConfig) => {
  * Fim do próprio turno: as ações restantes viram Reservas de Ação.
  * Chegada do próprio turno (a partir da 2ª rodada): as Reservas definem o
  * limite de refinamento normal; com 5 ou mais guardadas, até o DOBRO
- * do limite normal, sempre transferindo da Energia Total — e os
+ * do limite normal, transferido da Energia Total só ao confirmar o modal — e os
  * Pontos de Ação são todos recuperados. As Reservas também dão +1 de
  * iniciativa por ação na rolagem da rodada (iniciativa-dinamica.mjs). */
 const turnoEmCurso = new Map(); // combatId → last processed round/combatant key
@@ -161,7 +161,7 @@ Hooks.on("updateCombat", async (combat, changed, options, userId) => {
       }
     }
 
-    // Chegada do próprio turno: transfere refinamento e recupera Pontos de Ação num único update.
+    // Chegada do próprio turno: recupera ações; o refinamento depende da confirmação do dono.
     const combatente = combat.combatants.get(atualId);
     const actor = combatente?.actor;
     if ( actor ) {
@@ -175,17 +175,17 @@ Hooks.on("updateCombat", async (combat, changed, options, userId) => {
         }
       }
       const maximo = Number(actor.system.legacy2?.actions?.max ?? 0);
+      const reservas = Math.max(0, Math.floor(Number(actor.system.legacy2?.reservas?.value ?? 0)));
       if ( maximo > 0 ) {
         const updates = {};
-        const reservas = Math.max(0, Math.floor(Number(actor.system.legacy2?.reservas?.value ?? 0)));
-        if ((combat.round ?? changed.round ?? 1) >= 2) {
-          Object.assign(updates, EnergySystem.actionReserveRefinementUpdates(actor, reservas));
-        }
         if ( reservas > 0 ) updates["system.legacy2.reservas.value"] = 0;
         const atual = Number(actor.system.legacy2.actions.value ?? 0);
         if ( atual < maximo ) updates["system.legacy2.actions.value"] = maximo;
         if ( !foundry.utils.isEmpty(updates) ) await actor.update(updates, { isEnergySystem: true });
       }
+      await EnergySystem.promptTurnStart(actor, {
+        reserves: (combat.round ?? changed.round ?? 1) >= 2 ? reservas : 0
+      });
     }
   } catch (error) {
     if (turnoEmCurso.get(combat.id) === key) turnoEmCurso.delete(combat.id);

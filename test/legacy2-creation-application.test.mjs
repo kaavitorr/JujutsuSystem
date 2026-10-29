@@ -45,3 +45,51 @@ test("customization drop moves a source between groups without assigning it twic
   await app.addCustomization(doc,"jj-flaws");await app.addCustomization(doc,"jj-peculiarities");
   assert.deepEqual(app.draft.customization["jj-flaws"],[]);assert.deepEqual(app.draft.customization["jj-peculiarities"],[doc.uuid]);
 });
+
+// Exercise the actual Finish handler, with the completion service as its boundary.
+const finishWith = commit => new Function("validateCreation","commitCreation","resolveCreationDocument",
+  `return ({${Creation.onFinish.toString()}}).onFinish;`)(()=>[],commit,async()=>null);
+test("Finish restores the fullscreen creator when advancement choices are cancelled",async()=>{
+  const app=new Creation(actor("cancel-advancement"));app.catalog={};app.element.style={};
+  const original=structuredClone(app.draft);
+  await finishWith(async(a,draft)=>{
+    assert.equal(a,app.actor);assert.notEqual(draft,app.draft);
+    assert.equal(app.element.style.visibility,"hidden");assert.equal(app.busy,true);return null;
+  }).call(app);
+  assert.equal(app.busy,false);assert.equal(app.closed,undefined);assert.equal(app.element.style.visibility,"");
+  assert.deepEqual(app.draft,original);
+});
+test("Finish closes and notifies only after completion succeeds",async()=>{
+  const app=new Creation(actor("finish-advancement"));app.catalog={};app.element.style={};let notices=0;
+  globalThis.ui={notifications:{info(){notices++;}}};
+  await finishWith(async()=>({actor:{},create:[]})).call(app);
+  assert.equal(app.busy,false);assert.equal(app.closed,true);assert.equal(notices,1);
+});
+test("Finish restores visibility and allows retry after a completion error",async()=>{
+  const app=new Creation(actor("fail-advancement"));app.catalog={};app.element.style={};
+  await finishWith(async()=>{throw new Error("Benefício indisponível");}).call(app);
+  assert.equal(app.busy,false);assert.equal(app.closed,undefined);assert.equal(app.element.style.visibility,"");
+  assert.equal(app.errors[0].message,"Benefício indisponível");
+});
+
+test("the embedded tree uses the creator's local choices and inspects future and cross-category requirements",async()=>{
+  const {carregarGrafo}=await import("../module/systems/especializacoes-2.mjs");
+  const docs=[["Base","Proezas Físicas",[]],["Futura","Proezas Físicas",["Base","10º nível de personagem"]],["Cura","Energia Reversa",["Base"]]]
+    .map(([name,categoria,requisitos],i)=>({name,uuid:`Item.graph${i}`,system:{},flags:{"jujutsu-system":{especializacao:{categoria,requisitos,caminho:"Caminho"}}}}));
+  game.packs=new Map([["jujutsu-compendium.geral-2-0",{getDocuments:async()=>docs}]]);
+  const graph=await carregarGrafo(),app=new Creation(actor("tree"));
+  const style={uuid:"Item.style",name:"Estilo",flags:{"jujutsu-system":{legacy2:{espIniciais:2,atributoPrincipal:"str"}}}};
+  app.catalog={graph,species:[],styles:[style],customization:Object.fromEntries(Object.keys(app.draft.customization).map(key=>[key,[]]))};
+  app.draft.style=style.uuid;app.draft.primary="str";app.draft.step=1;app.category="Proezas Físicas";
+  await Creation.DEFAULT_OPTIONS.actions.selecionar.call(app,{}, {dataset:{nome:"Futura"}});
+  let context=await app._prepareContext({});assert.equal(context.tree.selecionado.nome,"Futura");assert.equal(context.tree.selecionado.canChoose,false);
+  await Creation.DEFAULT_OPTIONS.actions.aprender.call(app,{}, {dataset:{nome:"Futura"}});assert.deepEqual(app.draft.specializations,[]);
+  await Creation.DEFAULT_OPTIONS.actions.aprender.call(app,{}, {dataset:{nome:"Base"}});assert.deepEqual(app.draft.specializations,["Base"]);
+  await Creation.DEFAULT_OPTIONS.actions.categoria.call(app,{}, {dataset:{categoria:"Energia Reversa"}});
+  await Creation.DEFAULT_OPTIONS.actions.selecionar.call(app,{}, {dataset:{nome:"Cura"}});
+  context=await app._prepareContext({});assert.equal(context.tree.requisitos[0].links[0].categoria,"Proezas Físicas");
+  await Creation.DEFAULT_OPTIONS.actions.requisito.call(app,{}, {dataset:{nome:"Base"}});
+  assert.equal(app.category,"Proezas Físicas");assert.equal(app.focus,"Base");assert.equal(app._focusMap,"Base");
+  await Creation.DEFAULT_OPTIONS.actions.esquecer.call(app,{}, {dataset:{nome:"Base"}});assert.deepEqual(app.draft.specializations,[]);
+  assert.equal(app.actor.items.length,0);
+});

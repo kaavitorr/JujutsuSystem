@@ -79,7 +79,7 @@ export function registrarGatilhoDano(alvo, { tipos = [], atacante = null, fulgor
   _gatilhos.set(id, {
     tipos: tipos.map(t => String(t).toLowerCase()),
     cd: CD_BASE + valor,
-    atacante: atacante?.name ?? "?", fulgor: !!fulgor,
+    atacante: atacante?.name ?? "?", atacanteUuid: atacante?.uuid ?? null, fulgor: !!fulgor,
     expira: Date.now() + TTL
   });
 }
@@ -117,14 +117,14 @@ export async function aplicarCondicaoPorDano(alvo, { tiposAplicados = [], atacan
     ?? Object.keys(CONDICOES_DANO).find(k => gatilho.tipos.includes(k));
   const cond = CONDICOES_DANO[condKey];
   if ( !cond ) return false;
-  return aplicarCondicaoDano(alvo, condKey, { cd: gatilho.cd, atacante: gatilho.atacante });
+  return aplicarCondicaoDano(alvo, condKey, { cd: gatilho.cd, atacante: gatilho.atacante, atacanteUuid: gatilho.atacanteUuid });
 }
 
 /**
  * Rola a salvaguarda do alvo e, falhando, aplica a condição com duração.
  * Reaplicar apenas reseta a duração (não acumula).
  */
-export async function aplicarCondicaoDano(alvo, condKey, { cd = CD_BASE, atacante = "o atacante" } = {}) {
+export async function aplicarCondicaoDano(alvo, condKey, { cd = CD_BASE, atacante = "o atacante", atacanteUuid = null } = {}) {
   const cond = CONDICOES_DANO[condKey];
   if ( !cond || !alvo?.system?.abilities?.[cond.save] ) return false;
   // Doença Sobrenatural (peculiaridade): imune às condições de DANO.
@@ -162,18 +162,20 @@ export async function aplicarCondicaoDano(alvo, condKey, { cd = CD_BASE, atacant
     ? " — dura até o fim do seu turno"
     : cond.rodadas ? ` — duração resetada para ${cond.rodadas} rodada(s)` : " (permanece até removida)";
   if ( existente ) {
-    await existente.update({ duration: duracao }); // reaplicar reseta a duração
+    await existente.update({ duration: duracao,
+      ...(atacanteUuid ? { origin: atacanteUuid, "flags.jujutsu-system.conditionSourceActor": atacanteUuid } : {}) });
     ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: alvo }),
       content: `☠️ <strong>${alvo.name}</strong> sofre novamente <strong>${cond.label}</strong>${textoDuracao} (Salv. de ${atributo} ${total} vs CD ${cd}).` });
   } else {
     await alvo.createEmbeddedDocuments("ActiveEffect", [{
       name: cond.label,
       icon: "systems/jujutsu-system/icons/svg/items/feature.svg",
-      origin: atacante ? atacante : null,
+      origin: atacanteUuid,
       statuses: [cond.status, ...cond.extra].flatMap(s => statusesParaCondicao(s)),
       changes: [cond.status, ...cond.extra].flatMap(s => MODIFICADORES_MOVIMENTO[s] ?? []),
       duration: duracao,
-      flags: { "jujutsu-system": { condicaoDano: { chave: condKey, cd, save: cond.save } } },
+      flags: { "jujutsu-system": { condicaoDano: { chave: condKey, cd, save: cond.save },
+        ...(atacanteUuid ? { conditionSourceActor: atacanteUuid } : {}) } },
       disabled: false,
       transfer: false
     }]);

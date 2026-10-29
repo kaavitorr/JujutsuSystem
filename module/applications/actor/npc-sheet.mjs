@@ -13,13 +13,14 @@ import { onExplosaoDefensiva2 } from "./jj/explosao-defensiva.mjs";
 import { updateNpcProficiencyOrder } from "./jj/npc-proficiency-order.mjs";
 import { useSheetAction, removeSheetDamageCondition } from "./jj/sheet-actions-2.mjs";
 import { prepareNpcFavorites, useNpcFavorite, deleteNpcFavorite, configureNpcFavorite, dropNpcFavorite } from "./jj/npc-favorites-2.mjs";
+import FeiticoSheetMixin from "./jj/feitico-sheet.mjs";
 
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 
 /**
  * Extension of base actor sheet for NPCs.
  */
-export default class NPCActorSheet extends BaseActorSheet {
+export default class NPCActorSheet extends FeiticoSheetMixin(BaseActorSheet) {
   /** @override */
   static DEFAULT_OPTIONS = {
     actions: {
@@ -92,6 +93,11 @@ export default class NPCActorSheet extends BaseActorSheet {
       template: "systems/jujutsu-system/templates/actors/tabs/creature-spells.hbs",
       scrollable: [""]
     },
+    feitico: {
+      container: { classes: ["tab-body"], id: "tabs" },
+      template: "systems/jujutsu-system/templates/actors/tabs/character-feitico-2.hbs",
+      scrollable: [""]
+    },
     effects: {
       container: { classes: ["tab-body"], id: "tabs" },
       template: "systems/jujutsu-system/templates/actors/tabs/actor-effects.hbs",
@@ -126,6 +132,7 @@ export default class NPCActorSheet extends BaseActorSheet {
     { tab: "inventory", label: "DND5E.Inventory", svg: "systems/jujutsu-system/icons/svg/backpack.svg" },
     { tab: "spells", label: "TYPES.Item.spellPl", icon: "fas fa-book" },
     { tab: "skills", label: "Perícias", condition: () => Ruleset.isV2() },
+    { tab: "feitico", label: "Feitiço", condition: () => Ruleset.isV2() },
     { tab: "effects", label: "DND5E.EFFECT.Tab", icon: "fas fa-bolt" },
     { tab: "biography", label: "DND5E.Biography", icon: "fas fa-feather" },
     { tab: "specialTraits", label: "DND5E.SpecialTraits", icon: "fas fa-star" }
@@ -170,7 +177,7 @@ export default class NPCActorSheet extends BaseActorSheet {
   _configureRenderParts(options) {
     const parts = super._configureRenderParts(options);
     if (Ruleset.isV2() && !this.actor.limited) return configureNpc2Parts(parts);
-    delete parts.details; delete parts.abilityScores; delete parts.skills;
+    delete parts.details; delete parts.abilityScores; delete parts.skills; delete parts.feitico;
     return parts;
   }
 
@@ -255,6 +262,7 @@ export default class NPCActorSheet extends BaseActorSheet {
   async _preparePartContext(partId, context, options) {
     context = await super._preparePartContext(partId, context, options);
     switch ( partId ) {
+      case "feitico": return this._prepareFeiticoContext(context, options);
       case "biography": return this._prepareBiographyContext(context, options);
       case "details": return this._prepareHeaderContext(context, options);
       case "effects": return this._prepareEffectsContext(context, options);

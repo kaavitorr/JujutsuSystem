@@ -1164,6 +1164,18 @@ export default class BaseActorSheet extends PrimarySheetMixin(
       if ( v.paused ) v.play();
     });
 
+    // Toggle do retrato (retrato ↔ token) fora do formulário: com name=
+    // ele submetia a ficha inteira ao trocar, e inputs de outras abas com
+    // valor defasado no DOM sobrescreviam a Vida. Interceptar o change
+    // antes de borbulhar ao formulário e gravar só o flag.
+    this.element.querySelectorAll("input[data-flag-path]").forEach(input => {
+      input.addEventListener("change", event => {
+        event.stopImmediatePropagation();
+        const [root, ...path] = String(input.dataset.flagPath).split(".");
+        this.actor.setFlag(root, path.join("."), input.checked);
+      });
+    });
+
     if ( this.isEditable ) {
       // Class level changes
       for ( const element of this.element.querySelectorAll(".level-selector") ) {

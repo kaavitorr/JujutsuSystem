@@ -14,15 +14,21 @@ function item(uuid, type, natural = false) {
     system: { type: { value: natural ? "natural" : "simpleM" }, equipped: false },
     toObject() { return { _id: "source", name: this.name, type, folder: "folder", ownership: {}, system: structuredClone(this.system), effects: [{ name: "Bônus" }] }; } };
 }
-const docs = [item("Item.armor", "equipment", true), item("Item.bite", "weapon"), item("Item.claw", "weapon")];
+const docs = [item("Item.armor", "equipment", true), item("Item.bite", "weapon"), item("Item.claw", "weapon"), item("Item.taxArmor", "equipment", true)];
 const resolve = async uuid => docs.find(doc => doc.uuid === uuid);
+test("a manually owned copy of canonical profile equipment satisfies the grant without a duplicate",async()=>{
+  const {actor,manual}=fixture();manual._stats={compendiumSource:docs[1].uuid};
+  await rules.syncNpcProfileEquipment(actor,{resolve});
+  assert.equal(actor.items.filter(i=>i.type==="weapon").length,1);assert(actor.items.includes(manual));
+});
 function fixture() {
   version = "2.0";
   const profile = { id: "profile", type: "archetype", system: { equipamentos: { armadura: docs[0].uuid, armas: [docs[1].uuid] } } };
   const manual = { id: "manual", type: "weapon", flags: {} };
   const actor = { type: "npc", isOwner: true, items: [profile, manual] };
+  let nextId = 0;
   actor.createEmbeddedDocuments = async (_, data) => {
-    const created = data.map((raw, i) => ({ ...structuredClone(raw), id: `created${actor.items.length + i}` }));
+    const created = data.map(raw => ({ ...structuredClone(raw), id: `created${nextId++}` }));
     actor.items.push(...created); return created;
   };
   actor.deleteEmbeddedDocuments = async (_, ids) => { actor.items = actor.items.filter(item => !ids.includes(item.id)); };
@@ -74,4 +80,50 @@ test("runtime hooks synchronize only the initiating user's owned archetype and h
   await callbacks.createItem(profile, {}, "gm"); assert.equal(actor.items.length, 4);
   actor.items = actor.items.filter(i => i === profile || i.id === "manual");
   await callbacks.createActor(actor, {}, "gm"); assert.equal(actor.items.length, 4);
+});
+test("taxonomy grants its armor; archetype armor takes precedence regardless of assignment order and removing it restores taxonomy", async () => {
+  const { actor, profile, manual } = fixture();
+  const taxonomy = { id: "taxonomy", type: "taxonomy", system: { equipamentos: { armadura: docs[3].uuid, armas: [] } } };
+  actor.items.push(taxonomy);
+  profile.system.equipamentos.armadura = null;
+  await rules.syncNpcArchetypeEquipment(actor, { resolve });
+  assert.equal(actor.items.filter(i => i.type === "equipment").length, 1);
+  assert.equal(actor.items.find(i => i.type === "equipment").name, docs[3].name);
+  profile.system.equipamentos.armadura = docs[0].uuid;
+  actor.items.reverse();
+  await rules.syncNpcArchetypeEquipment(actor, { resolve });
+  assert.equal(actor.items.filter(i => i.type === "equipment").length, 1);
+  assert.equal(actor.items.find(i => i.type === "equipment").name, docs[0].name);
+  actor.items = actor.items.filter(i => i !== profile);
+  await rules.syncNpcArchetypeEquipment(actor, { resolve });
+  assert.equal(actor.items.find(i => i.type === "equipment").name, docs[3].name);
+  assert(actor.items.includes(manual));
+});
+test("taxonomy equipment can be configured and its native create/update/delete hooks synchronize only the initiating user", async () => {
+  const { actor, profile } = fixture(); profile.type = "taxonomy"; profile.parent = actor;
+  const callbacks = {}; rules.registerNpcEquipmentHooks({ on(name, callback) { callbacks[name] = callback; } });
+  globalThis.fromUuid = resolve;
+  await callbacks.createItem(profile, {}, "gm"); assert.equal(actor.items.length, 4);
+  profile.system.equipamentos.armadura = null;
+  await callbacks.updateItem(profile, {}, {}, "gm"); assert.equal(actor.items.filter(i => i.type === "equipment").length, 0);
+  actor.items = actor.items.filter(i => i !== profile);
+  await callbacks.deleteItem(profile, {}, "gm"); assert.equal(actor.items.length, 1);
+  const sheet = { isEditable: true, isEditMode: true, item: { type: "taxonomy", system: { _source: {} }, update: async data => data } };
+  const change = await editor.configureNpcEquipment(sheet, null, docs[3]);
+  assert.equal(change["system.equipamentos"].armadura, docs[3].uuid);
+});
+test("weapons from both profiles combine without duplicates and survive removal of the other granting profile", async () => {
+  const { actor, profile, manual } = fixture();
+  const taxonomy = { id: "taxonomy", type: "taxonomy", system: { equipamentos: { armadura: docs[3].uuid, armas: [docs[1].uuid, docs[2].uuid] } } };
+  actor.items.push(taxonomy);
+  await rules.syncNpcProfileEquipment(actor, { resolve });
+  const granted = () => actor.items.filter(i => i !== manual && i.type === "weapon");
+  assert.deepEqual(granted().map(i => i.name).sort(), [docs[1].name, docs[2].name].sort());
+  const bite = granted().find(i => i.name === docs[1].name);
+  actor.items = actor.items.filter(i => i !== profile);
+  await rules.syncNpcProfileEquipment(actor, { resolve });
+  assert.equal(granted().length, 2); assert(granted().includes(bite), "shared weapon keeps its existing editable copy");
+  taxonomy.system.equipamentos.armas = [];
+  await rules.syncNpcProfileEquipment(actor, { resolve });
+  assert.equal(granted().length, 0); assert(actor.items.includes(manual));
 });

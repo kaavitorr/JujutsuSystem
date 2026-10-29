@@ -60,7 +60,7 @@ export default class D20RollConfigurationDialog extends RollConfigurationDialog 
   async _prepareFormulasContext(context, options) {
     context = await super._prepareFormulasContext(context, options);
     if (!hasLegacy2Test(this.config)) return context;
-    const choices = testRollChoices(this.config);
+    const choices = testRollChoices(this.config, undefined, this.rolls[0]);
     const bonus = Ruleset.netAdvantageBonus(choices.vantagens, choices.desvantagens);
     context.jj2Test = { ...choices, bonus, bonusLabel: `${bonus >= 0 ? "+" : ""}${bonus}` };
     context.rootId = this.id;

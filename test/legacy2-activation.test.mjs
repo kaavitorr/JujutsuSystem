@@ -23,7 +23,7 @@ test("advantages and disadvantages use integer counters; offensive burst is capp
     { vantagens: 3, desvantagens: 1, pa: 3, bonus: -2, gesture: "cone", ability: "int", attackMode: undefined, ammunition: undefined,
       gesto: null, condicao: false, manipulacao: false, selos: 0, danoAdicional: "", recarga: null, recarregar: false });
   const context = activationContext(activity, { vantagens: 3, desvantagens: 1, pa: 2 });
-  assert.equal(context.advantageBonus, 4);
+  assert.equal(context.advantageBonus, 2);
   assert.equal(context.burstLimit, 3);
   assert.equal(context.burstFormula, "2d4");
   assert.equal(context.abilityValue, 7);
@@ -153,7 +153,7 @@ test("the real attack builder applies form counters and bonus without granting e
   const form = new Map([["legacy2.vantagens", "3"], ["legacy2.desvantagens", "1"], ["legacy2.bonus", "5"]]);
   const config = { options: { advantage: true, advantageMode: 1 } }, process = { ability: "int" };
   attack._buildAttackConfig(process, config, form, 0);
-  assert.equal(config.data.legacyAdv, 4); assert.equal(config.data.jj2ManualBonus, 5);
+  assert.equal(config.data.legacyAdv, 2); assert.equal(config.data.jj2ManualBonus, 5);
   assert.equal(config.options.advantageMode, 0); assert.equal(config.options.advantage, false);
   assert.equal(config.parts.filter(part => part === "@jj2ManualBonus").length, 1);
 });

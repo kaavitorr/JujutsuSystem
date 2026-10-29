@@ -17,8 +17,8 @@ import { alternativeSavesEnabled, alternativeSaveData } from "./legacy2-alternat
  *      0 Destreinado (−4) · 1 Treinado (+0) · 2 Proficiente (+1)
  *      3 Especialista (+2) · 4 Mestre (+3)
  *    Sobe-se um degrau por ponto de treino (pool: criação + 1/nível + GM).
- *  • Rolagem = 1d20 + Atributo + degrau ± vantagens (cada vantagem +2,
- *    cada desvantagem −2, até 6 de cada; net entre elas).
+ *  • Rolagem = 1d20 + Atributo + degrau ± vantagens (cada vantagem +1,
+ *    cada desvantagem −1, até 6 de cada; net entre elas).
  *  • Sem dados de Vida/Energia; Estilo de Combate define vidaBase/energiaBase
  *    e o atributo principal do CR.
  *  • PV = (nível × vidaBase) + (CON × vidaBase) + PV da espécie.
@@ -41,7 +41,7 @@ export const RANKS = Object.freeze([
 export const MAX_VANTAGENS = 6;
 
 /** Bônus por vantagem (positivo) e por desvantagem (negativo). */
-export const BONUS_POR_VANTAGEM = 2;
+export const BONUS_POR_VANTAGEM = 1;
 
 export default class Ruleset {
 
@@ -115,10 +115,10 @@ export default class Ruleset {
 
   /**
    * Converte contagens brutas de vantagem/desvantagem no modificador líquido
-   * da rolagem (net × ±2, limitado a ±6).
+   * da rolagem (+1 por vantagem e −1 por desvantagem, limitado a ±6).
    * @param {number} vantagens   0-6.
    * @param {number} desvantagens 0-6.
-   * @returns {number} Modificador líquido (múltiplo de 2).
+   * @returns {number} Modificador líquido inteiro.
    */
   static netAdvantageBonus(vantagens, desvantagens) {
     const net = Math.min(MAX_VANTAGENS, Math.max(0, Math.floor(vantagens)))

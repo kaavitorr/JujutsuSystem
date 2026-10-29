@@ -40,6 +40,7 @@ export default class AttackActivity extends ActivityMixin(BaseAttackActivityData
       sheetClass: AttackSheet,
       targetPhase: "post",
       usage: {
+        applyEffectsInChat: false,
         actions: {
           rollAttack: AttackActivity.#rollAttack,
           rollDamage: AttackActivity.#rollDamage
@@ -369,7 +370,7 @@ export default class AttackActivity extends ActivityMixin(BaseAttackActivityData
    * @param {ChatMessage5e} message  Message associated with the activation.
    */
   static #rollAttack(event, target, message) {
-    this.rollAttack({ event });
+    this.rollAttack({ event }, {}, { data: { system: { origin: message.id } } });
   }
 
   /* -------------------------------------------- */
@@ -424,6 +425,14 @@ export default class AttackActivity extends ActivityMixin(BaseAttackActivityData
       .filter(ability => ability in CONFIG.DND5E.abilities)
       .sort((a, b) => (actorAbilities[b]?.mod ?? 0) - (actorAbilities[a]?.mod ?? 0))
       .map(value => ({ value, label: CONFIG.DND5E.abilities[value].label }));
+    if (Ruleset.isV2() && this.item.type === "weapon" && !this.attack.ability) {
+      const principal = this.actor?.type === "npc" ? Ruleset.npcPrincipal(this.actor) : Ruleset.atributoPrincipal(this.actor);
+      if (CONFIG.DND5E.abilities[principal]) {
+        const index = options.findIndex(option => option.value === principal);
+        if (index >= 0) options.splice(index, 1);
+        options.unshift({ value: principal, label: CONFIG.DND5E.abilities[principal].label });
+      }
+    }
     if ( this.attack.ability === "none" ) options.push({ value: "none", label: _loc("DND5E.None") });
     return options;
   }

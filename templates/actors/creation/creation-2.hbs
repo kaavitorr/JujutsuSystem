@@ -26,25 +26,37 @@
     {{/if}}
 
     {{#if stepStyle}}
-    <div class="jj2c-style-layout">
-      <section class="jj2c-panel jj2c-style-list"><div class="jj2c-panel-heading"><h2>Estilo de Combate</h2></div>
-        <div class="jj2c-list">{{#each styleCards}}<button type="button" class="jj2c-style-choice {{#if selected}}selected{{/if}}" data-action="style" data-uuid="{{uuid}}" aria-pressed="{{#if selected}}true{{else}}false{{/if}}" {{#if @root.busy}}disabled{{/if}}><div><img src="{{img}}" alt=""><strong>{{name}}</strong>{{#if selected}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="check"}}{{/if}}</div><small>{{points.specializations}} Especializações</small><span class="jj2c-style-points">Armas {{points.armas}} · Salvaguardas {{points.saves}} · Perícias {{points.skills}}</span></button>{{else}}<p class="jj2c-empty">Nenhum Estilo de Combate disponível.</p>{{/each}}</div>
-        {{#if style}}<label class="jj2c-primary"><span>Atributo principal</span><select data-creation-field="primary">{{#each primaryOptions}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/if}}
-        {{#if pathOptions.length}}<fieldset class="jj2c-paths"><legend>Caminho do Estilo</legend>
-          <div class="jj2c-path-options">{{#each pathOptions}}<button type="button" class="jj2c-path {{#if selected}}selected{{/if}}" data-action="path" data-caminho="{{id}}" aria-pressed="{{#if selected}}true{{else}}false{{/if}}" {{#if @root.busy}}disabled{{/if}}><span class="jj2c-path-icon">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=icon}}</span><span class="jj2c-path-copy"><strong>{{label}}</strong><small>{{desc}}</small></span>{{#if selected}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="check"}}{{/if}}</button>{{/each}}</div>
-          <p class="jj2c-hint">Trocar o caminho redefine as Especializações escolhidas.</p>
-        </fieldset>{{/if}}
-        <p class="jj2c-hint">Trocar o Estilo redefine as Especializações e a distribuição de pontos dele.</p>
+    <div class="jj2c-style-workspace">
+      <section class="jj2c-style-setup" aria-label="Estilo de Combate e escolhas iniciais">
+        <div class="jj2c-style-setup-row">
+          <div class="jj2c-style-gallery"><span>Estilo de Combate</span>
+            <div class="jj2c-style-choices" role="group" aria-label="Escolher Estilo de Combate">
+              {{#each styleCards}}
+              <button type="button" class="jj2c-style-portrait {{#if selected}}selected{{/if}}" data-action="style" data-uuid="{{uuid}}" aria-label="Escolher {{name}}" aria-pressed="{{#if selected}}true{{else}}false{{/if}}" {{#if @root.busy}}disabled{{/if}}>
+                <img src="{{img}}" alt="">
+                <span>{{name}}{{#if selected}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="check"}}{{/if}}</span>
+              </button>
+              {{else}}<p class="jj2c-empty">Nenhum Estilo de Combate disponível.</p>{{/each}}
+            </div>
+          </div>
+          {{#if style}}<label class="jj2c-primary"><span>Atributo principal</span><select data-creation-field="primary">{{#each primaryOptions}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          <button type="button" class="jj2c-style-info" data-action="focus">Sobre o Estilo</button>{{/if}}
+          <div class="jj2c-tree-budget" aria-live="polite"><strong>{{specializationsRemaining}}</strong><span>de {{budget.specializations}} escolhas iniciais restantes</span></div>
+        </div>
+        {{#if pathOptions.length}}
+        <fieldset class="jj2c-paths"><legend>Caminho do Estilo</legend>
+          <div class="jj2c-path-options">{{#each pathOptions}}
+            <button type="button" class="jj2c-path {{#if selected}}selected{{/if}}" data-action="path" data-caminho="{{id}}" data-tooltip="{{desc}}" aria-label="{{label}}: {{desc}}" aria-pressed="{{#if selected}}true{{else}}false{{/if}}" {{#if @root.busy}}disabled{{/if}}>
+              <span class="jj2c-path-icon">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=icon}}</span>
+              <span class="jj2c-path-copy"><strong>{{label}}</strong></span>
+              {{#if selected}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="check"}}{{/if}}
+            </button>
+          {{/each}}</div>
+        </fieldset>
+        {{/if}}
+        <p class="jj2c-hint">{{#if style}}Escolhas iniciais: {{#each slotHints}}<strong>{{this}}</strong>{{#unless @last}} · {{/unless}}{{/each}}. Trocar o Estilo ou o caminho redefine as escolhas dele.{{else}}Escolha um Estilo. Você pode explorar as árvores e planejar sua evolução.{{/if}}</p>
       </section>
-      <section class="jj2c-panel jj2c-specialization-panel"><div class="jj2c-panel-heading"><h2>Especializações</h2><span class="jj2c-budget"><strong>{{specializationsRemaining}}</strong> / {{budget.specializations}} restantes</span></div>
-        {{#if slotHints.length}}<p class="jj2c-hint">Habilidades do Estilo: {{#each slotHints}}<strong>{{this}}</strong>{{#unless @last}} · {{/unless}}{{/each}}.</p>{{else if specializationScope}}<p class="jj2c-hint">Habilidades iniciais do Estilo: <strong>{{specializationScope}}</strong>.</p>{{/if}}
-        <nav class="jj2c-categories" aria-label="Categorias de Especialização">{{#each specializationCategories}}<button type="button" data-action="category" data-category="{{name}}" class="{{#if selected}}selected{{/if}}" aria-pressed="{{#if selected}}true{{else}}false{{/if}}"><img src="{{img}}" alt=""><span>{{name}}</span></button>{{/each}}</nav>
-        <label class="jj2c-search">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="tree"}}<input id="{{rootId}}-specialization-search" type="search" data-creation-search value="{{search}}" placeholder="Buscar habilidade" aria-label="Buscar Especialização"></label>
-        <div class="jj2c-specializations">{{#each specializationGroups}}<div class="jj2c-spec-group"><h4 class="jj2c-spec-group-title">{{caminho}}</h4>{{#each nodes}}<article class="jj2c-specialization {{#if picked}}selected{{/if}} {{#if blocked}}blocked{{/if}} {{#if focused}}focused{{/if}}"><button type="button" class="jj2c-specialization-title" data-action="focus" data-name="{{nome}}"><img src="{{img}}" alt=""><span><strong>{{nome}}</strong></span></button><p>{{#if reason}}{{reason}}{{else}}Sem requisitos{{/if}}</p><button type="button" class="jj2c-select-skill" data-action="specialization" data-name="{{nome}}" aria-pressed="{{#if picked}}true{{else}}false{{/if}}" {{#if unavailable}}disabled{{/if}}>{{#if picked}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="check"}}Selecionada{{else}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}Escolher{{/if}}</button></article>{{else}}<p class="jj2c-empty">Nenhuma habilidade neste caminho.</p>{{/each}}</div>{{else}}<p class="jj2c-empty">Nenhuma habilidade nesta categoria.</p>{{/each}}</div>
-      </section>
-      <aside class="jj2c-panel jj2c-detail"><div class="jj2c-panel-heading"><h2>{{#if selectedDetail}}{{#if selectedDetail.nome}}{{selectedDetail.nome}}{{else}}{{selectedDetail.name}}{{/if}}{{else}}Seu caminho{{/if}}</h2></div>
-        {{#if selectedDetail}}<img class="jj2c-detail-art" src="{{selectedDetail.img}}" alt=""><div class="jj2c-rich">{{{detailHTML}}}</div>{{else}}<div class="jj2c-empty-guide">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="tree"}}<p>Escolha um Estilo e conheça as habilidades que vão definir seu personagem.</p></div>{{/if}}
-      </aside>
+      <div class="jj2-skill-tree jj2c-tree">{{> "systems/jujutsu-system/templates/actors/apps/skill-tree-2.hbs" tree}}</div>
     </div>
     {{/if}}
 

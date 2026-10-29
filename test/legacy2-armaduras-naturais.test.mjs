@@ -27,7 +27,7 @@ test("as 23 armaduras naturais da tabela existem, no tipo equipment", () => {
   }
 });
 
-test("cada armadura contribui com CR = base + modificador do atributo listado", () => {
+test("cada armadura usa CR = base + valor inteiro do atributo e mantém desativado o efeito antigo com modificador", () => {
   const casos = [
     ["Armadura Elemental", 10, "int"], ["Carapaça Pesada", 13, "str"], ["Couro Leve", 6, "dex"],
     ["Escamas Pesadas", 14, "con"], ["Exoesqueleto", 12, "con"], ["Armadura Psíquica", 8, "wis"],
@@ -36,8 +36,11 @@ test("cada armadura contribui com CR = base + modificador do atributo listado", 
   for (const [nome, base, atributo] of casos) {
     const armadura = porNome[nome];
     assert.deepEqual(armadura.flags["jujutsu-system"].cr, { base, atributo }, nome);
+    assert.equal(armadura.system.armor.value, base, nome);
+    assert.equal(armadura.system.armor.ability, atributo, nome);
     const efeitoCR = armadura.effects.find(e => e.changes.some(c => c.key === "system.attributes.ac.bonus"));
     assert.ok(efeitoCR, nome);
+    assert.equal(efeitoCR.disabled, true, nome);
     const change = efeitoCR.changes.find(c => c.key === "system.attributes.ac.bonus");
     // ADD na ac.bonus — o caminho que o cálculo de CR de NPC já respeita (bonusCR).
     assert.equal(change.mode, 2, nome);
@@ -51,11 +54,13 @@ test("Casca e Ossada automatizam resistência, imunidade e vulnerabilidade", () 
   const casca = porNome["Casca"].effects.find(e => e.changes.some(c => c.key.startsWith("system.legacy2.resistances")));
   assert.deepEqual(casca.changes,
     [{ key: "system.legacy2.resistances.bludgeoning.value", mode: 2, value: 3 }]);
+  assert.equal(casca.transfer, true);
 
   const ossada = porNome["Ossada"];
   const imune = ossada.effects.find(e => e.name.includes("Imunidade"));
   assert.deepEqual(imune.changes,
     [{ key: "system.legacy2.resistances.piercing.immune", mode: 5, value: "true" }]);
+  assert.equal(imune.transfer, true);
   const vulneravel = ossada.effects.find(e => e.name.includes("Vulnerabilidade"));
   assert.deepEqual(vulneravel.changes,
     [{ key: "system.legacy2.resistances.bludgeoning.value", mode: 2, value: -10 }]);
@@ -67,7 +72,7 @@ test("as armaduras de espinhos registram o retorno de dano para automação futu
     texto: "Causa dano igual ao atributo de Int à criatura atacante." });
   const placas = porNome["Placas Cristalizadas"].flags["jujutsu-system"].thorns;
   assert.equal(placas.tipo, "thorns-atributo");
-  assert.equal(placas.atributo, "for");
+  assert.equal(placas.atributo, "str");
   const membrana = porNome["Membrana Fina"].flags["jujutsu-system"].thorns;
   assert.equal(membrana.tipo, "thorns-resistencia");
   assert.equal(membrana.tipoDano, "acid");

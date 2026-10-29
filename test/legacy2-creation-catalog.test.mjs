@@ -17,3 +17,11 @@ test("missing creation content produces usable empty catalogs without fake optio
   assert.equal(result.graph.porNome.size,0);
   assert.deepEqual(result.customization["jj-legendary-modifiers"],[]);
 });
+
+test("legacy creation references recover from missing-pack errors using the current source",async()=>{
+  const calls=[],current="Compendium.jujutsu-compendium.geral-2-0.Item.granted",doc={uuid:current,type:"feat"};
+  globalThis.fromUuid=async uuid=>{calls.push(uuid);if(uuid===current)return doc;throw new Error("Unknown compendium");};
+  assert.equal(await catalog.resolveCreationDocument("Compendium.hunter-legacy-module.hl-geral.Item.granted"),doc);
+  assert.equal(calls.length,2);
+  await assert.rejects(catalog.resolveCreationDocument("Item.broken"),/Unknown compendium/);
+});

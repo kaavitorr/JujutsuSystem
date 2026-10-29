@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { readFileSync } from "node:fs";
 import { alternativeSavesEnabled, alternativeSaveDefinition } from "../module/systems/legacy2-alternative-saves.mjs";
+import { activityConditionsSnapshot, conditionButtonAvailable, conditionChatButtons } from "../module/systems/activity-conditions.mjs";
 
 let enabled=true,version="2.0";
 globalThis.game={settings:{get:(scope,key)=>key==="rulesetVersion"?version:key==="regraSalvaguarda"?enabled:undefined},user:{isGM:false}};
@@ -10,8 +11,8 @@ globalThis.foundry={utils:{isEmpty:obj=>!Object.keys(obj).length}};
 const loc=(key,{ability,dc})=>key==="DND5E.SavingThrowDC"?`CD ${dc} Salvaguarda de ${ability}`:`Salvaguarda de ${ability}`;
 const read=path=>readFileSync(new URL(`../${path}`,import.meta.url),"utf8");
 const body=(path,name)=>read(path).match(new RegExp(`  ${name.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")} \\{([\\s\\S]*?)\\r?\\n  }`))[1];
-const Activity=new Function("alternativeSavesEnabled","alternativeSaveDefinition","_loc",`return class extends class {_usageChatButtons(){return [{action:"other",label:{value:"Outra ação"},dataset:{},visibility:"all"}]}} {_usageChatButtons(message){${body("module/documents/activity/save.mjs","_usageChatButtons(message)")}}}`)(alternativeSavesEnabled,alternativeSaveDefinition,loc);
-const prepare=new Function("alternativeSavesEnabled","alternativeSaveDefinition","_loc",`return function(){${body("module/data/chat-message/usage-message-data.mjs","_prepareButtons()")}}`)(alternativeSavesEnabled,alternativeSaveDefinition,loc);
+const Activity=new Function("alternativeSavesEnabled","alternativeSaveDefinition","_loc","activityConditionsSnapshot",`return class extends class {_usageChatButtons(){return [{action:"other",label:{value:"Outra ação"},dataset:{},visibility:"all"}]}} {_usageChatButtons(message){${body("module/documents/activity/save.mjs","_usageChatButtons(message)")}}}`)(alternativeSavesEnabled,alternativeSaveDefinition,loc,activityConditionsSnapshot);
+const prepare=new Function("alternativeSavesEnabled","alternativeSaveDefinition","_loc","conditionButtonAvailable","conditionChatButtons",`return function(){${body("module/data/chat-message/usage-message-data.mjs","_prepareButtons()")}}`)(alternativeSavesEnabled,alternativeSaveDefinition,loc,conditionButtonAvailable,conditionChatButtons);
 const groupButtons=new Function("context",body("module/data/chat-message/usage-message-data.mjs","_prepareButtonGroups(context)"));
 function activity(abilities){return Object.assign(new Activity(),{save:{ability:new Set(abilities),dc:{value:18},visible:true},damage:{parts:[]}});}
 function message(buttons,challenge=true){return {buttons,actor:{isOwner:false},parent:{isAuthor:false,shouldDisplayChallenge:challenge,getAssociatedActivity:()=>null}};}
@@ -73,4 +74,16 @@ test("the native choice menu forwards the correct stored button after duplicate 
   assert.equal(options[1].label,"CD 18 Salvaguarda de Vontade");
   options[1].onClick({}, {dataset:{}});
   assert.equal(forwarded.dataset.ability,"con");assert.equal(forwarded.dataset.dc,18);
+});
+test("condition buttons follow the prerequisite result and current save rule without revealing hidden DCs", () => {
+  enabled = true;version = "2.0";
+  CONFIG.statusEffects = { "jj-atordoado": { name: "Atordoado" } };
+  const snapshot = { type: "attack", dc: 18, conditions: [{ _id: "condition", condition: "jj-atordoado", save: "con" }] };
+  const stored = conditionChatButtons(snapshot), m = message(stored, false);
+  m.parent.flags = { "jujutsu-system": { activityConditions: snapshot } };
+  m.parent.getAssociatedRolls = () => [];
+  assert.equal(prepare.call(m)[0].hidden, true);
+  m.parent.getAssociatedRolls = type => type === "attack" ? [{ system: { evaluatedTargets: [{ actor: "Actor.alvo", token: "Scene.scene.Token.alvo", isMiss: false }] } }] : [];
+  const button = prepare.call(m)[0];assert.equal(button.hidden, false);assert.match(button.label, /Vontade/);assert.doesNotMatch(button.label, /18/);
+  enabled = false;assert.match(prepare.call(m)[0].label, /Constituição/);
 });

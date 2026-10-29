@@ -66,12 +66,12 @@ export default class D20RollModificationField extends SchemaField {
       minimum = Math.max(minimum, data.min ?? -Infinity);
       if ( data.bonus ) parts.push(data.bonus);
     }
-    const { advantage, disadvantage } = AdvantageModeField.combineFields(
+    const { advantage, disadvantage, advantageCount, disadvantageCount } = AdvantageModeField.combineFields(
       model, keyPaths.map(kp => `${kp}.mode`), rules.actor
         ? D20RollModificationField.#makeRulesIterator("advantage", rules).toAdvantageCounts(options) : options
     );
     return {
-      advantage, disadvantage,
+      advantage, disadvantage, advantageCount, disadvantageCount,
       bonus: rules.actor
         ? D20RollModificationField.#makeRulesIterator("bonus", rules).toFormula(parts)
         : parts.join(" + "),

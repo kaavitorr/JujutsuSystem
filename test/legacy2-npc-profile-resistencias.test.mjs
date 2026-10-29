@@ -62,6 +62,15 @@ test("taxonomy and archetype contributions stack over the NPC's own values",()=>
   assert.equal(valor(system,"fire"),19); // 5 próprios + 2 fixos + 3×4 por ND
   assert.equal(valor(system,"cold"),-1);
 });
+test("profile preparation retains numeric resistance and immunity granted by equipped natural armor",()=>{
+  const system=npcFixture({items:[perfilItem("taxonomy","Planta",{bludgeoning:{value:10}})]});
+  // Active Effects have already been applied by Foundry before derived preparation.
+  system.legacy2.resistances.bludgeoning.value=3;
+  system.legacy2.resistances.piercing.immune=true;
+  prepare.call(system,Ruleset,npcProfile,prepareNpcClassificationActions,npcNd,NUMERIC_DAMAGE_TYPES);
+  assert.equal(valor(system,"bludgeoning"),13);
+  assert.equal(imune(system,"piercing"),true);
+});
 
 test("immunity from either profile wins without erasing the source flag",()=>{
   const items=[perfilItem("taxonomy","Fera",{poison:{immune:true}})];

@@ -11,6 +11,7 @@ globalThis.CONFIG = { DND5E: { damageTypes: { slashing: { isPhysical: true }, fo
 globalThis.foundry = { utils: { deepClone: structuredClone } };
 globalThis.Hooks = { on() {}, call: () => true, callAll() {} };
 globalThis.ChatMessage = { create: async () => {}, getSpeaker: () => ({}) };
+globalThis.ui = { notifications: { info() {} } };
 Number.isNumeric ??= n => typeof n === "number" && Number.isFinite(n);
 Math.clamp ??= (n, min, max) => Math.min(max, Math.max(min, n));
 const { applyDamageToActor } = await import("../module/applications/actor/jj/damage-application.mjs");

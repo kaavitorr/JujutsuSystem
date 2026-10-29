@@ -43,7 +43,12 @@ export async function loadCreationCatalog() {
 
 /** Legacy origin grants sometimes point to older pack IDs; resolve the actual copied item when necessary. */
 export async function resolveCreationDocument(uuid) {
-  const doc = await fromUuid(uuid);
+  let doc;
+  try { doc = await fromUuid(uuid); }
+  catch (error) {
+    // Foundry may throw for a removed legacy pack instead of returning null.
+    if (!/^Compendium\.[^.]+\.[^.]+\.Item\.[^.]+$/.test(uuid ?? "")) throw error;
+  }
   if (doc || !/^Compendium\.[^.]+\.[^.]+\.Item\.[^.]+$/.test(uuid ?? "")) return doc;
   const id = uuid.split(".").at(-1);
   return fromUuid(`Compendium.jujutsu-compendium.geral-2-0.Item.${id}`);

@@ -4,6 +4,7 @@ import { getSceneTargets } from "../../utils.mjs";
 import { maybePromptJJScale } from "../../applications/actor/jj/native-cards.mjs";
 import ActivityMixin from "./mixin.mjs";
 import { alternativeSavesEnabled, alternativeSaveDefinition } from "../../systems/legacy2-alternative-saves.mjs";
+import { activityConditionsSnapshot } from "../../systems/activity-conditions.mjs";
 
 /**
  * Activity for making saving throws and rolling damage.
@@ -28,6 +29,7 @@ export default class SaveActivity extends ActivityMixin(BaseSaveActivityData) {
       sheetClass: SaveSheet,
       targetPhase: "pre",
       usage: {
+        applyEffectsInChat: false,
         actions: {
           rollDamage: SaveActivity.#rollDamage,
           rollSave: SaveActivity.#rollSave
@@ -52,10 +54,11 @@ export default class SaveActivity extends ActivityMixin(BaseSaveActivityData) {
   /** @override */
   _usageChatButtons(message) {
     const buttons = [];
+    const conditions = activityConditionsSnapshot(this);
     const dc = this.save.dc.value;
     const alternativeSaves = alternativeSavesEnabled();
 
-    for ( const abilityId of this.save.ability ) {
+    for ( const abilityId of (conditions && !conditions.damageSave) ? [] : this.save.ability ) {
       const alternative = alternativeSaves ? alternativeSaveDefinition(abilityId) : null;
       const ability = alternative?.label ?? CONFIG.DND5E.abilities[abilityId]?.label ?? "";
       const promptTitle = _loc("DND5E.SavePromptTitle", { ability });
@@ -130,7 +133,8 @@ export default class SaveActivity extends ActivityMixin(BaseSaveActivityData) {
     const bonusData = CONFIG.Dice.BasicRoll.constructParts({ activityBonus: bonus });
     for ( const token of targets ) {
       const actor = token instanceof Actor ? token : token.actor;
-      const speaker = ChatMessage.getSpeaker({ actor, scene: canvas.scene, token: token.document });
+      const tokenDocument = token instanceof Actor ? undefined : token.document ?? token;
+      const speaker = ChatMessage.getSpeaker({ actor, scene: tokenDocument?.parent ?? canvas.scene, token: tokenDocument });
       const rollData = {
         event,
         ability: ability ?? this.save.ability.first(),

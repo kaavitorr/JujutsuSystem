@@ -1,0 +1,27 @@
+<fieldset class="jj-activity-conditions">
+  <legend>
+    <span>Aplicar Condições</span>
+    <button type="button" class="unbutton control-button" data-action="addCondition" aria-label="Adicionar condição" data-tooltip="Adicionar condição">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+    </button>
+  </legend>
+  <p class="hint jj-condition-gate">{{#if conditionEditor.isAttack}}Depois de acertar o alvo, ele faz uma salvaguarda para resistir à condição.{{else}}{{#if conditionEditor.hasDamage}}Se falhar na salvaguarda de dano, o alvo faz outra salvaguarda para resistir à condição.{{else}}O alvo faz diretamente a salvaguarda para resistir à condição.{{/if}}{{/if}}</p>
+  <div class="jj-condition-entries">
+    {{#each conditionEditor.rows as |row|}}
+    <div class="jj-condition-entry" data-condition-id="{{row._id}}">
+      <input type="hidden" name="conditions.{{row.index}}._id" value="{{row._id}}">
+      <label><span>Condição</span><select name="conditions.{{row.index}}.condition" aria-label="Condição a aplicar">
+        <option value="">Escolha uma condição</option>
+        {{selectOptions ../conditionEditor.conditionOptions selected=row.condition}}
+      </select></label>
+      <label><span>Salvaguarda para resistir</span><select name="conditions.{{row.index}}.save" aria-label="Salvaguarda da condição">
+        {{selectOptions ../conditionEditor.saveOptions selected=row.saveValue}}
+      </select></label>
+      <button type="button" class="unbutton control-button" data-action="deleteCondition" aria-label="Remover condição" data-tooltip="Remover condição">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    {{else}}<p class="hint jj-condition-empty">Nenhuma condição. Use + para adicionar.</p>{{/each}}
+  </div>
+  <p class="hint jj-condition-dc">A resistência à condição usa a mesma CD da técnica.</p>
+</fieldset>

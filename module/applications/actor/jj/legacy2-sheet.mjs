@@ -5,12 +5,13 @@ import { extraResourceCards } from "./legacy2-extra-resources.mjs";
 import { baseEngagement, engagementValue } from "../../../systems/engagement.mjs";
 import { SKILL_GROUPS } from "../../../systems/legacy2-skills.mjs";
 import { npcProficiencyBonus } from "../../../systems/legacy2-npc-profiles.mjs";
+import { techniqueDifficulty } from "../../../systems/legacy2-technique-dc.mjs";
 import { prepareNpcClassificationActions } from "../../../systems/legacy2-npc-classification.mjs";import { resistanceCards } from "../../../systems/legacy2-resistances.mjs";
 export { WEAPON_GROUPS, weaponGroupRank, SKILL_GROUPS };
 
 export const LEGACY2_TABS = [
-  ["details", "Resumo"], ["inventory", "Inventário"], ["feitico", "Feitiço"], ["spells", "Técnicas"], ["skills", "Perícias"],
-  ["features", "Características"], ["effects", "Efeitos"], ["biography", "Personalização"]
+  ["details", "Detalhes"], ["inventory", "Inventário"], ["features", "Características"], ["feitico", "Feitiço"], ["skills", "Perícias"],
+  ["spells", "Técnicas"], ["effects", "Efeitos"], ["biography", "Personalização"]
 ];
 
 export const LEGACY2_TAB_ICONS = {
@@ -142,6 +143,7 @@ export function buildLegacy2Context(actor, config, ruleset) {
   const abilityConfig = config.abilities;
   const style = ruleset.estilo(actor);
   const principalKey = ruleset.atributoPrincipal(actor);
+  const techniqueDC = techniqueDifficulty(actor, ruleset);
   const principalKeys = Array.isArray(style?.atributoPrincipal)
     ? style.atributoPrincipal : style?.principalEscolhivel && style.atributoPrincipal === "str" ? ["str", "dex"]
       : style?.atributoPrincipal ? [style.atributoPrincipal] : [];
@@ -193,6 +195,8 @@ export function buildLegacy2Context(actor, config, ruleset) {
   const deslocamentoPadrao = Math.max(0, ...movementValues);
   const deslocamentoVoo = Math.max(0, Number(movement.speeds?.fly) || 0);
   return {
+    techniqueDC: { ...techniqueDC,
+      tooltip: `10 + ${abilityConfig[techniqueDC.ability]?.label ?? techniqueDC.ability} (${techniqueDC.attribute}) = ${techniqueDC.value}` },
     creationPending: actor.type === "character" && actor.isOwner && !(actor.items?.size ?? actor.items?.length ?? 0)
       && !actor.getFlag?.("jujutsu-system", "creation2")?.completed,
     engagement: engagementValue(actor),

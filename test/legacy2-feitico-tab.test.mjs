@@ -4,21 +4,23 @@ import fs from "node:fs/promises";
 import Ruleset from "../module/systems/ruleset.mjs";
 import { LEGACY2_TABS, LEGACY2_TAB_ICONS } from "../module/applications/actor/jj/legacy2-sheet.mjs";
 import { feiticoProgression2 } from "../module/applications/actor/jj/legacy2-feitico.mjs";
+import FeiticoSheetMixin from "../module/applications/actor/jj/feitico-sheet.mjs";
 
 let version = "2.0";
 globalThis.game = { settings: { get: () => version }, user: { isGM: false } };
 globalThis.CONFIG = { DND5E: { spellSchools: {} } };
 globalThis.foundry = { applications: { ux: { TextEditor: { implementation: {} } } }, utils: { deepClone: structuredClone } };
-globalThis.FeiticoFixture = { Ruleset, LEGACY2_TABS, LEGACY2_TAB_ICONS, feiticoProgression2 };
+globalThis.FeiticoFixture = { Ruleset, LEGACY2_TABS, LEGACY2_TAB_ICONS, feiticoProgression2, FeiticoSheetMixin };
 globalThis.FeiticoActorBoundary = class {
   constructor(actor) { this.actor = actor; }
+  get isEditable() { return true; }
   _configureRenderParts() { return this.actor.limited ? { biography: { template: "limited" } } : structuredClone(this.constructor.PARTS); }
   _getTabs() { return { native: { id: "native" } }; }
 };
 let source = await fs.readFile(new URL("../module/applications/actor/character-sheet.mjs", import.meta.url), "utf8");
 source = source.replace(/^import\s[\s\S]*?;\r?\n/gm, "");
 source = `const BaseActorSheet = globalThis.FeiticoActorBoundary;
-const { Ruleset, LEGACY2_TABS, LEGACY2_TAB_ICONS, feiticoProgression2 } = globalThis.FeiticoFixture;\n${source}`;
+const { Ruleset, LEGACY2_TABS, LEGACY2_TAB_ICONS, feiticoProgression2, FeiticoSheetMixin } = globalThis.FeiticoFixture;\n${source}`;
 const { default: CharacterSheet } = await import(`data:text/javascript;base64,${Buffer.from(source).toString("base64")}`);
 const actor = items => ({ limited: false, items, system: { details: { level: 4 }, masteryLevel: 3, attributes: { prof: 2 } }, getFlag: (scope, key) => key === "feiticoName" ? "Ilimitado" : undefined });
 const spell = (id, flag, level = 1) => ({ id, name: id, img: "icons/test.webp", type: "spell", system: { level }, getFlag: (scope, key) => key.split(".").slice(1).reduce((v, part) => v?.[part], flag) });

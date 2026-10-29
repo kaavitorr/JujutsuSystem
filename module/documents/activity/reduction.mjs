@@ -1,6 +1,7 @@
 import ReductionSheet from "../../applications/activity/reduction-sheet.mjs";
 import ReductionActivityData from "../../data/activity/reduction-data.mjs";
 import ActivityMixin from "./mixin.mjs";
+import { activateDamageReduction } from "../../applications/actor/jj/reducao-dano.mjs";
 
 /**
  * Atividade de Redução de Dano.
@@ -8,10 +9,13 @@ import ActivityMixin from "./mixin.mjs";
  * Ao ser usada, o resultado de uma rolagem (fórmula digitada no diálogo) vira um
  * escudo de redução de dano, semelhante à Explosão Defensiva. Um checkbox define
  * se a redução vale para um único ataque ou dura até o início do próximo turno
- * (reduzindo cada ataque). A lógica de uso é tratada via o hook
- * `dnd5e.preUseActivity` em applications/actor/jj/reducao-dano.mjs.
+ * (reduzindo cada ataque). A lógica de uso é tratada pelo fluxo aguardado
+ * em applications/actor/jj/reducao-dano.mjs.
  */
 export default class ReductionActivity extends ActivityMixin(ReductionActivityData) {
+  async _useCustom(usage) {
+    return activateDamageReduction(this, usage);
+  }
 
   /** @inheritDoc */
   static metadata = Object.freeze(

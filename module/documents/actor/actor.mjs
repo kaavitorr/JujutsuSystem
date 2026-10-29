@@ -1,4 +1,6 @@
 import Ruleset from "../../systems/ruleset.mjs";
+import { replacesNativeConditionRoll } from "../../systems/legacy2-condition-rolls.mjs";
+import { npcFeatureRollData } from "../../systems/legacy2-npc-features.mjs";
 import { applyNumericResistances } from "../../systems/legacy2-resistances.mjs";
 import { absorbShieldDamage } from "../../systems/legacy2-shield.mjs";
 import BaseRestDialog from "../../applications/actor/rest/base-rest-dialog.mjs";
@@ -598,6 +600,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
     else rollData = { ...super.getRollData() };
     rollData.flags = this.flags;
     rollData.name = this.name;
+    if (this.type === "npc" && Ruleset.isV2()) Object.assign(rollData, npcFeatureRollData(this, Ruleset.npcPrincipal(this)));
     if ( options.roll ) rollData.roll ??= {};
     rollData.statuses = {};
     for ( const status of this.statuses ) {
@@ -622,6 +625,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
 
     const applyCondition = prop => {
       let [status, level] = prop.split("-");
+      if (Ruleset.isV2() && replacesNativeConditionRoll(key, status)) return false;
 
       // If immune, naturally never applied.
       if ( imms.has(status) ) return false;
@@ -803,9 +807,17 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
 
     let { amount } = damages;
     const { temp, tempMax } = damages;
-    const impulse = Ruleset.isV2() ? this.getFlag("jujutsu-system", "explosaoDefensivaPendente") : null;
-    const consumeImpulse = impulse?.physicalImpulse === true && amount > 0 && Number(impulse.reducao) > 0;
-    if (consumeImpulse) amount = Math.max(0, amount - Number(impulse.reducao));
+    // Both native damage cards and token damage must honor the same pending
+    // protections as the custom cards, before shield points and temporary HP.
+    const reductions = [];
+    for (const [key, field] of [["explosaoDefensivaPendente", "reducao"], ["reducaoDano", "valor"]]) {
+      const protection = this.getFlag("jujutsu-system", key);
+      const value = Number(protection?.[field]);
+      if (!(amount > 0 && Number.isFinite(value) && value > 0)) continue;
+      const absorbed = Math.min(amount, value);
+      amount -= absorbed;
+      reductions.push({ key, absorbed, consume: !protection.persistente });
+    }
     const shield = Ruleset.isV2() && amount > 0
       ? absorbShieldDamage(this.system.armorPoints?.value, amount) : null;
     const remaining = shield?.remaining ?? amount;
@@ -816,7 +828,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
       "system.attributes.hp.tempmax": hpSource.tempmax - tempMax,
       "system.attributes.hp.value": hp.value - deltaHP
     };
-    if (consumeImpulse) updates["flags.jujutsu-system.-=explosaoDefensivaPendente"] = null;
+    for (const reduction of reductions) if (reduction.consume) updates[`flags.jujutsu-system.-=${reduction.key}`] = null;
     if (shield?.spent) updates["system.armorPoints.value"] = shield.value;
 
     if ( temp > updates["system.attributes.hp.temp"] ) updates["system.attributes.hp.temp"] = temp;
@@ -848,6 +860,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
     // flag hoje; a leitura permanece para compatibilidade futura.
     const context = options.origin?.getFlag?.("jujutsu-system", "context");
     await this.update(updates, context ? { jujutsuSystem: context } : {});
+    if (reductions.length) ui.notifications.info(`Redução de dano de ${this.name}: ${reductions.reduce((sum, reduction) => sum + reduction.absorbed, 0)} de dano evitado.`);
 
     /**
      * A hook event that fires after damage has been applied to an actor.
@@ -1421,6 +1434,10 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
 
     const rollConfig = foundry.utils.mergeObject({
       advantage, disadvantage,
+      jjIndependentRollModes: {
+        vantagens: Number(doubleProf) + Number(pace.advantage) + Number(config.advantage === true),
+        desvantagens: Number(pace.disadvantage) + Number(config.disadvantage === true)
+      },
       ability: relevant?.ability ?? (type === "skill" ? skillConfig.ability : toolConfig?.ability),
       halflingLucky: this.getFlag("jujutsu-system", "halflingLucky"),
       reliableTalent: (relevant?.value >= 1) && this.getFlag("jujutsu-system", "reliableTalent")
@@ -1503,7 +1520,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
       type: type
     });
 
-    const { bonus, maximum, minimum } = D20RollModificationField.combineFields(this.system, [
+    const { bonus, maximum, minimum, advantageCount, disadvantageCount } = D20RollModificationField.combineFields(this.system, [
       `abilities.${abilityId}.check.roll`,
       "rolls.ability.check",
       `rolls.ability.${type}`,
@@ -1512,7 +1529,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
 
     let { parts, data } = Ruleset.isV2()
       ? CONFIG.Dice.D20Roll.constructParts({
-        // 2.0: atributo inteiro (1-12) + degrau da perícia + vantagens ±2
+        // 2.0: atributo inteiro (1-12) + degrau da perícia + vantagens ±1
         mod: ability?.value,
         legacyRank: Ruleset.rankPart(type === "skill" ? Ruleset.skillRank(this, process.skill) : 0),
         legacyAdv: Ruleset.advantagePart(process.legacy2 ?? {}),
@@ -1529,7 +1546,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
     // Add condition reductions.
     this.addConditionRollReduction(parts, data);
 
-    config.options = CONFIG.Dice.D20Roll.mergeOptions({ maximum, minimum }, config.options ?? {});
+    config.options = CONFIG.Dice.D20Roll.mergeOptions({ maximum, minimum, advantageCount, disadvantageCount }, config.options ?? {});
     config.parts = [...(config.parts ?? []), ...parts];
     config.data = { ...data, ...(config.data ?? {}) };
     config.data.abilityId = abilityId;
@@ -1661,7 +1678,8 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
       }, rollData);
 
     const rollConfig = foundry.utils.mergeObject({
-      halflingLucky: this.getFlag("jujutsu-system", "halflingLucky")
+      halflingLucky: this.getFlag("jujutsu-system", "halflingLucky"),
+      jjIndependentRollModes: { vantagens: Number(config.advantage === true), desvantagens: Number(config.disadvantage === true) }
     }, config);
     rollConfig.hookNames = [...(config.hookNames ?? []), name, "d20Test"];
     rollConfig.rolls = [
@@ -1901,7 +1919,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
       proficient: init.prof.multiplier >= 1,
       type: "initiative"
     });
-    const { advantage, disadvantage, bonus, maximum, minimum } = D20RollModificationField.combineFields(this.system, [
+    const { advantage, disadvantage, advantageCount, disadvantageCount, bonus, maximum, minimum } = D20RollModificationField.combineFields(this.system, [
       `abilities.${abilityId}.check.roll`, "attributes.init.roll", "rolls.ability.check"
     ], { rules: { category: "check", actor: this, rollData } });
     const ehV2 = Ruleset.isV2();
@@ -1926,7 +1944,8 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
     const useScore = (scoreMode === "all") || ((scoreMode === "npcs") && game.user.isGM && this.system.isNPC);
 
     options = foundry.utils.mergeObject({
-      advantage, disadvantage, maximum, minimum,
+      advantage, disadvantage, advantageCount, disadvantageCount, maximum, minimum,
+      jjIndependentRollModes: { vantagens: Number(options.advantage === true), desvantagens: Number(options.disadvantage === true) },
       ability: abilityId,
       fixed: useScore ? init.score : undefined,
       flavor: options.flavor ?? _loc("DND5E.Initiative"),

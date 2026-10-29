@@ -5,6 +5,7 @@ import BaseActivityBehavior from "../../data/region-behavior/base-activity-behav
 import UsesField from "../../data/shared/uses-field.mjs";
 import PseudoDocumentSheet from "../api/pseudo-document-sheet.mjs";
 import { mountLegacy2DocumentTheme } from "../shared/legacy2-document-theme.mjs";
+import { activityConditionsContext } from "../../systems/activity-conditions.mjs";
 
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 
@@ -23,11 +24,13 @@ export default class ActivitySheet extends PseudoDocumentSheet {
       addConsumption: ActivitySheet.#addConsumption,
       addDamagePart: ActivitySheet.#addDamagePart,
       addEffect: ActivitySheet.#addEffect,
+      addCondition: ActivitySheet.#addCondition,
       addRecovery: ActivitySheet.#addRecovery,
       deleteBehavior: ActivitySheet.#deleteBehavior,
       deleteConsumption: ActivitySheet.#deleteConsumption,
       deleteDamagePart: ActivitySheet.#deleteDamagePart,
       deleteEffect: ActivitySheet.#deleteEffect,
+      deleteCondition: ActivitySheet.#deleteCondition,
       deleteRecovery: ActivitySheet.#deleteRecovery,
       dissociateEffect: ActivitySheet.#dissociateEffect
     },
@@ -66,6 +69,7 @@ export default class ActivitySheet extends PseudoDocumentSheet {
         "systems/jujutsu-system/templates/activity/parts/activity-behavior-level-limit.hbs",
         "systems/jujutsu-system/templates/activity/parts/activity-behavior-settings.hbs",
         "systems/jujutsu-system/templates/activity/parts/activity-effects.hbs",
+        "systems/jujutsu-system/templates/activity/parts/activity-conditions.hbs",
         "systems/jujutsu-system/templates/activity/parts/activity-effect-level-limit.hbs",
         "systems/jujutsu-system/templates/activity/parts/activity-effect-settings.hbs",
         "systems/jujutsu-system/templates/activity/parts/constant-cost.hbs"
@@ -79,7 +83,7 @@ export default class ActivitySheet extends PseudoDocumentSheet {
    * Key paths to the parts of the submit data stored in arrays that will need special handling on submission.
    * @type {string[]}
    */
-  static CLEAN_ARRAYS = ["consumption.targets", "damage.parts", "effects", "uses.recovery"];
+  static CLEAN_ARRAYS = ["consumption.targets", "damage.parts", "effects", "conditions", "uses.recovery"];
 
   /* -------------------------------------------- */
 
@@ -293,6 +297,7 @@ export default class ActivitySheet extends PseudoDocumentSheet {
    */
   async _prepareEffectContext(context, options) {
     context.tab = context.tabs.effect;
+    if (["attack", "save"].includes(this.activity.type)) context.conditionEditor = activityConditionsContext(context.source);
 
     if ( context.activity.behaviors && (context.activity.target?.template?.type || this.activity.isRider) ) {
       context.appliedBehaviors = context.activity.behaviors.values()
@@ -704,6 +709,18 @@ export default class ActivitySheet extends PseudoDocumentSheet {
    * @param {PointerEvent} event  The triggering click event.
    * @param {HTMLElement} target  The button that was clicked.
    */
+  static async #addCondition() {
+    if (!["attack", "save"].includes(this.activity.type)) return;
+    const conditions = this.activity.toObject().conditions ?? [];
+    await this.activity.update({ conditions: [...conditions, { _id: foundry.utils.randomID(), condition: "", save: "con" }] });
+  }
+
+  static async #deleteCondition(event, target) {
+    const id = target.closest("[data-condition-id]")?.dataset.conditionId;
+    if (!id) return;
+    await this.activity.update({ conditions: this.activity.toObject().conditions.filter(condition => condition._id !== id) });
+  }
+
   static #dissociateEffect(event, target) {
     const { profileId } = target.closest("[data-profile-id]")?.dataset ?? {};
     if ( !this.activity.effects || !profileId ) return;

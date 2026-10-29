@@ -7,11 +7,13 @@
   --color-text-primary: var(--jj2-paper); --color-text-secondary: var(--jj2-muted);
   --color-text-dark-primary: var(--jj2-paper); --color-text-dark-secondary: var(--jj2-muted);
   --dnd5e-color-gold: var(--jj2-gold); min-width: 700px;
+  --jj2-tabs-width: 54px; --jj2-tab-overlap: 8px; --jj2-profile-width: 180px;
+  isolation: isolate; overflow: visible;
   color: var(--jj2-paper); font-family: JJ2Condensed, sans-serif;
 }
 .jj2-ruptura .jj2-icon { width: 18px; height: 18px; flex-shrink: 0; vertical-align: middle; }
 .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .window-content {
-  display: flex; flex-direction: column; gap: 14px; padding: 14px; overflow: hidden;
+  display: flex; flex-direction: column; gap: 14px; padding: 14px; overflow: visible;
   background: radial-gradient(#ffffff09 .7px, transparent .8px) 0 0 / 5px 5px, var(--jj2-ink);
 }
 .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .window-content::before { display: none; }
@@ -31,7 +33,7 @@
 .jj2-ruptura button:focus-visible, .jj2-ruptura a:focus-visible { outline: 2px solid var(--jj2-gold); outline-offset: 2px; }
 .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-hero {
   position: relative; flex: none; display: grid;
-  grid-template-columns: 180px minmax(0, 1fr) 52px; align-items: center; gap: 16px;
+  grid-template-columns: var(--jj2-profile-width) minmax(0, 1fr) 52px; align-items: center; gap: 16px;
   min-height: 224px; padding: 0 14px 0 0; border: 0; border-bottom: 3px solid var(--jj2-paper);
   background: repeating-linear-gradient(154deg, transparent 0 13px, #ffffff06 13px 14px), #19181f;
   overflow: hidden; border-radius: 0;
@@ -176,8 +178,8 @@
 .jj2-ruptura .jj2-save-seal:focus-visible { outline:1px solid var(--jj2-purple); outline-offset:3px; }
 .jj2-ruptura .jj2-alternative-save-rank { max-width:100%; color:#c9bfd5; font:400 10px/1.2 JJ2Condensed,sans-serif; text-align:center; }
 .jj2-ruptura .jj2-alternative-save .jj2-dots { justify-content:center; margin-top:1px; }
-.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .sheet-body { flex: 1; min-height: 0; padding: 0; overflow: hidden; }
-.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .main-content { display: grid !important; grid-template-columns: 155px minmax(0, 1fr) 46px; grid-template-rows: 83px minmax(0, 1fr); gap: 12px; padding: 0; height: 100%; min-height: 0; container-type: inline-size; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .sheet-body { flex: 1; min-height: 0; padding: 0; overflow: visible; mask-image: none; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .main-content { display: grid !important; grid-template-columns: var(--jj2-profile-width) minmax(0, 1fr); grid-template-rows: 83px minmax(0, 1fr); gap: 12px; padding: 0; height: 100%; min-height: 0; overflow: hidden; container-type: inline-size; }
 .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-sidebar { grid-column: 1; grid-row: 1 / 3; width: auto; margin: 0; padding: 26px 10px 10px; overflow-y: auto; border: 0; border-left: 3px solid var(--jj2-purple); border-radius: 0; background: repeating-linear-gradient(155deg, transparent 0 13px, #ffffff04 13px 14px), var(--jj2-raised); position: relative; }
 .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .sidebar-collapser { position: absolute; z-index: 1; top: 2px; left: auto; right: 0; background: none; border: 0; width: 20px; min-width: 0; max-width: 20px; height: 23px; padding: 3px; margin: 0; transform: none; color: var(--jj2-purple); }
 .jj2-ruptura .jj2-sidebar h2 { display: flex; align-items: center; gap: 7px; font: bold 11px JJ2Condensed, sans-serif; text-transform: uppercase; border: 0; margin: 0 0 9px; color: var(--jj2-paper); }
@@ -196,11 +198,11 @@
 .jj2-ruptura .jj2-favorite-name small { font-size: 9px; color: var(--jj2-muted); }
 .jj2-ruptura .jj2-favorites-empty { color: var(--jj2-muted); font-size: 11px; line-height: 1.5; padding: 7px 0; }
 .jj2-ruptura .jj2-sidebar-footer { display: flex; justify-content: space-between; gap: 6px; padding-top: 25px; color: var(--jj2-muted); font-size: 10px; text-transform: uppercase; }
-.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura.sidebar-collapsed .main-content { grid-template-columns: 23px minmax(0, 1fr) 46px; transition: none; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura.sidebar-collapsed .main-content { grid-template-columns: 23px minmax(0, 1fr); transition: none; }
 .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura.sidebar-collapsed .jj2-sidebar { width: auto !important; min-width: 0; margin: 0 !important; padding: 0; transition: none; }
 .jj2-ruptura.sidebar-collapsed .jj2-sidebar > :not(.sidebar-collapser) { display: none; }
 .jj2-ruptura.sidebar-collapsed .sidebar-collapser svg { transform: rotate(180deg); }
-.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-attributes { grid-column: 2 / 4; grid-row: 1; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 7px; margin: 0; padding: 0; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-attributes { grid-column: 2; grid-row: 1; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 7px; margin: 0; padding: 0; }
 .jj2-ruptura .jj2-ability { --ability-accent: var(--jj2-purple); display: grid; grid-template-rows: 23px minmax(0, 1fr) 20px; align-items: center; min-width: 0; box-sizing: border-box; background: linear-gradient(125deg, #a67bda13, transparent 65%), repeating-linear-gradient(155deg, transparent 0 13px, #ffffff04 13px 14px), #17141f; border: 1px solid #a67bda66; border-top: 3px solid var(--ability-accent); clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px)); }
 .jj2-ruptura .jj2-ability.principal { --ability-accent: var(--jj2-gold); border-color: #efbf5166; border-top-color: var(--ability-accent); background: linear-gradient(125deg, #efbf5112, transparent 65%), repeating-linear-gradient(155deg, transparent 0 13px, #ffffff04 13px 14px), #17141f; }
 .jj2-ruptura .jj2-ability-heading { display: flex; align-items: center; justify-content: center; gap: 5px; min-height: 22px; padding: 0 3px; color: var(--ability-accent); font: 700 10px/1 JJ2Condensed, sans-serif; letter-spacing: .6px; }
@@ -222,13 +224,17 @@
 .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body > .tab { padding: 0 6px 12px 0; margin: 0; height: 100%; overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: var(--jj2-purple) transparent; }
 .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body > .tab:not(.active) { display: none !important; }
 .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body > .jj2-page.active { display: block; }
-.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-tabs-nav { grid-column: 3; grid-row: 2; position: relative; inset: auto; z-index: 1; display: flex; flex-direction: column; align-self: start; width: 46px; margin: 0; padding: 0; border: 0; gap: 7px; }
-.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-tabs-nav > .item { display: flex; align-items: center; justify-content: center; position: relative; width: 46px; height: 43px; padding: 0; border: 1px solid #ffffff29; border-radius: 0; background: var(--jj2-raised); color: var(--jj2-paper); transform: skewY(-7deg); box-shadow: none; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-tabs-nav { position: absolute; inset: 91px auto auto calc(100% + 14px - var(--jj2-tab-overlap)); z-index: -1; display: flex; flex-direction: column; align-self: start; width: var(--jj2-tabs-width); max-height: calc(100% - 91px); box-sizing: border-box; margin: 0; padding: 4px 0; border: 0; gap: 7px; background: none; overflow: hidden auto; scrollbar-width: thin; scrollbar-color: var(--jj2-purple) transparent; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-tabs-nav > .item { display: flex; flex: none; align-items: center; justify-content: center; position: relative; box-sizing: border-box; width: 100%; height: 43px; margin: 0; padding: 0 0 0 var(--jj2-tab-overlap); border: 1px solid #ffffff29; border-radius: 0; background: var(--jj2-raised); color: var(--jj2-paper); transform: skewY(-7deg); box-shadow: none; transition: none; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-tabs-nav > .item[hidden] { display: none; }
 .jj2-ruptura .jj2-tabs-nav > .item svg { transform: skewY(7deg); width: 20px; height: 20px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-tabs-nav > .item:hover { border-color: var(--jj2-purple); background: #2b2237; color: var(--jj2-paper); }
 .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-tabs-nav > .item.active { border-color: var(--jj2-purple); background: var(--jj2-purple); color: var(--jj2-ink); }
-.jj2-ruptura .jj2-tabs-nav > .item.active::before { content: ''; position: absolute; left: -5px; top: 8px; bottom: 8px; width: 3px; background: var(--jj2-gold); }
+.jj2-ruptura .jj2-tabs-nav > .item.active::before { content: ''; position: absolute; left: var(--jj2-tab-overlap); top: 8px; bottom: 8px; width: 3px; background: var(--jj2-gold); }
+.jj2-ruptura .jj2-tabs-nav > .item:focus-visible { outline-offset: -3px; }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura:is(.minimized,.minimizing) .jj2-tabs-nav { display: none; }
 .jj2-ruptura .jj2-tabs-nav > .item > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-.jj2-ruptura .jj2-combat-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: stretch; gap: 9px; margin-bottom: 4px; }
+.jj2-ruptura .jj2-combat-metrics { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: stretch; gap: 9px; margin-bottom: 4px; }
 .jj2-ruptura .jj2-combat-metrics > .jj2-metric { --metric-accent: var(--jj2-purple); position: relative; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 0; min-width: 0; min-height: 98px; margin: 0; padding: 24px 0 0; border: 1px solid var(--metric-accent); border-radius: 0; background: linear-gradient(128deg, #a67bda17 0 46%, transparent 46%), repeating-linear-gradient(155deg, transparent 0 12px, #ffffff04 12px 13px), #17141f; box-shadow: inset 0 0 0 3px #101015, inset 0 0 0 4px #ffffff0d; clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 9px 100%, 0 calc(100% - 9px)); }
 .jj2-ruptura .jj2-combat-metrics > :is(.jj2-metric-movement, .jj2-engagement) { --metric-accent: var(--jj2-gold); background: linear-gradient(128deg, #efbf5115 0 46%, transparent 46%), repeating-linear-gradient(155deg, transparent 0 12px, #ffffff04 12px 13px), #19171e; }
 .jj2-ruptura .jj2-metric::before { content: ''; position: absolute; top: 0; left: 0; width: 34px; height: 3px; background: var(--metric-accent); pointer-events: none; }
@@ -649,7 +655,7 @@
 .jj2-ruptura .jj2-origin-card .jj2-origin-content strong { color: var(--jj2-paper); font: italic 700 16px/1.1 JJ2Condensed, sans-serif; text-transform: uppercase; overflow-wrap: anywhere; }
 .jj2-ruptura .jj2-main-style .name-stacked .subtitle,
 .jj2-ruptura .jj2-origin-card .jj2-origin-content > span { display: inline-block; padding: 3px 6px; color: var(--jj2-ink); background: var(--identity-accent); font: 700 8px/1.15 JJ2Condensed, sans-serif; letter-spacing: .5px; text-transform: uppercase; clip-path: polygon(0 0, 100% 0, calc(100% - 4px) 100%, 0 100%); }
-.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .jj2-identity-grid .jj2-main-style .level { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; width: 42px; min-width: 42px; min-height: 44px; padding: 5px 2px; border: 1px solid var(--jj2-purple) !important; background: #100d17 !important; clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
+.dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .tab-body .jj2-identity-grid .jj2-main-style .level { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; width: 52px; min-width: 52px; min-height: 44px; padding: 5px 2px; border: 1px solid var(--jj2-purple) !important; background: #100d17 !important; clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
 .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-main-style .level > :is(span, select) { width: 100%; height: 22px; padding: 0; line-height: 1; color: var(--jj2-paper); font: 700 19px/1 JJ2Condensed, sans-serif; text-align: center; text-shadow: none; }
 .jj2-ruptura .jj2-main-style .level > small { color: var(--jj2-purple); font: 700 7px/1 JJ2Condensed, sans-serif; letter-spacing: .8px; text-transform: uppercase; }
 .jj2-ruptura .jj2-main-style .jj2-config { width: 22px; height: 30px; padding: 3px; color: var(--jj2-purple); border: 1px solid #a67bda38; background: #a67bda0a; }
@@ -764,10 +770,9 @@
   .jj2-ruptura .jj2-saves > ul, .jj2-ruptura .jj2-weapons { grid-template-columns: 1fr; }
 }
 @media (max-width: 950px) {
-  .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-hero { grid-template-columns: 150px minmax(0, 1fr) 46px; gap: 12px; }
+  .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-hero { grid-template-columns: var(--jj2-profile-width) minmax(0, 1fr) 46px; gap: 12px; }
   .jj2-ruptura .jj2-hero-resources { grid-template-columns: minmax(80px, 1fr) minmax(100px, 1.1fr) 76px; }
-  .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .main-content { grid-template-columns: 130px minmax(0, 1fr) 42px; }
-  .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura .jj2-tabs-nav, .jj2-ruptura .jj2-tabs-nav > .item { width: 42px; }
+  .dnd5e2.sheet.actor:is(.character,.npc).jj2-ruptura { --jj2-tabs-width: 50px; --jj2-profile-width: 150px; }
 }
 
 /* The budget is a distribution gauge, visually distinct from the six attributes. */

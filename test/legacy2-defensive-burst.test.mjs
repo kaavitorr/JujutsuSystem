@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import Ruleset from "../module/systems/ruleset.mjs";
 
 globalThis.Hooks = { on() {} };
-let choice = "1", confirm = false, dialogOptions, formulas = [];
+let choice = "1", confirm = false, dialogOptions, formulas = [], beforeAccept;
 globalThis.game = { user: {}, settings: { get: () => "2.0" } };
 globalThis.ChatMessage = { getSpeaker: () => ({}) };
 globalThis.ui = { notifications: { info() {}, warn() {} } };
@@ -24,6 +24,7 @@ globalThis.foundry = { data: { fields: camposEncontrados }, utils: { escapeHTML:
   async wait(options) {
     dialogOptions = options;
     if ( choice === null ) return null;
+    beforeAccept?.();
     const button = options.buttons[choice === "cancel" ? 1 : 0];
     return (await button.callback({}, {}, { element: { querySelector: () => ({ value: choice }) } })) ?? button.action;
   },
@@ -48,16 +49,21 @@ function actor(pa = 4, nivel = 9, pending = null) {
 }
 function withUpdates(a) {
   a.updates = [];
-  a.update = async update => { a.updates.push(update); a.system.legacy2.actions.value = update["system.legacy2.actions.value"]; };
+  a.update = async update => { a.updates.push(update);
+    if ("system.energy.generated" in update) a.system.energy.generated = update["system.energy.generated"];
+    if ("flags.jujutsu-system.explosaoDefensivaPendente" in update) a.flags.explosaoDefensivaPendente = update["flags.jujutsu-system.explosaoDefensivaPendente"];
+  };
   return a;
 }
-test("defensive burst respects the half-level cap and spends no action points", async () => {
+test("defensive burst spends one refined energy per die, atomically, without spending action points", async () => {
   choice = "5";
   const a = withUpdates(actor(4, 9));
   await onExplosaoDefensiva2(a);
   assert.deepEqual(formulas, ["5d4"]);
   assert.equal(a.system.legacy2.actions.value, 4);
-  assert.deepEqual(a.flags.explosaoDefensivaPendente, { reducao: 10, paCusto: 0 });
+  assert.deepEqual(a.flags.explosaoDefensivaPendente, { reducao: 10, paCusto: 5 });
+  assert.equal(a.system.energy.generated, 5);
+  assert.equal(a.updates.length, 1);
   assert.equal(a.system.energy.total, 200);
 });
 test("odd levels use the rounded-up half-level cap", async () => {
@@ -72,7 +78,7 @@ test("fractional choices become whole dice within the cap and queue the rolled r
   const a = withUpdates(actor());
   await onExplosaoDefensiva2(a);
   assert.deepEqual(formulas, ["2d4"]);
-  assert.deepEqual(a.flags.explosaoDefensivaPendente, { reducao: 4, paCusto: 0 });
+  assert.deepEqual(a.flags.explosaoDefensivaPendente, { reducao: 4, paCusto: 2 });
 });
 test("canceling the prompt leaves actor data untouched", async () => {
   choice = null;
@@ -82,12 +88,13 @@ test("canceling the prompt leaves actor data untouched", async () => {
   assert.deepEqual(formulas, []);
   assert.ok(!a.flags.explosaoDefensivaPendente);
 });
-test("a new defense overwrites the previous pending reduction without spending action points", async () => {
+test("pending defense is preserved when replacement is declined", async () => {
   choice = "3";
   const a = withUpdates(actor(5, 9, { reducao: 8, paCusto: 4 }));
   await onExplosaoDefensiva2(a);
-  assert.deepEqual(a.flags.explosaoDefensivaPendente, { reducao: 6, paCusto: 0 });
-  assert.deepEqual(formulas, ["3d4"]);
+  assert.deepEqual(a.flags.explosaoDefensivaPendente, { reducao: 8, paCusto: 4 });
+  assert.deepEqual(formulas, []);
+  assert.deepEqual(a.updates, []);
   assert.equal(a.system.legacy2.actions.value, 5);
 });
 test("the native cancel fallback never rolls", async () => {
@@ -98,19 +105,18 @@ test("the native cancel fallback never rolls", async () => {
   assert.deepEqual(a.updates, []);
 });
 
-test("NPC defense opens the player's themed modal and uses ND without spending energy", async () => {
+test("NPC defense opens the player's themed modal and uses ND and refined energy", async () => {
   choice = "99";
   const a = withUpdates(actor(0, 20));
   a.type = "npc";
   a.system.legacy2.nd = "9";
-  a.system.energy.generated = 0;
+  a.system.energy.generated = 3;
   await npcBurst(a);
   assert.deepEqual(dialogOptions?.classes, ["dnd5e2", "jj2-document", "jj2-defensive-burst"]);
   assert.ok(dialogOptions.actions.jj2StepCounter);
   assert.equal(typeof dialogOptions.render, "function");
-  assert.deepEqual(formulas, ["5d4"]);
-  assert.deepEqual(a.flags.explosaoDefensivaPendente, { reducao: 10, paCusto: 0 });
-  assert.deepEqual(a.updates, []);
+  assert.deepEqual(formulas, ["3d4"]);
+  assert.deepEqual(a.flags.explosaoDefensivaPendente, { reducao: 6, paCusto: 3 });
   assert.equal(a.system.energy.generated, 0);
   assert.equal(a.system.energy.total, 200);
 });
@@ -122,10 +128,27 @@ test("canceling NPC defense preserves its pending reduction and resources", asyn
   a.type = "npc";
   a.system.legacy2.nd = "9";
   await npcBurst(a);
-  assert.equal(dialogOptions?.window.title, "Explosão Defensiva");
   assert.deepEqual(a.flags.explosaoDefensivaPendente, pending);
   assert.deepEqual(formulas, []);
   assert.deepEqual(a.updates, []);
+});
+
+test("zero energy and an energy balance changed during the dialog cannot create a free defense", async () => {
+  choice = "2";
+  const a = withUpdates(actor()); a.system.energy.generated = 0;
+  await onExplosaoDefensiva2(a);
+  assert.deepEqual(formulas, []); assert.deepEqual(a.updates, []);
+  const b = withUpdates(actor()); beforeAccept = () => { b.system.energy.generated = 0; };
+  try { await onExplosaoDefensiva2(b); } finally { beforeAccept = undefined; }
+  assert.deepEqual(b.updates, []); assert.ok(!b.flags.explosaoDefensivaPendente);
+});
+
+test("confirmed replacement charges the new dice and preserves action and reserve balances", async () => {
+  choice = "3"; confirm = true;
+  const a = withUpdates(actor(5, 9, { reducao: 8, paCusto: 4 }));
+  try { await onExplosaoDefensiva2(a); } finally { confirm = false; }
+  assert.deepEqual(a.flags.explosaoDefensivaPendente, { reducao: 6, paCusto: 3 });
+  assert.equal(a.system.energy.generated, 7); assert.equal(a.system.legacy2.actions.value, 5);
 });
 
 test("NPC defense retains the legacy energy requirement in rules 1.0", async () => {

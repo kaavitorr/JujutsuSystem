@@ -1,5 +1,7 @@
 import Ruleset from "../../../systems/ruleset.mjs";
+import { channelingTechniqueGrants } from "../../../systems/legacy2-channeling-techniques.mjs";
 import { alternativeSavesEnabled } from "../../../systems/legacy2-alternative-saves.mjs";
+import { collectCreationAdvancements, initialCreationEnergy } from "./creation-advancements-2.mjs";
 import { creationActor, validateCreation, rankSpent, ABILITY_KEYS, styleRules, creationPathOptions, creationSpecializationSlots,
   PENALIDADE_VITAL_NOME, penalidadeVitalUuid } from "./creation-model-2.mjs";
 
@@ -35,29 +37,36 @@ export async function prepareCreationCompletion(actor, draft, catalog, {
   const errors = validateCreation(draft, fresh);
   if (errors.length) throw new Error(errors[0].message);
 
-  const create = [], seen = new Map();
+  const create = [], seen = new Map(), resolving = new Set();
   async function addDocument(uuid, tag = {}, depth = 0) {
+    if (resolving.has(uuid)) throw new Error("Há um vínculo circular nos benefícios da Origem ou do Estilo de Combate.");
     if (seen.has(uuid)) {
       const data = seen.get(uuid);
       if (Object.keys(tag).length && data.type !== "feat") throw new Error("Uma habilidade escolhida deixou de ser uma característica.");
       Object.assign(data.flags["jujutsu-system"], tag);
-      return;
+      return data;
     }
     if (depth > 8) throw new Error("Não foi possível concluir os benefícios vinculados à Origem.");
     const doc = uuid === draft.species ? species : uuid === draft.style ? style : await resolve(uuid);
     if (!doc) throw new Error("Uma das opções escolhidas não está mais disponível. Confira suas escolhas.");
     if (Object.keys(tag).length && doc.type !== "feat") throw new Error("Uma habilidade escolhida deixou de ser uma característica.");
     const source = doc.uuid ?? uuid;
+    if (resolving.has(source)) throw new Error("Há um vínculo circular nos benefícios da Origem ou do Estilo de Combate.");
     if (seen.has(source)) {
       const data = seen.get(source);
       Object.assign(data.flags["jujutsu-system"], tag); seen.set(uuid, data);
-      return;
+      return data;
     }
     const data = raw(doc);
     data._id = idFactory(); data.folder = null;
     data._stats = { ...data._stats, compendiumSource: source.startsWith("Compendium.") ? source : data._stats?.compendiumSource ?? null };
     data.flags ??= {}; data.flags["jujutsu-system"] = { ...data.flags["jujutsu-system"], ...tag,
       creation2Source: source };
+    for (const scope of ["jujutsu-system", "JujutsuLegacy"]) {
+      const flags = data.flags[scope] ??= {};
+      delete flags.advancementOrigin;delete flags.advancementRoot;
+      flags.sourceId = source;
+    }
     // A penalidade de Vida/Energia traz os dois efeitos; no ator entra só o
     // lado escolhido na criação (a escolha fica registrada na flag).
     if ( doc?.type === "feat" && doc.name === PENALIDADE_VITAL_NOME ) {
@@ -69,13 +78,44 @@ export async function prepareCreationCompletion(actor, draft, catalog, {
     create.push(data);
     seen.set(uuid, data);
     seen.set(source, data);
-    for (const advancement of Object.values(data.system?.advancement ?? {})) {
+    resolving.add(source);
+    for (const [key, advancement] of Object.entries(data.system?.advancement ?? {})) {
+      // Source items can be copies of an owned item. Never retain another actor's grants.
+      if (advancement.type === "ItemGrant") advancement.value = {};
+      if (advancement.type === "ItemChoice") advancement.value = { added: {}, replaced: {} };
       if (advancement.type !== "ItemGrant" || Number(advancement.level ?? 0) > 1) continue;
+      advancement._id ??= key;
+      advancement.value.added = {};
+      if (data.type === "class" && advancement.classRestriction === "secondary") continue;
+      if (advancement.configuration?.optional) continue;
       for (const grant of advancement.configuration?.items ?? []) {
         if (grant.optional || !grant.uuid) continue;
-        await addDocument(grant.uuid, {}, depth + 1);
+        const granted = await addDocument(grant.uuid, {}, depth + 1);
+        const spellConfig = doc.advancement?.byId?.[advancement._id]?.configuration?.spell;
+        if (granted.type === "spell" && spellConfig) {
+          const ability = Array.from(spellConfig.ability ?? [])[0];
+          spellConfig.applySpellChanges(granted, { ability });
+          if (ability) advancement.value.ability = ability;
+        }
+        grant.uuid = granted.flags["jujutsu-system"].creation2Source;
+        advancement.value.added[granted._id] = grant.uuid;
+        const origin = `${data._id}.${advancement._id}`;
+        const root = data.flags["jujutsu-system"].advancementRoot ?? origin;
+        for (const scope of ["jujutsu-system", "JujutsuLegacy"]) {
+          const flags = granted.flags[scope] ??= {};
+          flags.sourceId ??= grant.uuid;
+          flags.advancementOrigin ??= origin;
+          flags.advancementRoot ??= root;
+        }
+        // Nested grants were resolved before the parent's ownership was known.
+        for (const child of create) for (const scope of ["jujutsu-system", "JujutsuLegacy"]) {
+          const flags = child.flags?.[scope];
+          if (flags?.advancementRoot?.startsWith(`${granted._id}.`)) flags.advancementRoot = root;
+        }
       }
     }
+    resolving.delete(source);
+    return data;
   }
   await addDocument(draft.species);
   await addDocument(draft.style);
@@ -86,6 +126,7 @@ export async function prepareCreationCompletion(actor, draft, catalog, {
   for (const [category, uuids] of Object.entries(draft.customization)) {
     for (const uuid of uuids) await addDocument(uuid, { featureSection: category });
   }
+  create.push(...channelingTechniqueGrants(create, 1).map(item => ({ ...item, _id: idFactory() })));
   const preview = creationActor(draft, style);
   const pvEspecie = speciesHP(species);
   preview.system.legacy2.pvEspecie = pvEspecie;
@@ -107,14 +148,16 @@ export async function prepareCreationCompletion(actor, draft, catalog, {
   if ( penalidadeVital === "vida" ) preview.system.legacy2.pvEspecie -= 2;
   if ( penalidadeVital === "energia" ) preview.system.legacy2.energiaEspecie -= 4;
   const hp = Ruleset.maxHitPoints(preview), energy = Ruleset.maxEnergy(preview);
+  const initialEnergy = initialCreationEnergy(preview, energy);
   const caminhoInfo = creationPathOptions(style).find(caminho => caminho.id === draft.caminho) ?? null;
   const slotsExtras = Math.max(0, creationSpecializationSlots(style, draft.caminho).total - Number(styleRules(style).espIniciais ?? 0));
   const updates = { name: draft.name.trim(), img: draft.img || actor.img,
+    "system.details.originalClass": seen.get(draft.style)._id,
     "prototypeToken.texture.src": draft.tokenImg || draft.img || actor.prototypeToken?.texture?.src,
     "prototypeToken.name": draft.name.trim(), "system.legacy2.principalEscolhido": draft.primary,
     "system.legacy2.pvEspecie": pvEspecie, "system.legacy2.energiaEspecie": energiaEspecie,
     "system.attributes.hp.value": hp,
-    "system.energy.total": energy, "system.energy.generated": Math.min(10, energy),
+    "system.energy.total": initialEnergy.total, "system.energy.generated": initialEnergy.generated,
     "system.legacy2.wounds.value": 0, "system.legacy2.actions.value": 6,
     "system.legacy2.pontos.gastos": Object.values(draft.proficiencies).reduce((sum, ranks) => sum + rankSpent(ranks), 0),
     "flags.jujutsu-system.especializacoes": [...draft.specializations],
@@ -132,11 +175,16 @@ export async function prepareCreationCompletion(actor, draft, catalog, {
 }
 
 /** Keep the guard across resolution and the native batch; failed creation can be retried. */
-export function commitCreation(actor, draft, catalog, options) {
+export function commitCreation(actor, draft, catalog, { advance = collectCreationAdvancements, ...options } = {}) {
   if (pending.has(actor)) return pending.get(actor);
   const run = (async () => {
-    const plan = await prepareCreationCompletion(actor, draft, catalog, options);
-    await actor.performBulkUpdate(plan);
+    let plan = await prepareCreationCompletion(actor, draft, catalog, options);
+    plan = await advance(actor, plan, options);
+    if (!plan) return null;
+    // Choices may keep the preview open for a while; reject concurrent sheet edits.
+    if ((actor.items?.size ?? actor.items?.length ?? 0) || actor.getFlag?.("jujutsu-system", "creation2")?.completed)
+      throw new Error("A ficha foi alterada durante a criação. Confira as alterações antes de continuar.");
+    await actor.performBulkUpdate(plan, { isAdvancement: true });
     return plan;
   })();
   pending.set(actor, run);

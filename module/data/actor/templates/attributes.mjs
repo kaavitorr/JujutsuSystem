@@ -1,4 +1,6 @@
 import ActiveEffect5e from "../../../documents/active-effect.mjs";
+import Ruleset from "../../../systems/ruleset.mjs";
+import { techniqueDifficulty } from "../../../systems/legacy2-technique-dc.mjs";
 import Proficiency from "../../../documents/actor/proficiency.mjs";
 import AppliedRules from "../../../documents/applied-rules.mjs";
 import { applyFallProne } from "../../../rules/falling.mjs";
@@ -647,7 +649,8 @@ export default class AttributesFields {
     this.attributes.spell ??= {};
     this.attributes.spell.abilityLabel = CONFIG.DND5E.abilities[this.attributes.spellcasting]?.label ?? "";
     this.attributes.spell.attack = ability ? ability.attack.value : this.attributes.prof;
-    this.attributes.spell.dc = ability ? ability.dc : 8 + this.attributes.prof;
+    this.attributes.spell.dc = Ruleset.isV2() && ["character", "npc"].includes(this.parent.type)
+      ? techniqueDifficulty(this.parent, Ruleset).value : ability ? ability.dc : 8 + this.attributes.prof;
     this.attributes.spell.mod = ability ? ability.mod : 0;
   }
 

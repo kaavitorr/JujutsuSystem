@@ -118,6 +118,25 @@ function caberNoGrupo(grupo, node) {
   return true;
 }
 
+/** Assign each choice to exactly one slot, moving flexible choices when a restricted slot needs them. */
+function cabemNosGrupos(grupos, names, catalog) {
+  const active = grupos.filter(group => group.quantidade > 0);
+  const assigned = new Map(active.map(group => [group.id, []]));
+  function assign(node, visited = new Set()) {
+    for (const group of active) {
+      if (visited.has(group.id) || !caberNoGrupo(group, node)) continue;
+      const next = new Set(visited);next.add(group.id);
+      const choices = assigned.get(group.id);
+      if (choices.length < group.quantidade) { choices.push(node);return true; }
+      for (let index = 0; index < choices.length; index++) {
+        if (assign(choices[index], next)) { choices[index] = node;return true; }
+      }
+    }
+    return false;
+  }
+  return names.every(name => assign(catalog.graph?.porNome.get(name)));
+}
+
 export function chooseCreationStyle(draft, style) {
   if (draft.style === style.uuid) return;
   draft.style = style.uuid;
@@ -174,11 +193,11 @@ export function shouldOpenCreation(actor, options = {}, userId, currentUserId, e
 /** A draft actor lets the existing specialization engine evaluate choices without creating documents. */
 export function creationActor(draft, style, learned = draft.specializations) {
   const rules = styleRules(style);
-  return { name: draft.name, system: { details: { level: 1 }, abilities: Object.fromEntries(ABILITY_KEYS.map(key => [key, { value: draft.abilities[key] }])),
+  return { name: draft.name, type: "character", system: { details: { level: 1 }, abilities: Object.fromEntries(ABILITY_KEYS.map(key => [key, { value: draft.abilities[key] }])),
     legacy2: { ...draft.proficiencies,
       ...(alternativeSavesEnabled() ? { alternativeSaves: { ...draft.proficiencies.saves }, saves: {} } : {}),
       principalEscolhido: draft.primary } },
-    itemTypes: { class: [{ name: style?.name, getFlag: () => rules }] }, items: [],
+    itemTypes: { class: [{ name: style?.name, system: { identifier: style?.system?.identifier }, getFlag: () => rules }] }, items: [],
     flags: { "jujutsu-system": { modLendarioNomes: Object.values(draft.customizacaoNomes ?? {}) } },
     getFlag: (scope, key) => key === "especializacoes" ? learned : undefined };
 }
@@ -188,7 +207,7 @@ export function evaluateCreationSpecialization(draft, style, node, learned = dra
   const bloqueio = bloqueioDeEstilo(style, node);
   if ( bloqueio )
     return { estado: "bloqueado", pendencias: [{ texto: bloqueio }], informativos: [] };
-  if (!slots.grupos.some(grupo => caberNoGrupo(grupo, node))) {
+  if (!slots.grupos.some(grupo => grupo.quantidade > 0 && caberNoGrupo(grupo, node))) {
     const texto = slots.grupos.some(grupo => grupo.id === "energia-reversa")
       ? "Com o Médico de Campo, você recebe apenas a habilidade \"Energia Reversa\" da Energia Reversa na criação."
       : `Seu Estilo concede habilidades de ${slots.grupos.map(grupo => grupo.rotulo).join(" e ")}.`;
@@ -204,12 +223,7 @@ export function creationPodeEscolher(draft, style, node, catalog) {
   const slots = creationSpecializationSlots(style, draft.caminho);
   if (draft.specializations.length >= slots.total) return false;
   if (evaluateCreationSpecialization(draft, style, node).estado !== "disponivel") return false;
-  const usados = new Map();
-  for (const nome of draft.specializations) {
-    const grupo = slots.grupos.find(g => caberNoGrupo(g, catalog.graph?.porNome.get(nome)));
-    if (grupo) usados.set(grupo.id, (usados.get(grupo.id) ?? 0) + 1);
-  }
-  return slots.grupos.some(grupo => caberNoGrupo(grupo, node) && (usados.get(grupo.id) ?? 0) < grupo.quantidade);
+  return cabemNosGrupos(slots.grupos, [...draft.specializations, node.nome], catalog);
 }
 
 export function toggleCreationSpecialization(draft, style, node, catalog) {
@@ -255,10 +269,8 @@ export function validateCreation(draft, catalog, throughStep = 2) {
     const slots = creationSpecializationSlots(style, draft.caminho);
     if (draft.specializations.length !== slots.total || new Set(draft.specializations).size !== draft.specializations.length)
       fail(1, `Escolha ${slots.total} habilidades de Especialização.`);
-    else for (const grupo of slots.grupos) {
-      const usados = draft.specializations.filter(nome => caberNoGrupo(grupo, catalog.graph?.porNome.get(nome))).length;
-      if (usados !== grupo.quantidade) fail(1, `Escolha ${grupo.quantidade} ${grupo.quantidade > 1 ? "habilidades" : "habilidade"} de ${grupo.rotulo}.`);
-    }
+    else if (!cabemNosGrupos(slots.grupos, draft.specializations, catalog))
+      fail(1, `Distribua suas escolhas entre os grupos do Estilo: ${slots.grupos.map(grupo => `${grupo.quantidade} de ${grupo.rotulo}`).join(" e ")}.`);
     const learned = [];
     for (const name of draft.specializations) {
       const node = catalog.graph?.porNome.get(name);

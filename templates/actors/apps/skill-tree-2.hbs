@@ -1,5 +1,5 @@
 <div class="jj2m-shell">
-  <header class="jj2m-header">
+  {{#unless creationMode}}<header class="jj2m-header">
     <div class="jj2m-identity">
       <img src="{{actor.img}}" alt="" class="jj2m-portrait">
       <div><span class="jj2m-eyebrow">Jujutsu Legacy 2.0</span><h2>Mapa de caminhos</h2><p>{{actor.name}}</p></div>
@@ -14,7 +14,7 @@
       {{#if ehGM}}<button type="button" class="jj2m-adm {{#if admMode}}on{{/if}}" data-action="adm" aria-pressed="{{admMode}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="edit"}}<span>Requisitos</span></button>{{/if}}
       <button type="button" class="jj2m-icon-button" data-action="fechar" aria-label="Fechar árvore">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="close"}}</button>
     </div>
-  </header>
+  </header>{{/unless}}
   <div class="jj2m-layout">
     <nav class="jj2m-categories" aria-label="Árvores de especialização">
       <h3>Especializações</h3>
@@ -24,9 +24,10 @@
         <span class="jj2m-category-copy"><strong>{{nome}}</strong><small>{{aprendidas}} / {{total}} aprendidas</small></span>
       </button>
       {{/each}}
-      <p class="jj2m-nav-note">{{#if admMode}}Modo Mestre: selecione uma habilidade para editar seus requisitos.{{else}}Escolha uma especialização para explorar seus caminhos.{{/if}}</p>
+      <p class="jj2m-nav-note">{{#if creationMode}}Explore o caminho completo. Habilidades bloqueadas também podem ser consultadas.{{else if admMode}}Modo Mestre: selecione uma habilidade para editar seus requisitos.{{else}}Escolha uma especialização para explorar seus caminhos.{{/if}}</p>
     </nav>
     <main class="jj2m-map">
+      {{#if creationMode}}<label class="jj2c-search jj2c-tree-search">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="tree"}}<input id="{{@root.rootId}}-specialization-search" type="search" data-creation-search value="{{search}}" placeholder="Buscar habilidade neste mapa" aria-label="Buscar Especialização">{{#if search}}<output aria-live="polite">{{searchMatches}} encontrada(s)</output>{{/if}}</label>{{/if}}
       <div class="jj2m-map-heading">
         <img src="{{categoria.icone}}" alt="">
         <div><h3>{{categoria.nome}}</h3><p>{{categoria.aprendidas}} / {{categoria.total}} aprendidas <span>{{quantidadeCaminhos}} caminhos</span></p></div>
@@ -54,7 +55,7 @@
           </div>
           {{/each}}
           {{#each mapa.nos}}
-          <button type="button" class="jj2m-node {{estado}} {{#if selecionado}}selecionado{{/if}} {{#if exigido}}exigido{{/if}}" data-action="selecionar" data-nome="{{nome}}" data-uuid="{{uuid}}" aria-pressed="{{selecionado}}" data-tooltip="{{dica}}" style="left:{{x}}px;top:{{y}}px;">
+          <button type="button" class="jj2m-node {{estado}} {{#if selecionado}}selecionado{{/if}} {{#if exigido}}exigido{{/if}} {{#if searchMatch}}search-match{{/if}} {{#if searchDim}}search-dim{{/if}}" data-action="selecionar" data-nome="{{nome}}" data-uuid="{{uuid}}" aria-pressed="{{selecionado}}" data-tooltip="{{dica}}" style="left:{{x}}px;top:{{y}}px;">
             <span class="jj2m-node-main"><span class="jj2m-node-art"><img src="{{img}}" alt="" loading="lazy"></span><strong>{{nome}}</strong></span>
             <span class="jj2m-node-status">
               {{#if (eq estado "adquirido")}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="check"}}{{else if (eq estado "bloqueado")}}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>{{else}}{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}{{/if}}
@@ -83,7 +84,11 @@
         {{else}}<p class="jj2m-free">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="check"}}Sem requisitos de habilidade</p>{{/each}}
       </section>
       <div class="jj2m-actions">
-        {{#if podeEditar}}
+        {{#if creationMode}}
+          {{#if selecionado.picked}}<button type="button" class="jj2m-learn esquecer" data-action="esquecer" data-nome="{{selecionado.nome}}" {{#if busy}}disabled{{/if}}>Desfazer escolha</button>
+          {{else}}<button type="button" class="jj2m-learn" data-action="aprender" data-nome="{{selecionado.nome}}" {{#unless selecionado.canChoose}}disabled{{/unless}}>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}Escolher habilidade</button>{{/if}}
+          {{#if selecionado.reason}}<p class="jj2c-tree-reason">{{selecionado.reason}}</p>{{/if}}
+        {{else if podeEditar}}
           {{#if (eq selecionado.estado "adquirido")}}
             {{#if selecionado.concedida}}
               {{#if ehGM}}<button type="button" class="jj2m-learn esquecer" data-action="revogar" data-nome="{{selecionado.nome}}">Revogar concessão</button>
@@ -99,9 +104,10 @@
             {{else}}<button type="button" class="jj2m-learn" disabled>Sem escolhas disponíveis</button>{{/if}}
           {{/if}}
         {{else}}<button type="button" class="jj2m-learn" disabled>Somente leitura</button>{{/if}}
-        <button type="button" class="jj2m-open" data-action="abrir">Abrir habilidade no compêndio</button>
+        {{#unless creationMode}}<button type="button" class="jj2m-open" data-action="abrir">Abrir habilidade no compêndio</button>{{/unless}}
       </div>
       {{#if selecionadoHtml}}<section class="jj2m-description"><h4>Habilidade</h4><div>{{{selecionadoHtml}}}</div></section>{{/if}}
+      {{else if styleDetail}}<div class="jj2m-detail-heading"><span class="jj2m-detail-art"><img src="{{styleDetail.img}}" alt=""></span><h3>{{styleDetail.name}}</h3></div><section class="jj2m-description"><h4>Estilo de Combate</h4><div>{{{styleHTML}}}</div></section><p class="jj2c-hint">Selecione uma habilidade no mapa para consultar seus requisitos e efeitos.</p>
       {{else}}<div class="jj2m-empty">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="tree"}}<h3>Seu próximo passo</h3><p>Selecione uma habilidade para ver sua descrição e requisitos.</p></div>{{/if}}
     </aside>
   </div>

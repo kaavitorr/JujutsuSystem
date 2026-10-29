@@ -12,6 +12,7 @@ import PseudoDocumentMixin from "../mixins/pseudo-document.mjs";
 import Ruleset from "../../systems/ruleset.mjs";
 import { activationChoices, hasLegacy2Activation, energyConsumptionPlan, withoutEnergyConsumption } from "../../applications/activity/legacy2-activation.mjs";
 import { stashLegacy2Activation, finishLegacy2Damage } from "../../applications/actor/jj/native-cards.mjs";
+import { activityConditionsSnapshot, conditionChatButtons, rollConditionSave } from "../../systems/activity-conditions.mjs";
 
 /**
  * @import { FavoriteData5e } from "../../data/abstract/_types.mjs";
@@ -46,7 +47,7 @@ export default function ActivityMixin(Base) {
       sheetClass: ActivitySheet,
       targetPhase: "",
       usage: {
-        actions: {},
+        actions: { rollConditionSave },
         applyEffectsInChat: true,
         dialog: ActivityUsageDialog,
         messageType: "usage"
@@ -258,6 +259,9 @@ export default function ActivityMixin(Base) {
        * @returns {boolean}  Explicitly return `false` to prevent activity from being used.
        */
       if ( Hooks.call("dnd5e.preUseActivity", activity, usageConfig, dialogConfig, messageConfig) === false ) return;
+      // Custom activities still pass ownership/canUse/pre-use validation and
+      // return their awaited result instead of launching a detached hook task.
+      if (typeof activity._useCustom === "function") return activity._useCustom(usageConfig, dialogConfig, messageConfig);
 
       // Display configuration window if necessary
       if ( dialogConfig.configure && activity._requiresConfigurationDialog(usageConfig) ) {
@@ -741,6 +745,8 @@ export default function ActivityMixin(Base) {
      */
     _finalizeMessageConfig(usageConfig, messageConfig, results) {
       messageConfig.data.rolls = (messageConfig.data.rolls ?? []).concat(results.updates.rolls);
+      const conditions = activityConditionsSnapshot(this);
+      if (conditions) foundry.utils.setProperty(messageConfig.data, "flags.jujutsu-system.activityConditions", conditions);
       if ( this.metadata.usage.applyEffectsInChat ) {
         const effects = this.applicableEffects?.map(e => e.relativeUUID);
         if ( effects ) foundry.utils.setProperty(messageConfig.data, "system.effects", effects);
@@ -774,7 +780,7 @@ export default function ActivityMixin(Base) {
         label: { value: "DND5E.CONSUMPTION.Action.RefundResource" }
       });
 
-      return buttons;
+      return buttons.concat(conditionChatButtons(message.data?.flags?.["jujutsu-system"]?.activityConditions ?? activityConditionsSnapshot(this)));
     }
 
     /* -------------------------------------------- */

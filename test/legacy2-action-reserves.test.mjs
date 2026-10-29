@@ -5,14 +5,19 @@ import { EnergySystem } from "../module/systems/energy.mjs";
 let version = "2.0";
 const hooks = new Map();
 globalThis.Hooks = { on(name, callback) { hooks.set(name, callback); } };
-globalThis.game = { user: { id: "gm", isGM: true }, settings: { get: () => version } };
+const requests = [];
+const gm = { id: "gm", isGM: true, active: true }, player = { id: "player", isGM: false, active: true };
+const users = [gm, player]; users.get = id => users.find(user => user.id === id); users.activeGM = gm;
+globalThis.game = { user: gm, users, settings: { get: () => version },
+  socket: { emit: (_channel, data) => requests.push(data) } };
 globalThis.foundry = { utils: { isEmpty: data => Object.keys(data).length === 0 } };
 globalThis.ui = { notifications: { warn() {}, info() {} } };
 await import("../module/systems/acoes-combate.mjs");
 let serial = 0;
 function fixture({ generated = 25, total = 100, reserves = 5, level = 10, training = 5 } = {}) {
   const writes = [];
-  const actor = { name: "Feiticeiro", type: "character", itemTypes: { class: [] },
+  const actor = { id: `actor-${serial + 1}`, uuid: `Actor.actor-${serial + 1}`, name: "Feiticeiro", type: "character",
+    testUserPermission: user => user.id === player.id, itemTypes: { class: [] },
     system: { details: { level }, legacy2: { actions: { value: 1, max: 6 }, reservas: { value: reserves } },
       energy: { generated, total, bonuses: { generatedEnergy: 0 }, intensiveTraining: { generatedEnergy: training },
         generation: { baseMultiplier: 2, turnMultiplier: 1, bonusFlat: 0 } },
@@ -30,19 +35,52 @@ function fixture({ generated = 25, total = 100, reserves = 5, level = 10, traini
     combatants: new Map([["one", combatant]]) };
   return { actor, combat, writes };
 }
-async function enter(combat, changed = { turn: 1 }) {
+async function enter(combat, changed = { turn: 1 }, { confirm = true } = {}) {
+  const before = requests.length;
   await hooks.get("updateCombat")(combat, changed, {}, game.user.id);
+  // The socket/UI boundary returns a choice later; energy is never confirmed by the turn hook itself.
+  if (confirm && requests.length > before) {
+    const request = requests.at(-1);
+    await EnergySystem.processTurnStartWithChoices(combat.combatant.actor, { flatBonus: 0 }, request.context);
+  }
 }
 
-test("five reserved actions fill to twice normal refinement and debit only the missing amount from total energy atomically", async () => {
+test("a new turn opens refinement without moving energy until the player confirms, including NPCs", async () => {
+  for (const type of ["character", "npc"]) {
+    const { actor, combat } = fixture(); actor.type = type;
+    const before = requests.length;
+    await enter(combat, { turn: 1 }, { confirm: false });
+    assert.equal(actor.system.energy.generated, 25);
+    assert.equal(actor.system.energy.total, 100);
+    assert.equal(actor.system.legacy2.actions.value, 6);
+    assert.equal(actor.system.legacy2.reservas.value, 0);
+    assert.equal(requests.length, before + 1);
+    assert.equal(requests.at(-1).userId, "player");
+    assert.equal(requests.at(-1).actorUuid, actor.uuid);
+    await enter(combat, { turn: 1 }, { confirm: false });
+    assert.equal(requests.length, before + 1);
+  }
+});
+
+test("first-round confirmation uses the normal ceiling even with five actions saved", async () => {
+  const { actor, combat } = fixture({ generated: 0 });
+  combat.round = 1; combat.current.round = 1; combat.previous.round = 0;
+  const before = requests.length;
+  await enter(combat);
+  assert.equal(requests.length, before + 1);
+  assert.equal(actor.system.energy.generated, 25);
+  assert.equal(actor.system.energy.total, 75);
+});
+
+test("confirming five reserved actions fills to twice normal refinement and debits only the missing energy", async () => {
   const { actor, combat, writes } = fixture();
   await enter(combat);
   assert.equal(actor.system.energy.generated, 50);
   assert.equal(actor.system.energy.total, 75);
   assert.equal(actor.system.legacy2.reservas.value, 0);
   assert.equal(actor.system.legacy2.actions.value, 6);
-  assert.equal(writes.length, 1);
-  assert.equal(writes[0].options?.isEnergySystem, true);
+  assert.equal(writes.length, 2);
+  assert.equal(writes.at(-1).options?.isEnergySystem, true);
 });
 
 test("repeated own turns and a direct round jump stay at 50 without another energy transfer", async () => {
@@ -139,13 +177,13 @@ test("duplicate callbacks or initiative reordering cannot refill resources again
   actor.system.energy.generated = 40; actor.system.legacy2.actions.value = 5;
   actor.system.legacy2.reservas.value = 5;
   await enter(combat);
-  assert.equal(writes.length, 1);
+  assert.equal(writes.length, 2);
   assert.equal(actor.system.energy.generated, 40);
   assert.equal(actor.system.legacy2.actions.value, 5);
   combat.previous = combat.current;
   combat.current = { ...combat.current, turn: 2 };
   await enter(combat, { turn: 2 });
-  assert.equal(writes.length, 1);
+  assert.equal(writes.length, 2);
 });
 
 test("only the updating GM processes the turn resources when two GM sessions are active", async () => {
@@ -160,8 +198,8 @@ test("only the updating GM processes the turn resources when two GM sessions are
     game.user = writer;
     await hooks.get("updateCombat")(combat, { turn: 1 }, {}, writer.id);
     assert.equal(writes.length, 1);
-    assert.equal(actor.system.energy.generated, 50);
-    assert.equal(actor.system.energy.total, 75);
+    assert.equal(actor.system.energy.generated, 25);
+    assert.equal(actor.system.energy.total, 100);
   } finally { Object.assign(game, original); }
 });
 
@@ -190,11 +228,12 @@ test("the remaining actions saved at the real end of a turn select the next own 
 test("simultaneous turn notifications share one resource update and a failed update can retry", async () => {
   const { actor, combat, writes } = fixture(), update = actor.update.bind(actor);
   let release;
-  actor.update = async (data, options) => { await new Promise(resolve => { release = resolve; }); return update(data, options); };
+  const gate = new Promise(resolve => { release = resolve; });
+  actor.update = async (data, options) => { await gate; return update(data, options); };
   const first = enter(combat);
   await enter(combat);
   release(); await first;
-  assert.equal(writes.length, 1);
+  assert.equal(writes.length, 2);
   assert.equal(actor.system.energy.total, 75);
   const retry = fixture();
   const retryUpdate = retry.actor.update.bind(retry.actor);

@@ -36,10 +36,24 @@ import { registerCreationHooks } from "./module/applications/actor/creation/crea
 import { registerEnergyShieldTreeUpdate } from "./module/systems/legacy2-energy-shield-tree.mjs";
 import { presentWorldRules } from "./module/applications/world-rules-dialog.mjs";
 import { registerNpcEquipmentHooks } from "./module/systems/legacy2-npc-equipment.mjs";
+import { registerNpcFeatureHooks } from "./module/systems/legacy2-npc-features.mjs";
+import { registerEncyclopediaDescriptionHooks } from "./module/systems/legacy2-encyclopedia-descriptions.mjs";
+import { registerCompendiumIconHooks } from "./module/systems/legacy2-compendium-icons.mjs";
+import { registerFlawEffectHooks } from "./module/systems/defeitos-active-effects.mjs";
+import { registerNpcEquipmentMigration } from "./module/systems/npc-equipment-migration.mjs";
+import { registerNpcEquipmentCombat } from "./module/systems/npc-equipment-combat.mjs";
+import { registerChannelingTechniques } from "./module/systems/legacy2-channeling-techniques.mjs";
 
 registerCreationHooks();
 registerEnergyShieldTreeUpdate();
 registerNpcEquipmentHooks();
+registerNpcFeatureHooks();
+registerEncyclopediaDescriptionHooks();
+registerCompendiumIconHooks();
+registerFlawEffectHooks();
+registerNpcEquipmentMigration();
+registerNpcEquipmentCombat();
+registerChannelingTechniques();
 
 /* -------------------------------------------- */
 /*  Define Module Structure                     */

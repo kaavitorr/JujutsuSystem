@@ -22,6 +22,7 @@ import { chooseJJScale, applyScaleChoice, promptJJScale, scaleFormula } from "./
 import { checkFulgorNegro } from "./fulgor-negro.mjs";
 import { getMasteryTechniqueBonus } from "./mastery-milestones.mjs";
 import { margemExcedente } from "../../../systems/peculiaridades-automacao.mjs";
+import { flawPreventsCriticals } from "../../../systems/defeitos-active-effects.mjs";
 import { applyDamageToActor } from "./damage-application.mjs";
 import aggregateDamageRolls from "../../../dice/aggregate-damage-rolls.mjs";
 import { scaleTypedDamage } from "../../../systems/legacy2-resistances.mjs";
@@ -376,7 +377,8 @@ export async function postJJAttackRoll(activity, rolls) {
   // com Rastro da Desgraça) e NÃO for crítico, o dano é rolado como CRÍTICO —
   // mesmo funcionamento do 20 natural sem Black Flash: os dados de dano são
   // dobrados. Síncrono — o stash precisa estar pronto antes do dano automático.
-  if ( !roll.isCritical ) {
+  const noCriticals = flawPreventsCriticals(actor);
+  if ( !roll.isCritical && !noCriticals ) {
     const alvo = Array.from(game.user.targets ?? [])[0];
     const caAlvo = Number(alvo?.actor?.system?.attributes?.ac?.value);
     if ( Number.isFinite(caAlvo) && roll.total >= (caAlvo + margemExcedente(actor)) ) {
@@ -398,7 +400,7 @@ export async function postJJAttackRoll(activity, rolls) {
   // ── CONDIÇÕES DE DANO (8.3) ─────────────────────────────────────────────
   // Crítico de 20 natural ou Fulgor Negro dispara a salvaguarda do alvo
   // quando o dano for aplicado (gatilho por atacante+alvo, com TTL).
-  if ( d20Ativo === 20 || isFulgor ) {
+  if ( (d20Ativo === 20 && !noCriticals) || isFulgor ) {
     const alvo = Array.from(game.user.targets ?? [])[0];
     if ( alvo?.actor && alvo.actor !== actor ) {
       registrarGatilhoDano(alvo.actor, {

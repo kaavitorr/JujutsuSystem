@@ -1,4 +1,5 @@
 import Ruleset from "./ruleset.mjs";
+import { flawInitiativeLast } from "./defeitos-active-effects.mjs";
 
 /**
  * ── INICIATIVA DINÂMICA (2.0, cap. 2.1) ─────────────────────────────────────
@@ -16,7 +17,7 @@ import Ruleset from "./ruleset.mjs";
 
 /** Linhas do card: [{ nome, total }] ordenado decrescente pelo total. */
 export function ordenarIniciativa(linhas) {
-  return [...linhas].sort((a, b) => b.total - a.total);
+  return [...linhas].sort((a, b) => Number(!!a.ultimo) - Number(!!b.ultimo) || b.total - a.total);
 }
 
 const iniciativaIcon = '<svg class="jj2-initiative-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m13 2-9 12h7l-1 8 10-12h-7z"/></svg>';
@@ -113,7 +114,8 @@ export async function prepararIniciativaDaRodada(combat, { round = combat.round 
     }
     updates.push({ _id: combatente.id, initiative: total });
     const img = combatente.img ?? actor.img;
-    linhas.push({ nome: combatente.name ?? actor.name, total, ...(img ? { img } : {}) });
+    linhas.push({ nome: combatente.name ?? actor.name, total, ...(img ? { img } : {}),
+      ...(flawInitiativeLast(actor) ? { ultimo: true } : {}) });
   }
   return { linhas, updates };
 }

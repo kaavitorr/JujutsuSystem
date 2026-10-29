@@ -1,4 +1,4 @@
-import Ruleset from "../../systems/ruleset.mjs";
+import Ruleset, { MAX_VANTAGENS } from "../../systems/ruleset.mjs";
 import { flanqueamentoDoAtaque } from "../../systems/flanking.mjs";
 import { acertoSeisOlhos } from "../../systems/seis-olhos.mjs";
 import simplifyRollFormula from "../../dice/simplify-roll-formula.mjs";
@@ -7,6 +7,8 @@ import FormulaField from "../fields/formula-field.mjs";
 import D20RollModificationField from "../shared/d20-roll-modification-field.mjs";
 import DamageField, { DamageData } from "../shared/damage-field.mjs";
 import BaseActivityData from "./base-activity.mjs";
+import AppliedConditionField from "./fields/applied-condition-field.mjs";
+import { conditionRollAdvantages } from "../../systems/legacy2-condition-rolls.mjs";
 
 const { ArrayField, BooleanField, NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
 
@@ -24,6 +26,7 @@ export default class BaseAttackActivityData extends BaseActivityData {
   static defineSchema() {
     return {
       ...super.defineSchema(),
+      conditions: new ArrayField(new AppliedConditionField()),
       attack: new SchemaField({
         ability: new StringField(),
         abilities: new SetField(new StringField(), { persisted: false }),
@@ -277,29 +280,35 @@ export default class BaseAttackActivityData extends BaseActivityData {
    */
   getAttackData({ ability, ammunition, attackMode, situational, legacy2 }={}) {
     const npc = Ruleset.isV2() && this.actor?.type === "npc";
+    const halfWeaponAttribute = Ruleset.isV2() && this.item.type === "weapon";
+    if (halfWeaponAttribute && !ability && !this.attack.ability) {
+      ability = npc ? Ruleset.npcPrincipal(this.actor) : Ruleset.atributoPrincipal(this.actor);
+    }
     if (npc && !CONFIG.DND5E.abilities?.[ability]) {
       const configured = this.attack.ability || this.ability;
       ability = CONFIG.DND5E.abilities?.[configured] ? configured : Ruleset.npcPrincipal(this.actor);
     }
     const rollData = this.getRollData({ roll: { ability, attackMode } });
-    // Imported NPC fixed bonuses remain an additional bonus in 2.0; they
-    // cannot bypass the selected attribute, weapon rank or active effects.
-    if ( this.attack.flat && !npc ) return CONFIG.Dice.BasicRoll.constructParts({
-      toHit: this.attack.bonus, ...(Ruleset.isV2() ? { legacyAdv: Ruleset.advantagePart(legacy2) } : {})
-    }, rollData);
-
-    const weapon = this.item.system;
-    const ammo = this.actor?.items.get(ammunition)?.system;
     const { bonus } = this.actor ? D20RollModificationField.combineFields(this.actor.system, [
       `abilities.${rollData.roll.ability}.attack.roll`,
       "rolls.attack", `rolls.attack.${this.getActionType(attackMode)}`
     ], { rules: { category: "attack", actor: this.actor, item: this.item, rollData } }) : {};
+    // Imported NPC fixed bonuses remain an additional bonus in 2.0; they
+    // cannot bypass the selected attribute, weapon rank or active effects.
+    if ( this.attack.flat && !npc ) return CONFIG.Dice.BasicRoll.constructParts({
+      toHit: this.attack.bonus, ruleBonus: bonus,
+      ...(Ruleset.isV2() ? { legacyAdv: Ruleset.advantagePart(legacy2) } : {})
+    }, rollData);
+
+    const weapon = this.item.system;
+    const ammo = this.actor?.items.get(ammunition)?.system;
     let flanqueamento = { graus: 0, nomeAlvo: null };
     const { parts, data } = Ruleset.isV2()
       ? (() => {
-          // 2.0: d20 + atributo inteiro + degrau da arma; as vantagens
+          // 2.0: armas usam metade do atributo (arredondada para baixo)
+          // + degrau da arma; as vantagens
           // empilháveis do dialog (condições + flanqueamento) entram como
-          // bônus fixo ±2 por grau.
+          // bônus fixo ±1 por grau.
           const advCfg = { ...(legacy2 ?? {}) };
           advCfg.grausFlanqueamento = advCfg.grausFlanqueamento ?? 0;
           // Análise de Fluxo: feitiços da criatura analisada não têm vantagem,
@@ -310,8 +319,10 @@ export default class BaseAttackActivityData extends BaseActivityData {
             && [ "spell", "feat" ].includes(this.item?.type) ) {
             advCfg.vantagens = 0;
           }
+          const attributeValue = (rollData.roll.ability && rollData.abilities)
+            ? (rollData.abilities[rollData.roll.ability]?.value ?? 0) : null;
           const resultado = CONFIG.Dice.BasicRoll.constructParts({
-            mod: (rollData.roll.ability && rollData.abilities) ? (rollData.abilities[rollData.roll.ability]?.value ?? 0) : null,
+            mod: halfWeaponAttribute && attributeValue !== null ? Math.floor(attributeValue / 2) : attributeValue,
             legacyRank: Ruleset.rankPartArma(this.actor, this.item),
             legacyAdv: Ruleset.advantagePart(advCfg),
             bonus: this.attack.bonus,
@@ -345,27 +356,20 @@ export default class BaseAttackActivityData extends BaseActivityData {
   /** Native effect/rule advantage becomes an initial editable counter in 2.0. */
   getLegacy2AdvantageDefaults({ ability, attackMode } = {}) {
     const rollData = this.getRollData({ roll: { ability, attackMode } });
-    const { advantage, disadvantage } = this.actor ? D20RollModificationField.combineFields(this.actor.system, [
+    const { advantage, disadvantage, advantageCount, disadvantageCount } = this.actor ? D20RollModificationField.combineFields(this.actor.system, [
       `abilities.${rollData.roll.ability}.attack.roll`, "rolls.attack", `rolls.attack.${this.getActionType(attackMode)}`
     ], { rules: { category: "attack", actor: this.actor, item: this.item, rollData } }) : {};
-    let vantagens = Number(!!advantage), desvantagens = Number(!!disadvantage);
+    let vantagens = advantageCount ?? Number(!!advantage), desvantagens = disadvantageCount ?? Number(!!disadvantage);
     // Flanqueamento (excesso de engajamento do ALVO sobre o Valor de
     // Engajamento dele) é vantagem de quem ataca — pré-preenche VANTAGENS.
     if ( this.actor ) vantagens += flanqueamentoDoAtaque(this.actor).graus;
 
-    // Condições de vantagem/desvantagem (8.3) pré-preenchem os contadores do
-    // dialog: do ATACANTE (Cego/Estremecido/Impedido/Caído −1; Invisível +1)
-    // e do ALVO mirado (Atordoado/Cego/Caído corpo-a-corpo +1; Caído à
-    // distância e Invisível −1).
+    // Each applicable condition contributes its own count; core/Jujutsu aliases count once.
     const alvo = Array.from(game.user.targets ?? [])[0]?.actor ?? null;
-    const meuStatus = this.actor?.statuses ?? new Set();
-    if ( meuStatus.has("jj-cego") || meuStatus.has("jj-caido") || meuStatus.has("jj-estremecido") || meuStatus.has("jj-impedido") ) desvantagens += 1;
-    if ( meuStatus.has("jj-invisivel") ) vantagens += 1;
-    const statusAlvo = alvo?.statuses ?? new Set();
     const corpoACorpo = String(this.getActionType(attackMode) ?? "").startsWith("m");
-    if ( statusAlvo.has("jj-atordoado") || statusAlvo.has("jj-cego") ) vantagens += 1;
-    if ( corpoACorpo && statusAlvo.has("jj-caido") ) vantagens += 1;
-    if ( statusAlvo.has("jj-invisivel") || (!corpoACorpo && statusAlvo.has("jj-caido")) ) desvantagens += 1;
+    const conditions = conditionRollAdvantages(this.actor, { kind: "attack", target: alvo, melee: corpoACorpo });
+    vantagens += conditions.vantagens;
+    desvantagens += conditions.desvantagens;
 
     // Análise de Fluxo: feitiços/técnicas da criatura analisada não podem
     // ter vantagem (spell, ou feat — técnicas de NPC).
@@ -373,7 +377,9 @@ export default class BaseAttackActivityData extends BaseActivityData {
     if ( analise && (analise.alvoUuid === this.actor?.uuid)
       && [ "spell", "feat" ].includes(this.item?.type) ) vantagens = 0;
 
-    return { vantagens: Math.min(vantagens, 5), desvantagens: Math.min(desvantagens, 5) };
+    if ( this.actor?.flags?.["jujutsu-system"]?.flawRules?.attackNoAdvantages ) vantagens = 0;
+
+    return { vantagens: Math.min(vantagens, MAX_VANTAGENS), desvantagens: Math.min(desvantagens, MAX_VANTAGENS) };
   }
 
   /* -------------------------------------------- */

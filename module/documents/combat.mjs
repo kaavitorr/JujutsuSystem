@@ -3,6 +3,7 @@ import { EnergySystem } from "../systems/energy.mjs";
 import Ruleset from "../systems/ruleset.mjs";
 import { resetarUsoReversaNoTurno } from "../applications/actor/jj/energia-reversa.mjs";
 import { prepararIniciativaDaRodada } from "../systems/iniciativa-dinamica.mjs";
+import { flawInitiativeLast } from "../systems/defeitos-active-effects.mjs";
 /**
  * Extended version of Combat to trigger events on combat start & turn changes.
  */
@@ -96,6 +97,8 @@ export default class Combat5e extends Combat {
 
   /** @override */
   _sortCombatants(a, b) {
+    const last = Number(flawInitiativeLast(a.actor)) - Number(flawInitiativeLast(b.actor));
+    if ( last ) return last;
     // Initiative takes top priority
     if ( a.initiative !== b.initiative ) return super._sortCombatants(a, b);
 
@@ -182,6 +185,8 @@ async _onStartTurn(combatant) {
     this._recoverUses({ turn: true, turnStart: combatant });
 
     if (Ruleset.isRestringido(combatant.actor)) return EnergySystem.processTurnStart(combatant.actor);
+    // In 2.0 the authoritative turn hook first recovers actions, then requests one cancellable modal.
+    if (Ruleset.isV2()) return;
 
     if ( combatant.actor?.type === "character" && combatant.actor?.system.energy ) {
       // Encontrar dono da ficha (jogador ativo não-GM) ou fallback GM ativo
@@ -290,14 +295,3 @@ async _onStartTurn(combatant) {
     }
   }
 }
-
-// GM processa escolhas de energia recebidas via socket do jogador
-Hooks.on("ready", () => {
-  game.socket.on("system.jujutsu-system", async (data) => {
-    if ( data.action !== "energyChoicesResult" ) return;
-    if ( !game.user.isGM ) return;
-    const actor = game.actors.get(data.actorId);
-    if ( !actor ) return;
-    await EnergySystem.processTurnStartWithChoices(actor, data.choices);
-  });
-});

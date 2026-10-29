@@ -89,6 +89,7 @@ export function resetHealLimitsByTechnique(activity) {
 //    com card customizado, isto é coberto pelos próprios cards (ver chamadas a
 //    resetHealLimitsByTechnique em chat-card/extra-cards/reducao-dano). ──────────
 Hooks.on("dnd5e.preUseActivity", (activity) => {
+  if (activity?.type === "reduction") return; // Custom flow resets only after confirmation.
   if ( activity?.type === "heal" ) {
     const lim = activity.getHealLimit?.();
     if ( lim?.enabled && lim.remaining <= 0 ) {

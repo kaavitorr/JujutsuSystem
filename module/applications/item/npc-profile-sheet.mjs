@@ -32,7 +32,7 @@ export default class NpcProfileSheet extends ItemSheet5e {
     footer: { template: "systems/jujutsu-system/templates/items/npc-profile-footer.hbs" }
   };
   static TABS = [ { tab: "scales", label: "Detalhes" },
-    { tab: "equipamentos", label: "Equipamentos", condition: item => item.type === "archetype" },
+    { tab: "equipamentos", label: "Equipamentos" },
     { tab: "proficiencias", label: "Proficiências" },
     { tab: "habilidades", label: "Habilidades" },
     { tab: "description", label: "Descrição" } ];
@@ -116,7 +116,7 @@ export default class NpcProfileSheet extends ItemSheet5e {
         const uuid = input.dataset.habilidadeNd;
         gravar(atuais => {
           const alvo = atuais.find(h => h.uuid === uuid);
-          if ( alvo ) alvo.nd = Math.max(1, Math.min(30, Math.trunc(Number(input.value) || 1)));
+          if ( alvo ) alvo.nd = Math.max(0, Math.min(30, Math.trunc(Number(input.value) || 0)));
         });
       }));
       habilidades.querySelectorAll("[data-habilidade-remover]").forEach(botao => botao.addEventListener("click", () => {

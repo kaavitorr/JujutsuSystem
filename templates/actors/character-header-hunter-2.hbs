@@ -6,7 +6,7 @@
         {{else}}<img src="{{ src }}" alt="{{ @root.actor.name }}" {{#if @root.editable}}data-action="{{ action }}"{{else}}data-action="showArtwork"{{/if}} {{#if (and @root.editable path)}}data-edit="{{ path }}" data-type="{{ type }}"{{/if}}>{{/if}}
       {{/with}}
     </div>
-    {{#if editable}}<label class="jj2-portrait-toggle" data-tooltip="{{#if portrait.token}}Mostrar retrato{{else}}Mostrar token{{/if}}"><input type="checkbox" name="flags.jujutsu-system.showTokenPortrait" role="switch" aria-label="Usar imagem do token" {{ checked portrait.token }}><span class="jj2-portrait-switch" aria-hidden="true"></span></label>{{/if}}
+    {{#if editable}}<label class="jj2-portrait-toggle" data-tooltip="{{#if portrait.token}}Mostrar retrato{{else}}Mostrar token{{/if}}"><input type="checkbox" data-flag-path="jujutsu-system.showTokenPortrait" role="switch" aria-label="Usar imagem do token" {{ checked portrait.token }}><span class="jj2-portrait-switch" aria-hidden="true"></span></label>{{/if}}
   </div>
   <div class="jj2-hero-identity">
     <div class="jj2-nameplate">{{#if editable}}<input type="text" name="name" class="document-name" value="{{ actor._source.name }}" aria-label="Nome do personagem">{{else}}<h1 class="document-name">{{ actor.name }}</h1>{{/if}}</div>

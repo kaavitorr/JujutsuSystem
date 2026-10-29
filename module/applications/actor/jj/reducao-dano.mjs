@@ -9,28 +9,22 @@
  * de dano (damage-application.mjs), na mesma camada das "Reduções".
  */
 
-import { getScaleOptions, applyScaleChoice } from "./jj-scale.mjs";
+import { getScaleOptions, applyScaleChoice, scaleFormula } from "./jj-scale.mjs";
 import { rollModeAtual } from "../../../utils.mjs";
+import Ruleset from "../../../systems/ruleset.mjs";
+import { custoEfetivoEmAcoes } from "../../../systems/acoes-combate.mjs";
+import { energyConsumptionPlan, energyPayer } from "../../activity/legacy2-activation.mjs";
 
 import { activateUpkeep } from "./constant-cost.mjs";
 import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
 
 const FLAG = "reducaoDano";
 
-// ── Intercepta o uso da atividade de tipo "reduction" ───────────────────────────
-Hooks.on("dnd5e.preUseActivity", (activity) => {
-  if ( activity?.type !== "reduction" ) return;
-  activateUpkeep(activity); // ativa Custo Constante/Concentração/Duração antes do veto
-  resetHealLimitsByTechnique(activity); // reset-por-técnica (o veto abaixo barraria o listener global)
-  _ativarReducao(activity);
-  return false; // cancela o comportamento nativo — tratamos tudo aqui
-});
-
 /**
  * Abre o diálogo, rola a fórmula e cria o escudo de redução.
  * @param {Activity} activity
  */
-async function _ativarReducao(activity) {
+export async function activateDamageReduction(activity, usage = { consume: true }) {
   const actor = activity.item?.actor ?? activity.actor;
   if ( !actor ) return;
 
@@ -44,7 +38,7 @@ async function _ativarReducao(activity) {
 
   // Opções de escala embutidas no próprio diálogo (a ativação ainda NÃO foi paga
   // na Redução — o fluxo nativo é cancelado, então o custo de ativação dá a base)
-  const scaleData = getScaleOptions({ actor, activity, baseLabel: baseFormula || "0", activationPaid: false });
+  const scaleData = getScaleOptions({ actor: energyPayer(actor), activity, baseLabel: baseFormula || "0", activationPaid: false });
   const scaleHtml = scaleData.available
     ? `<div style="display:flex; align-items:center; gap:8px; margin:0 0 4px;">
          <label style="flex:0 0 auto;">Custo / Escala (${scaleData.poolLabel}):</label>
@@ -95,21 +89,20 @@ async function _ativarReducao(activity) {
   if ( !escolha ) return;
 
   // Modo persistente depende do início do próximo turno → exige combate ativo
-  if ( escolha.persistente && !game.combat ) {
+  if ( escolha.persistente && !game.combat?.started ) {
     ui.notifications.warn("O modo persistente (até o próximo turno) requer um combate ativo. Use o modo de ataque único fora de combate.");
     return;
   }
 
-  // Aplica ativação + escala (deduz PA) e soma à base numa única rolagem
-  const escala = await applyScaleChoice({ actor, activity, incrementos: escolha.incrementos, activationPaid: false });
-  if ( escala.activationOk === false ) {
-    ui.notifications.warn("PA insuficiente para ativar a Redução de Dano.");
-    return;
-  }
+  // Clamp against the scale available when the choice was made; validate the
+  // current balances again after rolling, before committing any resource.
+  const incrementos = scaleData.available
+    ? Math.min(scaleData.maxIncrementos, Math.max(0, Math.floor(Number(escolha.incrementos) || 0))) : 0;
 
   const parts = [];
   if ( baseFormula ) parts.push(baseFormula);
-  if ( escala.bonusFormula ) parts.push(escala.bonusFormula);
+  const bonusFormula = scaleFormula(activity.jjScale?.formula, incrementos);
+  if (bonusFormula) parts.push(bonusFormula);
   const fullFormula = parts.join(" + ") || "0";
 
   let roll;
@@ -119,7 +112,6 @@ async function _ativarReducao(activity) {
     ui.notifications.error(`Fórmula inválida para Redução de Dano: "${fullFormula}".`);
     return;
   }
-  if ( game.dice3d ) await game.dice3d.showForRoll(roll, game.user, true);
   const valor = roll.total;
 
   // Escudo só faz sentido com valor positivo
@@ -128,7 +120,26 @@ async function _ativarReducao(activity) {
     return;
   }
 
-  await actor.setFlag("jujutsu-system", FLAG, { valor, persistente: escolha.persistente });
+  const updates = { [`flags.jujutsu-system.${FLAG}`]: { valor, persistente: escolha.persistente } };
+  if (Ruleset.isV2()) {
+    const config = { ...usage, legacy2: { ...usage.legacy2, scale: incrementos } };
+    const actionCost = custoEfetivoEmAcoes(activity, config, actor);
+    const actions = Number(actor.system.legacy2?.actions?.value) || 0;
+    if (actions < actionCost) { ui.notifications.warn(`Pontos de Ação insuficientes: ${actionCost} necessários.`); return; }
+    let plan;
+    try { plan = energyConsumptionPlan(activity, config); }
+    catch (error) { ui.notifications.warn(error.message); return; }
+    if (actionCost) updates["system.legacy2.actions.value"] = actions - actionCost;
+    if (plan.payer === actor) Object.assign(updates, plan.updates);
+    else if (Object.keys(plan.updates).length) await plan.payer.update(plan.updates, { isEnergySystem: true });
+  } else {
+    const escala = await applyScaleChoice({ actor, activity, incrementos, activationPaid: false });
+    if (escala.activationOk === false) { ui.notifications.warn("PA insuficiente para ativar a Redução de Dano."); return; }
+  }
+  await actor.update(updates, { isEnergySystem: true });
+  await activateUpkeep(activity);
+  resetHealLimitsByTechnique(activity);
+  if (game.dice3d) await game.dice3d.showForRoll(roll, game.user, true);
 
   const modo = escolha.persistente
     ? "dura até o início do próximo turno (reduz cada ataque)"
@@ -139,6 +150,7 @@ async function _ativarReducao(activity) {
     rollMode: rollModeAtual()
   });
   ui.notifications.info(`Redução de Dano ativa: escudo de ${valor}.`);
+  return { roll, reduction: valor, persistente: escolha.persistente };
 }
 
 /**
@@ -152,19 +164,31 @@ function _podeLimpar(actor) {
   return gm ? (gm === game.user) : (actor?.isOwner === true);
 }
 
-// ── Limpa a redução persistente no início do próximo turno do conjurador ────────
-Hooks.on("combatTurnChange", async (combat, prior, current) => {
-  const combatant = combat.combatants.get(current?.combatantId);
-  const actor = combatant?.actor;
-  if ( !actor || !_podeLimpar(actor) ) return;
+const clearing = new WeakSet();
+async function clearPersistentReduction(actor) {
+  if (!actor || !_podeLimpar(actor) || clearing.has(actor)) return;
   const red = actor.getFlag("jujutsu-system", FLAG);
   if ( red?.persistente ) {
-    await actor.unsetFlag("jujutsu-system", FLAG);
-    ChatMessage.create({
-      speaker: ChatMessage.getSpeaker({ actor }),
-      content: `🛡️ A Redução de Dano de <strong>${actor.name}</strong> se dissipa no início do turno.`
-    });
+    clearing.add(actor);
+    try {
+      await actor.unsetFlag("jujutsu-system", FLAG);
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor }),
+        content: `A Redução de Dano de <strong>${actor.name}</strong> se dissipa no início do turno.`
+      });
+    } finally { clearing.delete(actor); }
   }
+}
+
+// Native tracker changes arrive through updateCombat, including a solo actor's next round.
+Hooks.on("updateCombat", async (combat, changed, options) => {
+  if (!combat.started || options?.turnEvents === false || (changed.turn === undefined && changed.round === undefined)) return;
+  const current = combat.current, prior = combat.previous;
+  if (!current?.combatantId || (current.combatantId === prior?.combatantId && current.round === prior.round)) return;
+  await clearPersistentReduction(combat.combatants.get(current.combatantId)?.actor);
+});
+Hooks.on("combatTurnChange", async (combat, prior, current) => {
+  await clearPersistentReduction(combat.combatants.get(current?.combatantId)?.actor);
 });
 
 // ── Rede de segurança: ao encerrar o combate, limpa escudos persistentes que

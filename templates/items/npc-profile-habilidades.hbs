@@ -1,13 +1,13 @@
 <section class="tab {{tab.cssClass}} jj2-npc-habilidades" data-tab="{{tab.id}}" data-group="{{tab.group}}">
   <header class="jj2-scale-heading"><div><small>EVOLUÇÃO DO NPC</small><h2>Habilidades</h2></div></header>
-  <p class="jj2-scale-intro">Arraste características e talentos para esta aba. O número indica o ND a partir do qual o NPC com este perfil pode receber a característica.</p>
+  <p class="jj2-scale-intro">Arraste características e talentos para esta aba. O número indica o ND em que o NPC recebe a característica automaticamente. Use ND 0 para características naturais.</p>
   <ol class="jj2-habilidades-lista">
     {{#each profile.habilidades}}
       <li data-habilidade-uuid="{{uuid}}">
         <img src="{{img}}" alt="">
         <span class="jj2-habilidade-nome">{{nome}}</span>
         {{#if @root.editable}}
-        <label class="jj2-habilidade-nd">ND <input type="number" value="{{nd}}" min="1" max="30" step="1"
+        <label class="jj2-habilidade-nd">ND <input type="number" value="{{nd}}" min="0" max="30" step="1"
                data-habilidade-nd="{{uuid}}" data-dtype="Number" aria-label="ND de {{nome}}"></label>
         <button type="button" class="jj2-habilidade-remover" data-habilidade-remover="{{uuid}}"
                 aria-label="Remover {{nome}}" data-tooltip="Remover">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="close"}}</button>

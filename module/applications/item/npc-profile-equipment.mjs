@@ -7,14 +7,15 @@ export async function npcEquipmentContext(item) {
     return { uuid, kind, name: doc?.name ?? "Equipamento indisponível", img: doc?.img ?? "icons/svg/item-bag.svg" };
   };
   return {
+    taxonomy: item.type === "taxonomy",
     armor: equipment.armadura ? await resolve(equipment.armadura, "armadura") : null,
     weapons: await Promise.all((equipment.armas ?? []).map(uuid => resolve(uuid, "armas")))
   };
 }
 
-/** Drop/configuration writes are limited to editable archetypes. */
+/** Drop/configuration writes are limited to editable NPC profiles. */
 export async function configureNpcEquipment(sheet, target, dropped) {
-  if (sheet.item.type !== "archetype") return false;
+  if (!["taxonomy", "archetype"].includes(sheet.item.type)) return false;
   const { operation, kind, uuid } = target?.dataset ?? {};
   if (operation === "open") {
     const doc = await fromUuid(uuid).catch(() => null);

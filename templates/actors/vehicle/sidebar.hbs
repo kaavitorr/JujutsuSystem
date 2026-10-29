@@ -73,11 +73,11 @@
 
     {{!-- Display Options --}}
     {{#if editable}}
-    {{> ".option" name="flags.JujutsuLegacy.showVehicleAbilities" value=options.showAbilities
+    {{> ".option" flagPath="jujutsu-system.showVehicleAbilities" value=options.showAbilities
         label="DND5E.VEHICLE.Option.Abilities" }}
-    {{> ".option" name="flags.JujutsuLegacy.showVehicleInitiative" value=options.showInitiative
+    {{> ".option" flagPath="jujutsu-system.showVehicleInitiative" value=options.showInitiative
         label="DND5E.VEHICLE.Option.Initiative" }}
-    {{> ".option" name="flags.JujutsuLegacy.showVehicleQuality" value=options.showQuality
+    {{> ".option" flagPath="jujutsu-system.showVehicleQuality" value=options.showQuality
         label="DND5E.VEHICLE.Option.Quality" }}
     {{> ".option" name="system.attributes.actions.stations" value=source.attributes.actions.stations
         label="DND5E.VEHICLE.FIELDS.attributes.actions.stations.label" }}
@@ -284,7 +284,7 @@
 
 {{#* inline ".option"}}
 <label class="slide-toggle header-interactable">
-    <input type="checkbox" name="{{ name }}" {{ checked value }}>
+    {{#if flagPath}}<input type="checkbox" data-flag-path="{{ flagPath }}" {{ checked value }}>{{else}}<input type="checkbox" name="{{ name }}" {{ checked value }}>{{/if}}
     {{ localize label }}
     <i class="fa-solid fa-toggle-{{ ifThen value "on" "off" }}" inert></i>
 </label>

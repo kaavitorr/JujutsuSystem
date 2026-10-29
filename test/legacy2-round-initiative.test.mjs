@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import Ruleset from "../module/systems/ruleset.mjs";
+import { flawInitiativeLast } from "../module/systems/defeitos-active-effects.mjs";
 
 let version = "2.0", enabled = true;
 const handlers = new Map(), messages = [];
@@ -87,9 +88,23 @@ class CoreCombatBoundary {
 // Execute the actual Combat5e class; only its Foundry/network boundary is replaced.
 const source = readFileSync(new URL("../module/documents/combat.mjs", import.meta.url), "utf8")
   .replace(/^import .*;\r?\n/gm, "").replace("export default class", "return class");
-const Combat5e = new Function("Combat", "Ruleset", "prepararIniciativaDaRodada", source)
-  (CoreCombatBoundary, Ruleset, initiative.prepararIniciativaDaRodada);
+const Combat5e = new Function("Combat", "Ruleset", "prepararIniciativaDaRodada", "flawInitiativeLast", source)
+  (CoreCombatBoundary, Ruleset, initiative.prepararIniciativaDaRodada, flawInitiativeLast);
 Combat5e.prototype._recoverUses = () => {};
+
+test("Medroso remains last in the tracker and dynamic summary regardless of the rolled score", async () => {
+  const combat = new Combat5e({ scores: [100, 25, 15] });
+  combat.combatants[0].actor.flags = { "jujutsu-system": { flawRules: { initiativeLast: true } } };
+  combat.setupTurns();
+  assert.deepEqual(combat.turns.map(c => c.id), ["B", "C", "A"]);
+  await combat.nextRound();
+  assert.deepEqual(combat.turns.map(c => c.id), ["B", "C", "A"]);
+  assert.deepEqual(initiative.ordenarIniciativa(combat.lastOptions.jj2RoundInitiative.linhas).map(l => l.nome), ["B", "C", "A"]);
+  assert.equal(combat.combatant.id, "B");
+  delete combat.combatants[0].actor.flags;
+  combat.setupTurns();
+  assert.equal(combat.turns[0].id, "A");
+});
 
 test("wrapping the last turn starts only the new initiative leader, even when the former leader falls to second or last", async () => {
   for (const scoreA of [20, 5]) {

@@ -53,14 +53,14 @@
       <div class="jj2-counter-value"><button type="button" data-action="jj2StepCounter" data-step="-1" aria-label="Diminuir vantagens"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14"/></svg></button>
         <input id="{{rootId}}-boons" name="legacy2.vantagens" type="number" value="{{jj2.vantagens}}" min="0" max="{{jj2.maxAdvantages}}" step="1" aria-label="Quantidade de vantagens">
         <button type="button" data-action="jj2StepCounter" data-step="1" aria-label="Aumentar vantagens">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}</button></div>
-      <span>+2 por vantagem</span>
+      <span>+1 por vantagem</span>
     </div>
     <div class="jj2-counter jj2-counter-bane">
       <label for="{{rootId}}-banes">Desvantagens</label>
       <div class="jj2-counter-value"><button type="button" data-action="jj2StepCounter" data-step="-1" aria-label="Diminuir desvantagens"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14"/></svg></button>
         <input id="{{rootId}}-banes" name="legacy2.desvantagens" type="number" value="{{jj2.desvantagens}}" min="0" max="{{jj2.maxAdvantages}}" step="1" aria-label="Quantidade de desvantagens">
         <button type="button" data-action="jj2StepCounter" data-step="1" aria-label="Aumentar desvantagens">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}</button></div>
-      <span>−2 por desvantagem</span>
+      <span>−1 por desvantagem</span>
     </div>
   </div>
   <div class="jj2-advantage-result"><span>Modificador de acerto</span><strong>{{dnd5e-formatModifier jj2.advantageBonus}}</strong></div>
@@ -86,7 +86,7 @@
   </section>
   {{/if}}
   <div class="jj2-activation-breakdown">
-    <div><span class="jj2-stat-seal">{{jj2.abilityValue}}</span><strong>Atributo</strong><small>{{jj2.abilityLabel}}</small></div>
+    <div {{#if jj2.halfAttackAttribute}}data-tooltip="Atributo dividido por 2, arredondado para baixo"{{/if}}><span class="jj2-stat-seal">{{jj2.abilityValue}}</span><strong>{{#if jj2.halfAttackAttribute}}Atributo ÷ 2{{else}}Atributo{{/if}}</strong><small>{{jj2.abilityLabel}}</small></div>
     <div><input class="jj2-stat-seal" type="number" id="{{rootId}}-bonus" name="legacy2.bonus" value="{{jj2.bonus}}" step="1" aria-label="Bônus adicional"><label for="{{rootId}}-bonus">Bônus</label><small title="A base é aplicada automaticamente. O campo acima adiciona um bônus situacional.">Base aplicada: {{jj2.bonusLabel}}</small></div>
     <div><span class="jj2-stat-seal">{{jj2.skillValueLabel}}</span><strong>Perícia</strong><small>Proficiência</small></div>
   </div>

@@ -3,6 +3,7 @@ import { ActorDeltasField } from "./fields/deltas-field.mjs";
 import SourceReferenceField from "./fields/source-reference-field.mjs";
 import TargetsField from "./fields/targets-field.mjs";
 import { alternativeSavesEnabled, alternativeSaveDefinition } from "../../systems/legacy2-alternative-saves.mjs";
+import { conditionButtonAvailable, conditionChatButtons } from "../../systems/activity-conditions.mjs";
 
 const {
   ArrayField, BooleanField, DocumentIdField, HTMLField, NumberField, ObjectField, SchemaField, StringField
@@ -273,6 +274,12 @@ export default class UsageMessageData extends ItemMessageData {
       if ( hidden ) {
         hidden = (visibility === "gm") && !game.user.isGM;
         hidden ||= !isCreator || activity?.shouldHideChatButton(button, this.parent);
+      }
+      if (action === "rollConditionSave") {
+        hidden ||= !conditionButtonAvailable(this.parent);
+        const current = conditionChatButtons(this.parent.flags?.["jujutsu-system"]?.activityConditions)
+          .find(entry => entry.dataset.conditionId === button.dataset.conditionId);
+        if (current) button = { ...button, label: current.label };
       }
       if ( alternative && !hidden ) {
         const key = `${alternative.key}:${button.dataset.dc ?? ""}`;

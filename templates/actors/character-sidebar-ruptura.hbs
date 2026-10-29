@@ -1,7 +1,7 @@
 <aside class="sidebar jj2-sidebar" aria-label="Retrato e recursos do personagem">
   <button type="button" class="sidebar-collapser always-interactive" data-action="toggleSidebar" aria-expanded="{{#if sidebarCollapsed}}false{{else}}true{{/if}}" aria-label="{{#if sidebarCollapsed}}Expandir sidebar{{else}}Recolher sidebar{{/if}}">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="collapse" }}</button>
   <div class="jj2-portrait portrait {{#if portrait.token}}token{{/if}}">
-    {{#if editable}}<label class="jj2-portrait-toggle"><input type="checkbox" name="flags.jujutsu-system.showTokenPortrait" {{ checked portrait.token }}>Usar imagem do token</label>{{/if}}
+    {{#if editable}}<label class="jj2-portrait-toggle"><input type="checkbox" data-flag-path="jujutsu-system.showTokenPortrait" {{ checked portrait.token }}>Usar imagem do token</label>{{/if}}
     {{#with portrait}}
       {{#if isVideo}}<video src="{{ src }}" autoplay muted loop playsinline disablepictureinpicture {{#if @root.editable}}data-action="{{ action }}"{{else}}data-action="showArtwork"{{/if}} {{#if (and @root.editable path)}}data-edit="{{ path }}" data-type="{{ type }}"{{/if}}></video>
       {{else}}<img src="{{ src }}" alt="{{ @root.actor.name }}" {{#if @root.editable}}data-action="{{ action }}"{{else}}data-action="showArtwork"{{/if}} {{#if (and @root.editable path)}}data-edit="{{ path }}" data-type="{{ type }}"{{/if}}>{{/if}}

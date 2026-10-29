@@ -49,16 +49,16 @@ test("as três especiais custam 3 PA (2 + 1 adicional); as demais custam 2 PA", 
     const item = porNome[nome], activity = activityDe(nome);
     assert.equal(item.flags["jujutsu-system"].danoExtraPorNd, true, nome);
     assert.equal(activity.damage.parts[0].custom.formula, "@escala + @mod@escalaExtra", nome);
-    const pa = activity.consumption.targets.find(t => t.target === "energy.generated");
-    assert.equal(pa.value, "3", nome);
+    assert.equal(activity.activation.value, 3, nome);
+    assert.equal(activity.consumption.targets.some(t => t.target === "energy.generated"), false, nome);
     assert.ok(item.system.description.value.includes("1 Ponto de Ação adicional"), nome);
   }
   for (const nome of ["Galhada", "Garras", "Tentáculos", "Espinhos"]) {
     const item = porNome[nome], activity = activityDe(nome);
     assert.equal(item.flags["jujutsu-system"].danoExtraPorNd, false, nome);
     assert.equal(activity.damage.parts[0].custom.formula, "@escala + @mod", nome);
-    const pa = activity.consumption.targets.find(t => t.target === "energy.generated");
-    assert.equal(pa.value, "2", nome);
+    assert.equal(activity.activation.value, 2, nome);
+    assert.equal(activity.consumption.targets.some(t => t.target === "energy.generated"), false, nome);
   }
 });
 

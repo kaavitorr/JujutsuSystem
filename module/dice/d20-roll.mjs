@@ -2,6 +2,7 @@ import D20RollConfigurationDialog from "../applications/dice/d20-configuration-d
 import { areKeysPressed } from "../utils.mjs";
 import BasicRoll from "./basic-roll.mjs";
 import { applyLegacy2TestRoll } from "../applications/dice/legacy2-test-roll.mjs";
+import { configureFlawRoll } from "../systems/defeitos-active-effects.mjs";
 
 /**
  * @import {
@@ -49,6 +50,7 @@ export default class D20Roll extends BasicRoll {
   /** @inheritDoc */
   static fromConfig(config, process) {
     config = applyLegacy2TestRoll(config, process);
+    config = configureFlawRoll(config, process);
     const formula = [new CONFIG.Dice.D20Die().formula].concat(config.parts ?? []).join(" + ");
     config.options.criticalSuccess ??= CONFIG.Dice.D20Die.CRITICAL_SUCCESS_TOTAL;
     config.options.criticalFailure ??= CONFIG.Dice.D20Die.CRITICAL_FAILURE_TOTAL;
@@ -85,6 +87,7 @@ export default class D20Roll extends BasicRoll {
       advantage: areKeysPressed(config.event, "skipDialogAdvantage"),
       disadvantage: areKeysPressed(config.event, "skipDialogDisadvantage")
     };
+    config.jjKeyRollModes = { vantagens: Number(keys.advantage), desvantagens: Number(keys.disadvantage) };
 
     // Should the roll configuration dialog be displayed?
     dialog.configure ??= !Object.values(keys).some(k => k);
@@ -156,7 +159,19 @@ export default class D20Roll extends BasicRoll {
    * @type {boolean|void}
    */
   get isCritical() {
+    if ( this.options.jjFlawNoCriticals || this.options.jjFlawAutoFailure ) return this._evaluated ? false : undefined;
     return this.d20.isCriticalSuccess;
+  }
+
+  /** Explicit automatic failures retain their rolled total and are not critical failures. */
+  get isFailure() {
+    if ( this.options.jjFlawAutoFailure ) return this._evaluated ? true : undefined;
+    return super.isFailure;
+  }
+
+  get isSuccess() {
+    if ( this.options.jjFlawAutoFailure ) return this._evaluated ? false : undefined;
+    return super.isSuccess;
   }
 
   /* -------------------------------------------- */

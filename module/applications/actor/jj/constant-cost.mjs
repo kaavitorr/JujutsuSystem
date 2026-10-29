@@ -107,7 +107,9 @@ export async function activateUpkeep(activity) {
 // Por isso o card principal (ataque/salvaguarda) e os cards extras (dano/cura/
 // perícia/utilidade), que vetam o fluxo nativo, chamam activateUpkeep() diretamente
 // ANTES do próprio veto — não dá pra depender deste hook aqui rodar depois deles.
-Hooks.on("dnd5e.preUseActivity", (activity) => { activateUpkeep(activity); });
+Hooks.on("dnd5e.preUseActivity", (activity) => {
+  if (activity?.type !== "reduction") activateUpkeep(activity);
+});
 
 // Drena o custo no início do turno do dono; desativa quem não puder pagar.
 Hooks.on("combatTurnChange", async (combat, prior, current) => {

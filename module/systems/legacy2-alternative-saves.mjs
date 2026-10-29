@@ -22,12 +22,12 @@ export function alternativeSaveData(actor, key, ruleset) {
   if ( !definition ) return null;
   const values = definition.abilities.map(ability => Number(actor.system.abilities?.[ability]?.value) || 0);
   const average = (values[0] + values[1]) / 2;
-  const base = Math.ceil(average);
+  const base = Math.floor(average);
   const rank = npcProficiencyRank(actor, "alternativeSaves", definition.key);
   const bonus = ruleset.rankBonus(rank), total = base + bonus;
   const sign = bonus < 0 ? "−" : "+";
   return { ...definition, ability: definition.abilities[0], base, rank, total,
     grantedRank: npcProficiencyBonus(actor, "alternativeSaves", definition.key),
     rankLabel: ruleset.rankLabel(rank),
-    tooltip: `${definition.label}: (${definition.names[0]} ${values[0]} + ${definition.names[1]} ${values[1]}) ÷ 2 = ${average.toLocaleString("pt-BR")}; base ${base} (arredondado para cima); ${ruleset.rankLabel(rank)} ${sign}${Math.abs(bonus)} = ${total}.` };
+    tooltip: `${definition.label}: (${definition.names[0]} ${values[0]} + ${definition.names[1]} ${values[1]}) ÷ 2 = ${average.toLocaleString("pt-BR")}; base ${base} (arredondado para baixo); ${ruleset.rankLabel(rank)} ${sign}${Math.abs(bonus)} = ${total}.` };
 }

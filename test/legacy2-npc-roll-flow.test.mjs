@@ -102,9 +102,9 @@ test("NPC skill rolls include whole attribute, every proficiency rank, effects, 
     actor._buildSkillToolConfig("skill", actor, process, roll, form, 0);
     applyLegacy2TestRoll(roll, process, form);
     applyLegacy2TestRoll(roll, process, form);
-    assert.equal(total(roll), 8 + Ruleset.rankBonus(rank) + 3 + 4 - 2 + 5 + 4);
+    assert.equal(total(roll), 8 + Ruleset.rankBonus(rank) + 3 + 4 - 2 + 5 + 2);
     assert.equal(roll.data.mod, 8);
-    assert.equal(roll.data.legacyAdv, 4);
+    assert.equal(roll.data.legacyAdv, 2);
     assert(!roll.parts.includes("@prof"));
     assert.equal(new Set(roll.parts).size, roll.parts.length);
     assert.equal(roll.options.minimum, 2);

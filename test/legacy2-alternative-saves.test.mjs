@@ -21,13 +21,14 @@ function actor(type = "character") {
     legacy2: { saves: { str: 4, con: 3 }, alternativeSaves: { fortitude: 2, vontade: 4, reflexo: 0 },
       skills: {}, armas: {}, pontos: { gastos: 7 } } } };
 }
-test("optional saves use the requested pairs, ceiling and independent proficiency ranks", () => {
+test("optional saves round each attribute pair down before adding independent proficiency ranks for players and NPCs", () => {
   enabled = true; version = "2.0";
   assert.equal(typeof Ruleset.alternativeSave, "function");
   const a = actor();
-  for (const [key, base, rank, total] of [["fortitude",5,2,6],["vontade",5,4,8],["reflexo",5,0,1]]) {
-    const save = Ruleset.alternativeSave(a, key);
+  for (const type of ["character", "npc"]) for (const [key, base, rank, total] of [["fortitude",4,2,5],["vontade",4,4,7],["reflexo",4,0,0]]) {
+    const save = Ruleset.alternativeSave(actor(type), key);
     assert.equal(save.base, base);assert.equal(save.rank, rank);assert.equal(save.total, total);
+    assert.match(save.tooltip, /arredondado para baixo/);
   }
   assert.equal(Ruleset.saveRank(a,"wis"),2);assert.equal(Ruleset.saveRank(a,"cha"),4);assert.equal(Ruleset.saveRank(a,"int"),0);
   const ctx = buildLegacy2Context(a, config, Ruleset);
@@ -124,9 +125,9 @@ test("native saves requested by attributes or the new names roll the average and
   const NativeActor=new Function("Ruleset","D20RollModificationField","_loc",`return class {${methods}}`)(Ruleset,
     {combineFields:()=>({bonus:2})},(key,args)=>args.ability);
   const a=Object.assign(new NativeActor(),actor(),{name:"Teste",getFlag:()=>null,getRollData:()=>({roll:{}}),addConditionRollReduction(){}});
-  for(const [ability,total,label]of [["str",8,"Fortitude"],["wis",8,"Fortitude"],["con",10,"Vontade"],["cha",10,"Vontade"],["dex",3,"Reflexo"],["int",3,"Reflexo"],["vontade",10,"Vontade"]]){
+  for(const [ability,total,label]of [["str",7,"Fortitude"],["wis",7,"Fortitude"],["con",9,"Vontade"],["cha",9,"Vontade"],["dex",2,"Reflexo"],["int",2,"Reflexo"],["vontade",9,"Vontade"]]){
     const [roll]=await a.rollSavingThrow({ability});
-    assert.equal(roll.data.mod,5);
+    assert.equal(roll.data.mod,4);
     assert.equal(roll.parts.reduce((sum,key)=>sum+roll.data[key.slice(1)],0),total);
     assert.equal(roll.dialog.options.window.title,label);
     assert.equal(roll.message.data.flavor,label);

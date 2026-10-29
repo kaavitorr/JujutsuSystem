@@ -9,5 +9,6 @@
     <div class="form-group"><label for="{{ rootId }}-generation-bonus">PA adicional</label><div class="form-fields"><input id="{{ rootId }}-generation-bonus" type="number" name="flatBonus" value="0" min="0" step="1"></div></div>
     <p>Use o bônus de um feitiço ou habilidade. Ele é somado além do limite normal.</p>
   </fieldset>
-  <p class="jj2-generation-note">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="energy" }}A energia é transferida da sua reserva.</p>
+  {{#if doubled}}<p class="jj2-generation-note">Limite dobrado pelas 5 ou mais ações guardadas do turno anterior.</p>{{/if}}
+  <p class="jj2-generation-note">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="energy" }}A energia é transferida da sua reserva apenas ao confirmar. Cancelar mantém sua energia como está.</p>
 </section>

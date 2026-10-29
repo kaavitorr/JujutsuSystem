@@ -116,22 +116,31 @@ async function explosaoDefensivaDialog(actor) {
 
 /**
  * 2.0: habilidade padrão (não exige manipulação). Sempre d4; limite de
- * dados = metade do nível arredondada para cima. NÃO consome Pontos de
- * Ação nem recurso algum. A redução pendente segue a mesma flag do 1.0,
- * então o damage-application a consome igual; usar de novo substitui a
- * redução anterior (não há custo a devolver).
+ * dados = metade do nível arredondada para cima, com 1 PA de energia refinada
+ * por dado. Pontos de Ação são um recurso separado e não são consumidos aqui.
  */
 export async function onExplosaoDefensiva2(actor) {
   if (Ruleset.isRestringido(actor)) return onPhysicalImpulseDefense(actor);
+  const pending = actor.getFlag("jujutsu-system", "explosaoDefensivaPendente");
+  if (Number(pending?.reducao) > 0) {
+    const replace = await foundry.applications.api.DialogV2.confirm({
+      window: { title: "Explosão Defensiva ativa" },
+      content: `<p>Você ainda tem <strong>${Number(pending.reducao)}</strong> de redução aguardando o próximo dano. Deseja substituí-la por uma nova rolagem? O novo uso terá seu próprio custo.</p>`,
+      yes: { label: "Substituir" }, no: { label: "Manter redução" }
+    });
+    if (!replace) return;
+  }
   const nivel = Ruleset.nivel(actor);
   const limiteDados = Math.ceil(nivel / 2);
-  const maxDados = limiteDados;
+  const available = Math.max(0, Math.floor(Number(actor.system.energy?.generated) || 0));
+  const maxDados = Math.min(limiteDados, available);
+  if (!maxDados) { ui.notifications.warn("Energia refinada insuficiente para Explosão Defensiva."); return; }
 
   const dados = await foundry.applications.api.DialogV2.wait({
     classes: ["dnd5e2", "jj2-document", "jj2-defensive-burst"],
     position: { width: 400 },
     window: { title: "Explosão Defensiva" },
-    content: defensiveBurstContent({ limiteDados, nivel, maxDados }),
+    content: defensiveBurstContent({ limiteDados, nivel, maxDados, available }),
     actions: { jj2StepCounter: stepActivationCounter },
     render: (event, dialog) => mountDefensiveBurstDialog(dialog),
     buttons: [
@@ -151,8 +160,14 @@ export async function onExplosaoDefensiva2(actor) {
     close: () => null
   });
   if ( !dados ) return;
+  if (Number(actor.system.energy?.generated) < dados) { ui.notifications.warn("Energia refinada insuficiente para Explosão Defensiva."); return; }
 
   const roll = await new Roll(`${dados}d4`).evaluate();
+  const current = Number(actor.system.energy?.generated) || 0;
+  if (current < dados) { ui.notifications.warn("Energia refinada insuficiente para Explosão Defensiva."); return; }
+  await actor.update({ "system.energy.generated": current - dados,
+    "flags.jujutsu-system.explosaoDefensivaPendente": { reducao: roll.total, paCusto: dados }
+  }, { isEnergySystem: true });
   if ( game.dice3d ) await game.dice3d.showForRoll(roll, game.user, true);
   await roll.toMessage({
     speaker: ChatMessage.getSpeaker({ actor }),
@@ -160,8 +175,7 @@ export async function onExplosaoDefensiva2(actor) {
     rollMode: rollModeAtual()
   });
 
-  await actor.setFlag("jujutsu-system", "explosaoDefensivaPendente", { reducao: roll.total, paCusto: 0 });
-  ui.notifications.info(`Explosão Defensiva ativa! Próximo dano reduzido em ${roll.total}.`);
+  ui.notifications.info(`Explosão Defensiva ativa! Próximo dano reduzido em ${roll.total}. ${dados} PA de energia refinada gastos.`);
 }
 
 // ══════════════════════════════════════════════════════

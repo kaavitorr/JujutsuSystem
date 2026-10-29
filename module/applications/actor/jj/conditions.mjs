@@ -13,6 +13,7 @@ import { applyJJTextTooltips } from "./tooltips.mjs";
 import { legacy2ConditionIcon } from "./legacy2-condition-icons.mjs";
 import { acoesTetoEfetivo } from "./legacy2-sheet.mjs";
 import { MODIFICADORES_MOVIMENTO } from "../../../systems/condicoes-dano.mjs";
+import { conditionSourceActorUuid } from "../../../systems/legacy2-condition-rolls.mjs";
 import { temPeculiaridade, imunidadeCondicao } from "../../../systems/peculiaridades-automacao.mjs";
 
 // ── Modificadores de condição (usados pelo toggle da aba de Efeitos e pela
@@ -194,6 +195,55 @@ export function statusesParaCondicao(condId) {
   return (core && CONFIG.statusEffects[core]) ? [condId, core] : [condId];
 }
 // [/gerado: jj2]
+export function gameConditionChanges(actor, condId) {
+  const imuneReducaoPA = temPeculiaridade(actor, "corpo-fragil");
+  return [
+    ...(MODIFICADORES_CONDICOES[condId] ?? []),
+    ...(MODIFICADORES_MOVIMENTO[condId] ?? []),
+    ...(MODIFICADORES_DEFESA[condId] ?? [])
+  ].filter(change => !(imuneReducaoPA && change.key === "system.legacy2.actions.max"
+    && ((change.mode === CONST.ACTIVE_EFFECT_MODES.ADD && Number(change.value) < 0)
+      || change.mode === CONST.ACTIVE_EFFECT_MODES.OVERRIDE)));
+}
+
+/** Apply the same condition, modifiers and immunities used by the sheet's Effects tab. */
+export async function applyGameCondition(actor, condId, { origin } = {}) {
+  if (!actor?.isOwner) return false;
+  const cond = JJ2_CONDITIONS.find(condition => condition.id === condId) ?? JJ_CONDITIONS.find(condition => condition.id === condId);
+  const config = CONFIG.statusEffects[condId];
+  if (!config) return false;
+  const statuses = statusesParaCondicao(condId), immunities = actor.system?.traits?.ci?.value;
+  if (imunidadeCondicao(actor, condId) || statuses.some(id => immunities?.has?.(id))) {
+    ui.notifications.warn(`${actor.name} é imune a ${cond?.label ?? config.name}.`);return false;
+  }
+  const sourceActor = conditionSourceActorUuid(origin);
+  const existing = actor.effects.find(effect => effect.statuses?.has(condId));
+  if (existing) {
+    if (sourceActor) await existing.update({ origin, "flags.jujutsu-system.conditionSourceActor": sourceActor });
+    if (condId === "jj-exausto") {
+      const level = Math.min(6, (Number(existing.getFlag?.("jujutsu-system", "exaustoNivel")) || 1) + 1);
+      await existing.update({ changes: [{ key: "system.attributes.movement.walk", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: -1.5 * level }],
+        "flags.jujutsu-system.exaustoNivel": level });
+    }
+    return true;
+  }
+  await actor.createEmbeddedDocuments("ActiveEffect", [{
+    name: cond?.label ?? config.name, img: config.img ?? "icons/svg/aura.svg", origin,
+    statuses, changes: gameConditionChanges(actor, condId),
+    flags: { "jujutsu-system": { isJujutsuCondition: true, ...(sourceActor ? { conditionSourceActor: sourceActor } : {}),
+      ...(condId === "jj-exausto" ? { exaustoNivel: 1 } : {}) } }
+  }]);
+  if (condId === "jj-desidratado") {
+    await actor.setFlag("jujutsu-system", "desidratadoDesde", Math.floor(game.time?.worldTime ?? 0));
+    await actor.setFlag("jujutsu-system", "desidratadoHoras", 0);
+  }
+  if (MODIFICADORES_CONDICOES[condId]) {
+    const current = Number(actor.system?.legacy2?.actions?.value) || 0;
+    const value = Math.min(current, acoesTetoEfetivo(actor));
+    if (value !== current) await actor.update({ "system.legacy2.actions.value": value });
+  }
+  return true;
+}
 
 /**
  * Remove um efeito à prova de corrida: cliques rápidos podem capturar o mesmo
@@ -321,15 +371,7 @@ export function injectJJConditions(element, actor) {
   const donoEditor = actor.isOwner !== false;
   // Corpo Frágil (peculiaridade): imune à REDUÇÃO de Pontos de Ação das
   // condições — os changes de actions.max negativos/override são filtrados.
-  const imuneReducaoPA = temPeculiaridade(actor, "corpo-fragil");
-  const cambiosCondicao = condId => [
-    ...(MODIFICADORES_CONDICOES[condId] ?? []),
-    ...(MODIFICADORES_MOVIMENTO[condId] ?? []),
-    ...(MODIFICADORES_DEFESA[condId] ?? [])
-  ].filter(change => !(imuneReducaoPA
-    && (change.key === "system.legacy2.actions.max")
-    && ((change.mode === CONST.ACTIVE_EFFECT_MODES.ADD && Number(change.value) < 0)
-      || (change.mode === CONST.ACTIVE_EFFECT_MODES.OVERRIDE))));
+  const cambiosCondicao = condId => gameConditionChanges(actor, condId);
   section.innerHTML = modern ? `
     <div class="jj-cond-header"><span>${legacy2ConditionIcon("conditions")}<strong>Condições</strong></span>
       <button type="button" class="jj-cond-custom-btn ${donoEditor ? "always-interactive" : ""}" aria-label="Adicionar condição customizada" ${actor.isOwner === false ? "disabled" : ""}>${legacy2ConditionIcon("add")}Adicionar</button>

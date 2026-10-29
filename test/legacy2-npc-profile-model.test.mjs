@@ -44,13 +44,19 @@ test("joint validation permits partial prevalidation and rejects invalid scales 
   assert.throws(()=>TaxonomyData.validateJoint({pesos:{...valid,str:3}}),/12/);
   assert.throws(()=>ArchetypeData.validateJoint({pesos:{...valid,dex:2.5}}),/12/);
 });
-test("taxonomy saves initial movement by type; only archetypes define ND growth, its cap and equipment",()=>{
+test("profile acquisition levels preserve ND zero for innate traits from the encyclopedia",()=>{
+  for(const Model of [TaxonomyData,ArchetypeData]) {
+    const nd=Model.defineSchema().habilidades.element.fields.nd;
+    assert.equal(nd.min,0);assert.equal(nd.max,30);assert.equal(nd.initial,1);
+  }
+});
+test("taxonomy saves initial movement by type; archetypes define ND growth and its cap; both profiles persist equipment",()=>{
   const taxonomy=TaxonomyData.defineSchema(), archetype=ArchetypeData.defineSchema();
   assert.deepEqual(Object.keys(taxonomy.movimento.fields),NPC_MOVEMENT_TYPES.map(([key])=>key));
   assert.equal(taxonomy.movimento.fields.walk.min,0);assert.equal(taxonomy.movimento.fields.walk.initial,null);
   assert.equal(archetype.movimento.fields.intervalo.integer,true);assert.equal(archetype.movimento.fields.intervalo.min,1);
   assert.equal(archetype.movimento.fields.maximo.nullable,true);
-  assert.equal(taxonomy.equipamentos,undefined);
+  assert.deepEqual(Object.keys(taxonomy.equipamentos.fields),["armadura","armas"]);
   assert.deepEqual(Object.keys(archetype.equipamentos.fields),["armadura","armas"]);
 });
 test("both profile types persist bounded proficiency grants for every skill and each save rule",()=>{

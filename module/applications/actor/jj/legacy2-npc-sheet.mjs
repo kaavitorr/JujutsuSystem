@@ -4,8 +4,9 @@ import { npcProfile, npcAttributeDistribution, npcProficiencyDistribution, NPC_A
 import { NPC_CLASSIFICATIONS, npcClassification, npcClassificationKey } from "../../../systems/legacy2-npc-classification.mjs";
 import { proficiencyOrderContext } from "./npc-proficiency-order.mjs";
 
-export const NPC2_TABS = [["details", "Resumo", "summary"], ["features", "Habilidades", "weapons"],
-  ["spells", "Técnicas", "int"], ["skills", "Perícias", "dice"], ["inventory", "Equipamentos", "inventory"],
+export const NPC2_TABS = [["details", "Resumo", "summary"], ["inventory", "Inventário", "inventory"],
+  ["features", "Características", "weapons"], ["feitico", "Feitiço", "str"], ["skills", "Perícias", "dice"],
+  ["spells", "Técnicas", "int"],
   ["effects", "Efeitos", "effects"], ["biography", "Biografia", "biography"],
   ["specialTraits", "Detalhes", "config"]];
 const choices = (configs, selected) => Object.entries(configs).map(([value, config]) => ({

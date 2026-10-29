@@ -11,7 +11,7 @@
  *                   (Engajamento do ator, incluindo Active Effects)
  *
  * Sem estado persistente: calculado no momento do ataque. Cada grau conta
- * como 1 vantagem (+2, respeitando o teto de 6).
+ * como 1 vantagem (+1, respeitando o teto de 6).
  */
 
 import { engagementValue } from "./engagement.mjs";

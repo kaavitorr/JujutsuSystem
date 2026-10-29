@@ -1,6 +1,6 @@
 <section class="tab {{tab.cssClass}} jj2-npc-equipment" data-tab="{{tab.id}}" data-group="{{tab.group}}">
-  <header class="jj2-scale-heading"><div><small>ARQUÉTIPO</small><h2>Equipamentos</h2></div></header>
-  <p class="jj2-scale-intro">A armadura e as armas abaixo são adicionadas e equipadas ao aplicar este Arquétipo ao NPC. Seus ataques e efeitos continuam funcionando normalmente.</p>
+  <header class="jj2-scale-heading"><div><small>{{#if profile.taxonomy}}TAXONOMIA{{else}}ARQUÉTIPO{{/if}}</small><h2>Equipamentos</h2></div></header>
+  <p class="jj2-scale-intro">A armadura e as armas abaixo são concedidas ao aplicar {{#if profile.taxonomy}}esta Taxonomia{{else}}este Arquétipo{{/if}} ao NPC. Quando os dois concedem uma armadura, prevalece a do Arquétipo. Sem armadura no Arquétipo, o NPC usa a da Taxonomia. As armas dos dois perfis se somam, sem repetir a mesma arma.</p>
   <section class="jj2-profile-gear-slot">
     <header class="jj2-profile-section-title"><h3>Armadura natural</h3><span>1 armadura</span></header>
     {{#if profile.armor}}
@@ -25,5 +25,5 @@
     </div>
     {{#if editable}}<p class="jj2-gear-drop">Arraste armas para adicionar: mordida, membros, garras…</p>{{/if}}
   </section>
-  <p class="jj2-scale-copy-note">Ao trocar ou remover o Arquétipo, saem apenas os equipamentos concedidos por ele. Equipamentos adicionados manualmente permanecem na ficha.</p>
+  <p class="jj2-scale-copy-note">Trocar ou remover um perfil recalcula os equipamentos concedidos. Ao remover a armadura do Arquétipo, a da Taxonomia volta a ser aplicada. Equipamentos adicionados manualmente permanecem na ficha.</p>
 </section>

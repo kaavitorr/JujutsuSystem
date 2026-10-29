@@ -41,8 +41,12 @@ export class NpcProfileData extends ItemDataModel.mixin(ItemDescriptionTemplate)
       // a partir do qual o NPC pode recebê-las.
       habilidades: new ArrayField(new SchemaField({
         uuid: new StringField({ required: true, nullable: false, blank: false }),
-        nd: new NumberField({ required: true, nullable: false, integer: true, min: 1, max: 30, initial: 1 })
-      }), { required: false, nullable: false, initial: [] })
+        nd: new NumberField({ required: true, nullable: false, integer: true, min: 0, max: 30, initial: 1 })
+      }), { required: false, nullable: false, initial: [] }),
+      equipamentos: new SchemaField({
+        armadura: new StringField({ required: true, nullable: true, blank: false, initial: null }),
+        armas: new ArrayField(new StringField({ required: true, nullable: false, blank: false }), { initial: [] })
+      })
     });
   }
 
@@ -78,16 +82,12 @@ export class TaxonomyData extends NpcProfileData {
 
 export class ArchetypeData extends NpcProfileData {
   static defineSchema() {
-    const { ArrayField, NumberField, SchemaField, StringField } = foundry.data.fields;
+    const { NumberField, SchemaField } = foundry.data.fields;
     return this.mergeSchema(super.defineSchema(), {
       movimento: new SchemaField({
         ganho: new NumberField({ required: true, nullable: false, min: 0, initial: 0 }),
         intervalo: new NumberField({ required: true, nullable: false, integer: true, min: 1, initial: 2 }),
         maximo: new NumberField({ required: true, nullable: true, min: 0, initial: null })
-      }),
-      equipamentos: new SchemaField({
-        armadura: new StringField({ required: true, nullable: true, blank: false, initial: null }),
-        armas: new ArrayField(new StringField({ required: true, nullable: false, blank: false }), { initial: [] })
       })
     });
   }

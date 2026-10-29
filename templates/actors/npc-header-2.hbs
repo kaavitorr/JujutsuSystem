@@ -1,7 +1,7 @@
 <header class="sheet-header jj2-header jj2-hero {{#if jj2.npc.profileTags}}jj2-npc-has-profiles{{/if}}">
   <div class="jj2-hero-art"><div class="jj2-portrait portrait {{#if portrait.token}}token{{/if}}">
     {{#with portrait}}{{#if isVideo}}<video src="{{src}}" autoplay muted loop playsinline disablepictureinpicture {{#if @root.editable}}data-action="{{action}}" data-edit="{{path}}" data-type="{{type}}"{{else}}data-action="showArtwork"{{/if}}></video>{{else}}<img src="{{src}}" alt="{{@root.actor.name}}" {{#if @root.editable}}data-action="{{action}}" data-edit="{{path}}" data-type="{{type}}"{{else}}data-action="showArtwork"{{/if}}>{{/if}}{{/with}}
-  </div>{{#if editable}}<label class="jj2-portrait-toggle"><input type="checkbox" name="flags.jujutsu-system.showTokenPortrait" role="switch" aria-label="Usar imagem do token" {{checked portrait.token}}><span class="jj2-portrait-switch" aria-hidden="true"></span></label>{{/if}}</div>
+  </div>{{#if editable}}<label class="jj2-portrait-toggle"><input type="checkbox" data-flag-path="jujutsu-system.showTokenPortrait" role="switch" aria-label="Usar imagem do token" {{checked portrait.token}}><span class="jj2-portrait-switch" aria-hidden="true"></span></label>{{/if}}</div>
   <div class="jj2-hero-identity">
     <div class="jj2-nameplate {{#if jj2.npc.longName}}jj2-npc-name-long{{/if}}">{{#if editable}}<input type="text" name="name" class="document-name" value="{{actor._source.name}}" aria-label="Nome do NPC" title="{{actor.name}}">{{else}}<h1 class="document-name" title="{{actor.name}}">{{actor.name}}</h1>{{/if}}</div>
     <div class="jj2-header-meta"><span>NPC</span><span class="jj2-npc-category">{{jj2.npc.category}}</span>
