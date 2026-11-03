@@ -222,7 +222,8 @@ export function buildLegacy2Context(actor, config, ruleset) {
     principalEscolhido: l2.principalEscolhido ?? principalKeys[0] ?? null,
     pontos: { total: ruleset.trainingPointsTotal(actor), available: ruleset.trainingPointsAvailable(actor),
       extra: Number(l2.pontos?.extra ?? 0) },
-    pvEspecie: Number(l2.pvEspecie ?? 0),
+    // This value fills editable inputs submitted with the whole sheet. Effects must not become saved base HP.
+    pvEspecie: Number(system._source?.legacy2?.pvEspecie ?? actor._source?.system?.legacy2?.pvEspecie ?? l2.pvEspecie ?? 0),
     atributos: { soma: somaAtributos, orcamento: orcamentoAtributos,
       excesso: Math.max(0, somaAtributos - orcamentoAtributos), pct: percent(somaAtributos, orcamentoAtributos) },
     wounds: { value: woundsValue, max: woundsMax, pct: percent(woundsValue, woundsMax) },

@@ -33,6 +33,39 @@ test("old actors have persistent-resource defaults without losing their HP and e
   assert.equal(ctx.energyAvailable, 6);
   assert.equal(ctx.refinement, 10);
 });
+
+test("saving current HP repeatedly with Destino Entrelaçado never turns its +2 species bonus into a permanent base", () => {
+  const a = actor();
+  a.type = "character";
+  a._source = { system: { legacy2: { pvEspecie: 0 }, attributes: { hp: { max: null, value: 48 } } } };
+  a.system._source = a._source.system;
+  const saved = a._source.system;
+  for (let i = 0; i < 6; i++) {
+    // Native Active Effects derive their +2 from the saved, unmodified species base.
+    a.system.legacy2.pvEspecie = saved.legacy2.pvEspecie + 2;
+    const maximum = Ruleset.maxHitPoints(a);
+    const context = sheet.buildLegacy2Context(a, config, Ruleset);
+    assert.equal(maximum, 99); // (nível 5 + CON 6) × (Estilo 7 + espécie 0 + efeito 2)
+    assert.equal(context.pvEspecie, 0, "the editable species field must contain the saved base, not the effective bonus");
+    // Foundry submits the whole sheet when the player edits current HP.
+    saved.attributes.hp.value = 48 - i;
+    saved.legacy2.pvEspecie = context.pvEspecie;
+  }
+  a.system.legacy2.pvEspecie = saved.legacy2.pvEspecie; // Remove the peculiaridade.
+  assert.equal(Ruleset.maxHitPoints(a), 77, "removing the effect restores the original automatic maximum");
+});
+
+test("manual species HP remains editable separately from effects, including source-only synthetic models", () => {
+  for (const sourceLocation of ["actor", "system"]) {
+    const a = actor({ legacy2: { pvEspecie: 5 } });
+    const source = { legacy2: { pvEspecie: 3 } };
+    if (sourceLocation === "actor") a._source = { system: source };
+    else a.system._source = source;
+    assert.equal(sheet.buildLegacy2Context(a, config, Ruleset).pvEspecie, 3);
+    source.legacy2.pvEspecie = 0;
+    assert.equal(sheet.buildLegacy2Context(a, config, Ruleset).pvEspecie, 0, "an explicit zero cannot fall back to the effect value");
+  }
+});
 test("all fifteen skills appear in the three requested groups with their existing roll keys", () => {
   assert.equal(typeof sheet.buildLegacy2Context, "function");
   const groups = sheet.buildLegacy2Context(actor(), config, Ruleset).skillGroups;
