@@ -7,6 +7,7 @@ import DependentDocumentMixin from "./mixins/dependent.mjs";
 import Scaling from "./scaling.mjs";
 import { isLegacyArmorClassChange } from "../systems/legacy2-armor.mjs";
 import { peculiarityEffectSuppressed } from "../systems/peculiaridades-effects.mjs";
+import { legacy2ResourceChange } from "../systems/legacy2-resources.mjs";
 
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 const { NumberField, ObjectField, SchemaField, SetField, StringField } = foundry.data.fields;
@@ -364,9 +365,21 @@ export default class ActiveEffect5e extends DependentDocumentMixin(ActiveEffect)
     if (isLegacyArmorClassChange(model, change)) return {};
     // Apply shims to moved fields
     change = change.effect?._applyChangeShim(change) ?? change;
+    const originalResourceKey = change.key;
+    change = legacy2ResourceChange(model, change, globalThis.game?.settings?.get?.("jujutsu-system", "rulesetVersion") === "2.0");
 
     // Manually check conditions for changes without associated effects
     if ( !change.effect && (change.conditions?.check(options.replacementData ?? {}) === false) ) return {};
+
+    // Old inputs operated on an offset, not on the complete style base. Apply their numeric delta to both views.
+    if (change.key !== originalResourceKey) {
+      const before = Number(originalResourceKey.split(".").reduce((value, key) => value?.[key], model) ?? 0);
+      const offsets = super.applyChange(model, { ...change, key: originalResourceKey }, options);
+      const after = offsets?.[originalResourceKey];
+      if (!Number.isFinite(Number(after))) return offsets;
+      const base = super.applyChange(model, { ...change, type: "add", value: Number(after) - before }, options);
+      return { ...offsets, ...base };
+    }
 
     // Handle special actor flags
     if ( change.key.startsWith("flags.jujutsu-system.") || change.key.startsWith("flags.JujutsuLegacy.") ) {
@@ -641,7 +654,9 @@ export default class ActiveEffect5e extends DependentDocumentMixin(ActiveEffect)
 
   /** @inheritDoc */
   shouldApplyChange(change, options={}) {
-    if ( !super.shouldApplyChange(change, options) ) return false;
+    const prepared = legacy2ResourceChange(this.target, change,
+      globalThis.game?.settings?.get?.("jujutsu-system", "rulesetVersion") === "2.0");
+    if ( !super.shouldApplyChange(prepared, options) ) return false;
     const conditionData = options.replacementData;
     if ( this.system.evaluateCondition ) {
       this.system.evaluateCondition(conditionData);

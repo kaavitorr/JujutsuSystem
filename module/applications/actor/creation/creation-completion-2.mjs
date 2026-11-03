@@ -2,28 +2,12 @@ import Ruleset from "../../../systems/ruleset.mjs";
 import { channelingTechniqueGrants } from "../../../systems/legacy2-channeling-techniques.mjs";
 import { alternativeSavesEnabled } from "../../../systems/legacy2-alternative-saves.mjs";
 import { collectCreationAdvancements, initialCreationEnergy } from "./creation-advancements-2.mjs";
-import { creationOriginResourceUpdates } from "./creation-origin-resources-2.mjs";
+import { creationOriginResourceOffsets, creationOriginResourceUpdates } from "./creation-origin-resources-2.mjs";
 import { creationActor, validateCreation, rankSpent, ABILITY_KEYS, styleRules, creationPathOptions, creationSpecializationSlots, creationWeaponBonus,
   PENALIDADE_VITAL_NOME, penalidadeVitalUuid } from "./creation-model-2.mjs";
 
 const pending = new WeakMap();
 const raw = doc => structuredClone(doc.toObject?.() ?? doc);
-
-function speciesHP(species) {
-  const rules = species.getFlag?.("jujutsu-system", "legacy2") ?? species.flags?.["jujutsu-system"]?.legacy2 ?? {};
-  if (Number.isFinite(Number(rules.pvEspecie ?? rules.vidaBase))) return Number(rules.pvEspecie ?? rules.vidaBase);
-  const text = (species.system?.description?.value ?? "").replace(/<[^>]+>/g, " ").replace(/&nbsp;|&#160;/g, " ");
-  const match = /(?:Pontos de Vida Base|Vida Base)\s*:\s*([+-]?\d+)/i.exec(text);
-  return Number(match?.[1] ?? 0);
-}
-
-function speciesEnergy(species) {
-  const rules = species.getFlag?.("jujutsu-system", "legacy2") ?? species.flags?.["jujutsu-system"]?.legacy2 ?? {};
-  if (Number.isFinite(Number(rules.energiaEspecie))) return Number(rules.energiaEspecie);
-  const text = (species.system?.description?.value ?? "").replace(/<[^>]+>/g, " ").replace(/&nbsp;|&#160;/g, " ");
-  const match = /Energia Base\s*:\s*([+-]?\d+)/i.exec(text);
-  return Number(match?.[1] ?? 0);
-}
 
 /** Resolve and validate every choice before producing a single native actor/item batch. */
 export async function prepareCreationCompletion(actor, draft, catalog, {
@@ -152,9 +136,8 @@ export async function prepareCreationCompletion(actor, draft, catalog, {
   }
   create.push(...channelingTechniqueGrants(create, 1).map(item => ({ ...item, _id: idFactory() })));
   const preview = creationActor(draft, style);
-  const pvEspecie = speciesHP(species);
+  const { pvEspecie, energiaEspecie } = creationOriginResourceOffsets(species);
   preview.system.legacy2.pvEspecie = pvEspecie;
-  const energiaEspecie = speciesEnergy(species);
   preview.system.legacy2.energiaEspecie = energiaEspecie;
   // Bônus de PV/Energia da Origem entram no cálculo inicial; o valor armazenado
   // segue só com a base (o maxHitPoints/maxEnergy lêem o bônus do item depois).

@@ -22,6 +22,7 @@ import Ruleset from "../../systems/ruleset.mjs";
 import { crSeisOlhos, rankSeisOlhos } from "../../systems/seis-olhos.mjs";
 import { prepareLegacy2ArmorClass } from "../../systems/legacy2-armor.mjs";
 import { applyCursedBenefitTraits1, cursedHitPointBonus1, cursedEnergyFormula1 } from "../../systems/seres-amaldicoados-1.mjs";
+import { prepareLegacy2ResourceBases, prepareLegacy2ResourceBonuses } from "../../systems/legacy2-resources.mjs";
 
 /**
  * @import { ActorFavorites5e, CharacterActorSystemData, ResourceData } from "./_types.mjs";
@@ -64,6 +65,8 @@ export default class CharacterData extends CreatureTemplate {
         ...AttributesFields.creature,
         hp: new SchemaField({
           ...AttributesFields.hitPoints,
+          base: new NumberField({ nullable: true, integer: true, min: 0, initial: null, label: "Vida Base" }),
+          bonus: new NumberField({ nullable: false, integer: true, initial: 0, label: "Vida Bônus (fixa)" }),
           bloodied: new NumberField({
             nullable: false, min: 0, max: 100, persisted: false, initial: () => CONFIG.DND5E.bloodied.threshold,
             label: "DND5E.HITPOINTS.Bloodied.label"
@@ -138,6 +141,9 @@ export default class CharacterData extends CreatureTemplate {
         tertiary: makeResourceField({ label: "DND5E.ResourceTertiary" })
       }, { label: "DND5E.Resources" }),
       energy: new SchemaField({
+        base: new NumberField({ nullable: true, integer: true, min: 0, initial: null, label: "Energia Base" }),
+        bonus: new NumberField({ nullable: false, integer: true, initial: 0, label: "Energia Bônus (fixa)" }),
+        trainingBonus: new NumberField({ nullable: false, integer: true, initial: 0, persisted: false }),
         max: new NumberField({
           required: true, nullable: false, integer: true, min: 0, initial: 0,
           label: "JUJUTSU.Energy.Max"
@@ -368,6 +374,7 @@ export default class CharacterData extends CreatureTemplate {
     for ( const key of Object.keys(CONFIG.DND5E.senses) ) this.attributes.senses.ranges[key] ??= 0;
     this.attributes.movement.units ??= defaultUnits("length");
     this.attributes.senses.units ??= defaultUnits("length");
+    prepareLegacy2ResourceBases(this, this.parent, Ruleset, { projectColossal: false });
   }
 
   /* -------------------------------------------- */
@@ -433,6 +440,7 @@ export default class CharacterData extends CreatureTemplate {
       // bônus de espécie) e amputava o valor gravado a cada preparação —
       // reclampa a partir do valor-fonte. Ferimentos derrubam o PV máximo
       // efetivo (a cada 2 pontos de Ferimento, −1 PV máx).
+      prepareLegacy2ResourceBonuses(this, actor2, Ruleset);
       const hp2 = this.attributes.hp;
       const feridas2 = Math.floor(Math.max(0, Math.floor(Number(this.legacy2?.wounds?.value) || 0)) / 2);
       hp2.max = Ruleset.maxHitPoints(actor2);

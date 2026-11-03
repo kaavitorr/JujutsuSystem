@@ -29,6 +29,7 @@ import * as Trait from "./trait.mjs";
 import ConditionData from "../../data/active-effect/condition.mjs";
 import { performValidatedCustomizationBatch } from "../../applications/actor/jj/legacy2-customization.mjs";
 import { preparePeculiarityDamage, preparePeculiarityRest } from "../../systems/peculiaridades-automacao.mjs";
+import { prepareLegacy2ResourceBases } from "../../systems/legacy2-resources.mjs";
 
 /**
  * @import { RequestOptions5e } from "../../_types.mjs";
@@ -418,6 +419,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
       this._prepareSpellcasting();
     }
 
+    if (phase === "initial") prepareLegacy2ResourceBases(this.system, this, Ruleset);
     super.applyActiveEffects(phase);
 
     // Ensure conditions are evaluated for all effects even if they don't have changes

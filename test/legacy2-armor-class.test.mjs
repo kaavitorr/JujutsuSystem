@@ -128,12 +128,13 @@ test("equipment editing shows the existing natural armor's Wisdom and base inste
   version = "2.0";
 });
 
-test("the actual legacy effect application skips the obsolete armor bonus and retains 1.0 and other bonuses", () => {
+test("the actual legacy effect application skips the obsolete armor bonus and retains 1.0 and other bonuses", async () => {
   const body = read("module/documents/active-effect.mjs").match(/static applyChange\(model, change, options=\{\}\) \{([\s\S]*?)\r?\n  \}/)[1];
   class Boundary { static applyChange(_model, change) { return { [change.key]: change.value }; } }
   globalThis.Item = class {}; globalThis.Actor = class {};
-  const Effect = new Function("Boundary", "isLegacyArmorClassChange",
-    `return class ActiveEffect5e extends Boundary {static FORMULA_FIELDS=new Set();static applyChange(model,change,options={}){${body}}}`)(Boundary, armorRules.isLegacyArmorClassChange);
+  const { legacy2ResourceChange } = await import("../module/systems/legacy2-resources.mjs");
+  const Effect = new Function("Boundary", "isLegacyArmorClassChange", "legacy2ResourceChange",
+    `return class ActiveEffect5e extends Boundary {static FORMULA_FIELDS=new Set();static applyChange(model,change,options={}){${body}}}`)(Boundary, armorRules.isLegacyArmorClassChange, legacy2ResourceChange);
   const change = { key: "system.attributes.ac.bonus", value: "8 + @abilities.wis.mod",
     effect: { _applyChangeShim: change => change, flags: { "jujutsu-system": { armaduraNaturalCR: { base: 8, atributo: "wis" } } } } };
   assert.deepEqual(Effect.applyChange({ type: "npc" }, change), {});

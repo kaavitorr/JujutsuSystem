@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import Ruleset from "../module/systems/ruleset.mjs";
 import { creationOriginResourceUpdates } from "../module/applications/actor/creation/creation-origin-resources-2.mjs";
+import { prepareLegacy2ResourceBases, legacy2ResourceChange } from "../module/systems/legacy2-resources.mjs";
 
 const snapshot = JSON.parse(readFileSync(new URL("./fixtures/creation-combat-styles.json", import.meta.url)));
 const source = (name, type) => structuredClone(snapshot.docs.find(doc => doc.name === name && doc.type === type));
@@ -75,10 +76,10 @@ test("Gojo with Seis Olhos suppresses fallback but preserves explicitly selected
   assert.deepEqual(offsets([ordinary, eyes]), { pvEspecie: 1, energiaEspecie: 2 });
 });
 
-test("nullable metadata falls back to description while explicit zero and negative values remain authoritative", () => {
+test("modern nullable metadata stays zero while explicit zero and negative values remain authoritative", () => {
   const origin = { type: "race", flags: { "jujutsu-system": { legacy2: { pvEspecie: null, energiaEspecie: null } } },
     system: { description: { value: "<p>Vida Base: <strong>3</strong></p><p>Energia Base:&nbsp;+4</p>" } } };
-  assert.deepEqual(offsets([origin]), { pvEspecie: 3, energiaEspecie: 4 });
+  assert.deepEqual(offsets([origin]), { pvEspecie: 0, energiaEspecie: 0 });
   origin.flags["jujutsu-system"].legacy2 = { pvEspecie: 0, energiaEspecie: -1 };
   assert.deepEqual(offsets([origin]), { pvEspecie: 0, energiaEspecie: -1 });
 });
@@ -108,12 +109,12 @@ test("an origin without an owned ID cannot claim unrelated customization effects
   assert.deepEqual(offsets([origin, bonus]), { pvEspecie: 0, energiaEspecie: 2 });
 });
 
-test("conditional changes and later preparation phases cannot replace initial origin offsets", () => {
+test("conditional changes stay excluded while resource effects use their canonical initial phase", () => {
   const origin = source("Imaculado", "race");
   const feat = source("Imaculado", "feat");
   feat.effects[0].system.changes[0].conditions = '{"type":"test"}';
   feat.effects[0].system.changes[1].phase = "final";
-  assert.deepEqual(offsets([origin, feat]), { pvEspecie: 1, energiaEspecie: 2 });
+  assert.deepEqual(offsets([origin, feat]), { pvEspecie: 0, energiaEspecie: 2 });
 });
 
 test("a copied feature with the same item ID in a different compendium keeps its independent bonus", () => {
@@ -125,4 +126,149 @@ test("a copied feature with the same item ID in a different compendium keeps its
   copiedEyes.uuid = `Compendium.homebrew.features.Item.${copiedEyes._id}`;
   copiedEyes.name = "Percepção personalizada";
   assert.deepEqual(offsets([origin, copiedEyes]), { pvEspecie: 0, energiaEspecie: 2 });
+});
+
+test("Feitiço Inato fixed HP metadata cannot import its stale Vida Base 10 as a manual base offset", () => {
+  const origin = source("Feitiço Inato", "race"), before = structuredClone(origin);
+  assert.match(origin.system.description.value, /Vida Base/);
+  assert.equal(origin.flags["jujutsu-system"].pvAdicional, 4);
+  assert.deepEqual(offsets([origin]), { pvEspecie: 0, energiaEspecie: 1 });
+  assert.deepEqual(origin, before);
+});
+
+test("modern nullable or absent base metadata is authoritative over legacy description fields", () => {
+  const description = { value: "<p>Vida Base: 10</p><p>Energia Base: 20</p>" };
+  for (const flags of [
+    { legacy2: { pvEspecie: null, energiaEspecie: null } },
+    { legacy2: {} },
+    { pvAdicional: 4 },
+    { energiaAdicional: 3 }
+  ]) {
+    assert.deepEqual(offsets([{ type: "race", flags: { "jujutsu-system": flags }, system: { description } }]),
+      { pvEspecie: 0, energiaEspecie: 0 });
+  }
+});
+
+test("description-only custom origins retain their explicit legacy fallback", () => {
+  assert.deepEqual(offsets([{ type: "race", system: { description: { value: "Vida Base: 3; Energia Base: +4" } } }]),
+    { pvEspecie: 3, energiaEspecie: 4 });
+});
+
+test("completion preview and stored origin offsets share the same modern resource resolver", async () => {
+  const { creationDraft } = await import("../module/applications/actor/creation/creation-model-2.mjs");
+  const { prepareCreationCompletion } = await import("../module/applications/actor/creation/creation-completion-2.mjs");
+  const origin = source("Feitiço Inato", "race"); origin.system.advancement = {};
+  const style = { uuid: "Item.style", name: "Estilo parser", type: "class", system: { advancement: {} },
+    flags: { "jujutsu-system": { legacy2: { vidaBase: 5, energiaBase: 15, atributoPrincipal: "str", espIniciais: 0,
+      proficiencias: { armas: 0, salvaguardas: 0, pericias: 0 } } } } };
+  const actor = { type: "character", isOwner: true, items: [], system: {}, getFlag() {} };
+  const draft = creationDraft(actor);
+  Object.assign(draft, { name: "Teste", species: origin.uuid, style: style.uuid, primary: "str",
+    abilities: { str: 6, dex: 4, con: 1, int: 3, wis: 3, cha: 3 } });
+  const catalog = { species: [origin], styles: [style], graph: { porNome: new Map() },
+    customization: Object.fromEntries(Object.keys(draft.customization).map(key => [key, []])) };
+  const originalHP = Ruleset.maxHitPoints, previews = [];
+  Ruleset.maxHitPoints = preview => { previews.push(structuredClone(preview.system.legacy2)); return 14; };
+  let plan, id = 0;
+  try {
+    plan = await prepareCreationCompletion(actor, draft, catalog, {
+      resolve: async uuid => [origin, style].find(item => item.uuid === uuid), idFactory: () => `test${++id}`
+    });
+  } finally { Ruleset.maxHitPoints = originalHP; }
+  assert.equal(previews[0].pvEspecie, 0);
+  assert.equal(previews[0].pvBonusOrigem, 4);
+  assert.equal(previews[0].energiaEspecie, 1);
+  assert.equal(plan.actor["system.legacy2.pvEspecie"], 0);
+  assert.equal(plan.actor["system.legacy2.energiaEspecie"], 1);
+});
+
+const originResources = [
+  ["Anomalia - Feto Amaldiçoado", 10, 0, 0, 0],
+  ["Linhagem - Zenin", 4, 0, 0, 0],
+  ["Linhagem - Kamo", 4, 0, 0, 0],
+  ["Anomalia - Restrição Celestial", 10, 0, 0, 0],
+  ["Maldição", 14, 0, 0, 0],
+  ["Anomalia - Corpo Amaldiçoado", 10, 0, 0, 0],
+  ["Anomalia - Receptáculo", 10, 0, 0, 0],
+  ["Anomalia - Energia Descomunal", 10, 0, 0, 10],
+  ["Linhagem - Gojo", 4, 0, 0, 2],
+  ["Linhagem - Inumaki", 4, 0, 0, -1],
+  ["Imaculado", 4, 0, 1, 2],
+  ["Feitiço Inato", 4, 0, 0, 1]
+];
+function originAndGrants(name) {
+  const origin = source(name, "race"), selected = [origin], seen = new Set([origin._id]);
+  for (const owner of selected) for (const advancement of Object.values(owner.system?.advancement ?? {})) {
+    if (advancement.type !== "ItemGrant" || Number(advancement.level ?? 0) > 1) continue;
+    for (const grant of advancement.configuration?.items ?? []) {
+      const item = snapshot.docs.find(doc => doc.uuid === grant.uuid || doc._id === grant.uuid?.split(".").at(-1));
+      // Gojo's optional Seis Olhos is a separate variant tested below. Include
+      // Poder da Linhagem here to verify its metadata/AE overlap instead.
+      if (!item || seen.has(item._id) || item.name === "Seis Olhos") continue;
+      selected.push(structuredClone(item)); seen.add(item._id);
+    }
+  }
+  return selected;
+}
+function originResourceActor(items, level) {
+  const normalized = offsets(items);
+  const systemSource = { attributes: { hp: { base: null, bonus: 0, bonuses: { overall: 99 } } },
+    energy: { base: null, bonus: 0, intensiveTraining: { maxEnergy: 0 } }, legacy2: normalized };
+  const style = { name: "Especialista", type: "class", flags: { "jujutsu-system": { legacy2: { vidaBase: 5, energiaBase: 15 } } } };
+  const withFlag = item => ({ ...item, getFlag: (scope, key) => item.flags?.[scope]?.[key] });
+  const owned = [...items, style].map(withFlag);
+  return { type: "character", flags: {}, effects: [], items: owned, _source: { system: systemSource, flags: {} },
+    system: { ...structuredClone(systemSource), _source: systemSource, details: { level }, abilities: { con: { value: 1 } } },
+    itemTypes: Object.fromEntries(["race", "feat", "class"].map(type => [type, owned.filter(item => item.type === type)])) };
+}
+function prepareOriginResourceActor(actor) {
+  prepareLegacy2ResourceBases(actor.system, actor, Ruleset);
+  for (const item of actor.items) for (const active of item.effects ?? []) {
+    if (!active.transfer || active.disabled || active.isSuppressed) continue;
+    for (const authored of active.system?.changes ?? active.changes ?? []) {
+      const change = legacy2ResourceChange(actor, authored, true);
+      if (!["system.attributes.hp.base", "system.energy.base", "system.attributes.hp.bonus", "system.energy.bonus"].includes(change.key)) continue;
+      assert.ok(change.type === "add" || Number(change.mode) === 2, "the actual origin resource grants are additive");
+      const path = change.key.split("."); let target = actor;
+      for (const part of path.slice(0, -1)) target = target[part];
+      target[path.at(-1)] += Number(change.value);
+    }
+  }
+}
+
+test("the checked-in creation catalog contains exactly the twelve individually specified origins", () => {
+  assert.deepEqual(snapshot.docs.filter(item => item.type === "race").map(item => item.name).sort(),
+    originResources.map(([name]) => name).sort());
+});
+for (const [name, hpFixed, energyFixed, hpOffset, energyOffset] of originResources) {
+  test(`${name}: levels 1, 2 and 20 preserve its own fixed bonus and exactly one origin base contribution`, () => {
+    const items = originAndGrants(name), before = structuredClone(items);
+    assert.equal(Number(items[0].flags["jujutsu-system"].pvAdicional), hpFixed);
+    assert.equal(Number(items[0].flags["jujutsu-system"].energiaAdicional), energyFixed);
+    for (const level of [1, 2, 20]) {
+      const actor = originResourceActor(items, level);
+      for (let pass = 0; pass < 3; pass++) {
+        prepareOriginResourceActor(actor);
+        assert.equal(actor.system.attributes.hp.base, 5 + hpOffset);
+        assert.equal(actor.system.attributes.hp.bonus, hpFixed);
+        assert.equal(actor.system.energy.base, 15 + energyOffset);
+        assert.equal(actor.system.energy.bonus, energyFixed);
+        assert.equal(Ruleset.maxHitPoints(actor), (level + 1) * (5 + hpOffset) + hpFixed);
+        assert.equal(Ruleset.maxEnergy(actor), level * (15 + energyOffset) + energyFixed);
+        assert.equal(actor.system._source.attributes.hp.bonuses.overall, 99, "old bonus fields are neither converted nor modified");
+      }
+    }
+    assert.deepEqual(items, before);
+  });
+}
+
+test("canonical resource keys on origin grants do not duplicate the same explicit metadata offset", () => {
+  const items = originAndGrants("Imaculado");
+  for (const item of items) for (const active of item.effects ?? []) for (const change of active.system?.changes ?? []) {
+    change.key = change.key === "system.legacy2.pvEspecie" ? "system.attributes.hp.base"
+      : change.key === "system.legacy2.energiaEspecie" ? "system.energy.base" : change.key;
+  }
+  assert.deepEqual(offsets(items), { pvEspecie: 0, energiaEspecie: 0 });
+  const actor = originResourceActor(items, 2); prepareOriginResourceActor(actor);
+  assert.equal(Ruleset.maxHitPoints(actor), 22); assert.equal(Ruleset.maxEnergy(actor), 34);
 });

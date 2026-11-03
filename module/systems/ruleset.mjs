@@ -5,6 +5,7 @@ import { ESCALA_DANO, linhaEscalaDano, formulaEscalaDano } from "./escala-dano.m
 import { alternativeSavesEnabled, alternativeSaveData } from "./legacy2-alternative-saves.mjs";
 import { savedSystemValue } from "./actor-source.mjs";
 import { imuneReducaoPA } from "./peculiaridades-data.mjs";
+import { legacy2HitPointParts, legacy2EnergyParts } from "./legacy2-resources.mjs";
 
 /**
  * ── RULESET 2.0 ──────────────────────────────────────────────────────────────
@@ -382,8 +383,8 @@ export default class Ruleset {
    * • NPC: 10 × ND + 15 × CON, reduzido/ampliado pelo estado
    *   (Lacaio ×0.5, Normal ×1, Elite ×1.5, Chefe ×2). Espíritos usam a mesma
    *   base — a energia deles É essa vida (vidaEnergia).
-   * • Personagem: (nível × vidaBase) + (CON × vidaBase) + bônus fixos, onde a
-   *   Vida Base da Origem (pvEspecie) SOMA à vidaBase do Estilo.
+   * • Personagem: (nível + CON) × hp.base + hp.bonus.
+   *   Aumentos de base e bônus fixos são campos independentes.
    */
   static maxHitPoints(actor, { ignoreOverride = false } = {}) {
     if (this.isV2() && !ignoreOverride && ["character", "npc"].includes(actor?.type)) {
@@ -398,20 +399,7 @@ export default class Ruleset {
     if ( this.isV2() && (actor?.type === "npc") ) {
       return Math.max(1, Math.round(((10 * nd) + (15 * con)) * this.categoriaMult(actor)));
     }
-    const estilo = this.estilo(actor);
-    const pvEspecie = Number(actor?.system?.legacy2?.pvEspecie ?? 0);
-    // Vida Base da Origem soma à base do Estilo: cada nível e ponto de
-    // Constituição passam a render o valor ajustado (7 + 2 = 9 por nível/CON).
-    const vidaBase = Math.max(1, Number(estilo?.vidaBase ?? 4) + pvEspecie);
-    const level = nd;
-    // Pontos de Vida adicional da Origem (flag na race): bônus fixo — não escala
-    // com nível nem Constituição. Fontes: o item de Origem na ficha e o valor
-    // carregado no prepare (criação).
-    const pvBonus = Number(actor?.system?.legacy2?.pvBonusOrigem ?? 0)
-      + (actor?.itemTypes?.race ?? []).reduce((soma, r) =>
-        soma + Number(r.getFlag?.("jujutsu-system", "pvAdicional") ?? 0), 0);
-    const base = ((level + con) * vidaBase) + pvBonus;
-    return Math.max(1, base);
+    return legacy2HitPointParts(actor, this).total;
   }
 
   /**
@@ -429,31 +417,7 @@ export default class Ruleset {
     // NPC 2.0: Energia = 30 × ND, sempre (o Refinamento, 2 × ND, vive no
     // genMax da ficha — npc.mjs).
     if ( this.isV2() && (actor?.type === "npc") ) return Math.max(0, 30 * this.nivel(actor));
-    const estilo = this.estilo(actor);
-    // Estilo sem energiaBase (Restringido — usa Pontos de Estamina) → 0.
-    let energiaBase;
-    if ( estilo && ("energiaBase" in estilo) ) energiaBase = Number(estilo.energiaBase ?? 0);
-    else energiaBase = Number(npcProfile(actor, "taxonomy")?.energiaBase ?? 10);
-    // Energia Colossal (modificador lendário): dobra APENAS o valor descrito no
-    // Estilo de Combate (a raiz) — aumentos de origem de poder e peculiaridades
-    // NÃO são dobrados (efeito em flags.jujutsu-system.energiaColossal).
-    if ( estilo && ("energiaBase" in estilo)
-      && (Number(actor?.flags?.["jujutsu-system"]?.energiaColossal) > 0) ) {
-      energiaBase *= 2;
-    }
-    // Energia Base da Origem soma à base do Estilo (snapshot energiaEspecie).
-    energiaBase = Math.max(0, energiaBase + Number(actor?.system?.legacy2?.energiaEspecie ?? 0));
-    const level = this.nivel(actor);
-    if ( intenseMax === null ) {
-      intenseMax = Number(actor?.system?.energy?.intensiveTraining?.maxEnergy ?? 0);
-    }
-    // Energia Adicional da Origem: bônus fixo no total. O carrier
-    // energiaBonusOrigem existe só no preview da criação; atores reais ficam
-    // com 0 e usam a flag viva do item.
-    const energiaOrigem = Number(actor?.system?.legacy2?.energiaBonusOrigem ?? 0)
-      + (actor?.itemTypes?.race ?? []).reduce((soma, r) =>
-        soma + Number(r.getFlag?.("jujutsu-system", "energiaAdicional") ?? 0), 0);
-    return Math.max(0, (energiaBase * level) + (intenseMax * energiaBase) + energiaOrigem);
+    return legacy2EnergyParts(actor, this, { intenseMax }).total;
   }
 
   /**

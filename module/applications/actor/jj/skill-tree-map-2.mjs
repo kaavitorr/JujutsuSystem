@@ -1,11 +1,11 @@
 /** Presentation only: dependencies and choice validation remain in especializacoes-2. */
 export const ICONES_CATEGORIA = Object.freeze({
-  "Feitiço Inato": "/systems/jujutsu-system/assets/skill%20tree/Feiti%C3%A7o%20Inato.webp",
-  "Técnicas de Barreira": "/systems/jujutsu-system/assets/skill%20tree/Barreiras.webp",
-  "Proezas Físicas": "/systems/jujutsu-system/assets/skill%20tree/proezas%20f%C3%ADsicas.webp",
-  "Habilidades Especiais": "/systems/jujutsu-system/assets/skill%20tree/hab%20especiais.webp",
-  "Energia Reversa": "/systems/jujutsu-system/assets/skill%20tree/Energia%20Reversa.webp",
-  "Domínio e Anti-Domínio": "/systems/jujutsu-system/assets/skill%20tree/Dom%C3%ADnio.webp"
+  "Feitiço Inato": "systems/jujutsu-system/assets/skill-tree/feitico-inato.webp",
+  "Técnicas de Barreira": "systems/jujutsu-system/assets/skill-tree/tecnicas-de-barreira.webp",
+  "Proezas Físicas": "systems/jujutsu-system/assets/skill-tree/proezas-fisicas.webp",
+  "Habilidades Especiais": "systems/jujutsu-system/assets/skill-tree/habilidades-especiais.webp",
+  "Energia Reversa": "systems/jujutsu-system/assets/skill-tree/energia-reversa.webp",
+  "Domínio e Anti-Domínio": "systems/jujutsu-system/assets/skill-tree/dominio.webp"
 });
 
 /**

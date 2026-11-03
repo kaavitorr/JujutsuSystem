@@ -1,3 +1,5 @@
+import { legacy2ResourceChange } from "../../../systems/legacy2-resources.mjs";
+
 const SCOPES = ["jujutsu-system", "JujutsuLegacy"];
 const PATH = "system.legacy2.";
 const GOJO_POWER_ID = "kTJxk9JvrOMOfOMF";
@@ -31,19 +33,27 @@ function number(value) {
 }
 
 /**
- * Read origin metadata, falling back to the same labeled description fields.
+ * Read authored 2.0 origin offsets. Modern resource metadata is authoritative:
+ * an empty base offset is zero, and a flat bonus never becomes a base value.
+ * Description fallback is reserved for older/custom sources with no resource
+ * metadata, whose labels were the only available source of these values.
  *
  * @param {object} origin  Selected origin source data.
  * @returns {object} Initial resource base offsets authored on the origin.
  */
-function originOffsets(origin) {
-  const rules = origin.flags?.["jujutsu-system"]?.legacy2 ?? {};
+export function creationOriginResourceOffsets(origin) {
+  const flags = origin.flags?.["jujutsu-system"] ?? {};
+  const authored = origin.getFlag?.("jujutsu-system", "legacy2") ?? flags.legacy2;
+  const rules = authored ?? {};
+  const modern = (authored !== null && typeof authored === "object")
+    || ["pvAdicional", "energiaAdicional"].some(key =>
+      number(origin.getFlag?.("jujutsu-system", key) ?? flags[key]) !== null);
   const text = (origin.system?.description?.value ?? "").replace(/<[^>]+>/g, " ").replace(/&nbsp;|&#160;/g, " ");
   return {
     pvEspecie: number(rules.pvEspecie) ?? number(rules.vidaBase)
-      ?? Number(/(?:Pontos de Vida Base|Vida Base)\s*:\s*([+-]?\d+)/i.exec(text)?.[1] ?? 0),
+      ?? (modern ? 0 : Number(/(?:Pontos de Vida Base|Vida Base)\s*:\s*([+-]?\d+)/i.exec(text)?.[1] ?? 0)),
     energiaEspecie: number(rules.energiaEspecie)
-      ?? Number(/Energia Base\s*:\s*([+-]?\d+)/i.exec(text)?.[1] ?? 0)
+      ?? (modern ? 0 : Number(/Energia Base\s*:\s*([+-]?\d+)/i.exec(text)?.[1] ?? 0))
   };
 }
 
@@ -106,14 +116,19 @@ function unconditional(conditions) {
  */
 function duplicatesOffset(item, key, amount) {
   if (!amount) return false;
+  const actor = { type: "character" };
+  const targetKey = legacy2ResourceChange(actor, { key: `${PATH}${key}` }, true).key;
   return (item.effects ?? []).some(effect => {
     if (!effect.transfer || effect.disabled || effect.isSuppressed
       || !unconditional(effect.system?.conditions)) return false;
-    return (effect.system?.changes ?? effect.changes ?? []).some(change => {
+    return (effect.system?.changes ?? effect.changes ?? []).some(authored => {
+      // The same mapper used by actor preparation owns both aliases and the
+      // effective phase. A final-phase base input is applied initially too.
+      const change = legacy2ResourceChange(actor, authored, true);
       const add = change.type === "add" || (!change.type && Number(change.mode) === 2);
       // OVERRIDE already replaces the stored field. Different amounts may be
       // distinct benefits, so only an exact authored ADD replaces its fallback.
-      return add && change.key === `${PATH}${key}` && number(change.value) === amount
+      return add && change.key === targetKey && number(change.value) === amount
         && (!change.phase || change.phase === "initial") && unconditional(change.conditions);
     });
   });
@@ -134,7 +149,7 @@ export function creationOriginResourceUpdates(items) {
   });
   const origin = items.find(item => item.type === "race");
   if (!origin) return {};
-  const offsets = originOffsets(origin);
+  const offsets = creationOriginResourceOffsets(origin);
   const related = originItems(origin, items);
   const gojo = normalize(origin.system?.identifier) === "gojo" || normalize(origin.name) === "linhagem - gojo";
   const sixEyes = items.some(item => item.type === "feat"
