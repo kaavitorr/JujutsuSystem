@@ -2,6 +2,15 @@
 // (packs/_source/defeitos-paste.json — a lista do autor tem prioridade).
 const fs = require('fs'), path = require('path');
 const yaml = require(path.resolve('node_modules/js-yaml'));
+const arquivo = 'packs/_source/personalizacao-2-0.json';
+const anterior = JSON.parse(fs.readFileSync(arquivo, 'utf8'));
+const chaveNome = nome => String(nome).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+const preservarEfeitos = (item, existentes) => {
+  const existente = existentes.find(outro => chaveNome(outro.name) === chaveNome(item.name));
+  return { ...item, ...(existente?.effects ? { effects: structuredClone(existente.effects) } : {}),
+    flags: { ...existente?.flags, ...item.flags, "jujutsu-system": {
+      ...existente?.flags?.["jujutsu-system"], ...item.flags?.["jujutsu-system"] } } };
+};
 
 const paste = JSON.parse(fs.readFileSync('packs/_source/defeitos-paste.json', 'utf8'));
 paste.peculiaridades = paste.peculiaridades.filter(pp => !/LISTA DE PECULIARIDADES/i.test(pp.nome));
@@ -40,21 +49,19 @@ const ICONE_POR_SECAO = {
 
 const defeitosFeats = paste.defeitos.map(d => {
   const desc = `<p><em><strong>Defeito (${d.pontos} ${d.pontos > 1 ? "Pontos" : "Ponto"} de Defeito)</strong></em></p>${html(d.texto)}`;
-  return { name: nomeFinal(d.nome, d.pontos, false), type: "feat",
+  return preservarEfeitos({ name: nomeFinal(d.nome, d.pontos, false), type: "feat",
     img: ICONE_POR_SECAO["jj-flaws"],
     system: { description: { value: desc } },
-    flags: { "jujutsu-system": { featureSection: "jj-flaws", defeitoPontos: d.pontos } } };
+    flags: { "jujutsu-system": { featureSection: "jj-flaws", defeitoPontos: d.pontos } } }, anterior.defeitos ?? []);
 });
 const peculiaridadesFeats = paste.peculiaridades.map(pp => {
   const desc = `<p><em><strong>Peculiaridade</strong></em> — desvantagem vinculada a um benefício. Escolha permanente, máximo de uma.</p>${html(pp.texto)}`;
-  return { name: nomeFinal(pp.nome, 0, true), type: "feat",
+  return preservarEfeitos({ name: nomeFinal(pp.nome, 0, true), type: "feat",
     img: ICONE_POR_SECAO["jj-peculiarities"],
     system: { description: { value: desc } },
-    flags: { "jujutsu-system": { featureSection: "jj-peculiarities" } } };
+    flags: { "jujutsu-system": { featureSection: "jj-peculiarities" } } }, anterior.peculiaridades ?? []);
 });
 
-const arquivo = 'packs/_source/personalizacao-2-0.json';
-const anterior = JSON.parse(fs.readFileSync(arquivo, 'utf8'));
 anterior.defeitos = defeitosFeats;
 anterior.peculiaridades = peculiaridadesFeats;
 fs.writeFileSync(arquivo, JSON.stringify(anterior, null, 2), 'utf8');
@@ -84,7 +91,7 @@ for ( const dado of dados ) {
   if ( nomesExistentes.has(dado.name) ) { pulados++; continue; }
   const pasta = pastas[dado._pasta];
   await Item.createDocuments([{ name: dado.name, type: dado.type, folder: pasta?.id ?? null,
-    system: dado.system, flags: dado.flags }], { pack: pack.collection });
+    system: dado.system, flags: dado.flags, effects: dado.effects ?? [] }], { pack: pack.collection });
   criados++;
 }
 ui.notifications.info(\`Personalização 2.0: \${criados} criados, \${pulados} já existiam.\`);`;

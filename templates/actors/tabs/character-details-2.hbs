@@ -65,7 +65,7 @@
         <li data-key="{{ ab.key }}">
           {{#if @root.editable}}
           <input type="number" class="jj2-attr-input" name="system.abilities.{{ ab.key }}.value"
-                 value="{{ ab.value }}" min="1" max="12" data-dtype="Number">
+                 value="{{ ab.sourceValue }}" min="1" max="12" data-dtype="Number">
           {{else}}
           <span class="jj2-attr-value">{{ ab.value }}</span>
           {{/if}}

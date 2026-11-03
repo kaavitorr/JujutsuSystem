@@ -34,6 +34,24 @@ test("old actors have persistent-resource defaults without losing their HP and e
   assert.equal(ctx.refinement, 10);
 });
 
+test("Corpo Frágil keeps its prepared action ceiling and initiative actions while Paralisado", () => {
+  const a = actor({ legacy2: { actions: { value: 4, max: 6 } } });
+  a.items = [{ type: "feat", name: "Corpo Frágil", flags: { "jujutsu-system": { featureSection: "jj-peculiarities" } } }];
+  a.statuses = new Set(["jj-paralisado"]);
+  assert.equal(sheet.acoesTetoEfetivo(a), 6);
+  assert.equal(Ruleset.iniciativaAcoes(a), 4);
+  a.items = [];
+  assert.equal(sheet.acoesTetoEfetivo(a), 0);
+  assert.equal(Ruleset.iniciativaAcoes(a), 0);
+});
+
+test("the refinement counter includes Tremores and intensive training exactly once", () => {
+  const a = actor();
+  a.flags = { "jujutsu-system": { refinamentoBonus: 2 } };
+  a.system.energy.intensiveTraining = { generatedEnergy: 5 };
+  assert.equal(sheet.buildLegacy2Context(a, config, Ruleset).refinement, 17);
+});
+
 test("saving current HP repeatedly with Destino Entrelaçado never turns its +2 species bonus into a permanent base", () => {
   const a = actor();
   a.type = "character";
@@ -65,6 +83,74 @@ test("manual species HP remains editable separately from effects, including sour
     source.legacy2.pvEspecie = 0;
     assert.equal(sheet.buildLegacy2Context(a, config, Ruleset).pvEspecie, 0, "an explicit zero cannot fall back to the effect value");
   }
+});
+
+test("saving sheet fields preserves free proficiency points without accumulating them into the manual pool", () => {
+  for (const bonus of [2, 3]) {
+    const a = actor();
+    a.system._source = { legacy2: { pontos: { extra: 0 } } };
+    for (let save = 0; save < 6; save++) {
+      a.system.legacy2.pontos = { extra: a.system._source.legacy2.pontos.extra + bonus, gastos: 0 };
+      const ctx = sheet.buildLegacy2Context(a, config, Ruleset);
+      assert.equal(ctx.pontos.extra, 0);
+      assert.equal(ctx.pontos.total, 9 + bonus);
+      a.system._source.legacy2.pontos.extra = ctx.pontos.extra;
+    }
+  }
+});
+
+test("attribute display includes effects while editable bases and the allocation budget exclude them", () => {
+  const a = actor();
+  a.system._source = { abilities: Object.fromEntries(Object.entries(a.system.abilities)
+    .map(([key, data]) => [key, { value: data.value }])) };
+  a.system.abilities.wis.value += 1;
+  const ctx = sheet.buildLegacy2Context(a, config, Ruleset);
+  const wisdom = ctx.abilities.find(ability => ability.key === "wis");
+  assert.equal(wisdom.value, 7);
+  assert.equal(wisdom.sourceValue, 6);
+  assert.equal(ctx.atributos.soma, 36);
+});
+
+test("free rank steps stay out of the point budget and are not saved into another skill", () => {
+  const a = actor();
+  a.system._source = { legacy2: { skills: { ath: 1 }, saves: {}, armas: {}, pontos: { gastos: 1 } } };
+  a.system.legacy2 = { ...a.system._source.legacy2, skills: { ath: 1, itm: 4 }, pontos: { gastos: 1 } };
+  const ctx = sheet.buildLegacy2Context(a, config, Ruleset);
+  assert.equal(ctx.skills.find(skill => skill.key === "itm").grantedRank, 4);
+  assert.equal(Ruleset.trainingPointsSpent(a), 1);
+  const result = sheet.prepareRankUpdate(a, "skills", "ath", 2, Ruleset, config.abilities);
+  assert.deepEqual(result.update["system.legacy2.skills"], { ath: 2 });
+  assert.equal(result.update["system.legacy2.pontos.gastos"], 2);
+  assert.equal(sheet.prepareRankUpdate(a, "skills", "itm", 0, Ruleset, config.abilities), null);
+});
+
+test("raising a partly granted proficiency spends only manual steps and respects the rank cap", () => {
+  const a = actor({ legacy2: { skills: { arc: 2 }, saves: {}, armas: {}, pontos: { gastos: 0 } } });
+  a._source = { system: { legacy2: { skills: {}, saves: {}, armas: {} } } };
+  const first = sheet.prepareRankUpdate(a, "skills", "arc", 3, Ruleset, config.abilities);
+  assert.equal(first.update["system.legacy2.skills"].arc, 1);
+  assert.equal(first.update["system.legacy2.pontos.gastos"], 1);
+  a._source.system.legacy2.skills.arc = 3;
+  a.system.legacy2.skills.arc = 5; // Base 3 + two free steps, effective cap Mestre (4).
+  const lower = sheet.prepareRankUpdate(a, "skills", "arc", 3, Ruleset, config.abilities);
+  assert.equal(lower.update["system.legacy2.skills"].arc, 1);
+});
+
+test("Seis Olhos minimum proficiency is not mistaken for additive rank steps", () => {
+  const a = actor({ legacy2: { skills: { arc: 2 }, saves: {}, armas: {}, pontos: { gastos: 1 } } });
+  a.system._source = { legacy2: { skills: { arc: 1 }, saves: {}, armas: {} } };
+  a.overrides = {}; // No Active Effect changed arc: its prepared rank is a minimum from Seis Olhos.
+  const update = sheet.prepareRankUpdate(a, "skills", "arc", 3, Ruleset, config.abilities).update;
+  assert.equal(update["system.legacy2.skills"].arc, 3);
+  assert.equal(Math.max(update["system.legacy2.skills"].arc, 2), 3);
+});
+
+test("native effect overrides distinguish additive ranks from derived floors", () => {
+  const a = actor({ legacy2: { skills: { arc: 4 }, saves: {}, armas: {}, pontos: { gastos: 0 } } });
+  a.system._source = { legacy2: { skills: {}, saves: {}, armas: {} } };
+  a.overrides = { system: { legacy2: { skills: { arc: 2 } } } }; // +2 effect, then minimum Mestre (4).
+  const update = sheet.prepareRankUpdate(a, "skills", "arc", 4, Ruleset, config.abilities).update;
+  assert.equal(update["system.legacy2.skills"].arc, 2);
 });
 test("all fifteen skills appear in the three requested groups with their existing roll keys", () => {
   assert.equal(typeof sheet.buildLegacy2Context, "function");

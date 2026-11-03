@@ -1,10 +1,12 @@
 /** Presentation data for the 2.0 sheet. No Foundry globals or document mutations. */
-import { WEAPON_GROUPS, weaponGroupRank } from "../../../systems/legacy2-proficiencies.mjs";
+import { WEAPON_GROUPS, weaponGroupRank, grantedProficiencySteps } from "../../../systems/legacy2-proficiencies.mjs";
+import { savedSystemValue } from "../../../systems/actor-source.mjs";
+import { imuneReducaoPA } from "../../../systems/peculiaridades-data.mjs";
+import { EnergySystem } from "../../../systems/energy.mjs";
 import { ALTERNATIVE_SAVES, alternativeSavesEnabled, alternativeSaveData } from "../../../systems/legacy2-alternative-saves.mjs";
 import { extraResourceCards } from "./legacy2-extra-resources.mjs";
 import { baseEngagement, engagementValue } from "../../../systems/engagement.mjs";
 import { SKILL_GROUPS } from "../../../systems/legacy2-skills.mjs";
-import { npcProficiencyBonus } from "../../../systems/legacy2-npc-profiles.mjs";
 import { techniqueDifficulty } from "../../../systems/legacy2-technique-dc.mjs";
 import { prepareNpcClassificationActions } from "../../../systems/legacy2-npc-classification.mjs";import { resistanceCards } from "../../../systems/legacy2-resistances.mjs";
 export { WEAPON_GROUPS, weaponGroupRank, SKILL_GROUPS };
@@ -74,7 +76,7 @@ export function legacy2ActionMax(actor) {
  * @param actor
  */
 export function acoesTetoEfetivo(actor) {
-  if ( actor?.statuses?.has?.("jj-paralisado") ) return 0;
+  if ( actor?.statuses?.has?.("jj-paralisado") && !imuneReducaoPA(actor) ) return 0;
   return legacy2ActionMax(actor);
 }
 
@@ -111,9 +113,10 @@ export function prepareRankUpdate(actor, category, key, rank, ruleset, abilities
     : category === "armas" ? WEAPON_GROUPS.map(group => group.key)
       : category === "alternativeSaves" ? ALTERNATIVE_SAVES.map(save => save.key) : Object.keys(abilities);
   if ( !keys.includes(key) ) return null;
-  const l2 = actor.system.legacy2 ?? {};
-  // NPC dots show the combined rank; persist only the individually assigned steps.
-  rank = Math.max(0, rank - npcProficiencyBonus(actor, category, key));
+  const l2 = Object.fromEntries(categories.map(ctx => [ctx,
+    savedSystemValue(actor, `legacy2.${ctx}`, actor.system.legacy2?.[ctx] ?? {})]));
+  // Dots show the combined rank; effects and NPC growth must never become individually spent steps.
+  rank = Math.max(0, rank - grantedProficiencySteps(actor, category, key));
   const group = { ...l2[category], [key]: rank };
   const aliases = category === "armas" ? WEAPON_GROUPS.find(g => g.key === key).aliases : [];
   if ( rankOf(l2[category]?.[key]) === rank && !aliases.some(alias => alias in (l2[category] ?? {})) ) return null;
@@ -150,21 +153,23 @@ export function buildLegacy2Context(actor, config, ruleset) {
   const classItem = actor.itemTypes?.class?.find(item => !!item.getFlag("jujutsu-system", "legacy2"));
   const abilities = Object.entries(abilityConfig).map(([key, cfg]) => ({
     key, label: cfg.label, abbr: cfg.abbreviation,
-    value: system.abilities[key]?._source?.value ?? system.abilities[key]?.value ?? 1,
+    value: system.abilities[key]?.value ?? 1,
+    sourceValue: savedSystemValue(actor, `abilities.${key}.value`,
+      system.abilities[key]?._source?.value ?? system.abilities[key]?.value ?? 1),
     principal: key === principalKey
   }));
   const alternativeSaves = alternativeSavesEnabled();
   const saves = alternativeSaves ? ALTERNATIVE_SAVES.map(save => alternativeSaveData(actor, save.key, ruleset)) : abilities.map(ability => {
     const rank = rankOf(ruleset.saveRank?.(actor, ability.key) ?? l2.saves?.[ability.key]);
     return { ...ability, rank, rankLabel: ruleset.rankLabel(rank),
-      grantedRank: npcProficiencyBonus(actor, "saves", ability.key),
+      grantedRank: grantedProficiencySteps(actor, "saves", ability.key),
       total: Number(system.abilities[ability.key]?.value ?? 1) + ruleset.rankBonus(rank) };
   });
   // Orçamento de atributos (2.0): 20 + 1 por nível a partir do 2º
   // + Atributos adicionais da Origem (flag viva no item race).
   // Soma acima do orçamento = algo errado na distribuição.
   const orcamentoAtributos = 20 + Math.max(0, ruleset.nivel(actor) - 1) + ruleset.atributosAdicionais(actor);
-  const somaAtributos = abilities.reduce((total, ability) => total + (Number(ability.value) || 0), 0);
+  const somaAtributos = abilities.reduce((total, ability) => total + (Number(ability.sourceValue) || 0), 0);
   const skillGroups = SKILL_GROUPS.map(group => ({
     label: group.label, icon: group.icon,
     skills: group.skills.map(([key, label, defaultAbility]) => {
@@ -172,7 +177,7 @@ export function buildLegacy2Context(actor, config, ruleset) {
         ? system.skills[key].ability : defaultAbility;
       const rank = rankOf(ruleset.skillRank?.(actor, key) ?? l2.skills?.[key]);
       return { key, label, ability, abilityAbbr: abilityConfig[ability]?.abbreviation ?? ability,
-        grantedRank: npcProficiencyBonus(actor, "skills", key),
+        grantedRank: grantedProficiencySteps(actor, "skills", key),
         rank, rankLabel: ruleset.rankLabel(rank),
         total: Number(system.abilities[ability]?.value ?? 1) + ruleset.rankBonus(rank) };
     })
@@ -183,7 +188,7 @@ export function buildLegacy2Context(actor, config, ruleset) {
   const actionsMax = legacy2ActionMax(actor);
   const actionsValue = bounded(l2.actions?.value ?? 6, 0, actionsMax);
   const isRestringido = ruleset.isRestringido?.(actor) ?? false;
-  const refinement = isRestringido ? ruleset.staminaMax(actor) : Math.max(0, 2 * ruleset.nivel(actor));
+  const refinement = isRestringido ? ruleset.staminaMax(actor) : EnergySystem.refinementLimit(actor, 0, ruleset);
   const energyAvailable = Math.max(0, Number(system.energy?.generated) || 0);
   const movement = system.attributes.movement ?? {};
   const movementValues = Object.entries(movement.speeds ?? {}).filter(([key]) => !config.movementTypes?.[key]?.hidden)
@@ -212,7 +217,8 @@ export function buildLegacy2Context(actor, config, ruleset) {
     abilities, saves, alternativeSaves, skillGroups, skills: skillGroups.flatMap(group => group.skills),
     armas: WEAPON_GROUPS.map(group => {
       const rank = weaponGroupRank(l2.armas, group.key);
-      return { ...group, rank, rankLabel: ruleset.rankLabel(rank), bonus: ruleset.rankBonus(rank) };
+      return { ...group, rank, grantedRank: grantedProficiencySteps(actor, "armas", group.key),
+        rankLabel: ruleset.rankLabel(rank), bonus: ruleset.rankBonus(rank) };
     }),
     rankDots: Array.from({ length: 5 }, (_, rank) => ({ rank, label: ruleset.rankLabel(rank) })),
     estiloNome: classItem?.name ?? null, estiloItem: classItem ?? null, estiloInfo: style, principalKey,
@@ -221,7 +227,7 @@ export function buildLegacy2Context(actor, config, ruleset) {
     principais: principalKeys.map(value => ({ value, label: abilityConfig[value]?.label ?? value })),
     principalEscolhido: l2.principalEscolhido ?? principalKeys[0] ?? null,
     pontos: { total: ruleset.trainingPointsTotal(actor), available: ruleset.trainingPointsAvailable(actor),
-      extra: Number(l2.pontos?.extra ?? 0) },
+      extra: Number(savedSystemValue(actor, "legacy2.pontos.extra", l2.pontos?.extra ?? 0)) },
     // This value fills editable inputs submitted with the whole sheet. Effects must not become saved base HP.
     pvEspecie: Number(system._source?.legacy2?.pvEspecie ?? actor._source?.system?.legacy2?.pvEspecie ?? l2.pvEspecie ?? 0),
     atributos: { soma: somaAtributos, orcamento: orcamentoAtributos,

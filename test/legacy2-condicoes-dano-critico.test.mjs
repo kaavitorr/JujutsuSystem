@@ -30,7 +30,7 @@ function alvoFalso({ saveTotal = 0, items = [], efeitos = [] } = {}) {
     name: "Alvo",
     items, effects: efeitos,
     system: { attributes: { hp: { value: 10, max: 10 } }, abilities: { con: { value: 1 }, wis: { value: 1 } } },
-    rollAbilitySave: async (ability, opts) => { salvaguardas.push({ ability, opts, total: saveTotal }); return { total: saveTotal }; },
+    rollSavingThrow: async ({ ability }, dialog, message) => { salvaguardas.push({ ability, opts: message.data, total: saveTotal }); return [{ total: saveTotal }]; },
     createEmbeddedDocuments: async (tipo, dados) => { criados.push({ tipo, dados }); return dados; }
   };
   return { alvo, criados, atualizacoes, salvaguardas };
@@ -54,7 +54,7 @@ test("o fluxo de ataque registra o gatilho no 20 natural ou Fulgor Negro", () =>
 });
 
 test("efeitos criados mapeiam os referentes core das condições", () => {
-  assert.match(fonteCondicoes, /statuses: \[cond\.status, \.\.\.cond\.extra\]\.flatMap\(/);
+  assert.match(fonteCondicoes, /statuses: componentes\.flatMap\(/);
 });
 
 // ── Fluxo funcional ─────────────────────────────────────────────────────────

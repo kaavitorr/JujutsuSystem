@@ -11,6 +11,7 @@ import Ruleset from "../../../systems/ruleset.mjs";
 import { applyNumericResistances } from "../../../systems/legacy2-resistances.mjs";
 import { absorbShieldDamage } from "../../../systems/legacy2-shield.mjs";
 import { cursedBenefitRules1 } from "../../../systems/seres-amaldicoados-1.mjs";
+import { preparePeculiarityDamage } from "../../../systems/peculiaridades-automacao.mjs";
 
 /**
  * Aplica dano a um único ator seguindo a ordem de absorção.
@@ -28,7 +29,7 @@ import { cursedBenefitRules1 } from "../../../systems/seres-amaldicoados-1.mjs";
  * @returns {Promise<{resist:number, reducao:number, armor:number, temp:number, hp:number}|null>}
  *          Resumo do que foi absorvido em cada camada, ou null se o ator não tem PV.
  */
-export async function applyDamageToActor(actor, amount, { damageTypes = [], damages, diretoNaVida = false } = {}) {
+export async function applyDamageToActor(actor, amount, { damageTypes = [], damages, diretoNaVida = false, origin } = {}) {
   if ( diretoNaVida ) {
     const hp = actor?.system?.attributes?.hp;
     if ( !hp ) return null;
@@ -39,6 +40,14 @@ export async function applyDamageToActor(actor, amount, { damageTypes = [], dama
     return { resist: 0, reducao: 0, armor: 0, temp: 0, hp: dano };
   }
   let restante = Math.max(0, Number(amount) || 0);
+  if (origin) {
+    const parts = damages ?? [{ type: Array.isArray(damageTypes) ? damageTypes[0] : damageTypes, value: restante }];
+    const expanded = await preparePeculiarityDamage(actor, parts, { origin });
+    if (expanded !== parts) {
+      damages = expanded;
+      restante = expanded.reduce((sum, damage) => sum + damage.value, 0);
+    }
+  }
   let numericAdjustment = 0;
   const cursedRules = cursedBenefitRules1(actor);
   if ((cursedRules.soulKnowledge || cursedRules.destinedVessel) && typeof actor.calculateDamage === "function") {

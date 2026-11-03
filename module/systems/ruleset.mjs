@@ -3,6 +3,8 @@ import { extrasAtributosEstado, npcAttributeDistribution, npcNd, npcProfile, npc
 import { npcClassification } from "./legacy2-npc-classification.mjs";
 import { ESCALA_DANO, linhaEscalaDano, formulaEscalaDano } from "./escala-dano.mjs";
 import { alternativeSavesEnabled, alternativeSaveData } from "./legacy2-alternative-saves.mjs";
+import { savedSystemValue } from "./actor-source.mjs";
+import { imuneReducaoPA } from "./peculiaridades-data.mjs";
 
 /**
  * ── RULESET 2.0 ──────────────────────────────────────────────────────────────
@@ -109,7 +111,8 @@ export default class Ruleset {
     const l2 = actor?.system?.legacy2;
     if ( !l2 ) return 0;
     const sum = (obj) => Object.values(obj ?? {}).reduce((t, n) => t + (Math.floor(Number(n) || 0)), 0);
-    return sum(l2.skills) + sum(alternativeSavesEnabled() ? l2.alternativeSaves : l2.saves) + sum(l2.armas);
+    const saved = key => savedSystemValue(actor, `legacy2.${key}`, l2[key]);
+    return sum(saved("skills")) + sum(saved(alternativeSavesEnabled() ? "alternativeSaves" : "saves")) + sum(saved("armas"));
   }
 
   /* ── Vantagens empilháveis ────────────────────────────────────────────── */
@@ -330,7 +333,7 @@ export default class Ruleset {
 
   /** PA disponíveis na virada, dentro do máximo preparado; entram no limite geral de vantagens. */
   static iniciativaAcoes(actor) {
-    if (actor?.statuses?.has?.("jj-paralisado")) return 0;
+    if (actor?.statuses?.has?.("jj-paralisado") && !imuneReducaoPA(actor)) return 0;
     const actions = actor?.system?.legacy2?.actions;
     const value = Number(actions?.value ?? 0), maximum = Number(actions?.max ?? 6);
     const available = Number.isFinite(value) ? Math.max(0, Math.floor(value)) : 0;

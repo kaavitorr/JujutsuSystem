@@ -1,4 +1,17 @@
 /** Shared weapon groups for both 2.0 presentation and roll calculations. */
+import { savedSystemValue } from "./actor-source.mjs";
+import { npcProficiencyBonus } from "./legacy2-npc-profiles.mjs";
+
+/** Free steps remain derived; only the actor's individually assigned ranks are saved or charged. */
+export function grantedProficiencySteps(actor, category, key) {
+  const prepared = actor?.system?.legacy2?.[category] ?? {};
+  const saved = savedSystemValue(actor, `legacy2.${category}`, prepared);
+  // Native overrides record the result of actual effects before derived-data floors (e.g. Seis Olhos).
+  const changed = actor?.overrides === undefined ? prepared[key] : actor.overrides?.system?.legacy2?.[category]?.[key];
+  const effects = changed == null ? 0 : Math.max(0, (Number(changed) || 0) - (Number(saved[key]) || 0));
+  return Math.min(4, Math.floor(effects) + npcProficiencyBonus(actor, category, key));
+}
+
 export const WEAPON_GROUPS = [
   { key: "martialM", label: "Pesada", aliases: ["siege"] },
   { key: "simpleM", label: "Leve", aliases: [] },

@@ -1,4 +1,5 @@
 /** Item-backed Personalização sections; native documents retain their activities and effects. */
+import { PECULIARIDADES } from "../../../systems/peculiaridades-data.mjs";
 
 /** Limite de Defeitos por ficha (regra 2.0). Fonte única — todas as verificações usam este valor. */
 export const MAX_DEFEITOS = 3;
@@ -14,8 +15,16 @@ export const CUSTOMIZATION_SECTIONS = [
 ];
 const categories = new Set(CUSTOMIZATION_SECTIONS.map(section => section.id));
 export const isCustomizationCategory = id => categories.has(id);
-export const customizationCategory = item => item.type === "feat"
-  ? item.getFlag?.("jujutsu-system", "featureSection") ?? item.flags?.["jujutsu-system"]?.featureSection : undefined;
+export function customizationLimitMessage(category) {
+  return category === "jj-peculiarities" ? `A ficha pode ter no máximo ${MAX_PECULIARIDADES} Peculiaridade.`
+    : `A ficha pode ter no máximo ${MAX_DEFEITOS} Defeitos.`;
+}
+export function customizationCategory(item) {
+  if ( item.type !== "feat" ) return undefined;
+  const key = item.getFlag?.("jujutsu-system", "peculiaridade") ?? item.flags?.["jujutsu-system"]?.peculiaridade;
+  if ( Object.hasOwn(PECULIARIDADES, key) ) return "jj-peculiarities";
+  return item.getFlag?.("jujutsu-system", "featureSection") ?? item.flags?.["jujutsu-system"]?.featureSection;
+}
 export const isCustomizationItem = item => isCustomizationCategory(customizationCategory(item));
 export const customizationTarget = event => event.target?.closest?.("[data-jj2-customization]")?.dataset.jj2Customization;
 
@@ -42,9 +51,11 @@ export function tagCustomizationData(item, category) {
 export function prepareCustomizationImport(actor, category, items) {
   if ( category != null && !isCustomizationCategory(category) ) return { ok: false, reason: "category" };
   if ( category && items.some(item => item.type !== "feat") ) return { ok: false, reason: "type" };
-  const added = items.filter(item => (category ?? customizationCategory(item)) === "jj-flaws").length;
-  const defects = Array.from(actor.items ?? []).filter(item => customizationCategory(item) === "jj-flaws").length;
-  if ( added && defects + added > MAX_DEFEITOS ) return { ok: false, reason: "limit" };
+  for ( const section of CUSTOMIZATION_SECTIONS.filter(section => section.max != null) ) {
+    const added = items.filter(item => item.type === "feat" && (category ?? customizationCategory(item)) === section.id).length;
+    const existing = Array.from(actor.items ?? []).filter(item => customizationCategory(item) === section.id).length;
+    if ( added && existing + added > section.max ) return { ok: false, reason: "limit", category: section.id };
+  }
   return { ok: true, items: category ? items.map(item => tagCustomizationData(item, category)) : items };
 }
 
@@ -60,7 +71,7 @@ const mutations = new WeakMap();
 const creations = new WeakMap();
 const validatedBatches = new WeakSet();
 export const isValidatedDefectBatch = actor => validatedBatches.has(actor);
-/** Validate after preceding writes finish so simultaneous drops cannot exceed five defects. */
+/** Validate after preceding writes finish so simultaneous drops cannot bypass the section limits. */
 export async function serializeCustomization(actor, mutate) {
   const pending = mutations.get(actor) ?? Promise.resolve();
   const next = pending.catch(() => {}).then(mutate);
@@ -78,12 +89,13 @@ export async function serializeDefectCreation(actor, create) {
   finally { if ( creations.get(actor) === next ) creations.delete(actor); }
 }
 
-/** Count the final item state, so an atomic replacement may delete and add defects together. */
+/** Count the final item state, allowing atomic replacements while preventing stacked peculiarities. */
 export function validateCustomizationBatch(actor, operations) {
+  const stableKey = item => item.getFlag?.("jujutsu-system", "peculiaridade") ?? item.flags?.["jujutsu-system"]?.peculiaridade;
   const states = new Map(Array.from(actor.items ?? [], item => [item.id ?? item._id ?? Symbol(), {
-    type: item.type, category: customizationCategory(item)
+    type: item.type, category: customizationCategory(item), peculiaridade: stableKey(item)
   }]));
-  let addsDefect = false;
+  const addedCategories = new Set();
   for ( const operation of operations ) {
     if ( operation.documentName !== "Item" || operation.parent !== actor ) continue;
     if ( operation.action === "delete" ) {
@@ -91,14 +103,14 @@ export function validateCustomizationBatch(actor, operations) {
     } else if ( operation.action === "create" ) {
       for ( const item of operation.data ?? [] ) {
         const category = customizationCategory(item);
-        if ( category === "jj-flaws" ) addsDefect = true;
-        states.set(item._id ?? item.id ?? Symbol(), { type: item.type, category });
+        if ( item.type === "feat" ) addedCategories.add(category);
+        states.set(item._id ?? item.id ?? Symbol(), { type: item.type, category, peculiaridade: stableKey(item) });
       }
     } else if ( operation.action === "update" ) {
       for ( const update of operation.updates ?? [] ) {
         const state = states.get(update._id);
         if ( !state ) continue;
-        const wasDefect = state.type === "feat" && state.category === "jj-flaws";
+        const previousCategory = state.type === "feat" ? state.category : null;
         state.type = update.type ?? state.type;
         const flags = update.flags?.["jujutsu-system"];
         if ( Object.hasOwn(update, "flags.jujutsu-system.featureSection") ) state.category = update["flags.jujutsu-system.featureSection"];
@@ -106,18 +118,28 @@ export function validateCustomizationBatch(actor, operations) {
         else if ( Object.hasOwn(update, "flags.jujutsu-system.-=featureSection")
           || (flags && Object.hasOwn(flags, "-=featureSection")) ) state.category = undefined;
         else if ( operation.recursive === false && Object.hasOwn(update, "flags") ) state.category = flags?.featureSection;
-        if ( !wasDefect && state.type === "feat" && state.category === "jj-flaws" ) addsDefect = true;
+        if ( Object.hasOwn(update, "flags.jujutsu-system.peculiaridade") ) state.peculiaridade = update["flags.jujutsu-system.peculiaridade"];
+        else if ( flags && Object.hasOwn(flags, "peculiaridade") ) state.peculiaridade = flags.peculiaridade;
+        else if ( Object.hasOwn(update, "flags.jujutsu-system.-=peculiaridade")
+          || (flags && Object.hasOwn(flags, "-=peculiaridade"))
+          || (operation.recursive === false && Object.hasOwn(update, "flags")) ) state.peculiaridade = undefined;
+        if ( Object.hasOwn(PECULIARIDADES, state.peculiaridade) ) state.category = "jj-peculiarities";
+        if ( state.type === "feat" && state.category !== previousCategory ) addedCategories.add(state.category);
       }
     }
   }
-  const count = Array.from(states.values()).filter(state => state.type === "feat" && state.category === "jj-flaws").length;
-  return { ok: !addsDefect || count <= MAX_DEFEITOS, count };
+  const counts = Object.fromEntries(CUSTOMIZATION_SECTIONS.filter(section => section.max != null).map(section => [section.id,
+    Array.from(states.values()).filter(state => state.type === "feat" && state.category === section.id).length]));
+  const overflow = CUSTOMIZATION_SECTIONS.find(section => addedCategories.has(section.id)
+    && section.max != null && counts[section.id] > section.max);
+  return { ok: !overflow, count: counts["jj-flaws"], ...(overflow ? { category: overflow.id } : {}) };
 }
 
 /** Hold the guard until modifyBatch completes; its intermediate createDocuments call is only a dry run. */
 export function performValidatedCustomizationBatch(actor, operations, commit) {
   return serializeDefectCreation(actor, async () => {
-    if ( !validateCustomizationBatch(actor, operations).ok ) throw new Error(`A ficha pode ter no máximo ${MAX_DEFEITOS} Defeitos.`);
+    const result = validateCustomizationBatch(actor, operations);
+    if ( !result.ok ) throw new Error(customizationLimitMessage(result.category));
     validatedBatches.add(actor);
     try { return await commit(); }
     finally { validatedBatches.delete(actor); }

@@ -43,6 +43,39 @@ test("all-or-nothing bulk imports enforce the defect limit", () => {
   assert.equal(customization.prepareCustomizationImport(a, "jj-flaws", [feature("new")]).ok, false);
 });
 
+test("peculiarity imports reject a second item, including mixed batches and explicitly retagged items", () => {
+  const a = actor([feature("Destino", "jj-peculiarities")]);
+  for (const [category, items] of [[null, [feature("Outro", "jj-peculiarities")]],
+    ["jj-peculiarities", [feature("Cópia", "jj-basic")]]]) {
+    const result = customization.prepareCustomizationImport(a, category, items);
+    assert.equal(result.ok, false);
+    assert.equal(result.category, "jj-peculiarities");
+  }
+  assert.equal(customization.prepareCustomizationImport(actor(), null,
+    [feature("primeira", "jj-peculiarities"), feature("segunda", "jj-peculiarities")]).ok, false);
+});
+
+test("a renamed or retagged peculiarity still counts toward its permanent limit", () => {
+  const item = feature("Nome personalizado", "jj-basic");
+  item.flags["jujutsu-system"].peculiaridade = "destino-entrelacado";
+  const a = actor([item]);
+  assert.equal(customization.customizationCategory(item), "jj-peculiarities");
+  assert.equal(customization.prepareCustomizationImport(a, "jj-peculiarities", [feature("Outra")]).ok, false);
+  assert.equal(customization.validateCustomizationBatch(a, [
+    { action: "update", documentName: "Item", parent: a,
+      updates: [{ _id: item.id, "flags.jujutsu-system.featureSection": "jj-flaws" }] },
+    { action: "create", documentName: "Item", parent: a, data: [feature("Outra", "jj-peculiarities")] }
+  ]).ok, false);
+});
+
+test("atomic replacement can exchange peculiarities but never grants two at once", () => {
+  const a = actor([feature("old", "jj-peculiarities")]);
+  const create = { action: "create", documentName: "Item", parent: a, data: [feature("new", "jj-peculiarities")] };
+  assert.equal(customization.validateCustomizationBatch(a, [create]).ok, false);
+  assert.equal(customization.validateCustomizationBatch(a,
+    [create, { action: "delete", documentName: "Item", parent: a, ids: ["old"] }]).ok, true);
+});
+
 test("import categorization preserves compendium mechanics and does not mutate source flags", () => {
   const source = feature("new", "jj-basic");
   const result = customization.prepareCustomizationImport(actor(), "jj-peculiarities", [source]);
@@ -192,6 +225,16 @@ test("document creation also guards native duplication, deferred advancement and
   assert.equal(a.items.length, 3);
   assert.equal((await Documents.createDocuments([feature("fourth")], { parent: a })).length, 0);
   await assert.rejects(() => Documents.createDocuments([feature("dry-run-overflow")], { parent: a, dryRun: true }), /3 Defeitos/);
+  const peculiarActor = actor();
+  peculiarActor.type = "character";
+  const duplicates = await Promise.all([
+    Documents.createDocuments([feature("Destino", "jj-peculiarities")], { parent: peculiarActor }),
+    Documents.createDocuments([feature("Destino cópia", "jj-peculiarities")], { parent: peculiarActor })
+  ]);
+  assert.equal(duplicates.flat().length, 1);
+  assert.equal(peculiarActor.items.length, 1);
+  await assert.rejects(() => Documents.createDocuments([feature("Outra", "jj-peculiarities")],
+    { parent: peculiarActor, dryRun: true }), /1 Peculiaridade/);
   assert.equal((await Documents.createDocuments([feature("world")])).length, 1, "world/compendium items are unlimited");
   const concurrentActor = actor(Array.from({ length: 1 }, (_, i) => feature(String(i))));
   concurrentActor.type = "character";

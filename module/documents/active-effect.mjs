@@ -6,6 +6,7 @@ import { parseOrString, simplifyBonus, staticID } from "../utils.mjs";
 import DependentDocumentMixin from "./mixins/dependent.mjs";
 import Scaling from "./scaling.mjs";
 import { isLegacyArmorClassChange } from "../systems/legacy2-armor.mjs";
+import { peculiarityEffectSuppressed } from "../systems/peculiaridades-effects.mjs";
 
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 const { NumberField, ObjectField, SchemaField, SetField, StringField } = foundry.data.fields;
@@ -191,6 +192,7 @@ export default class ActiveEffect5e extends DependentDocumentMixin(ActiveEffect)
   /** @inheritDoc */
   get isSuppressed() {
     if ( super.isSuppressed ) return true;
+    if ( peculiarityEffectSuppressed(this) ) return true;
     if ( this.system.magical && this.actor?.statuses.has("antimagic") ) return true;
     if ( this.type === "enchantment" ) return false;
     if ( this.type === "condition" ) return false;

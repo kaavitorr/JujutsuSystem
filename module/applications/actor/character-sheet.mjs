@@ -19,7 +19,7 @@ import FeiticoSheetMixin from "./jj/feitico-sheet.mjs";
 import { openCharacterCreation } from "./creation/character-creation-2.mjs";
 import { customizationCharacteristics, customizationSections, customizationTarget, isCustomizationCategory,
   isCustomizationItem, canAssignCustomization, prepareCustomizationImport, serializeCustomization, serializeDefectCreation,
-  tagCustomizationData, MAX_DEFEITOS } from "./jj/legacy2-customization.mjs";
+  tagCustomizationData, customizationLimitMessage } from "./jj/legacy2-customization.mjs";
 
 // ── Módulos JJ ──────────────────────────────────────────────────────────────
 import { injectSkillRefs, injectTrainingRefs, injectAbilityRefs, injectAbilityKanjis, applyJJTextTooltips } from "./jj/tooltips.mjs";
@@ -458,7 +458,7 @@ export default class CharacterActorSheet extends FeiticoSheetMixin(BaseActorShee
     const category = target.dataset.category;
     if ( !isCustomizationCategory(category) ) return;
     if ( !prepareCustomizationImport(this.actor, category, [{ type: "feat" }]).ok ) {
-      ui.notifications.warn(`A ficha pode ter no máximo ${MAX_DEFEITOS} Defeitos.`);
+      ui.notifications.warn(customizationLimitMessage(category));
       return;
     }
     const result = await CompendiumBrowser.selectOne({ filters: { locked: { types: new Set(["feat"]) } } }, this._detachOptions());
@@ -1863,7 +1863,7 @@ async _onRender(context, options) {
       }
       if ( item.parent === this.actor ) return serializeDefectCreation(this.actor, async () => {
         if ( !this.isEditable || !canAssignCustomization(this.actor, item, category) ) {
-          if ( this.isEditable ) ui.notifications.warn(`A ficha pode ter no máximo ${MAX_DEFEITOS} Defeitos.`);
+          if ( this.isEditable ) ui.notifications.warn(customizationLimitMessage(category));
           return;
         }
         await item.setFlag("jujutsu-system", "featureSection", category);
@@ -1939,7 +1939,7 @@ async _onRender(context, options) {
       if ( !this.isEditable ) return [];
       const result = prepareCustomizationImport(this.actor, category ?? null, items);
       if ( !result.ok ) {
-        ui.notifications.warn(result.reason === "limit" ? `A ficha pode ter no máximo ${MAX_DEFEITOS} Defeitos.`
+        ui.notifications.warn(result.reason === "limit" ? customizationLimitMessage(result.category)
           : "Adicione uma característica nesta seção.");
         return [];
       }

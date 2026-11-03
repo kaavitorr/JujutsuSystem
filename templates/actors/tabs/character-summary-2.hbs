@@ -1,7 +1,7 @@
 <section class="tab {{ tab.cssClass }} jj2-page jj2-summary" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
   <div class="jj2-panel"><h2>Atributos</h2><div class="jj2-abilities">
     {{#each jj2.abilities as |ab|}}<div class="jj2-ability {{#if principal}}principal{{/if}}" data-ability="{{ key }}"><div class="jj2-ability-heading"><a class="{{ @root.rollableClass }}" data-action="roll" data-type="ability" data-ability="{{ key }}">{{ abbr }}</a>{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=key }}</div>
-    {{#if @root.editable}}<input type="number" name="system.abilities.{{ key }}.value" value="{{ value }}" min="1" max="12" data-dtype="Number" aria-label="{{ label }}">{{else}}<strong>{{ value }}</strong>{{/if}}<span>{{ label }}</span></div>{{/each}}
+    {{#if @root.editable}}<input type="number" name="system.abilities.{{ key }}.value" value="{{ sourceValue }}" min="1" max="12" data-dtype="Number" aria-label="{{ label }}">{{else}}<strong>{{ value }}</strong>{{/if}}<span>{{ label }}</span></div>{{/each}}
   </div><div class="jj2-panel-meta"><span>Principal: {{ jj2.principalLabel }}</span><span>Escala de 1 a 12</span></div></div>
   <div class="jj2-summary-grid"><div class="jj2-panel jj2-saves"><h2>Salvaguardas</h2><ul>
     {{#each jj2.saves}}<li class="jj2-rank-row" data-key="{{ key }}" data-ability="{{ key }}"><div class="jj2-rank-name">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key=key }}<a class="saving-throw {{ @root.rollableClass }}" data-action="roll" data-type="ability">{{ label }}</a></div><div class="jj2-rank-line">{{> "systems/jujutsu-system/templates/actors/parts/jj2-ranks.hbs" ctx="saves" }}<strong>{{ dnd5e-formatModifier total }}</strong></div><small>{{ rankLabel }}</small></li>{{/each}}

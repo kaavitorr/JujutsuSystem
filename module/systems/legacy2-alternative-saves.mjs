@@ -1,4 +1,5 @@
-import { npcProficiencyBonus, npcProficiencyRank } from "./legacy2-npc-profiles.mjs";
+import { npcProficiencyRank } from "./legacy2-npc-profiles.mjs";
+import { grantedProficiencySteps } from "./legacy2-proficiencies.mjs";
 
 export const ALTERNATIVE_SAVES = Object.freeze([
   { key: "fortitude", label: "Fortitude", abilities: ["str", "wis"], names: ["Força", "Sabedoria"], icon: "con" },
@@ -27,7 +28,7 @@ export function alternativeSaveData(actor, key, ruleset) {
   const bonus = ruleset.rankBonus(rank), total = base + bonus;
   const sign = bonus < 0 ? "−" : "+";
   return { ...definition, ability: definition.abilities[0], base, rank, total,
-    grantedRank: npcProficiencyBonus(actor, "alternativeSaves", definition.key),
+    grantedRank: grantedProficiencySteps(actor, "alternativeSaves", definition.key),
     rankLabel: ruleset.rankLabel(rank),
     tooltip: `${definition.label}: (${definition.names[0]} ${values[0]} + ${definition.names[1]} ${values[1]}) ÷ 2 = ${average.toLocaleString("pt-BR")}; base ${base} (arredondado para baixo); ${ruleset.rankLabel(rank)} ${sign}${Math.abs(bonus)} = ${total}.` };
 }

@@ -22,7 +22,7 @@ import Advancement from "./advancement/advancement.mjs";
 import SystemDocumentMixin from "./mixins/document.mjs";
 import Ruleset from "../systems/ruleset.mjs";
 import { canCreateNpcProfiles, serializeNpcProfileCreation } from "../systems/legacy2-npc-profiles.mjs";
-import { MAX_DEFEITOS, customizationCategory, isValidatedDefectBatch, prepareCustomizationImport,
+import { customizationLimitMessage, customizationCategory, isValidatedDefectBatch, prepareCustomizationImport,
   serializeDefectCreation } from "../applications/actor/jj/legacy2-customization.mjs"
 
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
@@ -56,18 +56,20 @@ export default class Item5e extends SystemDocumentMixin(Item) {
       };
       return context.dryRun ? create() : serializeNpcProfileCreation(actor, create);
     }
-    if ( actor?.type !== "character" || !data.some(item => customizationCategory(item) === "jj-flaws")
+    if ( actor?.type !== "character" || !data.some(item => ["jj-flaws", "jj-peculiarities"].includes(customizationCategory(item)))
       || !Ruleset.isV2() ) return super.createDocuments(data, context);
     if ( context.dryRun ) {
-      if ( !isValidatedDefectBatch(actor) && !prepareCustomizationImport(actor, null, data).ok ) {
+      const result = prepareCustomizationImport(actor, null, data);
+      if ( !isValidatedDefectBatch(actor) && !result.ok ) {
         // Foundry ignores a dry run's returned array; rejection must abort the whole operation.
-        throw new Error(`A ficha pode ter no máximo ${MAX_DEFEITOS} Defeitos.`);
+        throw new Error(customizationLimitMessage(result.category));
       }
       return super.createDocuments(data, context);
     }
     return serializeDefectCreation(actor, async () => {
-      if ( !prepareCustomizationImport(actor, null, data).ok ) {
-        ui.notifications.warn(`A ficha pode ter no máximo ${MAX_DEFEITOS} Defeitos.`);
+      const result = prepareCustomizationImport(actor, null, data);
+      if ( !result.ok ) {
+        ui.notifications.warn(customizationLimitMessage(result.category));
         return [];
       }
       return super.createDocuments(data, context);

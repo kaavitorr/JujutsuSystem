@@ -34,30 +34,13 @@
  *                            da penalidade −4 em d20 enquanto não cumprido.
  */
 
-import { statusesParaCondicao } from "../applications/actor/jj/conditions.mjs";
+import { applyGameCondition } from "../applications/actor/jj/conditions.mjs";
+import { temPeculiaridade, imunidadeCondicao } from "./peculiaridades-data.mjs";
+import { registerPeculiarityEffectHooks } from "./peculiaridades-effects.mjs";
+export { PECULIARIDADES, temPeculiaridade, imunidadeCondicao } from "./peculiaridades-data.mjs";
+registerPeculiarityEffectHooks();
 
 /** Chave → nome do feat no compendium. */
-export const PECULIARIDADES = Object.freeze({
-  "ferida-amaldicoada": "Ferida Amaldiçoada",
-  "corpo-exaurido": "Corpo Exaurido",
-  "pesadelos-terriveis": "Pesadelos Terríveis",
-  "azar-absurdo": "Azar Absurdo",
-  "energia-destrutiva": "Energia Destrutiva",
-  "rastro-da-desgraca": "Rastro Da Desgraça",
-  "corpo-fragil": "Corpo Frágil",
-  "doenca-sobrenatural": "Doença Sobrenatural",
-  "desejo-sombrio": "Desejo Sombrio"
-});
-
-/** O ator possui a peculiaridade (pelo nome do feat da seção jj-peculiarities)? */
-export function temPeculiaridade(actor, chave) {
-  const nome = PECULIARIDADES[chave];
-  if ( !nome || !actor?.items ) return false;
-  return actor.items.some(item => item.type === "feat"
-    && item.name === nome
-    && (item.getFlag?.("jujutsu-system", "featureSection")
-      ?? item.flags?.["jujutsu-system"]?.featureSection) === "jj-peculiarities");
-}
 
 /**
  * Bônus de efeitos sobre a margem do Crítico Excedente — Active Effect em
@@ -86,7 +69,10 @@ export function margemExcedente(actor) {
 /** Só um cliente age: GM ativo (se houver) ou o dono do ator. */
 function podeAgir(actor) {
   const gm = game.users?.activeGM;
-  return gm ? (gm === game.user) : (actor?.isOwner === true);
+  if (gm) return gm === game.user;
+  const owners = Array.from(game.users ?? []).filter(user => user.active && actor?.testUserPermission?.(user, "OWNER"))
+    .sort((a, b) => a.id.localeCompare(b.id));
+  return owners.length ? owners[0].id === game.user.id : actor?.isOwner === true;
 }
 
 /**
@@ -98,11 +84,6 @@ function podeAgir(actor) {
  * @param {string}  condId Id da condição (ex.: "jj-amedrontado").
  * @returns {boolean}
  */
-export function imunidadeCondicao(actor, condId) {
-  if ( (condId === "jj-amedrontado") && temPeculiaridade(actor, "pesadelos-terriveis") ) return true;
-  if ( (condId === "jj-atordoado") && temPeculiaridade(actor, "olhar-do-abismo") ) return true;
-  return false;
-}
 
 /**
  * Condições que o 1 natural da Rastro da Desgraça pode aplicar.
@@ -114,18 +95,19 @@ export const CONDICOES_RASTRO = Object.freeze([
 ]);
 
 /** Aplica uma condição jj como efeito, com duração opcional em rodadas. */
-async function aplicarCondicaoJj(actor, condId, label, duracaoRodadas = null) {
+async function aplicarCondicaoJj(actor, condId, label, duracaoRodadas = null, expiry = null) {
   if ( imunidadeCondicao(actor, condId) ) {
     avisar(actor, `${actor.name} é imune a ${condId} (peculiaridade).`);
     return;
   }
-  await actor.createEmbeddedDocuments("ActiveEffect", [{
-    name: label,
-    icon: "icons/svg/aura.svg",
-    statuses: statusesParaCondicao(condId),
-    ...(duracaoRodadas ? { duration: { rounds: duracaoRodadas, combat: game.combat?.id ?? null } } : {}),
-    flags: { "jujutsu-system": { isJujutsuCondition: true, origemPeculiaridade: true } }
-  }]);
+  const combat = game.combat;
+  const combatant = combat?.getCombatantsByActor?.(actor)?.[0];
+  const rounds = expiry === "turnEnd" && combatant && combat.combatant?.id !== combatant.id ? 0 : duracaoRodadas;
+  const start = { time: game.time?.worldTime ?? 0, combat: combat?.started ? combat.id : null,
+    combatant: combatant?.id ?? combat?.combatant?.id ?? null, round: combat?.round ?? null, turn: combat?.turn ?? null };
+  return applyGameCondition(actor, condId, { name: label, start,
+    ...(duracaoRodadas ? { duration: { units: "rounds", value: rounds, expiry } } : {}),
+    flags: { origemPeculiaridade: true } });
 }
 
 /** Rola 1d20 postando o resultado no chat do ator. */
@@ -142,9 +124,11 @@ function avisar(actor, conteudo) {
 /* ── 02 Ferida Amaldiçoada ────────────────────────────────────────────────── */
 
 Hooks.on("combatStart", async (combat) => {
+  const seen = new Set();
   for ( const combatant of combat.combatants ) {
     const actor = combatant.actor;
-    if ( !actor || !temPeculiaridade(actor, "ferida-amaldicoada") || !podeAgir(actor) ) continue;
+    if ( !actor || !temPeculiaridade(actor, "ferida-amaldicoada") || !actor.isOwner || seen.has(actor.uuid ?? actor.id) ) continue;
+    seen.add(actor.uuid ?? actor.id);
     if ( actor.getFlag("jujutsu-system", "feridaAfetada") ) continue;
     const resultado = await rolarD20(actor, "🩸 Ferida Amaldiçoada — 1d20 (≤ 10 ressurge a dor)");
     if ( resultado > 10 ) continue;
@@ -160,16 +144,20 @@ Hooks.on("combatStart", async (combat) => {
 // (O texto cita "mínimo de 20" na redução por descanso, mas a base é 18 —
 // o piso adotado aqui é a própria base, pendente de confirmação do autor.)
 Hooks.on("deleteCombat", async (combat) => {
+  if (!combat.started) return;
+  const seen = new Set();
   for ( const combatant of combat.combatants ) {
     const actor = combatant.actor;
-    if ( !actor || !temPeculiaridade(actor, "corpo-exaurido") || !podeAgir(actor) ) continue;
+    if ( !actor || !temPeculiaridade(actor, "corpo-exaurido") || !podeAgir(actor) || seen.has(actor.uuid ?? actor.id) ) continue;
+    seen.add(actor.uuid ?? actor.id);
     const cd = Math.max(18, Number(actor.getFlag("jujutsu-system", "corpoExauridoCD") ?? 18));
-    const roll = await new Roll("1d20 + @abilities.con.save", actor.getRollData()).evaluate();
-    await roll.toMessage({ speaker: ChatMessage.getSpeaker({ actor }),
-      flavor: `😮‍💨 Corpo Exaurido — Salvaguarda de Constituição CD ${cd}` });
+    const rolled = await actor.rollSavingThrow({ ability: "con", target: cd }, {}, { data: {
+      flavor: `Corpo Exaurido — Salvaguarda de Constituição CD ${cd}` } });
+    const roll = Array.isArray(rolled) ? rolled[0] : rolled;
+    if (!roll || !Number.isFinite(roll.total)) continue;
     const exaustao = Number(actor.system.attributes.exhaustion) || 0;
     if ( roll.total < cd ) {
-      await actor.update({ "system.attributes.exhaustion": Math.min(5, exaustao + 1) });
+      await actor.update({ "system.attributes.exhaustion": exaustao + 1 });
       avisar(actor, `😮‍💨 <strong>${actor.name}</strong> falhou ( CD ${cd}) e recebe <strong>1 nível de exaustão</strong>. A CD sobe para <strong>${cd + 5}</strong>.`);
       await actor.setFlag("jujutsu-system", "corpoExauridoCD", cd + 5);
     } else {
@@ -181,8 +169,36 @@ Hooks.on("deleteCombat", async (combat) => {
 
 /* ── 07 Pesadelos Terríveis + resets por descanso longo ───────────────────── */
 
+/** Awaited by Actor._rest before its single bulk update; hooks cannot await a roll. */
+export async function preparePeculiarityRest(actor, result) {
+  if (!actor || !result?.longRest || !temPeculiaridade(actor, "pesadelos-terriveis")) return;
+  const source = Math.min(5, Math.max(0, Number(actor.getFlag("jujutsu-system", "pesadelosNivel")) || 0));
+  const before = Math.max(0, Number(actor.system.attributes.exhaustion) || 0);
+  const rolled = await rolarD20(actor, "Pesadelos Terríveis — 1d20 (≤ 10 traz exaustão)");
+  result.updateData ??= {};
+  const planned = Number(result.updateData["system.attributes.exhaustion"] ?? before);
+  const level = rolled <= 10 ? Math.min(5, source + 1) : 0;
+  result.updateData["system.attributes.exhaustion"] = rolled <= 10
+    ? Math.max(level, planned + Math.max(0, level - source))
+    : Math.max(0, planned - source);
+  result.updateData["flags.jujutsu-system.pesadelosNivel"] = level;
+}
+
+Hooks.on("preUpdateActor", (actor, changed, options) => {
+  if (!temPeculiaridade(actor, "pesadelos-terriveis")) return;
+  const value = changed["system.attributes.exhaustion"] ?? changed.system?.attributes?.exhaustion;
+  if (!Number.isFinite(value)) return;
+  const level = changed["flags.jujutsu-system.pesadelosNivel"] ?? changed.flags?.["jujutsu-system"]?.pesadelosNivel
+    ?? actor.getFlag("jujutsu-system", "pesadelosNivel") ?? 0;
+  const protectedLevel = Math.min(5, Math.max(0, Number(level) || 0));
+  if (value < protectedLevel) {
+    if (changed.system?.attributes) changed.system.attributes.exhaustion = protectedLevel;
+    else changed["system.attributes.exhaustion"] = protectedLevel;
+  }
+});
+
 Hooks.on("dnd5e.restCompleted", async (actor, result) => {
-  if ( !actor || !result?.longRest || !podeAgir(actor) ) return;
+  if ( !actor || !result?.longRest ) return;
   // Ferida Amaldiçoada: volta a poder afetar após o descanso longo.
   if ( temPeculiaridade(actor, "ferida-amaldicoada") && actor.getFlag("jujutsu-system", "feridaAfetada") ) {
     await actor.unsetFlag("jujutsu-system", "feridaAfetada");
@@ -192,20 +208,6 @@ Hooks.on("dnd5e.restCompleted", async (actor, result) => {
   if ( temPeculiaridade(actor, "doenca-sobrenatural") && actor.getFlag("jujutsu-system", "doencaUsada") ) {
     await actor.unsetFlag("jujutsu-system", "doencaUsada");
     avisar(actor, "🤕 A Doença Sobrenatural pode interromper o próximo ataque crítico novamente.");
-  }
-  // Pesadelos Terríveis: rola após cada descanso longo.
-  if ( temPeculiaridade(actor, "pesadelos-terriveis") ) {
-    const nivel = Math.min(5, Number(actor.getFlag("jujutsu-system", "pesadelosNivel")) || 0);
-    const resultado = await rolarD20(actor, " Nightmare 😱 Pesadelos Terríveis — 1d20 (≤ 10 traz 1 exaustão)");
-    if ( resultado <= 10 && nivel < 5 ) {
-      const exaustao = Number(actor.system.attributes.exhaustion) || 0;
-      await actor.update({ "system.attributes.exhaustion": Math.min(5, exaustao + 1) });
-      await actor.setFlag("jujutsu-system", "pesadelosNivel", nivel + 1);
-      avisar(actor, `😱 <strong>${actor.name}</strong> acordou em pânico: <strong>+1 exaustão</strong> (${nivel + 1} de 5 por esta característica).`);
-    } else if ( resultado > 10 && nivel > 0 ) {
-      await actor.setFlag("jujutsu-system", "pesadelosNivel", 0);
-      avisar(actor, `😌 <strong>${actor.name}</strong> dormiu bem — o ciclo de pesadelos foi interrompido.`);
-    }
   }
   // Corpo Exaurido: descanso longo reduz a CD em −5 (piso na base 18).
   if ( temPeculiaridade(actor, "corpo-exaurido") ) {
@@ -222,7 +224,7 @@ Hooks.on("createChatMessage", async (message) => {
   const d20 = roll.dice.find(d => d.faces === 20);
   const natural = d20?.results.find(r => !r.discarded)?.result;
   if ( ![1, 20].includes(natural) ) return;
-  const actor = game.actors.get(message.speaker?.actor ?? "");
+  const actor = ChatMessage.getSpeakerActor?.(message.speaker) ?? game.actors.get(message.speaker?.actor ?? "");
   if ( !actor || !podeAgir(actor) ) return;
 
   // 12 Azar Absurdo — 20 natural recupera Energia Total = INT.
@@ -251,7 +253,7 @@ const energiaAntesDoUso = new WeakMap();
 Hooks.on("dnd5e.preUseActivity", (activity, usageConfig) => {
   const actor = activity?.item?.actor;
   if ( !actor || (activity.item?.type !== "spell") || !temPeculiaridade(actor, "energia-destrutiva") ) return;
-  energiaAntesDoUso.set(actor, {
+  energiaAntesDoUso.set(usageConfig, {
     gerada: Number(actor.system.energy?.generated) || 0,
     total: Number(actor.system.energy?.total) || 0
   });
@@ -259,10 +261,9 @@ Hooks.on("dnd5e.preUseActivity", (activity, usageConfig) => {
 
 Hooks.on("dnd5e.postUseActivity", async (activity, usageConfig, results) => {
   const actor = activity?.item?.actor;
-  const antes = energiaAntesDoUso.get(actor);
-  energiaAntesDoUso.delete(actor);
+  const antes = energiaAntesDoUso.get(usageConfig);
+  energiaAntesDoUso.delete(usageConfig);
   if ( !actor || !antes || !temPeculiaridade(actor, "energia-destrutiva") ) return;
-  if ( !podeAgir(actor) ) return;
   const gerada = Number(actor.system.energy?.generated) || 0;
   const total = Number(actor.system.energy?.total) || 0;
   // Custo em PA = o que saiu das duas reservas com o uso da técnica.
@@ -277,37 +278,26 @@ Hooks.on("dnd5e.postUseActivity", async (activity, usageConfig, results) => {
 /* ── 21 Corpo Frágil ──────────────────────────────────────────────────────── */
 
 // Reflexo de aplicação: evita recursão quando o dano extra reaplica applyDamage.
-const aplicandoCorpoFragil = new WeakSet();
-
-Hooks.on("dnd5e.applyDamage", async (actor, amount, options) => {
-  if ( !actor || (amount <= 0) || aplicandoCorpoFragil.has(actor) ) return;
-  if ( !temPeculiaridade(actor, "corpo-fragil") || !podeAgir(actor) ) return;
-  const origem = options?.originatingMessage;
+export async function preparePeculiarityDamage(actor, damages, options = {}) {
+  if (!temPeculiaridade(actor, "corpo-fragil") || !Array.isArray(damages)
+    || !damages.some(damage => damage.value > 0)) return damages;
+  const origem = options.origin ?? options.originatingMessage;
+  const snapshot = origem?.flags?.["jujutsu-system"]?.peculiarityDamageSource;
   const rolls = origem?.rolls ?? [];
-  const dados = rolls.flatMap(roll => roll.dice ?? []);
-  if ( !dados.length ) return;
+  const dados = (snapshot?.dice ?? rolls.flatMap(roll => roll.dice ?? [])).filter(die => die.faces > 0 && die.faces !== 20);
+  if ( !dados.length ) return damages;
   // Comum (arma): +1 dado · Técnica (spell/feat): +1/3 dos dados totais (teto p/ cima).
-  const tipoItem = origem.item?.type;
+  const tipoItem = snapshot?.itemType ?? origem?.item?.type ?? origem?.getAssociatedItem?.()?.type;
   const tecnica = (tipoItem === "spell") || (tipoItem === "feat");
   const quantidade = tecnica
     ? Math.ceil(dados.reduce((soma, d) => soma + (d.number ?? 1), 0) / 3)
     : 1;
   const faces = dados[0].faces ?? 6;
-  const tipo = rolls.find(roll => roll.options?.type)?.options.type ?? "bludgeoning";
-  aplicandoCorpoFragil.add(actor);
-  try {
-    const extra = await new Roll(`${quantidade}d${faces}`).evaluate();
-    await extra.toMessage({ speaker: ChatMessage.getSpeaker({ actor }),
-      flavor: `🩹 Corpo Frágil — dano adicional (${tecnica ? `⅓ de ${dados.length} dados` : "1 dado"})` });
-    await actor.applyDamage([{
-      value: Math.max(0, extra.total),
-      type: tipo,
-      properties: new Set()
-    }], { isDelta: true, ignore: { vulnerability: true } });
-  } finally {
-    aplicandoCorpoFragil.delete(actor);
-  }
-});
+  const tipo = snapshot?.type ?? rolls.find(roll => roll.options?.type)?.options.type ?? damages.find(damage => damage.value > 0)?.type ?? "bludgeoning";
+  const extra = await new Roll(`${quantidade}d${faces}`).evaluate();
+  await extra.toMessage({ speaker: ChatMessage.getSpeaker({ actor }), flavor: `Corpo Frágil — dano adicional (${quantidade}d${faces})` });
+  return [...damages, { value: Math.max(0, extra.total), type: tipo, properties: new Set() }];
+}
 
 /* ── 25 Doença Sobrenatural ───────────────────────────────────────────────── */
 
@@ -329,7 +319,7 @@ export function doencaInterrompeAtaque(actor) {
  */
 export async function marcarDoencaUsada(actor) {
   await actor?.setFlag?.("jujutsu-system", "doencaUsada", true);
-  await aplicarCondicaoJj(actor, "jj-inconsciente", "Inconsciente (Doença Sobrenatural)", 1);
+  await aplicarCondicaoJj(actor, "jj-inconsciente", "Inconsciente (Doença Sobrenatural)", 1, "turnEnd");
   avisar(actor, `🤕 <strong>Doença Sobrenatural</strong>: o ataque crítico de ${actor.name} foi interrompido e ele fica <strong>Inconsciente</strong> até o fim do próximo turno.`);
 }
 
@@ -345,7 +335,9 @@ export async function marcarDoencaUsada(actor) {
  * @returns {Promise<{manifestou: boolean, resultado: number}>}
  */
 export async function rolarDesejoSombrio(actor) {
-  const resultado = await rolarD20(actor, "🌑 Desejo Sombrio — 1d6 (≥ 4 manifesta)");
+  const roll = await new Roll("1d6").evaluate();
+  await roll.toMessage({ speaker: ChatMessage.getSpeaker({ actor }), flavor: "Desejo Sombrio — 1d6 (≥ 4 manifesta)" });
+  const resultado = roll.dice[0].results[0].result;
   const manifestou = resultado >= 4;
   await actor.setFlag("jujutsu-system", "desejoPendente", manifestou);
   if ( manifestou ) {
@@ -363,20 +355,17 @@ export async function rolarDesejoSombrio(actor) {
  * @param {boolean} ativo   Estado da penalidade.
  */
 export async function alternarPenalidadeDesejo(actor, ativo) {
-  const existente = actor.effects.find(e => e.getFlag("jujutsu-system", "desejoSombrioPenalidade"));
-  if ( existente ) await existente.delete();
+  const existentes = actor.effects.filter(e => e.getFlag("jujutsu-system", "desejoSombrioPenalidade"));
+  for (const existente of existentes) await existente.delete();
   if ( !ativo ) return;
-  const familias = ["ability.check", "ability.save"];
-  for ( const chave of Object.keys(CONFIG.DND5E.abilities ?? {}) ) {
-    familias.push(`skills.${chave}.roll`);
-  }
+  const familias = ["ability.check", "ability.save", "attack"];
   await actor.createEmbeddedDocuments("ActiveEffect", [{
     name: "Desejo Sombrio (−4)",
     icon: "icons/magic/death/hand-undead-strike.webp",
     disabled: false,
     changes: familias.map(familia => ({
-      key: `system.bonuses.rolls.${familia}.mode`,
-      mode: CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+      key: `system.rolls.${familia}.bonus`,
+      mode: CONST.ACTIVE_EFFECT_MODES.ADD,
       value: -4
     })),
     flags: { "jujutsu-system": { desejoSombrioPenalidade: true } }

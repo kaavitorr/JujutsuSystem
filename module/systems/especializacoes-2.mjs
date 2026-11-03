@@ -1,5 +1,6 @@
 import Ruleset from "./ruleset.mjs";
 import { updateEnergyShieldTree } from "./legacy2-energy-shield-tree.mjs";
+import { peculiaritySpecializationGroups } from "./peculiaridades-effects.mjs";
 
 /**
  * ── ESPECIALIZAÇÕES 2.0 (Skill Tree) ────────────────────────────────────────
@@ -120,7 +121,8 @@ export function concedidas(actor) {
 
 /** Todas as especializações que o ator possui (normais + concedidas). */
 export function possuidas(actor) {
-  return [...concedidas(actor), ...adquiridas(actor)];
+  const reverse = peculiaritySpecializationGroups(actor).some(group => group.id === "voto-vinculativo") ? ["Energia Reversa"] : [];
+  return [...new Set([...concedidas(actor), ...adquiridas(actor), ...reverse])];
 }
 
 /** O ator possui a especialização? */
@@ -237,7 +239,8 @@ export function escolhasTotais(actor) {
 
 /** Escolhas ainda disponíveis. */
 export function escolhasDisponiveis(actor) {
-  return Math.max(0, escolhasTotais(actor) - adquiridas(actor).length);
+  const reserved = escolhasRestritas(actor).filter(group => group.peculiaridade).reduce((sum, group) => sum + group.disponiveis, 0);
+  return Math.max(0, escolhasTotais(actor) - adquiridas(actor).length - reserved);
 }
 
 /* ── Slots restritos de caminho (Mestre de Barreiras / Médico de Campo) ─────
@@ -263,14 +266,21 @@ function temCaminho(actor, def) {
 
 /** Slots restritos de caminho no ator: [{ rotulo, quantidade, usados, disponiveis, casa }]. */
 export function escolhasRestritas(actor) {
+  const definitions = [...CAMINHOS_SLOTS.filter(def => temCaminho(actor, def)), ...peculiaritySpecializationGroups(actor)];
+  if (!definitions.length) return [];
   const porNome = obterGrafo().porNome;
   const aprendidas = adquiridas(actor);
-  const grupos = [];
-  for ( const def of CAMINHOS_SLOTS ) {
-    if ( !temCaminho(actor, def) ) continue;
-    const usados = aprendidas.filter(n => def.casa(porNome.get(n) ?? {})).length;
-    grupos.push({ id: def.identificador, rotulo: def.rotulo, quantidade: def.quantidade,
-      usados, disponiveis: Math.max(0, def.quantidade - usados), casa: def.casa });
+  const grupos = definitions.map(def => ({ ...def, id: def.id ?? def.identificador, usados: 0, disponiveis: def.quantidade }));
+  for (const nome of aprendidas) {
+    const group = grupos.find(group => group.disponiveis > 0 && group.casa(porNome?.get(nome) ?? {}));
+    if (!group) continue;
+    group.usados++; group.disponiveis--;
+  }
+  // Existing purchases made before the restriction are retained, but cannot mint a second budget.
+  let remaining = Math.max(0, escolhasTotais(actor) - aprendidas.length);
+  for (const group of grupos.filter(group => group.peculiaridade)) {
+    group.disponiveis = Math.min(group.disponiveis, remaining);
+    remaining -= group.disponiveis;
   }
   return grupos;
 }

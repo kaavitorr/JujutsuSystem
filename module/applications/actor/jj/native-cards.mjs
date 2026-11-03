@@ -597,7 +597,10 @@ export async function postJJAttackRoll(activity, rolls) {
     const damageTypes = typed ? [...new Set(typed.map(damage => damage.type).filter(Boolean))] : [...new Set((activity.damage?.parts ?? []).flatMap(p => Array.from(p.types ?? [])))];
     ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor }),
-      content: _fulgorCardHTML(actor, totalBase, totalMult, damageTypes, damages)
+      content: _fulgorCardHTML(actor, totalBase, totalMult, damageTypes, damages),
+      flags: { "jujutsu-system": { peculiarityDamageSource: { itemType: activity.item?.type,
+        dice: (rolls ?? []).flatMap(roll => (roll.dice ?? []).map(die => ({ faces: die.faces, number: die.number }))),
+        type: damageTypes[0] } } }
     });
   });
 
@@ -623,7 +626,7 @@ export async function postJJAttackRoll(activity, rolls) {
           return;
         }
         for ( const token of tokens ) {
-          if ( token.actor && await applyDamageToActor(token.actor, amount, { damageTypes: tipos, damages }) === false ) return;
+          if ( token.actor && await applyDamageToActor(token.actor, amount, { damageTypes: tipos, damages, origin: message }) === false ) return;
         }
         const nomes = tokens.map(t => t.name).join(", ");
         ui.notifications.info(`${amount} de dano (Fulgor Negro) aplicado em: ${nomes}`);

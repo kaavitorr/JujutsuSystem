@@ -29,6 +29,16 @@ function target(sheet, ctx, key, rank) {
   } }) };
 }
 
+test("NPC editable attributes retain the saved base instead of persisting an effect bonus", () => {
+  const { actor } = fixture();
+  actor.system._source = { abilities: { int: { value: 6 } } };
+  actor.system.abilities.int.value = 7;
+  const context = buildNpc2Context(actor, config, Ruleset);
+  const intellect = context.abilities.find(ability => ability.key === "int");
+  assert.equal(intellect.value, 7);
+  assert.equal(intellect.sourceValue, 6);
+});
+
 test("NPC skills tab is registered and preloads the same proficiency partial as player sheets", () => {
   assert(NPC2_TABS.some(([id, label]) => id === "skills" && label === "Perícias"));
   const parts = configureNpc2Parts({ skills: {}, details: {}, tabs: {} });

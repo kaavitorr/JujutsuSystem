@@ -993,7 +993,8 @@
     "jujutsu-system": {
      "featureSection": "jj-peculiarities"
     }
-   }
+   },
+   "effects": []
   },
   {
    "name": "Físico Limitado",
@@ -1010,21 +1011,40 @@
      "name": "Peculiaridade: Físico Limitado",
      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
      "type": "base",
-     "system": {},
-     "changes": [
-      {
-       "key": "system.legacy2.pvEspecie",
-       "mode": 2,
-       "value": "-1",
-       "priority": null
-      },
-      {
-       "key": "system.legacy2.energiaEspecie",
-       "mode": 2,
-       "value": "2",
-       "priority": null
-      }
-     ],
+     "system": {
+      "changes": [
+       {
+        "key": "system.legacy2.pvEspecie",
+        "value": -1,
+        "type": "add",
+        "phase": "initial",
+        "priority": 20,
+        "_id": "85bf041612bf0a7e",
+        "conditions": "{}",
+        "replacement": ""
+       },
+       {
+        "key": "system.legacy2.energiaEspecie",
+        "value": 2,
+        "type": "add",
+        "phase": "initial",
+        "priority": 20,
+        "_id": "54647dd9d88b3b9d",
+        "conditions": "{}",
+        "replacement": ""
+       },
+       {
+        "key": "system.abilities.con.value",
+        "value": 10,
+        "type": "downgrade",
+        "phase": "initial",
+        "priority": 1000,
+        "_id": "2a853818f3284fb8",
+        "conditions": "{}",
+        "replacement": ""
+       }
+      ]
+     },
      "disabled": false,
      "duration": {
       "startTime": null,
@@ -1040,13 +1060,25 @@
      "tint": "#ffffff",
      "statuses": [],
      "sort": 0,
-     "flags": {},
+     "flags": {
+      "jujutsu-system": {
+       "peculiarityAutomation": {
+        "version": 1,
+        "key": "fisico-limitado"
+       }
+      }
+     },
      "transfer": true
     }
    ],
    "flags": {
     "jujutsu-system": {
-     "featureSection": "jj-peculiarities"
+     "featureSection": "jj-peculiarities",
+     "peculiaridade": "fisico-limitado",
+     "peculiarityAutomation": {
+      "version": 1,
+      "key": "fisico-limitado"
+     }
     }
    }
   },
@@ -1065,15 +1097,20 @@
      "name": "Peculiaridade: Apetite Canibal",
      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
      "type": "base",
-     "system": {},
-     "changes": [
-      {
-       "key": "system.legacy2.especiaisExtra",
-       "mode": 2,
-       "value": "1",
-       "priority": null
-      }
-     ],
+     "system": {
+      "changes": [
+       {
+        "key": "system.legacy2.especiaisExtra",
+        "value": 1,
+        "type": "add",
+        "phase": "initial",
+        "priority": 20,
+        "_id": "a66c7cccb9961410",
+        "conditions": "{}",
+        "replacement": ""
+       }
+      ]
+     },
      "disabled": false,
      "duration": {
       "startTime": null,
@@ -1089,13 +1126,25 @@
      "tint": "#ffffff",
      "statuses": [],
      "sort": 0,
-     "flags": {},
+     "flags": {
+      "jujutsu-system": {
+       "peculiarityAutomation": {
+        "version": 1,
+        "key": "apetite-canibal"
+       }
+      }
+     },
      "transfer": true
     }
    ],
    "flags": {
     "jujutsu-system": {
-     "featureSection": "jj-peculiarities"
+     "featureSection": "jj-peculiarities",
+     "peculiaridade": "apetite-canibal",
+     "peculiarityAutomation": {
+      "version": 1,
+      "key": "apetite-canibal"
+     }
     }
    }
   },
@@ -1320,7 +1369,8 @@
     "jujutsu-system": {
      "featureSection": "jj-peculiarities"
     }
-   }
+   },
+   "effects": []
   },
   {
    "name": "Respiração Instável",
@@ -1335,7 +1385,8 @@
     "jujutsu-system": {
      "featureSection": "jj-peculiarities"
     }
-   }
+   },
+   "effects": []
   },
   {
    "name": "Azar Absurdo",
@@ -1350,7 +1401,8 @@
     "jujutsu-system": {
      "featureSection": "jj-peculiarities"
     }
-   }
+   },
+   "effects": []
   },
   {
    "name": "Lembrete Sombrio",
@@ -1367,21 +1419,60 @@
      "name": "Peculiaridade: Lembrete Sombrio",
      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
      "type": "base",
-     "system": {},
-     "changes": [
-      {
-       "key": "system.abilities.wis.value",
-       "mode": 2,
-       "value": "1",
-       "priority": null
-      },
-      {
-       "key": "system.legacy2.especiaisExtra",
-       "mode": 2,
-       "value": "2",
-       "priority": null
-      }
-     ],
+     "system": {
+      "changes": [
+       {
+        "key": "system.abilities.wis.value",
+        "value": 1,
+        "type": "add",
+        "phase": "initial",
+        "priority": 20,
+        "_id": "e7205707fe5ea69f",
+        "conditions": "{}",
+        "replacement": ""
+       },
+       {
+        "key": "system.legacy2.especiaisExtra",
+        "value": 2,
+        "type": "add",
+        "phase": "initial",
+        "priority": 20,
+        "_id": "7dd9d95c838fef2c",
+        "conditions": "{}",
+        "replacement": ""
+       },
+       {
+        "key": "system.rolls.ability.check.bonus",
+        "value": -1,
+        "type": "add",
+        "phase": "initial",
+        "priority": 20,
+        "_id": "55479be21ae6a3d6",
+        "conditions": "{}",
+        "replacement": ""
+       },
+       {
+        "key": "system.rolls.ability.save.bonus",
+        "value": -1,
+        "type": "add",
+        "phase": "initial",
+        "priority": 20,
+        "_id": "660c719961382cbd",
+        "conditions": "{}",
+        "replacement": ""
+       },
+       {
+        "key": "system.rolls.attack.bonus",
+        "value": -1,
+        "type": "add",
+        "phase": "initial",
+        "priority": 20,
+        "_id": "6a1925dc329da6f8",
+        "conditions": "{}",
+        "replacement": ""
+       }
+      ]
+     },
      "disabled": false,
      "duration": {
       "startTime": null,
@@ -1397,13 +1488,25 @@
      "tint": "#ffffff",
      "statuses": [],
      "sort": 0,
-     "flags": {},
+     "flags": {
+      "jujutsu-system": {
+       "peculiarityAutomation": {
+        "version": 1,
+        "key": "lembrete-sombrio"
+       }
+      }
+     },
      "transfer": true
     }
    ],
    "flags": {
     "jujutsu-system": {
-     "featureSection": "jj-peculiarities"
+     "featureSection": "jj-peculiarities",
+     "peculiaridade": "lembrete-sombrio",
+     "peculiarityAutomation": {
+      "version": 1,
+      "key": "lembrete-sombrio"
+     }
     }
    }
   },
@@ -1469,7 +1572,8 @@
     "jujutsu-system": {
      "featureSection": "jj-peculiarities"
     }
-   }
+   },
+   "effects": []
   },
   {
    "name": "Rastro Da Desgraça",
@@ -1484,7 +1588,8 @@
     "jujutsu-system": {
      "featureSection": "jj-peculiarities"
     }
-   }
+   },
+   "effects": []
   },
   {
    "name": "Reflexo Amaldiçoado",
@@ -1556,21 +1661,30 @@
      "name": "Peculiaridade: Sede De Sangue Imposta",
      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
      "type": "base",
-     "system": {},
-     "changes": [
-      {
-       "key": "system.legacy2.pvEspecie",
-       "mode": 2,
-       "value": "1",
-       "priority": null
-      },
-      {
-       "key": "system.abilities.pre.value",
-       "mode": 2,
-       "value": "1",
-       "priority": null
-      }
-     ],
+     "system": {
+      "changes": [
+       {
+        "key": "system.legacy2.pvEspecie",
+        "value": 1,
+        "type": "add",
+        "phase": "initial",
+        "priority": 20,
+        "_id": "a09b123969f613bd",
+        "conditions": "{}",
+        "replacement": ""
+       },
+       {
+        "key": "system.abilities.cha.value",
+        "value": 1,
+        "type": "add",
+        "phase": "initial",
+        "priority": 20,
+        "_id": "f9099269901e9799",
+        "conditions": "{}",
+        "replacement": ""
+       }
+      ]
+     },
      "disabled": false,
      "duration": {
       "startTime": null,
@@ -1586,13 +1700,25 @@
      "tint": "#ffffff",
      "statuses": [],
      "sort": 0,
-     "flags": {},
+     "flags": {
+      "jujutsu-system": {
+       "peculiarityAutomation": {
+        "version": 1,
+        "key": "sede-de-sangue-imposta"
+       }
+      }
+     },
      "transfer": true
     }
    ],
    "flags": {
     "jujutsu-system": {
-     "featureSection": "jj-peculiarities"
+     "featureSection": "jj-peculiarities",
+     "peculiaridade": "sede-de-sangue-imposta",
+     "peculiarityAutomation": {
+      "version": 1,
+      "key": "sede-de-sangue-imposta"
+     }
     }
    }
   },
@@ -1658,7 +1784,8 @@
     "jujutsu-system": {
      "featureSection": "jj-peculiarities"
     }
-   }
+   },
+   "effects": []
   },
   {
    "name": "Corpo Frágil",
@@ -1673,7 +1800,8 @@
     "jujutsu-system": {
      "featureSection": "jj-peculiarities"
     }
-   }
+   },
+   "effects": []
   },
   {
    "name": "Voto Vinculativo",
@@ -1690,15 +1818,20 @@
      "name": "Peculiaridade: Voto Vinculativo",
      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
      "type": "base",
-     "system": {},
-     "changes": [
-      {
-       "key": "system.legacy2.especiaisExtra",
-       "mode": 2,
-       "value": "3",
-       "priority": null
-      }
-     ],
+     "system": {
+      "changes": [
+       {
+        "key": "system.legacy2.especiaisExtra",
+        "value": 3,
+        "type": "add",
+        "phase": "initial",
+        "priority": 20,
+        "_id": "c52e86e59f614205",
+        "conditions": "{}",
+        "replacement": ""
+       }
+      ]
+     },
      "disabled": false,
      "duration": {
       "startTime": null,
@@ -1714,13 +1847,25 @@
      "tint": "#ffffff",
      "statuses": [],
      "sort": 0,
-     "flags": {},
+     "flags": {
+      "jujutsu-system": {
+       "peculiarityAutomation": {
+        "version": 1,
+        "key": "voto-vinculativo"
+       }
+      }
+     },
      "transfer": true
     }
    ],
    "flags": {
     "jujutsu-system": {
-     "featureSection": "jj-peculiarities"
+     "featureSection": "jj-peculiarities",
+     "peculiaridade": "voto-vinculativo",
+     "peculiarityAutomation": {
+      "version": 1,
+      "key": "voto-vinculativo"
+     }
     }
    }
   },
@@ -1737,7 +1882,8 @@
     "jujutsu-system": {
      "featureSection": "jj-peculiarities"
     }
-   }
+   },
+   "effects": []
   },
   {
    "name": "Destino Entrelaçado",
@@ -1807,7 +1953,8 @@
     "jujutsu-system": {
      "featureSection": "jj-peculiarities"
     }
-   }
+   },
+   "effects": []
   },
   {
    "name": "Caçador Sombrio",
@@ -1824,21 +1971,40 @@
      "name": "Peculiaridade: Caçador Sombrio",
      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
      "type": "base",
-     "system": {},
-     "changes": [
-      {
-       "key": "system.abilities.int.value",
-       "mode": 2,
-       "value": "1",
-       "priority": null
-      },
-      {
-       "key": "system.legacy2.especiaisExtra",
-       "mode": 2,
-       "value": "2",
-       "priority": null
-      }
-     ],
+     "system": {
+      "changes": [
+       {
+        "key": "system.abilities.int.value",
+        "value": 1,
+        "type": "add",
+        "phase": "initial",
+        "priority": 20,
+        "_id": "d7e68473a525cc93",
+        "conditions": "{}",
+        "replacement": ""
+       },
+       {
+        "key": "system.legacy2.especiaisExtra",
+        "value": 2,
+        "type": "add",
+        "phase": "initial",
+        "priority": 20,
+        "_id": "d70c81705d4fa2a4",
+        "conditions": "{}",
+        "replacement": ""
+       },
+       {
+        "key": "system.legacy2.skills.arc",
+        "value": 2,
+        "type": "add",
+        "phase": "initial",
+        "priority": 20,
+        "_id": "5a3dac8cf3b6b9f0",
+        "conditions": "{}",
+        "replacement": ""
+       }
+      ]
+     },
      "disabled": false,
      "duration": {
       "startTime": null,
@@ -1854,13 +2020,25 @@
      "tint": "#ffffff",
      "statuses": [],
      "sort": 0,
-     "flags": {},
+     "flags": {
+      "jujutsu-system": {
+       "peculiarityAutomation": {
+        "version": 1,
+        "key": "cacador-sombrio"
+       }
+      }
+     },
      "transfer": true
     }
    ],
    "flags": {
     "jujutsu-system": {
-     "featureSection": "jj-peculiarities"
+     "featureSection": "jj-peculiarities",
+     "peculiaridade": "cacador-sombrio",
+     "peculiarityAutomation": {
+      "version": 1,
+      "key": "cacador-sombrio"
+     }
     }
    }
   },
@@ -1877,7 +2055,8 @@
     "jujutsu-system": {
      "featureSection": "jj-peculiarities"
     }
-   }
+   },
+   "effects": []
   }
  ],
  "modificadores": [

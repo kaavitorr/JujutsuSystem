@@ -52,14 +52,14 @@ export class EnergySystem {
    * = bonuses.generatedEnergy + intensiveTraining.generatedEnergy
    */
   static calculateGenerationBonus(actor) {
-    const bonuses = actor.system.energy.bonuses ?? {};
-    const intensive = actor.system.energy.intensiveTraining ?? {};
+    const bonuses = actor.system.energy?.bonuses ?? {};
+    const intensive = actor.system.energy?.intensiveTraining ?? {};
     return (bonuses.generatedEnergy ?? 0) + (intensive.generatedEnergy ?? 0);
   }
 
   /** A fixed ceiling selected from actions saved before the turn's recovery. */
-  static refinementLimit(actor, reserves = 0) {
-    const normal = Math.max(0, this.calculateLimit(Ruleset.nivel(actor), 2) + this.calculateGenerationBonus(actor)
+  static refinementLimit(actor, reserves = 0, ruleset = Ruleset) {
+    const normal = Math.max(0, this.calculateLimit(ruleset.nivel(actor), 2) + this.calculateGenerationBonus(actor)
       + this.refinamentoBonus(actor));
     return normal * (reserves >= 5 ? 2 : 1);
   }

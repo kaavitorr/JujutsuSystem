@@ -28,6 +28,7 @@ import SelectChoices from "./select-choices.mjs";
 import * as Trait from "./trait.mjs";
 import ConditionData from "../../data/active-effect/condition.mjs";
 import { performValidatedCustomizationBatch } from "../../applications/actor/jj/legacy2-customization.mjs";
+import { preparePeculiarityDamage, preparePeculiarityRest } from "../../systems/peculiaridades-automacao.mjs";
 
 /**
  * @import { RequestOptions5e } from "../../_types.mjs";
@@ -803,6 +804,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
       options.ignore ??= true;
     }
 
+    if (options.origin || options.originatingMessage) damages = await preparePeculiarityDamage(this, damages, options);
     damages = this.calculateDamage(damages, options);
     if ( !damages ) return this;
 
@@ -2501,6 +2503,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
      * @param {RestConfiguration} config  Configuration data for the rest occurring.
      * @returns {boolean}                 Explicitly return `false` to prevent the rest updates from being performed.
      */
+    await preparePeculiarityRest(this, result, config);
     if ( Hooks.call("dnd5e.preRestCompleted", this, result, config) === false ) return result;
 
     // Expire active effects

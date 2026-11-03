@@ -14,7 +14,7 @@ import { legacy2ConditionIcon } from "./legacy2-condition-icons.mjs";
 import { acoesTetoEfetivo } from "./legacy2-sheet.mjs";
 import { MODIFICADORES_MOVIMENTO } from "../../../systems/condicoes-dano.mjs";
 import { conditionSourceActorUuid } from "../../../systems/legacy2-condition-rolls.mjs";
-import { temPeculiaridade, imunidadeCondicao } from "../../../systems/peculiaridades-automacao.mjs";
+import { temPeculiaridade, imunidadeCondicao } from "../../../systems/peculiaridades-data.mjs";
 
 // ── Modificadores de condição (usados pelo toggle da aba de Efeitos e pela
 // automação do Inconsciente automático) ──────────────────────────────────────
@@ -207,7 +207,7 @@ export function gameConditionChanges(actor, condId) {
 }
 
 /** Apply the same condition, modifiers and immunities used by the sheet's Effects tab. */
-export async function applyGameCondition(actor, condId, { origin } = {}) {
+export async function applyGameCondition(actor, condId, { origin, duration, start, name, flags = {} } = {}) {
   if (!actor?.isOwner) return false;
   const cond = JJ2_CONDITIONS.find(condition => condition.id === condId) ?? JJ_CONDITIONS.find(condition => condition.id === condId);
   const config = CONFIG.statusEffects[condId];
@@ -219,6 +219,7 @@ export async function applyGameCondition(actor, condId, { origin } = {}) {
   const sourceActor = conditionSourceActorUuid(origin);
   const existing = actor.effects.find(effect => effect.statuses?.has(condId));
   if (existing) {
+    if (duration) await existing.update({ duration, ...(start ? { start } : {}) });
     if (sourceActor) await existing.update({ origin, "flags.jujutsu-system.conditionSourceActor": sourceActor });
     if (condId === "jj-exausto") {
       const level = Math.min(6, (Number(existing.getFlag?.("jujutsu-system", "exaustoNivel")) || 1) + 1);
@@ -228,9 +229,10 @@ export async function applyGameCondition(actor, condId, { origin } = {}) {
     return true;
   }
   await actor.createEmbeddedDocuments("ActiveEffect", [{
-    name: cond?.label ?? config.name, img: config.img ?? "icons/svg/aura.svg", origin,
+    name: name ?? cond?.label ?? config.name, img: config.img ?? "icons/svg/aura.svg", origin,
+    ...(duration ? { duration } : {}), ...(start ? { start } : {}),
     statuses, changes: gameConditionChanges(actor, condId),
-    flags: { "jujutsu-system": { isJujutsuCondition: true, ...(sourceActor ? { conditionSourceActor: sourceActor } : {}),
+    flags: { "jujutsu-system": { ...flags, isJujutsuCondition: true, ...(sourceActor ? { conditionSourceActor: sourceActor } : {}),
       ...(condId === "jj-exausto" ? { exaustoNivel: 1 } : {}) } }
   }]);
   if (condId === "jj-desidratado") {
@@ -455,7 +457,8 @@ export function injectJJConditions(element, actor) {
         // Condição de Ação: as ações atuais caem pro teto imediatamente
         // (Paralisado zera; Atordoado −4; Concussão/Incapacitado −2; Sonolento −1).
         if ( MODIFICADORES_CONDICOES[condId] ) {
-          await actor.update({ "system.legacy2.actions.value": acoesTetoEfetivo(actor) });
+          const current = Number(actor.system?.legacy2?.actions?.value) || 0;
+          await actor.update({ "system.legacy2.actions.value": Math.min(current, acoesTetoEfetivo(actor)) });
         }
       } else {
         const existing = actor.effects.find(e => e.statuses?.has(condId));

@@ -10,7 +10,7 @@
  *    tempo contra a mesma CD da salvaguarda.
  */
 import Ruleset from "./ruleset.mjs";
-import { temPeculiaridade } from "./peculiaridades-automacao.mjs";
+import { temPeculiaridade, imunidadeCondicao } from "./peculiaridades-data.mjs";
 import { statusesParaCondicao } from "../applications/actor/jj/conditions.mjs";
 
 /** CD base da salvaguarda: 10 + atributo principal do atacante. */
@@ -135,11 +135,12 @@ export async function aplicarCondicaoDano(alvo, condKey, { cd = CD_BASE, atacant
   }
   const atributo = cond.save === "wis" ? "Sabedoria" : "Constituição";
 
-  const roll = await alvo.rollAbilitySave?.(cond.save, {
-    flavor: `${cond.label} — CD ${cd} (gerada por ${atacante})`,
-    messageData: { flavor: `${cond.label} — CD ${cd} (gerada por ${atacante})` }
-  });
-  const total = roll?.total ?? 0;
+  const rolled = await alvo.rollSavingThrow?.({ ability: cond.save, target: cd }, {}, { data: {
+    flavor: `${cond.label} — CD ${cd} (gerada por ${atacante})`
+  } });
+  const roll = Array.isArray(rolled) ? rolled[0] : rolled;
+  if (!roll || !Number.isFinite(roll.total)) return false;
+  const total = roll.total;
   if ( total >= cd ) {
     ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: alvo }),
       content: `🛡️ <strong>${alvo.name}</strong> passa na Salvaguarda de ${atributo} (CD ${cd}) e evita <strong>${cond.label}</strong>.` });
@@ -161,6 +162,7 @@ export async function aplicarCondicaoDano(alvo, condKey, { cd = CD_BASE, atacant
   const textoDuracao = cond.turnos
     ? " — dura até o fim do seu turno"
     : cond.rodadas ? ` — duração resetada para ${cond.rodadas} rodada(s)` : " (permanece até removida)";
+  const componentes = [cond.status, ...cond.extra].filter(status => !imunidadeCondicao(alvo, status));
   if ( existente ) {
     await existente.update({ duration: duracao,
       ...(atacanteUuid ? { origin: atacanteUuid, "flags.jujutsu-system.conditionSourceActor": atacanteUuid } : {}) });
@@ -171,8 +173,8 @@ export async function aplicarCondicaoDano(alvo, condKey, { cd = CD_BASE, atacant
       name: cond.label,
       icon: "systems/jujutsu-system/icons/svg/items/feature.svg",
       origin: atacanteUuid,
-      statuses: [cond.status, ...cond.extra].flatMap(s => statusesParaCondicao(s)),
-      changes: [cond.status, ...cond.extra].flatMap(s => MODIFICADORES_MOVIMENTO[s] ?? []),
+      statuses: componentes.flatMap(s => statusesParaCondicao(s)),
+      changes: componentes.flatMap(s => MODIFICADORES_MOVIMENTO[s] ?? []),
       duration: duracao,
       flags: { "jujutsu-system": { condicaoDano: { chave: condKey, cd, save: cond.save },
         ...(atacanteUuid ? { conditionSourceActor: atacanteUuid } : {}) } },

@@ -22,7 +22,7 @@ export function buildNpc2Context(actor, config, ruleset, npcConfig = {}) {
   const classification = npcClassification(actor);
   data.abilities = data.abilities.map(ability => ({ ...ability,
     value: actor.system.abilities[ability.key]?.value ?? ability.value,
-    sourceValue: npc2AbilityValue(actor.system.abilities[ability.key]?._source?.value ?? ability.value),
+    sourceValue: npc2AbilityValue(ability.sourceValue),
     principal: ability.key === (archetype ? ruleset.npcPrincipal(actor) : ruleset.atributoPrincipal(actor)) }));
   delete data.atributos;
   delete data.wounds;
