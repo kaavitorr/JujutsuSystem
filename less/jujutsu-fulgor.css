@@ -1,3 +1,5 @@
+@import url("./jujutsu-sidebar-extras.css");
+
 /* ══════════════════════════════════════════════════════
    JUJUTSU LEGACY — FULGOR NEGRO (sidebar)
    Design espelhado do Seis Olhos, cores laranjas
@@ -11,6 +13,45 @@ filigree-box.jj-fulgor-box {
   margin-top: 2px;
   margin-bottom: 4px;
 }
+
+/* Energia Reversa 1.0 — same compact frame and paired counters as Kokusen. */
+filigree-box.jj-er1-box {
+  --filigree-background-color: #0c1817;
+  --filigree-border-color: #3e655b;
+  --filigree-drop-shadow: drop-shadow(0 0 3px #4a806126);
+  display: block; margin: 4px 0; padding: 7px 6px; min-width: 0;
+  color: #c7d8cf;
+}
+.jj-er1-box .jj-er1-header { display:flex; align-items:center; gap:5px; padding:0 0 7px; }
+.jj-er1-box svg { width:15px; height:15px; flex-shrink:0; color:#9fceb7; }
+.jj-er1-box .jj-er1-header h3 { flex:1; margin:0; padding:0; border:0; font-size:11px; font-weight:700; color:#d9e5dc; }
+.jj-er1-box .jj-er1-header button { width:22px; min-height:22px; padding:2px; border:0; background:none; line-height:1; }
+.jj-er1-counters { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:5px; }
+.jj-er1-counters > div { display:flex; flex-direction:column; align-items:center; gap:3px; padding:7px 3px; border:1px solid #314d43; background:#08110e; }
+.jj-er1-counters span { font-size:9px; color:#aec2b5; }
+.jj-er1-counters strong { color:#d1e7cf; font-size:24px; line-height:1.15; }
+.jj-er1-counters small { color:#9faf9e; font-size:11px; font-weight:400; margin-left:2px; }
+.jj-er1-box .jj-er1-rate { display:flex; flex-wrap:wrap; justify-content:space-between; gap:3px; margin:7px 0; font-size:10px; }
+.jj-er1-rate span { color:#9faf9e; font-size:9px; }
+.jj-er1-buttons { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:5px; }
+.jj-er1-box button[data-er1-action] { height:auto; white-space:normal; overflow-wrap:anywhere; text-transform:none; cursor:pointer; }
+.jj-er1-box .jj-er1-buttons button, .jj-er1-box .jj-er1-recover, .jj-er1-box .jj-er1-emergency {
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; min-height:36px;
+  padding:5px 3px; background:#101f19; border:1px solid #42604e; border-radius:3px; color:#d1e7cf; font-size:10px; font-weight:600; line-height:1.3;
+}
+.jj-er1-box button small { font-size:9px; font-weight:400; color:#aac4ad; }
+.jj-er1-box .jj-er1-recover, .jj-er1-box .jj-er1-emergency { width:100%; margin-top:5px; }
+.jj-er1-box button:hover { border-color:#9fceb7; background-color:#193027; }
+.jj-er1-box button:focus-visible { outline:2px solid #c2e4cf; outline-offset:2px; }
+.jj-er1-box button:disabled { opacity:.5; cursor:default; }
+.jj-er1-box .jj-er1-hint { margin:5px 0 0; font-size:9px; text-align:center; color:#a4b9ad; line-height:1.45; }
+.jj-er1-learning { display:flex; flex-direction:column; align-items:center; gap:5px; padding:8px 0; }
+.jj-er1-learning strong { font-size:24px; color:#d1e7cf; }
+.jj-er1-learning small { font-size:9px; text-align:center; }
+.jj-er1-config { display:grid; gap:10px; }
+.jj-er1-config label { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.jj-er1-config input[type=number] { width:70px; text-align:center; }
+.jj-er1-config input[type=checkbox] { appearance:auto; width:18px; height:18px; accent-color:#9fceb7; }
 
 /* ── Header ── */
 .jj-fulgor-header {

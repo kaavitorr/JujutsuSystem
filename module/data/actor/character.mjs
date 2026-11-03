@@ -21,6 +21,7 @@ import legacy2Schema from "./legacy2-schema.mjs";
 import Ruleset from "../../systems/ruleset.mjs";
 import { crSeisOlhos, rankSeisOlhos } from "../../systems/seis-olhos.mjs";
 import { prepareLegacy2ArmorClass } from "../../systems/legacy2-armor.mjs";
+import { applyCursedBenefitTraits1, cursedHitPointBonus1, cursedEnergyFormula1 } from "../../systems/seres-amaldicoados-1.mjs";
 
 /**
  * @import { ActorFavorites5e, CharacterActorSystemData, ResourceData } from "./_types.mjs";
@@ -372,6 +373,7 @@ export default class CharacterData extends CreatureTemplate {
   /* -------------------------------------------- */
 
   prepareDerivedData() {
+    applyCursedBenefitTraits1(this.parent);
     const rollData = this.parent.getRollData({ deterministic: true });
     const { originalSaves, originalSkills } = this.parent.getOriginalStats();
 
@@ -396,7 +398,7 @@ export default class CharacterData extends CreatureTemplate {
       hpOptions.advancement = Object.values(this.parent.classes)
         .map(c => c.advancement.byType.HitPoints?.[0]).filter(a => a);
       hpOptions.bonus = (simplifyBonus(this.attributes.hp.bonuses.level, rollData) * this.details.level)
-        + simplifyBonus(this.attributes.hp.bonuses.overall, rollData);
+        + simplifyBonus(this.attributes.hp.bonuses.overall, rollData) + cursedHitPointBonus1(this.parent);
       hpOptions.mod = this.abilities[CONFIG.DND5E.defaultAbilities.hitPoints ?? "con"]?.mod ?? 0;
     }
     AttributesFields.prepareHitPoints.call(this, this.attributes.hp, hpOptions);
@@ -411,8 +413,7 @@ export default class CharacterData extends CreatureTemplate {
       i => i.type === "race" && (i.system?.identifier ?? i.name?.slugify()) === "energia-descomunal"
     ) ?? false;
     if ( hasEnormousEnergy ) this.energy.generation.baseMultiplier = 3;
-    const intensiveBonus = (this.energy.intensiveTraining?.maxEnergy ?? 0) * (hasEnormousEnergy ? 10 : 5);
-    let energyMax = (level * (hasEnormousEnergy ? 40 : 20)) + bonusOverall + bonusLevel + bonusTemp + intensiveBonus;
+    let energyMax = cursedEnergyFormula1(this.parent, { enormous: hasEnormousEnergy, bonus: bonusOverall + bonusLevel + bonusTemp });
     // Restrições permanentes de energia em DEGRAUS: perde 5 a cada 20 COMPLETADOS (1/4)
     // ou 5 a cada 10 COMPLETADOS (metade). Ganhos parciais (ex.: +5 do Treinamento
     // Intenso) ficam inteiros até fechar o degrau. A perda fixa sai por último.

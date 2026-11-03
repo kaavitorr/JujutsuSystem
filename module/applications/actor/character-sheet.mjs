@@ -25,12 +25,13 @@ import { customizationCharacteristics, customizationSections, customizationTarge
 import { injectSkillRefs, injectTrainingRefs, injectAbilityRefs, injectAbilityKanjis, applyJJTextTooltips } from "./jj/tooltips.mjs";
 import { JJ_CONDITIONS, injectJJConditions } from "./jj/conditions.mjs";
 import { setupFeatureSectionCollapse, unhideFeatureSections, setupFeatureSectionDrops, JJ_FEATURE_SECTIONS } from "./jj/features.mjs";
-import { onExplosaoDefensiva, onExplosaoDefensiva2, onEnergiaReversa, onFocoDefensivo } from "./jj/explosao-defensiva.mjs";
+import { onExplosaoDefensiva, onExplosaoDefensiva2, onFocoDefensivo } from "./jj/explosao-defensiva.mjs";
 import { canShowExpansaoDominio, onExpansaoDominio, configureExpansaoDominio } from "./jj/expansao-dominio.mjs";
-import { checkFulgorNegro, applyFulgorZonaEffect, setupFulgorNegro, getFulgorSecundaria } from "./jj/fulgor-negro.mjs";
+import { checkFulgorNegro, applyFulgorZonaEffect, setupFulgorNegro, getFulgorPrimaria, getFulgorSecundaria } from "./jj/fulgor-negro.mjs";
 import { applySeiOlhosEffects, alternarSeisOlhos, analiseDeFluxo } from "./jj/seis-olhos.mjs";
-import { contextoSeisOlhos } from "../../systems/seis-olhos.mjs";
+import { contextoSeisOlhos, temSeisOlhos } from "../../systems/seis-olhos.mjs";
 import { contextoEnergiaReversa, usarEnergiaReversa, escolherRecuperacaoReversa } from "./jj/energia-reversa.mjs";
+import { contextoReversa1, setupReversa1 } from "./jj/energia-reversa-1.mjs";
 import {
   prepareManipulationContext, prepareTrainingsContext,
   onUnlockManipulationAbility, onUndoManipulationAbility,
@@ -119,7 +120,8 @@ export default class CharacterActorSheet extends FeiticoSheetMixin(BaseActorShee
     },
     sidebar: {
       container: { classes: ["main-content"], id: "main" },
-      template: "systems/jujutsu-system/templates/actors/character-sidebar.hbs"
+      template: "systems/jujutsu-system/templates/actors/character-sidebar.hbs",
+      templates: ["systems/jujutsu-system/templates/actors/parts/energia-reversa-1.hbs"]
     },
     details: {
       classes: ["col-2"],
@@ -800,7 +802,7 @@ context.skills = skillsSorted;
         suppressed: "Efeitos Indisponíveis", enchantment: "Encantamentos", activeEnchantment: "Encantamentos Ativos",
         inactiveEnchantment: "Encantamentos Inativos" };
       context.fulgorNegro = !!this.actor.system.manipulation?.abilities?.fulgorNegro?.unlocked;
-      context.fulgorPrimaria = this.actor.getFlag("jujutsu-system", "fulgorPrimaria") ?? 20;
+      context.fulgorPrimaria = getFulgorPrimaria(this.actor);
       context.fulgorSecundaria = getFulgorSecundaria(this.actor);
       context.fulgorZona = this.actor.getFlag("jujutsu-system", "fulgorZona") ?? false;
       context.effectsSearchLabel = "Buscar efeitos";
@@ -1051,16 +1053,16 @@ context.dominioExpandido = this.actor.getFlag("jujutsu-system", "dominioExpandid
     }, { label: CONFIG.DND5E.movementTypes.walk?.label, value: 0 });
 
     // Seis Olhos
-    const seisOlhosItem = this.actor.items.find(i => i.name === "Seis Olhos" && i.type === "feat");
-    context.seisOlhos = !!seisOlhosItem;
+    context.seisOlhos = temSeisOlhos(this.actor);
     context.seisOlhosMode = this.actor.getFlag("jujutsu-system", "seisOlhosMode") ?? "sealed";
 
     // Fulgor Negro
     context.fulgorNegro    = !!this.actor.system.manipulation?.abilities?.fulgorNegro?.unlocked;
-    context.fulgorPrimaria  = this.actor.getFlag("jujutsu-system", "fulgorPrimaria")  ?? 20;
+    context.fulgorPrimaria  = getFulgorPrimaria(this.actor);
     // Limiar secundário efetivo (Fulgor Certeiro reduz a margem para 11–20).
     context.fulgorSecundaria = getFulgorSecundaria(this.actor);
     context.fulgorZona      = this.actor.getFlag("jujutsu-system", "fulgorZona") ?? false;
+    context.reversa1 = contextoReversa1(this.actor);
 
     return context;
   }
@@ -1458,9 +1460,7 @@ async _onRender(context, options) {
     this.element.querySelector("[data-action='jj-expdef-trigger']")
       ?.addEventListener("click", () => onExplosaoDefensiva(this.actor));
 
-    // Botão de Energia Reversa
-    this.element.querySelector("[data-action='jj-enrev-trigger']")
-      ?.addEventListener("click", () => onEnergiaReversa(this.actor));
+    setupReversa1(this.element, this.actor);
 
     // Botão de Foco Defensivo — ativar/desativar Pontos de Armadura
     this.element.querySelector("[data-action='jj-foco-defensivo']")

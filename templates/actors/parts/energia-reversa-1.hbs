@@ -1,0 +1,32 @@
+{{#if reversa1}}
+<section class="jj-extra-card jj-er1-box" aria-label="Energia Reversa">
+  <header class="jj-extra-heading jj-er1-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+    <h3>Energia Reversa</h3>
+    {{#if actor.isOwner}}<button type="button" class="jj-extra-config" data-er1-action="config" aria-label="Configurar Energia Reversa" title="Configurar Energia Reversa">
+      <i class="fas fa-cog" inert></i>
+    </button>{{/if}}
+  </header>
+  {{#if reversa1.despertada}}
+  <div class="jj-er1-counters">
+    <div><span>Reserva</span><strong>{{reversa1.value}}<small>/ {{reversa1.max}} PER</small></strong></div>
+    <div title="O limite renova no início do seu turno"><span>Uso no turno</span><strong>{{reversa1.pontosNaRodada}}<small>/ {{reversa1.maximoRodada}} PER</small></strong></div>
+  </div>
+  <p class="jj-er1-rate">1 PER cura {{reversa1.cura}} PV <span>Sem ação</span></p>
+  <div class="jj-er1-buttons">
+    <button type="button" data-er1-action="heal" {{#unless actor.isOwner}}disabled{{/unless}}>Curar <small>1 PER</small></button>
+    <button type="button" data-er1-action="limb" title="Regenerar um membro. Requer consciência." {{#unless actor.isOwner}}disabled{{/unless}}>Membro <small>2 PER</small></button>
+  </div>
+  <button type="button" class="jj-er1-recover" data-er1-action="recover" {{#unless actor.isOwner}}disabled{{/unless}}>Converter energia <small>3 PA → 1 PER</small></button>
+   <p class="jj-er1-hint">{{#if reversa1.podeRecuperar}}Até {{reversa1.recuperavel}} PER nesta conversão.{{else}}Após descanso longo ou Fulgor Negro.{{/if}}</p>
+  {{#unless reversa1.value}}<button type="button" class="jj-er1-emergency" data-er1-action="emergency" {{#unless actor.isOwner}}disabled{{/unless}}>Cura de emergência <small>2 PA Gerados / d4 · ação bônus</small></button>{{/unless}}
+  {{else}}
+  <div class="jj-er1-learning">
+    <div><span>Despertar</span><strong>CD {{reversa1.cd}}</strong></div>
+    <button type="button" data-er1-action="awaken" title="Despertar Energia Reversa. O narrador determina quando a situação permite este teste." {{#unless actor.isOwner}}disabled{{/unless}}>Despertar</button>
+  </div>
+  <p class="jj-er1-hint">Constituição (Controle de Energia)</p>
+  <p class="jj-er1-hint" title="O teste exige autorização do narrador. O despertar é automático no nível 12.">Despertar natural no nível 12</p>
+  {{/if}}
+</section>
+{{/if}}

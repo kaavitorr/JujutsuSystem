@@ -9,8 +9,9 @@ export const validNpcEquipment = (item, kind) => kind === "armadura"
 export const canReadNpcEquipment = item => item.testUserPermission?.(globalThis.game?.user, "OBSERVER") ?? item.visible !== false;
 
 /** Copies retain their native attacks/effects. Only gear granted by NPC profiles is managed. */
-export async function syncNpcProfileEquipment(actor, { resolve = globalThis.fromUuid } = {}) {
-  if (actor?.type !== "npc" || !actor.isOwner || game.settings.get("jujutsu-system", "rulesetVersion") !== "2.0") return false;
+export async function syncNpcProfileEquipment(actor, { resolve = globalThis.fromUuid,
+  rulesetVersion = game.settings.get("jujutsu-system", "rulesetVersion") } = {}) {
+  if (actor?.type !== "npc" || !actor.isOwner || rulesetVersion !== "2.0") return false;
   const pending = (queues.get(actor) ?? Promise.resolve()).catch(() => {}).then(async () => {
     const taxonomy = npcProfile(actor, "taxonomy"), archetype = npcProfile(actor, "archetype");
     const armorProfile = archetype?.equipamentos?.armadura ? archetype : taxonomy;
@@ -24,8 +25,9 @@ export async function syncNpcProfileEquipment(actor, { resolve = globalThis.from
     // A manually added canonical copy satisfies a profile grant and remains under the user's control.
     for (const item of actor.items) {
       if (item.flags?.["jujutsu-system"]?.[FLAG]) continue;
-      const source=item._stats?.compendiumSource ?? item.flags?.core?.sourceId;
-      if(wanted.has(source))retained.add(source);
+      const sources = [item._stats?.compendiumSource, item.flags?.core?.sourceId,
+        item.flags?.["jujutsu-system"]?.npcGeneratorWeaponSource];
+      for (const source of sources) if (wanted.has(source)) retained.add(source);
     }
     for (const item of granted) {
       const source = item.flags["jujutsu-system"][FLAG].source;

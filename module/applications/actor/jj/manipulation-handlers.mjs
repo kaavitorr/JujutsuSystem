@@ -7,6 +7,7 @@
 import { prepareManipulationAbilities, prepareTrainings, MANIPULATION_ABILITIES, TRAININGS_DATA, getAvailableTrainingPoints } from "../../../systems/manipulation-data.mjs";
 import { showBlackFlashPopup } from "./popup.mjs";
 import Ruleset from "../../../systems/ruleset.mjs";
+import { intensiveEnergyGain1 } from "../../../systems/seres-amaldicoados-1.mjs";
 import { intensiveTrainingDialogContent, refinementTrainingLimit } from "./intensive-training-dialog.mjs";
 
 // ── Preparação de contexto ────────────────────────────────────────────────────
@@ -113,7 +114,7 @@ export async function onIntensiveTraining(actor) {
   );
   const isV2 = Ruleset.isV2();
   const refinementLimit = refinementTrainingLimit(isV2);
-  const trainingPAGain = isV2 ? (Ruleset.estilo(actor)?.energiaBase ?? 10) : hasEnormousEnergy ? 10 : 5;
+  const trainingPAGain = isV2 ? (Ruleset.estilo(actor)?.energiaBase ?? 10) : intensiveEnergyGain1(actor, hasEnormousEnergy);
   // DialogV2 cleans string content and removes SVG; its native DIV form preserves these static icons.
   const content = document.createElement("div");
   content.innerHTML = intensiveTrainingDialogContent({ isV2, currentMaxPA, trainingPAGain,

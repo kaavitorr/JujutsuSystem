@@ -3,6 +3,7 @@
  * Fulgor Negro — lógica de ativação, Zona e reset por combate.
  */
 import { showBlackFlashPopup } from "./popup.mjs";
+import { cursedPrimaryMargin1, cursedBenefitRules1 } from "../../../systems/seres-amaldicoados-1.mjs";
 
 
 /**
@@ -11,6 +12,10 @@ import { showBlackFlashPopup } from "./popup.mjs";
  */
 // Map em memória: actorId → true/false (fulgor ativado neste combate)
 const fulgorAtivadoCombate = new Map();
+
+export function getFulgorPrimaria(actor) {
+  return cursedPrimaryMargin1(actor, actor?.getFlag?.("jujutsu-system", "fulgorPrimaria") ?? 20);
+}
 
 /**
  * Se o ator tem o TREINAMENTO de energia amaldiçoada "Fulgor Certeiro"
@@ -57,7 +62,7 @@ export async function testarKokusen(actor) {
 export async function checkFulgorNegro(actor, d20Result) {
   if ( !actor || !d20Result ) return false;
   if ( !actor.system.manipulation?.abilities?.fulgorNegro?.unlocked ) return false;
-  const primaria   = Number(actor.getFlag("jujutsu-system", "fulgorPrimaria")  ?? 20);
+  const primaria   = getFulgorPrimaria(actor);
   const secundaria = getFulgorSecundaria(actor);
   const jaAtivou   = fulgorAtivadoCombate.get(actor.id) ?? false;
 
@@ -166,12 +171,15 @@ export function setupFulgorNegro(element, actor) {
   const btnTestar = box.querySelector("[data-action='jj-fulgor-testar']");
   if ( btnTestar ) btnTestar.addEventListener("click", () => testarKokusen(actor));
 
-  const inputPrimaria = box.querySelector("[name='flags.jujutsu-system.fulgorPrimaria']");
+  const inputPrimaria = box.querySelector("[data-fulgor-primaria]");
   if ( inputPrimaria ) {
-    inputPrimaria.addEventListener("change", async () => {
+    inputPrimaria.addEventListener("change", async event => {
+      // The displayed threshold includes the benefit; the Actor stores the configurable base.
+      event.stopPropagation();
       const val = Math.min(20, Math.max(1, parseInt(inputPrimaria.value) || 20));
-      inputPrimaria.value = val;
-      await actor.setFlag("jujutsu-system", "fulgorPrimaria", val);
+      const base = Math.min(20, val + cursedBenefitRules1(actor).destinedVessel);
+      inputPrimaria.value = cursedPrimaryMargin1(actor, base);
+      await actor.setFlag("jujutsu-system", "fulgorPrimaria", base);
     });
   }
 
@@ -192,6 +200,7 @@ export function setupFulgorNegro(element, actor) {
       await actor.setFlag("jujutsu-system", "fulgorZona", next);
       await applyFulgorZonaEffect(actor, next);
       btnZona.classList.toggle("active", next);
+      btnZona.setAttribute("aria-pressed", String(next));
       const label = btnZona.querySelector("[data-fulgor-zone-label]");
       if ( label ) label.textContent = next ? "Desativar Zona" : "Ativar Zona";
       else btnZona.innerHTML = next

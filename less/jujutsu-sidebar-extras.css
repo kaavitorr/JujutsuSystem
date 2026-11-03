@@ -1,0 +1,226 @@
+/* Classic sidebar: one shared treatment for all five extra abilities. */
+.dnd5e2.character .sidebar .jj-sidebar-extras {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+  min-width: 0;
+}
+.dnd5e2.character .sidebar .jj-extra-card {
+  --extra-accent: #b4a1d7;
+  --extra-muted: #aaa2ba;
+  box-sizing: border-box;
+  min-width: 0;
+  margin: 0;
+  padding: 9px;
+  color: #e7e1ef;
+  background: #191621;
+  border: 1px solid #3e354f;
+  border-left: 2px solid #8a78aa;
+  border-radius: 2px;
+  box-shadow: none;
+  filter: none;
+}
+.dnd5e2.character .sidebar .jj-extra-card .jj-extra-heading {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  margin: 0 0 9px;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.dnd5e2.character .sidebar .jj-extra-heading h3 {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #e7e1ef;
+  font: 700 12px/1.25 var(--font-h4, "Roboto Condensed", sans-serif);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.dnd5e2.character .sidebar .jj-extra-card svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  color: var(--extra-accent);
+}
+.dnd5e2.character .sidebar .jj-extra-card button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  min-height: 30px;
+  margin: 0;
+  padding: 5px 7px;
+  background: #24202e;
+  border: 1px solid #4c415e;
+  border-radius: 2px;
+  color: #e1d7ed;
+  font: 600 11px/1.3 var(--font-body, "Roboto Condensed", sans-serif);
+  letter-spacing: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-transform: none;
+  text-shadow: none;
+  box-shadow: none;
+  animation: none;
+  transition: background-color 120ms, border-color 120ms;
+}
+.dnd5e2.character .sidebar .jj-extra-card button:hover:not(:disabled) {
+  background: #322a40;
+  border-color: #9c86bc;
+  color: #fff;
+}
+.dnd5e2.character .sidebar .jj-extra-card button:focus-visible,
+.dnd5e2.character .sidebar .jj-extra-card input:focus-visible {
+  outline: 2px solid #c5b2df;
+  outline-offset: 2px;
+}
+.dnd5e2.character .sidebar .jj-extra-card button:disabled { opacity: .5; cursor: default; }
+.dnd5e2.character .sidebar .jj-extra-heading .jj-extra-config {
+  flex: 0 0 22px;
+  width: 22px;
+  min-height: 22px;
+  padding: 3px;
+  background: transparent;
+  border-color: transparent;
+}
+.dnd5e2.character .sidebar .jj-extra-card button small {
+  color: var(--extra-accent);
+  font-size: 9px;
+  font-weight: 400;
+}
+.dnd5e2.character .sidebar .jj-extra-card :is(.jj-expdef-btn-wrap, .jj-fulgor-zona-wrap, .jj-dominio-btn-wrap) { padding: 0; }
+.dnd5e2.character .sidebar .jj-extra-card :is(.jj-expdef-trigger-btn, .jj-fulgor-zona-btn, .jj-dominio-trigger-btn) { flex-direction: row; }
+.dnd5e2.character .sidebar .jj-extra-card :is(.jj-fulgor-zona-btn.active, .jj-dominio-trigger-btn.expandido) {
+  color: #f0e8fa;
+  background: #433252;
+  border-color: #a48abb;
+}
+
+/* Paired margins and PER counters share the same alignment, without nested frames. */
+.dnd5e2.character .sidebar .jj-extra-card :is(.jj-fulgor-options, .jj-er1-counters) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin: 0 0 9px;
+  padding: 0;
+}
+.dnd5e2.character .sidebar .jj-extra-card :is(.jj-fulgor-option, .jj-er1-counters > div) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  min-width: 0;
+  padding: 0 7px 0 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.dnd5e2.character .sidebar .jj-extra-card :is(.jj-fulgor-option, .jj-er1-counters > div) + :is(.jj-fulgor-option, .jj-er1-counters > div) {
+  padding: 0 0 0 8px;
+  border-left: 1px solid #3e354f;
+}
+.dnd5e2.character .sidebar .jj-extra-card :is(.jj-fulgor-option-lbl, .jj-er1-counters span, .jj-er1-learning span) {
+  color: var(--extra-muted);
+  font-size: 10px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.dnd5e2.character .sidebar .jj-extra-card .jj-fulgor-option input[type=number] {
+  width: 100%;
+  height: 29px;
+  padding: 0 4px;
+  border: 1px solid #4c415e;
+  border-radius: 2px;
+  background: #110e19;
+  color: #e2d8ed;
+  font-size: 19px;
+  text-align: center;
+}
+.dnd5e2.character .sidebar .jj-extra-card .jj-er1-counters strong {
+  color: #e4dae9;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.dnd5e2.character .sidebar .jj-extra-card .jj-er1-counters small {
+  margin-left: 3px;
+  color: var(--extra-muted);
+  font-size: 9px;
+  font-weight: 400;
+}
+.dnd5e2.character .sidebar .jj-extra-card .jj-er1-rate {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin: 0 0 8px;
+  color: #c5bdd2;
+  font-size: 10px;
+}
+.dnd5e2.character .sidebar .jj-extra-card .jj-er1-rate span { color: var(--extra-muted); }
+.dnd5e2.character .sidebar .jj-extra-card .jj-er1-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+}
+.dnd5e2.character .sidebar .jj-extra-card .jj-er1-buttons button { flex-direction: column; gap: 1px; }
+.dnd5e2.character .sidebar .jj-extra-card :is(.jj-er1-recover, .jj-er1-emergency) { margin-top: 5px; flex-direction: column; gap: 1px; }
+.dnd5e2.character .sidebar .jj-extra-card .jj-er1-hint {
+  margin: 6px 0 0;
+  color: var(--extra-muted);
+  text-align: left;
+  font-size: 9px;
+  line-height: 1.4;
+}
+.dnd5e2.character .sidebar .jj-extra-card .jj-er1-learning {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 66px;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+}
+.dnd5e2.character .sidebar .jj-extra-card .jj-er1-learning > div { display: flex; flex-direction: column; gap: 2px; }
+.dnd5e2.character .sidebar .jj-extra-card .jj-er1-learning strong { color: #e4dae9; font-size: 22px; line-height: 1.2; }
+
+/* Seis Olhos: native radio controls remain focusable within a compact segmented selector. */
+.dnd5e2.character .sidebar .jj-extra-card .jj-seis-olhos-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; gap: 4px; }
+.dnd5e2.character .sidebar .jj-extra-card .jj-seis-olhos-option { position: relative; min-width: 0; }
+.dnd5e2.character .sidebar .jj-extra-card .jj-seis-olhos-option input {
+  display: block;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+}
+.dnd5e2.character .sidebar .jj-extra-card .jj-seis-olhos-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 5px;
+  border: 1px solid #4c415e;
+  border-radius: 2px;
+  background: #24202e;
+  color: #c7bcd5;
+  font-size: 11px;
+  line-height: 1.3;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.dnd5e2.character .sidebar .jj-extra-card .jj-seis-olhos-option input:checked ~ .jj-seis-olhos-btn { background: #433252; color: #f0e8fa; border-color: #a48abb; }
+.dnd5e2.character .sidebar .jj-extra-card .jj-seis-olhos-option input:focus-visible ~ .jj-seis-olhos-btn { outline: 2px solid #c5b2df; outline-offset: 2px; }
+.dnd5e2.character .sidebar .jj-extra-card .jj-seis-olhos-option input:disabled ~ .jj-seis-olhos-btn { opacity: .5; cursor: default; }
+.dnd5e2.character .sidebar .jj-extra-card .jj-seis-olhos-warning { padding: 0; margin: 7px 0 0; color: #c8a7b2; font-size: 9px; text-align: left; }
+@media (prefers-reduced-motion: reduce) {
+  .dnd5e2.character .sidebar .jj-extra-card button { transition: none; }
+}

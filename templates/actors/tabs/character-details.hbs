@@ -64,7 +64,7 @@
                 </ul>
             </filigree-box>
 
-            {{!-- Background --}}
+            {{!-- Creature type and power origin --}}
             <div class="pills-lg">
                 {{#with creatureType}}
                 <div class="pill-lg texture type" {{#if reference}}data-reference-tooltip="{{ reference }}"{{/if}}>
@@ -112,29 +112,6 @@
                 {{else if actor.isOwner}}
                 <div class="pill-lg empty roboto-upper" data-action="findItem" data-item-type="race">
                     {{ localize "DND5E.Species.Add" }}
-                </div>
-                {{/if}}
-                {{#if background}}
-                <div class="draggable pill-lg texture background item-tooltip" data-action="showDocument"
-                     data-item-id="{{ background.id }}" data-uuid="{{ background.uuid }}"
-                     aria-label="{{ localize (ifThen actor.isOwner DND5E.ItemEdit DND5E.ItemView) }}">
-                    {{#if background.img}}
-                    <img class="gold-icon" src="{{ background.img }}" alt="{{ background.name }}">
-                    {{/if}}
-                    <div class="name name-stacked">
-                        <span class="title">{{ background.name }}</span>
-                    </div>
-                    {{#if editable}}
-                    <button type="button" class="config-button unbutton" data-action="deleteDocument"
-                            data-tooltip="DND5E.ItemDelete" aria-label="{{ localize 'DND5E.ItemDelete' }}"
-                            data-tooltip-class data-tooltip-direction>
-                        <i class="fas fa-trash" inert></i>
-                    </button>
-                    {{/if}}
-                </div>
-                {{else if actor.isOwner}}
-                <div class="pill-lg empty roboto-upper" data-action="findItem" data-item-type="background">
-                    {{ localize "DND5E.BackgroundAdd" }}
                 </div>
                 {{/if}}
             </div>

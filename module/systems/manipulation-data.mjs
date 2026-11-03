@@ -137,7 +137,7 @@ export const MANIPULATION_ABILITIES = {
     label: "Energia Reversa",
     stage: "master",
     cost: 10,
-    description: "Gaste 1 PA para recuperar 1d4 PV. Máximo por rodada = dobro do bônus de proficiência em dados.",
+    description: "Reserva de até 30 PER. Gaste 1 PER para curar PV iguais ao seu nível, sem ação, até 3 PER por turno. Regenerar um membro custa 2 PER e exige consciência. Ao fim de um descanso longo ou após Fulgor Negro (até 10 PER), converta 3 PA de Energia Total em 1 PER. Sem PER, use uma ação bônus e 2 PA Gerados por d4 de cura, até o dobro da proficiência em dados.",
     techniques: ["Regeneração Constante", "Energia Reversa Avançada"],
     requires: { stage: "master", abilities: ["fluxoPerfeito", "fluxoConstante"] }
   },

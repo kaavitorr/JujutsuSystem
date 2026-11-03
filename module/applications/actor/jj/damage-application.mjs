@@ -10,6 +10,7 @@ import { aplicarCondicaoPorDano } from "../../../systems/condicoes-dano.mjs";
 import Ruleset from "../../../systems/ruleset.mjs";
 import { applyNumericResistances } from "../../../systems/legacy2-resistances.mjs";
 import { absorbShieldDamage } from "../../../systems/legacy2-shield.mjs";
+import { cursedBenefitRules1 } from "../../../systems/seres-amaldicoados-1.mjs";
 
 /**
  * Aplica dano a um único ator seguindo a ordem de absorção.
@@ -39,6 +40,21 @@ export async function applyDamageToActor(actor, amount, { damageTypes = [], dama
   }
   let restante = Math.max(0, Number(amount) || 0);
   let numericAdjustment = 0;
+  const cursedRules = cursedBenefitRules1(actor);
+  if ((cursedRules.soulKnowledge || cursedRules.destinedVessel) && typeof actor.calculateDamage === "function") {
+    const types = [...new Set((Array.isArray(damageTypes) ? damageTypes : [damageTypes]).filter(Boolean))];
+    const parts = damages?.map(damage => ({ type: damage.type, value: damage.value })) ?? [{ type: types[0], value: restante }];
+    if (types.includes("soul") || parts.some(part => part.type === "soul")) {
+      if ((!damages && types.length > 1) || parts.some(part => !Number.isFinite(part.value) || part.value < 0)
+        || Math.abs(parts.reduce((sum, part) => sum + part.value, 0) - restante) > 0.000001) {
+        ui.notifications.warn("Este card não informa o dano por tipo corretamente. Role o dano novamente para aplicar a resistência à Alma.");
+        return false;
+      }
+      const calculated = actor.calculateDamage(parts);
+      if (calculated === false) return false;
+      restante = Math.max(0, calculated.amount);
+    }
+  }
   if (Ruleset.isV2()) {
     const types = [...new Set((Array.isArray(damageTypes) ? damageTypes : [damageTypes]).filter(Boolean))];
     if (!damages && types.length > 1) {

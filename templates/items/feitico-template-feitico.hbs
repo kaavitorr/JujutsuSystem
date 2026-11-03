@@ -8,9 +8,10 @@
   <div class="feitico-slot-card {{#if (or slot.manifestacao slot.hasTecnicas)}}is-filled{{/if}}" data-feitico-slot="{{ slot.id }}">
 
     <div class="feitico-slot-label-row">
-      <span class="feitico-slot-label">{{ slot.label }}</span>
+      <span class="feitico-slot-label">{{ localize slot.label }}</span>
     </div>
 
+    {{#unless slot.techniquesOnly}}
     {{#if slot.manifestacao}}
     <div class="feitico-manif-row" data-item-id="{{ slot.manifestacao.id }}" draggable="true">
       <div class="feitico-manif-portrait">
@@ -66,9 +67,10 @@
       </button>
     </div>
     {{/if}}
+    {{/unless}}
 
     <div class="feitico-tecnicas-row feitico-tecnicas-split feitico-drop-zone" data-feitico-drop="tecnica">
-      <span class="feitico-tecnicas-label">{{ slot.tecnicasLabel }}</span>
+      <span class="feitico-tecnicas-label">{{ localize slot.tecnicasLabel }}</span>
 
       {{!-- Chip de técnica (partial inline). --}}
       {{#*inline "feiticoMoldeTecChip"}}
@@ -92,12 +94,17 @@
         </div>
       </div>
       {{else}}
-      <span class="feitico-tecnicas-empty-hint">Arraste uma técnica ou clique no +</span>
+      <span class="feitico-tecnicas-empty-hint">{{#if slot.techniquesOnly}}{{ localize "JUJUTSU.Feitico.Inherent.Empty" }}{{else}}Arraste uma técnica ou clique no +{{/if}}</span>
       {{/if}}
 
       <a class="feitico-tecnica-add-chip" data-action="feiticoCreateTecnica" data-slot="{{ slot.id }}"
-         data-tooltip="Criar técnica">
+         data-tooltip="{{#if slot.techniquesOnly}}{{ localize 'JUJUTSU.Feitico.Inherent.Create' }}{{else}}Criar técnica{{/if}}"
+         {{#if slot.techniquesOnly}}aria-label="{{ localize 'JUJUTSU.Feitico.Inherent.Create' }}"{{/if}}>
+        {{#if slot.techniquesOnly}}
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        {{else}}
         <i class="fas fa-plus" inert></i>
+        {{/if}}
       </a>
     </div>
 

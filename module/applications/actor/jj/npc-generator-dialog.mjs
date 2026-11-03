@@ -13,6 +13,11 @@ import { gerarNpc, ARQ_LABELS } from "../../../systems/npc-generator/npcGenerato
 import { ND_TABLE } from "../../../systems/npc-generator/nd-table.mjs";
 import { ESTILOS_HUMANO, GRAUS_CE, MANIPULACOES_LISTA } from "../../../systems/npc-generator/npcHumanoideCalibrado.mjs";
 import { ORIGENS_NPC } from "../../../systems/npc-generator/npcData.mjs";
+import { npcGeneratorProfiles, npcGeneratorProfile } from "./npc-generator-profiles.mjs";
+import { syncNpcProfileFeatures } from "../../../systems/legacy2-npc-features.mjs";
+import { syncNpcProfileEquipment } from "../../../systems/legacy2-npc-equipment.mjs";
+import { npcAttributeDistribution } from "../../../systems/legacy2-npc-profiles.mjs";
+import { npcGeneratorWeaponPicker, activateNpcGeneratorWeapons, prepareNpcGeneratorWeapons } from "./npc-generator-weapons.mjs";
 
 // Atributo do bot → atributo do dnd5e/sistema.
 const ABILITY_MAP = { forca: "str", agi: "dex", con: "con", int: "int", sab: "wis", pres: "cha" };
@@ -329,7 +334,30 @@ export async function openNpcGenerator() {
     ui.notifications.warn("Apenas o GM pode gerar NPCs.");
     return;
   }
-  if ( Ruleset.isV2() ) return openNpcGenerator2();
+  const version = await foundry.applications.api.DialogV2.wait({
+    window: { title: "Gerar NPC" },
+    content: `<div class="form-group stacked">
+      <label for="jj-npcgen-version">Versão do gerador</label>
+      <select id="jj-npcgen-version" name="version">
+        <option value="1.0"${!Ruleset.isV2() ? " selected" : ""}>1.0 — Modelo antigo</option>
+        <option value="2.0"${Ruleset.isV2() ? " selected" : ""}>2.0 — Taxonomias e Arquétipos</option>
+      </select>
+      <p class="hint">Escolha o modelo de criação do NPC.</p>
+    </div>`,
+    buttons: [
+      { action: "continue", label: "Continuar", default: true,
+        callback: (_event, button) => button.form.elements.version.value },
+      { action: "cancel", label: "Cancelar", callback: () => null }
+    ],
+    rejectClose: false
+  });
+  if (version === "1.0") return openNpcGenerator1();
+  if (version === "2.0") return openNpcGenerator2();
+}
+
+/** The classic generator remains available independently of the world's rules setting. */
+export async function openNpcGenerator1() {
+  if (!game.user.isGM) return;
 
   const opts = (pairs, sel) => pairs.map(([v, l]) => `<option value="${v}" ${v === sel ? "selected" : ""}>${l}</option>`).join("");
   const ndOptions  = ND_TABLE.map(r => `<option value="${r.ndNum}" ${r.ndNum === 5 ? "selected" : ""}>ND ${r.nd}</option>`).join("");
@@ -343,7 +371,7 @@ export async function openNpcGenerator() {
   const lblCss = "flex:0 0 150px;";
 
   const cfg = await foundry.applications.api.DialogV2.wait({
-    window: { title: "💀 Gerador de NPC" },
+    window: { title: "Gerador de NPC 1.0" },
     content: `
       <div style="padding:8px 0; font-size:13px; color:#ccc; line-height:1.6;">
         <div style="${rowCss}">
@@ -393,7 +421,7 @@ export async function openNpcGenerator() {
 
         <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
           <input type="checkbox" id="jj-npcgen-boss" style="flex:0 0 auto; width:auto;">
-          <span><strong>💀 Boss</strong> — mais poderoso (mais atributos, CR/ataque maiores, dano por rodada <strong>dobrado</strong>).</span>
+          <span><strong>Boss</strong> — mais poderoso (mais atributos, CR/ataque maiores, dano por rodada <strong>dobrado</strong>).</span>
         </label>
       </div>`,
     render: (event, dialog) => {
@@ -457,42 +485,74 @@ export async function openNpcGenerator() {
 
 // ── Botão na barra de Atores ─────────────────────────────────────────────────
 Hooks.on("renderActorDirectory", (app, html) => {
+  installNpcGeneratorButton(html);
+});
+
+/** Insert a separate, non-growing row before search without rebuilding native directory nodes. */
+export function installNpcGeneratorButton(html) {
   if ( !game.user.isGM ) return;
   const root = html instanceof HTMLElement ? html : html?.[0];
   if ( !root || root.querySelector(".jj-npc-gen-btn") ) return;
-  const header = root.querySelector(".header-actions") ?? root.querySelector(".directory-header");
+  const header = root.querySelector(".directory-header");
   if ( !header ) return;
+  const actions = header.querySelector(".header-actions");
+  const row = document.createElement("div");
+  row.className = "jj-npc-generator-actions";
   const btn = document.createElement("button");
   btn.type = "button";
   btn.className = "jj-npc-gen-btn";
-  btn.innerHTML = `<i class="fas fa-skull" inert></i> Gerar NPC`;
+  btn.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20v-4a8 8 0 1 1 8 0v4zM10 20v-3m4 3v-3"/><circle cx="9" cy="10" r="1.5"/><circle cx="15" cy="10" r="1.5"/><path d="m11 14 1-2 1 2"/></svg><span>Gerar NPC</span>`;
   btn.addEventListener("click", () => openNpcGenerator());
-  header.appendChild(btn);
-});
+  row.appendChild(btn);
+  if (actions) actions.insertAdjacentElement("afterend", row);
+  else header.prepend(row);
+}
 
 
 // ═══════════════════════ GERADOR 2.0 (estilo Crucible) ═══════════════════════
 
-const ARMAS_NATURAIS_2 = ["garra", "mordida", "foice", "tentaculo", "cauda", "chifre"];
-const ND_OPTIONS_2 = Array.from({ length: 20 }, (_, i) => i + 1);
+const ND_OPTIONS_2 = Array.from({ length: 30 }, (_, i) => i + 1);
 
 /**
- * Cria um NPC 2.0: Taxonomia + Arquétipo + ND derivam os atributos por
- * proporção; talentos entram como itens feat; armas naturais ficam em
- * legacy2.naturais (a categoria "natural" de arma já é Treinada).
+ * Cria um NPC 2.0 com cópias dos perfis, suas características por ND e seus equipamentos.
+ * Armas selecionadas são cópias independentes dos itens reais do catálogo.
  */
-export async function createNpc2({ nome, taxonomia, arquetipo, nd, categoria = "normal", armasNaturais = [], talentos = "" } = {}) {
-  const tax = CONFIG.JUJUTSU.taxonomias?.[taxonomia];
-  const arq = CONFIG.JUJUTSU.arquetipos?.[arquetipo];
-  if ( !tax || !arq ) return null;
+export async function createNpc2({ nome, taxonomia, arquetipo, nd, categoria = "normal", armas = [], talentos = "" } = {}) {
+  if (!game.user.isGM) return null;
+  const [tax, arq] = await Promise.all([
+    npcGeneratorProfile("taxonomy", taxonomia), npcGeneratorProfile("archetype", arquetipo)
+  ]);
+  nd = Number(nd);
+  if (!tax || !arq || !Number.isInteger(nd) || nd < 1 || nd > 30) {
+    ui.notifications.warn("Selecione uma Taxonomia, um Arquétipo e um ND válido (1 a 30).");
+    return null;
+  }
   categoria = npcClassificationKey(categoria);
   const classification = npcClassification({ system: { legacy2: { categoria } } });
+  let weapons;
+  try { weapons = await prepareNpcGeneratorWeapons(armas); }
+  catch (error) {
+    ui.notifications.warn(error.message);
+    return null;
+  }
 
-  const items = talentos.split(",").map(s => s.trim()).filter(Boolean).map(nomeT => ({
+  const items = [tax.data, arq.data, ...weapons].filter(Boolean).concat(talentos.split(",").map(s => s.trim()).filter(Boolean).map(nomeT => ({
     type: "feat",
     name: nomeT,
     img: "icons/svg/item-bag.svg"
-  }));
+  })));
+  const legacy2 = {
+    taxonomia: tax.key ?? null,
+    arquetipo: arq.key ?? null,
+    nd: String(nd),
+    categoria,
+    actions: { max: classification.actions, value: classification.actions },
+    armas: { natural: 1 }
+  };
+  // Author a usable snapshot too: the 1.0 world's preparation does not derive 2.0 profiles.
+  const values = npcAttributeDistribution({ type: "npc", items, system: { legacy2 } }).values;
+  const hp = Math.max(1, Math.round((10 * nd + 15 * values.con) * classification.hpMultiplier));
+  const energyMax = (tax.data?.system?.vidaEnergia ?? CONFIG.JUJUTSU.taxonomias?.[tax.key]?.vidaEnergia) ? hp : 30 * nd;
 
   let actor;
   try {
@@ -500,23 +560,20 @@ export async function createNpc2({ nome, taxonomia, arquetipo, nd, categoria = "
       name: nome?.trim() || `${arq.label} ${tax.label}`,
       type: "npc",
       system: {
-        legacy2: {
-          taxonomia,
-          arquetipo,
-          nd: String(nd),
-          categoria,
-          actions: { max: classification.actions, value: classification.actions },
-          armas: { natural: 1 },
-          naturais: {
-            armaduras: {},
-            armas: Object.fromEntries(ARMAS_NATURAIS_2.map(a => [a, armasNaturais.includes(a) ? 1 : 0]))
-          }
-        },
-        energy: (taxonomia === "espirito")
-          ? { total: Math.round(20 * nd * classification.hpMultiplier), generated: 0 }
-          : { total: 0, generated: 0 }
+        abilities: Object.fromEntries(Object.entries(values).map(([key, value]) => [key, { value }])),
+        attributes: { hp: { value: hp, max: hp } },
+        details: { cr: nd },
+        legacy2,
+        energy: { max: energyMax, total: energyMax, generated: 0 }
       },
       items
+    });
+    if (!actor) return null;
+    await syncNpcProfileFeatures(actor, { rulesetVersion: "2.0" });
+    await syncNpcProfileEquipment(actor, { rulesetVersion: "2.0" });
+    await actor.update({
+      "system.attributes.hp.value": actor.system.attributes.hp.max,
+      "system.energy.total": actor.system.energy.max
     });
   } catch ( err ) {
     console.error("JujutsuLegacy 2.0 | Erro ao criar NPC:", err);
@@ -529,22 +586,21 @@ export async function createNpc2({ nome, taxonomia, arquetipo, nd, categoria = "
 }
 
 /**
- * Diálogo do gerador 2.0: Taxonomia, Arquétipo, ND, armas naturais e
+ * Diálogo do gerador 2.0: Taxonomia, Arquétipo, ND, catálogo de armas e
  * talentos (lista separada por vírgula).
  */
 export async function openNpcGenerator2() {
-  const taxOptions = Object.entries(CONFIG.JUJUTSU.taxonomias ?? {})
-    .map(([id, t]) => `<option value="${id}">${t.label}</option>`).join("");
-  const arqOptions = Object.entries(CONFIG.JUJUTSU.arquetipos ?? {})
-    .map(([id, a]) => `<option value="${id}">${a.label}</option>`).join("");
+  if (!game.user.isGM) return;
+  const profiles = await npcGeneratorProfiles();
+  const escape = value => String(value ?? "").replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
+  const options = type => profiles[type].map(entry => `<option value="${escape(entry.value)}">${escape(entry.label)} (${escape(entry.group)})</option>`).join("");
+  const taxOptions = options("taxonomy"), arqOptions = options("archetype");
   const ndOptions = ND_OPTIONS_2.map(n => `<option value="${n}"${n === 1 ? " selected" : ""}>${n}</option>`).join("");
-  const naturaisChecks = ARMAS_NATURAIS_2.map(a =>
-    `<label style="display:inline-flex;align-items:center;gap:4px;margin:2px 8px 2px 0;">
-       <input type="checkbox" name="nat_${a}"> ${a}
-     </label>`).join("");
 
   const cfg = await foundry.applications.api.DialogV2.wait({
-    window: { title: "💀 Gerador de NPC 2.0" },
+    window: { title: "Gerador de NPC 2.0" },
+    classes: ["jj-npc-generator-dialog"],
+    position: { width: 620 },
     content: `
       <div style="padding:8px 0; font-size:13px; color:#ccc; line-height:1.6;">
         <div style="display:flex;gap:8px;margin-bottom:6px;">
@@ -552,8 +608,8 @@ export async function openNpcGenerator2() {
             <input type="text" name="nome" style="width:100%"></label>
         </div>
         <div style="display:flex;gap:8px;margin-bottom:6px;">
-          <label style="flex:1">Taxonomia:<select name="taxonomia" style="width:100%">${taxOptions}</select></label>
-          <label style="flex:1">Arquétipo:<select name="arquetipo" style="width:100%">${arqOptions}</select></label>
+          <label style="flex:1;min-width:0">Taxonomia:<select name="taxonomia" style="width:100%">${taxOptions}</select></label>
+          <label style="flex:1;min-width:0">Arquétipo:<select name="arquetipo" style="width:100%">${arqOptions}</select></label>
           <label style="flex:0 0 90px">ND:<select name="nd" style="width:100%">${ndOptions}</select></label>
         </div>
         <div style="display:flex;gap:8px;margin-bottom:6px;">
@@ -565,10 +621,11 @@ export async function openNpcGenerator2() {
               <option value="chefe">Chefe (×2 PV · 10 ações)</option>
             </select></label>
         </div>
-        <div style="margin-bottom:6px;"><label>Armas naturais:</label><br>${naturaisChecks}</div>
+        ${npcGeneratorWeaponPicker(profiles.weapon)}
         <div><label>Talentos (feat) — nomes separados por vírgula:
           <input type="text" name="talentos" style="width:100%" placeholder="Visão Amaldiçoada, Regeneração"></label></div>
       </div>`,
+    render: (_event, dialog) => activateNpcGeneratorWeapons(dialog.element),
     buttons: [
       {
         label: "Gerar", action: "ok", default: true,
@@ -580,7 +637,7 @@ export async function openNpcGenerator2() {
             arquetipo: f.arquetipo?.value,
             nd: Number(f.nd?.value ?? 1),
             categoria: f.categoria?.value ?? "normal",
-            armasNaturais: ARMAS_NATURAIS_2.filter(a => f[`nat_${a}`]?.checked),
+            armas: Array.from(button.form.querySelectorAll('input[name="npcWeapons"]:checked'), input => input.value),
             talentos: f.talentos?.value ?? ""
           };
         }

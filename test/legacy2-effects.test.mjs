@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 globalThis.Hooks ??= { on() {} };
-const { getFulgorSecundaria } = await import("../module/applications/actor/jj/fulgor-negro.mjs");
+const { getFulgorPrimaria, getFulgorSecundaria } = await import("../module/applications/actor/jj/fulgor-negro.mjs");
 
 const source = readFileSync(new URL("../module/applications/components/effects.mjs", import.meta.url), "utf8");
 const body = source.match(/async _onToggleExpand\(target, \{ effect \}=\{\}\) \{([\s\S]*?)\n  \}/)[1];
@@ -42,8 +42,8 @@ test("the 2.0 effect context changes presentation while retaining native columns
   const columns = [{ id: "detail", width: 150, template: "detail.hbs" }, { id: "controls", width: 70, template: "controls.hbs" }, { id: "extension", template: "module.hbs" }];
   const categories = () => ({ passive: { type: "passive", label: "Passive", columns, effects: [{ id: "real-owned" }] }, inactive: { type: "inactive", label: "Inactive", columns, effects: [] } });
   for (const v2 of [true, false]) {
-    const Sheet = new Function("Ruleset", "JJ_CONDITIONS", "getFulgorSecundaria", `return class extends class { async _prepareEffectsContext(context) { return context; } } { async _prepareEffectsContext(context, options) {${contextBody}} }`)(
-      { isV2: () => v2 }, [{ id: "jj-caido", label: "Caído" }], getFulgorSecundaria);
+    const Sheet = new Function("Ruleset", "JJ_CONDITIONS", "getFulgorSecundaria", "getFulgorPrimaria", `return class extends class { async _prepareEffectsContext(context) { return context; } } { async _prepareEffectsContext(context, options) {${contextBody}} }`)(
+      { isV2: () => v2 }, [{ id: "jj-caido", label: "Caído" }], getFulgorSecundaria, getFulgorPrimaria);
     const instance = new Sheet(); instance.actor = { statuses: new Set(["jj-caido"]),
       system: { manipulation: { abilities: { fulgorNegro: { unlocked: true } } } },
       getFlag: (scope, key) => ({ fulgorPrimaria: 18, fulgorSecundaria: 10, fulgorZona: true })[key] };

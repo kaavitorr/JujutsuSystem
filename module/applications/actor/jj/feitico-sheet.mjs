@@ -1,5 +1,7 @@
 import Ruleset from "../../../systems/ruleset.mjs";
 import { feiticoProgression2 } from "./legacy2-feitico.mjs";
+import { INHERENT_FEITICO_SLOT } from "../../../systems/feitico-inerente.mjs";
+import { setFeiticoAssociation, updateFeiticoAssociations } from "../../../systems/feitico-associations.mjs";
 
 /** The same Feitiço UI and document actions for player and NPC sheets. */
 export default function FeiticoSheetMixin(Base) {
@@ -49,7 +51,7 @@ export default function FeiticoSheetMixin(Base) {
       if (action.startsWith("feitico-") || action.startsWith("manip-")) {
         if (!this.isEditable || this.actor.limited || (this.actor.type === "npc" && !Ruleset.isV2())) return;
   // ── Aba Feitiço ──────────────────────────────────────────
-  if ( action === "feitico-roll" )             return this._onFeiticoRoll(target.dataset.itemId);
+  if ( action === "feitico-roll" )             return this._onFeiticoRoll(target.dataset.itemId, event);
   if ( action === "feitico-edit" )             return this._onFeiticoEdit(target.dataset.itemId);
   if ( action === "feitico-display-card" )     return this._onFeiticoDisplayCard(target.dataset.itemId);
   if ( action === "feitico-change-image" )     return this._onFeiticoChangeImage(target.dataset.itemId);
@@ -80,6 +82,7 @@ export default function FeiticoSheetMixin(Base) {
       { id: "m2",    label: "2ª Manifestação",      tecnicasLabel: "Técnicas da Manifestação" },
       { id: "m3",    label: "3ª Manifestação",      tecnicasLabel: "Técnicas da Manifestação" }
     ];
+    if (!Ruleset.isV2() && this.actor.type === "character") SLOTS.push(INHERENT_FEITICO_SLOT);
 
     // Graus de técnica (0 = Auxiliar, 1-9) — mesma escala já usada no item de spell (system.level).
     const maestria = this.actor.system.masteryLevel ?? 0;
@@ -211,6 +214,7 @@ export default function FeiticoSheetMixin(Base) {
     if ( Array.isArray(original) ) {
       context.itemCategories.spells = original.filter(s => {
         const flag = s.getFlag("jujutsu-system", "feitico") ?? {};
+        if (Ruleset.isV2() && flag.parent === INHERENT_FEITICO_SLOT.id) return true;
         return !flag.slot && !flag.parent;
       });
     }
@@ -219,7 +223,7 @@ export default function FeiticoSheetMixin(Base) {
     return result;
   }
 
-  async _onFeiticoRoll(itemId) {
+  async _onFeiticoRoll(itemId, event) {
     const item = this.actor.items.get(itemId);
     if ( !item ) return;
     // Bloqueio: requisitos da própria manifestação ou do pai (se for técnica)
@@ -228,7 +232,7 @@ export default function FeiticoSheetMixin(Base) {
       ui.notifications.warn(`"${item.name}" está bloqueada — ${blocked}`);
       return;
     }
-    return item.use({}, { event: window.event });
+    return item.use({ event });
   }
 
   /**
@@ -287,14 +291,14 @@ export default function FeiticoSheetMixin(Base) {
       i.type === "spell" && i.getFlag("jujutsu-system", "feitico.slot") === slotId
     );
     if ( !target ) return;
-    await target.unsetFlag("jujutsu-system", "feitico");
+    await updateFeiticoAssociations(this.actor, [{ item: target }]);
     ui.notifications.info(`"${target.name}" removida do slot.`);
   }
 
   async _onFeiticoUnassignTecnica(itemId) {
     const item = this.actor.items.get(itemId);
     if ( !item ) return;
-    await item.unsetFlag("jujutsu-system", "feitico");
+    await updateFeiticoAssociations(this.actor, [{ item }]);
     ui.notifications.info(`"${item.name}" removida da lista de técnicas.`);
   }
 
@@ -322,10 +326,11 @@ export default function FeiticoSheetMixin(Base) {
   }
 
   async _onFeiticoCreateTecnica(slotId) {
+    const inherent = slotId === INHERENT_FEITICO_SLOT.id;
     const created = await Item.implementation.create([{
-      name: "Nova Técnica",
+      name: inherent ? game.i18n.localize("JUJUTSU.Feitico.Inherent.New") : "Nova Técnica",
       type: "spell",
-      system: { level: 0 },
+      system: { level: 0, ...(inherent ? { method: "atwill" } : {}) },
       flags: { "jujutsu-system": { feitico: { parent: slotId } } }
     }], { parent: this.actor });
     const item = Array.isArray(created) ? created[0] : created;
@@ -543,20 +548,26 @@ export default function FeiticoSheetMixin(Base) {
     });
     if ( !confirmed ) return;
 
-    // Slots já ocupados no ator: precisam ser liberados antes de instalar o molde,
-    // senão dois itens ficam com a mesma flag feitico.slot e um deles some da ficha.
+    // Preserve previous Items, but keep their techniques out of the incoming manifestation.
     const incomingSlots = new Set(itemsData.map(d => d.flags?.["jujutsu-system"]?.feitico?.slot).filter(Boolean));
-    for ( const slotId of incomingSlots ) {
-      const previous = this.actor.items.find(i =>
-        (i.type === "spell") && (i.getFlag("jujutsu-system", "feitico.slot") === slotId)
-      );
-      if ( previous ) await previous.unsetFlag("jujutsu-system", "feitico");
-    }
+    const previous = this.actor.items.filter(i => i.type === "spell" && (
+      incomingSlots.has(i.getFlag("jujutsu-system", "feitico.slot"))
+      || incomingSlots.has(i.getFlag("jujutsu-system", "feitico.parent"))
+    ));
 
+    let created = [];
     try {
-      await Item.implementation.create(itemsData, { parent: this.actor });
+      created = await Item.implementation.create(itemsData, { parent: this.actor });
+      created = Array.isArray(created) ? created : created ? [created] : [];
+      if (created.length !== itemsData.length) throw new Error("A criação dos itens do Molde foi cancelada.");
+      await updateFeiticoAssociations(this.actor, previous.map(item => ({ item })));
       ui.notifications.info(`Feitiço instalado: ${itemsData.length} item(ns) adicionado(s).`);
+      return created;
     } catch ( err ) {
+      if (created.length) {
+        try { await this.actor.deleteEmbeddedDocuments("Item", created.map(item => item.id)); }
+        catch (cleanupError) { console.error("Não foi possível remover os itens da instalação incompleta.", cleanupError); }
+      }
       console.error(err);
       ui.notifications.error("Não foi possível instalar o Molde de Feitiço.");
     }
@@ -658,41 +669,42 @@ export default function FeiticoSheetMixin(Base) {
     if ( !slotId ) return;
 
     let owned = item.parent === this.actor ? item : null;
+    const external = !owned;
 
-    // Item externo: criar no actor primeiro
-    if ( !owned ) {
-      const itemData = item.toObject();
-      delete itemData._id;
-      if ( dropType === "manif" ) {
-        foundry.utils.setProperty(itemData, "system.method", "atwill");
+    try {
+      if ( !owned ) {
+        const itemData = item.toObject();
+        delete itemData._id;
+        if (itemData.flags?.["jujutsu-system"]) delete itemData.flags["jujutsu-system"].feiticoTemplate;
+        setFeiticoAssociation(itemData, dropType === "manif" ? { slot: slotId } : { parent: slotId });
+        if (dropType === "manif") foundry.utils.setProperty(itemData, "system.method", "atwill");
+        const created = await Item.implementation.create(itemData, { parent: this.actor });
+        owned = Array.isArray(created) ? created[0] : created;
+        if ( !owned ) return;
       }
-      const created = await Item.implementation.create(itemData, { parent: this.actor });
-      owned = Array.isArray(created) ? created[0] : created;
-      if ( !owned ) return;
-    }
 
-    // Limpar flag anterior antes de setar a nova
-    await owned.unsetFlag("jujutsu-system", "feitico");
-
-    if ( dropType === "manif" ) {
-      // Se outra manifestação ocupava esse slot, desocupa
-      const previous = this.actor.items.find(i =>
-        (i !== owned) && (i.type === "spell") &&
-        (i.getFlag("jujutsu-system", "feitico.slot") === slotId)
-      );
-      if ( previous ) await previous.unsetFlag("jujutsu-system", "feitico");
-      await owned.setFlag("jujutsu-system", "feitico", { slot: slotId });
-      // Promover método para "atwill" se ainda não for
-      if ( owned.system?.method !== "atwill" ) {
-        await owned.update({ "system.method": "atwill" });
+      const assignments = [];
+      if (dropType === "manif") {
+        const previous = this.actor.items.filter(i => i !== owned && i.type === "spell"
+          && i.getFlag("jujutsu-system", "feitico.slot") === slotId);
+        assignments.push(...previous.map(item => ({ item })));
+        assignments.push({ item: owned, slot: slotId, method: "atwill" });
+      } else {
+        assignments.push({ item: owned, parent: slotId });
       }
-      ui.notifications.info(`"${owned.name}" atribuída ao slot ${slotId}.`);
-    } else {
-      await owned.setFlag("jujutsu-system", "feitico", { parent: slotId });
-      ui.notifications.info(`"${owned.name}" adicionada como técnica de ${slotId}.`);
+      await updateFeiticoAssociations(this.actor, assignments);
+      ui.notifications.info(dropType === "manif"
+        ? `"${owned.name}" atribuída ao slot ${slotId}.`
+        : `"${owned.name}" adicionada como técnica de ${slotId}.`);
+      return owned;
+    } catch (error) {
+      if (external && owned) {
+        try { await this.actor.deleteEmbeddedDocuments("Item", [owned.id]); }
+        catch (cleanupError) { console.error("Não foi possível remover a cópia incompleta.", cleanupError); }
+      }
+      console.error(error);
+      ui.notifications.error("Não foi possível atribuir a técnica ao Feitiço.");
     }
-
-    return owned;
   }
 
 

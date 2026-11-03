@@ -467,134 +467,106 @@
             <li class="drop roboto-upper">{{ localize "DND5E.FavoriteDrop" }}</li>
         </ul>
 
-        {{!-- Explosão Defensiva + Energia Reversa — layout adaptativo --}}
+        <div class="jj-sidebar-extras">
         {{#if actor.system.manipulation.abilities.explosaoDefensiva.unlocked}}
-        <div class="jj-habilidades-row
-          {{#if actor.system.manipulation.abilities.energiaReversa.unlocked}}jj-habilidades-duo{{/if}}">
-
-          {{!-- Explosão Defensiva --}}
-          <filigree-box class="jj-expdef-box" id="jj-expdef-sidebar-{{actor.id}}">
-            <h3 class="jj-expdef-header">
-              <i class="fas fa-shield-halved" inert></i>
-              <span>Explosão Defensiva</span>
-            </h3>
+          <section class="jj-extra-card jj-expdef-box" id="jj-expdef-sidebar-{{actor.id}}" aria-label="Explosão Defensiva">
+            <header class="jj-extra-heading jj-expdef-header">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6l8-3Z"/><path d="M12 7v10m-4-5h8"/></svg>
+              <h3>Explosão Defensiva</h3>
+            </header>
             <div class="jj-expdef-btn-wrap">
               <button type="button" class="jj-expdef-trigger-btn" data-action="jj-expdef-trigger"
                       data-actor-id="{{ actor.id }}"
-                      data-tooltip="Gastar PA para reduzir o próximo dano recebido">
-                <i class="fas fa-shield-halved" inert></i>
-                <span>Redução</span>
+                       data-tooltip="Gastar PA para reduzir o próximo dano recebido" {{#unless actor.isOwner}}disabled{{/unless}}>
+                <span>Preparar defesa</span>
               </button>
             </div>
-          </filigree-box>
-
-          {{!-- Energia Reversa — só aparece se desbloqueada --}}
-          {{#if actor.system.manipulation.abilities.energiaReversa.unlocked}}
-          <filigree-box class="jj-enrev-box" id="jj-enrev-sidebar-{{actor.id}}">
-            <h3 class="jj-enrev-header">
-              <i class="fas fa-heart-pulse" inert></i>
-              <span>Energia Reversa</span>
-            </h3>
-            <div class="jj-expdef-btn-wrap">
-              <button type="button" class="jj-enrev-trigger-btn" data-action="jj-enrev-trigger"
-                      data-actor-id="{{ actor.id }}"
-                      data-tooltip="Gastar PA para se curar (1d4 PV por PA)">
-                <i class="fas fa-heart-pulse" inert></i>
-                <span>Curar</span>
-              </button>
-            </div>
-          </filigree-box>
-          {{/if}}
-
-        </div>
+          </section>
         {{/if}}
+
+        {{> "systems/jujutsu-system/templates/actors/parts/energia-reversa-1.hbs" }}
 
         {{!-- Fulgor Negro — aparece se habilidade desbloqueada --}}
         {{#if fulgorNegro}}
-        <filigree-box class="jj-fulgor-box">
-            <h3 class="jj-fulgor-header">
-                <i class="fas fa-bolt" inert></i>
-                <span>Fulgor Negro</span>
-            </h3>
+        <section class="jj-extra-card jj-fulgor-box" aria-label="Fulgor Negro">
+            <header class="jj-extra-heading jj-fulgor-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m13 2-9 12h7l-1 8 10-13h-8l1-7Z"/></svg>
+                <h3>Fulgor Negro</h3>
+            </header>
             <div class="jj-fulgor-options">
-                <div class="jj-fulgor-option">
-                    <i class="fas fa-crosshairs" inert></i>
+                <label class="jj-fulgor-option">
                     <span class="jj-fulgor-option-lbl">Principal</span>
                     <input type="number"
-                        name="flags.jujutsu-system.fulgorPrimaria"
+                        data-fulgor-primaria
                         value="{{ fulgorPrimaria }}"
-                        min="1" max="20" />
-                </div>
-                <div class="jj-fulgor-option">
-                    <i class="fas fa-dice-d20" inert></i>
+                        min="1" max="20" {{#unless actor.isOwner}}disabled{{/unless}} />
+                </label>
+                <label class="jj-fulgor-option">
                     <span class="jj-fulgor-option-lbl">Secundária</span>
                     <input type="number"
                         name="flags.jujutsu-system.fulgorSecundaria"
                         value="{{ fulgorSecundaria }}"
-                        min="1" max="20" />
-                </div>
+                        min="1" max="20" {{#unless actor.isOwner}}disabled{{/unless}} />
+                </label>
             </div>
             <div class="jj-fulgor-zona-wrap">
                 <button type="button"
                     class="jj-fulgor-zona-btn {{#if fulgorZona}}active{{/if}}"
-                    data-action="jj-fulgor-zona">
-                    <i class="fas fa-eye" inert></i>
-                    <span>{{#if fulgorZona}}Desativar Zona{{else}}Ativar Zona{{/if}}</span>
+                    data-action="jj-fulgor-zona" aria-pressed="{{fulgorZona}}" {{#unless actor.isOwner}}disabled{{/unless}}>
+                    <span data-fulgor-zone-label>{{#if fulgorZona}}Desativar Zona{{else}}Ativar Zona{{/if}}</span>
                 </button>
             </div>
-        </filigree-box>
+        </section>
         {{/if}}
 
         {{!-- Seis Olhos — aparece se o item Seis Olhos estiver na ficha --}}
         {{#if seisOlhos}}
-        <filigree-box class="jj-seis-olhos-box">
-            <h3 class="jj-seis-olhos-header">
-                <i class="fas fa-eye" inert></i>
-                <span>Seis Olhos</span>
-            </h3>
+        <section class="jj-extra-card jj-seis-olhos-box" aria-label="Seis Olhos">
+            <header class="jj-extra-heading jj-seis-olhos-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+                <h3>Seis Olhos</h3>
+            </header>
             <div class="jj-seis-olhos-options">
                 <label class="jj-seis-olhos-option {{#if (eq seisOlhosMode 'sealed')}}active{{/if}}">
                     <input type="radio" name="flags.jujutsu-system.seisOlhosMode" value="sealed"
-                           {{#if (eq seisOlhosMode 'sealed')}}checked{{/if}}>
+                           {{#if (eq seisOlhosMode 'sealed')}}checked{{/if}} {{#unless actor.isOwner}}disabled{{/unless}}>
                     <div class="jj-seis-olhos-btn">
-                        <i class="fas fa-eye-slash" inert></i>
-                        <span>Selado</span>
+                        <span>Vendado</span>
                     </div>
                 </label>
                 <label class="jj-seis-olhos-option {{#if (eq seisOlhosMode 'full')}}active{{/if}}">
                     <input type="radio" name="flags.jujutsu-system.seisOlhosMode" value="full"
-                           {{#if (eq seisOlhosMode 'full')}}checked{{/if}}>
+                           {{#if (eq seisOlhosMode 'full')}}checked{{/if}} {{#unless actor.isOwner}}disabled{{/unless}}>
                     <div class="jj-seis-olhos-btn">
-                        <i class="fas fa-eye" inert></i>
-                        <span>Poder Completo</span>
+                        <span>Completo</span>
                     </div>
                 </label>
             </div>
             {{#if (eq seisOlhosMode 'full')}}
             <div class="jj-seis-olhos-warning">
-                <i class="fas fa-skull" inert></i> 2d8 dano psíquico no início do turno
+                2d8 de dano psíquico no início do turno
             </div>
             {{/if}}
-        </filigree-box>
+        </section>
         {{/if}}
 
         {{!-- Expansão de Domínio (Maestria 7) — aparece com Domínio Incompleto + Barreira Vazia --}}
         {{#if showExpansaoDominio}}
-        <filigree-box class="jj-dominio-box">
-            <h3 class="jj-dominio-header">
-                <i class="fas fa-circle-nodes" inert></i>
-                <span>Expansão de Domínio</span>
-            </h3>
+        <section class="jj-extra-card jj-dominio-box" aria-label="Expansão de Domínio">
+            <header class="jj-extra-heading jj-dominio-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3"/></svg>
+                <h3>Expansão de Domínio</h3>
+            </header>
             <div class="jj-dominio-btn-wrap">
                 <button type="button" class="jj-dominio-trigger-btn {{#if dominioExpandido}}expandido{{/if}}"
-                        data-action="jj-expansao-dominio"
+                        data-action="jj-expansao-dominio" {{#unless actor.isOwner}}disabled{{/unless}}
                         data-tooltip="{{#if dominioExpandido}}Expandir o domínio (1×/combate). Botão direito: configurar técnica/GIF.{{else}}Tentar expandir o domínio (1d20, 20 natural). 1×/combate. Botão direito: configurar.{{/if}}">
-                    <i class="fas fa-circle-nodes" inert></i>
-                    <span>{{#if dominioExpandido}}Expandir{{else}}Tentar Expandir{{/if}}</span>
+                    <span>{{#if dominioExpandido}}Expandir{{else}}Tentar expandir{{/if}}</span>
                 </button>
             </div>
-        </filigree-box>
+        </section>
         {{/if}}
+        </div>
 
     </div>
 </div>

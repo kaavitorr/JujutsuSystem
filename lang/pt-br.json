@@ -1,0 +1,123 @@
+{
+  "JUJUTSU": {
+    "MasteryPoints": "Pontos de Maestria (PT Investido)",
+    "Feitico": {
+      "SlotEmpty": "Arraste uma manifestação aqui",
+      "Inherent": {
+        "Label": "Feitiço Inerente",
+        "Techniques": "Técnicas do Feitiço Inerente",
+        "Empty": "Arraste um feitiço inerente aqui ou use + para criar.",
+        "Create": "Criar Feitiço Inerente",
+        "New": "Novo Feitiço Inerente"
+      },
+      "Label": "Feitiço",
+      "Tab": "Feitiço"
+    },
+    "NpcProfile": {
+      "Sheet": "Perfil de NPC",
+      "Scale": "Escala de Atributos"
+    },
+    "Trainings": {
+      "Tab": "Treinamentos",
+      "Label": "Treinamentos"
+    },
+    "Manipulation": {
+      "Tab": "Manipulação",
+      "Abilities": "Habilidades de Manipulação",
+      "PointsInvested": "PM Investido",
+      "Label": "Manipulação"
+    },
+    "ArmorPoints": {
+      "Label": "Pontos de Armadura",
+      "Current": "Pontos de Armadura (Atual)"
+    },
+    "Property": {
+      "Intuitiva": "Intuitiva",
+      "Descomunal": "Descomunal",
+      "Envolvente": "Envolvente"
+    },
+    "EnergyDice": {
+      "Label": "Dados de Energia",
+      "Denomination": "Tipo de Dado de Energia",
+      "Bonus": "Bônus de Dados de Energia",
+      "Max": "Dados de Energia (Máximo)",
+      "Current": "Dados de Energia (Atual)",
+      "Config": "Configurar Dados de Energia"
+    },
+    "EnergyAbilities": "Habilidades de Energia",
+    "ConstantCost": {
+      "Concentration": "Concentração (2 PA por turno)",
+      "Pool": "Sai de qual reserva",
+      "Value": "Custo Constante por Turno"
+    },
+    "HealLimit": {
+      "Formula": "Limite Total de Cura",
+      "Label": "Limite de Cura"
+    },
+    "CurseResources": "Recursos de Maldição",
+    "TrainingPoints": "Pontos de Treinamento",
+    "CursePoints": "Pontos de Maldição",
+    "LostTrainingPoints": "Pontos de Treinamento Perdidos",
+    "NarratorTrainingPoints": "Pontos de Treinamento Concedidos pelo Narrador",
+    "SpentTrainingPoints": "Pontos de Treinamento Gastos",
+    "IntensiveTraining": {
+      "Label": "Treinamento Intensivo",
+      "CursePoints": "Treinamento Intensivo: Pontos de Maldição",
+      "GeneratedEnergy": "Treinamento Intensivo: PA Gerado",
+      "MaxEnergy": "Treinamento Intensivo: PA Máximo"
+    },
+    "Energy": {
+      "Generation": "Geração de Energia",
+      "BonusFlat": "Bônus Fixo",
+      "TurnMultiplier": "Multiplicador por Turno",
+      "BaseMultiplier": "Multiplicador Base",
+      "Bonuses": "Bônus de PA",
+      "BonusGenerated": "Bônus de PA Gerado",
+      "BonusTemp": "Bônus Temporário de PA",
+      "BonusLevel": "Bônus de PA (por Nível)",
+      "BonusOverall": "Bônus de PA (Geral)",
+      "Generated": "PA Gerado",
+      "Total": "PA Total",
+      "Max": "PA Máximo",
+      "Label": "Energia Amaldiçoada",
+      "Config": "Configurar Energia Amaldiçoada",
+      "RestrictionQuarter": "Perda de um Quarto",
+      "RestrictionHalf": "Perda de Metade",
+      "RestrictionFlat": "Perda Fixa de Energia",
+      "Restrictions": "Restrições de Energia"
+    },
+    "2": {
+      "Legacy2": "Jujutsu Legacy 2.0",
+      "Settings": {
+        "RulesetVersion": {
+          "Name": "Versão das Regras",
+          "Hint": "Jujutsu Legacy 1.0 mantém as regras clássicas (d20 com modificadores). A 2.0 usa atributos de 1 a 12, escada de proficiência (4 bolinhas) e vantagens empilháveis ±6. Requer recarregar o mundo.",
+          "V1": "1.0 — Clássica (d20 + modificadores)",
+          "V2": "2.0 — Nova (atributos 1-12, escada e vantagens)"
+        }
+      },
+      "Estilo": {
+        "Label": "Estilo de Combate",
+        "Hint": "Define a Vida Base, a Energia Base e o atributo principal da Classe de Resistência.",
+        "VidaBase": "Vida Base",
+        "EnergiaBase": "Energia Base",
+        "AtributoPrincipal": "Atributo Principal"
+      },
+      "Rank": {
+        "0": "Destreinado",
+        "1": "Treinado",
+        "2": "Proficiente",
+        "3": "Especialista",
+        "4": "Mestre"
+      },
+      "Pontos": {
+        "Label": "Pontos de Treino",
+        "Disponiveis": "{available} disponíveis de {total}"
+      },
+      "Vantagens": {
+        "Label": "Vantagens",
+        "Desvantagens": "Desvantagens"
+      }
+    }
+  }
+}

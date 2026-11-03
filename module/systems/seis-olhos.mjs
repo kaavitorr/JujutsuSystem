@@ -1,19 +1,18 @@
+import { cursedSixEyesOwned1 } from "./seres-amaldicoados-1.mjs";
+
 /**
  * ── SEIS OLHOS (2.0) — funções puras ────────────────────────────────────────
  * Estado na flag flags.jujutsu-system.seisOlhosMode: "full" (Completo) ou
  * "sealed" (Vendado, também o padrão de fichas antigas). Detectado pelo IDENTIFICADOR
  * "seis-olhos" em uma característica (nome "Seis Olhos" como fallback).
- * Módulo sem imports — seguro para qualquer cadeia (character, attack-data,
+ * Módulo de regras — seguro para qualquer cadeia (character, attack-data,
  * acoes-combate, native-cards). A camada interativa vive em
  * applications/actor/jj/seis-olhos.mjs.
  */
 
-const IDENTIFICADOR = "seis-olhos";
-
 /** A ficha tem a característica dos Seis Olhos? */
 export function temSeisOlhos(actor) {
-  return (actor?.itemTypes?.feat ?? []).some(f =>
-    f.system?.identifier === IDENTIFICADOR || f.name === "Seis Olhos");
+  return cursedSixEyesOwned1(actor);
 }
 
 /** With the feature, only full or sealed exists; an unset or obsolete flag means sealed. */

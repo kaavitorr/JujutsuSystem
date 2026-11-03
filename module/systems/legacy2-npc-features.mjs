@@ -15,8 +15,9 @@ export function npcFeatureRollData(actor, principal) {
 }
 
 /** Grant genuine feature Items at their acquisition ND, without touching manual features. */
-export async function syncNpcProfileFeatures(actor, { resolve = globalThis.fromUuid } = {}) {
-  if (actor?.type !== "npc" || !actor.isOwner || game.settings.get("jujutsu-system", "rulesetVersion") !== "2.0") return false;
+export async function syncNpcProfileFeatures(actor, { resolve = globalThis.fromUuid,
+  rulesetVersion = game.settings.get("jujutsu-system", "rulesetVersion") } = {}) {
+  if (actor?.type !== "npc" || !actor.isOwner || rulesetVersion !== "2.0") return false;
   const pending = (queues.get(actor) ?? Promise.resolve()).catch(() => {}).then(async () => {
     const nd = npcNd(actor.system.legacy2?.nd), wanted = new Set();
     for (const type of ["taxonomy", "archetype"]) {

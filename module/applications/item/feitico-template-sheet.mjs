@@ -1,5 +1,8 @@
 import ItemSheet5e from "./item-sheet.mjs";
 import { ensureFeiticoPack } from "../../data/item/feitico-template.mjs";
+import Ruleset from "../../systems/ruleset.mjs";
+import { INHERENT_FEITICO_SLOT } from "../../systems/feitico-inerente.mjs";
+import { setFeiticoAssociation } from "../../systems/feitico-associations.mjs";
 
 const SLOTS = [
   { id: "inata", label: "Reversões de Feitiço", tecnicasLabel: "Técnicas de Reversão" },
@@ -82,7 +85,11 @@ export default class FeiticoTemplateSheet extends ItemSheet5e {
 
     const items = Array.from(await this.item.system.contents);
 
-    const slots = SLOTS.map(def => {
+    const definitions = [...SLOTS];
+    if (!Ruleset.isV2() || items.some(item => item.getFlag("jujutsu-system", "feitico.parent") === INHERENT_FEITICO_SLOT.id)) {
+      definitions.push(INHERENT_FEITICO_SLOT);
+    }
+    const slots = definitions.map(def => {
       const manifestacao = items.find(i => i.getFlag("jujutsu-system", "feitico.slot") === def.id) ?? null;
       const tecnicas = items
         .filter(i => (i.getFlag("jujutsu-system", "feitico.parent") === def.id) && (i !== manifestacao))
@@ -204,13 +211,14 @@ export default class FeiticoTemplateSheet extends ItemSheet5e {
 
   static async #onFeiticoCreateTecnica(event, target) {
     const slotId = target.dataset.slot;
+    const inherent = slotId === INHERENT_FEITICO_SLOT.id;
     const folder = await this.item.system.ensureFolder();
     const pack = await ensureFeiticoPack();
     const created = await Item.implementation.create([{
-      name: "Nova Técnica",
+      name: inherent ? game.i18n.localize("JUJUTSU.Feitico.Inherent.New") : "Nova Técnica",
       type: "spell",
       folder: folder?.id,
-      system: { level: 0 },
+      system: { level: 0, ...(inherent ? { method: "atwill" } : {}) },
       flags: { "jujutsu-system": { feiticoTemplate: this.item.id, feitico: { parent: slotId } } }
     }], { pack: pack.metadata.id });
     const item = Array.isArray(created) ? created[0] : created;
@@ -311,18 +319,30 @@ export default class FeiticoTemplateSheet extends ItemSheet5e {
     itemData.folder = folder?.id;
     foundry.utils.setProperty(itemData, "flags.jujutsu-system.feiticoTemplate", this.item.id);
 
+    let existing;
     if ( feiticoTarget.dataset.feiticoDrop === "manif" ) {
       foundry.utils.setProperty(itemData, "system.method", "atwill");
-      foundry.utils.setProperty(itemData, "flags.jujutsu-system.feitico", { slot: slotId });
+      setFeiticoAssociation(itemData, { slot: slotId });
 
       const items = await this.item.system.contents;
-      const existing = items.find(i => i.getFlag("jujutsu-system", "feitico.slot") === slotId);
-      if ( existing ) await existing.delete();
+      existing = items.find(i => i.getFlag("jujutsu-system", "feitico.slot") === slotId);
     } else {
-      foundry.utils.setProperty(itemData, "flags.jujutsu-system.feitico", { parent: slotId });
+      setFeiticoAssociation(itemData, { parent: slotId });
     }
 
-    await Item.implementation.create([itemData], { pack: pack.metadata.id });
+    let created;
+    try {
+      [created] = await Item.implementation.create([itemData], { pack: pack.metadata.id });
+      if (!created) throw new Error("A criação da técnica foi cancelada.");
+      if (existing && !(await existing.delete())) throw new Error("A substituição da manifestação foi cancelada.");
+    } catch (error) {
+      if (created) {
+        try { await created.delete(); }
+        catch (cleanupError) { console.error("Não foi possível remover a cópia incompleta do Molde.", cleanupError); }
+      }
+      console.error(error);
+      ui.notifications.error("Não foi possível adicionar a técnica ao Molde de Feitiço.");
+    }
     this.render();
   }
 }

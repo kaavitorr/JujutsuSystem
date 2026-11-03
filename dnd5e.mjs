@@ -40,6 +40,7 @@ import { registerNpcFeatureHooks } from "./module/systems/legacy2-npc-features.m
 import { registerEncyclopediaDescriptionHooks } from "./module/systems/legacy2-encyclopedia-descriptions.mjs";
 import { registerCompendiumIconHooks } from "./module/systems/legacy2-compendium-icons.mjs";
 import { registerFlawEffectHooks } from "./module/systems/defeitos-active-effects.mjs";
+import { registerCursedBenefitHooks1 } from "./module/systems/seres-amaldicoados-1-hooks.mjs";
 import { registerNpcEquipmentMigration } from "./module/systems/npc-equipment-migration.mjs";
 import { registerNpcEquipmentCombat } from "./module/systems/npc-equipment-combat.mjs";
 import { registerChannelingTechniques } from "./module/systems/legacy2-channeling-techniques.mjs";
@@ -51,6 +52,7 @@ registerNpcFeatureHooks();
 registerEncyclopediaDescriptionHooks();
 registerCompendiumIconHooks();
 registerFlawEffectHooks();
+registerCursedBenefitHooks1();
 registerNpcEquipmentMigration();
 registerNpcEquipmentCombat();
 registerChannelingTechniques();

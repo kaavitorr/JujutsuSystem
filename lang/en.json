@@ -7274,56 +7274,8 @@
   "SOURCE.BOOK.SRD51": "Documento de Referência do Sistema 5.1",
   "SOURCE.BOOK.SRD52": "Documento de Referência do Sistema 5.2",
   "SIDEBAR.SortModePriority": "Ordenar por prioridade",
-  "JUJUTSU.MasteryPoints": "Pontos de Maestria (PT Investido)",
-  "JUJUTSU.Feitico.SlotEmpty": "Arraste uma manifestação aqui",
-  "JUJUTSU.Feitico.Label": "Feitiço",
-  "JUJUTSU.NpcProfile.Sheet": "Perfil de NPC",
-  "JUJUTSU.NpcProfile.Scale": "Escala de Atributos",
-  "JUJUTSU.Feitico.Tab": "Feitiço",
-  "JUJUTSU.Trainings.Tab": "Treinamentos",
-  "JUJUTSU.Trainings.Label": "Treinamentos",
-  "JUJUTSU.Manipulation.Tab": "Manipulação",
-  "JUJUTSU.Manipulation.Abilities": "Habilidades de Manipulação",
-  "JUJUTSU.Manipulation.PointsInvested": "PM Investido",
-  "JUJUTSU.Manipulation.Label": "Manipulação",
-  "JUJUTSU.ArmorPoints.Label": "Pontos de Armadura",
-  "JUJUTSU.ArmorPoints.Current": "Pontos de Armadura (Atual)",
-  "JUJUTSU.Property.Intuitiva": "Intuitiva",
-  "JUJUTSU.Property.Descomunal": "Descomunal",
-  "JUJUTSU.Property.Envolvente": "Envolvente",
-  "JUJUTSU.EnergyDice.Label": "Dados de Energia",
-  "JUJUTSU.EnergyDice.Denomination": "Tipo de Dado de Energia",
-  "JUJUTSU.EnergyDice.Bonus": "Bônus de Dados de Energia",
-  "JUJUTSU.EnergyDice.Max": "Dados de Energia (Máximo)",
-  "JUJUTSU.EnergyDice.Current": "Dados de Energia (Atual)",
-  "JUJUTSU.EnergyAbilities": "Habilidades de Energia",
-  "JUJUTSU.ConstantCost.Concentration": "Concentração (2 PA por turno)",
-  "JUJUTSU.ConstantCost.Pool": "Sai de qual reserva",
-  "JUJUTSU.ConstantCost.Value": "Custo Constante por Turno",
-  "JUJUTSU.HealLimit.Formula": "Limite Total de Cura",
-  "JUJUTSU.HealLimit.Label": "Limite de Cura",
-  "JUJUTSU.CurseResources": "Recursos de Maldição",
-  "JUJUTSU.TrainingPoints": "Pontos de Treinamento",
-  "JUJUTSU.CursePoints": "Pontos de Maldição",
-  "JUJUTSU.IntensiveTraining.Label": "Treinamento Intensivo",
-  "JUJUTSU.IntensiveTraining.CursePoints": "Treinamento Intensivo: Pontos de Maldição",
-  "JUJUTSU.IntensiveTraining.GeneratedEnergy": "Treinamento Intensivo: PA Gerado",
-  "JUJUTSU.IntensiveTraining.MaxEnergy": "Treinamento Intensivo: PA Máximo",
-  "JUJUTSU.Energy.Generation": "Geração de Energia",
-  "JUJUTSU.Energy.BonusFlat": "Bônus Fixo",
-  "JUJUTSU.Energy.TurnMultiplier": "Multiplicador por Turno",
-  "JUJUTSU.Energy.BaseMultiplier": "Multiplicador Base",
-  "JUJUTSU.Energy.Bonuses": "Bônus de PA",
-  "JUJUTSU.Energy.BonusGenerated": "Bônus de PA Gerado",
-  "JUJUTSU.Energy.BonusTemp": "Bônus Temporário de PA",
-  "JUJUTSU.Energy.BonusLevel": "Bônus de PA (por Nível)",
-  "JUJUTSU.Energy.BonusOverall": "Bônus de PA (Geral)",
-  "JUJUTSU.Energy.Generated": "PA Gerado",
   "DND5E.Energy.Generated": "PA Gerado",
   "DND5E.Energy.Total": "Energia da Reserva",
-  "JUJUTSU.Energy.Total": "PA Total",
-  "JUJUTSU.Energy.Max": "PA Máximo",
-  "JUJUTSU.Energy.Label": "Energia Amaldiçoada",
   "SHEETS.DND5E": {
     "THEME": {
       "Label": "Tema",
@@ -7524,37 +7476,123 @@
   "DND5E.ABILITYSTRABBR": "FOR",
   "DND5E.ABILITYSTRABR": "FOR",
   "JUJUTSU": {
+    "MasteryPoints": "Mastery Points (Invested TP)",
+    "Feitico": {
+      "SlotEmpty": "Drop a manifestation here",
+      "Inherent": {
+        "Label": "Inherent Spell",
+        "Techniques": "Inherent Spell Techniques",
+        "Empty": "Drop an inherent spell here or use + to create one.",
+        "Create": "Create Inherent Spell",
+        "New": "New Inherent Spell"
+      },
+      "Label": "Cursed Technique",
+      "Tab": "Cursed Technique"
+    },
+    "NpcProfile": {
+      "Sheet": "NPC Profile",
+      "Scale": "Attribute Scale"
+    },
+    "Trainings": {
+      "Tab": "Training",
+      "Label": "Training"
+    },
+    "Manipulation": {
+      "Tab": "Manipulation",
+      "Abilities": "Manipulation Abilities",
+      "PointsInvested": "Invested MP",
+      "Label": "Manipulation"
+    },
+    "ArmorPoints": {
+      "Label": "Armor Points",
+      "Current": "Current Armor Points"
+    },
+    "Property": {
+      "Intuitiva": "Intuitive",
+      "Descomunal": "Oversized",
+      "Envolvente": "Enveloping"
+    },
+    "EnergyDice": {
+      "Label": "Energy Dice",
+      "Denomination": "Energy Die Type",
+      "Bonus": "Energy Dice Bonus",
+      "Max": "Maximum Energy Dice",
+      "Current": "Current Energy Dice",
+      "Config": "Configure Energy Dice"
+    },
+    "EnergyAbilities": "Energy Abilities",
+    "ConstantCost": {
+      "Concentration": "Concentration (2 PA per turn)",
+      "Pool": "Energy Pool",
+      "Value": "Ongoing Cost per Turn"
+    },
+    "HealLimit": {
+      "Formula": "Total Healing Limit",
+      "Label": "Healing Limit"
+    },
+    "CurseResources": "Curse Resources",
+    "TrainingPoints": "Training Points",
+    "CursePoints": "Curse Points",
+    "LostTrainingPoints": "Lost Training Points",
+    "NarratorTrainingPoints": "Training Points Granted by the GM",
+    "SpentTrainingPoints": "Spent Training Points",
+    "IntensiveTraining": {
+      "Label": "Intensive Training",
+      "CursePoints": "Intensive Training: Curse Points",
+      "GeneratedEnergy": "Intensive Training: Generated Energy",
+      "MaxEnergy": "Intensive Training: Maximum Energy"
+    },
+    "Energy": {
+      "Generation": "Energy Generation",
+      "BonusFlat": "Flat Bonus",
+      "TurnMultiplier": "Per-Turn Multiplier",
+      "BaseMultiplier": "Base Multiplier",
+      "Bonuses": "Energy Bonuses",
+      "BonusGenerated": "Generated Energy Bonus",
+      "BonusTemp": "Temporary Energy Bonus",
+      "BonusLevel": "Energy Bonus per Level",
+      "BonusOverall": "Overall Energy Bonus",
+      "Generated": "Generated Energy",
+      "Total": "Total Energy",
+      "Max": "Maximum Energy",
+      "Label": "Cursed Energy",
+      "Config": "Configure Cursed Energy",
+      "RestrictionQuarter": "Lose One Quarter",
+      "RestrictionHalf": "Lose Half",
+      "RestrictionFlat": "Flat Energy Loss",
+      "Restrictions": "Energy Restrictions"
+    },
     "2": {
       "Legacy2": "Jujutsu Legacy 2.0",
       "Settings": {
         "RulesetVersion": {
-          "Name": "Versão das Regras",
-          "Hint": "Jujutsu Legacy 1.0 mantém as regras clássicas (d20 com modificadores). A 2.0 usa atributos de 1 a 12, escada de proficiência (4 bolinhas) e vantagens empilháveis ±6. Requer recarregar o mundo.",
-          "V1": "1.0 — Clássica (d20 + modificadores)",
-          "V2": "2.0 — Nova (atributos 1-12, escada e vantagens)"
+          "Name": "Rules Version",
+          "Hint": "Jujutsu Legacy 1.0 uses the classic rules (d20 with modifiers). Version 2.0 uses attributes from 1 to 12, four proficiency ranks and stacking advantages up to ±6. Requires reloading the world.",
+          "V1": "1.0 — Classic (d20 + modifiers)",
+          "V2": "2.0 — New (attributes 1–12, ranks and advantages)"
         }
       },
       "Estilo": {
-        "Label": "Estilo de Combate",
-        "Hint": "Define a Vida Base, a Energia Base e o atributo principal da Classe de Resistência.",
-        "VidaBase": "Vida Base",
-        "EnergiaBase": "Energia Base",
-        "AtributoPrincipal": "Atributo Principal"
+        "Label": "Combat Style",
+        "Hint": "Defines base health, base energy and the primary attribute for Resistance Class.",
+        "VidaBase": "Base Health",
+        "EnergiaBase": "Base Energy",
+        "AtributoPrincipal": "Primary Attribute"
       },
       "Rank": {
-        "0": "Destreinado",
-        "1": "Treinado",
-        "2": "Proficiente",
-        "3": "Especialista",
-        "4": "Mestre"
+        "0": "Untrained",
+        "1": "Trained",
+        "2": "Proficient",
+        "3": "Expert",
+        "4": "Master"
       },
       "Pontos": {
-        "Label": "Pontos de Treino",
-        "Disponiveis": "{available} disponíveis de {total}"
+        "Label": "Training Points",
+        "Disponiveis": "{available} available out of {total}"
       },
       "Vantagens": {
-        "Label": "Vantagens",
-        "Desvantagens": "Desvantagens"
+        "Label": "Advantages",
+        "Desvantagens": "Disadvantages"
       }
     }
   }

@@ -1,9 +1,11 @@
+import { temSeisOlhos } from "./seis-olhos.mjs";
+
 /**
  * cursed-energy-consumption.mjs
  * JujutsuLegacy — Branch 5.3.x
  *
  * Carregado diretamente pelo Foundry via system.json → esmodules.
- * NÃO precisa de build / Rollup. NÃO importa nada de outros módulos.
+ * NÃO precisa de build / Rollup.
  * Se auto-registra via Hooks.once("init") e Hooks.once("setup").
  *
  * ─── INSTALAÇÃO ──────────────────────────────────────────────────────────────
@@ -132,9 +134,8 @@ Hooks.on("dnd5e.activityConsumption", (activity, usageConfig, messageConfig, upd
   const actor = activity.item?.actor ?? activity.actor;
   if ( !actor ) return;
 
-  const seisOlhosItem = actor.items?.find(i => i.name === "Seis Olhos" && i.type === "feat");
   const seisOlhosMode = actor.getFlag("jujutsu-system", "seisOlhosMode");
-  if ( !seisOlhosItem || !seisOlhosMode ) return;
+  if ( !temSeisOlhos(actor) || !seisOlhosMode ) return;
 
   const prof     = actor.system.attributes?.prof ?? 2;
   const halfProf = Math.max(1, Math.floor(prof / 2));

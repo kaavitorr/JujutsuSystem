@@ -1,4 +1,5 @@
 import Ruleset from "./ruleset.mjs";
+import { cursedEnergyFormula1 } from "./seres-amaldicoados-1.mjs";
 /**
  * Sistema de Energia Amaldiçoada (PA)
  * 
@@ -15,11 +16,20 @@ export class EnergySystem {
     if ( Ruleset.isV2() ) return Ruleset.maxEnergy(actor);
     const level = Ruleset.nivel(actor); // 2.0: ND de NPC em vez de details.level
     const bonuses = actor.system.energy.bonuses;
-    const intensive = actor.system.energy.intensiveTraining;
-    const base = level * 20;
-    const bonusMax = bonuses.maxEnergy ?? 0;
-    const intensiveBonus = (intensive.maxEnergy ?? 0) * 5;
-    return base + bonusMax + intensiveBonus;
+    const data = actor.getRollData?.({ deterministic: true }) ?? {};
+    const evaluate = value => {
+      if (!value) return 0;
+      if (Number.isFinite(Number(value))) return Number(value);
+      try { const roll = new Roll(value, data); return roll.isDeterministic ? roll.evaluateSync().total : 0; }
+      catch { return 0; }
+    };
+    const enormous = actor.items?.some(item => item.type === "race" && item.system?.identifier === "energia-descomunal") ?? false;
+    const bonus = evaluate(bonuses.overall) + evaluate(bonuses.level) * level + evaluate(bonuses.temp);
+    let maximum = cursedEnergyFormula1(actor, { enormous, bonus });
+    const restrictions = actor.system.energy.restrictions ?? {};
+    if (restrictions.quarter) maximum -= Math.floor(maximum / 20) * 5;
+    if (restrictions.half) maximum -= Math.floor(maximum / 10) * 5;
+    return Math.max(0, maximum - (restrictions.flat ?? 0));
   }
 
   static calculateLimit(level, baseMultiplier = 2) {

@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { buildLegacy2Context } from "../module/applications/actor/jj/legacy2-sheet.mjs";
 import { intensiveTrainingDialogContent, refinementTrainingLimit } from "../module/applications/actor/jj/intensive-training-dialog.mjs";
+import { intensiveEnergyGain1 } from "../module/systems/seres-amaldicoados-1.mjs";
 
 const source = readFileSync(new URL("../module/applications/actor/jj/manipulation-handlers.mjs", import.meta.url), "utf8");
 const body = source.match(/export async function onIntensiveTraining\(actor\) \{([\s\S]*?)\n\}/)[1];
@@ -19,9 +20,9 @@ function fixture({ v2 = true, choice = "maxEnergy", generation = 0, beforeChoice
     assert.equal(config.content.attributes.length, 0);
     dialogs.push({ ...config, content: config.content.innerHTML }); beforeChoice?.(actor); return choice;
   } } } } };
-  const handler = new Function("Ruleset", "foundry", "ui", "ChatMessage", "intensiveTrainingDialogContent", "refinementTrainingLimit", "document", `return async function(actor) {${body}}`)(
+  const handler = new Function("Ruleset", "foundry", "ui", "ChatMessage", "intensiveTrainingDialogContent", "refinementTrainingLimit", "document", "intensiveEnergyGain1", `return async function(actor) {${body}}`)(
     ruleset, foundry, { notifications: { warn() {}, info() {} } }, { create() {}, getSpeaker() {} }, intensiveTrainingDialogContent, refinementTrainingLimit,
-    { createElement: tag => ({ tagName: tag.toUpperCase(), attributes: [], innerHTML: "" }) }
+    { createElement: tag => ({ tagName: tag.toUpperCase(), attributes: [], innerHTML: "" }) }, intensiveEnergyGain1
   );
   return { actor, calls, dialogs, handler, ruleset };
 }

@@ -4,7 +4,7 @@
   <section class="jj2-fulgor-box" aria-labelledby="{{rootId}}-fulgor-title">
     <header class="jj2-fulgor-heading">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="fulgor" }}<div><h3 id="{{rootId}}-fulgor-title">Fulgor Negro</h3><span>Black Flash · Kokusen</span></div></header>
     <div class="jj2-fulgor-settings">
-      <label for="{{rootId}}-fulgor-primary"><span>Margem principal</span><input id="{{rootId}}-fulgor-primary" type="number" name="flags.jujutsu-system.fulgorPrimaria" value="{{fulgorPrimaria}}" min="1" max="20" step="1" class="{{#if owner}}always-interactive{{/if}}" {{disabled (not owner)}}><small>Resultado natural mínimo do ataque</small></label>
+      <label for="{{rootId}}-fulgor-primary"><span>Margem principal</span><input id="{{rootId}}-fulgor-primary" type="number" data-fulgor-primaria value="{{fulgorPrimaria}}" min="1" max="20" step="1" class="{{#if owner}}always-interactive{{/if}}" {{disabled (not owner)}}><small>Resultado natural mínimo do ataque</small></label>
       <label for="{{rootId}}-fulgor-secondary"><span>Margem secundária</span><input id="{{rootId}}-fulgor-secondary" type="number" name="flags.jujutsu-system.fulgorSecundaria" value="{{fulgorSecundaria}}" min="1" max="20" step="1" class="{{#if owner}}always-interactive{{/if}}" {{disabled (not owner)}}><small>Resultado mínimo do dado secundário</small></label>
     </div>
     <p class="jj2-fulgor-hint">As margens vão de 1 a 20. Fulgor Certeiro garante uma margem secundária de 11 ou menor.</p>
