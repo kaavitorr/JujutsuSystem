@@ -8,12 +8,14 @@ test("Fulgor preserves each actual damage type and rounds only its combined tota
   assert(parts.every(d=>Number.isInteger(d.value)));
 });
 const actor=(values={})=>({system:{legacy2:{resistances:values}},_source:{system:{legacy2:{resistances:values}}}});
-test("all eleven requested damage types have zero defaults and stable automation paths",()=>{
+test("all twelve damage types have zero defaults and stable automation paths",()=>{
   const cards=resistance.resistanceCards(actor());
-  assert.deepEqual(cards.map(card=>card.label),["Contundente","Perfurante","Cortante","Veneno","Ácido","Fogo","Frio","Eletricidade","Energia","Psíquico","Alma"]);
+  assert.deepEqual(cards.map(card=>card.label),["Contundente","Perfurante","Cortante","Veneno","Ácido","Fogo","Frio","Eletricidade","Trovejante","Energia","Psíquico","Alma"]);
   assert(cards.every(card=>card.value===0&&!card.immune));
   assert.equal(cards.find(card=>card.key==="slashing").valuePath,"system.legacy2.resistances.slashing.value");
   assert.equal(cards.find(card=>card.key==="soul").immunePath,"system.legacy2.resistances.soul.immune");
+  assert.equal(cards.find(card=>card.key==="thunder").valuePath,"system.legacy2.resistances.thunder.value");
+  assert.equal(cards.find(card=>card.key==="thunder").immunePath,"system.legacy2.resistances.thunder.immune");
 });
 test("the user's resistance, capped vulnerability and immunity examples apply exactly",()=>{
   assert.equal(resistance.resistedDamage(13,5,false),8);

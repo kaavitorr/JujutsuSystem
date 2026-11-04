@@ -8,6 +8,7 @@ export const NUMERIC_DAMAGE_TYPES = Object.freeze([
   { key: "fire", label: "Fogo", icon: "M13 2c1 6-4 6-2 10 2-1 3-3 4-5 4 4 6 8 3 12-3 4-10 4-13 0-3-5 1-10 4-13-1 4 1 5 2 5" },
   { key: "cold", label: "Frio", icon: "M12 2v20M3 7l18 10M3 17 21 7M9 4l3 3 3-3M9 20l3-3 3 3" },
   { key: "lightning", label: "Eletricidade", icon: "m13 2-9 12h7l-1 8 10-12h-7z" },
+  { key: "thunder", label: "Trovejante", icon: "M4 8c4-4 12-4 16 0M7 12c3-3 7-3 10 0M10 16c1-1 3-1 4 0M12 20h.01" },
   { key: "radiant", label: "Energia", icon: "M12 3 3 12l9 9 9-9-9-9Zm0 5-4 4 4 4 4-4-4-4" },
   { key: "psychic", label: "Psíquico", icon: "M10 3a4 4 0 0 0-5 4 5 5 0 0 0-1 9 4 4 0 0 0 6 5V3Zm4 0a4 4 0 0 1 5 4 5 5 0 0 1 1 9 4 4 0 0 1-6 5V3Z" },
   { key: "soul", label: "Alma", icon: "M12 3a7 7 0 0 0-7 7v10l4-2 3 3 3-3 4 2V10a7 7 0 0 0-7-7ZM9 10v2m6-2v2M10 15h4" }

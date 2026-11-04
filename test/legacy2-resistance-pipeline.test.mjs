@@ -5,7 +5,7 @@ import Ruleset from "../module/systems/ruleset.mjs";
 import { applyNumericResistances } from "../module/systems/legacy2-resistances.mjs";
 let version="2.0";
 globalThis.game={settings:{get:()=>version}};
-globalThis.CONFIG={DND5E:{damageTypes:{slashing:{isPhysical:true},fire:{},cold:{},soul:{}},healingTypes:{healing:{},temphp:{},maximum:{}}}};
+globalThis.CONFIG={DND5E:{damageTypes:{slashing:{isPhysical:true},fire:{},cold:{},soul:{},thunder:{}},healingTypes:{healing:{},temphp:{},maximum:{}}}};
 globalThis.foundry={utils:{deepClone:structuredClone}};
 globalThis.Hooks={call:()=>true,on:()=>{}};
 const {applyDamageToActor}=await import("../module/applications/actor/jj/damage-application.mjs");
@@ -20,6 +20,24 @@ function actor(resistances={},traits={}) {
   a.getFlag=()=>null;a.updates=[];a.update=async update=>a.updates.push(update);return a;
 }
 const damage=(type,value)=>({type,value});
+
+test("thunder resistance, vulnerability and immunity protect both characters and NPCs in native and chat damage",async()=>{
+  version="2.0";
+  for(const type of ["character","npc"]){
+    const a=actor({thunder:{value:7}});a.type=type;
+    assert.equal(a.calculateDamage([damage("thunder",20)]).amount,13);
+    assert.equal(a.calculateDamage([damage("thunder",20)],{ignore:{resistance:new Set(["thunder"])}}).amount,20);
+    await applyDamageToActor(a,20,{damages:[damage("thunder",20)],damageTypes:["thunder"]});
+    assert.equal(a.updates[0]["system.attributes.hp.value"],87);
+    a.system.legacy2.resistances.thunder={value:-30};
+    assert.equal(a.calculateDamage([damage("thunder",20)]).amount,40);
+    a.system.legacy2.resistances.thunder.immune=true;
+    assert.equal(a.calculateDamage([damage("thunder",20)]).amount,0);
+    a.updates=[];
+    await applyDamageToActor(a,20,{damages:[damage("thunder",20)],damageTypes:["thunder"]});
+    assert.equal(a.updates.length,0);
+  }
+});
 test("native damage uses numeric defenses, groups same types and leaves healing intact in 2.0",()=>{
   version="2.0";const a=actor({slashing:{value:5},cold:{value:-20},fire:{immune:true}});
   const result=a.calculateDamage([damage("slashing",8),damage("slashing",5),damage("cold",7),damage("fire",99),damage("healing",10)]);
