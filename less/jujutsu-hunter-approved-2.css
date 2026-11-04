@@ -187,6 +187,7 @@
 .jj2-ruptura .jj2-shortcut > svg { width: 16px; color: var(--jj2-purple); }
 .jj2-ruptura .jj2-shortcut span { flex: 1; }
 .jj2-ruptura .jj2-shortcut small { color: var(--jj2-muted); font-size: 9px; }
+.jj2-ruptura .jj2-shortcut .jj2-action-cost { flex-shrink: 0; font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", sans-serif; font-size: 14px; line-height: 1; letter-spacing: 1px; white-space: nowrap; }
 .jj2-ruptura .jj2-shortcut-gold > svg, .jj2-ruptura .jj2-shortcut.active small { color: var(--jj2-gold); }
 .jj2-ruptura .jj2-shortcut:hover, .jj2-ruptura .jj2-favorite-name:hover { background: #ffffff07; }
 .jj2-ruptura .jj2-favorites { margin-top: 24px; }

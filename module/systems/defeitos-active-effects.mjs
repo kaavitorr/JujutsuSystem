@@ -1,4 +1,6 @@
 import { alternativeSaveDefinition, alternativeSavesEnabled } from "./legacy2-alternative-saves.mjs";
+import { canRunCatalogRepair, catalogRepairDocuments, catalogRepairItems, registerCatalogRepair,
+  registerCatalogRepairHooks, runCatalogRepair } from "./catalog-repair-cache.mjs";
 
 const NS = "jujutsu-system";
 const VERSION = 1;
@@ -163,35 +165,38 @@ export function configureFlawRoll(roll, process) {
 }
 
 /** Refresh proven, unedited compendium copies, including synthetic actors. Native Items own their effects. */
-export async function refreshFlawEffects(world=game) {
-  if (!world.user.isGM || world.users.activeGM?.id !== world.user.id) return;
-  const sources = new Map();
-  for (const name of ["geral-2-0", "geral"]) {
-    const pack = world.packs.get(`jujutsu-compendium.${name}`);
-    if (!pack) continue;
-    for (const item of await pack.getDocuments()) {
-      if (item.flags?.[NS]?.flawAutomation) sources.set(item.uuid, item);
+export async function refreshFlawEffects(world=game, scope={}) {
+  if (!canRunCatalogRepair(world, scope)) return;
+  return runCatalogRepair(world, "flaw-effects", async () => {
+    const targets = catalogRepairItems(world, scope).filter(item => item.type === "feat"
+      && /^(?:Compendium\.)?jujutsu-compendium\.geral(?:-2-0)?\.Item\./.test(item._stats?.compendiumSource ?? item.flags?.core?.sourceId ?? ""));
+    if (!targets.length) return;
+    const sources = new Map();
+    for (const name of ["geral-2-0", "geral"]) {
+      for (const item of await catalogRepairDocuments(world, `jujutsu-compendium.${name}`)) {
+        if (item.flags?.[NS]?.flawAutomation) sources.set(item.uuid, item);
+      }
     }
-  }
-  const update = async item => {
-    const origin = item._stats?.compendiumSource ?? item.flags?.core?.sourceId;
-    const source = sources.get(origin);
-    if (!source || source.type !== "feat" || item.type !== "feat"
-      || item.system?.description?.value !== source.system?.description?.value) return;
-    const edition = source.flags[NS].flawAutomation.edition, before = item.toObject();
-    const plan = flawEffectPlan(before, edition);
-    if (sameData(before.effects, plan.effects)
-      && sameData(before.flags?.[NS]?.flawAutomation, plan.flags[NS].flawAutomation)) return;
-    // Core updates the Item's embedded effects atomically, without creating independent Actor effects.
-    await item.update({ effects: plan.effects, [`flags.${NS}.flawAutomation`]: plan.flags[NS].flawAutomation });
-  };
-  for (const item of world.items ?? []) await update(item);
-  const actors = new Set(world.actors ?? []);
-  for (const scene of world.scenes ?? []) for (const token of scene.tokens ?? []) if (!token.actorLink && token.actor) actors.add(token.actor);
-  for (const actor of actors) for (const item of actor.items ?? []) await update(item);
+    const update = async item => {
+      const origin = item._stats?.compendiumSource ?? item.flags?.core?.sourceId;
+      const source = sources.get(origin);
+      if (!source || source.type !== "feat" || item.type !== "feat"
+        || item.system?.description?.value !== source.system?.description?.value) return;
+      const edition = source.flags[NS].flawAutomation.edition, before = item.toObject();
+      const plan = flawEffectPlan(before, edition);
+      if (sameData(before.effects, plan.effects)
+        && sameData(before.flags?.[NS]?.flawAutomation, plan.flags[NS].flawAutomation)) return;
+      // Core updates the Item's embedded effects atomically, without creating independent Actor effects.
+      await item.update({ effects: plan.effects, [`flags.${NS}.flawAutomation`]: plan.flags[NS].flawAutomation }, { jjCatalogRepair: true });
+    };
+    for (const item of targets) await update(item);
+  }, scope);
 }
 
+registerCatalogRepair("flaw-effects", { packs: ["jujutsu-compendium.geral-2-0", "jujutsu-compendium.geral"], refresh: refreshFlawEffects });
+
 export function registerFlawEffectHooks(hooks=Hooks) {
+  registerCatalogRepairHooks(hooks);
   hooks.once("dnd5e.ready", () => refreshFlawEffects().catch(error => {
     console.error("Jujutsu: falha ao atualizar os Active Effects de defeitos.", error);
     ui.notifications.error("Não foi possível atualizar os efeitos de defeitos das fichas.");

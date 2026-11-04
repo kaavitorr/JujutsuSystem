@@ -35,11 +35,11 @@ test("NPC overrides use the existing manual field and do not mistake legacy maxi
   const a = actor("npc", 120);
   assert.equal(Ruleset.maxHitPoints(a), 120);
   prepareNpc.call(a.system, Ruleset, a);
-  assert.equal(a.system.attributes.hp.max, 120); assert.equal(a.system.attributes.hp.effectiveMax, 123);
+  assert.equal(a.system.attributes.hp.max, 120); assert.equal(a.system.attributes.hp.effectiveMax, 118);
   a.system._source.attributes.hp.maxOverride = null;
   a.system.attributes.hp.maxOverride = null;
   prepareNpc.call(a.system, Ruleset, a);
-  assert.equal(a.system.attributes.hp.max, 95); assert.equal(a.system.attributes.hp.effectiveMax, 98);
+  assert.equal(a.system.attributes.hp.max, 95); assert.equal(a.system.attributes.hp.effectiveMax, 93);
 });
 
 test("blank restores automatic HP, zero is an explicit override and repeated preparation never latches onto derived maximum", () => {

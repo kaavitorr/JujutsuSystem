@@ -85,7 +85,8 @@ test("2.0 peculiarity effects are suppressed in 1.0 without changing their enabl
   assert.equal(api.peculiarityEffectSuppressed(effect,"1.0"),false);
   const source=await fs.readFile(new URL("../module/documents/active-effect.mjs",import.meta.url),"utf8");
   const body=source.match(/get isSuppressed\(\) \{([\s\S]*?)\n  \}/)[1];
-  const Boundary=new Function("Base","peculiarityEffectSuppressed",`return class extends Base {get isSuppressed(){${body}}}`)(class{get isSuppressed(){return false;}},e=>api.peculiarityEffectSuppressed(e,"1.0"));
+  const {sizeGrappleEffectImmune}=await import("../module/systems/legacy2-size.mjs");
+  const Boundary=new Function("Base","peculiarityEffectSuppressed","sizeGrappleEffectImmune",`return class extends Base {get isSuppressed(){${body}}}`)(class{get isSuppressed(){return false;}},e=>api.peculiarityEffectSuppressed(e,"1.0"),sizeGrappleEffectImmune);
   const actual=Object.assign(new Boundary(),{item:feat("Sede De Sangue Imposta"),system:{},type:"base"});
   assert.equal(actual.isSuppressed,true);
 });

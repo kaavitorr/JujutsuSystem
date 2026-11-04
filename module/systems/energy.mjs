@@ -108,6 +108,7 @@ export class EnergySystem {
       await actor.update(updates, { isEnergySystem: true });
       return updates;
     }
+    if (Ruleset.isV2() && actor.type === "npc") return this.processTurnStartWithChoices(actor, { flatBonus: 0 });
     const energy = actor.system.energy;
     const level = Ruleset.nivel(actor); // 2.0: ND de NPC em vez de details.level
     const baseMultiplier = this.generationBaseMultiplier(actor);
@@ -213,7 +214,7 @@ export class EnergySystem {
     if (Ruleset.isV2()) {
       const updates = this.actionReserveRefinementUpdates(actor, reserves, choices.flatBonus);
       if (!Object.keys(updates).length) return;
-      updates["system.energy.generation.turnMultiplier"] = 1;
+      if (actor.system.energy.generation) updates["system.energy.generation.turnMultiplier"] = 1;
       return actor.update(updates, { isEnergySystem: true });
     }
     const energy = actor.system.energy;

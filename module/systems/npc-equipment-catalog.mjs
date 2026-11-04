@@ -68,9 +68,25 @@ const LABELS = {str:"Força",dex:"Agilidade",con:"Constituição",int:"Intelecto
   bludgeoning:"Contundente",piercing:"Perfurante",slashing:"Cortante",fire:"Fogo",acid:"Ácido",cold:"Frio",lightning:"Elétrico",
   thunder:"Trovejante",psychic:"Psíquico",radiant:"Energia",poison:"Veneno",soul:"Alma"};
 
+/** Classify authored PdN stock weapons without altering unrelated equipment or any damage data. */
+export function pdnWeaponTypePatch(item) {
+  if (item.type !== "weapon") return null;
+  const flags = item.flags?.["jujutsu-system"] ?? {};
+  const source = flags.npcArchetypeEquipment?.source ?? flags.equipmentPdn?.source
+    ?? item._stats?.compendiumSource ?? item.flags?.core?.sourceId;
+  if (!flags.armaPdn && !flags.ataqueNatural && !source?.startsWith(`Compendium.${NPC_EQUIPMENT_PACK}.Item.`)) return null;
+  const patch = {};
+  if (item.system?.type?.value !== "natural") patch["system.type.value"] = "natural";
+  if (flags.grupo && flags.grupo !== "natural") patch["flags.jujutsu-system.grupo"] = "";
+  return Object.keys(patch).length ? patch : null;
+}
+
 /** Repair the known authored natural equipment data without changing its damage balance or native IDs. */
 export function normalizeNpcEquipment(original) {
   const item = structuredClone(original), flags = item.flags?.["jujutsu-system"];
+  const classification = pdnWeaponTypePatch(item);
+  if (classification?.["system.type.value"]) (item.system.type ??= {}).value = "natural";
+  if (classification?.["flags.jujutsu-system.grupo"] !== undefined) flags.grupo = "";
   if (!flags?.ataqueNatural && !flags?.armaduraNatural) return item;
   const system = item.system;
   if (item.type === "weapon") {

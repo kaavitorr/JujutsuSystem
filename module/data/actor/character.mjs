@@ -23,6 +23,7 @@ import { crSeisOlhos, rankSeisOlhos } from "../../systems/seis-olhos.mjs";
 import { prepareLegacy2ArmorClass } from "../../systems/legacy2-armor.mjs";
 import { applyCursedBenefitTraits1, cursedHitPointBonus1, cursedEnergyFormula1 } from "../../systems/seres-amaldicoados-1.mjs";
 import { prepareLegacy2ResourceBases, prepareLegacy2ResourceBonuses } from "../../systems/legacy2-resources.mjs";
+import { prepareSizeRules } from "../../systems/legacy2-size.mjs";
 
 /**
  * @import { ActorFavorites5e, CharacterActorSystemData, ResourceData } from "./_types.mjs";
@@ -381,6 +382,7 @@ export default class CharacterData extends CreatureTemplate {
 
   prepareDerivedData() {
     applyCursedBenefitTraits1(this.parent);
+    prepareSizeRules(this.parent);
     const rollData = this.parent.getRollData({ deterministic: true });
     const { originalSaves, originalSkills } = this.parent.getOriginalStats();
 

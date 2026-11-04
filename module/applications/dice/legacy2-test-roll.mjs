@@ -1,6 +1,7 @@
 import Ruleset, { MAX_VANTAGENS } from "../../systems/ruleset.mjs";
 import { conditionRollAdvantages } from "../../systems/legacy2-condition-rolls.mjs";
 import { flawRollDisadvantages } from "../../systems/defeitos-active-effects.mjs";
+import { resistingPush, sizePushTestContext } from "../../systems/legacy2-size.mjs";
 
 const count = value => Number.isFinite(Number(value)) ? Math.min(MAX_VANTAGENS, Math.max(0, Math.floor(Number(value)))) : 0;
 const valueAt = (data, key) => key.split(".").reduce((v, part) => v?.[part], data);
@@ -23,6 +24,7 @@ function automaticConditions(process, formData, roll) {
     skill: process.skill, target: Array.from(globalThis.game?.user?.targets ?? [])[0]?.actor
   }) : { vantagens: 0, desvantagens: 0 };
   const kind = isInitiativeTest(process) ? "initiative" : save ? "save" : "check";
+  if (resistingPush(process, formData)) conditions.vantagens += sizePushTestContext(process)?.advantages ?? 0;
   conditions.desvantagens += flawRollDisadvantages(process.subject, { kind, skill: process.skill,
     rank: process.skill ? Ruleset.skillRank(process.subject, process.skill) : 0 });
   const options = roll?.options ?? process.rolls?.[0]?.options ?? {};
@@ -65,7 +67,9 @@ export function testRollChoices(process, formData, roll) {
 export function applyLegacy2TestRoll(roll, process, formData) {
   if (!hasLegacy2Test(process)) return roll;
   const choices = testRollChoices(process, formData, roll);
-  process.legacy2 = { ...process.legacy2, ...choices };
+  const hasPushContext = formData?.has?.("jj2Test.resistPush") || process.legacy2?.resistPush !== undefined;
+  process.legacy2 = { ...process.legacy2, ...choices,
+    ...(hasPushContext ? { resistPush: resistingPush(process, formData) } : {}) };
   conditionHistory.set(process, automaticConditions(process, formData, roll));
   const bonus = Ruleset.netAdvantageBonus(choices.vantagens, choices.desvantagens);
   roll.parts = (roll.parts ?? []).filter(part => part !== "@legacyAdv");

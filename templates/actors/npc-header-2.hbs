@@ -16,9 +16,10 @@
       <div class="jj2-header-bars">
         {{> "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs" id="hp" label="Vida" path="system.attributes.hp.value" value=system.attributes.hp.value max=system.attributes.hp.effectiveMax pct=jj2.hpPct configKey="hitPoints"}}
         {{> "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs" id="energy" label="Energia" path="system.energy.total" value=system.energy.total max=system.energy.max pct=jj2.energyPct}}
+        {{> "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs" id="wounds" label="Ferimentos" path="system.legacy2.wounds.value" value=jj2.wounds.value max=jj2.wounds.max pct=jj2.wounds.pct}}
       </div>
       <div class="jj2-header-emblems">
-      {{> "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs" id="refinement" label="Refinada" path="system.energy.generated" value=jj2.energyAvailable max=system.energy.genMax unbounded=true sigil=true}}
+      {{> "systems/jujutsu-system/templates/actors/parts/jj2-resource.hbs" id="refinement" label="Refinada" path="system.energy.generated" value=jj2.energyAvailable max=jj2.refinement unbounded=true sigil=true}}
       {{> "systems/jujutsu-system/templates/actors/parts/jj2-action-ring.hbs"}}
       </div>
     </div>

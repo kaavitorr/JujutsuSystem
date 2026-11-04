@@ -12,6 +12,7 @@
 import { applyJJTextTooltips } from "./tooltips.mjs";
 import { legacy2ConditionIcon } from "./legacy2-condition-icons.mjs";
 import { acoesTetoEfetivo } from "./legacy2-sheet.mjs";
+import { sizeGrappleEffectImmune } from "../../../systems/legacy2-size.mjs";
 import { MODIFICADORES_MOVIMENTO } from "../../../systems/condicoes-dano.mjs";
 import { conditionSourceActorUuid } from "../../../systems/legacy2-condition-rolls.mjs";
 import { temPeculiaridade, imunidadeCondicao } from "../../../systems/peculiaridades-data.mjs";
@@ -213,7 +214,8 @@ export async function applyGameCondition(actor, condId, { origin, duration, star
   const config = CONFIG.statusEffects[condId];
   if (!config) return false;
   const statuses = statusesParaCondicao(condId), immunities = actor.system?.traits?.ci?.value;
-  if (imunidadeCondicao(actor, condId) || statuses.some(id => immunities?.has?.(id))) {
+  if (imunidadeCondicao(actor, condId) || statuses.some(id => immunities?.has?.(id))
+    || sizeGrappleEffectImmune(actor, { statuses, origin, flags })) {
     ui.notifications.warn(`${actor.name} é imune a ${cond?.label ?? config.name}.`);return false;
   }
   const sourceActor = conditionSourceActorUuid(origin);

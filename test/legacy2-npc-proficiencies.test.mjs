@@ -70,6 +70,53 @@ test("NPC weapon ranks consolidate legacy aliases without charging a player trai
   assert.equal(Ruleset.armaRank(sheet.actor, { type: "weapon", system: { type: { value: "martialR" } } }), 2);
 });
 
+test("NPC weapon proficiency follows every ND boundary in both attacks and the sheet without spending points", () => {
+  const { actor } = fixture();
+  const before = structuredClone(actor.system.legacy2);
+  for (const [nd, rank, bonus] of [[0, 1, 0], [1, 1, 0], [5, 1, 0], [6, 2, 1], [10, 2, 1],
+    [11, 3, 2], [15, 3, 2], [16, 4, 3], [20, 4, 3], [25, 4, 3], [6, 2, 1], [1, 1, 0]]) {
+    actor.system.legacy2.nd = nd;
+    const context = buildNpc2Context(actor, config, Ruleset);
+    for (const category of ["natural", "simpleM", "martialM", "simpleR", "martialR", "improv", "siege"]) {
+      const item = { type: "weapon", system: { type: { value: category } } };
+      assert.equal(Ruleset.armaRank(actor, item), rank, `ND ${nd}, ${category}`);
+      assert.equal(Ruleset.bonusArma(actor, item), bonus, `bonus ND ${nd}, ${category}`);
+    }
+    for (const group of context.armas) {
+      assert.equal(group.rank, rank, `sheet ND ${nd}, ${group.key}`);
+      assert.equal(group.bonus, bonus);
+      assert.equal(group.grantedRank, rank);
+    }
+    assert.deepEqual(actor.system.legacy2.armas, {});
+    assert.deepEqual(actor.system.legacy2.pontos, before.pontos);
+    assert.deepEqual(actor.system.legacy2.skills, before.skills);
+    assert.deepEqual(actor.system.legacy2.saves, before.saves);
+  }
+});
+
+test("NPC manual weapon ranks can exceed the automatic floor and clearing them restores the ND rank", async () => {
+  const sheet = fixture();
+  sheet.actor.system.legacy2.nd = 6;
+  await updateNpc2Rank(sheet, target(sheet, "armas", "natural", 4), Ruleset, config.abilities);
+  const weapon = { type: "weapon", system: { type: { value: "natural" } } };
+  assert.equal(Ruleset.armaRank(sheet.actor, weapon), 4);
+  await updateNpc2Rank(sheet, target(sheet, "armas", "natural", 4), Ruleset, config.abilities);
+  assert.equal(sheet.actor.system.legacy2.armas.natural, 0);
+  assert.equal(Ruleset.armaRank(sheet.actor, weapon), 2);
+});
+
+test("NPC weapon growth does not grant ranks to players or techniques and remains behind the 2.0 rules", () => {
+  const { actor } = fixture();
+  const weapon = { type: "weapon", system: { type: { value: "natural" } } };
+  actor.system.legacy2.nd = 20;
+  assert.equal(Ruleset.armaRank({ ...actor, type: "character" }, weapon), 0);
+  assert.equal(Ruleset.armaRank(actor, { type: "spell" }), 1);
+  const get = game.settings.get;
+  game.settings.get = () => "1.0";
+  try { assert.equal(Ruleset.armaRank(actor, weapon), 0); }
+  finally { game.settings.get = get; }
+});
+
 test("NPC ranks reject invalid keys, values, read-only sheets and play-mode changes", async () => {
   const sheet = fixture(), before = structuredClone(sheet.actor.system);
   for (const [ctx, key, rank] of [["skills", "missing", 2], ["saves", "missing", 1], ["bad", "str", 1],

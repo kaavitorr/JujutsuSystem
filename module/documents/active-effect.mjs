@@ -8,6 +8,7 @@ import Scaling from "./scaling.mjs";
 import { isLegacyArmorClassChange } from "../systems/legacy2-armor.mjs";
 import { peculiarityEffectSuppressed } from "../systems/peculiaridades-effects.mjs";
 import { legacy2ResourceChange } from "../systems/legacy2-resources.mjs";
+import { sizeGrappleEffectImmune } from "../systems/legacy2-size.mjs";
 
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 const { NumberField, ObjectField, SchemaField, SetField, StringField } = foundry.data.fields;
@@ -193,6 +194,7 @@ export default class ActiveEffect5e extends DependentDocumentMixin(ActiveEffect)
   /** @inheritDoc */
   get isSuppressed() {
     if ( super.isSuppressed ) return true;
+    if ( sizeGrappleEffectImmune(this.actor, this) ) return true;
     if ( peculiarityEffectSuppressed(this) ) return true;
     if ( this.system.magical && this.actor?.statuses.has("antimagic") ) return true;
     if ( this.type === "enchantment" ) return false;
@@ -775,6 +777,10 @@ export default class ActiveEffect5e extends DependentDocumentMixin(ActiveEffect)
   /** @inheritDoc */
   async _preCreate(data, options, user) {
     if ( await super._preCreate(data, options, user) === false ) return false;
+    if (sizeGrappleEffectImmune(this.actor, this)) {
+      ui.notifications.warn(`${this.actor.name} é imune a este agarrão por tamanho.`);
+      return false;
+    }
     if ( options.keepOrigin === false ) this.updateSource({
       origin: null,
       system: {

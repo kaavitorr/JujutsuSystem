@@ -1,6 +1,6 @@
 import { buildLegacy2Context, legacy2ActionMax, prepareRankUpdate } from "./legacy2-sheet.mjs";
 import { npc2AbilityValue } from "../../../systems/legacy2-npc-attributes.mjs";
-import { npcProfile, npcAttributeDistribution, npcProficiencyDistribution, NPC_ABILITIES } from "../../../systems/legacy2-npc-profiles.mjs";
+import { npcProfile, npcAttributeDistribution, npcProficiencyDistribution, withNpcProfileContext, NPC_ABILITIES } from "../../../systems/legacy2-npc-profiles.mjs";
 import { NPC_CLASSIFICATIONS, npcClassification, npcClassificationKey } from "../../../systems/legacy2-npc-classification.mjs";
 import { proficiencyOrderContext } from "./npc-proficiency-order.mjs";
 
@@ -9,23 +9,22 @@ export const NPC2_TABS = [["details", "Resumo", "summary"], ["inventory", "Inven
   ["spells", "Técnicas", "int"],
   ["effects", "Efeitos", "effects"], ["biography", "Biografia", "biography"],
   ["specialTraits", "Detalhes", "config"]];
-const choices = (configs, selected) => Object.entries(configs).map(([value, config]) => ({
-  value, label: config.label ?? config, selected: value === selected
-}));
 
 /** NPC presentation uses prepared values; it never changes the source actor. */
 export function buildNpc2Context(actor, config, ruleset, npcConfig = {}) {
+  return withNpcProfileContext(actor, () => buildNpc2ContextData(actor, config, ruleset, npcConfig));
+}
+
+function buildNpc2ContextData(actor, config, ruleset, npcConfig) {
   const data = buildLegacy2Context(actor, config, ruleset), source = actor.system.legacy2 ?? {};
   const tax = npcProfile(actor, "taxonomy", npcConfig), archetype = npcProfile(actor, "archetype", npcConfig);
   const distribution = npcAttributeDistribution(actor, npcConfig);
-  const categories = Object.fromEntries(Object.entries(NPC_CLASSIFICATIONS).map(([key, value]) => [key, value.label]));
   const classification = npcClassification(actor);
   data.abilities = data.abilities.map(ability => ({ ...ability,
     value: actor.system.abilities[ability.key]?.value ?? ability.value,
     sourceValue: npc2AbilityValue(ability.sourceValue),
     principal: ability.key === (archetype ? ruleset.npcPrincipal(actor) : ruleset.atributoPrincipal(actor)) }));
   delete data.atributos;
-  delete data.wounds;
   data.npc = { nd: ruleset.nivel(actor), longName: String(actor.name ?? "").length > 45,
     taxonomy: tax?.label ?? "NPC", taxonomyUuid: tax?.item?.uuid,
     archetype: archetype?.label, archetypeUuid: archetype?.item?.uuid,
@@ -43,7 +42,11 @@ export function buildNpc2Context(actor, config, ruleset, npcConfig = {}) {
     distribution: distribution ? { ...distribution, rows: NPC_ABILITIES.map(key => ({ key,
       label: config.abilities[key]?.abbreviation ?? config.abilities[key]?.label ?? key,
       initial: distribution.initial[key], growth: distribution.growth[key], value: distribution.values[key] })) } : null,
-    categories: choices(categories, npcClassificationKey(source.categoria)),
+    categories: Object.entries(NPC_CLASSIFICATIONS).map(([value, definition]) => ({
+      value, label: definition.label, selected: value === npcClassificationKey(source.categoria),
+      img: `systems/jujutsu-system/assets/gerador-pdn-pintado-v1/${value}.webp`,
+      hpLabel: definition.hpMultiplier.toLocaleString("pt-BR"), actions: definition.actions
+    })),
     armorPct: percent(actor.system.armorPoints?.value, actor.system.armorPoints?.max),
     legendaries: ["legact", "legres"].map(key => ({ key, label: key === "legact" ? "Ações Lendárias" : "Resistências Lendárias",
       max: actor.system.resources?.[key]?.max ?? 0, spent: actor.system.resources?.[key]?.spent ?? 0,

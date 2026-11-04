@@ -8,7 +8,7 @@
     <label class="jj2-hp-field"><span>Sobrescrever máximo</span><input type="number" name="{{jj2Health.maximumPath}}" value="{{jj2Health.maximumOverride}}" placeholder="{{jj2Health.automaticMax}}" min="0" step="1" data-dtype="Number" aria-label="Sobrescrever PV máximo" {{disabled (not editable)}}></label>
     <p class="jj2-hp-hint">Deixe em branco para voltar ao cálculo automático.</p>
     <label class="jj2-hp-field"><span>Ajuste temporário do máximo</span><input type="number" name="system.attributes.hp.tempmax" value="{{source.tempmax}}" step="1" data-dtype="Number" aria-label="Ajuste temporário de PV máximo" {{disabled (not editable)}}></label>
-    {{#unless jj2Health.npc}}<p class="jj2-hp-wounds">Ferimentos <strong>{{jj2Health.wounds}}</strong><span>Redução do máximo <strong>−{{jj2Health.woundReduction}}</strong></span></p>{{/unless}}
+    <p class="jj2-hp-wounds">Ferimentos <strong>{{jj2Health.wounds}}</strong><span>Redução do máximo <strong>−{{jj2Health.woundReduction}}</strong></span></p>
   </fieldset>
   <fieldset>
     <legend>Vida atual</legend>

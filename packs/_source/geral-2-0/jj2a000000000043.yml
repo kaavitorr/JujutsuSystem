@@ -14,6 +14,8 @@ flags:
       categoria: Proezas Físicas
       caminho: Corpo de Guerreiro
       requisitos: []
+      ordem: 4
+    physicalSpecializationsVersion: 1
 folder: jj2f000000000009
 ownership:
   default: 0

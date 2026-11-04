@@ -48,3 +48,22 @@ test("source-dependent conditions retain their caster independently of a chat ca
     assert.equal(updates[0]["flags.jujutsu-system.conditionSourceActor"], "Actor.caster");
   } finally { delete globalThis.fromUuidSync; }
 });
+
+test("grapple conditions from techniques respect the source creature's size without granting blanket immunity", async () => {
+  CONFIG.statusEffects["jj-agarrado"] = { id: "jj-agarrado", name: "Agarrado" };
+  const caster = { documentName: "Actor", type: "character", uuid: "Actor.caster", system: { traits: { size: "med" } } };
+  globalThis.fromUuidSync = uuid => uuid === "Actor.caster" ? caster
+    : uuid === "ChatMessage.grapple" ? { getAssociatedActor: () => caster } : null;
+  try {
+    const f = fixture(); f.actor.type = "npc"; f.actor.system.traits.size = "huge";
+    assert.equal(await applyGameCondition(f.actor, "jj-agarrado", { origin: "ChatMessage.grapple" }), false);
+    assert.equal(f.created.length, 0);
+    caster.system.traits.size = "lg";
+    assert.equal(await applyGameCondition(f.actor, "jj-agarrado", { origin: "ChatMessage.grapple" }), true);
+    assert.equal(f.created.length, 1);
+    f.actor.system.traits.size = "grg";
+    assert.equal(await applyGameCondition(f.actor, "jj-agarrado", { origin: "ChatMessage.grapple" }), false);
+    assert.equal(await applyGameCondition(f.actor, "jj-agarrado"), true);
+    assert.equal(f.created.length, 2);
+  } finally { delete globalThis.fromUuidSync; }
+});

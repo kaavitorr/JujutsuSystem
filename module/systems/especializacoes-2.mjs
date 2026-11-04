@@ -1,5 +1,4 @@
 import Ruleset from "./ruleset.mjs";
-import { updateEnergyShieldTree } from "./legacy2-energy-shield-tree.mjs";
 import { peculiaritySpecializationGroups } from "./peculiaridades-effects.mjs";
 
 /**
@@ -39,8 +38,45 @@ export const ORDEM_CATEGORIAS = Object.freeze([
 
 /* ── Cache do grafo (recarregado quando o índice muda) ────────────────────── */
 
-let _grafo = null;
+let _cache = null;
 let _porNome = null;
+const _hooksRegistrados = new WeakSet();
+
+/** Invalida o catálogo somente quando seus documentos mudam. */
+export function invalidarGrafo({ catalogo = true } = {}) {
+  if (!_cache) return;
+  _cache = { ..._cache, grafo: null, pendente: null,
+    catalogo: catalogo ? null : _cache.catalogo,
+    documentosPendentes: catalogo ? null : _cache.documentosPendentes };
+  _porNome = null;
+}
+
+function registrarInvalidacao(hooks = globalThis.Hooks) {
+  if (!hooks?.on || _hooksRegistrados.has(hooks)) return;
+  _hooksRegistrados.add(hooks);
+  const pacoteAlterado = pack => {
+    if (pack?.collection === PACK) invalidarGrafo();
+  };
+  const itemAlterado = item => {
+    if (item?.pack === PACK || item?.compendium?.collection === PACK) invalidarGrafo();
+  };
+  for (const event of ["createItem", "updateItem", "deleteItem"]) hooks.on(event, itemAlterado);
+  for (const event of ["createCompendium", "updateCompendium", "deleteCompendium"]) hooks.on(event, pacoteAlterado);
+  const requisitosAlterados = setting => {
+    if (setting?.key === "jujutsu-system.especializacoesReq") invalidarGrafo({ catalogo: false });
+  };
+  for (const event of ["createSetting", "updateSetting", "deleteSetting"]) hooks.on(event, requisitosAlterados);
+}
+
+function contextoGrafo() {
+  registrarInvalidacao();
+  const world = game, pack = world.packs?.get(PACK);
+  if (_cache?.world !== world || _cache?.pack !== pack) {
+    _cache = { world, pack, catalogo: null, documentosPendentes: null, grafo: null, pendente: null };
+    _porNome = null;
+  }
+  return _cache;
+}
 
 /**
  * Carrega o grafo de especializações do compendium.
@@ -49,11 +85,15 @@ let _porNome = null;
  *   no: { nome, categoria, caminho, requisitos[], uuid, img, descricao }
  */
 export async function carregarGrafo() {
-  await updateEnergyShieldTree();
-  const pack = game.packs.get(PACK);
-  if ( !pack ) return { categorias: [], porNome: new Map() };
+  return obterGrafo();
+}
+
+async function construirGrafo(cache) {
   // O índice do pack não inclui flags — carrega os documentos completos (em cache)
-  const docs = await pack.getDocuments();
+  const docs = cache.catalogo ?? await (cache.documentosPendentes ??= cache.pack?.getDocuments() ?? Promise.resolve([]));
+  // Um evento pode invalidar o catálogo enquanto a leitura está em andamento.
+  if (_cache !== cache) return obterGrafo();
+  cache.catalogo = docs;
 
   const nos = [];
   for ( const doc of docs ) {
@@ -66,11 +106,12 @@ export async function carregarGrafo() {
       requisitos: esp.requisitos ?? [],
       uuid: doc.uuid,
       img: doc.img ?? "systems/jujutsu-system/icons/svg/items/feature.svg",
-      descricao: doc.system?.description?.value ?? ""
+      descricao: doc.system?.description?.value ?? "",
+      ordem: esp.ordem
     });
   }
   // Camada de ADM: requisitos efetivos editados pelo GM (world setting)
-  const overrides = game.settings?.get("jujutsu-system", "especializacoesReq") ?? {};
+  const overrides = cache.world.settings?.get("jujutsu-system", "especializacoesReq") ?? {};
   for ( const no of nos ) {
     if ( Array.isArray(overrides[no.nome]) ) no.requisitos = overrides[no.nome];
   }
@@ -98,13 +139,25 @@ export async function carregarGrafo() {
     caminho.nos.push(n);
   }
 
-  _grafo = { categorias, porNome: _porNome };
-  return _grafo;
+  for (const category of categorias) for (const path of category.caminhos) {
+    path.nos.sort((left, right) => (left.ordem ?? Infinity) - (right.ordem ?? Infinity));
+  }
+
+  cache.grafo = { categorias, porNome: _porNome };
+  return cache.grafo;
 }
 
 /** Grafo em cache (carrega na primeira chamada). */
 export function obterGrafo() {
-  return _grafo ?? carregarGrafo();
+  const cache = contextoGrafo();
+  if (cache.grafo) return cache.grafo;
+  if (cache.pendente) return cache.pendente;
+  const task = construirGrafo(cache).finally(() => {
+    if (cache.pendente === task) cache.pendente = null;
+    if (!cache.catalogo) cache.documentosPendentes = null;
+  });
+  cache.pendente = task;
+  return task;
 }
 
 /* ── Estado adquirido ─────────────────────────────────────────────────────── */

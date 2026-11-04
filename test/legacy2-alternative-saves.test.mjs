@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { readFileSync } from "node:fs";
 import Ruleset from "../module/systems/ruleset.mjs";
+import { preventSizePushRoll } from "../module/systems/legacy2-size.mjs";
 import { buildLegacy2Context, prepareRankUpdate } from "../module/applications/actor/jj/legacy2-sheet.mjs";
 import { creationDraft, allocateCreationRank, creationActor } from "../module/applications/actor/creation/creation-model-2.mjs";
 import { testRollBreakdown } from "../module/applications/dice/legacy2-test-roll.mjs";
@@ -122,8 +123,8 @@ test("native saves requested by attributes or the new names roll the average and
     build:async (process,dialog,message)=>[{process,dialog,message,...process.rolls[0]}]}};
   const src=read("module/documents/actor/actor.mjs");
   const methods=src.slice(src.indexOf("  async rollSavingThrow(config={}, dialog={}, message={})"),src.indexOf("  async rollDeathSave("));
-  const NativeActor=new Function("Ruleset","D20RollModificationField","_loc",`return class {${methods}}`)(Ruleset,
-    {combineFields:()=>({bonus:2})},(key,args)=>args.ability);
+  const NativeActor=new Function("Ruleset","D20RollModificationField","_loc","preventSizePushRoll",`return class {${methods}}`)(Ruleset,
+    {combineFields:()=>({bonus:2})},(key,args)=>args.ability,preventSizePushRoll);
   const a=Object.assign(new NativeActor(),actor(),{name:"Teste",getFlag:()=>null,getRollData:()=>({roll:{}}),addConditionRollReduction(){}});
   for(const [ability,total,label]of [["str",7,"Fortitude"],["wis",7,"Fortitude"],["con",9,"Vontade"],["cha",9,"Vontade"],["dex",2,"Reflexo"],["int",2,"Reflexo"],["vontade",9,"Vontade"]]){
     const [roll]=await a.rollSavingThrow({ability});

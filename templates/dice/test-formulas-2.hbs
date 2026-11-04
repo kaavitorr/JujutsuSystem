@@ -13,5 +13,6 @@
     </div><small>−1 por desvantagem</small></div>
   </div>
   <p class="jj2-test-advantage-note">Saldo de vantagens <strong>{{jj2Test.bonusLabel}}</strong></p>
+  {{#if jj2Push}}<label class="jj2-size-push-test"><input type="checkbox" name="jj2Test.resistPush" {{checked jj2Push.selected}}><span>Resistir a empurrão <small>{{#if jj2Push.immune}}Imune por tamanho{{else}}+{{jj2Push.advantages}} vantagens por tamanho{{/if}}</small></span></label>{{/if}}
   <ul class="formulas unlist">{{#each rolls}}<li><div class="formula-line"><span class="formula">{{roll.formula}}</span><span class="label">Fórmula</span></div></li>{{/each}}</ul>
 </div>

@@ -14,6 +14,7 @@ import { rollModeAtual } from "../../../utils.mjs";
 import Ruleset from "../../../systems/ruleset.mjs";
 import { custoEfetivoEmAcoes } from "../../../systems/acoes-combate.mjs";
 import { energyConsumptionPlan, energyPayer } from "../../activity/legacy2-activation.mjs";
+import { potentialPool } from "../../../systems/legacy2-potential-points.mjs";
 
 import { activateUpkeep } from "./constant-cost.mjs";
 import { resetHealLimitsByTechnique } from "./heal-limit.mjs";
@@ -49,6 +50,11 @@ export async function activateDamageReduction(activity, usage = { consume: true 
          Cada <strong>+${scaleData.cost}</strong> ${scaleData.poolLabel} → +<strong>${scaleData.formula}</strong>${scaleData.maxPA > 0 ? ` (teto ${scaleData.maxPA} PA de escala)` : ""}.
        </p>`
     : "";
+  const potential = Ruleset.isV2() && activity.item?.type === "spell" ? potentialPool(actor) : { max: 0 };
+  const potentialHtml = potential.max ? `<div class="jj2-activation-field">
+    <label for="jj-red-potential">Pontos de Potencial · ${potential.current}/${potential.max} PP</label>
+    <input id="jj-red-potential" type="number" min="0" max="${potential.current}" step="1" value="0">
+    <p>Cada PP reduz 1 ação, até o mínimo de 1. Só são gastos os pontos que reduzirem o custo.</p></div>` : "";
 
   const escolha = await foundry.applications.api.DialogV2.wait({
     window: { title: "🛡️ Redução de Dano" },
@@ -59,6 +65,7 @@ export async function activateDamageReduction(activity, usage = { consume: true 
           <strong style="flex:1 1 auto; text-align:center; color:#c0a8ff;">${baseDisplay}</strong>
         </div>
         ${scaleHtml}
+        ${potentialHtml}
         <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
           <input type="checkbox" id="jj-red-persistente">
           <span>Durar até o início do meu próximo turno (reduz <em>cada</em> ataque)</span>
@@ -76,6 +83,7 @@ export async function activateDamageReduction(activity, usage = { consume: true 
           const root = dialog.element ?? document;
           return {
             incrementos: Number(root.querySelector("#jj-red-scale")?.value ?? 0),
+            potencial: Number(root.querySelector("#jj-red-potential")?.value ?? 0),
             persistente: root.querySelector("#jj-red-persistente")?.checked === true
           };
         }
@@ -121,8 +129,9 @@ export async function activateDamageReduction(activity, usage = { consume: true 
   }
 
   const updates = { [`flags.jujutsu-system.${FLAG}`]: { valor, persistente: escolha.persistente } };
+  const itemUpdates = [];
   if (Ruleset.isV2()) {
-    const config = { ...usage, legacy2: { ...usage.legacy2, scale: incrementos } };
+    const config = { ...usage, legacy2: { ...usage.legacy2, scale: incrementos, potencial: escolha.potencial } };
     const actionCost = custoEfetivoEmAcoes(activity, config, actor);
     const actions = Number(actor.system.legacy2?.actions?.value) || 0;
     if (actions < actionCost) { ui.notifications.warn(`Pontos de Ação insuficientes: ${actionCost} necessários.`); return; }
@@ -130,13 +139,20 @@ export async function activateDamageReduction(activity, usage = { consume: true 
     try { plan = energyConsumptionPlan(activity, config); }
     catch (error) { ui.notifications.warn(error.message); return; }
     if (actionCost) updates["system.legacy2.actions.value"] = actions - actionCost;
+    const beforePotential = custoEfetivoEmAcoes(activity, { ...config, legacy2: { ...config.legacy2, potencial: 0 } }, actor);
+    const spent = beforePotential - actionCost;
+    if (spent > 0) {
+      const pool = potentialPool(actor);
+      itemUpdates.push({ _id: pool.item.id ?? pool.item._id, "system.uses.spent": pool.spent + spent });
+    }
     if (plan.payer === actor) Object.assign(updates, plan.updates);
     else if (Object.keys(plan.updates).length) await plan.payer.update(plan.updates, { isEnergySystem: true });
   } else {
     const escala = await applyScaleChoice({ actor, activity, incrementos, activationPaid: false });
     if (escala.activationOk === false) { ui.notifications.warn("PA insuficiente para ativar a Redução de Dano."); return; }
   }
-  await actor.update(updates, { isEnergySystem: true });
+  if (itemUpdates.length) await actor.performBulkUpdate({ actor: updates, item: itemUpdates }, { isEnergySystem: true });
+  else await actor.update(updates, { isEnergySystem: true });
   await activateUpkeep(activity);
   resetHealLimitsByTechnique(activity);
   if (game.dice3d) await game.dice3d.showForRoll(roll, game.user, true);

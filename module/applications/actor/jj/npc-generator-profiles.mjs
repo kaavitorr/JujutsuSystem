@@ -1,4 +1,7 @@
 import { validNpcScale } from "../../../systems/legacy2-npc-profiles.mjs";
+import { isNpcGenerator2Weapon, npcGeneratorWeaponFolder } from "./npc-generator-weapons.mjs";
+import { npcGeneratorProfileKey, npcGeneratorArchetypeAllowed } from "./npc-generator-archetypes.mjs";
+import { npcProfileImage } from "../../../systems/npc-profile-art.mjs";
 
 const TYPES = ["taxonomy", "archetype"];
 const CATALOG_TYPES = [...TYPES, "weapon"];
@@ -11,25 +14,29 @@ const readable = document => document.testUserPermission?.(game.user, "OBSERVER"
 export async function npcGeneratorProfiles() {
   const profiles = { taxonomy: [], archetype: [], weapon: [] };
   for (const item of game.items ?? []) {
-    if (CATALOG_TYPES.includes(item.type) && readable(item)) profiles[item.type].push({ value: item.uuid, label: item.name, group: "Mundo" });
+    if (CATALOG_TYPES.includes(item.type) && readable(item) && (item.type !== "weapon" || isNpcGenerator2Weapon(item))) profiles[item.type].push({ value: item.uuid, label: item.name, group: "Mundo", img: npcProfileImage(item),
+      ...(item.type === "weapon" ? { folder: npcGeneratorWeaponFolder(item) } : { profileKey: npcGeneratorProfileKey(item) }) });
   }
   const packs = Array.from(game.packs ?? []).filter(pack => pack.documentName === "Item" && readable(pack));
-  const indexes = await Promise.allSettled(packs.map(pack => pack.getIndex()));
+  const indexes = await Promise.allSettled(packs.map(pack => pack.getIndex({
+    fields: ["img", "system.identifier", "flags.jujutsu-system.encyclopedia.key", "flags.jujutsu-system.elemento", "system.damage", "system.activities"]
+  })));
   indexes.forEach((result, index) => {
     const pack = packs[index];
     if (result.status === "rejected") {
       console.warn(`Jujutsu Legacy | Não foi possível consultar o compêndio ${pack.collection}.`, result.reason);
       return;
     }
-    for (const entry of result.value) if (CATALOG_TYPES.includes(entry.type)) profiles[entry.type].push({
-      value: `Compendium.${pack.collection}.Item.${entry._id}`, label: entry.name, group: pack.metadata?.label ?? pack.collection
+    for (const entry of result.value) if (CATALOG_TYPES.includes(entry.type) && (entry.type !== "weapon" || isNpcGenerator2Weapon(entry))) profiles[entry.type].push({
+      value: `Compendium.${pack.collection}.Item.${entry._id}`, label: entry.name, group: pack.metadata?.label ?? pack.collection, img: npcProfileImage(entry),
+      ...(entry.type === "weapon" ? { folder: npcGeneratorWeaponFolder(entry) } : { profileKey: npcGeneratorProfileKey(entry) })
     });
   });
   // Keep the original built-in profiles available when the world has no authored profiles.
   for (const [type, key] of [["taxonomy", "taxonomias"], ["archetype", "arquetipos"]]) {
     if (!profiles[type].length) {
       profiles[type] = Object.entries(CONFIG.JUJUTSU?.[key] ?? {}).map(([id, definition]) => ({
-        value: `legacy:${id}`, label: definition.label, group: "Padrão"
+        value: `legacy:${id}`, label: definition.label, group: "Padrão", img: npcProfileImage({ ...definition, key: id }, type), profileKey: npcGeneratorProfileKey({ key: id })
       }));
     }
   }
@@ -37,6 +44,12 @@ export async function npcGeneratorProfiles() {
     choices.sort((a, b) => a.label.localeCompare(b.label, "pt-BR") || a.group.localeCompare(b.group, "pt-BR"));
   }
   return profiles;
+}
+
+/** Keep general archetypes alongside the selected taxonomy's exclusive profiles. */
+export function npcGeneratorArchetypesForTaxonomy(profiles, selection) {
+  const taxonomy = profiles.taxonomy.find(choice => choice.value === selection);
+  return profiles.archetype.filter(archetype => npcGeneratorArchetypeAllowed(taxonomy, archetype));
 }
 
 /**
@@ -54,6 +67,8 @@ export async function npcGeneratorProfile(type, selection) {
   try { source = await fromUuid(selection); } catch { return null; }
   if (source?.type !== type || !readable(source) || !validNpcScale(source.system?.pesos)) return null;
   const data = source.toObject();
+  const image = npcProfileImage(source);
+  if (image) data.img = image;
   delete data._id;
   delete data.folder;
   delete data.ownership;

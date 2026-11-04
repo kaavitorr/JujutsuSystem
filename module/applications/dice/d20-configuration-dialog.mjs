@@ -3,6 +3,7 @@ import Ruleset from "../../systems/ruleset.mjs";
 import { mountLegacy2DocumentTheme } from "../shared/legacy2-document-theme.mjs";
 import { hasLegacy2Test, testRollChoices, applyLegacy2TestRoll, testRollBreakdown } from "./legacy2-test-roll.mjs";
 import { stepActivationCounter } from "../activity/legacy2-activation.mjs";
+import { sizePushTestContext, resistingPush, preventSizePushRoll } from "../../systems/legacy2-size.mjs";
 
 /**
  * @import {
@@ -63,6 +64,7 @@ export default class D20RollConfigurationDialog extends RollConfigurationDialog 
     const choices = testRollChoices(this.config, undefined, this.rolls[0]);
     const bonus = Ruleset.netAdvantageBonus(choices.vantagens, choices.desvantagens);
     context.jj2Test = { ...choices, bonus, bonusLabel: `${bonus >= 0 ? "+" : ""}${bonus}` };
+    context.jj2Push = sizePushTestContext(this.config);
     context.rootId = this.id;
     context.breakdowns = this.rolls.map((roll, index) => testRollBreakdown(this.config, roll, index));
     return context;
@@ -120,6 +122,13 @@ export default class D20RollConfigurationDialog extends RollConfigurationDialog 
   _afterBuildConfig(config, formData, index) {
     config = super._afterBuildConfig(config, formData, index);
     return applyLegacy2TestRoll(config, this.config, formData);
+  }
+
+  _finalizeRolls(action) {
+    const formData = new foundry.applications.ux.FormDataExtended(this.form);
+    if (hasLegacy2Test(this.config) && preventSizePushRoll(this.config.subject,
+      { legacy2: { resistPush: resistingPush(this.config, formData) } })) return [];
+    return super._finalizeRolls(action);
   }
 
   /** @override */

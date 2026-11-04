@@ -216,7 +216,7 @@ export async function usarEnergiaReversa(actor, pontos = 1, { alvo = actor, meta
 
   const updates = { [`system.legacy2.reverseEnergy.value`]: Math.max(0, pool - pontos) };
   const hp = alvo.system.attributes.hp;
-  const feridas = !Ruleset.isV2() || actor.type === "npc" ? 0 : integer(actor.system.legacy2?.wounds?.value);
+  const feridas = !Ruleset.isV2() ? 0 : integer(actor.system.legacy2?.wounds?.value);
   const feridasFinais = Math.max(0, feridas - cura);
   const feridasCuradas = feridas - feridasFinais;
   if (feridasCuradas > 0) updates["system.legacy2.wounds.value"] = feridasFinais;

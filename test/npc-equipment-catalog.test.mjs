@@ -37,3 +37,18 @@ test("profiles without declared armor stay unarmored and repeated anatomy choice
  const profile={name:"Felinos",type:"taxonomy",system:{equipamentos:{armadura:null,armas:[]}}};
  const result=api.profileEquipmentPlan(profile,gear);assert.equal(result.armadura,null);assert.equal(new Set(result.armas).size,result.armas.length);
 });
+
+test("PdN manufactured weapons become Natural without rewriting their damage, actions or descriptions",()=>{
+ const before={_id:"jjarm00000000001",name:"Machado Grande",type:"weapon",flags:{"jujutsu-system":{armaPdn:true,grupo:"martialM"}},
+  system:{type:{value:"martialM",baseItem:"greataxe"},description:{value:"Descrição autoral."},damage:{base:{number:1,denomination:12,types:["slashing"]}},activities:{attack:{type:"attack",activation:{type:"action",value:2}}}},effects:[]};
+ const after=api.normalizeNpcEquipment(before);
+ assert.equal(after.system.type.value,"natural");
+ assert.equal(after.flags["jujutsu-system"].grupo,"");
+ assert.deepEqual(after.system.damage,before.system.damage);
+ assert.deepEqual(after.system.activities,before.system.activities);
+ assert.deepEqual(after.system.description,before.system.description);
+ assert.deepEqual(api.normalizeNpcEquipment(after),after);
+ assert.equal(before.system.type.value,"martialM");
+ const player=structuredClone(before);delete player.flags["jujutsu-system"].armaPdn;
+ assert.deepEqual(api.normalizeNpcEquipment(player),player);
+});

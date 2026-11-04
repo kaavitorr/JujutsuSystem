@@ -1,4 +1,4 @@
-import { NPC_ARMOR_REDIRECTS, NPC_EQUIPMENT_PACK, NPC_PROFILE_PACK, npcEquipmentFingerprint, npcEquipmentUuid } from "./npc-equipment-catalog.mjs";
+import { NPC_ARMOR_REDIRECTS, NPC_EQUIPMENT_PACK, NPC_PROFILE_PACK, npcEquipmentFingerprint, npcEquipmentUuid, pdnWeaponTypePatch } from "./npc-equipment-catalog.mjs";
 import {syncNpcProfileEquipment} from "./legacy2-npc-equipment.mjs";
 
 const NS="jujutsu-system";
@@ -97,6 +97,16 @@ function gearSource(item,catalog){
 
 export async function refreshNpcEquipment(world=game,{sync=syncNpcProfileEquipment}={}){
   if(!world.user.isGM || world.users.activeGM?.id!==world.user.id)return;
+  // Classification is independent of optional profile packs and also repairs existing token copies.
+  for(const item of world.items??[]){const patch=pdnWeaponTypePatch(raw(item));if(patch)await item.update(patch);}
+  const actors=new Set(world.actors??[]);
+  for(const scene of world.scenes??[])for(const token of scene.tokens??[])if(!token.actorLink&&token.actor)actors.add(token.actor);
+  for(const actor of actors){
+    const patches=Array.from(actor.items??[]).flatMap(item=>{
+      const patch=pdnWeaponTypePatch(raw(item));return patch?[{_id:item.id??item._id,...patch}]:[];
+    });
+    if(patches.length)await actor.updateEmbeddedDocuments("Item",patches);
+  }
   const gearPack=world.packs.get(NPC_EQUIPMENT_PACK),profilePack=world.packs.get(NPC_PROFILE_PACK);
   if(!gearPack||!profilePack)return;
   const catalog={gear:await gearPack.getDocuments(),profiles:(await profilePack.getDocuments()).filter(i=>["taxonomy","archetype"].includes(i.type))};
@@ -106,8 +116,6 @@ export async function refreshNpcEquipment(world=game,{sync=syncNpcProfileEquipme
     const source=gearSource(item,catalog);return source?equipmentCopyPatch(item,source):null;
   };
   for(const item of world.items??[]){const patch=itemPatch(item);if(patch){delete patch._id;await item.update(patch);}}
-  const actors=new Set(world.actors??[]);
-  for(const scene of world.scenes??[])for(const token of scene.tokens??[])if(!token.actorLink&&token.actor)actors.add(token.actor);
   for(const actor of actors){
     // Repoint managed armor first so updating its profile does not recreate the Item and break shortcuts.
     for(const profilePass of [false,true]){
@@ -123,14 +131,16 @@ export function registerNpcEquipmentMigration(hooks=Hooks){
     console.error("Jujutsu: falha ao atualizar os equipamentos de NPC.",error);
     ui.notifications.error("Não foi possível atualizar os equipamentos de criaturas e NPCs.");
   }));
+  hooks.on("preCreateItem",item=>{
+    const patch=pdnWeaponTypePatch(raw(item));if(patch)item.updateSource(patch);
+  });
   hooks.on("preCreateActor",(actor)=>{
-    if(actor.type!=="npc"||!cachedCatalog)return;
+    if(actor.type!=="npc")return;
     const items=actor.toObject().items??[];let changed=false;
     for(const item of items){
-      const source=["taxonomy","archetype"].includes(item.type)?profileSource(item,cachedCatalog):gearSource(item,cachedCatalog);
-      if(!source)continue;
-      const patch=["taxonomy","archetype"].includes(item.type)?profileCopyPatch(item,source):equipmentCopyPatch(item,source);
-      if(!patch)continue;
+      const source=cachedCatalog?(["taxonomy","archetype"].includes(item.type)?profileSource(item,cachedCatalog):gearSource(item,cachedCatalog)):null;
+      const patch={...(pdnWeaponTypePatch(item)??{}),...(source?(["taxonomy","archetype"].includes(item.type)?profileCopyPatch(item,source):equipmentCopyPatch(item,source)):null)};
+      if(!Object.keys(patch).length)continue;
       delete patch._id;foundry.utils.mergeObject(item,foundry.utils.expandObject(patch));changed=true;
     }
     if(changed)actor.updateSource({items});

@@ -15,6 +15,8 @@ flags:
       caminho: Corpo de Guerreiro
       requisitos:
         - Ira do Berserker
+      ordem: 11
+    physicalSpecializationsVersion: 1
 folder: jj2f000000000009
 ownership:
   default: 0

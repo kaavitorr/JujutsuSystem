@@ -1,4 +1,4 @@
-import { weaponGroupRank, proficienciaPorDefeitos } from "./legacy2-proficiencies.mjs";
+import { weaponGroupRank, npcWeaponProficiency, proficienciaPorDefeitos } from "./legacy2-proficiencies.mjs";
 import { extrasAtributosEstado, npcAttributeDistribution, npcNd, npcProfile, npcProficiencyRank } from "./legacy2-npc-profiles.mjs";
 import { npcClassification } from "./legacy2-npc-classification.mjs";
 import { ESCALA_DANO, linhaEscalaDano, formulaEscalaDano } from "./escala-dano.mjs";
@@ -203,6 +203,17 @@ export default class Ruleset {
     return alternativeSaveData(actor, abilityId, this);
   }
 
+  /** Free weapon rank for every NPC category: ND 0–5 / 6–10 / 11–15 / 16+. */
+  static npcWeaponRank(actor) {
+    if (!this.isV2() || actor?.type !== "npc") return 0;
+    return npcWeaponProficiency(this.nivel(actor));
+  }
+
+  /** Keep higher manual/effect ranks while deriving the NPC floor anew from its current ND. */
+  static weaponRank(actor, category) {
+    return Math.max(weaponGroupRank(actor?.system?.legacy2?.armas, category), this.npcWeaponRank(actor));
+  }
+
   /**
    * Rank 0-4 da categoria de arma do item. Técnicas/feitiços (spell) não são
    * armas: contam como Treinado (0) — sem penalidade de Destreinado.
@@ -216,8 +227,7 @@ export default class Ruleset {
     // "" (Automático do seletor) conta como ausente — ||, não ??
     const override = item.getFlag?.("jujutsu-system", "grupo") || null;
     const category = override ?? item.system?.type?.value ?? item.system?.weaponType;
-    const ranks = actor?.system?.legacy2?.armas;
-    return weaponGroupRank(ranks, category);
+    return this.weaponRank(actor, category);
   }
 
   /** A arma tem uma propriedade (Set ou objeto, conforme a versão do dado). */

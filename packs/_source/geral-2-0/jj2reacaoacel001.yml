@@ -1,0 +1,25 @@
+_id: jj2reacaoacel001
+_key: '!items!jj2reacaoacel001'
+name: Reação Acelerada
+type: feat
+img: icons/skills/movement/figure-running-gray.webp
+system:
+  identifier: reacao-acelerada
+  description:
+    value: <p><em><strong>Requisito:</strong> 6 Habilidades de Especialização Totais</em></p><p>Uma vez por rodada, você pode ativar uma habilidade que tenha a Palavra-Chave “Reação”, consumindo um Ponto de Ação [⬢] a menos, até o mínimo de 1.</p>
+    chat: ''
+  requirements: 6 Habilidades de Especialização Totais
+flags:
+  jujutsu-system:
+    especializacao:
+      categoria: Proezas Físicas
+      caminho: Corpo de Guerreiro
+      requisitos:
+        - 6 Habilidades de Especialização Totais
+      ordem: 3
+    physicalSpecializationsVersion: 2
+folder: jj2f000000000009
+ownership:
+  default: 0
+effects: []
+sort: 0

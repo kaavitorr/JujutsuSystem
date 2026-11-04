@@ -1,5 +1,6 @@
 import { formatLength, prepareFormulaValue } from "../../utils.mjs";
 import FormulaField from "../fields/formula-field.mjs";
+import { sizeTouchRange } from "../../systems/legacy2-size.mjs";
 
 const { SchemaField, StringField } = foundry.data.fields;
 
@@ -58,6 +59,8 @@ export default class RangeField extends SchemaField {
    * @param {object} [labels]                         Object in which to insert generated labels.
    */
   static prepareData(rollData, labels) {
+    const touch = sizeTouchRange(this.item?.actor ?? this.actor, this.range);
+    if (touch) Object.assign(this.range, touch);
     this.range.scalar = this.range.units in CONFIG.DND5E.movementUnits;
     if ( this.range.scalar ) {
       prepareFormulaValue(this, "range.value", "DND5E.RANGE.FIELDS.range.value.label", rollData);

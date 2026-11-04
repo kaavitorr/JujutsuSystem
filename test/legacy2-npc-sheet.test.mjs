@@ -11,7 +11,7 @@ test("NPC presentation keeps derived attributes and threat level without a playe
  assert.equal(data.abilities[0].sourceValue,1);
  assert.equal(data.abilities.find(v=>v.key==="dex").principal,true);assert.equal(data.atributos,undefined);
  assert.equal(data.npc.category,"Elite");assert.equal(data.npc.armorPct,100);assert.deepEqual(a.system,before);
-  assert.equal(data.wounds,undefined);
+   assert.deepEqual(data.wounds,{value:0,max:240,pct:0});
   assert.equal(data.actions.pips.length,8);
 });
 test("NPC render parts preserve native inventory/biography and attach shared partials to redesigned sections",()=>{

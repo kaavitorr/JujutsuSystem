@@ -1,5 +1,5 @@
 /** Presentation data for the 2.0 sheet. No Foundry globals or document mutations. */
-import { WEAPON_GROUPS, weaponGroupRank, grantedProficiencySteps } from "../../../systems/legacy2-proficiencies.mjs";
+import { WEAPON_GROUPS, weaponGroupRank, npcWeaponProficiency, grantedProficiencySteps } from "../../../systems/legacy2-proficiencies.mjs";
 import { savedSystemValue } from "../../../systems/actor-source.mjs";
 import { imuneReducaoPA } from "../../../systems/peculiaridades-data.mjs";
 import { EnergySystem } from "../../../systems/energy.mjs";
@@ -8,6 +8,8 @@ import { extraResourceCards } from "./legacy2-extra-resources.mjs";
 import { baseEngagement, engagementValue } from "../../../systems/engagement.mjs";
 import { SKILL_GROUPS } from "../../../systems/legacy2-skills.mjs";
 import { techniqueDifficulty } from "../../../systems/legacy2-technique-dc.mjs";
+import { sizeContext } from "../../../systems/legacy2-size.mjs";
+import { withNpcProfileContext } from "../../../systems/legacy2-npc-profiles.mjs";
 import { prepareNpcClassificationActions } from "../../../systems/legacy2-npc-classification.mjs";import { resistanceCards } from "../../../systems/legacy2-resistances.mjs";
 export { WEAPON_GROUPS, weaponGroupRank, SKILL_GROUPS };
 
@@ -141,6 +143,10 @@ export function prepareRankUpdate(actor, category, key, rank, ruleset, abilities
  * @param ruleset
  */
 export function buildLegacy2Context(actor, config, ruleset) {
+  return withNpcProfileContext(actor, () => buildLegacy2ContextData(actor, config, ruleset));
+}
+
+function buildLegacy2ContextData(actor, config, ruleset) {
   const system = actor.system;
   const l2 = system.legacy2 ?? {};
   const abilityConfig = config.abilities;
@@ -202,6 +208,7 @@ export function buildLegacy2Context(actor, config, ruleset) {
   return {
     techniqueDC: { ...techniqueDC,
       tooltip: `10 + ${abilityConfig[techniqueDC.ability]?.label ?? techniqueDC.ability} (${techniqueDC.attribute}) = ${techniqueDC.value}` },
+    size: sizeContext(actor),
     creationPending: actor.type === "character" && actor.isOwner && !(actor.items?.size ?? actor.items?.length ?? 0)
       && !actor.getFlag?.("jujutsu-system", "creation2")?.completed,
     engagement: engagementValue(actor),
@@ -216,8 +223,9 @@ export function buildLegacy2Context(actor, config, ruleset) {
     },
     abilities, saves, alternativeSaves, skillGroups, skills: skillGroups.flatMap(group => group.skills),
     armas: WEAPON_GROUPS.map(group => {
-      const rank = weaponGroupRank(l2.armas, group.key);
-      return { ...group, rank, grantedRank: grantedProficiencySteps(actor, "armas", group.key),
+      const npcRank = actor.type === "npc" ? npcWeaponProficiency(ruleset.nivel(actor)) : 0;
+      const rank = Math.max(weaponGroupRank(l2.armas, group.key), npcRank);
+      return { ...group, rank, grantedRank: Math.max(npcRank, grantedProficiencySteps(actor, "armas", group.key)),
         rankLabel: ruleset.rankLabel(rank), bonus: ruleset.rankBonus(rank) };
     }),
     rankDots: Array.from({ length: 5 }, (_, rank) => ({ rank, label: ruleset.rankLabel(rank) })),

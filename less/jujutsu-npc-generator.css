@@ -1,3 +1,7 @@
+@font-face { font-family: "Roboto Condensed"; src: url('../fonts/roboto-condensed/RobotoCondensed-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Roboto Condensed"; src: url('../fonts/roboto-condensed/RobotoCondensed-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Roboto Condensed"; src: url('../fonts/roboto-condensed/RobotoCondensed-BoldItalic.woff2') format('woff2'); font-weight: 700; font-style: italic; font-display: swap; }
+
 /* Keep the generator below the native actions and above search in both sidebar and popout. */
 .directory-header > .jj-npc-generator-actions {
   display: flex;
@@ -17,44 +21,152 @@
 }
 .jj-npc-gen-btn > svg { flex: 0 0 16px; }
 
-.jj-npc-generator-dialog .jj-npcgen-weapons { margin: 16px 0; }
-.jj-npcgen-weapons > h3 { margin: 0 0 6px; font-size: 15px; }
-.jj-npcgen-weapon-filters { display: flex; flex-wrap: wrap; gap: 6px; }
-.jj-npcgen-weapon-filters > input { flex: 1 1 240px; min-width: 0; }
-.jj-npcgen-weapon-filters > select { flex: 1 1 180px; min-width: 0; }
-.jj-npcgen-weapon-count { margin: 5px 0; font-size: 11px; color: var(--color-text-secondary, #b9aec4); }
-.jj-npcgen-weapon-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 5px;
-  max-height: 245px;
-  overflow-y: auto;
-  overscroll-behavior: contain;
+/* The 2.0 creator follows the sheet's ink panels, violet borders and gold actions. */
+.jj-npc-generator-dialog {
+  --npc-ink: #131019;
+  --npc-panel: #201929;
+  --npc-line: #b38add33;
+  --npc-purple: #b38add;
+  --npc-gold: #efc351;
+  --npc-text: #f1edf6;
+  --npc-muted: #b3a7c0;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100dvh - 40px);
+  color: var(--npc-text);
+  background: var(--npc-ink);
+  border: 1px solid #675177;
+  border-top: 3px solid var(--npc-purple);
+  border-radius: 0;
+  font: 14px/1.4 "Roboto Condensed", sans-serif;
+  box-shadow: 0 18px 60px #0009;
+  color-scheme: dark;
+  scrollbar-color: #77558e #16111e;
+  scrollbar-width: thin;
 }
-.jj-npcgen-weapon-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
-  padding: 8px;
-  border: 1px solid #9f7aca44;
-  background: #1c1724;
-  color: #eee7f4;
-  cursor: pointer;
-}
+.jj-npc-generator-dialog .window-header { background: #17121e; border-bottom: 1px solid #b38add33; }
+.jj-npc-generator-dialog .window-title { font: 700 13px/1.4 "Roboto Condensed", sans-serif; color: var(--npc-muted); }
+.jj-npc-generator-dialog .window-content { min-height: 0; padding: 0; background: var(--npc-ink); overflow: hidden; }
+.jj-npc-generator-dialog .dialog-form { display: flex; flex-direction: column; min-height: 0; gap: 0; overflow: hidden; }
+.jj-npc-generator-dialog .dialog-content { min-height: 0; flex: 1; overflow: auto; }
+.jj-npc-generator-dialog :is(.form-footer, .dialog-buttons) { display: flex; flex-direction: row-reverse; flex: none; justify-content: flex-start; gap: 10px; margin: 0; padding: 12px 20px; border-top: 1px solid var(--npc-line); background: #19131f; }
+.jj-npc-generator-dialog :is(.form-footer, .dialog-buttons) button { flex: 0 1 136px; min-height: 42px; height: auto; margin: 0; border: 1px solid #79658577; border-radius: 0; background: transparent; color: #d0bfdc; font: 700 15px/1.2 "Roboto Condensed", sans-serif; text-transform: none; box-shadow: none; }
+.jj-npc-generator-dialog :is(.form-footer, .dialog-buttons) button[data-action="ok"] { flex-basis: 190px; color: #1b1420; background: var(--npc-gold); border-color: var(--npc-gold); font-size: 16px; box-shadow: inset 0 -3px #a77e2e; }
+.jj-npc-generator-dialog :is(.form-footer, .dialog-buttons) button:hover { border-color: var(--npc-gold); }
+.jj-npcgen-layout { min-width: 0; }
+.jj-npcgen-banner { display: flex; align-items: center; gap: 14px; position: sticky; top: 0; z-index: 2; isolation: isolate; min-height: 80px; padding: 8px 20px; overflow: hidden; background: var(--npc-ink); border-bottom: 1px solid #b38add55; }
+.jj-npcgen-banner::before { content: ""; position: absolute; inset: 0; z-index: -1; background: #2c2039; clip-path: polygon(0 0, 61% 0, 54% 100%, 0 100%); }
+.jj-npcgen-banner::after { content: ""; position: absolute; top: 0; right: 32%; width: 3px; height: 100%; background: var(--npc-purple); transform: skewX(-28deg); opacity: .3; }
+.jj-npcgen-banner h2 { margin: 0; border: 0; color: var(--npc-text); font: italic 700 36px/1 "Roboto Condensed", sans-serif; text-transform: none; }
+.jj-npcgen-banner p { margin: 5px 0 0; color: #c7b8d2; font-size: 12px; }
+.jj-npcgen-sigil { display: grid; place-items: center; flex: none; width: 64px; height: 64px; }
+.jj-npcgen-sigil img { display: block; width: 64px; height: 64px; border: 0; object-fit: contain; filter: drop-shadow(0 3px 3px #0007); }
+.jj-npcgen-edition { margin-left: auto; padding: 4px 0 4px 16px; border-left: 1px solid var(--npc-line); color: var(--npc-muted); font-size: 10px; text-align: right; }
+.jj-npcgen-edition strong { display: block; margin-top: 2px; color: var(--npc-gold); font: 700 21px/1.1 "Roboto Condensed", sans-serif; }
+.jj-npcgen-workspace { display: grid; grid-template-columns: 320px minmax(0, 1fr); align-items: start; gap: 20px; padding: 12px 20px 6px; }
+.jj-npcgen-profile { min-width: 0; padding: 14px; background: var(--npc-panel); border-left: 2px solid var(--npc-purple); }
+.jj-npc-generator-dialog .jj-npcgen-weapons > h3 { display: flex; align-items: center; gap: 8px; margin: 0; padding: 0; border: 0; color: var(--npc-text); font: italic 700 20px/1.15 "Roboto Condensed", sans-serif; text-transform: none; }
+.jj-npcgen-identity { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) 58px; align-items: end; gap: 10px; }
+.jj-npc-generator-dialog .jj-npcgen-nd { display: grid; gap: 1px; width: 58px; padding: 3px; background: #151019; border: 1px solid #efc35177; border-bottom: 2px solid var(--npc-gold); text-align: center; }
+.jj-npcgen-nd > span { color: var(--npc-gold); font-size: 11px; font-weight: 700; }
+.jj-npc-generator-dialog .jj-npcgen-profile .jj-npcgen-nd select { height: 30px; min-height: 0; padding: 0 2px; border: 0; background: transparent; color: var(--npc-gold); font: italic 700 25px/1 "Roboto Condensed", sans-serif; }
+.jj-npc-generator-dialog .jj-npcgen-nd option { font: normal 400 14px/1.4 "Roboto Condensed", sans-serif; }
+.jj-npcgen-profile-fields { display: grid; gap: 10px; }
+.jj-npcgen-field { display: grid; min-width: 0; gap: 4px; color: var(--npc-text); }
+.jj-npcgen-field > span { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; font-size: 12px; line-height: 1.3; font-weight: 700; }
+.jj-npcgen-field small { color: var(--npc-muted); font-size: 11px; font-weight: 400; }
+.jj-npcgen-profile-field { position: relative; gap: 0; }
+.jj-npcgen-profile-field > span:first-child { position: absolute; z-index: 1; top: 9px; left: 80px; right: 26px; color: var(--npc-muted); font-size: 11px; font-weight: 400; pointer-events: none; }
+.jj-npcgen-field > .jj-npcgen-profile-choice { display: grid; grid-template-columns: 76px minmax(0, 1fr); align-items: center; justify-content: normal; gap: 0; background: #281f33; border-bottom: 1px solid #b38add66; }
+.jj-npcgen-profile-choice > img { box-sizing: border-box; display: block; width: 76px; height: 76px; padding: 6px; border: 0; object-fit: contain; filter: drop-shadow(0 3px 2px #0005); }
+.jj-npc-generator-dialog .jj-npcgen-field .jj-npcgen-profile-choice > select { height: 76px; padding: 20px 24px 2px 4px; border: 0; background: transparent; font: 700 16px/1.2 "Roboto Condensed", sans-serif; }
+.jj-npcgen-profile-choice:focus-within { border-color: var(--npc-gold); box-shadow: inset 0 -1px var(--npc-gold); }
+.jj-npc-generator-dialog .jj-npcgen-profile-choice option { font: 400 14px/1.4 "Roboto Condensed", sans-serif; }
+.jj-npcgen-existence { grid-column: 1 / -1; min-width: 0; margin: 6px 0 0; padding: 0; border: 0; }
+.jj-npcgen-existence legend { margin-bottom: 8px; padding: 0; color: var(--npc-text); font: 700 12px/1.3 "Roboto Condensed", sans-serif; text-transform: none; }
+.jj-npcgen-existence-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+.jj-npcgen-existence-choice { position: relative; display: block; min-width: 0; cursor: pointer; }
+.jj-npcgen-existence-choice > input { position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; clip-path: inset(50%); }
+.jj-npcgen-existence-button { display: flex; align-items: center; gap: 7px; min-height: 78px; padding: 8px 6px; border: 1px solid #b38add44; background: #17121d; }
+.jj-npcgen-existence-button > img { flex: 0 0 56px; width: 56px; height: 56px; border: 0; object-fit: contain; }
+.jj-npcgen-existence-button > span { min-width: 0; }
+.jj-npcgen-existence-button strong { display: block; margin-bottom: 3px; color: var(--npc-text); font: 700 15px/1.1 "Roboto Condensed", sans-serif; }
+.jj-npcgen-existence-button small { display: block; color: var(--npc-muted); font: 400 11px/1.3 "Roboto Condensed", sans-serif; white-space: nowrap; }
+.jj-npcgen-existence-choice:not(:has(input:disabled)):hover .jj-npcgen-existence-button { border-color: var(--npc-purple); background: #2a2033; }
+.jj-npcgen-existence-choice:has(input:disabled) { cursor: default; }
+.jj-npcgen-existence-choice:has(input:checked) .jj-npcgen-existence-button { border-color: var(--npc-gold); background: #342837; box-shadow: inset 0 -3px var(--npc-gold); }
+.jj-npcgen-existence-choice:has(input:checked) strong { color: var(--npc-gold); }
+.jj-npcgen-existence-choice:has(input:checked)::after { content: ""; position: absolute; top: 6px; right: 6px; width: 5px; height: 5px; background: var(--npc-gold); transform: rotate(45deg); }
+.jj-npcgen-existence-choice:has(input:focus-visible) { outline: 2px solid var(--npc-gold); outline-offset: 2px; }
+.jj-npc-generator-dialog :is(input[type=text], input[type=search], select) { box-sizing: border-box; width: 100%; min-width: 0; height: 34px; margin: 0; padding: 6px 9px; border: 1px solid #675177; border-radius: 0; background: #151019; color: var(--npc-text); font: 400 14px/1.3 "Roboto Condensed", sans-serif; box-shadow: none; }
+.jj-npc-generator-dialog select { padding-right: 20px; }
+.jj-npc-generator-dialog :is(input, select)::placeholder { color: #9f90ac; opacity: 1; }
+.jj-npc-generator-dialog :is(input, select, button, summary):focus-visible { outline: 2px solid var(--npc-gold); outline-offset: 2px; }
+.jj-npc-generator-dialog optgroup { background: #211a29; color: #c3a3df; }
+.jj-npc-generator-dialog option { background: #19131f; color: var(--npc-text); }
+.jj-npc-generator-dialog .hint { margin: 6px 0 0; color: var(--npc-muted); font: 400 12px/1.45 "Roboto Condensed", sans-serif; }
+.jj-npc-generator-dialog .jj-npcgen-weapons { min-width: 0; margin: 0; padding: 8px 0 0; container-type: inline-size; }
+.jj-npc-generator-dialog .jj-npcgen-weapons > h3 { padding-bottom: 9px; border-bottom: 1px solid var(--npc-line); }
+.jj-npcgen-weapon-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.jj-npcgen-search { display: flex; align-items: center; position: relative; flex: 1 1 210px; min-width: 0; }
+.jj-npcgen-search svg { position: absolute; left: 10px; width: 16px; height: 16px; color: var(--npc-muted); pointer-events: none; }
+.jj-npc-generator-dialog .jj-npcgen-search input { padding-left: 33px; }
+.jj-npcgen-weapon-filters > select { flex: 1 1 170px; }
+.jj-npcgen-weapon-browser { display: grid; grid-template-columns: 142px minmax(0, 1fr); gap: 12px; margin-top: 12px; }
+.jj-npcgen-folders { max-height: 330px; overflow-y: auto; padding-right: 6px; border-right: 1px solid var(--npc-line); }
+.jj-npcgen-folders .jj-npcgen-folder,
+.jj-npcgen-folders summary { display: flex; align-items: center; gap: 5px; min-width: 0; padding: 7px 5px; color: #c9bbd9; font: 400 12px/1.25 "Roboto Condensed", sans-serif; text-align: left; cursor: pointer; }
+.jj-npcgen-folders .jj-npcgen-folder { width: 100%; min-height: 0; height: auto; margin: 0 0 2px; border: 1px solid transparent; border-radius: 0; background: transparent; box-shadow: none; text-transform: none; letter-spacing: normal; }
+.jj-npcgen-folder svg,
+.jj-npcgen-folders summary svg { width: 14px; height: 14px; flex: 0 0 14px; }
+.jj-npcgen-folder span { min-width: 0; flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.jj-npcgen-folder small { flex: none; min-width: 18px; padding: 1px 3px; color: var(--npc-muted); background: #100d15; font-size: 10px; text-align: center; }
+.jj-npcgen-folders .jj-npcgen-folder[aria-pressed="true"] { color: #fff0b5; background: #3a284f; border-color: #9f7aca66; border-left: 3px solid var(--npc-gold); }
+.jj-npcgen-folders .jj-npcgen-folder:hover { background: #30253c; }
+.jj-npcgen-folders summary { list-style: none; }
+.jj-npcgen-folders summary::-webkit-details-marker { display: none; }
+.jj-npcgen-folders summary .jj-npcgen-folder-chevron { width: 10px; height: 10px; flex-basis: 10px; margin-left: auto; }
+.jj-npcgen-folders details[open] > summary .jj-npcgen-folder-chevron { transform: rotate(90deg); }
+.jj-npcgen-element-folders { margin-left: 3px; padding-left: 3px; border-left: 1px solid #b38add33; }
+.jj-npcgen-weapon-results { min-width: 0; }
+.jj-npcgen-weapon-results > h4 { margin: 0; padding: 0; color: var(--npc-text); border: 0; font: 700 15px/1.2 "Roboto Condensed", sans-serif; text-transform: none; }
+.jj-npcgen-weapon-count { margin: 5px 0 10px; color: var(--npc-muted); font: 400 12px/1.3 "Roboto Condensed", sans-serif; }
+.jj-npcgen-weapon-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; max-height: 304px; overflow-y: auto; padding: 0 5px 3px 0; overscroll-behavior: contain; }
+.jj-npcgen-weapon-row { position: relative; display: grid; grid-template-columns: 56px minmax(0, 1fr); align-items: center; gap: 8px; min-width: 0; min-height: 76px; padding: 9px 8px; border: 1px solid var(--npc-line); background: #211a29; color: var(--npc-text); cursor: pointer; }
 .jj-npcgen-weapon-row[hidden] { display: none; }
-.jj-npcgen-weapon-row > input[type=checkbox] {
-  appearance: auto;
-  accent-color: #b38add;
-  flex: 0 0 16px;
-  width: 16px;
-  height: 16px;
-  margin: 0;
-}
+.jj-npcgen-weapon-row > input[type=checkbox] { position: absolute; top: 7px; right: 7px; appearance: auto; accent-color: var(--npc-gold); width: 13px; height: 13px; margin: 0; }
 .jj-npcgen-weapon-row > input[type=checkbox]::before,
 .jj-npcgen-weapon-row > input[type=checkbox]::after { content: none; }
 .jj-npcgen-weapon-row > span { min-width: 0; overflow-wrap: anywhere; }
-.jj-npcgen-weapon-row strong { display: block; font-size: 12px; line-height: 1.2; }
-.jj-npcgen-weapon-row small { display: block; margin-top: 3px; color: #b9aec4; font-size: 10px; line-height: 1.2; }
-.jj-npcgen-weapon-row:has(input:checked) { border-color: #b38add; background: #3a284f; }
-.jj-npcgen-weapon-row:focus-within { outline: 2px solid #efc351; outline-offset: -2px; }
+.jj-npcgen-weapon-row > img { width: 56px; height: 56px; object-fit: contain; border: 0; filter: drop-shadow(0 3px 2px #0006); }
+.jj-npcgen-weapon-row strong { display: block; padding-right: 14px; color: var(--npc-text); font: 700 14px/1.2 "Roboto Condensed", sans-serif; }
+.jj-npcgen-weapon-row small { display: block; overflow: hidden; margin-top: 5px; color: var(--npc-muted); font: 400 10.5px/1.2 "Roboto Condensed", sans-serif; white-space: nowrap; text-overflow: ellipsis; }
+.jj-npcgen-weapon-row:hover { border-color: #b38add99; background: #2a2033; }
+.jj-npcgen-weapon-row:has(input:checked) { border-color: var(--npc-gold); background: #332a30; box-shadow: inset 2px 0 0 var(--npc-gold); }
+.jj-npcgen-weapon-row:focus-within { outline: 2px solid var(--npc-gold); outline-offset: -2px; }
+@container (max-width: 490px) {
+  .jj-npcgen-weapon-list { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+  .jj-npcgen-workspace { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 16px; }
+  .jj-npcgen-profile { padding: 12px; }
+  .jj-npcgen-profile-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .jj-npcgen-banner { padding: 10px 16px; }
+  .jj-npcgen-banner h2 { font-size: 28px; }
+}
+@media (max-width: 460px) {
+  .jj-npcgen-profile-fields { grid-template-columns: minmax(0, 1fr); }
+  .jj-npcgen-existence-button { gap: 5px; }
+  .jj-npcgen-existence-button > img { flex-basis: 50px; width: 50px; height: 50px; }
+  .jj-npcgen-weapon-row { grid-template-columns: 44px minmax(0, 1fr); gap: 6px; padding-inline: 6px; }
+  .jj-npcgen-weapon-row > img { width: 44px; height: 44px; }
+  .jj-npcgen-banner { gap: 10px; }
+  .jj-npcgen-sigil { width: 42px; height: 44px; }
+  .jj-npcgen-sigil img { width: 42px; height: 42px; }
+  .jj-npcgen-banner p { max-width: 180px; font-size: 12px; }
+  .jj-npcgen-weapon-browser { grid-template-columns: 116px minmax(0, 1fr); gap: 8px; }
+  .jj-npcgen-folder > svg,
+  .jj-npcgen-folders summary > svg:first-child { display: none; }
+  .jj-npcgen-folder small { min-width: 16px; padding-inline: 2px; }
+  .jj-npcgen-folders .jj-npcgen-folder { font-size: 12px; }
+  .jj-npc-generator-dialog :is(.form-footer, .dialog-buttons) { padding: 12px 16px; }
+}

@@ -1,4 +1,5 @@
 import { convertLength, defaultUnits, filteredKeys, formatLength, formatNumber } from "../../utils.mjs";
+import { sizeMeleeReach, sizeRules } from "../../systems/legacy2-size.mjs";
 import ItemDataModel from "../abstract/item-data-model.mjs";
 import BaseActivityData from "../activity/base-activity.mjs";
 import FormulaField from "../fields/formula-field.mjs";
@@ -486,6 +487,11 @@ export default class WeaponData extends ItemDataModel.mixin(
     if ( this.attackType === "ranged" ) this.range.reach = null;
     else if ( this.range.reach === null ) {
       this.range.reach = convertLength(this.properties.has("rch") ? 10 : 5, "ft", this.range.units, { strict: false });
+    }
+    if (this.attackType !== "ranged" && sizeRules(this.parent.actor).touch) {
+      const units = this.range.units || defaultUnits("length");
+      const reach = convertLength(this.range.reach ?? 0, units, "m", { strict: false });
+      this.range.reach = convertLength(sizeMeleeReach(this.parent.actor, reach), "m", units, { strict: false });
     }
     if ( !this.hasRange ) this.range.value = this.range.long = null;
   }

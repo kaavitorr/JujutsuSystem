@@ -22,6 +22,12 @@ export const WEAPON_GROUPS = [
 
 const rankOf = value => Math.floor(Math.min(4, Math.max(0, Number(value) || 0)));
 
+/** NPCs start trained and advance after ND 5, 10 and 15, capped at Master. */
+export function npcWeaponProficiency(nd) {
+  const value = Number(nd);
+  return Number.isFinite(value) ? Math.min(4, Math.max(1, Math.ceil(value / 5))) : 1;
+}
+
 /** A saved canonical rank wins; otherwise preserve the old category's proficiency. */
 export function weaponGroupRank(ranks, category) {
   const group = WEAPON_GROUPS.find(g => g.key === category || g.aliases.includes(category));

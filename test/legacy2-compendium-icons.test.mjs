@@ -60,3 +60,15 @@ test("only the active GM applies the icon refresh, and an unavailable module is 
   game.user = { id: "gm", isGM: true }; game.packs.clear();
   await helpers.refreshEncyclopediaIcons(game); assert.deepEqual(writes, []);
 });
+
+test("human taxonomy copies replace the stock cultivator while preserving custom portraits and all mechanics", async () => {
+  const { game, source, copy, items } = fixture();
+  source.type = copy.type = "taxonomy";
+  source.flags = copy.flags = { "jujutsu-system": { encyclopedia: { edition: "2.0", key: "profile:taxonomy:humanos" } } };
+  source.img = copy.img = "modules/jujutsu-compendium/assets/perfis-pdn-pintados-v1/taxonomias/humanos.webp";
+  const before = structuredClone(copy);
+  items.push({ ...structuredClone(copy), id: "custom-human", img: "worlds/campaign/my-human.webp" });
+  await helpers.refreshEncyclopediaIcons(game);
+  assert.deepEqual(copy, { ...before, img: "systems/jujutsu-system/assets/gerador-pdn-pintado-v1/humano-feiticeiro.webp" });
+  assert.equal(items[1].img, "worlds/campaign/my-human.webp");
+});

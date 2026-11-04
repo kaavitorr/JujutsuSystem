@@ -23,6 +23,16 @@
     {{/if}}
   </div>
   {{/if}}
+  {{#if jj2.potentialInfo.max}}
+  <div class="jj2-activation-field"><label for="{{rootId}}-potential">Explosão de Velocidade · {{jj2.potentialInfo.current}}/{{jj2.potentialInfo.max}} PP</label>
+    <div class="jj2-counter"><label for="{{rootId}}-potential">PP a gastar</label>
+      <div class="jj2-counter-value"><button type="button" data-action="jj2StepCounter" data-step="-1" aria-label="Diminuir Pontos de Potencial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+        <input id="{{rootId}}-potential" name="legacy2.potencial" type="number" value="{{jj2.potencial}}" min="0" max="{{jj2.potentialInfo.current}}" step="1" aria-label="Pontos de Potencial a gastar">
+        <button type="button" data-action="jj2StepCounter" data-step="1" aria-label="Aumentar Pontos de Potencial">{{> "systems/jujutsu-system/templates/actors/parts/jj2-icon.hbs" key="add"}}</button></div>
+    </div>
+    <p>Cada PP reduz 1 ação da técnica, até o mínimo de 1. Só são gastos os pontos que reduzirem o custo. Recupera todos os PP no início do encontro.</p>
+  </div>
+  {{/if}}
   {{#if jj2.selosInfo.max}}
   <div class="jj2-activation-field jj2-selos"><label class="jj2-selos-titulo" for="{{rootId}}-selos">Selos de Mão</label>
     <div class="jj2-counter jj2-counter-selos">
@@ -31,7 +41,7 @@
       <input id="{{rootId}}-selos" name="legacy2.selos" type="number" value="{{jj2.selos}}" min="0" max="{{jj2.selosInfo.porVez}}" step="1" aria-label="Selos a gastar">
       <button type="button" class="jj2-selo-mais" data-action="jj2StepCounter" data-step="1" aria-label="Mais selos">&plus;</button>
     </div>
-    <p>Cada selo reduz o custo da técnica em 1 Ação (mínimo 1).{{#if jj2.selosInfo.complexo}} Selos Complexos: até 2 selos (−2 Ações).{{/if}}{{#if jj2.selosInfo.manipulacao}} Com Manipulação de Selos é possível não gastar usos, pagando com deslocamento.{{/if}}</p>
+    <p>Requer pelo menos uma mão livre. Cada selo reduz o custo da técnica em 1 Ação (mínimo 1).{{#if jj2.selosInfo.complexo}} Selos Complexos: até 2 selos (−2 Ações).{{/if}}{{#if jj2.selosInfo.manipulacao}} Com Manipulação de Selos é possível não gastar usos, pagando com deslocamento.{{/if}}</p>
     {{#if jj2.selosInfo.manipulacao}}
     <label class="jj2-check"><input type="checkbox" name="legacy2.manipulacao" {{#if jj2.manipulacao}}checked{{/if}}> Pagar com deslocamento (não gasta usos)</label>
     {{/if}}

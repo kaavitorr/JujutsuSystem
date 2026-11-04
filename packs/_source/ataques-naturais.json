@@ -4,7 +4,7 @@
       "_id": "jjnat00000000001",
       "name": "Galhada",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-antler-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000001-galhada.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -61,7 +61,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-antler-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000001-galhada.webp"
           }
         }
       },
@@ -91,7 +91,7 @@
       "_id": "jjnat00000000002",
       "name": "Bico",
       "type": "weapon",
-      "img": "icons/commodities/bones/beak-grey-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000002-bico.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -148,7 +148,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/beak-grey-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000002-bico.webp"
           }
         }
       },
@@ -178,7 +178,7 @@
       "_id": "jjnat00000000003",
       "name": "Mordida",
       "type": "weapon",
-      "img": "icons/creatures/abilities/fangs-teeth-bite.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000003-mordida.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -235,7 +235,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/fangs-teeth-bite.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000003-mordida.webp"
           }
         }
       },
@@ -265,7 +265,7 @@
       "_id": "jjnat00000000004",
       "name": "Garras",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-bear-paw-swipe-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000004-garras.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -322,7 +322,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-bear-paw-swipe-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000004-garras.webp"
           }
         }
       },
@@ -352,7 +352,7 @@
       "_id": "jjnat00000000005",
       "name": "Presas",
       "type": "weapon",
-      "img": "icons/creatures/abilities/fang-tooth-blood-red.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000005-presas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -409,7 +409,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/abilities/fang-tooth-blood-red.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000005-presas.webp"
           }
         }
       },
@@ -439,7 +439,7 @@
       "_id": "jjnat00000000006",
       "name": "Punhos",
       "type": "weapon",
-      "img": "icons/skills/melee/unarmed-punch-fist-white.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000006-punhos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -496,7 +496,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/skills/melee/unarmed-punch-fist-white.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000006-punhos.webp"
           }
         }
       },
@@ -526,7 +526,7 @@
       "_id": "jjnat00000000007",
       "name": "Cascos",
       "type": "weapon",
-      "img": "icons/commodities/bones/hooves-cloven-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000007-cascos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -583,7 +583,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/hooves-cloven-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000007-cascos.webp"
           }
         }
       },
@@ -613,7 +613,7 @@
       "_id": "jjnat00000000008",
       "name": "Chifres",
       "type": "weapon",
-      "img": "icons/creatures/abilities/bull-head-horns-glowing.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000008-chifres.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -670,7 +670,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/bull-head-horns-glowing.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000008-chifres.webp"
           }
         }
       },
@@ -700,7 +700,7 @@
       "_id": "jjnat00000000009",
       "name": "Pseudópode",
       "type": "weapon",
-      "img": "icons/creatures/slimes/slime-blob-pseudopods-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000009-pseudopode.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -757,7 +757,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/slimes/slime-blob-pseudopods-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000009-pseudopode.webp"
           }
         }
       },
@@ -787,7 +787,7 @@
       "_id": "jjnat00000000010",
       "name": "Pinças",
       "type": "weapon",
-      "img": "icons/creatures/claws/pincer-crab-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000010-pincas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -844,7 +844,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/pincer-crab-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000010-pincas.webp"
           }
         }
       },
@@ -874,7 +874,7 @@
       "_id": "jjnat00000000011",
       "name": "Farpas",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-jagged-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000011-farpas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -931,7 +931,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-jagged-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000011-farpas.webp"
           }
         }
       },
@@ -961,7 +961,7 @@
       "_id": "jjnat00000000012",
       "name": "Ferrão",
       "type": "weapon",
-      "img": "icons/creatures/abilities/stinger-poison-scorpion-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000012-ferrao.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -1018,7 +1018,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/stinger-poison-scorpion-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000012-ferrao.webp"
           }
         }
       },
@@ -1048,7 +1048,7 @@
       "_id": "jjnat00000000013",
       "name": "Cauda",
       "type": "weapon",
-      "img": "icons/creatures/abilities/tail-swipe-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000013-cauda.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -1105,7 +1105,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/abilities/tail-swipe-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000013-cauda.webp"
           }
         }
       },
@@ -1135,7 +1135,7 @@
       "_id": "jjnat00000000014",
       "name": "Unhas",
       "type": "weapon",
-      "img": "icons/commodities/claws/claws-plain-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000014-unhas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -1192,7 +1192,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/claws-plain-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000014-unhas.webp"
           }
         }
       },
@@ -1222,7 +1222,7 @@
       "_id": "jjnat00000000015",
       "name": "Tentáculos",
       "type": "weapon",
-      "img": "icons/creatures/tentacles/tentacles-suctioncups-pink.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000015-tentaculos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -1279,7 +1279,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/tentacles/tentacles-suctioncups-pink.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000015-tentaculos.webp"
           }
         }
       },
@@ -1309,7 +1309,7 @@
       "_id": "jjnat00000000016",
       "name": "Espinhos",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-hooked-barbed.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000016-espinhos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -1366,7 +1366,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-hooked-barbed.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000016-espinhos.webp"
           }
         }
       },
@@ -1396,7 +1396,7 @@
       "_id": "jjnat00000000017",
       "name": "Mordida Flamejante",
       "type": "weapon",
-      "img": "icons/creatures/abilities/mouth-teeth-fire-orange.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000017-mordida-flamejante.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -1462,7 +1462,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/mouth-teeth-fire-orange.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000017-mordida-flamejante.webp"
           }
         }
       },
@@ -1519,7 +1519,7 @@
       "_id": "jjnat00000000018",
       "name": "Mordida Caustica",
       "type": "weapon",
-      "img": "icons/creatures/abilities/fang-tooth-venomous.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000018-mordida-caustica.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -1585,7 +1585,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/fang-tooth-venomous.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000018-mordida-caustica.webp"
           }
         }
       },
@@ -1642,7 +1642,7 @@
       "_id": "jjnat00000000019",
       "name": "Mordida Carregada",
       "type": "weapon",
-      "img": "icons/creatures/abilities/mouth-teeth-crooked-blue.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000019-mordida-carregada.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -1708,7 +1708,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/mouth-teeth-crooked-blue.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000019-mordida-carregada.webp"
           }
         }
       },
@@ -1765,7 +1765,7 @@
       "_id": "jjnat00000000020",
       "name": "Mordida Frigida",
       "type": "weapon",
-      "img": "icons/magic/water/strike-ice-blade-fang.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000020-mordida-frigida.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -1831,7 +1831,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/magic/water/strike-ice-blade-fang.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000020-mordida-frigida.webp"
           }
         }
       },
@@ -1889,7 +1889,7 @@
       "_id": "jjnat00000000021",
       "name": "Mordida Estrondosa",
       "type": "weapon",
-      "img": "icons/creatures/abilities/fangs-teeth-bite.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000021-mordida-estrondosa.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -1955,7 +1955,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/fangs-teeth-bite.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000021-mordida-estrondosa.webp"
           }
         }
       },
@@ -2013,7 +2013,7 @@
       "_id": "jjnat00000000022",
       "name": "Mordida Psíquica",
       "type": "weapon",
-      "img": "icons/creatures/abilities/mouth-teeth-rows-needles-purple.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000022-mordida-psiquica.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -2079,7 +2079,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/mouth-teeth-rows-needles-purple.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000022-mordida-psiquica.webp"
           }
         }
       },
@@ -2137,7 +2137,7 @@
       "_id": "jjnat00000000023",
       "name": "Mordida Radiante",
       "type": "weapon",
-      "img": "icons/creatures/abilities/mouth-teeth-rows-white.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000023-mordida-radiante.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -2203,7 +2203,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/mouth-teeth-rows-white.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000023-mordida-radiante.webp"
           }
         }
       },
@@ -2260,7 +2260,7 @@
       "_id": "jjnat00000000024",
       "name": "Mordida Venenosa",
       "type": "weapon",
-      "img": "icons/creatures/abilities/fang-tooth-poison-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000024-mordida-venenosa.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -2326,7 +2326,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/fang-tooth-poison-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000024-mordida-venenosa.webp"
           }
         }
       },
@@ -2384,7 +2384,7 @@
       "_id": "jjnat00000000025",
       "name": "Mordida Sombria",
       "type": "weapon",
-      "img": "icons/magic/death/mouth-bite-fangs-vampire.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000025-mordida-sombria.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -2450,7 +2450,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/magic/death/mouth-bite-fangs-vampire.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnat00000000025-mordida-sombria.webp"
           }
         }
       },
@@ -2509,7 +2509,7 @@
       "_id": "jjnem00000000001",
       "name": "Galhada Flamejante",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-antler-brown-red.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000001-galhada-flamejante.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -2566,7 +2566,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-antler-brown-red.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000001-galhada-flamejante.webp"
           }
         }
       },
@@ -2598,7 +2598,7 @@
       "_id": "jjnem00000000002",
       "name": "Bico Flamejante",
       "type": "weapon",
-      "img": "icons/commodities/bones/beak-hooked-red.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000002-bico-flamejante.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -2655,7 +2655,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/beak-hooked-red.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000002-bico-flamejante.webp"
           }
         }
       },
@@ -2687,7 +2687,7 @@
       "_id": "jjnem00000000003",
       "name": "Garras Flamejantes",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-talons-glowing-orange.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000003-garras-flamejantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -2744,7 +2744,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-talons-glowing-orange.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000003-garras-flamejantes.webp"
           }
         }
       },
@@ -2776,7 +2776,7 @@
       "_id": "jjnem00000000004",
       "name": "Presas Flamejantes",
       "type": "weapon",
-      "img": "icons/creatures/abilities/fang-tooth-blood-red.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000004-presas-flamejantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -2833,7 +2833,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/abilities/fang-tooth-blood-red.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000004-presas-flamejantes.webp"
           }
         }
       },
@@ -2865,7 +2865,7 @@
       "_id": "jjnem00000000005",
       "name": "Punhos Flamejantes",
       "type": "weapon",
-      "img": "icons/magic/fire/flame-burning-fist-strike.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000005-punhos-flamejantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -2922,7 +2922,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/magic/fire/flame-burning-fist-strike.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000005-punhos-flamejantes.webp"
           }
         }
       },
@@ -2954,7 +2954,7 @@
       "_id": "jjnem00000000006",
       "name": "Cascos Flamejantes",
       "type": "weapon",
-      "img": "icons/commodities/bones/hooves-cloven-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000006-cascos-flamejantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -3011,7 +3011,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/hooves-cloven-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000006-cascos-flamejantes.webp"
           }
         }
       },
@@ -3043,7 +3043,7 @@
       "_id": "jjnem00000000007",
       "name": "Chifres Flamejantes",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-curved-orange.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000007-chifres-flamejantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -3100,7 +3100,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-curved-orange.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000007-chifres-flamejantes.webp"
           }
         }
       },
@@ -3132,7 +3132,7 @@
       "_id": "jjnem00000000008",
       "name": "Pseudópode Flamejante",
       "type": "weapon",
-      "img": "icons/commodities/biological/tentacle-pink.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000008-pseudopode-flamejante.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -3189,7 +3189,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/biological/tentacle-pink.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000008-pseudopode-flamejante.webp"
           }
         }
       },
@@ -3221,7 +3221,7 @@
       "_id": "jjnem00000000009",
       "name": "Pinças Flamejantes",
       "type": "weapon",
-      "img": "icons/creatures/claws/pincer-crab-red.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000009-pincas-flamejantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -3278,7 +3278,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/pincer-crab-red.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000009-pincas-flamejantes.webp"
           }
         }
       },
@@ -3310,7 +3310,7 @@
       "_id": "jjnem00000000010",
       "name": "Farpas Flamejantes",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-jagged-gold.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000010-farpas-flamejantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -3367,7 +3367,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-jagged-gold.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000010-farpas-flamejantes.webp"
           }
         }
       },
@@ -3399,7 +3399,7 @@
       "_id": "jjnem00000000011",
       "name": "Ferrão Flamejante",
       "type": "weapon",
-      "img": "icons/creatures/abilities/stinger-spine-horn-blood.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000011-ferrao-flamejante.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -3456,7 +3456,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/stinger-spine-horn-blood.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000011-ferrao-flamejante.webp"
           }
         }
       },
@@ -3488,7 +3488,7 @@
       "_id": "jjnem00000000012",
       "name": "Cauda Flamejante",
       "type": "weapon",
-      "img": "icons/creatures/abilities/tail-strike-bone-orange.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000012-cauda-flamejante.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -3545,7 +3545,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/abilities/tail-strike-bone-orange.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000012-cauda-flamejante.webp"
           }
         }
       },
@@ -3577,7 +3577,7 @@
       "_id": "jjnem00000000013",
       "name": "Unhas Flamejantes",
       "type": "weapon",
-      "img": "icons/commodities/claws/claws-plain-orange.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000013-unhas-flamejantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -3634,7 +3634,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/claws-plain-orange.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000013-unhas-flamejantes.webp"
           }
         }
       },
@@ -3666,7 +3666,7 @@
       "_id": "jjnem00000000014",
       "name": "Tentáculos Flamejantes",
       "type": "weapon",
-      "img": "icons/commodities/biological/tentacle-pink.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000014-tentaculos-flamejantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -3723,7 +3723,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/biological/tentacle-pink.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000014-tentaculos-flamejantes.webp"
           }
         }
       },
@@ -3755,7 +3755,7 @@
       "_id": "jjnem00000000015",
       "name": "Espinhos Flamejantes",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-straight-orange.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000015-espinhos-flamejantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -3812,7 +3812,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-straight-orange.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000015-espinhos-flamejantes.webp"
           }
         }
       },
@@ -3844,7 +3844,7 @@
       "_id": "jjnem00000000016",
       "name": "Galhada Caustica",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-antler-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000016-galhada-caustica.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -3901,7 +3901,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-antler-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000016-galhada-caustica.webp"
           }
         }
       },
@@ -3933,7 +3933,7 @@
       "_id": "jjnem00000000017",
       "name": "Bico Caustico",
       "type": "weapon",
-      "img": "icons/commodities/bones/beak-orange-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000017-bico-caustico.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -3990,7 +3990,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/beak-orange-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000017-bico-caustico.webp"
           }
         }
       },
@@ -4022,7 +4022,7 @@
       "_id": "jjnem00000000018",
       "name": "Garras Causticas",
       "type": "weapon",
-      "img": "icons/commodities/claws/claws-insectoid-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000018-garras-causticas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -4079,7 +4079,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/claws-insectoid-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000018-garras-causticas.webp"
           }
         }
       },
@@ -4111,7 +4111,7 @@
       "_id": "jjnem00000000019",
       "name": "Presas Causticas",
       "type": "weapon",
-      "img": "icons/creatures/abilities/fang-tooth-venomous.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000019-presas-causticas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -4168,7 +4168,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/abilities/fang-tooth-venomous.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000019-presas-causticas.webp"
           }
         }
       },
@@ -4200,7 +4200,7 @@
       "_id": "jjnem00000000020",
       "name": "Punhos Causticos",
       "type": "weapon",
-      "img": "icons/magic/lightning/fist-unarmed-strike-blue-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000020-punhos-causticos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -4257,7 +4257,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/magic/lightning/fist-unarmed-strike-blue-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000020-punhos-causticos.webp"
           }
         }
       },
@@ -4289,7 +4289,7 @@
       "_id": "jjnem00000000021",
       "name": "Cascos Causticos",
       "type": "weapon",
-      "img": "icons/commodities/bones/hooves-cloven-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000021-cascos-causticos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -4346,7 +4346,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/hooves-cloven-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000021-cascos-causticos.webp"
           }
         }
       },
@@ -4378,7 +4378,7 @@
       "_id": "jjnem00000000022",
       "name": "Chifres Causticos",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-curved-grey-purple.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000022-chifres-causticos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -4435,7 +4435,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-curved-grey-purple.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000022-chifres-causticos.webp"
           }
         }
       },
@@ -4467,7 +4467,7 @@
       "_id": "jjnem00000000023",
       "name": "Pseudópode Caustico",
       "type": "weapon",
-      "img": "icons/creatures/slimes/slime-blob-pseudopods-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000023-pseudopode-caustico.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -4524,7 +4524,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/slimes/slime-blob-pseudopods-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000023-pseudopode-caustico.webp"
           }
         }
       },
@@ -4556,7 +4556,7 @@
       "_id": "jjnem00000000024",
       "name": "Pinças Causticas",
       "type": "weapon",
-      "img": "icons/commodities/claws/claw-pincer-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000024-pincas-causticas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -4613,7 +4613,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/claw-pincer-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000024-pincas-causticas.webp"
           }
         }
       },
@@ -4645,7 +4645,7 @@
       "_id": "jjnem00000000025",
       "name": "Farpas Causticas",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-jagged-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000025-farpas-causticas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -4702,7 +4702,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-jagged-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000025-farpas-causticas.webp"
           }
         }
       },
@@ -4734,7 +4734,7 @@
       "_id": "jjnem00000000026",
       "name": "Ferrão Caustico",
       "type": "weapon",
-      "img": "icons/creatures/abilities/stinger-poison-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000026-ferrao-caustico.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -4791,7 +4791,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/stinger-poison-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000026-ferrao-caustico.webp"
           }
         }
       },
@@ -4823,7 +4823,7 @@
       "_id": "jjnem00000000027",
       "name": "Cauda Caustica",
       "type": "weapon",
-      "img": "icons/commodities/biological/tail-scaled-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000027-cauda-caustica.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -4880,7 +4880,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/biological/tail-scaled-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000027-cauda-caustica.webp"
           }
         }
       },
@@ -4912,7 +4912,7 @@
       "_id": "jjnem00000000028",
       "name": "Unhas Causticas",
       "type": "weapon",
-      "img": "icons/commodities/claws/claws-insectoid-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000028-unhas-causticas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -4969,7 +4969,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/claws-insectoid-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000028-unhas-causticas.webp"
           }
         }
       },
@@ -5001,7 +5001,7 @@
       "_id": "jjnem00000000029",
       "name": "Tentáculos Causticos",
       "type": "weapon",
-      "img": "icons/commodities/biological/tentacle-thorned-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000029-tentaculos-causticos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -5058,7 +5058,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/biological/tentacle-thorned-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000029-tentaculos-causticos.webp"
           }
         }
       },
@@ -5090,7 +5090,7 @@
       "_id": "jjnem00000000030",
       "name": "Espinhos Causticos",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-hooked-barbed.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000030-espinhos-causticos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -5147,7 +5147,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-hooked-barbed.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000030-espinhos-causticos.webp"
           }
         }
       },
@@ -5179,7 +5179,7 @@
       "_id": "jjnem00000000031",
       "name": "Galhada Carregada",
       "type": "weapon",
-      "img": "icons/creatures/mammals/deer-antlers-glowing-blue.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000031-galhada-carregada.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -5236,7 +5236,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/mammals/deer-antlers-glowing-blue.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000031-galhada-carregada.webp"
           }
         }
       },
@@ -5268,7 +5268,7 @@
       "_id": "jjnem00000000032",
       "name": "Bico Carregado",
       "type": "weapon",
-      "img": "icons/commodities/bones/beak-grey-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000032-bico-carregado.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -5325,7 +5325,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/beak-grey-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000032-bico-carregado.webp"
           }
         }
       },
@@ -5357,7 +5357,7 @@
       "_id": "jjnem00000000033",
       "name": "Garras Carregadas",
       "type": "weapon",
-      "img": "icons/magic/lightning/claws-unarmed-strike-teal.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000033-garras-carregadas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -5414,7 +5414,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/magic/lightning/claws-unarmed-strike-teal.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000033-garras-carregadas.webp"
           }
         }
       },
@@ -5446,7 +5446,7 @@
       "_id": "jjnem00000000034",
       "name": "Presas Carregadas",
       "type": "weapon",
-      "img": "icons/creatures/abilities/fang-tooth-blood-red.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000034-presas-carregadas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -5503,7 +5503,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/abilities/fang-tooth-blood-red.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000034-presas-carregadas.webp"
           }
         }
       },
@@ -5535,7 +5535,7 @@
       "_id": "jjnem00000000035",
       "name": "Punhos Carregados",
       "type": "weapon",
-      "img": "icons/magic/lightning/fist-unarmed-strike-blue.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000035-punhos-carregados.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -5592,7 +5592,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/magic/lightning/fist-unarmed-strike-blue.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000035-punhos-carregados.webp"
           }
         }
       },
@@ -5624,7 +5624,7 @@
       "_id": "jjnem00000000036",
       "name": "Cascos Carregados",
       "type": "weapon",
-      "img": "icons/commodities/bones/hooves-cloven-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000036-cascos-carregados.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -5681,7 +5681,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/hooves-cloven-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000036-cascos-carregados.webp"
           }
         }
       },
@@ -5713,7 +5713,7 @@
       "_id": "jjnem00000000037",
       "name": "Chifres Carregados",
       "type": "weapon",
-      "img": "icons/creatures/abilities/bull-head-horns-glowing.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000037-chifres-carregados.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -5770,7 +5770,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/bull-head-horns-glowing.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000037-chifres-carregados.webp"
           }
         }
       },
@@ -5802,7 +5802,7 @@
       "_id": "jjnem00000000038",
       "name": "Pseudópode Carregado",
       "type": "weapon",
-      "img": "icons/creatures/slimes/slime-blob-pseudopods-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000038-pseudopode-carregado.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -5859,7 +5859,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/slimes/slime-blob-pseudopods-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000038-pseudopode-carregado.webp"
           }
         }
       },
@@ -5891,7 +5891,7 @@
       "_id": "jjnem00000000039",
       "name": "Pinças Carregadas",
       "type": "weapon",
-      "img": "icons/creatures/claws/pincer-crab-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000039-pincas-carregadas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -5948,7 +5948,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/pincer-crab-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000039-pincas-carregadas.webp"
           }
         }
       },
@@ -5980,7 +5980,7 @@
       "_id": "jjnem00000000040",
       "name": "Farpas Carregadas",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-jagged-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000040-farpas-carregadas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -6037,7 +6037,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-jagged-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000040-farpas-carregadas.webp"
           }
         }
       },
@@ -6069,7 +6069,7 @@
       "_id": "jjnem00000000041",
       "name": "Ferrão Carregado",
       "type": "weapon",
-      "img": "icons/creatures/abilities/stinger-poison-scorpion-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000041-ferrao-carregado.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -6126,7 +6126,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/stinger-poison-scorpion-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000041-ferrao-carregado.webp"
           }
         }
       },
@@ -6158,7 +6158,7 @@
       "_id": "jjnem00000000042",
       "name": "Cauda Carregada",
       "type": "weapon",
-      "img": "icons/creatures/abilities/tail-swipe-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000042-cauda-carregada.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -6215,7 +6215,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/abilities/tail-swipe-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000042-cauda-carregada.webp"
           }
         }
       },
@@ -6247,7 +6247,7 @@
       "_id": "jjnem00000000043",
       "name": "Unhas Carregadas",
       "type": "weapon",
-      "img": "icons/commodities/claws/claw-blue-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000043-unhas-carregadas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -6304,7 +6304,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/claw-blue-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000043-unhas-carregadas.webp"
           }
         }
       },
@@ -6336,7 +6336,7 @@
       "_id": "jjnem00000000044",
       "name": "Tentáculos Carregados",
       "type": "weapon",
-      "img": "icons/creatures/tentacles/tentacles-suctioncups-pink.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000044-tentaculos-carregados.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -6393,7 +6393,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/tentacles/tentacles-suctioncups-pink.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000044-tentaculos-carregados.webp"
           }
         }
       },
@@ -6425,7 +6425,7 @@
       "_id": "jjnem00000000045",
       "name": "Espinhos Carregados",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-hooked-barbed.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000045-espinhos-carregados.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -6482,7 +6482,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-hooked-barbed.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000045-espinhos-carregados.webp"
           }
         }
       },
@@ -6514,7 +6514,7 @@
       "_id": "jjnem00000000046",
       "name": "Galhada Frigida",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-antler-pink-white.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000046-galhada-frigida.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -6571,7 +6571,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-antler-pink-white.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000046-galhada-frigida.webp"
           }
         }
       },
@@ -6603,7 +6603,7 @@
       "_id": "jjnem00000000047",
       "name": "Bico Frigido",
       "type": "weapon",
-      "img": "icons/commodities/bones/beak-grey-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000047-bico-frigido.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -6660,7 +6660,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/beak-grey-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000047-bico-frigido.webp"
           }
         }
       },
@@ -6692,7 +6692,7 @@
       "_id": "jjnem00000000048",
       "name": "Garras Frigidas",
       "type": "weapon",
-      "img": "icons/commodities/biological/hand-clawed-blue.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000048-garras-frigidas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -6749,7 +6749,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/biological/hand-clawed-blue.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000048-garras-frigidas.webp"
           }
         }
       },
@@ -6781,7 +6781,7 @@
       "_id": "jjnem00000000049",
       "name": "Presas Frigidas",
       "type": "weapon",
-      "img": "icons/magic/water/strike-ice-blade-fang.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000049-presas-frigidas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -6838,7 +6838,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/magic/water/strike-ice-blade-fang.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000049-presas-frigidas.webp"
           }
         }
       },
@@ -6870,7 +6870,7 @@
       "_id": "jjnem00000000050",
       "name": "Punhos Frigidos",
       "type": "weapon",
-      "img": "icons/skills/melee/unarmed-punch-fist-blue.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000050-punhos-frigidos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -6927,7 +6927,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/skills/melee/unarmed-punch-fist-blue.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000050-punhos-frigidos.webp"
           }
         }
       },
@@ -6959,7 +6959,7 @@
       "_id": "jjnem00000000051",
       "name": "Cascos Frigidos",
       "type": "weapon",
-      "img": "icons/commodities/bones/hooves-cloven-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000051-cascos-frigidos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -7016,7 +7016,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/hooves-cloven-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000051-cascos-frigidos.webp"
           }
         }
       },
@@ -7048,7 +7048,7 @@
       "_id": "jjnem00000000052",
       "name": "Chifres Frigidos",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-jagged-grey-blue.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000052-chifres-frigidos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -7105,7 +7105,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-jagged-grey-blue.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000052-chifres-frigidos.webp"
           }
         }
       },
@@ -7137,7 +7137,7 @@
       "_id": "jjnem00000000053",
       "name": "Pseudópode Frigido",
       "type": "weapon",
-      "img": "icons/creatures/slimes/slime-blob-pseudopods-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000053-pseudopode-frigido.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -7194,7 +7194,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/slimes/slime-blob-pseudopods-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000053-pseudopode-frigido.webp"
           }
         }
       },
@@ -7226,7 +7226,7 @@
       "_id": "jjnem00000000054",
       "name": "Pinças Frigidas",
       "type": "weapon",
-      "img": "icons/commodities/claws/claw-pincer-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000054-pincas-frigidas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -7283,7 +7283,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/claw-pincer-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000054-pincas-frigidas.webp"
           }
         }
       },
@@ -7315,7 +7315,7 @@
       "_id": "jjnem00000000055",
       "name": "Farpas Frigidas",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-jagged-grey-blue.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000055-farpas-frigidas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -7372,7 +7372,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-jagged-grey-blue.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000055-farpas-frigidas.webp"
           }
         }
       },
@@ -7404,7 +7404,7 @@
       "_id": "jjnem00000000056",
       "name": "Ferrão Frigido",
       "type": "weapon",
-      "img": "icons/commodities/biological/stinger-insect-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000056-ferrao-frigido.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -7461,7 +7461,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/commodities/biological/stinger-insect-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000056-ferrao-frigido.webp"
           }
         }
       },
@@ -7493,7 +7493,7 @@
       "_id": "jjnem00000000057",
       "name": "Cauda Frigida",
       "type": "weapon",
-      "img": "icons/creatures/abilities/tail-swipe-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000057-cauda-frigida.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -7550,7 +7550,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/abilities/tail-swipe-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000057-cauda-frigida.webp"
           }
         }
       },
@@ -7582,7 +7582,7 @@
       "_id": "jjnem00000000058",
       "name": "Unhas Frigidas",
       "type": "weapon",
-      "img": "icons/commodities/claws/claws-plain-white.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000058-unhas-frigidas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -7639,7 +7639,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/claws-plain-white.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000058-unhas-frigidas.webp"
           }
         }
       },
@@ -7671,7 +7671,7 @@
       "_id": "jjnem00000000059",
       "name": "Tentáculos Frigidos",
       "type": "weapon",
-      "img": "icons/commodities/biological/tentacle-purple-white.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000059-tentaculos-frigidos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -7728,7 +7728,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/biological/tentacle-purple-white.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000059-tentaculos-frigidos.webp"
           }
         }
       },
@@ -7760,7 +7760,7 @@
       "_id": "jjnem00000000060",
       "name": "Espinhos Frigidos",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-curved-jagged-gray.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000060-espinhos-frigidos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -7817,7 +7817,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-curved-jagged-gray.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000060-espinhos-frigidos.webp"
           }
         }
       },
@@ -7849,7 +7849,7 @@
       "_id": "jjnem00000000061",
       "name": "Galhada Estrondosa",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-antler-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000061-galhada-estrondosa.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -7906,7 +7906,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-antler-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000061-galhada-estrondosa.webp"
           }
         }
       },
@@ -7938,7 +7938,7 @@
       "_id": "jjnem00000000062",
       "name": "Bico Estrondoso",
       "type": "weapon",
-      "img": "icons/commodities/bones/beak-grey-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000062-bico-estrondoso.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -7995,7 +7995,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/beak-grey-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000062-bico-estrondoso.webp"
           }
         }
       },
@@ -8027,7 +8027,7 @@
       "_id": "jjnem00000000063",
       "name": "Garras Estrondosas",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-bear-paw-swipe-red.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000063-garras-estrondosas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -8084,7 +8084,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-bear-paw-swipe-red.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000063-garras-estrondosas.webp"
           }
         }
       },
@@ -8116,7 +8116,7 @@
       "_id": "jjnem00000000064",
       "name": "Presas Estrondosas",
       "type": "weapon",
-      "img": "icons/creatures/abilities/fang-tooth-blood-red.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000064-presas-estrondosas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -8173,7 +8173,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/abilities/fang-tooth-blood-red.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000064-presas-estrondosas.webp"
           }
         }
       },
@@ -8205,7 +8205,7 @@
       "_id": "jjnem00000000065",
       "name": "Punhos Estrondosos",
       "type": "weapon",
-      "img": "icons/skills/melee/unarmed-punch-fist-white.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000065-punhos-estrondosos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -8262,7 +8262,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/skills/melee/unarmed-punch-fist-white.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000065-punhos-estrondosos.webp"
           }
         }
       },
@@ -8294,7 +8294,7 @@
       "_id": "jjnem00000000066",
       "name": "Cascos Estrondosos",
       "type": "weapon",
-      "img": "icons/commodities/bones/hooves-cloven-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000066-cascos-estrondosos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -8351,7 +8351,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/hooves-cloven-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000066-cascos-estrondosos.webp"
           }
         }
       },
@@ -8383,7 +8383,7 @@
       "_id": "jjnem00000000067",
       "name": "Chifres Estrondosos",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-jagged-yellow.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000067-chifres-estrondosos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -8440,7 +8440,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-jagged-yellow.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000067-chifres-estrondosos.webp"
           }
         }
       },
@@ -8472,7 +8472,7 @@
       "_id": "jjnem00000000068",
       "name": "Pseudópode Estrondoso",
       "type": "weapon",
-      "img": "icons/creatures/slimes/slime-blob-pseudopods-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000068-pseudopode-estrondoso.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -8529,7 +8529,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/slimes/slime-blob-pseudopods-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000068-pseudopode-estrondoso.webp"
           }
         }
       },
@@ -8561,7 +8561,7 @@
       "_id": "jjnem00000000069",
       "name": "Pinças Estrondosas",
       "type": "weapon",
-      "img": "icons/creatures/claws/pincer-crab-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000069-pincas-estrondosas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -8618,7 +8618,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/pincer-crab-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000069-pincas-estrondosas.webp"
           }
         }
       },
@@ -8650,7 +8650,7 @@
       "_id": "jjnem00000000070",
       "name": "Farpas Estrondosas",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-jagged-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000070-farpas-estrondosas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -8707,7 +8707,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-jagged-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000070-farpas-estrondosas.webp"
           }
         }
       },
@@ -8739,7 +8739,7 @@
       "_id": "jjnem00000000071",
       "name": "Ferrão Estrondoso",
       "type": "weapon",
-      "img": "icons/creatures/abilities/stinger-poison-scorpion-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000071-ferrao-estrondoso.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -8796,7 +8796,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/stinger-poison-scorpion-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000071-ferrao-estrondoso.webp"
           }
         }
       },
@@ -8828,7 +8828,7 @@
       "_id": "jjnem00000000072",
       "name": "Cauda Estrondosa",
       "type": "weapon",
-      "img": "icons/creatures/abilities/tail-swipe-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000072-cauda-estrondosa.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -8885,7 +8885,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/abilities/tail-swipe-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000072-cauda-estrondosa.webp"
           }
         }
       },
@@ -8917,7 +8917,7 @@
       "_id": "jjnem00000000073",
       "name": "Unhas Estrondosas",
       "type": "weapon",
-      "img": "icons/commodities/claws/claws-plain-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000073-unhas-estrondosas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -8974,7 +8974,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/claws-plain-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000073-unhas-estrondosas.webp"
           }
         }
       },
@@ -9006,7 +9006,7 @@
       "_id": "jjnem00000000074",
       "name": "Tentáculos Estrondosos",
       "type": "weapon",
-      "img": "icons/creatures/tentacles/tentacles-suctioncups-pink.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000074-tentaculos-estrondosos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -9063,7 +9063,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/tentacles/tentacles-suctioncups-pink.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000074-tentaculos-estrondosos.webp"
           }
         }
       },
@@ -9095,7 +9095,7 @@
       "_id": "jjnem00000000075",
       "name": "Espinhos Estrondosos",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-hooked-barbed.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000075-espinhos-estrondosos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -9152,7 +9152,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-hooked-barbed.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000075-espinhos-estrondosos.webp"
           }
         }
       },
@@ -9184,7 +9184,7 @@
       "_id": "jjnem00000000076",
       "name": "Galhada Psíquica",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-antler-pink.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000076-galhada-psiquica.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -9241,7 +9241,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-antler-pink.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000076-galhada-psiquica.webp"
           }
         }
       },
@@ -9273,7 +9273,7 @@
       "_id": "jjnem00000000077",
       "name": "Bico Psíquico",
       "type": "weapon",
-      "img": "icons/commodities/bones/beak-grey-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000077-bico-psiquico.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -9330,7 +9330,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/beak-grey-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000077-bico-psiquico.webp"
           }
         }
       },
@@ -9362,7 +9362,7 @@
       "_id": "jjnem00000000078",
       "name": "Garras Psíquicas",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-talons-glowing-purple.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000078-garras-psiquicas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -9419,7 +9419,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-talons-glowing-purple.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000078-garras-psiquicas.webp"
           }
         }
       },
@@ -9451,7 +9451,7 @@
       "_id": "jjnem00000000079",
       "name": "Presas Psíquicas",
       "type": "weapon",
-      "img": "icons/creatures/abilities/fang-tooth-blood-red.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000079-presas-psiquicas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -9508,7 +9508,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/abilities/fang-tooth-blood-red.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000079-presas-psiquicas.webp"
           }
         }
       },
@@ -9540,7 +9540,7 @@
       "_id": "jjnem00000000080",
       "name": "Punhos Psíquicos",
       "type": "weapon",
-      "img": "icons/magic/unholy/hand-claw-fog-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000080-punhos-psiquicos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -9597,7 +9597,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/magic/unholy/hand-claw-fog-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000080-punhos-psiquicos.webp"
           }
         }
       },
@@ -9629,7 +9629,7 @@
       "_id": "jjnem00000000081",
       "name": "Cascos Psíquicos",
       "type": "weapon",
-      "img": "icons/commodities/bones/hooves-cloven-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000081-cascos-psiquicos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -9686,7 +9686,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/hooves-cloven-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000081-cascos-psiquicos.webp"
           }
         }
       },
@@ -9718,7 +9718,7 @@
       "_id": "jjnem00000000082",
       "name": "Chifres Psíquicos",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-curved-grey-purple.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000082-chifres-psiquicos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -9775,7 +9775,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-curved-grey-purple.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000082-chifres-psiquicos.webp"
           }
         }
       },
@@ -9807,7 +9807,7 @@
       "_id": "jjnem00000000083",
       "name": "Pseudópode Psíquico",
       "type": "weapon",
-      "img": "icons/commodities/biological/tentacle-purple-white.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000083-pseudopode-psiquico.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -9864,7 +9864,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/biological/tentacle-purple-white.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000083-pseudopode-psiquico.webp"
           }
         }
       },
@@ -9896,7 +9896,7 @@
       "_id": "jjnem00000000084",
       "name": "Pinças Psíquicas",
       "type": "weapon",
-      "img": "icons/commodities/claws/claw-pincer-pink.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000084-pincas-psiquicas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -9953,7 +9953,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/claw-pincer-pink.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000084-pincas-psiquicas.webp"
           }
         }
       },
@@ -9985,7 +9985,7 @@
       "_id": "jjnem00000000085",
       "name": "Farpas Psíquicas",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-jagged-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000085-farpas-psiquicas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -10042,7 +10042,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-jagged-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000085-farpas-psiquicas.webp"
           }
         }
       },
@@ -10074,7 +10074,7 @@
       "_id": "jjnem00000000086",
       "name": "Ferrão Psíquico",
       "type": "weapon",
-      "img": "icons/commodities/biological/stinger-insect-pink.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000086-ferrao-psiquico.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -10131,7 +10131,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/commodities/biological/stinger-insect-pink.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000086-ferrao-psiquico.webp"
           }
         }
       },
@@ -10163,7 +10163,7 @@
       "_id": "jjnem00000000087",
       "name": "Cauda Psíquica",
       "type": "weapon",
-      "img": "icons/creatures/abilities/tail-swipe-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000087-cauda-psiquica.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -10220,7 +10220,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/abilities/tail-swipe-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000087-cauda-psiquica.webp"
           }
         }
       },
@@ -10252,7 +10252,7 @@
       "_id": "jjnem00000000088",
       "name": "Unhas Psíquicas",
       "type": "weapon",
-      "img": "icons/commodities/claws/claws-plain-pink.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000088-unhas-psiquicas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -10309,7 +10309,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/claws-plain-pink.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000088-unhas-psiquicas.webp"
           }
         }
       },
@@ -10341,7 +10341,7 @@
       "_id": "jjnem00000000089",
       "name": "Tentáculos Psíquicos",
       "type": "weapon",
-      "img": "icons/creatures/tentacles/tentacle-eyes-yellow-pink.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000089-tentaculos-psiquicos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -10398,7 +10398,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/tentacles/tentacle-eyes-yellow-pink.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000089-tentaculos-psiquicos.webp"
           }
         }
       },
@@ -10430,7 +10430,7 @@
       "_id": "jjnem00000000090",
       "name": "Espinhos Psíquicos",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-hooked-purple.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000090-espinhos-psiquicos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -10487,7 +10487,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-hooked-purple.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000090-espinhos-psiquicos.webp"
           }
         }
       },
@@ -10519,7 +10519,7 @@
       "_id": "jjnem00000000091",
       "name": "Galhada Radiante",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-antler-tan.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000091-galhada-radiante.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -10576,7 +10576,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-antler-tan.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000091-galhada-radiante.webp"
           }
         }
       },
@@ -10608,7 +10608,7 @@
       "_id": "jjnem00000000092",
       "name": "Bico Radiante",
       "type": "weapon",
-      "img": "icons/commodities/bones/beak-grey-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000092-bico-radiante.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -10665,7 +10665,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/beak-grey-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000092-bico-radiante.webp"
           }
         }
       },
@@ -10697,7 +10697,7 @@
       "_id": "jjnem00000000093",
       "name": "Garras Radiantes",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-curved-jagged-yellow.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000093-garras-radiantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -10754,7 +10754,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-curved-jagged-yellow.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000093-garras-radiantes.webp"
           }
         }
       },
@@ -10786,7 +10786,7 @@
       "_id": "jjnem00000000094",
       "name": "Presas Radiantes",
       "type": "weapon",
-      "img": "icons/creatures/abilities/fang-tooth-blood-red.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000094-presas-radiantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -10843,7 +10843,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/abilities/fang-tooth-blood-red.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000094-presas-radiantes.webp"
           }
         }
       },
@@ -10875,7 +10875,7 @@
       "_id": "jjnem00000000095",
       "name": "Punhos Radiantes",
       "type": "weapon",
-      "img": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000095-punhos-radiantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -10932,7 +10932,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000095-punhos-radiantes.webp"
           }
         }
       },
@@ -10964,7 +10964,7 @@
       "_id": "jjnem00000000096",
       "name": "Cascos Radiantes",
       "type": "weapon",
-      "img": "icons/commodities/bones/hooves-cloven-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000096-cascos-radiantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -11021,7 +11021,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/hooves-cloven-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000096-cascos-radiantes.webp"
           }
         }
       },
@@ -11053,7 +11053,7 @@
       "_id": "jjnem00000000097",
       "name": "Chifres Radiantes",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-jagged-gold.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000097-chifres-radiantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -11110,7 +11110,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-jagged-gold.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000097-chifres-radiantes.webp"
           }
         }
       },
@@ -11142,7 +11142,7 @@
       "_id": "jjnem00000000098",
       "name": "Pseudópode Radiante",
       "type": "weapon",
-      "img": "icons/commodities/biological/tentacle-yellow.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000098-pseudopode-radiante.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -11199,7 +11199,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/biological/tentacle-yellow.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000098-pseudopode-radiante.webp"
           }
         }
       },
@@ -11231,7 +11231,7 @@
       "_id": "jjnem00000000099",
       "name": "Pinças Radiantes",
       "type": "weapon",
-      "img": "icons/commodities/claws/claw-pincer-yellow.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000099-pincas-radiantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -11288,7 +11288,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/claw-pincer-yellow.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000099-pincas-radiantes.webp"
           }
         }
       },
@@ -11320,7 +11320,7 @@
       "_id": "jjnem00000000100",
       "name": "Farpas Radiantes",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-jagged-yellow.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000100-farpas-radiantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -11377,7 +11377,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-jagged-yellow.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000100-farpas-radiantes.webp"
           }
         }
       },
@@ -11409,7 +11409,7 @@
       "_id": "jjnem00000000101",
       "name": "Ferrão Radiante",
       "type": "weapon",
-      "img": "icons/commodities/biological/stinger-insect-yellow.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000101-ferrao-radiante.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -11466,7 +11466,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/commodities/biological/stinger-insect-yellow.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000101-ferrao-radiante.webp"
           }
         }
       },
@@ -11498,7 +11498,7 @@
       "_id": "jjnem00000000102",
       "name": "Cauda Radiante",
       "type": "weapon",
-      "img": "icons/creatures/abilities/tail-swipe-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000102-cauda-radiante.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -11555,7 +11555,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/abilities/tail-swipe-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000102-cauda-radiante.webp"
           }
         }
       },
@@ -11587,7 +11587,7 @@
       "_id": "jjnem00000000103",
       "name": "Unhas Radiantes",
       "type": "weapon",
-      "img": "icons/commodities/claws/claw-spiked-gold.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000103-unhas-radiantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -11644,7 +11644,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/claw-spiked-gold.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000103-unhas-radiantes.webp"
           }
         }
       },
@@ -11676,7 +11676,7 @@
       "_id": "jjnem00000000104",
       "name": "Tentáculos Radiantes",
       "type": "weapon",
-      "img": "icons/commodities/biological/tentacle-yellow.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000104-tentaculos-radiantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -11733,7 +11733,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/biological/tentacle-yellow.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000104-tentaculos-radiantes.webp"
           }
         }
       },
@@ -11765,7 +11765,7 @@
       "_id": "jjnem00000000105",
       "name": "Espinhos Radiantes",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-curved-jagged-yellow.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000105-espinhos-radiantes.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -11822,7 +11822,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-curved-jagged-yellow.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000105-espinhos-radiantes.webp"
           }
         }
       },
@@ -11854,7 +11854,7 @@
       "_id": "jjnem00000000106",
       "name": "Galhada Venenosa",
       "type": "weapon",
-      "img": "icons/creatures/mammals/deer-antlers-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000106-galhada-venenosa.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -11911,7 +11911,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/mammals/deer-antlers-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000106-galhada-venenosa.webp"
           }
         }
       },
@@ -11943,7 +11943,7 @@
       "_id": "jjnem00000000107",
       "name": "Bico Venenoso",
       "type": "weapon",
-      "img": "icons/commodities/bones/beak-orange-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000107-bico-venenoso.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -12000,7 +12000,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/beak-orange-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000107-bico-venenoso.webp"
           }
         }
       },
@@ -12032,7 +12032,7 @@
       "_id": "jjnem00000000108",
       "name": "Garras Venenosas",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-curved-poison-purple.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000108-garras-venenosas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -12089,7 +12089,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-curved-poison-purple.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000108-garras-venenosas.webp"
           }
         }
       },
@@ -12121,7 +12121,7 @@
       "_id": "jjnem00000000109",
       "name": "Presas Venenosas",
       "type": "weapon",
-      "img": "icons/creatures/abilities/fang-tooth-poison-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000109-presas-venenosas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -12178,7 +12178,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/abilities/fang-tooth-poison-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000109-presas-venenosas.webp"
           }
         }
       },
@@ -12210,7 +12210,7 @@
       "_id": "jjnem00000000110",
       "name": "Punhos Venenosos",
       "type": "weapon",
-      "img": "icons/magic/unholy/hand-claw-fire-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000110-punhos-venenosos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -12267,7 +12267,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/magic/unholy/hand-claw-fire-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000110-punhos-venenosos.webp"
           }
         }
       },
@@ -12299,7 +12299,7 @@
       "_id": "jjnem00000000111",
       "name": "Cascos Venenosos",
       "type": "weapon",
-      "img": "icons/commodities/bones/hooves-cloven-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000111-cascos-venenosos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -12356,7 +12356,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/hooves-cloven-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000111-cascos-venenosos.webp"
           }
         }
       },
@@ -12388,7 +12388,7 @@
       "_id": "jjnem00000000112",
       "name": "Chifres Venenosos",
       "type": "weapon",
-      "img": "icons/creatures/abilities/bull-head-horns-glowing.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000112-chifres-venenosos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -12445,7 +12445,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/bull-head-horns-glowing.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000112-chifres-venenosos.webp"
           }
         }
       },
@@ -12477,7 +12477,7 @@
       "_id": "jjnem00000000113",
       "name": "Pseudópode Venenoso",
       "type": "weapon",
-      "img": "icons/creatures/slimes/slime-blob-pseudopods-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000113-pseudopode-venenoso.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -12534,7 +12534,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/slimes/slime-blob-pseudopods-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000113-pseudopode-venenoso.webp"
           }
         }
       },
@@ -12566,7 +12566,7 @@
       "_id": "jjnem00000000114",
       "name": "Pinças Venenosas",
       "type": "weapon",
-      "img": "icons/commodities/claws/claw-pincer-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000114-pincas-venenosas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -12623,7 +12623,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/claw-pincer-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000114-pincas-venenosas.webp"
           }
         }
       },
@@ -12655,7 +12655,7 @@
       "_id": "jjnem00000000115",
       "name": "Farpas Venenosas",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-jagged-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000115-farpas-venenosas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -12712,7 +12712,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-jagged-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000115-farpas-venenosas.webp"
           }
         }
       },
@@ -12744,7 +12744,7 @@
       "_id": "jjnem00000000116",
       "name": "Ferrão Venenoso",
       "type": "weapon",
-      "img": "icons/creatures/abilities/stinger-poison-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000116-ferrao-venenoso.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -12801,7 +12801,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/creatures/abilities/stinger-poison-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000116-ferrao-venenoso.webp"
           }
         }
       },
@@ -12833,7 +12833,7 @@
       "_id": "jjnem00000000117",
       "name": "Cauda Venenosa",
       "type": "weapon",
-      "img": "icons/commodities/biological/tail-scaled-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000117-cauda-venenosa.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -12890,7 +12890,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/biological/tail-scaled-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000117-cauda-venenosa.webp"
           }
         }
       },
@@ -12922,7 +12922,7 @@
       "_id": "jjnem00000000118",
       "name": "Unhas Venenosas",
       "type": "weapon",
-      "img": "icons/commodities/claws/claws-insectoid-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000118-unhas-venenosas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -12979,7 +12979,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/claws-insectoid-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000118-unhas-venenosas.webp"
           }
         }
       },
@@ -13011,7 +13011,7 @@
       "_id": "jjnem00000000119",
       "name": "Tentáculos Venenosos",
       "type": "weapon",
-      "img": "icons/creatures/tentacles/tentacles-eyes-poisoned-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000119-tentaculos-venenosos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -13068,7 +13068,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/tentacles/tentacles-eyes-poisoned-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000119-tentaculos-venenosos.webp"
           }
         }
       },
@@ -13100,7 +13100,7 @@
       "_id": "jjnem00000000120",
       "name": "Espinhos Venenosos",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-curved-poison-purple.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000120-espinhos-venenosos.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -13157,7 +13157,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-curved-poison-purple.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000120-espinhos-venenosos.webp"
           }
         }
       },
@@ -13189,7 +13189,7 @@
       "_id": "jjnem00000000121",
       "name": "Galhada Sombria",
       "type": "weapon",
-      "img": "icons/creatures/mammals/deer-antlers-blue.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000121-galhada-sombria.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -13246,7 +13246,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/mammals/deer-antlers-blue.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000121-galhada-sombria.webp"
           }
         }
       },
@@ -13278,7 +13278,7 @@
       "_id": "jjnem00000000122",
       "name": "Bico Sombrio",
       "type": "weapon",
-      "img": "icons/commodities/bones/beak-grey-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000122-bico-sombrio.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -13335,7 +13335,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/beak-grey-brown.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000122-bico-sombrio.webp"
           }
         }
       },
@@ -13367,7 +13367,7 @@
       "_id": "jjnem00000000123",
       "name": "Garras Sombrias",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-hooked-purple.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000123-garras-sombrias.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -13424,7 +13424,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-hooked-purple.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000123-garras-sombrias.webp"
           }
         }
       },
@@ -13456,7 +13456,7 @@
       "_id": "jjnem00000000124",
       "name": "Presas Sombrias",
       "type": "weapon",
-      "img": "icons/magic/death/mouth-teeth-fangs-vampire.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000124-presas-sombrias.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -13513,7 +13513,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/magic/death/mouth-teeth-fangs-vampire.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000124-presas-sombrias.webp"
           }
         }
       },
@@ -13545,7 +13545,7 @@
       "_id": "jjnem00000000125",
       "name": "Punhos Sombrios",
       "type": "weapon",
-      "img": "icons/magic/unholy/hand-claw-fire-blue.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000125-punhos-sombrios.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -13602,7 +13602,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/magic/unholy/hand-claw-fire-blue.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000125-punhos-sombrios.webp"
           }
         }
       },
@@ -13634,7 +13634,7 @@
       "_id": "jjnem00000000126",
       "name": "Cascos Sombrios",
       "type": "weapon",
-      "img": "icons/commodities/bones/hooves-cloven-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000126-cascos-sombrios.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -13691,7 +13691,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/hooves-cloven-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000126-cascos-sombrios.webp"
           }
         }
       },
@@ -13723,7 +13723,7 @@
       "_id": "jjnem00000000127",
       "name": "Chifres Sombrios",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-curved-black.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000127-chifres-sombrios.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -13780,7 +13780,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-curved-black.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000127-chifres-sombrios.webp"
           }
         }
       },
@@ -13812,7 +13812,7 @@
       "_id": "jjnem00000000128",
       "name": "Pseudópode Sombrio",
       "type": "weapon",
-      "img": "icons/creatures/tentacles/tentacles-thing-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000128-pseudopode-sombrio.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -13869,7 +13869,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/tentacles/tentacles-thing-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000128-pseudopode-sombrio.webp"
           }
         }
       },
@@ -13901,7 +13901,7 @@
       "_id": "jjnem00000000129",
       "name": "Pinças Sombrias",
       "type": "weapon",
-      "img": "icons/commodities/claws/claw-pincer-pink.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000129-pincas-sombrias.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -13958,7 +13958,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/claw-pincer-pink.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000129-pincas-sombrias.webp"
           }
         }
       },
@@ -13990,7 +13990,7 @@
       "_id": "jjnem00000000130",
       "name": "Farpas Sombrias",
       "type": "weapon",
-      "img": "icons/commodities/bones/horn-jagged-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000130-farpas-sombrias.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -14047,7 +14047,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/bones/horn-jagged-grey.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000130-farpas-sombrias.webp"
           }
         }
       },
@@ -14079,7 +14079,7 @@
       "_id": "jjnem00000000131",
       "name": "Ferrão Sombrio",
       "type": "weapon",
-      "img": "icons/commodities/biological/stinger-insect-pink.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000131-ferrao-sombrio.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -14136,7 +14136,7 @@
               "value": 3,
               "override": true
             },
-            "img": "icons/commodities/biological/stinger-insect-pink.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000131-ferrao-sombrio.webp"
           }
         }
       },
@@ -14168,7 +14168,7 @@
       "_id": "jjnem00000000132",
       "name": "Cauda Sombria",
       "type": "weapon",
-      "img": "icons/creatures/abilities/tail-swipe-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000132-cauda-sombria.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -14225,7 +14225,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/abilities/tail-swipe-green.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000132-cauda-sombria.webp"
           }
         }
       },
@@ -14257,7 +14257,7 @@
       "_id": "jjnem00000000133",
       "name": "Unhas Sombrias",
       "type": "weapon",
-      "img": "icons/commodities/claws/talon-black.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000133-unhas-sombrias.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -14314,7 +14314,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/commodities/claws/talon-black.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000133-unhas-sombrias.webp"
           }
         }
       },
@@ -14346,7 +14346,7 @@
       "_id": "jjnem00000000134",
       "name": "Tentáculos Sombrios",
       "type": "weapon",
-      "img": "icons/creatures/tentacles/tentacles-octopus-black-pink.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000134-tentaculos-sombrios.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -14403,7 +14403,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/tentacles/tentacles-octopus-black-pink.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000134-tentaculos-sombrios.webp"
           }
         }
       },
@@ -14435,7 +14435,7 @@
       "_id": "jjnem00000000135",
       "name": "Espinhos Sombrios",
       "type": "weapon",
-      "img": "icons/creatures/claws/claw-hooked-barbed.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000135-espinhos-sombrios.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -14492,7 +14492,7 @@
               "value": 2,
               "override": true
             },
-            "img": "icons/creatures/claws/claw-hooked-barbed.webp"
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnem00000000135-espinhos-sombrios.webp"
           }
         }
       },
@@ -14524,7 +14524,7 @@
       "_id": "jjnar00000000001",
       "name": "Armadura Elemental",
       "type": "equipment",
-      "img": "icons/magic/defensive/armor-green-hex.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000001-armadura-elemental.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -14601,7 +14601,7 @@
       "_id": "jjnar00000000002",
       "name": "Carapaça Leve",
       "type": "equipment",
-      "img": "icons/commodities/biological/shell-turtle-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000002-carapaca-leve.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -14672,7 +14672,7 @@
       "_id": "jjnar00000000003",
       "name": "Carapaça Pesada",
       "type": "equipment",
-      "img": "icons/environment/creatures/monster-barbed-carapace-purple.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000003-carapaca-pesada.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -14743,7 +14743,7 @@
       "_id": "jjnar00000000004",
       "name": "Couro Leve",
       "type": "equipment",
-      "img": "icons/commodities/leather/leather-pelt-cured.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000004-couro-leve.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -14814,7 +14814,7 @@
       "_id": "jjnar00000000005",
       "name": "Couro Pesado",
       "type": "equipment",
-      "img": "icons/commodities/leather/leather-patchwork-folded-tan.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000005-couro-pesado.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -14885,7 +14885,7 @@
       "_id": "jjnar00000000006",
       "name": "Escamas Leves",
       "type": "equipment",
-      "img": "icons/commodities/leather/scales-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000006-escamas-leves.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -14956,7 +14956,7 @@
       "_id": "jjnar00000000007",
       "name": "Escamas Pesadas",
       "type": "equipment",
-      "img": "icons/commodities/leather/scales-blue-white.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000007-escamas-pesadas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -15027,7 +15027,7 @@
       "_id": "jjnar00000000008",
       "name": "Exoesqueleto",
       "type": "equipment",
-      "img": "icons/commodities/bones/fossil-chitin.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000008-exoesqueleto.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -15098,7 +15098,7 @@
       "_id": "jjnar00000000009",
       "name": "Exoesqueleto Fundido",
       "type": "equipment",
-      "img": "icons/equipment/wrist/bracer-segmented-chitin.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000009-exoesqueleto-fundido.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -15169,7 +15169,7 @@
       "_id": "jjnar00000000010",
       "name": "Pele de Pedra",
       "type": "equipment",
-      "img": "icons/magic/defensive/armor-stone-skin.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000010-pele-de-pedra.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -15240,7 +15240,7 @@
       "_id": "jjnar00000000011",
       "name": "Pele Fina",
       "type": "equipment",
-      "img": "icons/commodities/leather/leather-leaf-tan.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000011-pele-fina.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -15311,7 +15311,7 @@
       "_id": "jjnar00000000012",
       "name": "Pele Grossa",
       "type": "equipment",
-      "img": "icons/commodities/leather/leather-patch-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000012-pele-grossa.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -15382,7 +15382,7 @@
       "_id": "jjnar00000000013",
       "name": "Placas Leves",
       "type": "equipment",
-      "img": "icons/commodities/biological/shell-ridged-green.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000013-placas-leves.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -15453,7 +15453,7 @@
       "_id": "jjnar00000000014",
       "name": "Placas Pesadas",
       "type": "equipment",
-      "img": "icons/commodities/biological/shell-ribbed-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000014-placas-pesadas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -15524,7 +15524,7 @@
       "_id": "jjnar00000000015",
       "name": "Armadura Psíquica",
       "type": "equipment",
-      "img": "icons/magic/defensive/shield-hex-purple.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000015-armadura-psiquica.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -15595,7 +15595,7 @@
       "_id": "jjnar00000000016",
       "name": "Membrana Fina",
       "type": "equipment",
-      "img": "icons/creatures/abilities/wing-batlike-white-blue.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000016-membrana-fina.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -15672,7 +15672,7 @@
       "_id": "jjnar00000000017",
       "name": "Placas Cristalizadas",
       "type": "equipment",
-      "img": "icons/commodities/gems/gem-faceted-rough-purple.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000017-placas-cristalizadas.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -15750,7 +15750,7 @@
       "_id": "jjnar00000000018",
       "name": "Casca",
       "type": "equipment",
-      "img": "icons/commodities/wood/bark-brown.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000018-casca.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -15847,7 +15847,7 @@
       "_id": "jjnar00000000019",
       "name": "Quitina",
       "type": "equipment",
-      "img": "icons/commodities/leather/scale-chitin-grey.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000019-quitina.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -15918,7 +15918,7 @@
       "_id": "jjnar00000000020",
       "name": "Ossada",
       "type": "equipment",
-      "img": "icons/commodities/bones/bones-rib-white.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000020-ossada.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -16038,7 +16038,7 @@
       "_id": "jjnar00000000021",
       "name": "Musculatura Densa",
       "type": "equipment",
-      "img": "icons/magic/control/buff-strength-muscle-damage-red.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000021-musculatura-densa.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -16109,7 +16109,7 @@
       "_id": "jjnar00000000022",
       "name": "Pele Calcinada",
       "type": "equipment",
-      "img": "icons/magic/fire/flame-burning-embers-orange.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000022-pele-calcinada.webp",
       "system": {
         "type": {
           "value": "natural"
@@ -16180,7 +16180,7 @@
       "_id": "jjnar00000000023",
       "name": "Manto de Fios",
       "type": "equipment",
-      "img": "icons/creatures/webs/web-spider-glowing-purple.webp",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjnar00000000023-manto-de-fios.webp",
       "system": {
         "type": {
           "value": "natural"

@@ -8,6 +8,9 @@ globalThis.game = { user: { isGM: true }, settings: { get: () => "2.0" }, items:
 globalThis.ui = { notifications: { warn() {}, error() {}, info() {} } };
 globalThis.CONFIG = { JUJUTSU: { taxonomias: { animal: { label: "Animal" } }, arquetipos: { bruto: { label: "Bruto" } } } };
 const generator = await import("../module/applications/actor/jj/npc-generator-dialog.mjs");
+const { npcGeneratorProfiles } = await import("../module/applications/actor/jj/npc-generator-profiles.mjs");
+const profileCatalog = await import("../module/applications/actor/jj/npc-generator-profiles.mjs");
+const { activateNpcGeneratorWeapons, npcGeneratorWeaponFolder } = await import("../module/applications/actor/jj/npc-generator-weapons.mjs");
 const weights = { str: 3, dex: 2, con: 3, int: 1, wis: 2, cha: 1 };
 function profile(type, id, system = {}) {
   return { id, uuid: `Item.${id}`, name: id, type, visible: true, system: { pesos: weights, ...system },
@@ -55,16 +58,119 @@ test("non-GMs cannot open either generator directly", async () => {
   await generator.openNpcGenerator2();
 });
 
-test("the 2.0 selector includes world and compendium profiles with escaped names", async () => {
-  game.items = [profile("taxonomy", "Felinos & <feras>")];
+test("the 2.0 selector includes world and compendium profiles with escaped names and their thumbnails", async () => {
+  game.items = [{ ...profile("taxonomy", "Felinos & <feras>"), img: "icons/felinos.webp" }];
   game.packs = [{ documentName: "Item", visible: true, collection: "test.profiles", metadata: { label: "Perfis" },
-    getIndex: async () => [{ _id: "hunter", name: "Caçador", type: "archetype" }, { _id: "sword", name: "Espada", type: "weapon" }] }];
+    getIndex: async () => [{ _id: "hunter", name: "Caçador", type: "archetype", img: "icons/cacador.webp" }, { _id: "sword", name: "Espada", type: "weapon" }] }];
+  const catalog = await npcGeneratorProfiles();
+  assert.equal(catalog.taxonomy[0].img, "icons/felinos.webp");
+  assert.equal(catalog.archetype[0].img, "icons/cacador.webp");
   let content;
   globalThis.foundry = { applications: { api: { DialogV2: { wait: async options => { content = options.content; return null; } } } } };
   await generator.openNpcGenerator2();
   assert.match(content, /Felinos &amp; &lt;feras&gt;/);
   assert.match(content, /Compendium\.test\.profiles\.Item\.hunter/);
   assert.match(content, /Espada/);
+});
+
+test("taxonomy filtering keeps general archetypes and only the selected taxonomy's specific archetypes", async () => {
+  game.items = [profile("taxonomy", "Corvídeos", { identifier: "corvideos" }),
+    profile("taxonomy", "Felinos", { identifier: "felinos" }), profile("taxonomy", "Quimeras", { identifier: "quimeras" }),
+    profile("archetype", "Agourento", { identifier: "agourento" }),
+    profile("archetype", "Espreitador Noturno", { identifier: "espreitador-noturno" }),
+    profile("archetype", "Íncubo", { identifier: "incubo" }),
+    profile("archetype", "Cabeça-de-leão", { identifier: "cabeca-de-leao" }),
+    profile("archetype", "Corpo-de-cabra", { identifier: "corpo-de-cabra" }),
+    profile("archetype", "Cauda-de-serpente", { identifier: "cauda-de-serpente" }),
+    profile("archetype", "Trapaceiro", { identifier: "trapaceiro" }), profile("archetype", "Personalizado")];
+  const catalog = await npcGeneratorProfiles();
+  const labels = taxonomy => profileCatalog.npcGeneratorArchetypesForTaxonomy(catalog, `Item.${taxonomy}`).map(choice => choice.label);
+  assert.deepEqual(labels("Corvídeos"), ["Agourento", "Personalizado", "Trapaceiro"]);
+  assert.deepEqual(labels("Felinos"), ["Espreitador Noturno", "Personalizado", "Trapaceiro"]);
+  assert.deepEqual(labels("Quimeras"), ["Cabeça-de-leão", "Cauda-de-serpente", "Corpo-de-cabra", "Personalizado", "Trapaceiro"]);
+  assert.equal(catalog.archetype.length, 8, "Filtering must not destroy choices needed after changing taxonomy");
+});
+
+test("compendium profile identities survive renamed labels and are explicitly requested in the index", async () => {
+  const fields = [];
+  game.items = [profile("archetype", "Geral", { identifier: "custom-general" })];
+  game.packs = [{ documentName: "Item", visible: true, collection: "test.profiles", metadata: { label: "Perfis" },
+    getIndex: async options => {
+      fields.push(...options.fields);
+      const entries = [{ _id: "bird", name: "Corvo renomeado", type: "taxonomy", key: "profile:taxonomy:corvideos" },
+        { _id: "omen", name: "Mau presságio", type: "archetype", key: "profile:archetype:agourento" },
+        { _id: "dream", name: "Outro presságio", type: "archetype", key: "profile:archetype:incubo" }];
+      return entries.map(({ key, ...entry }) => ({ ...entry,
+        ...(options.fields.includes("flags.jujutsu-system.encyclopedia.key") ? { flags: { "jujutsu-system": { encyclopedia: { key } } } } : {}) }));
+    } }];
+  const catalog = await npcGeneratorProfiles();
+  assert(fields.includes("system.identifier"));
+  assert(fields.includes("flags.jujutsu-system.encyclopedia.key"));
+  assert.deepEqual(profileCatalog.npcGeneratorArchetypesForTaxonomy(catalog, "Compendium.test.profiles.Item.bird").map(choice => choice.label),
+    ["Geral", "Mau presságio"]);
+});
+
+test("humanoid archetypes are available to humanoid taxonomies but do not leak into beasts", async () => {
+  game.items = [profile("taxonomy", "Humanos", { identifier: "humanos" }),
+    profile("taxonomy", "Homens-fera", { identifier: "homens-fera" }), profile("taxonomy", "Corvídeos", { identifier: "corvideos" }),
+    profile("archetype", "Assassino", { identifier: "assassino" }),
+    profile("archetype", "Assassino (não Humanoide)", { identifier: "assassino-nao-humanoide" }),
+    profile("archetype", "Saqueador Ardiloso", { identifier: "saqueador-ardiloso" })];
+  const catalog = await npcGeneratorProfiles();
+  const labels = taxonomy => profileCatalog.npcGeneratorArchetypesForTaxonomy(catalog, `Item.${taxonomy}`).map(choice => choice.label);
+  assert.deepEqual(labels("Humanos"), ["Assassino"]);
+  assert.deepEqual(labels("Homens-fera"), ["Assassino", "Assassino (não Humanoide)", "Saqueador Ardiloso"]);
+  assert.deepEqual(labels("Corvídeos"), ["Assassino (não Humanoide)"]);
+});
+
+test("human selection shows only humanoid archetypes, even with generic and renamed profiles in the catalog", async () => {
+  game.items = [profile("taxonomy", "Humano", { identifier: "humano" }),
+    profile("archetype", "Guerreiro", { identifier: "guerreiro" }),
+    profile("archetype", "Agarrrador", { identifier: "agarrador" }),
+    profile("archetype", "Atirador (cuspidor)", { identifier: "atirador-cuspidor" }),
+    profile("archetype", "Personalizado", { identifier: "custom" }),
+    { ...profile("archetype", "Assassino renomeado"), flags: { "jujutsu-system": { encyclopedia: { key: "profile:archetype:assassino" } } } }];
+  const catalog = await npcGeneratorProfiles();
+  assert.deepEqual(profileCatalog.npcGeneratorArchetypesForTaxonomy(catalog, "Item.Humano").map(choice => choice.label),
+    ["Assassino renomeado", "Guerreiro"]);
+});
+
+test("the generator rejects a stale non-humanoid archetype for humans before creating any actor", async () => {
+  const taxonomy = profile("taxonomy", "Humanos", { identifier: "humanos" });
+  const archetype = profile("archetype", "Assassino (não Humanoide)", { identifier: "assassino-nao-humanoide" });
+  globalThis.fromUuid = async uuid => [taxonomy, archetype].find(item => item.uuid === uuid);
+  let creations = 0;
+  globalThis.Actor = { implementation: { create() { creations++; return null; } } };
+  assert.equal(await generator.createNpc2({ taxonomia: taxonomy.uuid, arquetipo: archetype.uuid, nd: 1 }), null);
+  assert.equal(creations, 0);
+});
+
+test("human previews and created profile copies use the painted sorcerer while custom art remains untouched", async () => {
+  const old = "modules/jujutsu-compendium/assets/perfis-pdn-pintados-v1/taxonomias/humanos.webp";
+  const replacement = "systems/jujutsu-system/assets/gerador-pdn-pintado-v1/humano-feiticeiro.webp";
+  const human = { ...profile("taxonomy", "Humanos", { identifier: "humanos" }), img: old };
+  const custom = { ...profile("taxonomy", "Humano personalizado", { identifier: "humano" }), img: "worlds/mesa/meu-feiticeiro.webp" };
+  game.items = [human, custom];
+  game.packs = [{ documentName: "Item", visible: true, collection: "test.profiles", metadata: { label: "Perfis" },
+    getIndex: async () => [{ _id: "renamed-human", type: "taxonomy", name: "Humano renomeado", img: old,
+      flags: { "jujutsu-system": { encyclopedia: { key: "profile:taxonomy:humanos" } } } }] }];
+  const catalog = await npcGeneratorProfiles();
+  assert.equal(catalog.taxonomy.find(choice => choice.value === human.uuid).img, replacement);
+  assert.equal(catalog.taxonomy.find(choice => choice.value === custom.uuid).img, custom.img);
+  assert.equal(catalog.taxonomy.find(choice => choice.value.startsWith("Compendium.")).img, replacement);
+  globalThis.fromUuid = async uuid => uuid === human.uuid ? human : custom;
+  assert.equal((await profileCatalog.npcGeneratorProfile("taxonomy", human.uuid)).data.img, replacement);
+  assert.equal((await profileCatalog.npcGeneratorProfile("taxonomy", custom.uuid)).data.img, custom.img);
+});
+
+test("a stale incompatible archetype is rejected before NPC creation", async () => {
+  const taxonomy = profile("taxonomy", "Corvídeos", { identifier: "corvideos" });
+  const archetype = profile("archetype", "Íncubo", { identifier: "incubo" });
+  globalThis.fromUuid = async uuid => [taxonomy, archetype].find(item => item.uuid === uuid);
+  let creations = 0;
+  globalThis.Actor = { implementation: { create() { creations++; return null; } } };
+  assert.equal(await generator.createNpc2({ taxonomia: taxonomy.uuid, arquetipo: archetype.uuid, nd: 1 }), null);
+  assert.equal(creations, 0);
 });
 
 test("2.0 generation copies real profiles, grants only features due at the selected ND and equips their weapons", async () => {
@@ -179,6 +285,99 @@ test("every authored NPC weapon, including all elemental limbs and bites, can be
   }
 });
 
+test("the equipment catalogue groups every stock limb and elemental bite without losing native UUIDs", async () => {
+  const natural=JSON.parse(readFileSync(new URL("../packs/_source/ataques-naturais.json",import.meta.url),"utf8")).ataquesNaturais;
+  const manufactured=JSON.parse(readFileSync(new URL("../packs/_source/armas-pdn.json",import.meta.url),"utf8")).armas;
+  const items=[...natural,...manufactured].filter(i=>i.type==="weapon");
+  game.packs=[{documentName:"Item",visible:true,collection:"test.gear",metadata:{label:"Equipamentos"},getIndex:async()=>items}];
+  const {weapon:choices}=await npcGeneratorProfiles();
+  assert.equal(choices.length,188);
+  const grouped=choices.reduce((out,i)=>(out[i.folder]=(out[i.folder]??0)+1,out),{});
+  assert.deepEqual(grouped,{base:44,acid:16,lightning:16,thunder:16,soul:16,fire:16,cold:16,psychic:16,radiant:16,poison:16});
+  assert.equal(new Set(choices.map(i=>i.value)).size,188);
+  for(const item of items)assert(choices.some(i=>i.value===`Compendium.test.gear.Item.${item._id}`));
+});
+
+test("the 2.0 catalogue excludes old (NPC) attacks from both the world and compendiums", async () => {
+  const oldWorld=weapon("Pancada (NPC)",{pack:null});
+  const legacy=[
+    {_id:"old-hit",name:"Pancada (NPC)",type:"weapon"},
+    {_id:"old-pincer",name:"Pancada com Pinça ( npc )",type:"weapon"}
+  ];
+  const current=[{_id:"claws",name:"Garras",type:"weapon"},{_id:"pistol",name:"Pistola",type:"weapon"}];
+  game.items=[oldWorld,{...weapon("Mordida",{pack:null})}];
+  game.packs=[{documentName:"Item",visible:true,collection:"test.mixed",metadata:{label:"Acervo"},getIndex:async()=>[...legacy,...current]}];
+  const {weapon:choices}=await npcGeneratorProfiles();
+  assert.deepEqual(choices.map(choice=>choice.label),["Garras","Mordida","Pistola"]);
+  assert.equal(oldWorld.name,"Pancada (NPC)");
+  assert.equal(legacy.length,2);
+});
+
+test("physical firearms stay in Base even when their source folder is Armas de Fogo",()=>{
+  const folders=new Map([["guns",{_id:"guns",name:"Armas de Fogo"}]]);
+  assert.equal(npcGeneratorWeaponFolder({name:"Pistola",folder:"guns",
+    system:{damage:{base:{types:["piercing"]}}}},folders),"base");
+  assert.equal(npcGeneratorWeaponFolder({name:"Arma de Fogo",folder:"guns"},folders),"base");
+  assert.equal(npcGeneratorWeaponFolder({name:"Lança de Gelo",system:{damage:{base:{types:["piercing"]}}}}),"base");
+});
+
+test("element folders use configured damage including base, activities and legacy parts",()=>{
+  const cases=[
+    [{name:"Espada",system:{damage:{base:{types:["fire"]}}}},"fire"],
+    [{name:"Pistola",system:{activities:{shot:{type:"attack",damage:{parts:[{types:["fire"]}]}}}}},"fire"],
+    [{name:"Garras",system:{activities:{hit:{type:"attack",damage:{parts:[{types:new Set(["psychic"])}]}}}}},"psychic"],
+    [{name:"Mordida",system:{damage:{parts:[["2d6","acid"]]}}},"acid"],
+    [{name:"Flamejante",flags:{"jujutsu-system":{elemento:"fire"}},system:{damage:{base:{types:new Set(["cold"])}}}},"cold"],
+    [{name:"Garras",flags:{"jujutsu-system":{elemento:"lightning"}}},"lightning"]
+  ];
+  for(const [item,expected]of cases)assert.equal(npcGeneratorWeaponFolder(item),expected,item.name);
+});
+
+test("the compendium index includes damage data so renamed elemental weapons are classified correctly",async()=>{
+  game.items=[{...weapon("Mordida",{pack:null}),system:{damage:{base:{types:["poison"]}}}}];
+  const entries=[
+    {_id:"pistol",name:"Pistola",type:"weapon",folder:"guns",system:{damage:{base:{types:["piercing"]}}}},
+    {_id:"blade",name:"Espada",type:"weapon",img:"icons/blade.webp",system:{damage:{base:{types:["fire"]}}}},
+    {_id:"claws",name:"Garras",type:"weapon",system:{activities:{hit:{type:"attack",damage:{parts:[{types:["cold"]}]}}}}}
+  ];
+  game.packs=[{documentName:"Item",visible:true,collection:"test.gear",metadata:{label:"Acervo"},
+    folders:new Map([["guns",{_id:"guns",name:"Armas de Fogo"}]]),
+    getIndex:async({fields})=>entries.map(item=>({...item,system:{
+      damage:fields.includes("system.damage")?item.system.damage:undefined,
+      activities:fields.includes("system.activities")?item.system.activities:undefined
+    }})),getDocuments(){assert.fail("Picker loaded full compendium documents");}}];
+  const {weapon:choices}=await npcGeneratorProfiles();
+  assert.equal(choices.find(i=>i.label==="Pistola").folder,"base");
+  assert.equal(choices.find(i=>i.label==="Mordida").folder,"poison");
+  assert.equal(choices.find(i=>i.label==="Espada").folder,"fire");
+  assert.equal(choices.find(i=>i.label==="Garras").folder,"cold");
+  assert.equal(choices.find(i=>i.label==="Espada").img,"icons/blade.webp");
+});
+
+test("folder navigation combines search and source filters while retaining selections in hidden folders",()=>{
+  const listeners=()=>({handlers:{},addEventListener(event,callback){this.handlers[event]=callback;}});
+  const search={...listeners(),value:""},source={...listeners(),value:""},count={},empty={},heading={};
+  const buttons=["base","fire","poison","all"].map(folder=>({...listeners(),dataset:{weaponFolder:folder},setAttribute(key,value){this[key]=value;}}));
+  const rows=[["Mordida","Livro A","base"],["Garras Flamejantes","Livro A","fire"],["Mordida Venenosa","Livro B","poison"]].map(([name,group,folder])=>{
+    const input={checked:false};return {dataset:{weaponName:name,weaponGroup:group,weaponFolder:folder},querySelector:()=>input};
+  });
+  const selector={"[data-weapon-search]":search,"[data-weapon-source]":source,"[data-weapon-count]":count,"[data-weapon-empty]":empty,"[data-weapon-heading]":heading};
+  const picker={...listeners(),querySelector:key=>selector[key],querySelectorAll:key=>key==="[data-weapon-folder-button]"?buttons:rows};
+  activateNpcGeneratorWeapons({querySelector:()=>picker});
+  assert.deepEqual(rows.map(r=>r.hidden),[false,true,true]);
+  rows[0].querySelector().checked=true;picker.handlers.change();
+  buttons[1].handlers.click();assert.deepEqual(rows.map(r=>r.hidden),[true,false,true]);
+  assert.equal(buttons[1]["aria-pressed"],"true");
+  rows[1].querySelector().checked=true;picker.handlers.change();
+  buttons[2].handlers.click();assert.deepEqual(rows.map(r=>r.hidden),[true,true,false]);
+  assert.equal(rows.filter(r=>r.querySelector().checked).length,2);
+  search.value="MÓRDIDA";search.handlers.input();assert.equal(rows[2].hidden,false);
+  source.value="Livro A";source.handlers.change();assert.equal(empty.hidden,false);
+  buttons[3].handlers.click();assert.deepEqual(rows.map(r=>r.hidden),[false,true,true]);
+  assert.match(count.textContent,/2 selecionadas/);
+  source.value="";search.value="";search.handlers.input();assert(rows.every(r=>!r.hidden));
+});
+
 test("selected weapons become equipped native Items, retain activities/effects and survive profile removal", async () => {
   const selected = weapon("Tentáculos Flamejantes", { container: "other-actor-container" });
   const automatic = weapon("Garras");
@@ -229,15 +428,16 @@ for (const pack of ["test.weapons", null]) {
   });
 }
 
-test("an unavailable, unreadable or non-weapon selection cannot silently create an incomplete NPC", async () => {
+test("unavailable, unreadable, non-weapon or legacy selections are rejected before creating the actor", async () => {
   const tax = profile("taxonomy", "Felinos"), arq = profile("archetype", "Lutador");
   const denied = { ...weapon("Privada"), visible: false };
   const wrongType = profile("feat", "Efeito");
-  const docs = new Map([tax, arq, denied, wrongType].map(item => [item.uuid, item]));
+  const legacy = weapon("Pancada (NPC)");
+  const docs = new Map([tax, arq, denied, wrongType, legacy].map(item => [item.uuid, item]));
   globalThis.fromUuid = async uuid => docs.get(uuid);
   let creations = 0;
   globalThis.Actor = { implementation: { create() { creations++; return null; } } };
-  for (const uuid of ["Item.missing", denied.uuid, wrongType.uuid]) {
+  for (const uuid of ["Item.missing", denied.uuid, wrongType.uuid, legacy.uuid]) {
     assert.equal(await generator.createNpc2({ taxonomia: tax.uuid, arquetipo: arq.uuid, nd: 1, armas: [uuid] }), null);
   }
   assert.equal(creations, 0);

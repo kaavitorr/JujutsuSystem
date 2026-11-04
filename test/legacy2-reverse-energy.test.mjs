@@ -239,16 +239,16 @@ test("member restoration also heals wounds without going below zero or exceeding
   assert.equal(actor.system.legacy2.reverseEnergy.value, 25);
 });
 
-test("NPC reverse healing ignores legacy wounds and preserves their effective maximum", async () => {
+test("NPC reverse healing heals wounds and refills the newly released maximum life", async () => {
   const { actor, writes } = fixture();
   actor.type = "npc";
   actor.flags["jujutsu-system"].energiaReversaRodada.pontos = 0;
   actor.system.legacy2.wounds = { value: 10 };
-  actor.system.attributes.hp = { value: 31, max: 30, effectiveMax: 33, tempmax: 3 };
+  actor.system.attributes.hp = { value: 28, max: 30, effectiveMax: 28, tempmax: 3 };
   assert.equal(await reversa.usarEnergiaReversa(actor, 1), true);
-  assert.equal(actor.system.legacy2.wounds.value, 10);
-  assert.equal(actor.system.attributes.hp.value, 33);
-  assert.equal(Object.hasOwn(writes[0], "system.legacy2.wounds.value"), false);
+  assert.equal(actor.system.legacy2.wounds.value, 6);
+  assert.equal(actor.system.attributes.hp.value, 30);
+  assert.equal(writes[0]["system.legacy2.wounds.value"], 6);
 });
 
 test("conversion works with zero refinement but cannot spend refinement when the total pool is insufficient", async () => {

@@ -6,7 +6,7 @@ img: systems/jujutsu-system/icons/svg/items/feature.svg
 system:
   identifier: impacto-concussivo
   description:
-    value: <p><em><strong>Requisito:</strong> Ativação Aprimorada</em></p><p>Você faz com que seus golpes com “Energia Atrasada” se tornem ainda mais potentes. Você não precisa mais receber desvantagem para usar a característica, podendo sempre os usar no limite máximo.</p>
+    value: <p><em><strong>Requisito:</strong> Ativação Aprimorada</em></p><p>Você faz com que seus golpes com “Energia Atrasada” se tornem ainda mais potentes. O cálculo passa a usar seu Atributo Principal inteiro em vez de metade. Além disso, você pode ativar Energia Atrasada com um limite de dano de até 3 vezes seu Atributo Principal sem receber desvantagens.</p>
     chat: ''
 flags:
   jujutsu-system:
@@ -15,6 +15,7 @@ flags:
       caminho: Punho Divergente
       requisitos:
         - Ativação Aprimorada
+    physicalSpecializationsVersion: 1
 folder: jj2f000000000010
 ownership:
   default: 0

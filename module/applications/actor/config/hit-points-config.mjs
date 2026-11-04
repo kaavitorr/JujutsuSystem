@@ -53,7 +53,7 @@ export default class HitPointsConfig extends BaseConfigSheet {
 
     if (Ruleset.isV2() && ["character", "npc"].includes(this.document.type)) {
       const npc = this.document.type === "npc";
-      const wounds = npc ? 0 : Math.max(0, Math.floor(Number(this.document.system.legacy2?.wounds?.value) || 0));
+      const wounds = Math.max(0, Math.floor(Number(this.document.system.legacy2?.wounds?.value) || 0));
       context.jj2Health = {
         npc, automaticMax: Ruleset.maxHitPoints(this.document, { ignoreOverride: true }),
         maximumPath: npc ? "system.attributes.hp.maxOverride" : "system.attributes.hp.max",

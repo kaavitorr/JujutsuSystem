@@ -1,0 +1,161 @@
+{
+  "tool": "Built-in image_gen",
+  "style": "Pintura simples, poucas formas, fundo transparente",
+  "size": 256,
+  "format": "WebP",
+  "complete": true,
+  "items": [
+    {
+      "id": "SQpNi2iOihYlJ4Do",
+      "name": "Pistola",
+      "pack": "equipamentos",
+      "file": "sqpni2ioihylj4do-pistola.webp",
+      "sha256": "f64b53d3864ff7b2bc6bcf0a816a09a6d2994789ec27819d88d48c7645a2cd5d",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one compact semiautomatic pistol with a simple matte slate-grey rectangular slide and dark brown grip, short barrel, conventional distinct handgun silhouette."
+    },
+    {
+      "id": "dFjFFXUxwuPpVidT",
+      "name": "Canhão de Assalto",
+      "pack": "equipamentos",
+      "file": "dfjffxuxwuppvidt-canhao-de-assalto.webp",
+      "sha256": "303ebb703bc15a23ff0e553e6aed3e9b35368ac73ec7d2c1cffae8f80b2a6e19",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one massive shoulder-fired assault cannon, oversized rectangular dark gunmetal barrel housing with two broad side rails, heavy olive receiver, thick rear stock and a simple carry handle; compact stylized industrial silhouette, no glowing parts. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    },
+    {
+      "id": "2ufUn2EJkj8aBcmF",
+      "name": "Escopeta Automática",
+      "pack": "equipamentos",
+      "file": "2ufun2ejkj8abcmf-escopeta-automatica.webp",
+      "sha256": "8d02e813fe63e6d51214242572fcbf2714bc558aa779b02cd8842517134358d9",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one modern automatic tactical shotgun with a thick short barrel, clearly visible large round drum magazine, charcoal synthetic shoulder stock and slate-grey receiver."
+    },
+    {
+      "id": "wBPOuotA7XOnEB2o",
+      "name": "Escopeta de Barril Duplo",
+      "pack": "equipamentos",
+      "file": "wbpouota7xoneb2o-escopeta-de-barril-duplo.webp",
+      "sha256": "76ab232110941a2134ac5ccaf5fcd2d05bd32b79f4f9f2360e9004291dd425e1",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one classic full-length double-barreled shotgun with two visibly parallel long steel barrels, warm walnut fore-end and full wooden shoulder stock; slight three-quarter angle showing both barrels. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    },
+    {
+      "id": "yT0aAIiPexbdHqAB",
+      "name": "Escopeta de Cano Serrado",
+      "pack": "equipamentos",
+      "file": "yt0aaiipexbdhqab-escopeta-de-cano-serrado.webp",
+      "sha256": "300bdda4a32e7df51523fb7ef613a94bab28034fa86c9b92fb8775c226fd303a",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one short sawed-off double-barreled shotgun with two very short visibly parallel dark steel barrels, compact warm brown wooden pistol grip and no shoulder stock; stout cropped silhouette. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    },
+    {
+      "id": "dQQiacd4qUWKR6MG",
+      "name": "Escopeta de Combate",
+      "pack": "equipamentos",
+      "file": "dqqiacd4quwkr6mg-escopeta-de-combate.webp",
+      "sha256": "ae600e1f874f05217c7b44175da69a8896b86cf095cc0f8c7ba13affaf0219c6",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one pump-action combat shotgun, long parallel barrel and magazine tube, broad ribbed muted olive pump fore-end, dark synthetic shoulder stock and simple charcoal receiver; no drum magazine. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    },
+    {
+      "id": "oPZPWbwbsnYHIpm9",
+      "name": "Lança-Chamas",
+      "pack": "equipamentos",
+      "file": "opzpwbwbsnyhipm9-lanca-chamas.webp",
+      "sha256": "26f4c13331af84a5afe23eff11363ef2ca22d9b9c116260704181d89aa077f6e",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one compact handheld flamethrower with a dark steel nozzle, one small muted olive fuel cylinder attached below the receiver, a simple rear grip and a single tiny restrained burnt-orange pilot flame at the tip; no backpack, no spray or blast. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    },
+    {
+      "id": "QVhfvPyJOvpTPbsq",
+      "name": "Lança-Míssil",
+      "pack": "equipamentos",
+      "file": "qvhfvpyjovptpbsq-lanca-missil.webp",
+      "sha256": "edb346c9c7b21d08f52a2cf735969189a02d4636573785ff8922e2f29484c15a",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one shoulder-fired missile launcher with a broad olive-green cylindrical tube, chunky dark rear shoulder rest, simple small sight and pistol grip beneath; entire weapon visible, no separate missile, no blast. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    },
+    {
+      "id": "wMUDfXx77mDLIZ0X",
+      "name": "Lançador de Granadas",
+      "pack": "equipamentos",
+      "file": "wmudfxx77mdliz0x-lancador-de-granadas.webp",
+      "sha256": "1bb0164587f982eb80674b0ecea76a4b049efc8779995978c2d062ada6b8cf8f",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one revolver-style grenade launcher with a large clearly visible six-chamber cylinder, one short wide dark barrel, olive shoulder stock and simple black pistol grip; no separate ammunition. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    },
+    {
+      "id": "9mAFgEc0kYJsV6va",
+      "name": "Magnum",
+      "pack": "equipamentos",
+      "file": "9mafgec0kyjsv6va-magnum.webp",
+      "sha256": "0e14fef514372d80d1b1b82d4214e4ef15e713b24c44849494175171554d898b",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one massive long-barrel magnum revolver with a thick angular dark gunmetal barrel, prominent large round cylinder and broad walnut grip, clearly heavier and longer than an ordinary revolver. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    },
+    {
+      "id": "UPn8nil9XTJiV18w",
+      "name": "Metralhadora Leve",
+      "pack": "equipamentos",
+      "file": "upn8nil9xtjiv18w-metralhadora-leve.webp",
+      "sha256": "a19e7f45335c5e5bf2360a42459c6376ca4be5c8b9e9363355b6947ba29a911d",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one light machine gun with a long thick barrel, short folded bipod, compact round drum magazine, simple dark synthetic stock and muted gunmetal body. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    },
+    {
+      "id": "752rRxheyV4LV6cx",
+      "name": "Metralhadora Pesada",
+      "pack": "equipamentos",
+      "file": "752rrxheyv4lv6cx-metralhadora-pesada.webp",
+      "sha256": "d06c3044cc11258831a43be0cbcfa33606119af40203e6ab4af360d683d81ab8",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one very bulky belt-fed heavy machine gun with a thick long dark steel barrel, large rectangular receiver, heavy simple stock, an attached olive ammunition box and a short clearly grouped belt segment; no tripod. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    },
+    {
+      "id": "9hfUd9O3HRu3Qddu",
+      "name": "Micro SMG",
+      "pack": "equipamentos",
+      "file": "9hfud9o3hru3qddu-micro-smg.webp",
+      "sha256": "43a1e4d60ef2e7cc2fabae10468289ba5f8badeae799239edc6b1e66d74f6c72",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one very compact box-shaped micro submachine gun, stubby charcoal barrel, squared receiver, straight magazine in the grip and tiny folded wire stock; short and chunky silhouette. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    },
+    {
+      "id": "4wcZcvKflh3iRrG9",
+      "name": "Pistola Automática",
+      "pack": "equipamentos",
+      "file": "4wczcvkflh3irrg9-pistola-automatica.webp",
+      "sha256": "b0e41ac4487da2f374609ec8203a7ec6919c035bdf72c4f85c1402a05be4886d",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one full-sized modern automatic handgun with a thick angular charcoal pistol slide, simple dark blue-grey frame, conventional pistol trigger guard, compact black grip and a moderately extended straight magazine below the grip; absolutely NO shoulder stock, NO folded stock, NO foregrip, NO box-shaped submachine-gun receiver; unmistakably a pistol, visibly different from a micro SMG. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    },
+    {
+      "id": "FI7PjRebW4DmN9GX",
+      "name": "Revolver",
+      "pack": "equipamentos",
+      "file": "fi7pjrebw4dmn9gx-revolver.webp",
+      "sha256": "1ff8d0caeed2473255c70d042959235e4ba049a3bef0649a2429756f2938c0e2",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one classic medium-sized six-shot revolver with a clearly visible round steel cylinder, medium-length barrel and warm brown wooden grip; matte grey metal. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    },
+    {
+      "id": "U18mllH8HcxoNanV",
+      "name": "Rifle de Assalto",
+      "pack": "equipamentos",
+      "file": "u18mllh8hcxonanv-rifle-de-assalto.webp",
+      "sha256": "8214cbac9b6ba91c417cdccd99c6118f726f3c382916d307a93edb7049fb008d",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one modern assault rifle, matte blue-grey receiver, medium-length barrel, a clearly curved dark box magazine, simple pistol grip and angular shoulder stock; no accessories. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    },
+    {
+      "id": "DJf0D2dvWWdltl0y",
+      "name": "Rifle de Caça",
+      "pack": "equipamentos",
+      "file": "djf0d2dvwwdltl0y-rifle-de-caca.webp",
+      "sha256": "d1c9a492ef76a90d812c0a7891b23e7b41ec72f61be9997238b4aab0ba79bc4c",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one classic hunting rifle, warm walnut full shoulder stock and fore-end, long slender matte steel barrel and a small simple scope; traditional restrained silhouette. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    },
+    {
+      "id": "N3mN3wp4fknVwxkF",
+      "name": "Rifle de Precisão",
+      "pack": "equipamentos",
+      "file": "n3mn3wp4fknvwxkf-rifle-de-precisao.webp",
+      "sha256": "1d1cce1bb024100b97cbbf32d89b70d8ca4db4780a7d80889a1e5de952b07947",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one long precision sniper rifle, pale slate-grey angular shoulder stock, long dark heavy barrel, clearly visible long scope and short folded bipod, minimal simple shapes. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    },
+    {
+      "id": "YaQJS0DdKv0r7yfb",
+      "name": "Submachine",
+      "pack": "equipamentos",
+      "file": "yaqjs0ddkv0r7yfb-submachine.webp",
+      "sha256": "4ff0818c8fd79d8b98c0805fb74e955ca4170400144767f7e561570f130d1f5e",
+      "prompt": "Use case: stylized-concept. Asset type: a single individual inventory icon for Jujutsu Legacy RPG, matching the existing simple painted NPC equipment icons. Style: very simple low-detail hand-painted fantasy game prop in opaque gouache, broad clean brush masses, only 3 or 4 large light/shadow areas, readable silhouette at 40 pixels. Muted walnut brown, olive and blue-grey gunmetal with restrained ivory edge highlights. Clearly painted, never a photograph, never a realistic 3D render, never flat vector line art. One isolated complete weapon only, centered in a square, in a mild three-quarter side view angled diagonally from lower left to upper right. Keep the whole silhouette inside the canvas with an 8 percent clear margin. No person, no hands, no ground, no cast shadow, no scenery, no ammunition lying beside it, no labels, no text, no logo, no border, no tiny screws or intricate mechanical details. Genuinely transparent background, preserve alpha. Subject: one full-sized slender submachine gun, short straight barrel, matte blue-grey receiver, straight box magazine ahead of its pistol grip and a simple fixed shoulder stock; visually longer than a micro SMG. Strict finish: hard clean painted object silhouette on empty alpha transparency. Absolutely no glow, aura, haze, fog, smoke, vignette, blurred shading outside the weapon, cast shadow or translucent halo. No background pixels around the silhouette."
+    }
+  ]
+}

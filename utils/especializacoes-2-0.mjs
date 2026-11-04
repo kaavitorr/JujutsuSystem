@@ -12,7 +12,10 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import * as YAML from "js-yaml";
+import { PHYSICAL_SPECIALIZATIONS } from "../module/systems/legacy2-physical-specialization-data.mjs";
+import { HAND_SEALS_DESCRIPTION, HAND_SEALS_VERSION } from "../module/systems/legacy2-hand-seals.mjs";
 
 const PACK = "geral-2-0";
 const SRC = path.join("packs", "_source", PACK);
@@ -41,7 +44,7 @@ const DADOS = [
 </tbody></table>`,
   caminhos: [
   { nome: "Selos e Encantamentos", intro: `<p>A primeira disciplina dentro das habilidades de Feitiço inato é a dos Selos e Encantamentos. Você é capaz de utilizar diversos selos para reduzir o custo de ação ou usar encantamentos amplificar suas habilidades.</p>`, abilidades: [
-    { n: "Selos de Mão", t: `<p>Você aprendeu a adicionar complexidade a ativação de suas habilidades para facilitar sua ativação. Você recebe 3 usos de selos ao aprender essa habilidade e 1 adicionais toda vez que aprender uma nova habilidade desse caminho, recuperando todos os gastos ao realizar um descanso curto ou longo.</p><p>Ao consumir um selo, você deve ter pelo menos uma mão livre e faz com que você reduza o custo da sua próxima técnica em um Ponto de Ação [⬢], até um mínimo de uma.</p>` },
+    { n: "Selos de Mão", t: HAND_SEALS_DESCRIPTION },
     { n: "Selos Complexos", r: "Selos de Mão", t: `<p>O uso constante dos selos permitiu que você evoluísse na sua utilização, dando margem para reduzir ainda mais o custo de suas técnicas. Você passa a poder fazer selos complexos que reduzem o custo de uma técnica em duas ações [⬢⬢], mas você consome 2 usos de selos no processo.</p>` },
     { n: "Encantamentos", r: "Selos Complexos", t: `<p>Diferente dos selos de mão, os encantamentos são utilizados para reduzir o custo de ativação de uma habilidade ou aumentar seu poder, fazendo com que habilidades muito custosas possam ser ativadas com relativa facilidade. Eles são compostos por frases longas que devem ser recitadas em ordem. Enquanto recita um encantamento, você sempre se mantém em “Concentração” e não pode ativar outras técnicas do seu feitiço enquanto recita.</p><p>Um encantamento pode ser dividido entre versos simples, medianos e complexos, onde cada um demora mais que o anterior para ser recitado, mas aumenta o benefício de forma proporcional.</p><p>Os benefícios concedidos por cada verso é fixo de acordo com seu nível, onde ao recitar um encantamento, você pode escolher entre reduzir o custo, aumentar a CD ou aumentar os dados de dano da técnica.</p><ul><li><strong>Verso Simples:</strong> A técnica termina sua ativação no início do seu próximo turno e você pode escolher entre reduzir o custo, aumentar a CD ou o dano em 2 PA, CD ou Dados de Dano respectivamente.</li><li><strong>Verso Mediano:</strong> A técnica termina sua ativação no início do seu segundo turno e você pode escolher entre reduzir o custo, aumentar a CD ou o dano em 4 PA, CD ou Dados de Dano respectivamente.</li><li><strong>Verso Complexo:</strong> A técnica termina sua ativação no início do seu terceiro turno e você pode escolher entre reduzir o custo, aumentar a CD ou o dano em 6 PA, CD ou Dados de Dano respectivamente.</li></ul>` },
     { n: "Encantamento Veloz", r: "Encantamentos", t: `<p>Uma vez por descanso curto ou longo, você pode reduzir o tempo para realizar um encantamento em 1 rodada, fazendo com que um Verso Simples se torne instantâneo e um Mediano possa ser finalizado no início do seu próximo turno, dando uma redução de mesma proporção em um Verso Complexo.</p>` },
@@ -109,8 +112,9 @@ ${TBL(["Ordem", "Raio (metros)", "Emanação"], [["Básico", "15 de Linha e 5 de
   nome: "Proezas Físicas", cor: "#c05040", intro: `<p>As habilidades de especialização de proezas físicas permitem que os personagens aprendam características que aumentem o poder físico direto do personagem, assim como dando novas habilidades de combate.</p>`,
   caminhos: [
   { nome: "Corpo de Guerreiro", intro: `<p>O corpo de guerreiro é o ramo das habilidades de especialização no treino do corpo e sincronia dele com sua energia amaldiçoada, caso você possua. Suas habilidades podem ser adquiridas tanto por Restringidos quanto outros Estilos de Combate.</p>`, abilidades: [
-    { n: "Explosão de Velocidade", t: `<p>Você recebe 5 Pontos de Potencial (PP) que podem ser usados para reduzir o custo de Pontos de Ações das suas técnicas. Esses PP são recuperados no início de cada encontro e não desaparecem.</p>` },
+    { n: "Explosão de Velocidade", t: PHYSICAL_SPECIALIZATIONS["Explosão de Velocidade"].description },
     { n: "Passo Esguio", t: `<p>Como uma Reação a um Ponto de Ação que tem você como alvo, você pode gastar um Ponto de Ação [⬢] e 2 Pontos de Energia ou Vigor para se mover até metade do alcance do seu deslocamento. Caso você saia para fora do alcance da ação, ela é cancelada.</p>` },
+    { n: "Reação Acelerada", id: PHYSICAL_SPECIALIZATIONS["Reação Acelerada"].id, img: PHYSICAL_SPECIALIZATIONS["Reação Acelerada"].img, r: PHYSICAL_SPECIALIZATIONS["Reação Acelerada"].requirements.join(" e "), t: PHYSICAL_SPECIALIZATIONS["Reação Acelerada"].description },
     { n: "Punho Devastador", t: `<p>Ao causar um acerto crítico, você causa dano adicional igual o seu atributo principal e a criatura deve realizar uma Salvaguarda de Constituição para não perder um Ponto de Ação [⬢] no início do próximo turno dela. Essa característica pode ser ativada múltiplas vezes por rodada.</p>` },
     { n: "Entrada Impactante", r: "Punho Devastador", t: `<p>No início de cada encontro, ao chegar no seu turno, você pode escolher uma criatura abaixo de você na iniciativa e se mover na direção dela, desferindo um golpe devastador, impondo a condição Atordoado automaticamente no alvo.</p><p>Além disso, você sempre tem uma vantagem contra criaturas abaixo de você na iniciativa dinâmica.</p>` },
     { n: "Punho de Aço", r: "Entrada Impactante", t: `<p>Você treinou seus golpes a ponto de aprender a extrair o máximo de potencial de cada ataque. O dano base dos seus ataques desarmados se torna d8. Caso seu dano natural já seja d8 ou superior, ele aumenta em um passo de dano, até o máximo de d12.</p><p>Se seu dano natural já for d12, você recebe +1 de dano em vez de aumentar o dado.</p>` },
@@ -121,13 +125,13 @@ ${TBL(["Ordem", "Raio (metros)", "Emanação"], [["Básico", "15 de Linha e 5 de
     { n: "Ataque Cruel", r: "Ira do Berserker", t: `<p>Você aumenta a margem de acerto crítico excedente dos seus ataques (Comuns) em 1 Ponto (10 &gt; 9).</p>` }
   ]},
   { nome: "Punho Divergente", intro: `<p>O punho divergente é um ramo das habilidades de especialização no treino do corpo que permite atrasar propositalmente sua energia amaldiçoada de forma a causar um impacto duplo em seus golpes. Assim como outras habilidades de Energia Amaldiçoada, ela não pode ser adquirida por um Restringido.</p>`, abilidades: [
-    { n: "Energia Atrasada", t: `<p>Você pode escolher ter até 5 desvantagens em sua rolagem de ataque (Comum) para fazer com que sua energia amaldiçoada dê um pequeno atraso, acertando o alvo uma segunda vez logo após seu golpe, liberando dois impactos distintos. Caso você role um resultado no dado de 15 ou mais e acerte o alvo, você causa novamente o dano do seu primeiro ataque, até um máximo de dano igual a 1 vez o seu atributo principal para cada desvantagem que você escolheu receber.</p><p><em>Por exemplo, ao se impor 3 desvantagens, você pode aumentar o limite de dano causado, aplicando até 3 vezes o seu atributo principal em dano.</em></p><p>Esse golpe conta como uma jogada de ataque (Comum) diferente usando o mesmo acerto.</p>` },
+    { n: "Energia Atrasada", t: PHYSICAL_SPECIALIZATIONS["Energia Atrasada"].description },
     { n: "Castigo de Ferro", r: "Energia Atrasada", t: `<p>Quando você ou uma criatura aliada a até 1,5 metros de distância for alvo de uma rolagem de acerto de uma criatura dentro do seu alcance, você pode como Reação, realizar uma jogada de ataque (Comum) contra ela que causa seu dano normal.</p><p>Ao atingir a criatura, ela deve realizar uma Salvaguarda de Constituição para não ter a ação interrompida e perder as ações e recursos utilizados nela.</p>` },
     { n: "Dispersão de Energia", r: "Castigo de Ferro", t: `<p>Toda vez que você ativar o efeito do Energia Atrasada com sucesso, você pode escolher receber dois dos seguintes efeitos:</p><ul><li>Você reduz o próximo dano sofrido em 2d4 Pontos de Dano;</li><li>Você impõe desvantagem na próxima rolagem de acerto contra você;</li><li>Você recebe 1 vantagem na sua próxima Salvaguarda de Agilidade até o início do seu próximo turno;</li><li>Suas jogadas de ataque (Comuns e de Técnica) recebem 1d4 de dano adicional até o início do seu próximo turno.</li></ul><p>Alternativamente, você pode escolher consumir 2 Pontos de Energia Amaldiçoada (PA) para receber os efeitos acima sem precisar ativar a característica “Energia Atrasada”.</p>` },
     { n: "Recuperação de Foco", r: "Dispersão de Energia", t: `<p>Toda vez que você ativar o Energia Atrasada como consequência de um 20 natural, você recupera 2 Pontos de Ação [⬢⬢], mas só podem ser utilizados fora do seu turno.</p>` },
     { n: "Vibração de Energia", r: "Recuperação de Foco", t: `<p>Ao ativar o efeito do seu Punho Divergente junto de um crítico em uma criatura inimiga, você pode impor a condição Estremecido se ela falhar em uma Salvaguarda de Constituição.</p>` },
     { n: "Ativação Aprimorada", r: "Vibração de Energia", t: `<p>A margem para atingir seu “Energia Atrasada” se torna 12-20 e seu limite de dano da característica se torna até 6 vezes o seu atributo principal no lugar do original.</p>` },
-    { n: "Impacto Concussivo", r: "Ativação Aprimorada", t: `<p>Você faz com que seus golpes com “Energia Atrasada” se tornem ainda mais potentes. Você não precisa mais receber desvantagem para usar a característica, podendo sempre os usar no limite máximo.</p>` },
+    { n: "Impacto Concussivo", r: "Ativação Aprimorada", t: PHYSICAL_SPECIALIZATIONS["Impacto Concussivo"].description },
     { n: "Aceleração Súbita", r: "Ativação Aprimorada", t: `<p>Seus golpes de energia atrasada te dão uma leve aceleração quando são ativados com sucesso, fazendo com que você possa sumir de vista por um segundo e acertar alvos a volta. Toda vez que você ativar o “Energia Atrasada”, você se move em alta velocidade, acertando todas as criaturas a 5 metros do alvo inicial do seu ataque gastando apenas 1 Ponto de Ação [⬢] adicional.</p><p>Os Pontos de Ação usados para ativar essa característica pode ser um dos recebidos pela Recuperação de Foco.</p>` }
   ]},
   { nome: "Canalização de Energia", intro: `<p>A canalização de energia é um ramo extremamente comum das habilidades de especialização no treino do corpo que permite te dar controle geral sobre a energia amaldiçoada e a utilizar para lutar.</p>`, abilidades: [
@@ -286,25 +290,29 @@ function folderDoc(nome, cor, parent) {
   return fid;
 }
 
-function featDoc(nome, categoria, caminho, requisitos, html, folderId, intro) {
-  const id = novoId("jj2a");
+function featDoc(nome, categoria, caminho, requisitos, html, folderId, intro, options = {}) {
+  const id = options.id ?? novoId("jj2a");
   const corpo = (intro ?? "") + (requisitos ? REQ(requisitos) : "") + html;
   docs.push({
     _id: id,
     _key: `!items!${id}`,
     name: nome,
     type: "feat",
-    img: "systems/jujutsu-system/icons/svg/items/feature.svg",
+    img: options.img ?? "systems/jujutsu-system/icons/svg/items/feature.svg",
     system: {
       identifier: slugify(nome),
+      ...(PHYSICAL_SPECIALIZATIONS[nome]?.uses ? { uses: { ...structuredClone(PHYSICAL_SPECIALIZATIONS[nome].uses), spent: 0 } } : {}),
       description: { value: corpo, chat: "" }
     },
     flags: {
       "jujutsu-system": {
+        ...(nome === "Selos de Mão" ? { handSealsRulesVersion: HAND_SEALS_VERSION } : {}),
+        ...(nome === "Explosão de Velocidade" ? { physicalSpecializationsVersion: PHYSICAL_SPECIALIZATIONS[nome].version } : {}),
         especializacao: {
           categoria,
           caminho,
-          requisitos: requisitos ? [requisitos.trim()] : []
+          requisitos: requisitos ? [requisitos.trim()] : [],
+          ...(options.order ? { ordem: options.order } : {})
         }
       }
     },
@@ -323,20 +331,25 @@ for ( const categoria of DADOS ) {
   for ( const caminho of categoria.caminhos ) {
     const camId = folderDoc(caminho.nome, null, catId);
     for ( const ab of caminho.abilidades ) {
-      featDoc(ab.n, categoria.nome, caminho.nome, ab.r ?? null, ab.t, camId, caminho.intro && ordem === 0 ? caminho.intro : null);
+      featDoc(ab.n, categoria.nome, caminho.nome, ab.r ?? null, ab.t, camId, caminho.intro && ordem === 0 ? caminho.intro : null,
+        { id: ab.id, img: ab.img, order: ordem + 1 });
       ordem++;
     }
     ordem = 0;
   }
 }
 
-fs.mkdirSync(SRC, { recursive: true });
-// limpa ymls obsoletos (ids mudam entre execuções)
-for ( const arq of fs.readdirSync(SRC) ) {
-  if ( arq.endsWith(".yml") && !arq.startsWith("jj2e") ) fs.rmSync(path.join(SRC, arq), { force: true });
+export { docs as specializationDocuments };
+
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  fs.mkdirSync(SRC, { recursive: true });
+  // Regenera somente as fontes YAML produzidas por este utilitário.
+  for ( const arq of fs.readdirSync(SRC) ) {
+    if ( arq.endsWith(".yml") && !arq.startsWith("jj2e") ) fs.rmSync(path.join(SRC, arq), { force: true });
+  }
+  for ( const doc of docs ) {
+    const alvo = path.join(SRC, `${doc._id}.yml`);
+    fs.writeFileSync(alvo, YAML.dump(doc, { lineWidth: -1 }), { encoding: "utf8" });
+  }
+  console.log(`OK: ${docs.length} documentos escritos em ${SRC}`);
 }
-for ( const doc of docs ) {
-  const alvo = path.join(SRC, `${doc._id}.yml`);
-  fs.writeFileSync(alvo, YAML.dump(doc, { lineWidth: -1 }), { encoding: "utf8" });
-}
-console.log(`OK: ${docs.length} documentos escritos em ${SRC}`);

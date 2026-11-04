@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { readFileSync } from "node:fs";
 import Ruleset from "../module/systems/ruleset.mjs";
+import { prepareSizeRules, restoreSizeRules } from "../module/systems/legacy2-size.mjs";
 import { activationChoices, activationContext } from "../module/applications/activity/legacy2-activation.mjs";
 import { acertoSeisOlhos } from "../module/systems/seis-olhos.mjs";
 globalThis.game={settings:{get:()=>"2.0"},user:{targets:new Set()}};
@@ -32,6 +33,17 @@ test("NPC activation cards agree with actual attack parts and refresh when the s
  assert.equal(view.abilityValue,6);assert.equal(view.skillValue,1);assert.equal(view.bonusLabel,"7 + 2 + 3");assert.equal(view.bonus,4);assert.equal(view.advantageBonus,1);
  assert.equal(view.halfAttackAttribute,true);
  assert.equal(activationContext(attack,{ability:"dex"}).abilityValue,3);
+});
+test("automatic NPC weapon proficiency reaches the native attack and activation card once at each ND tier",()=>{
+ const {actor,attack}=fixture();actor.system.legacy2.armas={};
+ for(const [nd,bonus]of [[1,0],[5,0],[6,1],[10,1],[11,2],[15,2],[16,3],[20,3],[6,1]]){
+  actor.system.legacy2.nd=nd;
+  const roll=attack.getAttackData({ability:"str"});
+  assert.equal(Number(roll.data.legacyRank??0),bonus,`ND ${nd}`);
+  assert.equal(roll.parts.reduce((sum,key)=>sum+Number(roll.data[key.slice(1)]),0),18+bonus);
+  assert.equal(activationContext(attack,{ability:"str"}).skillValue,bonus);
+  assert.deepEqual(actor.system.legacy2.armas,{});
+ }
 });
 test("NPC activation starts from the attack's configured attribute",()=>{
  const {attack}=fixture();attack.attack.ability="dex";
@@ -99,10 +111,10 @@ test("NPC values clamp before derived rolls and preserve the original source dat
 test("NPC preparation precedes native roll data/ability calculation and remains dormant in 1.0",()=>{
  const native=readFileSync(new URL("../module/data/actor/npc.mjs",import.meta.url),"utf8");
  const prefix=native.match(/prepareDerivedData\(\) \{([\s\S]*?)\n    this.prepareCurrency\(\);/)[1];
- const run=new Function("Ruleset","prepareNpc2Abilities",prefix);
+  const run=new Function("Ruleset","prepareNpc2Abilities","restoreSizeRules","prepareSizeRules",prefix);
  const make=()=>{const actor={system:{legacy2:{},abilities:{str:{value:18,_source:{value:18}}}},getRollData(){return {str:this.system.abilities.str.value};},getOriginalStats:()=>({})};
   return {parent:actor,prepareAbilities({rollData}){this.seen=rollData.str;}};};
- const v2=make();run.call(v2,Ruleset,attributes.prepareNpc2Abilities);assert.equal(v2.seen,12);
+  const v2=make();run.call(v2,Ruleset,attributes.prepareNpc2Abilities,restoreSizeRules,prepareSizeRules);assert.equal(v2.seen,12);
  const get=game.settings.get;game.settings.get=()=>"1.0";
- try{const v1=make();run.call(v1,Ruleset,attributes.prepareNpc2Abilities);assert.equal(v1.seen,18);}finally{game.settings.get=get;}
+  try{const v1=make();run.call(v1,Ruleset,attributes.prepareNpc2Abilities,restoreSizeRules,prepareSizeRules);assert.equal(v1.seen,18);}finally{game.settings.get=get;}
 });

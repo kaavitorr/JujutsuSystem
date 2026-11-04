@@ -408,3 +408,7 @@
 .activity .jj-activity-conditions button svg { width: 16px; height: 16px; flex: 0 0 16px; }
 .activity .jj-condition-empty { margin: 0; padding: 13px 10px; border: 1px dashed #9f7aca55; text-align: center; }
 .activity .jj-activity-conditions .jj-condition-dc { margin: 10px 0 0; font-size: 11px; }
+.jj2-document .jj2-size-push-test { display: flex; align-items: center; gap: 10px; padding: 10px; border: 1px solid #b38add55; background: #b38add0a; font-size: 12px; }
+.jj2-document .jj2-size-push-test > input { flex: none; accent-color: var(--jj2-purple, #b38add); }
+.jj2-document .jj2-size-push-test span { display: grid; gap: 3px; }
+.jj2-document .jj2-size-push-test small { color: var(--jj2-muted, #b3a7c0); }

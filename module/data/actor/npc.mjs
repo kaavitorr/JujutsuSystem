@@ -23,6 +23,8 @@ import { npcClassification, prepareNpcClassificationActions, npcClassificationAc
 import { prepareEngagement } from "../../systems/engagement.mjs";
 import { prepareLegacy2ArmorClass } from "../../systems/legacy2-armor.mjs";
 import { prepareNpcProfileMovement } from "../../systems/legacy2-npc-movement.mjs";
+import { prepareSizeRules, restoreSizeRules } from "../../systems/legacy2-size.mjs";
+import { EnergySystem } from "../../systems/energy.mjs";
 
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 const { ArrayField, BooleanField, NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
@@ -470,7 +472,9 @@ export default class NPCData extends CreatureTemplate {
 
   /** @inheritDoc */
   prepareDerivedData() {
+    restoreSizeRules(this.parent);
     if (Ruleset.isV2()) prepareNpc2Abilities(this.parent);
+    prepareSizeRules(this.parent);
     const rollData = this.parent.getRollData({ deterministic: true });
     const { originalSaves, originalSkills } = this.parent.getOriginalStats();
 
@@ -509,20 +513,22 @@ export default class NPCData extends CreatureTemplate {
       prepareNpcClassificationActions(this);
       // Attributes were prepared before native checks, saves and attack data.
       // Vida pela fórmula de NPC (10 × ND + 15 × CON, ajustada pelo estado
-      // Lacaio/Normal/Elite/Chefe em Ruleset.maxHitPoints). NPCs não
-      // têm Ferimentos. O valor é reclampado a partir do dado-fonte — prepareHitPoints
+      // Lacaio/Normal/Elite/Chefe em Ruleset.maxHitPoints). Ferimentos reduzem
+      // o máximo efetivo como nos jogadores. O valor é reclampado a partir do dado-fonte — prepareHitPoints
       // rodou com o max pré-2.0 e amputaria o valor gravado.
       const estiloCfg = Ruleset.estilo(actor2) ?? { vidaBase: 4, energiaBase: 10 };
       const hpN = this.attributes.hp;
       hpN.max = Ruleset.maxHitPoints(actor2);
-      hpN.effectiveMax = Math.max(hpN.max + (hpN.tempmax ?? 0), 0);
+      const feridas = Math.floor(Math.max(0, Math.floor(Number(this.legacy2?.wounds?.value) || 0)) / 2);
+      hpN.effectiveMax = Math.max(hpN.max - feridas + (hpN.tempmax ?? 0), 0);
       hpN.value = Math.min(this._source?.attributes?.hp?.value ?? hpN.value ?? 0, hpN.effectiveMax);
       hpN.damage = hpN.effectiveMax - hpN.value;
       hpN.pct = Math.clamp(hpN.effectiveMax ? (hpN.value / hpN.effectiveMax) * 100 : 0, 0, 100);
-      // Energia 2.0 do NPC = 30 × ND (Ruleset.maxEnergy); o Refinamento
-      // (genMax — teto da REFINADA) = 2 × ND.
+      // Energia 2.0 do NPC = 30 × ND. Refinamento usa o mesmo limite do
+      // jogador, com ND no lugar do nível e os bônus de treino e características.
       this.energy.max = Ruleset.maxEnergy(actor2);
-      this.energy.genMax = 2 * Ruleset.nivel(actor2);
+      this.energy.genMax = EnergySystem.refinementLimit(actor2);
+      this.energy.genPerTurn = this.energy.genMax;
       this.attributes.hd.max = 0;
       this.attributes.hd.value = 0;
       // CR com o principal do Arquétipo (ou do estilo, quando só ele existe)

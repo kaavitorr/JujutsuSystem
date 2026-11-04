@@ -2,6 +2,7 @@ import Ruleset from "../../systems/ruleset.mjs";
 import { applyLegacy2TestRoll } from "../../applications/dice/legacy2-test-roll.mjs";
 import { replacesNativeConditionRoll } from "../../systems/legacy2-condition-rolls.mjs";
 import { npcFeatureRollData } from "../../systems/legacy2-npc-features.mjs";
+import { resetNpcProfilePreparation } from "../../systems/legacy2-npc-profiles.mjs";
 import { applyNumericResistances } from "../../systems/legacy2-resistances.mjs";
 import { absorbShieldDamage } from "../../systems/legacy2-shield.mjs";
 import BaseRestDialog from "../../applications/actor/rest/base-rest-dialog.mjs";
@@ -30,6 +31,10 @@ import ConditionData from "../../data/active-effect/condition.mjs";
 import { performValidatedCustomizationBatch } from "../../applications/actor/jj/legacy2-customization.mjs";
 import { preparePeculiarityDamage, preparePeculiarityRest } from "../../systems/peculiaridades-automacao.mjs";
 import { prepareLegacy2ResourceBases } from "../../systems/legacy2-resources.mjs";
+import { resetSizePreparation, preventSizePushRoll } from "../../systems/legacy2-size.mjs";
+import { handSealsRestUpdates } from "../../systems/legacy2-hand-seals.mjs";
+import { syncImportedHandSeals } from "../../systems/legacy2-hand-seal-hooks.mjs";
+import { syncPotentialPoints } from "../../systems/legacy2-potential-points.mjs";
 
 /**
  * @import { RequestOptions5e } from "../../_types.mjs";
@@ -365,6 +370,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
   /** @inheritDoc */
   _clearCachedValues() {
     super._clearCachedValues();
+    resetNpcProfilePreparation(this);
     this._lazy = {};
     this._preferredArtwork = null;
     this._preparationWarnings = [];
@@ -400,6 +406,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
 
   /** @inheritDoc */
   applyActiveEffects(phase) {
+    if (phase === "initial") resetSizePreparation(this);
     if ( (this.system?.prepareEmbeddedData instanceof Function) && (phase === "initial") ) {
       this.system.prepareEmbeddedData();
     }
@@ -1346,6 +1353,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
    * @returns {Promise<D20Roll[]|null>}                          A Promise which resolves to the created Roll instance.
    */
   async rollSkill(config={}, dialog={}, message={}) {
+    if (preventSizePushRoll(this, config)) return [];
     if ( (typeof this.system.rollSkill === "function")
       && (await this.system.rollSkill(config, dialog, message) === false) ) return null;
     if ( !this.system.skills ) return null;
@@ -1598,6 +1606,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
    * @returns {Promise<D20Roll[]|null>}                        A Promise which resolves to the created Roll instance.
    */
   async rollAbilityCheck(config={}, dialog={}, message={}) {
+    if (preventSizePushRoll(this, config)) return [];
     if ( config.ability === "spellcasting" ) config = { ...config, ability: this.spellcastingAbility };
     const abilityLabel = CONFIG.DND5E.abilities[config.ability]?.label ?? "";
     const dialogConfig = foundry.utils.mergeObject({
@@ -1621,6 +1630,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
    * @returns {Promise<D20Roll[]|null>}                        A Promise which resolves to the created Roll instances.
    */
   async rollSavingThrow(config={}, dialog={}, message={}) {
+    if (preventSizePushRoll(this, config)) return [];
     if ( (typeof this.system.rollSavingThrow === "function")
       && (await this.system.rollSavingThrow(config, dialog, message) === false) ) return null;
     if ( !this.system.abilities ) return null;
@@ -2464,8 +2474,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
           energiaAtual + Math.floor(energiaMax * 0.1));
       } else {
         result.updateData["system.energy.total"] = energiaMax;
-        const feridas = this.type === "npc" ? 0
-          : Math.max(0, Math.floor(Number(this.system.legacy2?.wounds?.value ?? 0)));
+        const feridas = Math.max(0, Math.floor(Number(this.system.legacy2?.wounds?.value ?? 0)));
         let feridasFinais = feridas;
         if ( feridas > 0 ) {
           const reducao = Math.max(1, Math.ceil(feridas * 0.2));
@@ -2480,9 +2489,7 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
       result.deltas.hitPoints = dhp2;
       result.dhp = dhp2;
       // Selos de Mão (2.0): recupera todos os usos em descanso curto ou longo
-      const featsSelos = this.items.filter(i => i.type === "feat"
-        && i.getFlag?.("jujutsu-system", "especializacao")?.caminho === "Selos e Encantamentos").length;
-      if ( featsSelos > 0 ) result.updateData["flags.jujutsu-system.selos"] = 3 + Math.max(0, featsSelos - 1);
+      Object.assign(result.updateData, handSealsRestUpdates(this));
     }
 
     result.dhp = result.deltas.hitPoints;
@@ -3609,6 +3616,16 @@ export default class Actor5e extends SystemDocumentMixin(Actor) {
 
   /* -------------------------------------------- */
 
+  /** @override */
+  async importFromJSON(json) {
+    const actor = await super.importFromJSON(json);
+    await syncImportedHandSeals(actor);
+    await syncPotentialPoints(actor);
+    return actor;
+  }
+
+  /* -------------------------------------------- */
+
   /** @inheritDoc */
 async _preUpdate(changed, options, user) {
     if ( (await super._preUpdate(changed, options, user)) === false ) return false;
@@ -3632,7 +3649,7 @@ async _preUpdate(changed, options, user) {
       }
     }
 
-    // Avisar no chat quando a Aura Total (reserva) for alterada manualmente
+    // Avisar no chat quando a reserva de Energia Amaldiçoada Total for alterada manualmente.
     const novaTotal = foundry.utils.getProperty(changed, "system.energy.total");
     if ( Number.isFinite(novaTotal) && !options.isEnergySystem && this.type === "character" ) {
       const antigaTotal = this.system.energy.total;
@@ -3641,7 +3658,7 @@ async _preUpdate(changed, options, user) {
         const sinal = delta > 0 ? `+${delta}` : `${delta}`;
         ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor: this }),
-          content: `🌀 <b>${this.name}</b> alterou a Aura Total manualmente: ${antigaTotal} → ${novaTotal} (${sinal})`
+          content: `🌀 <b>${this.name}</b> alterou a Energia Amaldiçoada Total manualmente: ${antigaTotal} → ${novaTotal} (${sinal})`
         });
       }
     }

@@ -4,6 +4,8 @@ import BaseActorSheet from "./api/base-actor-sheet.mjs";
 import HabitatConfig from "./config/habitat-config.mjs";
 import TreasureConfig from "./config/treasure-config.mjs";
 import Ruleset from "../../systems/ruleset.mjs";
+import { EnergySystem } from "../../systems/energy.mjs";
+import EnergyGenerationDialog from "./energy-generation-dialog.mjs";
 import { buildNpc2Context, configureNpc2Parts, NPC2_TABS, updateNpc2Actions, updateNpc2Rank } from "./jj/legacy2-npc-sheet.mjs";
 import { legacy2ActionMax, acoesTetoEfetivo, SKILL_GROUPS } from "./jj/legacy2-sheet.mjs";
 import { mountLegacy2Layout } from "./jj/legacy2-layout.mjs";
@@ -791,6 +793,12 @@ export default class NPCActorSheet extends FeiticoSheetMixin(BaseActorSheet) {
 }
 
 async function _npcGenerateEnergy(actor) {
+  if (Ruleset.isV2()) {
+    if (Ruleset.isRestringido(actor)) return EnergySystem.processTurnStart(actor);
+    const choices = await EnergyGenerationDialog.configure(actor);
+    if (choices) return EnergySystem.processTurnStartWithChoices(actor, choices);
+    return;
+  }
   const e = actor.system.energy;
   const gerar = Math.min(e.genPerTurn ?? 0, (e.genMax ?? 0) - (e.generated ?? 0), e.total ?? 0);
   if (gerar <= 0) return ui.notifications.info(`${actor.name} não gera mais Energia agora (Gerada ${e.generated ?? 0}/${e.genMax ?? 0}, reserva ${e.total ?? 0}).`);

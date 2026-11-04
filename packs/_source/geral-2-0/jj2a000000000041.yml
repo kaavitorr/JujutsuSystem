@@ -6,14 +6,22 @@ img: systems/jujutsu-system/icons/svg/items/feature.svg
 system:
   identifier: explosao-de-velocidade
   description:
-    value: <p>O corpo de guerreiro é o ramo das habilidades de especialização no treino do corpo e sincronia dele com sua energia amaldiçoada, caso você possua. Suas habilidades podem ser adquiridas tanto por Restringidos quanto outros Estilos de Combate.</p><p>Você recebe 5 Pontos de Potencial (PP) que podem ser usados para reduzir o custo de Pontos de Ações das suas técnicas. Esses PP são recuperados no início de cada encontro e não desaparecem.</p>
+    value: <p>Você recebe <strong>5 Pontos de Potencial (PP)</strong>, que podem ser utilizados para reduzir o Custo em Pontos de Ação de suas Técnicas, até um mínimo de 1. Esses PP são recuperados no início de cada encontro e não são perdidos caso não sejam utilizados.</p><p>Você recebe <strong>+1 Ponto de Potencial a cada 2 Habilidades de Especialização</strong> que possuir no caminho do Corpo de Guerreiro.</p>
     chat: ''
+  uses:
+    max: '5'
+    spent: 0
+    recovery:
+      - period: encounter
+        type: recoverAll
 flags:
   jujutsu-system:
     especializacao:
       categoria: Proezas Físicas
       caminho: Corpo de Guerreiro
       requisitos: []
+      ordem: 1
+    physicalSpecializationsVersion: 2
 folder: jj2f000000000009
 ownership:
   default: 0

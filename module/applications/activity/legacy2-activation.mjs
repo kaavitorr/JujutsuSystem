@@ -1,5 +1,7 @@
 import Ruleset, { MAX_VANTAGENS } from "../../systems/ruleset.mjs";
 import { getScaleOptions } from "../actor/jj/jj-scale.mjs";
+import { handSealsMax } from "../../systems/legacy2-hand-seals.mjs";
+import { potentialPool } from "../../systems/legacy2-potential-points.mjs";
 
 const GESTURES = [ ["arrow", "Flecha"], ["line", "Linha"], ["cone", "Cone"], ["fan", "Leque"], ["sphere", "Esfera"], ["emanation", "Emanação"] ];
 const integer = (value, min = 0, max = Infinity) => {
@@ -44,7 +46,6 @@ export const GESTO_DEFS = {
               alcances: [5, 10, 15] }
 };
 const GESTO_FEATS = ["Gestos: Flecha e Linha", "Gestos: Cone e Leque", "Gestos: Raio e Emanação"];
-const SELOS_CAMINHO = "Selos e Encantamentos";
 const RIDER_CONDICAO = { flecha: 0, linha: 1, leque: 2, cone: 2, raio: 3, emanacao: 3 };
 
 /** Ordem (1-3) pela manifestação da técnica: inata/m1 → 1, m2 → 2, m3 → 3. */
@@ -67,14 +68,11 @@ export function gestosPossiveis(actor) {
     .map(([value, def]) => ({ value, label: def.label, dado: def.dado, area: def.area }));
 }
 
-/** Pool máximo de selos: 3 + 1 por habilidade adicional do caminho Selos e
+/** Pool máximo de selos: 8 + 1 por habilidade adicional do caminho Selos e
  * Encantamentos, mais o bônus de efeitos (a penalidade variante "Perde 3
  * dos seus Selos" aplica −3 em flags.jujutsu-system.selosBonus). */
 export function selosMax(actor) {
-  const noCaminho = actor?.items?.filter(i => i.type === "feat"
-    && i.getFlag?.("jujutsu-system", "especializacao")?.caminho === SELOS_CAMINHO).length;
-  const bonus = Math.trunc(Number(actor?.flags?.["jujutsu-system"]?.selosBonus) || 0);
-  return Math.max(0, 3 + Math.max(0, noCaminho - 1) + bonus);
+  return handSealsMax(actor);
 }
 
 export function selosAtuais(actor) {
@@ -125,6 +123,7 @@ export function activationChoices(activity, choices = {}) {
   const canBurst = activity.type !== "heal" && !!activity.damage?.parts?.length;
   // Selos de Mão só se aplicam a técnicas — nunca em ataques comuns de arma.
   const ehTecnica = activity.item.type === "spell";
+  const potential = ehTecnica ? potentialPool(actor) : null;
   // O select do dialog manda o gesto em legacy2.gesture; uso programático pode mandar legacy2.gesto.
   const gestoPossivel = gestosPossiveis(actor);
   const gestoEscolhido = [choices.gesto, choices.gesture]
@@ -150,6 +149,8 @@ export function activationChoices(activity, choices = {}) {
     condicao: !!choices.condicao,
     manipulacao: !!choices.manipulacao && temFeat(actor, "Manipulação de Selos"),
     selos: ehTecnica ? integer(choices.selos, 0, temFeat(actor, "Selos Complexos") ? 2 : (temFeat(actor, "Selos de Mão") ? 1 : 0)) : 0,
+    ...(potential?.max ? { potencial: integer(choices.potencial, 0, potential.current) }
+      : choices.potencial !== undefined ? { potencial: 0 } : {}),
     recarga: temRecarga ? { carregada, custoExtra: carregada ? 0 : 1 } : null,
     recarregar,
     attackMode: select(activity.item.system.attackModes, choices.attackMode),
@@ -192,6 +193,8 @@ export function activationContext(activity, choices = {}) {
     porVez: temFeat(actor, "Selos Complexos") ? 2 : (temFeat(actor, "Selos de Mão") ? 1 : 0),
     complexo: temFeat(actor, "Selos Complexos"), manipulacao: temFeat(actor, "Manipulação de Selos")
   };
+  const potential = activity.item.type === "spell" ? potentialPool(actor) : { max: 0, current: 0 };
+  const potentialInfo = { max: activity.item.type === "spell" ? potential.max : 0, current: potential.current };
   const gestoPreview = gestoDef
     ? `${gestoDef.label} (ordem ${ordem}) · alcance: ${alcanceGesto} · dano d${gestoDef.dado}`
       + (gestoDef.area ? " · Salvaguarda de Agilidade (ou a original)" : " · ataque direto")
@@ -212,7 +215,7 @@ export function activationContext(activity, choices = {}) {
       .map(([value, label]) => ({ value, label, selected: value === config.gesture, disabled: value !== config.gesture })),
     abilityOptions: abilityOptions(activity), attackModeOptions: activity.item.system.attackModes ?? [],
     // Gestos e Selos (2.0)
-    ordem, gestoPreview, selosInfo,
+    ordem, gestoPreview, selosInfo, potentialInfo,
     gestureOptions: [
       { value: "", label: "Formato nativo da técnica", selected: !config.gesto },
       ...gestosPossuidos.map(g => ({ value: g.value, label: `${g.label} (d${g.dado})`, selected: g.value === config.gesto }))

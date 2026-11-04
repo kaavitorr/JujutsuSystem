@@ -6,6 +6,35 @@ export const NPC_ABILITIES = Object.freeze(["str", "dex", "con", "int", "wis", "
 export const NPC_EQUAL_SCALE = Object.freeze(Object.fromEntries(NPC_ABILITIES.map(key => [key, 2])));
 export const NPC_PROFILE_FIELDS = Object.freeze({ taxonomy: "taxonomia", archetype: "arquetipo" });
 const creationQueues = new WeakMap();
+const profilePreparations = new WeakMap();
+const profileContexts = new WeakMap();
+
+/** Only retain item identities across a preparation cycle, never their prepared values. */
+export function resetNpcProfilePreparation(actor) {
+  profilePreparations.delete(actor);
+  if (actor.type === "npc") profilePreparations.set(actor, {});
+}
+
+/** Synchronous sheet assembly shares one distribution per save mode and releases it on return. */
+export function withNpcProfileContext(actor, build) {
+  if (actor?.type !== "npc" || profileContexts.has(actor)) return build();
+  profileContexts.set(actor, { lookup: profilePreparations.get(actor) ?? {}, distributions: new Map() });
+  try { return build(); }
+  finally { profileContexts.delete(actor); }
+}
+
+function ownedNpcProfiles(actor) {
+  const lookup = profileContexts.get(actor)?.lookup ?? profilePreparations.get(actor);
+  const items = actor?.items, size = items?.size ?? items?.length;
+  if (lookup?.owned && lookup.items === items && lookup.size === size) return lookup.owned;
+  const owned = { taxonomy: [], archetype: [] };
+  for (const item of items ?? []) {
+    if (Object.hasOwn(NPC_PROFILE_FIELDS, item.type)) owned[item.type].push(item);
+  }
+  if (lookup) Object.assign(lookup, { items, size, owned });
+  return owned;
+}
+
 export function canCreateNpcProfiles(actor, data) {
   return Object.keys(NPC_PROFILE_FIELDS).every(type =>
     Array.from(actor.items ?? []).filter(item => item.type === type).length + data.filter(item => item.type === type).length <= 1);
@@ -26,7 +55,7 @@ export function npcProfile(actor, type, config = globalThis.CONFIG?.JUJUTSU ?? {
   const field = NPC_PROFILE_FIELDS[type];
   if (!field) return null;
   const reference = actor?.system?.legacy2?.[field];
-  const owned = Array.from(actor?.items ?? []).filter(item => item.type === type);
+  const owned = ownedNpcProfiles(actor)[type];
   const item = owned.find(item => item.id === reference) ?? owned[0];
   if (item) return { ...item.system, label: item.name, item, pesos: item.system.pesos };
   const definition = config[type === "taxonomy" ? "taxonomias" : "arquetipos"]?.[reference];
@@ -65,6 +94,14 @@ export function npcProfileProficiencyOrder(profile, combined = npcProficiencyMod
 
 /** A single budget, interleaving the profiles' suggestions and omitting repeated choices. */
 export function npcProficiencyDistribution(actor, combined = npcProficiencyMode() === "alternative") {
+  const distributions = profileContexts.get(actor)?.distributions;
+  if (distributions?.has(combined)) return distributions.get(combined);
+  const distribution = distributeNpcProficiencies(actor, combined);
+  distributions?.set(combined, distribution);
+  return distribution;
+}
+
+function distributeNpcProficiencies(actor, combined) {
   const grants = { skills: {}, saves: {}, alternativeSaves: {} };
   if (actor?.type !== "npc" || globalThis.game?.settings?.get("jujutsu-system", "rulesetVersion") !== "2.0")
     return { order: [], suggested: [], custom: false, budget: 0, allocated: 0, unspent: 0, grants };

@@ -4,10 +4,10 @@
       "_id": "jjarm00000000001",
       "name": "Machado Grande",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000001-machado-grande.webp",
       "system": {
         "type": {
-          "value": "martialM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -69,7 +69,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000001-machado-grande.webp"
           }
         }
       },
@@ -89,10 +90,10 @@
       "_id": "jjarm00000000002",
       "name": "Nodachi",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000002-nodachi.webp",
       "system": {
         "type": {
-          "value": "martialM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -154,7 +155,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000002-nodachi.webp"
           }
         }
       },
@@ -174,10 +176,10 @@
       "_id": "jjarm00000000003",
       "name": "Espada Montante",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000003-espada-montante.webp",
       "system": {
         "type": {
-          "value": "martialM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -240,7 +242,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000003-espada-montante.webp"
           }
         }
       },
@@ -260,10 +263,10 @@
       "_id": "jjarm00000000004",
       "name": "Foice",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000004-foice.webp",
       "system": {
         "type": {
-          "value": "martialM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -324,7 +327,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000004-foice.webp"
           }
         }
       },
@@ -344,10 +348,10 @@
       "_id": "jjarm00000000005",
       "name": "Lança",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000005-lanca.webp",
       "system": {
         "type": {
-          "value": "martialM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -415,7 +419,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000005-lanca.webp"
           }
         }
       },
@@ -435,10 +440,10 @@
       "_id": "jjarm00000000006",
       "name": "Mangual",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000006-mangual.webp",
       "system": {
         "type": {
-          "value": "martialM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -499,7 +504,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000006-mangual.webp"
           }
         }
       },
@@ -519,10 +525,10 @@
       "_id": "jjarm00000000007",
       "name": "Martelo de Guerra",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000007-martelo-de-guerra.webp",
       "system": {
         "type": {
-          "value": "martialM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -584,7 +590,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000007-martelo-de-guerra.webp"
           }
         }
       },
@@ -604,10 +611,10 @@
       "_id": "jjarm00000000008",
       "name": "Tridente",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000008-tridente.webp",
       "system": {
         "type": {
-          "value": "martialM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -669,7 +676,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000008-tridente.webp"
           }
         }
       },
@@ -689,10 +697,10 @@
       "_id": "jjarm00000000009",
       "name": "Arco",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000009-arco.webp",
       "system": {
         "type": {
-          "value": "simpleR"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -758,7 +766,8 @@
                 "value": "ranged",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000009-arco.webp"
           }
         }
       },
@@ -778,10 +787,10 @@
       "_id": "jjarm00000000010",
       "name": "Zarabatana",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000010-zarabatana.webp",
       "system": {
         "type": {
-          "value": "simpleR"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -844,7 +853,8 @@
                 "value": "ranged",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000010-zarabatana.webp"
           }
         }
       },
@@ -864,10 +874,10 @@
       "_id": "jjarm00000000011",
       "name": "Shuriken",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000011-shuriken.webp",
       "system": {
         "type": {
-          "value": "simpleR"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -933,7 +943,8 @@
                 "value": "ranged",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000011-shuriken.webp"
           }
         }
       },
@@ -953,10 +964,10 @@
       "_id": "jjarm00000000012",
       "name": "Adaga/Kunai",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000012-adaga-kunai.webp",
       "system": {
         "type": {
-          "value": "simpleM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -1025,7 +1036,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000012-adaga-kunai.webp"
           }
         }
       },
@@ -1045,10 +1057,10 @@
       "_id": "jjarm00000000013",
       "name": "Daito Katana",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000013-daito-katana.webp",
       "system": {
         "type": {
-          "value": "simpleM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -1116,7 +1128,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000013-daito-katana.webp"
           }
         }
       },
@@ -1136,10 +1149,10 @@
       "_id": "jjarm00000000014",
       "name": "Katana",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000014-katana.webp",
       "system": {
         "type": {
-          "value": "simpleM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -1199,7 +1212,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000014-katana.webp"
           }
         }
       },
@@ -1219,10 +1233,10 @@
       "_id": "jjarm00000000015",
       "name": "Kogatana",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000015-kogatana.webp",
       "system": {
         "type": {
-          "value": "simpleM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -1282,7 +1296,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000015-kogatana.webp"
           }
         }
       },
@@ -1302,10 +1317,10 @@
       "_id": "jjarm00000000016",
       "name": "Machado",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000016-machado.webp",
       "system": {
         "type": {
-          "value": "simpleM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -1370,7 +1385,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000016-machado.webp"
           }
         }
       },
@@ -1390,10 +1406,10 @@
       "_id": "jjarm00000000017",
       "name": "Rapieira",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000017-rapieira.webp",
       "system": {
         "type": {
-          "value": "simpleM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -1454,7 +1470,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000017-rapieira.webp"
           }
         }
       },
@@ -1474,10 +1491,10 @@
       "_id": "jjarm00000000018",
       "name": "Sabre",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000018-sabre.webp",
       "system": {
         "type": {
-          "value": "simpleM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -1535,7 +1552,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000018-sabre.webp"
           }
         }
       },
@@ -1555,10 +1573,10 @@
       "_id": "jjarm00000000019",
       "name": "Shikomizue",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000019-shikomizue.webp",
       "system": {
         "type": {
-          "value": "simpleM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -1618,7 +1636,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000019-shikomizue.webp"
           }
         }
       },
@@ -1638,10 +1657,10 @@
       "_id": "jjarm00000000020",
       "name": "Chicote",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000020-chicote.webp",
       "system": {
         "type": {
-          "value": "simpleM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -1701,7 +1720,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000020-chicote.webp"
           }
         }
       },
@@ -1721,10 +1741,10 @@
       "_id": "jjarm00000000021",
       "name": "Dardo de Corda",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000021-dardo-de-corda.webp",
       "system": {
         "type": {
-          "value": "simpleM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -1791,7 +1811,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000021-dardo-de-corda.webp"
           }
         }
       },
@@ -1811,10 +1832,10 @@
       "_id": "jjarm00000000022",
       "name": "Foice Dupla",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000022-foice-dupla.webp",
       "system": {
         "type": {
-          "value": "simpleM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -1880,7 +1901,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000022-foice-dupla.webp"
           }
         }
       },
@@ -1900,10 +1922,10 @@
       "_id": "jjarm00000000023",
       "name": "Katar",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000023-katar.webp",
       "system": {
         "type": {
-          "value": "simpleM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -1966,7 +1988,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000023-katar.webp"
           }
         }
       },
@@ -1986,10 +2009,10 @@
       "_id": "jjarm00000000024",
       "name": "Kusarigama",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000024-kusarigama.webp",
       "system": {
         "type": {
-          "value": "simpleM"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -2055,7 +2078,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000024-kusarigama.webp"
           }
         }
       },
@@ -2075,10 +2099,10 @@
       "_id": "jjarm00000000025",
       "name": "Bastão",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000025-bastao.webp",
       "system": {
         "type": {
-          "value": "improv"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -2140,7 +2164,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000025-bastao.webp"
           }
         }
       },
@@ -2161,10 +2186,10 @@
       "_id": "jjarm00000000026",
       "name": "Kanabo/Tacape",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000026-kanabo-tacape.webp",
       "system": {
         "type": {
-          "value": "improv"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -2228,7 +2253,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000026-kanabo-tacape.webp"
           }
         }
       },
@@ -2249,10 +2275,10 @@
       "_id": "jjarm00000000027",
       "name": "Luva de Espinhos",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000027-luva-de-espinhos.webp",
       "system": {
         "type": {
-          "value": "improv"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -2312,7 +2338,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000027-luva-de-espinhos.webp"
           }
         }
       },
@@ -2333,10 +2360,10 @@
       "_id": "jjarm00000000028",
       "name": "Nunchaku",
       "type": "weapon",
-      "img": "systems/jujutsu-system/icons/svg/items/weapon.svg",
+      "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000028-nunchaku.webp",
       "system": {
         "type": {
-          "value": "improv"
+          "value": "natural"
         },
         "rarity": "",
         "identified": true,
@@ -2397,7 +2424,8 @@
                 "value": "melee",
                 "classification": ""
               }
-            }
+            },
+            "img": "systems/jujutsu-system/assets/equipamentos-pdn-pintados-v1/jjarm00000000028-nunchaku.webp"
           }
         }
       },

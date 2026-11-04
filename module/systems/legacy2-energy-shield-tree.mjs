@@ -61,6 +61,6 @@ async function updateItem() {
 export function registerEnergyShieldTreeUpdate(hooks = Hooks) {
   hooks.once("dnd5e.ready", () => updateEnergyShieldTree().catch(error => {
     console.error("Jujutsu: não foi possível cadastrar Escudo de Energia na árvore.", error);
-    ui.notifications.warn("Não foi possível atualizar Escudo de Energia no compêndio. Abra a árvore novamente para tentar.");
+    ui.notifications.warn("Não foi possível atualizar Escudo de Energia no compêndio. Recarregue o mundo para tentar novamente.");
   }));
 }

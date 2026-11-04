@@ -6,7 +6,7 @@ img: systems/jujutsu-system/icons/svg/items/feature.svg
 system:
   identifier: energia-atrasada
   description:
-    value: <p>O punho divergente é um ramo das habilidades de especialização no treino do corpo que permite atrasar propositalmente sua energia amaldiçoada de forma a causar um impacto duplo em seus golpes. Assim como outras habilidades de Energia Amaldiçoada, ela não pode ser adquirida por um Restringido.</p><p>Você pode escolher ter até 5 desvantagens em sua rolagem de ataque (Comum) para fazer com que sua energia amaldiçoada dê um pequeno atraso, acertando o alvo uma segunda vez logo após seu golpe, liberando dois impactos distintos. Caso você role um resultado no dado de 15 ou mais e acerte o alvo, você causa novamente o dano do seu primeiro ataque, até um máximo de dano igual a 1 vez o seu atributo principal para cada desvantagem que você escolheu receber.</p><p><em>Por exemplo, ao se impor 3 desvantagens, você pode aumentar o limite de dano causado, aplicando até 3 vezes o seu atributo principal em dano.</em></p><p>Esse golpe conta como uma jogada de ataque (Comum) diferente usando o mesmo acerto.</p>
+    value: <p>Você pode escolher sofrer até 6 Desvantagens em sua Rolagem de Ataque Comum para atrasar propositalmente sua Energia Amaldiçoada, fazendo com que ela atinja o alvo uma segunda vez logo após o impacto inicial e produza dois golpes distintos. Caso obtenha um resultado natural de 15 ou mais na Rolagem de Ataque e acerte o alvo, você causa novamente o dano do primeiro ataque, até um limite igual à metade do seu Atributo Principal para cada Desvantagem escolhida.</p><p>Por exemplo, ao se impor 3 Desvantagens, o limite de dano adicional passa a ser igual a 3 vezes a metade do seu Atributo Principal.</p><p>Esse segundo impacto conta como uma Rolagem de Ataque Comum separada, mas utiliza o mesmo resultado de acerto do ataque original.</p>
     chat: ''
 flags:
   jujutsu-system:
@@ -14,6 +14,7 @@ flags:
       categoria: Proezas Físicas
       caminho: Punho Divergente
       requisitos: []
+    physicalSpecializationsVersion: 1
 folder: jj2f000000000010
 ownership:
   default: 0

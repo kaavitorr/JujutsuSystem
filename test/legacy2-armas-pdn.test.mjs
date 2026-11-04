@@ -12,19 +12,14 @@ const armas = fonte.armas;
 const porNome = Object.fromEntries(armas.map(a => [a.name, a]));
 const atividadeDe = nome => Object.values(porNome[nome].system.activities)[0];
 
-test("as 28 armas da tabela existem, nas 4 categorias de proficiência", () => {
+test("as 28 armas de PdN são Naturais, mantendo as quatro pastas da tabela", () => {
   assert.equal(armas.length, 28);
   const porCategoria = {};
   for (const arma of armas) porCategoria[arma._pasta] = (porCategoria[arma._pasta] ?? 0) + 1;
   assert.deepEqual(porCategoria, {
     "Armas Pesadas": 8, "Armas de Projétil": 3, "Armas Leves": 13, "Armas Desarmadas": 4
   });
-  // Categoria → grupo de proficiência do sistema (system.type.value).
-  const tipoDe = nome => porNome[nome].system.type.value;
-  for (const nome of ["Machado Grande", "Nodachi", "Espada Montante", "Mangual"]) assert.equal(tipoDe(nome), "martialM", nome);
-  for (const nome of ["Arco", "Zarabatana", "Shuriken"]) assert.equal(tipoDe(nome), "simpleR", nome);
-  for (const nome of ["Katana", "Adaga/Kunai", "Kusarigama"]) assert.equal(tipoDe(nome), "simpleM", nome);
-  for (const nome of ["Bastão", "Kanabo/Tacape", "Nunchaku"]) assert.equal(tipoDe(nome), "improv", nome);
+  for (const arma of armas) assert.equal(arma.system.type.value, "natural", arma.name);
   const ids = new Set(armas.map(a => a._id));
   assert.equal(ids.size, 28);
   for (const id of ids) assert.match(id, /^jjarm[0-9a-z]{11}$/, id);

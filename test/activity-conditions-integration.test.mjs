@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { readFileSync } from "node:fs";
 import Ruleset from "../module/systems/ruleset.mjs";
+import { preventSizePushRoll } from "../module/systems/legacy2-size.mjs";
 import { rollConditionSave, activityConditionsSnapshot } from "../module/systems/activity-conditions.mjs";
 
 let alternative = false;
@@ -24,8 +25,8 @@ globalThis.ChatMessage = { getSpeaker: ({ actor, token }) => ({ actor: actor?.id
 globalThis.canvas = { scene: {} };
 const actorSource = readFileSync(new URL("../module/documents/actor/actor.mjs", import.meta.url), "utf8");
 const actorMethods = actorSource.slice(actorSource.indexOf("  async rollSavingThrow(config={}, dialog={}, message={})"), actorSource.indexOf("  async rollDeathSave("));
-const NativeActor = new Function("Ruleset", "D20RollModificationField", "_loc", `return class {${actorMethods}}`)(Ruleset,
-  { combineFields: () => ({ bonus: 2 }) }, (key, data) => data.ability);
+const NativeActor = new Function("Ruleset", "D20RollModificationField", "_loc", "preventSizePushRoll", `return class {${actorMethods}}`)(Ruleset,
+  { combineFields: () => ({ bonus: 2 }) }, (key, data) => data.ability, preventSizePushRoll);
 globalThis.Actor = NativeActor;
 const attackSource = readFileSync(new URL("../module/data/chat-message/attack-message-data.mjs", import.meta.url), "utf8");
 const attackGetter = attackSource.match(/get evaluatedTargets\(\) \{([\s\S]*?)\n  \}/)[0];
@@ -107,6 +108,14 @@ function fixture(type, mode, outcome) {
   };
   return { actor, activity, token, usage, records, writes, effects, chooseDie: value => { die = value; } };
 }
+
+test("native headless saving throws skip the die for an Imenso resisting a push, but retain ordinary saves", async () => {
+  const f = fixture("npc", "direct", "fail"); f.actor.system.traits.size = "grg";
+  assert.deepEqual(await f.actor.rollSavingThrow({ ability: "str", legacy2: { resistPush: true } }, { configure: false }), []);
+  assert.equal(f.records.length, 0);
+  const result = await f.actor.rollSavingThrow({ ability: "str" }, { configure: false });
+  assert.equal(result.length, 1); assert.equal(f.records.length, 1);
+});
 
 for (const type of ["character", "npc"]) for (const mode of ["attack", "damageSave", "direct"]) {
   test(`${type}/${mode}: native save result automatically creates the real condition, without another Apply click`, async () => {

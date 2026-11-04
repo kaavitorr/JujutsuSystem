@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import {test} from "node:test";
-import {equipmentCopyPatch,profileCopyPatch,refreshNpcEquipment} from "../module/systems/npc-equipment-migration.mjs";
+import {equipmentCopyPatch,profileCopyPatch,refreshNpcEquipment,registerNpcEquipmentMigration} from "../module/systems/npc-equipment-migration.mjs";
 import {NPC_EQUIPMENT_PACK,NPC_PROFILE_PACK,npcEquipmentFingerprint,npcEquipmentUuid} from "../module/systems/npc-equipment-catalog.mjs";
 const ns="jujutsu-system", old="Compendium.jujutsu-compendium.arquetipos-e-taxonomias.Item.acd48c1a5dc3dfae";
 const set=(o,path,value)=>{const keys=path.split("."),last=keys.pop();for(const k of keys)o=o[k]??={};o[last]=value;};
@@ -51,4 +51,30 @@ test("unpublished canonical profiles cannot mark an incomplete migration as comp
  assert.equal(profileCopyPatch(item,canonical),null);
  canonical.flags[ns].equipmentPdn={version:1};canonical.system.equipamentos.armas=[npcEquipmentUuid("bite")];
  assert.deepEqual(profileCopyPatch(item,canonical)["system.equipamentos"].armas,[npcEquipmentUuid("bite")]);
+});
+
+test("ready repairs PdN weapon types in existing copies without requiring profile packs or touching player weapons",async()=>{
+ const make=(id,flags)=>doc({_id:id,type:"weapon",flags:{[ns]:flags},system:{type:{value:"martialM"},damage:{base:{number:1,denomination:12}},description:{value:"Manual"}}});
+ const stock=make("stock",{armaPdn:true,grupo:"simpleM"}),part=make("part",{ataqueNatural:true}),manual=make("manual",{});
+ let writes=0;
+ const npc={type:"npc",items:[part,manual],async updateEmbeddedDocuments(type,patches){
+  assert.equal(type,"Item");writes+=patches.length;for(const patch of patches)await this.items.find(i=>i._id===patch._id).update(patch);
+ }};
+ const world={user:{id:"gm",isGM:true},users:{activeGM:{id:"gm"}},packs:new Map(),items:[stock],actors:[],scenes:[{tokens:[{actorLink:false,actor:npc}]}]};
+ const damage=structuredClone(part.system.damage);
+ await refreshNpcEquipment(world);
+ assert.equal(stock.system.type.value,"natural");assert.equal(stock.flags[ns].grupo,"");
+ assert.equal(part.system.type.value,"natural");assert.deepEqual(part.system.damage,damage);
+ assert.equal(manual.system.type.value,"martialM");assert.equal(manual.system.description.value,"Manual");
+ await refreshNpcEquipment(world);assert.equal(writes,1);
+});
+
+test("new PdN weapon copies are classified before creation while unrelated items are left intact",()=>{
+ const callbacks=new Map();registerNpcEquipmentMigration({once(){},on(name,callback){callbacks.set(name,callback);}});
+ const data={type:"weapon",system:{type:{value:"simpleR"}},flags:{[ns]:{armaPdn:true,grupo:"simpleR"}}};
+ let patch;
+ const item={...data,toObject:()=>structuredClone(data),updateSource(value){patch=value;}};
+ callbacks.get("preCreateItem")?.(item);
+ assert.equal(patch?.["system.type.value"],"natural");assert.equal(patch?.[`flags.${ns}.grupo`],"");
+ patch=undefined;delete data.flags[ns].armaPdn;callbacks.get("preCreateItem")?.(item);assert.equal(patch,undefined);
 });

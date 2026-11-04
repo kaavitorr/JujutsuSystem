@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { prepareSizeRules } from "../module/systems/legacy2-size.mjs";
 
 const api = await import("../module/systems/seres-amaldicoados-1.mjs").catch(error => {
   if (error.code === "ERR_MODULE_NOT_FOUND") return {};
@@ -251,8 +252,8 @@ test("the production character preparation applies level HP bonuses while respec
   const hpBody=attributesSource.match(/static prepareHitPoints\(hp, \{ advancement=\[\], mod=0, bonus=0 \}=\{\}\) \{([\s\S]*?)\n  \}/)[1];
   const hitPoints=new Function(`return function(hp,{advancement=[],mod=0,bonus=0}={}){${hpBody}}`)();
   const attributes=new Proxy({prepareHitPoints:hitPoints},{get:(object,key)=>object[key]??(()=>{})});
-  const prepare=new Function("AttributesFields","TraitsFields","simplifyBonus","Ruleset","applyCursedBenefitTraits1","cursedHitPointBonus1","cursedEnergyFormula1",`return function(){${body}\n}`)(
-    attributes,new Proxy({},{get:()=>()=>{}}),value=>Number(value)||0,{isV2:()=>false},api.applyCursedBenefitTraits1,api.cursedHitPointBonus1,api.cursedEnergyFormula1);
+  const prepare=new Function("AttributesFields","TraitsFields","simplifyBonus","Ruleset","applyCursedBenefitTraits1","cursedHitPointBonus1","cursedEnergyFormula1","prepareSizeRules",`return function(){${body}\n}`)(
+    attributes,new Proxy({},{get:()=>()=>{}}),value=>Number(value)||0,{isV2:()=>false},api.applyCursedBenefitTraits1,api.cursedHitPointBonus1,api.cursedEnergyFormula1,prepareSizeRules);
   for(const maximum of [null,120]){
     const a=actor({hitPoints:2,colossal:1});
     a.flags[NS].dominioExpandido=false;a.getFlag=()=>false;a.items=[];a.itemTypes={feat:[]};a.classes={style:{advancement:{byType:{HitPoints:[{getAdjustedTotal:()=>100}]}}}};

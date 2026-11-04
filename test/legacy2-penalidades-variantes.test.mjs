@@ -53,13 +53,13 @@ test("o macro de importação repassa effects e img e carrega as penalidades", (
 
 test("selosMax aplica o bônus da penalidade sem apagar os selos extras do caminho", async () => {
   const { selosMax } = await import("../module/applications/activity/legacy2-activation.mjs");
-  const featSelos = () => ({ type: "feat", name: "Selos de Mão",
+  const featSelos = name => ({ type: "feat", name,
     getFlag: (escopo, chave) => chave === "especializacao" ? { caminho: "Selos e Encantamentos" } : undefined });
-  const ator = (selosBonus, feats = 1) => ({ items: Array.from({ length: feats }, featSelos),
+  const ator = (selosBonus, feats = 1) => ({ items: Array.from({ length: feats }, (_, index) => featSelos(["Selos de Mão", "Selos Complexos", "Encantamentos"][index])),
     flags: { "jujutsu-system": { selosBonus } } });
-  assert.equal(selosMax(ator(undefined)), 3);
-  assert.equal(selosMax(ator(-3)), 0); // penalidade: perde os 3 selos base
-  assert.equal(selosMax(ator(-3, 3)), 2); // habilidades extras continuam valendo +1
+  assert.equal(selosMax(ator(undefined)), 8);
+  assert.equal(selosMax(ator(-3)), 5); // penalidade: perde três dos oito usos base
+  assert.equal(selosMax(ator(-3, 3)), 7); // habilidades extras continuam valendo +1
   assert.equal(selosMax(ator(-30)), 0); // piso em 0
 });
 

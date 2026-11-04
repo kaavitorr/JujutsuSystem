@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { readFileSync } from "node:fs";
 import Ruleset from "../module/systems/ruleset.mjs";
+import { resetSizePreparation } from "../module/systems/legacy2-size.mjs";
 
 globalThis.game = { settings: { get: () => "2.0" } };
 const resources = await import("../module/systems/legacy2-resources.mjs").catch(error => {
@@ -178,7 +179,7 @@ test("native initial phase projects Colossal after collecting statuses from othe
   const body=source.match(/ {2}applyActiveEffects\(phase\) \{([\s\S]*?)\r?\n {2}\}/)[1];
   let seen;
   class Boundary { applyActiveEffects() {seen=this.system.energy.base;} }
-  const Native=new Function("Boundary", "prepareLegacy2ResourceBases", "Ruleset", `return class extends Boundary {applyActiveEffects(phase){${body}}}`)(Boundary, resources.prepareLegacy2ResourceBases, Ruleset);
+  const Native=new Function("Boundary", "prepareLegacy2ResourceBases", "Ruleset", "resetSizePreparation", `return class extends Boundary {applyActiveEffects(phase){${body}}}`)(Boundary, resources.prepareLegacy2ResourceBases, Ruleset, resetSizePreparation);
   const a=Object.assign(new Native(), actor()); a.statuses=new Set();
   a.effects=[{active: true, statuses: new Set(["jj-envenenado"]), system: {}},
     {active: true, statuses: new Set(), system: {conditions: {check: data => data.statuses.has("jj-envenenado")}, changes: [

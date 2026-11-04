@@ -2,6 +2,7 @@ import Ruleset from "./ruleset.mjs";
 import { reducaoCustoSeisOlhos } from "./seis-olhos.mjs";
 import { MODIFICADORES_CONDICOES, MODIFICADORES_DEFESA } from "../applications/actor/jj/conditions.mjs";
 import { EnergySystem } from "./energy.mjs";
+import { potentialPool, potentialDiscount } from "./legacy2-potential-points.mjs";
 
 /**
  * ── AÇÕES 2.0 (Pontos de Ação) ──────────────────────────────────────────────
@@ -30,7 +31,7 @@ function custoBaseEmAcoes(activity) {
  * da ativação (mínimo 1 ação) e o gesto escolhido soma +1 ação. Os selos
  * usados são limitados ao pool disponível do ator.
  */
-export function custoEfetivoEmAcoes(activity, usageConfig, actor) {
+function custoAntesDePotencial(activity, usageConfig, actor) {
   let base = custoBaseEmAcoes(activity);
   // Recarga (lod): atacar com a arma descarregada custa +1 Ponto de Ação
   // (marcando "Recarregar agora" no dialog, o ataque sai carregado).
@@ -48,6 +49,30 @@ export function custoEfetivoEmAcoes(activity, usageConfig, actor) {
   const gestoAcao = l2?.gesto ? 1 : 0;
   if ( base <= 0 ) return gestoAcao;
   return Math.max(1, base + gestoAcao - selos);
+}
+
+export function custoEfetivoEmAcoes(activity, usageConfig, actor) {
+  const cost = custoAntesDePotencial(activity, usageConfig, actor);
+  return cost - potentialDiscount(activity, usageConfig, actor, cost);
+}
+
+const potentialPlans = new WeakMap();
+
+function validateActions(activity, usageConfig, dialogConfig) {
+  if (!Ruleset.isV2()) return;
+  const actor = activity?.actor ?? activity?.item?.actor;
+  const custo = custoEfetivoEmAcoes(activity, usageConfig, actor);
+  if (!actor || custo <= 0) return;
+  if (activity.type !== "attack" && actor.statuses?.has?.("jj-enfurecido")) {
+    ui.notifications.warn(`${actor.name} está Enfurecido — só pode gastar PA com ataques.`);
+    return false;
+  }
+  // The first hook precedes the modal. Validate the final PP choice at consumption.
+  if (dialogConfig?.configure && activity.item?.type === "spell" && potentialPool(actor).current > 0) return;
+  const atual = Number(actor.system.legacy2?.actions?.value ?? 0);
+  if (atual >= custo) return;
+  ui.notifications.warn(`${activity.item?.name ?? "Técnica"} custa ${custo} ${nomeCampo} — ${actor.name} tem apenas ${atual}.`);
+  return false;
 }
 
 /**
@@ -69,30 +94,41 @@ export async function consumirPAItem(item) {
   return true;
 }
 
-Hooks.on("dnd5e.preUseActivity", (activity, usageConfig) => {
-  if ( !Ruleset.isV2() ) return;
+Hooks.on("dnd5e.preUseActivity", validateActions);
+Hooks.on("dnd5e.preActivityConsumption", (activity, usageConfig) => validateActions(activity, usageConfig));
+
+Hooks.on("dnd5e.activityConsumption", (activity, usageConfig, messageConfig, updates) => {
+  if (!Ruleset.isV2()) return;
   const actor = activity?.actor ?? activity?.item?.actor;
-  const custo = custoEfetivoEmAcoes(activity, usageConfig, actor);
-  if ( !actor || (custo <= 0) ) return;
-  // Enfurecido (2.0): só pode gastar PA com ataques — o uso de técnica e de
-  // outras atividades com custo em PA fica bloqueado.
-  if ( (activity.type !== "attack") && actor.statuses?.has?.("jj-enfurecido") ) {
-    ui.notifications.warn(`⚡ ${actor.name} está Enfurecido — só pode gastar PA com ataques.`);
-    return false;
-  }
-  const atual = Number(actor.system.legacy2?.actions?.value ?? 0);
-  if ( atual >= custo ) return;
-  ui.notifications.warn(`${activity.item?.name ?? "Técnica"} custa ${custo} ${nomeCampo} — `
-    + `${actor.name} tem apenas ${atual}.`);
-  return false;
+  const before = custoAntesDePotencial(activity, usageConfig, actor);
+  const points = potentialDiscount(activity, usageConfig, actor, before);
+  if (!points) return;
+  if (validateActions(activity, usageConfig) === false) return false;
+  const pool = potentialPool(actor), cost = before - points;
+  const existing = updates.item.find(update => update._id === (pool.item.id ?? pool.item._id));
+  const spent = Number(existing?.["system.uses.spent"] ?? pool.spent);
+  if (spent + points > pool.max) { ui.notifications.warn("Pontos de Potencial insuficientes para esse uso."); return false; }
+  const patch = { _id: pool.item.id ?? pool.item._id, "system.uses.spent": spent + points };
+  if (existing) Object.assign(existing, patch); else updates.item.push(patch);
+  updates.actor["system.legacy2.actions.value"] = Number(actor.system.legacy2.actions.value) - cost;
+  const sealPool = Math.max(0, Math.floor(Number(actor.getFlag?.("jujutsu-system", "selos") ?? 0)));
+  const seals = usageConfig.legacy2?.manipulacao ? 0 : Math.min(2, sealPool, Math.max(0, Math.floor(Number(usageConfig.legacy2?.selos) || 0)));
+  if (seals > 0) updates.actor["flags.jujutsu-system.selos"] = sealPool - seals;
+  potentialPlans.set(usageConfig, { activity, cost, paid: false, sealsPaid: seals > 0 });
+});
+Hooks.on("dnd5e.postActivityConsumption", (activity, usageConfig) => {
+  const plan = potentialPlans.get(usageConfig);
+  if (plan?.activity === activity) plan.paid = true;
 });
 
 Hooks.on("dnd5e.postUseActivity", async (activity, usageConfig) => {
   if ( !Ruleset.isV2() ) return;
   const actor = activity?.actor ?? activity?.item?.actor;
   const l2 = usageConfig?.legacy2 ?? {};
+  const potentialPlan = potentialPlans.get(usageConfig);
+  const paidPotential = potentialPlan?.activity === activity && potentialPlan.paid;
   // Use the state validated before consumption: seals and loaded weapons change below.
-  const custo = custoEfetivoEmAcoes(activity, usageConfig, actor);
+  const custo = paidPotential ? potentialPlan.cost : custoEfetivoEmAcoes(activity, usageConfig, actor);
   // Selos de Mão: consome os usos do pool (Manipulação de Selos paga com deslocamento
   // e NÃO é limitada pelo pool). Os selos usados são calculados uma vez só — o gasto
   // acontece ANTES do early-return de custo zero (selo escolhido em técnica gratuita
@@ -100,9 +136,14 @@ Hooks.on("dnd5e.postUseActivity", async (activity, usageConfig) => {
   const pool = Math.max(0, Math.floor(Number(actor?.getFlag?.("jujutsu-system", "selos") ?? 0)));
   const selosPedidos = Math.min(Math.max(0, Math.floor(Number(l2?.selos) || 0)), 2);
   const selos = l2?.manipulacao ? selosPedidos : Math.min(selosPedidos, pool);
-  if ( (selos > 0) && !l2?.manipulacao && (pool > 0) ) {
-    await actor.update({ "flags.jujutsu-system.selos": pool - selos });
+  const updates = {};
+  if ((selos > 0) && !l2?.manipulacao && (pool > 0) && !(paidPotential && potentialPlan.sealsPaid))
+    updates["flags.jujutsu-system.selos"] = pool - selos;
+  if (actor && custo > 0 && !paidPotential) {
+    const atual = Number(actor.system.legacy2?.actions?.value ?? 0);
+    if (atual > 0) updates["system.legacy2.actions.value"] = Math.max(0, atual - custo);
   }
+  if (actor && Object.keys(updates).length) await actor.update(updates);
   if ( (selos > 0) && l2?.manipulacao ) {
     const metade = selos < 2;
     ui.notifications.info(`${actor.name}: selo pago com deslocamento (${metade ? "metade" : "zero"} até o fim do turno).`);
@@ -120,9 +161,6 @@ Hooks.on("dnd5e.postUseActivity", async (activity, usageConfig) => {
   if ( (itemAtaque?.type === "weapon") && Ruleset.temPropriedade(itemAtaque, "lod") ) {
     await itemAtaque.setFlag?.("jujutsu-system", "carregada", !!usageConfig?.legacy2?.recarregar);
   }
-  if ( !actor || (custo <= 0) ) return;
-  const atual = Number(actor.system.legacy2?.actions?.value ?? 0);
-  if ( atual > 0 ) await actor.update({ "system.legacy2.actions.value": Math.max(0, atual - custo) });
 });
 
 /* ── Ciclo de turno no combate (2.1: Reservas de Ação) ──────────────────────

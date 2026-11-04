@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 
 globalThis.Hooks = { on() {}, once() {}, call() {}, callAll() {} };
 globalThis.game = { settings: { get: () => "2.0" } };
@@ -76,10 +76,11 @@ test("as variantes herdam o custo e o dado extra da parte original (2 PA; 3 nas 
 
 test("os ícones dos membros elementais distinguem a anatomia, sem placeholders genéricos", () => {
   for (const membro of membros) {
-    assert.match(membro.img, /^icons\/.+\.webp$/, membro.name);
+    assert.match(membro.img, /^systems\/jujutsu-system\/assets\/equipamentos-pdn-pintados-v1\/.+\.webp$/, membro.name);
+    assert.ok(existsSync(new URL(`../${membro.img.replace("systems/jujutsu-system/", "")}`, import.meta.url)), membro.name);
   }
   for (const elemento of new Set(membros.map(m=>m.flags["jujutsu-system"].elemento)))
-    assert.ok(new Set(membros.filter(m=>m.flags["jujutsu-system"].elemento===elemento).map(m=>m.img)).size>=10,elemento);
+    assert.equal(new Set(membros.filter(m=>m.flags["jujutsu-system"].elemento===elemento).map(m=>m.img)).size,15,elemento);
 });
 
 test("as pastas do compendium agrupam por elemento via macro", () => {

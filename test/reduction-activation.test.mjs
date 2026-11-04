@@ -93,3 +93,18 @@ test("the actual granted Defesa Sólida spends resources and protects a player o
     await apply.call(actor, [{ value: 5 }]);assert.equal(actor.system.attributes.hp.value, 17);
   }
 });
+
+test("reduction techniques can spend PP in the same batch as their actions and protection", async () => {
+  const previous = choice; choice = { incrementos: 1, persistente: false, potencial: 99 };
+  try {
+    const { actor, activity, writes } = fixture(10, 1), batches = [];
+    actor.items.push({ id: "speed", type: "feat", name: "Explosão de Velocidade", system: { uses: { spent: 0 } } });
+    actor.performBulkUpdate = async updates => { batches.push(updates); };
+    await activateDamageReduction(activity, { consume: true });
+    assert.equal(writes.length, 0); assert.equal(batches.length, 1);
+    assert.deepEqual(batches[0].item, [{ _id: "speed", "system.uses.spent": 1 }]);
+    assert.equal(batches[0].actor["system.legacy2.actions.value"], 0);
+    assert.equal(batches[0].actor["system.energy.generated"], 5);
+    assert.deepEqual(batches[0].actor["flags.jujutsu-system.reducaoDano"], { valor: 12, persistente: false });
+  } finally { choice = previous; }
+});

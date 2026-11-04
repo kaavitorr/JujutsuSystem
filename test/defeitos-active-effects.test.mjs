@@ -194,8 +194,9 @@ test("the actual dialog renders and submits every prepared disadvantage without 
   const Ruleset = (await import("../module/systems/ruleset.mjs")).default;
   const source = await fs.readFile(new URL("../module/applications/dice/d20-configuration-dialog.mjs", import.meta.url), "utf8");
   const body = source.match(/async _prepareFormulasContext\(context, options\) \{([\s\S]*?)\n  \}/)[1];
-  const Dialog = new Function("Base","Ruleset","testRollChoices","testRollBreakdown","hasLegacy2Test", `return class extends Base {async _prepareFormulasContext(context,options){${body}}}`)(
-    class {async _prepareFormulasContext(context){return context;}}, Ruleset,testRollChoices,testRollBreakdown,hasLegacy2Test);
+  const {sizePushTestContext}=await import("../module/systems/legacy2-size.mjs");
+  const Dialog = new Function("Base","Ruleset","testRollChoices","testRollBreakdown","hasLegacy2Test","sizePushTestContext", `return class extends Base {async _prepareFormulasContext(context,options){${body}}}`)(
+    class {async _prepareFormulasContext(context){return context;}}, Ruleset,testRollChoices,testRollBreakdown,hasLegacy2Test,sizePushTestContext);
   const process = { subject: {system:{abilities:{cha:{value:4}}}}, skill:"dec",ability:"cha",disadvantage:true,hookNames:["skillCheck"],rolls:[{options:{}}] };
   const prepared = {parts:["@mod"],data:{mod:4},options:{disadvantageCount:2}};
   applyLegacy2TestRoll(prepared,process); assert.equal(prepared.data.legacyAdv,-2);

@@ -1,0 +1,53 @@
+{
+  "tool": "Built-in image_gen",
+  "style": "Pintura simples de fantasia, poucas formas e fundo transparente",
+  "size": 256,
+  "format": "WebP",
+  "items": [
+    {
+      "key": "gerador",
+      "name": "Gerador de PdN",
+      "file": "gerador.webp",
+      "source": "C:\\Users\\kaa_v\\.codex\\generated_images\\01a12997-bf36-72b2-a284-8b72541a403a\\exec-0ca33d67-f509-4212-b81a-af620622da13.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE individual square painted RPG UI icon for Jujutsu Legacy, a Japanese supernatural RPG. Style reference: simple hand-painted gouache fantasy bestiary portraits, very few broad brush shapes, restrained muted colors, readable strong silhouette at 40 pixels. Matte painted texture, soft angular brush edges, no tiny surface detail, no realistic rendering, no vector art, no line icon, no graphic logo, no outlines around the canvas, no writing, no letters, no UI frame. Single centered subject filling about 85% of the canvas with even breathing room, isolated cutout on a genuinely transparent background. Match the same simple painted family for all ranks. Subject: an antique ivory Japanese oni mask with two small ochre horns and expressive charcoal eye hollows; two broad dark purple brushstrokes of curse energy curl around its lower sides, as though a creature is taking shape. A small warm gold glow in the center of its forehead suggests creation. Beautiful distinctive illustrated object, not a symbol. Palette ivory, dark plum, muted warm ochre. This is the CREATURE GENERATOR icon. Keep the mask large, no elaborate summoning circles or inscriptions.",
+      "bytes": 29540,
+      "sha256": "b993b6ea668fcb73588e918a60ae4c20fe543aee191e8aeef29b89148be76ff4"
+    },
+    {
+      "key": "lacaio",
+      "name": "Lacaio",
+      "file": "lacaio.webp",
+      "source": "C:\\Users\\kaa_v\\.codex\\generated_images\\01a12997-bf36-72b2-a284-8b72541a403a\\exec-02bd2a44-e45c-4d1e-8bc8-e5aa74d1af27.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE individual square painted RPG UI icon for Jujutsu Legacy, a Japanese supernatural RPG. Style reference: simple hand-painted gouache fantasy bestiary portraits, very few broad brush shapes, restrained muted colors, readable strong silhouette at 40 pixels. Matte painted texture, soft angular brush edges, no tiny surface detail, no realistic rendering, no vector art, no line icon, no graphic logo, no outlines around the canvas, no writing, no letters, no UI frame. Single centered subject filling about 85% of the canvas with even breathing room, isolated cutout on a genuinely transparent background. Match the same simple painted family for all ranks. Subject: a small lowly cursed spirit, one large pale eye in a rounded dusky gray-green head and a simple ragged shroud-shaped neck, shoulders only. A timid hunched silhouette, one crooked tiny tooth, no horns and no armor. This is the MINION rank. Palette muted gray sage and charcoal with an ivory eye. A charming sinister painted creature portrait, not an outlined ghost pictogram.",
+      "bytes": 14634,
+      "sha256": "14b1bd6c98b96b95cb27af9cc06aa93223213eefe43cce55eff0c9bc5243c562"
+    },
+    {
+      "key": "normal",
+      "name": "Normal",
+      "file": "normal.webp",
+      "source": "C:\\Users\\kaa_v\\.codex\\generated_images\\01a12997-bf36-72b2-a284-8b72541a403a\\exec-40487c3f-b1b4-4bee-adc1-b36b59c6446e.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE individual square painted RPG UI icon for Jujutsu Legacy, a Japanese supernatural RPG. Style reference: simple hand-painted gouache fantasy bestiary portraits, very few broad brush shapes, restrained muted colors, readable strong silhouette at 40 pixels. Matte painted texture, soft angular brush edges, no tiny surface detail, no realistic rendering, no vector art, no line icon, no graphic logo, no outlines around the canvas, no writing, no letters, no UI frame. Single centered subject filling about 85% of the canvas with even breathing room, isolated cutout on a genuinely transparent background. Match the same simple painted family for all ranks. Subject: a standard cursed spirit portrait, face and shoulders, an angular dark plum face, two narrow ivory eyes, a broad blunt jaw with two simple teeth. Unarmored, no horns, no crown. This is the NORMAL rank. Palette dusty violet, deep charcoal and ivory. Simple imposing creature with a strong square silhouette, broad brush shapes and minimal facial detail.",
+      "bytes": 14898,
+      "sha256": "dd64cf1631ae94bc09fefe1d9e9ce0cd61a8de9ab46036a248830f97f0387cd5"
+    },
+    {
+      "key": "elite",
+      "name": "Elite",
+      "file": "elite.webp",
+      "source": "C:\\Users\\kaa_v\\.codex\\generated_images\\01a12997-bf36-72b2-a284-8b72541a403a\\exec-9d162ce1-d9a3-43f4-9598-aadd041d4be6.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE individual square painted RPG UI icon for Jujutsu Legacy, a Japanese supernatural RPG. Style reference: simple hand-painted gouache fantasy bestiary portraits, very few broad brush shapes, restrained muted colors, readable strong silhouette at 40 pixels. Matte painted texture, soft angular brush edges, no tiny surface detail, no realistic rendering, no vector art, no line icon, no graphic logo, no outlines around the canvas, no writing, no letters, no UI frame. Single centered subject filling about 85% of the canvas with even breathing room, isolated cutout on a genuinely transparent background. Match the same simple painted family for all ranks. Subject: an elite Japanese cursed oni, bust portrait, strong crimson-ochre face, two short ivory swept horns, dark hair and a single simple charcoal shoulder mantle. Confident aggressive expression, narrow ivory eyes and two fangs. This is the ELITE rank. Palette desaturated brick red, warm ivory, charcoal and subtle antique gold. No crown, minimal armor detail, a small number of large painted planes.",
+      "bytes": 21662,
+      "sha256": "7f79cb46ff20ffd2b0710a0b5ac5c4c5d1ada7dda94fd97200f3618aee67eff9"
+    },
+    {
+      "key": "chefe",
+      "name": "Chefe",
+      "file": "chefe.webp",
+      "source": "C:\\Users\\kaa_v\\.codex\\generated_images\\01a12997-bf36-72b2-a284-8b72541a403a\\exec-d2ecff59-168f-48af-aac4-62d266bdb107.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE individual square painted RPG UI icon for Jujutsu Legacy, a Japanese supernatural RPG. Style reference: simple hand-painted gouache fantasy bestiary portraits, very few broad brush shapes, restrained muted colors, readable strong silhouette at 40 pixels. Matte painted texture, soft angular brush edges, no tiny surface detail, no realistic rendering, no vector art, no line icon, no graphic logo, no outlines around the canvas, no writing, no letters, no UI frame. Single centered subject filling about 85% of the canvas with even breathing room, isolated cutout on a genuinely transparent background. Match the same simple painted family for all ranks. Subject: an imposing boss cursed oni, bust portrait with a wide dark mane, four pale gold eyes and two long thick ivory horns curving outward and upward. Deep blue-black face with a few broad crimson accents, heavy jaw and two large fangs, only a minimal suggestion of dark robes at the bottom. This is the BOSS rank. Regal dominant triangular silhouette, no crown, no jewelry, no detailed ornament, big simple painted masses. Palette midnight indigo, ivory, muted crimson, antique gold.",
+      "bytes": 26606,
+      "sha256": "3f5101c12aaa351ba8b32a0a4f70955b9356ee02c25413902928f6938172b5d3"
+    }
+  ]
+}

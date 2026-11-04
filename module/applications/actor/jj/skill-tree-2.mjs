@@ -1,6 +1,6 @@
 import ApplicationV2Mixin from "../../api/application-v2-mixin.mjs";
 import {
-  carregarGrafo, adquiridas, concedidas, possuidas, aprender, esquecer,
+  obterGrafo, invalidarGrafo, adquiridas, concedidas, possuidas, aprender, esquecer,
   conceder, revogarConcessao, sincronizarEspecializacoes,
   avaliarNo, escolhasTotais, escolhasDisponiveis, escolhasRestritas, slotRestritoPara, ORDEM_CATEGORIAS, CORES_CATEGORIA
 } from "../../../systems/especializacoes-2.mjs";
@@ -59,7 +59,7 @@ export default class SkillTreeApp extends ApplicationV2Mixin(foundry.application
 
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
-    this.#grafo = await carregarGrafo();
+    this.#grafo = await obterGrafo();
     const actor = this.#actor;
     await sincronizarEspecializacoes(actor, this.#grafo);
     const aprendidas = adquiridas(actor);
@@ -269,7 +269,7 @@ export default class SkillTreeApp extends ApplicationV2Mixin(foundry.application
    * @param nome
    */
   async #abrirGerenciadorReq(nome) {
-    const grafo = await carregarGrafo();
+    const grafo = await obterGrafo();
     const no = grafo.porNome?.get(nome);
     if ( !no ) return;
     const overrides = foundry.utils.deepClone(game.settings.get("jujutsu-system", "especializacoesReq") ?? {});
@@ -341,7 +341,7 @@ export default class SkillTreeApp extends ApplicationV2Mixin(foundry.application
           if ( ocultou ) await game.settings.set("jujutsu-system", "especializacoesOcultas", ocultasAtuais);
           if ( mudou ) {
             ui.notifications.info(`Requisitos de "${nome}" atualizados.`);
-            await carregarGrafo();
+            invalidarGrafo({ catalogo: false });
           }
           if ( mudou || ocultou ) await this.render({ force: true });
         },

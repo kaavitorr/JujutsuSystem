@@ -34,6 +34,7 @@ import * as utils from "./module/utils.mjs";
 import DragDrop5e from "./module/drag-drop.mjs";
 import { registerCreationHooks } from "./module/applications/actor/creation/creation-hooks-2.mjs";
 import { registerEnergyShieldTreeUpdate } from "./module/systems/legacy2-energy-shield-tree.mjs";
+import { registerPhysicalSpecializationUpdate } from "./module/systems/legacy2-physical-specializations.mjs";
 import { presentWorldRules } from "./module/applications/world-rules-dialog.mjs";
 import { registerNpcEquipmentHooks } from "./module/systems/legacy2-npc-equipment.mjs";
 import { registerNpcFeatureHooks } from "./module/systems/legacy2-npc-features.mjs";
@@ -44,9 +45,12 @@ import { registerCursedBenefitHooks1 } from "./module/systems/seres-amaldicoados
 import { registerNpcEquipmentMigration } from "./module/systems/npc-equipment-migration.mjs";
 import { registerNpcEquipmentCombat } from "./module/systems/npc-equipment-combat.mjs";
 import { registerChannelingTechniques } from "./module/systems/legacy2-channeling-techniques.mjs";
+import { registerHandSealHooks } from "./module/systems/legacy2-hand-seal-hooks.mjs";
+import { registerPotentialPointsHooks } from "./module/systems/legacy2-potential-hooks.mjs";
 
 registerCreationHooks();
 registerEnergyShieldTreeUpdate();
+registerPhysicalSpecializationUpdate();
 registerNpcEquipmentHooks();
 registerNpcFeatureHooks();
 registerEncyclopediaDescriptionHooks();
@@ -56,6 +60,8 @@ registerCursedBenefitHooks1();
 registerNpcEquipmentMigration();
 registerNpcEquipmentCombat();
 registerChannelingTechniques();
+registerHandSealHooks();
+registerPotentialPointsHooks();
 
 /* -------------------------------------------- */
 /*  Define Module Structure                     */

@@ -234,16 +234,30 @@ test("NPC loaded weapon pays the validated action cost before becoming unloaded"
 });
 
 test("NPC hand seals preserve their validated discount after the seal pool is consumed", async () => {
-  const { actor, item, activity } = npcActionFixture({ seals: 2, cost: 3 });
+  const { actor, item, activity, writes } = npcActionFixture({ seals: 2, cost: 3 });
   item.type = "spell"; item.system.properties.clear();
   const usage = { legacy2: { selos: 2 } };
   assert.notEqual(actionHooks.get("dnd5e.preUseActivity")(activity, usage), false);
   await actionHooks.get("dnd5e.postUseActivity")(activity, usage);
   assert.equal(actor.flags["jujutsu-system"].selos, 0);
   assert.equal(actor.system.legacy2.actions.value, 5);
+  assert.deepEqual(writes, [{ "flags.jujutsu-system.selos": 0, "system.legacy2.actions.value": 5 }]);
   const original = game.settings.get;
   game.settings.get = () => "1.0";
   try { await actionHooks.get("dnd5e.postUseActivity")(activity, usage); }
   finally { game.settings.get = original; }
   assert.equal(actor.system.legacy2.actions.value, 5);
+});
+
+test("grouping seal writes preserves free techniques and movement-paid seals", async () => {
+  const free = npcActionFixture({ seals: 1, cost: 0 }); free.item.type = "spell"; free.item.system.properties.clear();
+  await actionHooks.get("dnd5e.postUseActivity")(free.activity, { legacy2: { selos: 1 } });
+  assert.deepEqual(free.writes, [{ "flags.jujutsu-system.selos": 0 }]);
+  const movement = npcActionFixture({ seals: 0, cost: 3 }); movement.item.type = "spell"; movement.item.system.properties.clear();
+  const effects = []; movement.actor.createEmbeddedDocuments = async (type, data) => { effects.push(...data); };
+  globalThis.CONST ??= { ACTIVE_EFFECT_MODES: { MULTIPLY: 1 } };
+  await actionHooks.get("dnd5e.postUseActivity")(movement.activity, { legacy2: { selos: 1, manipulacao: true } });
+  assert.deepEqual(movement.writes, [{ "system.legacy2.actions.value": 4 }]);
+  assert.equal(movement.actor.flags["jujutsu-system"].selos, 0);
+  assert.equal(effects.length, 1); assert.equal(effects[0].changes[0].value, "0.5");
 });
